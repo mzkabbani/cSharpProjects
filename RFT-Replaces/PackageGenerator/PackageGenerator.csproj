@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>9.0.30729</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{0641C6DB-46CF-48F2-BA91-80A07084890F}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PackageGenerator</RootNamespace>
+    <AssemblyName>PackageGenerator</AssemblyName>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ApplicationIcon>IconsLandVistaMultimediaIconsDemo-ICO-VCR-CircleBlue-PlayModeRepeatAllHot %281%29.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Classes\CustomizationFunction.cs" />
+    <Compile Include="Classes\FrontendUtils.cs" />
+    <Compile Include="Classes\InstallerPropertyObject.cs" />
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AddPropertyForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AddPropertyForm.Designer.cs">
+      <DependentUpon>AddPropertyForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\ExceptionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\ExceptionForm.Designer.cs">
+      <DependentUpon>ExceptionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PackageGenerator.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PackageGenerator.Designer.cs">
+      <DependentUpon>PackageGenerator.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AddPropertyForm.resx">
+      <DependentUpon>AddPropertyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ExceptionForm.resx">
+      <DependentUpon>ExceptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PackageGenerator.resx">
+      <DependentUpon>PackageGenerator.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <None Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\images\Thumbs.db" />
+    <None Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\murex\Migration\FrontendUtilities.groovy" />
+    <None Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\murex\Migration\Installer.groovy" />
+    <None Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\murex\Migration\installMain.groovy" />
+    <None Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\murex\Migration\main.groovy" />
+    <None Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\murex\Migration\Operations.groovy" />
+    <None Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\murex\Migration\Orchestrator.groovy" />
+    <None Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\murex\Migration\Packager.groovy" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="IconsLandVistaMultimediaIconsDemo-ICO-VCR-CircleBlue-PlayModeRepeatAllHot %281%29.ico" />
+    <Content Include="MIGRATION\FIRSTPACKAGE\cis-mxpack-1.0-full.jar" />
+    <Content Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\ci.xml" />
+    <Content Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\files\approvalMXpress.txt" />
+    <Content Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\images\MXpress_logo_final.jpg" />
+    <Content Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\images\MXpress_logo_mini.jpg" />
+    <Content Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\scripts\addChildXsl.xsl" />
+    <Content Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\scripts\AppendToXpath.xsl" />
+    <Content Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\scripts\RemoveXsl.xsl" />
+    <Content Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\scripts\RemoveXslKeepContent.xsl" />
+    <Content Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\scripts\RemoveXslWithContent.xsl" />
+    <Content Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\scripts\ReplaceXSL.xsl" />
+    <Content Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\scripts\SetTagTextValueXsl.xsl" />
+    <Content Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\scripts\SetTagValueXsl.xsl" />
+    <Content Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\scripts\UncommentByPattern.xsl" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

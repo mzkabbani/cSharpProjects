@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Root name="ENV">
+  <Mnode name="doc" type="folder"></Mnode>
+  <Mnode name="env" type="folder">
+    <Mnode name="apps" type="folder">
+      <Mnode name="fs" type="folder">
+        <Mnode name="murex" type="folder"></Mnode>
+        <Mnode name="public" type="folder"></Mnode>
+        <Mnode name ="quality" type="folder">
+          <Mnode name="murex" type="folder">
+            <Mnode name="conf" type="folder">
+              <Mnode name="config.xml" type="file"></Mnode>
+            </Mnode>
+          </Mnode>
+          <Mnode name="public" type="folder">
+            <Mnode name="conf" type="folder">
+              <Mnode name="config.xml" type="file"></Mnode>
+            </Mnode>
+          </Mnode>
+        </Mnode>
+      </Mnode>
+    </Mnode>
+  </Mnode>
+</Root>
