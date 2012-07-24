@@ -1,0 +1,12 @@
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControlsDemo\bin\Debug\SearchableControlsDemo.exe
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControlsDemo\bin\Debug\SearchableControlsDemo.pdb
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControlsDemo\bin\Debug\SearchableControlsDemo.xml
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControlsDemo\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControlsDemo\obj\Debug\SearchableControlsDemo.SearchableControlsDemoForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControlsDemo\obj\Debug\SearchableControlsDemo.Properties.Resources.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControlsDemo\obj\Debug\SearchableControlsDemo.Resource1.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControlsDemo\obj\Debug\SearchableControlsDemo.csproj.GenerateResource.Cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControlsDemo\obj\Debug\SearchableControlsDemo.exe
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControlsDemo\obj\Debug\SearchableControlsDemo.pdb
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControlsDemo\bin\Debug\Automation.Controls.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControlsDemo\bin\Debug\Automation.Controls.pdb

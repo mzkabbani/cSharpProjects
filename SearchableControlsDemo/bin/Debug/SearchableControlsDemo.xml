@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SearchableControlsDemo</name>
+    </assembly>
+    <members>
+        <member name="T:SearchableControlsDemo.SearchableControlsDemoForm">
+            <summary>
+            Form to demonstrate the SearchableControl library in action
+            </summary>
+        </member>
+        <member name="M:SearchableControlsDemo.SearchableControlsDemoForm.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="M:SearchableControlsDemo.SearchableControlsDemoForm.comboBox1_SelectedIndexChanged(System.Object,System.EventArgs)">
+            <summary>
+            Allows the user to change view mode on the searchableTestListView
+            </summary>
+            <param name="sender"></param>
+            <param name="e"></param>
+        </member>
+        <member name="M:SearchableControlsDemo.SearchableControlsDemoForm.CamelToTitleCase(System.String)">
+            <summary>
+            Little utility function to prettify text for the demo
+            </summary>
+            <param name="Text">CamelCase text</param>
+            <returns>Title case text</returns>
+        </member>
+        <member name="M:SearchableControlsDemo.SearchableControlsDemoForm.exitToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            User clicked File->Exit
+            </summary>
+        </member>
+        <member name="M:SearchableControlsDemo.SearchableControlsDemoForm.findToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            User clicked Edit->Find
+            </summary>
+            <remarks>
+            This calls the utility function OpenDialog with the form's ControlCollection. 
+            This will open FindDialog() in either the focused control, if it is ISearchable, or the
+            searchable control with the lowest TabIndex.
+            </remarks>
+        </member>
+        <member name="M:SearchableControlsDemo.SearchableControlsDemoForm.findAgainToolStripMenuItem_Click(System.Object,System.EventArgs)">
+            <summary>
+            User clicked Edit->Find Again
+            </summary>
+            <remarks>
+            This calls the utility function FindNext with the form's ControlCollection. 
+            </remarks>
+        </member>
+        <member name="M:SearchableControlsDemo.SearchableControlsDemoForm.editToolStripMenuItem_DropDownOpening(System.Object,System.EventArgs)">
+            <summary>
+            About to paint Edit menu. Mark the menu items in the appropriate enabled state
+            </summary>
+        </member>
+        <member name="F:SearchableControlsDemo.SearchableControlsDemoForm.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:SearchableControlsDemo.SearchableControlsDemoForm.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:SearchableControlsDemo.SearchableControlsDemoForm.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
+        <member name="M:SearchableControlsDemo.Program.Main">
+            <summary>
+            The main entry point for the application.
+            </summary>
+        </member>
+        <member name="T:SearchableControlsDemo.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SearchableControlsDemo.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SearchableControlsDemo.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="T:SearchableControlsDemo.Resource1">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:SearchableControlsDemo.Resource1.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:SearchableControlsDemo.Resource1.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:SearchableControlsDemo.Resource1.ExampleText">
+             <summary>
+               Looks up a localized string similar to Try selecting the SearchableTextBox, and pressing Ctrl-F to find text. In the text boxes, Ctrl-H to replace text.
+            
+            This example form contains a control of each of the four types SearchableTextBox, SearchableRichTextBox, SearchableListView and SearchableTreeView.
+            
+            Each control is filled with some test data so you can try out searches..
+             </summary>
+        </member>
+        <member name="P:SearchableControlsDemo.Resource1.ExampleText1">
+             <summary>
+               Looks up a localized string similar to {\rtf1\ansi\ansicpg1252\uc1\deff0\stshfdbch0\stshfloch0\stshfhich0\stshfbi0\deflang1033\deflangfe1033{\fonttbl{\f0\froman\fcharset0\fprq2{\*\panose 02020603050405020304}Times New Roman;}{\f36\froman\fcharset238\fprq2 Times New Roman CE;}
+            {\f37\froman\fcharset204\fprq2 Times New Roman Cyr;}{\f39\froman\fcharset161\fprq2 Times New Roman Greek;}{\f40\froman\fcharset162\fprq2 Times New Roman Tur;}{\f41\froman\fcharset177\fprq2 Times New Roman (Hebrew);}
+            {\f42\froman\fcharset178\fprq2 Times New Roman (Arabic); [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
+        <member name="P:SearchableControlsDemo.Resource1.ExampleTree">
+             <summary>
+               Looks up a localized string similar to &lt;?xml version=&quot;1.0&quot;?&gt;
+            &lt;doc&gt;
+                &lt;assembly&gt;
+                    &lt;name&gt;SearchableControls&lt;/name&gt;
+                &lt;/assembly&gt;
+                &lt;members&gt;
+                    &lt;member name=&quot;T:SearchableControls.SearchableTreeView&quot;&gt;
+                         &lt;summary&gt;
+                         An extension of the Framework&apos;s TreeView control that allows the user to search for text in the control
+                         by pressing CTRL-F or using the context menu.
+                         &lt;/summary&gt;
+                         &lt;remarks&gt;
+                         &lt;para&gt;To use, simply build the SearchableControls library and ad [rest of string was truncated]&quot;;.
+             </summary>
+        </member>
+    </members>
+</doc>

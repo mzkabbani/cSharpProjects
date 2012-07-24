@@ -1,0 +1,8 @@
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\TextDiff\DiffCalc\bin\Release\DiffCalc.exe
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\TextDiff\DiffCalc\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\TextDiff\DiffCalc\obj\Release\DiffCalc.BinaryResults.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\TextDiff\DiffCalc\obj\Release\DiffCalc.MainForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\TextDiff\DiffCalc\obj\Release\DiffCalc.Results.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\TextDiff\DiffCalc\obj\Release\DiffCalc.csproj.GenerateResource.Cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\TextDiff\DiffCalc\obj\Release\DiffCalc.exe
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\TextDiff\DiffCalc\bin\Release\Automation.Diff.dll

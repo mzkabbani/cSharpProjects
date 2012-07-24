@@ -1,0 +1,6 @@
+H:\Spikes\SharpSSH-1.1.1.13.src\Examples\obj\Release\ResolveAssemblyReference.cache
+H:\Spikes\SharpSSH-1.1.1.13.src\Examples\obj\Release\ResGen.read.1.tlog
+H:\Spikes\SharpSSH-1.1.1.13.src\Examples\obj\Release\ResGen.write.1.tlog
+H:\Spikes\SharpSSH-1.1.1.13.src\bin\Release\sharpSshTest.exe
+H:\Spikes\SharpSSH-1.1.1.13.src\Examples\obj\Release\sharpSshTest.jsch_samples.InputForm.resources
+H:\Spikes\SharpSSH-1.1.1.13.src\Examples\obj\Release\sharpSshTest.exe

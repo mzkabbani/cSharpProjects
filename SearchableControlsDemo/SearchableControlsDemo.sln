@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 9.00
+# Visual C# Express 2005
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchableControls", "..\SearchableControls\SearchableControls.csproj", "{45A3F930-1A71-4B5D-905A-2CD1DD700EF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchableControlsDemo", "SearchableControlsDemo.csproj", "{B6AEEF15-9B75-4E1A-83B2-04D4CB43DA44}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{45A3F930-1A71-4B5D-905A-2CD1DD700EF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{45A3F930-1A71-4B5D-905A-2CD1DD700EF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{45A3F930-1A71-4B5D-905A-2CD1DD700EF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{45A3F930-1A71-4B5D-905A-2CD1DD700EF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B6AEEF15-9B75-4E1A-83B2-04D4CB43DA44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B6AEEF15-9B75-4E1A-83B2-04D4CB43DA44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B6AEEF15-9B75-4E1A-83B2-04D4CB43DA44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B6AEEF15-9B75-4E1A-83B2-04D4CB43DA44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

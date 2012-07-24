@@ -1,0 +1,6 @@
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\bin\Release\GlobalHookDemo.exe
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\obj\Release\GlobalHookDemo.MainForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\obj\Release\GlobalHookDemo.csproj.GenerateResource.Cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\obj\Release\GlobalHookDemo.exe
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\obj\Release\GlobalHookDemo.Form21.resources

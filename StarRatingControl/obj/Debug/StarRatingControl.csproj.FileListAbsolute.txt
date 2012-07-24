@@ -1,0 +1,7 @@
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\StarRatingControl\bin\Debug\StarRatingControl.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\StarRatingControl\bin\Debug\StarRatingControl.pdb
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\StarRatingControl\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\StarRatingControl\obj\Debug\RatingControls.StarRatingControl.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\StarRatingControl\obj\Debug\StarRatingControl.csproj.GenerateResource.Cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\StarRatingControl\obj\Debug\StarRatingControl.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\StarRatingControl\obj\Debug\StarRatingControl.pdb

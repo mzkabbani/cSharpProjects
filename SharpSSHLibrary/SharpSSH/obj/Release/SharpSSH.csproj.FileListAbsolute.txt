@@ -1,0 +1,6 @@
+H:\Spikes\SharpSSH-1.1.1.13.src\SharpSSH\obj\Release\ResolveAssemblyReference.cache
+H:\Spikes\SharpSSH-1.1.1.13.src\SharpSSH\obj\Release\Tamir.SharpSsh.jsch.examples.InputForm.resources
+H:\Spikes\SharpSSH-1.1.1.13.src\SharpSSH\obj\Release\ResGen.read.1.tlog
+H:\Spikes\SharpSSH-1.1.1.13.src\SharpSSH\obj\Release\ResGen.write.1.tlog
+H:\Spikes\SharpSSH-1.1.1.13.src\bin\Release\Tamir.SharpSSH.dll
+H:\Spikes\SharpSSH-1.1.1.13.src\SharpSSH\obj\Release\Tamir.SharpSSH.dll

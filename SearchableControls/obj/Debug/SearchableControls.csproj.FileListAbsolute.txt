@@ -1,0 +1,14 @@
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\bin\Debug\SearchableControls.xml
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\obj\Debug\SearchableControls.FindForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\obj\Debug\SearchableControls.SearchableListView.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\obj\Debug\SearchableControls.SearchableRichTextBox.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\obj\Debug\SearchableControls.SearchableTextBox.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\obj\Debug\SearchableControls.FindDialog.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\obj\Debug\SearchableControls.InfoForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\obj\Debug\SearchableControls.SearchableTreeView.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\obj\Debug\SearchableControls.csproj.GenerateResource.Cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\bin\Debug\Automation.Controls.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\bin\Debug\Automation.Controls.pdb
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\obj\Debug\Automation.Controls.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\obj\Debug\Automation.Controls.pdb

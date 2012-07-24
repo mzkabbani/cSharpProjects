@@ -1,0 +1,6 @@
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\WindowsApplication1\bin\Release\WindowsApplication1.exe
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\WindowsApplication1\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\WindowsApplication1\obj\Release\WindowsApplication1.Form1.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\WindowsApplication1\obj\Release\WindowsApplication1.csproj.GenerateResource.Cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\WindowsApplication1\obj\Release\WindowsApplication1.exe
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\WindowsApplication1\obj\Release\AppControl.ApplicationControl.resources
