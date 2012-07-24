@@ -1,0 +1,8 @@
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\CollapsablePanel\bin\Debug\OVT.CustomControls.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\CollapsablePanel\bin\Debug\OVT.CustomControls.pdb
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\CollapsablePanel\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\CollapsablePanel\obj\Debug\OVT.CustomControls.CollapsiblePanel.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\CollapsablePanel\obj\Debug\OVT.CustomControls.Properties.Resources.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\CollapsablePanel\obj\Debug\CustomControls.csproj.GenerateResource.Cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\CollapsablePanel\obj\Debug\OVT.CustomControls.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\CollapsablePanel\obj\Debug\OVT.CustomControls.pdb

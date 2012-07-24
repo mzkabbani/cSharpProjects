@@ -1,0 +1,11 @@
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FastExcelExportingDemo_src\FastExcelExportingDemoCs\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FastExcelExportingDemo_src\FastExcelExportingDemoCs\obj\Debug\Interop.Microsoft.Office.Core.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FastExcelExportingDemo_src\FastExcelExportingDemoCs\obj\Debug\FastExcelExportingDemoCs.csproj.ResolveComReference.cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FastExcelExportingDemo_src\FastExcelExportingDemoCs\bin\Debug\FastExcelExportingDemoCs.exe
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FastExcelExportingDemo_src\FastExcelExportingDemoCs\bin\Debug\FastExcelExportingDemoCs.pdb
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FastExcelExportingDemo_src\FastExcelExportingDemoCs\bin\Debug\Microsoft.Office.Interop.Excel.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FastExcelExportingDemo_src\FastExcelExportingDemoCs\bin\Debug\Microsoft.Vbe.Interop.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FastExcelExportingDemo_src\FastExcelExportingDemoCs\bin\Debug\Office.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FastExcelExportingDemo_src\FastExcelExportingDemoCs\bin\Debug\Interop.Microsoft.Office.Core.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FastExcelExportingDemo_src\FastExcelExportingDemoCs\obj\Debug\FastExcelExportingDemoCs.exe
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FastExcelExportingDemo_src\FastExcelExportingDemoCs\obj\Debug\FastExcelExportingDemoCs.pdb

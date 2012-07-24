@@ -1,0 +1,592 @@
+<!-- 'AvailableTests' root tag definition -->
+<!ELEMENT AvailableTests	(AvailableTest+)>
+
+<!-- Defines a nickname's customization -->
+<!ELEMENT AvailableTest		(NickName,Import?,Customize?)>
+
+<!-- Identifies an AvailableTest block -->
+<!ELEMENT NickName       	(#PCDATA)>
+<!-- Imports an AvailableTest defines by a Code and a RefNickname -->
+<!ELEMENT Import         	(Code|RefNickName)+>
+<!-- Defines the customization of the current nickname -->
+
+<!ELEMENT Customize (
+	Title|
+	Version|
+	TestType|
+	Duration|
+	TargetFamily|
+	OperatingSystem|
+	GroupCode|
+	Include|
+	LockVolume|
+	MountPath|
+	DeployParallel|
+	DeployAppDir|
+	DeploySetups|
+	DeployPrimary|
+	DeploySecondary|
+	ArchivedSetups|
+	ExplodeSetups|
+	DeployCustomerRights|
+	DeployIntegration|
+	DeployPurify|
+	DeployParameters|
+	DeployQuality|
+	QualityArchivedSetups|
+	QualityVersion|
+	TestParameters|
+	TestsProperties|
+	TestListener|
+	Target|
+	Clients|
+	Svn|
+	Databases|
+	ForceUpdateDbSource|
+	FsHost|
+	AppdirHost|
+	GeneratePorts|
+	AppDir|
+	MxClient|
+	AppdirPathExtension|	
+	ClientPathExtension|
+	PostInstalls|
+	StartPostInstalls|
+	NTClientPostInstalls|
+	Providers|
+	Arlibs|
+	StartProviders|
+	NTClientProviders|
+	AdditionalOperations|
+	StartAdditionalOperations|
+	NTClientAdditionalOperations|
+	MxGenSiteInternalCode|
+	MxGen|
+	Pac|
+	JvmOptions|
+	MinMem|
+	MaxMem|
+	ClientMinMem|
+	ClientMaxMem|
+	ClientJvmOptions|
+	CleanIfPassed|
+	KeepAfterDone|
+	HostSiteType|
+	Queue|
+	BlockIfTaken|
+	AdditionalSetups|
+	ActionToken|
+	ReplaceNicknames|
+	QueueProperties|
+	FsJvmOptions|
+	FixClientXml|
+	AdditionalPackages|
+	ClientShowFocus|
+	QualityBuildIdType|
+	CleanAttachments|
+	SyncSvnToken|
+	MlcInstallation|
+	RequestAfterDone|
+	MxMlcUnifiedDB|
+	DeploymentType|
+	KeepSetups|
+	KeepNtSetups|
+	RenameCore|
+	RenameCorePattern|
+	DeployNtClients|
+	CredentialUser|
+	CredentialPassword|
+	CredentialGroup|
+	CredentialDesk|
+	RightsUser|
+	RightsPassword|
+	RightsGroup|
+	LaunchMaintenance|
+	PostDeploymentPscUri|
+	DebugStartAntTest|
+	AllowExternalAccess|
+	KeepServicesAfterTest|
+	CleanNicknames|
+	Tpk|
+	Env|
+	Append|
+	MergeRightHint
+	)*>	
+
+<!ELEMENT Append (
+	Title|
+	Version|
+	TestType|
+	Duration|
+	TargetFamily|
+	OperatingSystem|
+	GroupCode|
+	Include|
+	LockVolume|
+	MountPath|
+	DeployParallel|
+	DeployAppDir|
+	DeploySetups|
+	DeployPrimary|
+	DeploySecondary|
+	ArchivedSetups|
+	ExplodeSetups|
+	DeployCustomerRights|
+	DeployIntegration|
+	DeployPurify|
+	DeployParameters|
+	DeployQuality|
+	QualityArchivedSetups|
+	QualityVersion|
+	TestParameters|
+	TestsProperties|
+	TestListener|
+	Target|
+	Clients|
+	Svn|
+	Databases|
+	ForceUpdateDbSource|
+	FsHost|
+	AppdirHost|
+	GeneratePorts|
+	AppDir|
+	MxClient|
+	AppdirPathExtension|	
+	ClientPathExtension|
+	PostInstalls|
+	StartPostInstalls|
+	NTClientPostInstalls|
+	Providers|
+	Arlibs|
+	StartProviders|
+	NTClientProviders|
+	AdditionalOperations|
+	StartAdditionalOperations|
+	NTClientAdditionalOperations|
+	MxGenSiteInternalCode|
+	MxGen|
+	Pac|
+	JvmOptions|
+	MinMem|
+	MaxMem|
+	ClientMinMem|
+	ClientMaxMem|
+	ClientJvmOptions|
+	CleanIfPassed|
+	KeepAfterDone|
+	HostSiteType|
+	Queue|
+	BlockIfTaken|
+	AdditionalSetups|
+	ActionToken|
+	ReplaceNicknames|
+	QueueProperties|
+	FsJvmOptions|
+	FixClientXml|
+	AdditionalPackages|
+	ClientShowFocus|
+	QualityBuildIdType|
+	CleanAttachments|
+	SyncSvnToken|
+	MlcInstallation|
+	RequestAfterDone|
+	MxMlcUnifiedDB|
+	DeploymentType|
+	KeepSetups|
+	KeepNtSetups|
+	RenameCore|
+	RenameCorePattern|
+	DeployNtClients|
+	CredentialUser|
+	CredentialPassword|
+	CredentialGroup|
+	CredentialDesk|
+	RightsUser|
+	RightsPassword|
+	RightsGroup|
+	LaunchMaintenance|
+	PostDeploymentPscUri|
+	DebugStartAntTest|
+	AllowExternalAccess|
+	KeepServicesAfterTest|
+	CleanNicknames|
+	Tpk|
+	Env|
+	MergeRightHint
+	)*>
+
+<!-- ID of the configuration file to import -->
+<!ELEMENT Code           	(#PCDATA)>
+<!-- Nickname of the customization to fetch from the imported file -->
+<!ELEMENT RefNickName    	(#PCDATA)>
+
+<!ELEMENT Title          	(#PCDATA)>
+<!ELEMENT ActionToken		(#PCDATA)>
+<!ELEMENT Version        	(#PCDATA)>
+<!ELEMENT TestType          (#PCDATA)>
+<!ELEMENT Duration          (#PCDATA)>
+<!ELEMENT TargetFamily    	(#PCDATA)>
+<!ELEMENT OperatingSystem  	(#PCDATA)>
+<!ELEMENT GroupCode        	(#PCDATA)>
+<!ELEMENT Include        	EMPTY>
+<!ELEMENT LockVolume   	    (#PCDATA)>
+<!ELEMENT MountPath   	    (#PCDATA)>
+<!-- If false, the deployment steps are executed in a sequential way -->
+<!ELEMENT DeployParallel      (#PCDATA)>
+<!ELEMENT DeployAppDir      (#PCDATA)>
+<!ELEMENT DeploySetups      (#PCDATA)>
+<!ELEMENT DeployPrimary   (#PCDATA)>
+<!ELEMENT DeploySecondary   (#PCDATA)>
+<!ELEMENT ArchivedSetups   	(#PCDATA)>
+<!ELEMENT ExplodeSetups     (#PCDATA)>
+<!ELEMENT DeployCustomerRights      (#PCDATA)>
+<!ELEMENT DeployIntegration      (#PCDATA)>
+<!ELEMENT DeployPurify      (#PCDATA)>
+<!-- Used in case BCPs are not object resources, but files on SVN. In this case, and if true, the files are committed in the correct folder -->
+<!ELEMENT ReplaceNicknames      (#PCDATA)>
+<!-- Parameters that will be available for the deployment scripts -->
+<!ELEMENT DeployParameters      (#PCDATA)>
+<!-- Specifies if the quality repository and setups should be deployed -->
+<!ELEMENT DeployQuality     (#PCDATA)>
+<!ELEMENT QualityArchivedSetups     (#PCDATA)>
+<!ELEMENT QualityVersion    (#PCDATA)>
+<!-- Parameters that will be available at the test execution level -->
+<!ELEMENT TestParameters 	(#PCDATA)>
+<!ELEMENT TestsProperties 	(#PCDATA)>
+<!ELEMENT TestListener		(#PCDATA|Name|Class)*>
+<!ELEMENT Class		(#PCDATA)>
+<!-- Target of the test to be pushed -->
+<!ELEMENT Target 			(#PCDATA)>
+<!-- Specify the NT clients to be deployed -->
+<!ELEMENT Clients        	(#PCDATA|Client|GenerateMxg2000SettingsFile|GenerateClientDebug)*>
+<!ELEMENT Svn        	    (#PCDATA|Apps|Start|NtClient|Providers)*>
+<!ELEMENT Databases      	(#PCDATA|Database|Oracle)*>
+<!ELEMENT ForceUpdateDbSource     	(#PCDATA)>
+<!ELEMENT FsHost 			(#PCDATA)>
+<!ELEMENT AppdirHost		(#PCDATA)>
+<!ELEMENT GeneratePorts		(#PCDATA)>
+<!ELEMENT AppDir 			(#PCDATA|Ports|AppDirPath|DeleteAll|KillProcesses)*>
+<!ELEMENT MxClient 			(#PCDATA|MxClientPath)*>
+<!-- A folder structure to be appended to the deployment path -->
+<!ELEMENT AppdirPathExtension     	(#PCDATA)>
+<!-- A folder structure to be appended to the deployment path -->
+<!ELEMENT ClientPathExtension     	(#PCDATA)>
+<!-- additional file resources to be deployed in the application directory -->
+<!ELEMENT PostInstalls     	(#PCDATA|PostInstall)*>
+<!-- additional file resources to be deployed in the MX client directory -->
+<!ELEMENT StartPostInstalls   	(#PCDATA|StartPostInstall)*>
+<!-- additional file resources to be deployed in the NT client directory -->
+<!ELEMENT NTClientPostInstalls 	(#PCDATA|NTClientPostInstall)*>
+<!-- Specifies ant files to be executed after the deployment -->
+<!ELEMENT AdditionalOperations     	        (#PCDATA|File|Target)*>
+<!-- Specifies ant files to be executed after the deployment in the MX client directory -->
+<!ELEMENT StartAdditionalOperations     	(#PCDATA|File|Target)*>
+<!-- Specifies ant files to be executed after the deployment in the NT client directory -->
+<!ELEMENT NTClientAdditionalOperations     	(#PCDATA|File|Target)*>
+<!-- Additional files to be checked out from SVN -->
+<!ELEMENT Providers     			(#PCDATA|Provider)*>
+<!-- Additional files to be checked out from SVN as ArLib -->
+<!ELEMENT Arlibs     			(#PCDATA|Arlib)*>
+<!-- Additional files to be checked out from SVN -->
+<!ELEMENT StartProviders     		(#PCDATA|StartProvider)*>
+<!-- Additional files to be checked out from SVN -->
+<!ELEMENT NTClientProviders     	(#PCDATA|NTClientProvider)*>
+<!ELEMENT MxGenSiteInternalCode    	(#PCDATA)>
+<!ELEMENT Pac 				(OS)>
+<!ELEMENT JvmOptions    	(#PCDATA)>
+<!ELEMENT MinMem			(#PCDATA)>
+<!ELEMENT MaxMem			(#PCDATA)>
+<!ELEMENT ClientJvmOptions  (#PCDATA)>
+<!ELEMENT ClientMinMem		(#PCDATA)>
+<!ELEMENT ClientMaxMem		(#PCDATA)>
+<!ELEMENT CleanIfPassed    	(#PCDATA)>
+<!ELEMENT KeepAfterDone    	(#PCDATA)>
+<!ELEMENT HostSiteType    	(#PCDATA)>
+<!ELEMENT Queue    	(#PCDATA)>
+<!ELEMENT BlockIfTaken    	(#PCDATA)>
+<!-- Additional setups to be deployed -->
+<!ELEMENT AdditionalSetups  (#PCDATA|AdditionalSetup)*>
+<!ELEMENT QueueProperties	(#PCDATA|Type|DbVendor|Os|Extension|Architecture)*>
+<!ELEMENT FsJvmOptions    	(#PCDATA)>
+<!ELEMENT AppdirDeployAntOptions    	(#PCDATA)>
+<!ELEMENT StartDeployAntOptions    	(#PCDATA)>
+<!ELEMENT NtClientDeployAntOptions    	(#PCDATA)>
+<!ELEMENT FixClientXml    	(#PCDATA)>
+<!ELEMENT ClientShowFocus	(#PCDATA)>
+<!ELEMENT QualityBuildIdType	(#PCDATA)>
+<!ELEMENT CleanAttachments	(#PCDATA)>
+<!ELEMENT SyncSvnToken	(#PCDATA)>
+<!ELEMENT MlcInstallation	(#PCDATA)>
+<!ELEMENT RequestAfterDone	(#PCDATA)>
+<!ELEMENT MxMlcUnifiedDB	(#PCDATA)>
+<!ELEMENT DeploymentType	(#PCDATA)>
+<!-- If true, setup files are kept after the deployment -->
+<!ELEMENT KeepSetups	(#PCDATA)>
+<!-- If true, setup files are kept after the deployment on the NT client -->
+<!ELEMENT KeepNtSetups	(#PCDATA)>
+<!ELEMENT RenameCore	(#PCDATA)>
+<!ELEMENT RenameCorePattern	(#PCDATA)>
+<!ELEMENT DeployNtClients	(#PCDATA)>
+<!ELEMENT CredentialUser	(#PCDATA)>
+<!ELEMENT CredentialPassword	(#PCDATA)>
+<!ELEMENT CredentialGroup	(#PCDATA)>
+<!ELEMENT CredentialDesk	(#PCDATA)>
+<!ELEMENT RightsUser	(#PCDATA)>
+<!ELEMENT RightsPassword	(#PCDATA)>
+<!ELEMENT RightsGroup	(#PCDATA)>
+<!-- If this is an ENV deployment without the inclusion of any TPK, Maintenance can be launched after the deployment -->
+<!ELEMENT LaunchMaintenance	(#PCDATA)>
+<!-- if available, this PSC will be executed on the LocalAgent after the deployment -->
+<!ELEMENT PostDeploymentPscUri	(#PCDATA)>
+<!-- if true, StartAntTest will be launched with a debugging port -->
+<!ELEMENT DebugStartAntTest	(#PCDATA)>
+<!ELEMENT AllowExternalAccess	(#PCDATA)>
+<!ELEMENT KeepServicesAfterTest	(#PCDATA)>
+<!ELEMENT CleanNicknames	(#PCDATA)>
+
+<!-- Additional packages included in the deployment. Configurations of the additional packages are appended the current configuration -->
+<!ELEMENT AdditionalPackages  (#PCDATA|AdditionalPackage|Tpk|Env)*>
+<!-- Specify custom MxGen parameters -->
+<!ELEMENT MxGen  (#PCDATA|SiteName|SiteInternalCode|SiteExpiryDate|MaxNbOfSessions|MaxNbOfSessionsByUser|MaxNbOfNamedSessions|KeepSiteValues|Version|BuildId)*>
+
+<!ELEMENT SiteName        	(#PCDATA)>
+<!ELEMENT SiteInternalCode        	(#PCDATA)>
+<!ELEMENT SiteExpiryDate        	(#PCDATA)>
+<!ELEMENT MaxNbOfSessions        	(#PCDATA)>
+<!ELEMENT MaxNbOfSessionsByUser        	(#PCDATA)>
+<!ELEMENT MaxNbOfNamedSessions        	(#PCDATA)>
+<!ELEMENT KeepSiteValues        	(#PCDATA)>
+
+<!ELEMENT Client        	(#PCDATA)>
+<!ELEMENT GenerateMxg2000SettingsFile   (#PCDATA)>
+<!ELEMENT GenerateClientDebug        	(#PCDATA)>
+
+<!ELEMENT Provider     		(#PCDATA|Site|Url|Path|Revision|Destination|KeepSvn|Repository|importedNicknames|BuildFile|DeleteDestination|ReplaceNicknameFiles|doSvnOperations|includes|excludes|recursive)*>
+<!ELEMENT Arlib     		(#PCDATA|Site|Url|Path|Revision|Destination|KeepSvn|Repository|importedNicknames|BuildFile|DeleteDestination|ReplaceNicknameFiles|doSvnOperations|includes|excludes|recursive)*>
+<!ELEMENT StartProvider     		(#PCDATA|Site|Url|Path|Revision|Destination|KeepSvn|Repository|importedNicknames|BuildFile|DeleteDestination|ReplaceNicknameFiles|doSvnOperations|includes|excludes|recursive)*>
+<!ELEMENT NTClientProvider     		(#PCDATA|Site|Url|Path|Revision|Destination|KeepSvn|Repository|importedNicknames|BuildFile|DeleteDestination|ReplaceNicknameFiles|doSvnOperations|includes|excludes|recursive)*>
+<!ELEMENT Site        	(#PCDATA)>
+<!ELEMENT MergeRightHint        	(#PCDATA)>
+<!-- 'AdditionalSetups' tag children definition
+	- AdditionalSetup
+	-->
+<!ELEMENT AdditionalSetup   (
+	#PCDATA|
+	Type|
+	Version|
+	BuildId|
+	BuildIdType|
+	QualityBranch|
+	QualityRevision|
+	MxJavaBuildId|
+	MxJavaVersion
+	)*>
+
+<!ELEMENT AdditionalPackage (#PCDATA|Id|NickName|Branch|Revision|Append)*>
+<!ELEMENT Tpk (#PCDATA|Id|NickName|Branch|Revision|Append)*>
+<!ELEMENT Env (#PCDATA|Id|NickName|Branch|Revision|Append)*>
+
+<!ELEMENT Id        	(#PCDATA)>
+<!ELEMENT Branch        	(#PCDATA)>
+
+<!-- Paths specified here will be checked out into the application directory -->
+<!ELEMENT Apps   		    (Path+)>
+<!-- Paths specified here will be checked out into the MX client directory -->
+<!ELEMENT Start   		    (Path+)>
+<!-- Paths specified here will be checked out into the NT client directory -->
+<!ELEMENT NtClient   		(Path+)>
+
+<!ELEMENT Database (
+	#PCDATA|
+	DbServer|
+	DbType|
+	DbName|
+	ReferenceDbName|
+	DbSize|
+	DbUser|
+	DbPassword|
+	DbOwner|
+	CreateTablespace|
+	TrimDbName|
+	DbPhysicalSource|
+	Dump|
+	DoLoadDump|
+	DoCopyDump|
+	DoCompress|
+	DoMxSetup|
+	DoSetOptions|
+	LowerCase|
+	Stripes|
+	Data|
+	Log|
+	Bcps|
+	Rman|
+	DoPostXpload|
+	DoBcp|
+	KeepDump|
+	PostLoadOperations
+	)*>
+	
+<!-- Optional, The repository URL specified on the site will be defaulted. -->
+<!ELEMENT Url     			(#PCDATA)>
+<!-- Optional, but if not specified, it should be included in the path tag -->
+<!ELEMENT Repository		(#PCDATA)>
+<!ELEMENT Revision     			(#PCDATA)>
+<!-- Destination folder where the SVN resources should be checked out -->
+<!ELEMENT Destination     	(#PCDATA)>
+<!-- if false, the destination folder will not become a working copy of the provider URL -->
+<!ELEMENT KeepSvn     			(#PCDATA)>
+<!-- Used in case of ArLib -->
+<!ELEMENT BuildFile		(#PCDATA)>
+<!-- Delete destination folder before the checkout -->
+<!ELEMENT DeleteDestination		(#PCDATA)>
+<!-- Boolean to check if ReplaceNicknameFiles will be used -->
+<!ELEMENT ReplaceNicknameFiles		(#PCDATA)>
+<!-- If the checked out files contain folders like __LISTED__ where LISTED (Usually a nickname) is declared in this tag, files inside are copied outside. Words are comma separated -->
+<!ELEMENT importedNicknames		(#PCDATA)>
+<!-- The boolean value in this tag decides weather the repository specified will be included in the SVN operations (Branch, Merge and Tag operations) -->
+<!ELEMENT doSvnOperations		(#PCDATA)>
+<!-- Specifies includes pattern (Same syntax as the one specified in the Ant FileSet) -->
+<!ELEMENT includes		(#PCDATA)>
+<!-- Specifies excludes pattern (Same syntax as the one specified in the Ant FileSet) -->
+<!ELEMENT excludes		(#PCDATA)>
+<!-- if false, only the files specified directly under the path specified will be checked out -->
+<!ELEMENT recursive		(#PCDATA)>
+
+
+<!ELEMENT Type     			(#PCDATA)>
+<!ELEMENT BuildId     	    (#PCDATA)>
+<!ELEMENT BuildIdType     	(#PCDATA)>
+<!ELEMENT QualityBranch     	(#PCDATA)>
+<!ELEMENT QualityRevision     	(#PCDATA)>
+<!ELEMENT MxJavaBuildId     	(#PCDATA)>
+<!ELEMENT MxJavaVersion     	(#PCDATA)>
+
+<!ELEMENT Ports          	(Port+)>
+<!ELEMENT AppDirPath     	(#PCDATA)>
+<!ELEMENT DeleteAll     	(#PCDATA)>
+<!ELEMENT KillProcesses    	(#PCDATA)>
+
+<!ELEMENT MxClientPath     	(#PCDATA)>
+
+<!ELEMENT PostInstall     	(#PCDATA)>
+<!ELEMENT StartPostInstall     	(#PCDATA)>
+<!ELEMENT NTClientPostInstall     	(#PCDATA)>
+
+<!ELEMENT File   		    (#PCDATA)>
+<!ELEMENT OS 	(Name|Java|Sybase|Oracle)*>
+<!ELEMENT Path   		    (#PCDATA)>
+
+<!ELEMENT DbServer        	(#PCDATA)>
+<!ELEMENT DbType        	(#PCDATA)>
+<!ELEMENT DbName        	(#PCDATA)>
+<!ELEMENT ReferenceDbName	(#PCDATA)>
+<!ELEMENT DbSize        	(#PCDATA)>
+<!ELEMENT Data        		(#PCDATA)>
+<!ELEMENT Log        		(#PCDATA)>
+<!ELEMENT Rman        		(#PCDATA)>
+<!ELEMENT DbUser        	(#PCDATA)>
+<!ELEMENT DbPassword        (#PCDATA)>
+<!ELEMENT DbOwner        	(#PCDATA)>
+<!ELEMENT CreateTablespace  (#PCDATA)>
+<!ELEMENT TrimDbName        (#PCDATA)>
+<!ELEMENT DbPhysicalSource  (#PCDATA)>
+<!--ELEMENT Dump        		(Host?,Location?,Name?)-->
+<!ENTITY % dumpold "Host|Location|Name|Prefix">
+<!ENTITY % dump_en "(#PCDATA | %dumpold;)*">
+<!ELEMENT Dump %dump_en;>
+
+<!-- ELEMENT Dump        		(#PCDATA)-->
+<!ELEMENT DoLoadDump        (#PCDATA)>
+<!ELEMENT DoCopyDump        (#PCDATA)>
+<!ELEMENT DoCompress        (#PCDATA)>
+<!ELEMENT DoMxSetup        	(#PCDATA)>
+<!ELEMENT DoSetOptions   	(#PCDATA)>
+<!ELEMENT LowerCase   		(#PCDATA)>
+<!ELEMENT DoPostXpload 		(#PCDATA)>
+<!ELEMENT DoBcp 			(#PCDATA)>
+<!ELEMENT KeepDump	 		(#PCDATA)>
+<!ELEMENT Stripes        	(Stripe*)>
+<!ELEMENT Bcps        		(Bcp+)>
+<!ELEMENT PostLoadOperations        		(#PCDATA|PostLoadOperation)*>
+<!ELEMENT PostLoadOperation	 		(#PCDATA)>
+
+<!ELEMENT Port        		EMPTY>
+
+<!ELEMENT Name   		    (#PCDATA)>
+<!ELEMENT Java   		    (#PCDATA)>
+<!ELEMENT Sybase   		    (#PCDATA)>
+<!ELEMENT Oracle   		    (#PCDATA)> <!-- Also child of 'Databases' tag -->
+
+<!ELEMENT Stripe        	(#PCDATA)>
+<!ELEMENT Bcp        		(#PCDATA)>
+
+<!ELEMENT Host   		    (#PCDATA)>
+<!ELEMENT Location   		(#PCDATA)>
+<!ELEMENT Prefix   		    (#PCDATA)>
+
+<!ELEMENT DbVendor		(#PCDATA)>
+<!ELEMENT Os			(#PCDATA)>
+<!ELEMENT Extension		(#PCDATA)>
+<!ELEMENT Architecture	(#PCDATA)>
+
+<!-- Attributes list -->
+<!ATTLIST Include Anchor CDATA #REQUIRED>
+<!ATTLIST Include Repository CDATA #IMPLIED>
+<!ATTLIST Include Revision CDATA #IMPLIED>
+<!ATTLIST LockVolume label CDATA #REQUIRED>
+<!ATTLIST LockVolume host CDATA #REQUIRED>
+<!ATTLIST LockVolume port CDATA #REQUIRED>
+<!ATTLIST TestParameters append (all|none|no|after|before) #IMPLIED>
+<!ATTLIST PostInstalls append (all|none|no|after|before) #IMPLIED>
+<!ATTLIST StartPostInstalls append (all|none|no|after|before) #IMPLIED>
+<!ATTLIST NTClientPostInstalls append (all|no|none|after|before) #IMPLIED>
+<!ATTLIST Databases append (all|none|no|after|before) #IMPLIED>
+<!ATTLIST Pac append (all|none|after|no|before) #IMPLIED>
+<!ATTLIST Providers append (all|none|after|no|before) #IMPLIED>
+<!ATTLIST StartProviders append (all|none|after|no|before) #IMPLIED>
+<!ATTLIST NTClientProviders append (all|none|after|no|before) #IMPLIED>
+<!ATTLIST DeployParameters append (all|none|after|no|before) #IMPLIED>
+<!ATTLIST AdditionalPackages append (all|none|after|no|before) #IMPLIED>
+<!ATTLIST AdditionalOperations append (all|none|after|no|before) #IMPLIED>
+<!ATTLIST AdditionalSetups append (all|none|after|no|before) #IMPLIED>
+
+<!ATTLIST Client localagent CDATA #IMPLIED>
+<!ATTLIST Client path CDATA #IMPLIED>
+<!ATTLIST Client site CDATA #IMPLIED>
+<!ATTLIST Client schedulerSite CDATA #IMPLIED>
+<!ATTLIST PostInstall dest CDATA #IMPLIED>
+<!ATTLIST PostInstall explode CDATA #IMPLIED>
+<!ATTLIST PostInstall type CDATA #IMPLIED>
+<!ATTLIST PostInstall append CDATA #IMPLIED>
+<!ATTLIST PostInstall overwrite CDATA #IMPLIED>
+<!ATTLIST StartPostInstall dest CDATA #REQUIRED>
+<!ATTLIST StartPostInstall explode CDATA #IMPLIED>
+<!ATTLIST StartPostInstall type CDATA #IMPLIED>
+<!ATTLIST StartPostInstall append CDATA #IMPLIED>
+<!ATTLIST StartPostInstall overwrite CDATA #IMPLIED>
+<!ATTLIST NTClientPostInstall dest CDATA #REQUIRED>
+<!ATTLIST NTClientPostInstall explode CDATA #IMPLIED>
+<!ATTLIST NTClientPostInstall type CDATA #IMPLIED>
+<!ATTLIST NTClientPostInstall append CDATA #IMPLIED>
+<!ATTLIST NTClientPostInstall overwrite CDATA #IMPLIED>
+
+<!ATTLIST Path dest CDATA #IMPLIED>
+<!ATTLIST Dump origin CDATA #IMPLIED>
+<!ATTLIST Dump systemdate CDATA #IMPLIED>
+<!ATTLIST Bcp type CDATA #IMPLIED>
+<!ATTLIST Bcp host CDATA #IMPLIED>
+<!ATTLIST Bcp fieldterminator CDATA #IMPLIED>
+<!ATTLIST Bcp rowterminator CDATA #IMPLIED>
+<!ATTLIST Bcp table CDATA #IMPLIED>
+<!ATTLIST Stripes name CDATA #IMPLIED>
+<!ATTLIST Stripes count CDATA #IMPLIED>
+<!ATTLIST Port name CDATA #IMPLIED>
+<!ATTLIST Port value CDATA #IMPLIED>
+<!ATTLIST MxClientPath relative CDATA #IMPLIED>
+<!ATTLIST Path keepSvn CDATA #IMPLIED>
+<!ATTLIST Database Include CDATA #IMPLIED>
+<!ATTLIST Database Label CDATA #IMPLIED>
+<!ATTLIST LaunchMaintenance username CDATA #IMPLIED>
+<!ATTLIST LaunchMaintenance password CDATA #IMPLIED>
+<!ATTLIST Append default CDATA #IMPLIED>

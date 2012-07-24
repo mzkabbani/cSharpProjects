@@ -1,0 +1,7 @@
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\AppIdle\bin\Debug\ApplicationIdleDemo.exe
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\AppIdle\bin\Debug\ApplicationIdleDemo.pdb
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\AppIdle\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\AppIdle\obj\Debug\Demo.Form1.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\AppIdle\obj\Debug\ApplicationIdleDemo.csproj.GenerateResource.Cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\AppIdle\obj\Debug\ApplicationIdleDemo.exe
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\AppIdle\obj\Debug\ApplicationIdleDemo.pdb
