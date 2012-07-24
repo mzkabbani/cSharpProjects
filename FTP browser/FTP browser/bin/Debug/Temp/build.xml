@@ -1,0 +1,139 @@
+<project name="bootstrap" default="start">
+	<description>boot strap ant build file for ant automaiton test launching</description>
+	<taskdef name="automation.import" classname="murex.quality.automation.runtime.extensions.ant.taskdefs.AutomationImport" />
+	<automation.import file="quality.murex.automation.extensions.ant.typedefs.xml" />
+	<automation.import file="quality.murex.automation.extensions.ant.commons-utils.xml" />
+	<automation.import file="quality.murex.automation.extensions.ant.utils.xml" />
+	<automation.import file="quality.public.automation.extensions.ant.utils.xml" />
+	<automation.import file="quality.murex.automation.extensions.ant.pac.parseTiming.xml" />
+	<automation.import file="quality.murex.automation.extensions.ant.common.data.tests.xml" />
+
+	<target name="start">
+		<automation.xmlproperty file="tests_properties.xml" semanticAttributes="true" keeproot="false" />
+		<property name="mxclients.dir.path" value="${basedir}" />
+		<var name="mlc.solo.path" value="" />
+		<if>
+			<equals arg1="${deploy.mlc.solo}" arg2="true" />
+			<then>
+				<var name="mlc.solo.path" value="${mlc.appdir.suffix}" />
+			</then>
+		</if>
+		<if>
+			<equals arg1="${local.file.system}" arg2="true" />
+			<then>
+				<loadproperties srcfile="${mxclients.dir.path}/quality/murex/automation/extensions/ant/properties/default.properties" />
+			</then>
+			<else>
+				<loadproperties srcfile="${appdir.path}/${mlc.solo.path}/fs/quality/murex/automation/extensions/ant/properties/default.properties" />
+			</else>
+		</if>
+
+		<condition property="autoutils.log.path" value="output">
+			<equals arg1="${mode.minimal}" arg2="true" />
+		</condition>
+
+		<condition property="autoutils.log.path" value="${appdir.path}/${mlc.solo.path}/fs/quality/output">
+			<not>
+				<equals arg1="${mode.minimal}" arg2="true" />
+			</not>
+		</condition>
+
+		<condition property="autoutils.out.path" value="output">
+			<equals arg1="${mode.minimal}" arg2="true" />
+		</condition>
+		<condition property="autoutils.out.path" value="quality.output">
+			<not>
+				<equals arg1="${mode.minimal}" arg2="true" />
+			</not>
+		</condition>
+
+		<if>
+			<not>
+				<equals arg1="${skip.all}" arg2="true" />
+			</not>
+			<then>
+				<trycatch property="exception.message" reference="exception.refid">
+					<try>
+						<property environment="startenv" />
+						<automation.getfsinfo createstep="false" />
+						<if>
+							<equals arg1="${test.ref}" arg2="launchall" />
+							<then>
+								<property name="interactive.mode" value="true" />
+								<if>
+									<equals arg1="${restart.fs}" arg2="true" />
+									<then>
+										<echo>Killing fs before launching all services</echo>
+										<autoutils.launchmxj app.dir="${appdir.path}" server.param="fs" stop="-k" wait.after.start="10" />
+									</then>
+								</if>
+								<autoutils.launchall app.dir="${appdir.path}" />
+							</then>
+							<else>
+								<propertycopy name="testTitle" from="${test.ref}.title" />
+								<!--
+									property mode.interactif is deprecated;
+									check if interactive.mode is set before 
+								-->
+								<if>
+									<equals arg1="${interactive.mode}" arg2="true" />
+									<then>
+										<autoutils.setup interactive.mode="${interactive.mode}" />
+										<autoutils.launch.test.no.father.case interactive.mode="${interactive.mode}" />
+										<autoutils.launch.test.with.father.case interactive.mode="${interactive.mode}" />
+									</then>
+									<else>
+										<autoutils.setup interactive.mode="${mode.interactif}" />
+										<autoutils.launch.test.no.father.case interactive.mode="${mode.interactif}" />
+										<autoutils.launch.test.with.father.case interactive.mode="${mode.interactif}" />
+									</else>
+								</if>
+							</else>
+						</if>
+					</try>
+					<catch>
+						<echo message="Exception caugth in bootstrap\n" />
+						<echo message="${exception.message}" />
+						<throw refid="exception.refid" />
+					</catch>
+					<finally>
+						<if>
+							<equals arg1="${interactive.mode}" arg2="true" />
+							<then>
+								<autoutils.teardown interactive.mode="${interactive.mode}" />
+							</then>
+							<else>
+								<autoutils.teardown interactive.mode="${mode.interactif}" />
+							</else>
+						</if>
+					</finally>
+				</trycatch>
+			</then>
+			<else>
+				<boot.target />
+			</else>
+		</if>
+	</target>
+
+	<target name="list.tests">
+		<echoproperties destfile="tests.properties">
+			<propertyset>
+				<propertyref prefix="test" />
+			</propertyset>
+		</echoproperties>
+		<loadfile property="tests.props" srcFile="tests.properties">
+			<filterchain>
+				<tokenfilter>
+					<containsstring contains=".title" />
+				</tokenfilter>
+			</filterchain>
+			<filterchain>
+				<replacetokens begintoken="." endtoken="=">
+					<token key="title" value=" : " />
+				</replacetokens>
+			</filterchain>
+		</loadfile>
+		<echo message="${tests.props}" />
+		<delete file="tests.properties" />
+	</target>
+</project>

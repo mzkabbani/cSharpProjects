@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>ProgressCircle</name>
+    </assembly>
+    <members>
+        <member name="T:Utezduyar.Windows.Forms.ProgressCircle">
+            <summary>
+            This control is designed primarily to be a progress bar. But it's shape is circular.<br/>
+            Unlike the System.Windows.Forms.ProgressBar, it has no upper limit. You may use it in the processes that you don't know when it finishes.
+            </summary>
+        </member>
+        <member name="M:Utezduyar.Windows.Forms.ProgressCircle.#ctor">
+            <summary>
+            Default constructor.
+            </summary>
+        </member>
+        <member name="M:Utezduyar.Windows.Forms.ProgressCircle.FillEmptyArcs(System.Drawing.Graphics)">
+            <summary>
+            This method draws the static, non-animation part.
+            </summary>
+            <param name="grp"></param>
+        </member>
+        <member name="M:Utezduyar.Windows.Forms.ProgressCircle.FillPieAndTail">
+            <summary>
+            Draws the animation part
+            </summary>
+        </member>
+        <member name="P:Utezduyar.Windows.Forms.ProgressCircle.NumberOfTail">
+            <summary>
+            This is the number of pies, following the moving pie.
+            </summary>
+            <exception cref="T:System.ArgumentOutOfRangeException">Value can not be less than zero</exception>
+        </member>
+        <member name="P:Utezduyar.Windows.Forms.ProgressCircle.RingColor">
+            <summary>
+            Background color for the moving pie.
+            </summary>
+            <remarks>
+            Default color is white
+            </remarks>
+        </member>
+        <member name="P:Utezduyar.Windows.Forms.ProgressCircle.ForeColor">
+            <summary>
+            Background color for the background pies.
+            </summary>
+        </member>
+        <member name="P:Utezduyar.Windows.Forms.ProgressCircle.NumberOfArcs">
+            <summary>
+            Number of pies that will be places inside the cicle.
+            </summary>
+            <remarks>
+            Value should be a divisor of 360 (In other words when 360 is divided to value, the result must be integer).
+            </remarks>
+            <exception cref="T:System.ArgumentException">360 should be divisible by the value given.</exception>
+            <exception cref="T:System.ArgumentOutOfRangeException">Value must be greater than zero.</exception>
+        </member>
+        <member name="P:Utezduyar.Windows.Forms.ProgressCircle.RingThickness">
+            <summary>
+            Radius of the circle.
+            </summary>
+            <remarks>Value must be greater than the half of the width or height.</remarks>
+            <exception cref="T:System.ArgumentOutOfRangeException">
+            Value must be greater than zero<br/>
+            </exception>
+        </member>
+        <member name="P:Utezduyar.Windows.Forms.ProgressCircle.Rotate">
+            <summary>
+            To start the animation, set this true.<br/>
+            To stop, set it false.
+            </summary>
+            <remarks>
+            After stopping the animation, you may clear the rotating part, by calling <c>Clear</c> method.
+            </remarks>
+        </member>
+        <member name="P:Utezduyar.Windows.Forms.ProgressCircle.Interval">
+            <summary>
+            This value is in miliseconds. Greater interval, slow animation.
+            </summary>
+        </member>
+    </members>
+</doc>

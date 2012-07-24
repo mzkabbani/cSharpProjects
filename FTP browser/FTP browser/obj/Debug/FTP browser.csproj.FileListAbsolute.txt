@@ -1,0 +1,10 @@
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FTP browser\FTP browser\bin\Debug\FTP browser.exe
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FTP browser\FTP browser\bin\Debug\FTP browser.pdb
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FTP browser\FTP browser\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FTP browser\FTP browser\obj\Debug\FTP_browser.Form1.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FTP browser\FTP browser\obj\Debug\FTP_browser.Properties.Resources.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FTP browser\FTP browser\obj\Debug\FTP browser.csproj.GenerateResource.Cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FTP browser\FTP browser\obj\Debug\FTP browser.exe
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FTP browser\FTP browser\obj\Debug\FTP browser.pdb
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FTP browser\FTP browser\bin\Debug\ftplib.pdb
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FTP browser\FTP browser\bin\Debug\ftplib.dll
