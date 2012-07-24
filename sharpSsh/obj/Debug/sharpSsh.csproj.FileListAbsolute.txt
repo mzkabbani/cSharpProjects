@@ -1,0 +1,9 @@
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\sharpSsh\bin\Debug\Tamir.sharpSsh.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\sharpSsh\bin\Debug\Tamir.sharpSsh.pdb
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\sharpSsh\bin\Debug\DiffieHellman.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\sharpSsh\bin\Debug\Org.Mentalis.Security.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\sharpSsh\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\sharpSsh\obj\Debug\Tamir.SharpSsh.jsch.examples.InputForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\sharpSsh\obj\Debug\sharpSsh.csproj.GenerateResource.Cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\sharpSsh\obj\Debug\Tamir.sharpSsh.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\sharpSsh\obj\Debug\Tamir.sharpSsh.pdb
