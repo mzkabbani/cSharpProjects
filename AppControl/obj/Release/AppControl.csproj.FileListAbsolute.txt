@@ -1,0 +1,5 @@
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\AppControl\bin\Release\AppControl.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\AppControl\obj\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\AppControl\obj\Release\AppControl.ApplicationControl.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\AppControl\obj\Release\AppControl.csproj.GenerateResource.Cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\AppControl\obj\Release\AppControl.dll
