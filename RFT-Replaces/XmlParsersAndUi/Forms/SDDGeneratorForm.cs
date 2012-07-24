@@ -101,7 +101,6 @@ namespace XmlParsersAndUi.Forms {
             }
             for (int i = 0; i < selectedCaptureEvents.Count; i++) {
                 fileRead = ParseTargetedFile(selectedCaptureEvents[i], fileRead);
-
             }
 
             Regex regex = new Regex("&lt;!--(.*?)--&gt");
