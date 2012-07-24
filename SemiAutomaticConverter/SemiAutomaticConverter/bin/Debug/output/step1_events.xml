@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MXClientScript>
+    <LoginInfo>
+        <UserName>MUREXBO</UserName>
+        <Password>0010002000410047001600b70067</Password>
+        <GroupName>FO</GroupName>
+        <GroupType>MX GROUP</GroupType>
+        <PlatformName>MX</PlatformName>
+        <NickName>MX</NickName>
+        <DirectAccess Code="COMMAND_32333">Portfolio simulation by trade\</DirectAccess>
+        <MXCommand>Y</MXCommand>
+    </LoginInfo>
+    <Events>
+        <Find EventID="1" Direction="Next" Criteria="StartsWith" CaseSensitive="N">BOND_CDS<Focus FocusCode="CmpMatrix__MUB_SEL21___Matrix___0" PanelFather="OBJECT_3" Area="TableHeader" Line="0" Col="1" Ref="0" CursorMoveLine="-1" CaretPosition="0" XLine="Displayed label" XCol="1"/>
+        </Find>
+        <Command EventID="2" Code="AUTOMATIC_SELECT">
+            <Focus FocusCode="CmpMatrix__MUB_SEL21___Matrix___0" PanelFather="OBJECT_3" Area="TableBody" Line="0" Col="1" Ref="0" CursorMoveLine="-1" CaretPosition="0" XLine="BOND_CDS" XCol="1"/>
+        </Command>
+        <Tab EventID="3" PanelCode="Mtx:4_Pnl:Main_Oft:1" PanelLabel="Main">
+            <Focus FocusCode="CmpMatrix__EQ_UND_SIM1___Matrix___0" PanelFather="OBJECT_6" Area="TableBody" Line="0" Col="0" Ref="0" CursorMoveLine="-1" CaretPosition="0" XLine="ABBE4.5/8 02/11" XCol="0"/>
+        </Tab>
+        <ActionPerformed EventID="4" command="" left-icon="N" right-icon="N" navigation="N" label="Open Views Gallery">
+            <ViewSelection>
+                <Selection layout-id="Mtx:4_Pnl:SIMUL_Oft:1" view-id="CmpViewer__VWR_TOOLBAR7___ViewerComponent___0" view-title="Standard Toolbar" type="Node" zone="Data" path="C::1"/>
+            </ViewSelection>
+        </ActionPerformed>
+        <Find EventID="5" Direction="Next" Criteria="Included" CaseSensitive="N" Filter="N">BOND_CDS_VIEW<Focus focus-type="Gim" FocusCode="CmpViewer__VWR_CTRL5___ViewerComponent___0" PanelFather="OBJECT_33" Area="" Line="0" Col="0" Ref="0" CursorMoveLine="-1" CaretPosition="0">
+                <Selection layout-id="Mtx:4_Pnl:SIMUL_Oft:1" view-id="CmpViewer__VWR_CTRL5___ViewerComponent___0" view-title="Gallery" type="Node" zone="Label" path="Public::Unclassified" Area="Body" Row="4" Col="0"/>
+            </Focus>
+        </Find>
+        <RequestNodes EventID="6" layout-id="Mtx:4_Pnl:SIMUL_Oft:1" view-id="CmpViewer__VWR_CTRL5___ViewerComponent___0" view-title="Gallery" start-index="5" end-index="13" page-start-index="0" page-end-index="41"/>
+        <Select EventID="7">
+            <ViewSelection>
+                <Selection layout-id="Mtx:4_Pnl:SIMUL_Oft:1" view-id="CmpViewer__VWR_CTRL5___ViewerComponent___0" view-title="Gallery" type="Node" zone="Label" path="Public::Unclassified::BOND_CDS_VIEW" Area="Body" Row="14" Col="0"/>
+            </ViewSelection>
+        </Select>
+        <ActionPerformed EventID="8" command="" left-icon="N" right-icon="N" navigation="N" label="Open Views Gallery">
+            <ViewSelection>
+                <Selection layout-id="Mtx:4_Pnl:SIMUL_Oft:1" view-id="CmpViewer__VWR_TOOLBAR7___ViewerComponent___0" view-title="Standard Toolbar" type="Node" zone="Data" path="C::1"/>
+            </ViewSelection>
+            <ViewSelection>
+                <Selection layout-id="Mtx:4_Pnl:SIMUL_Oft:1" view-id="CmpViewer__VWR_CTRL5___ViewerComponent___0" view-title="Gallery" type="Node" zone="Label" path="Public::Unclassified::BOND_CDS_VIEW" Area="Body" Row="14" Col="0"/>
+            </ViewSelection>
+        </ActionPerformed>
+        </Events></MXClientScript>

@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 10.00
+# Visual C# Express 2008
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemiAutomaticConverter", "SemiAutomaticConverter\SemiAutomaticConverter.csproj", "{11E38366-D321-4725-89AC-1A5A7CFAACF5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OldEventAutomaticConverter", "OldEventAutomaticConverter\OldEventAutomaticConverter.csproj", "{80837D6E-34E1-4789-AEF5-A3B93C8F8A94}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11E38366-D321-4725-89AC-1A5A7CFAACF5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11E38366-D321-4725-89AC-1A5A7CFAACF5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11E38366-D321-4725-89AC-1A5A7CFAACF5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11E38366-D321-4725-89AC-1A5A7CFAACF5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{80837D6E-34E1-4789-AEF5-A3B93C8F8A94}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{80837D6E-34E1-4789-AEF5-A3B93C8F8A94}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{80837D6E-34E1-4789-AEF5-A3B93C8F8A94}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{80837D6E-34E1-4789-AEF5-A3B93C8F8A94}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

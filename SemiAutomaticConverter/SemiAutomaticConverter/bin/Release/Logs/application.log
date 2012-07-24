@@ -1,0 +1,151 @@
+5/10/2011 10:56:52 AM - 
+
+
+
+------------ Tool Loading ------------
+Loading rules from: D:\svn\PFR0000081\pfr\QAA-Activities\GIM\Rules.
+5/10/2011 10:56:52 AM - Found: 17 saved rules.
+5/10/2011 10:56:52 AM - Rule name: ActionToolBar Fetched !
+5/10/2011 10:56:52 AM - Rule name: CheckingItemsInFiler Fetched !
+5/10/2011 10:56:52 AM - Rule name: CheckingItemsInFilter Fetched !
+5/10/2011 10:56:52 AM - Rule name: DeletingAViewFromGallery Fetched !
+5/10/2011 10:56:52 AM - Rule name: EditView-UseView Fetched !
+5/10/2011 10:56:52 AM - Rule name: HelpAbout Fetched !
+5/10/2011 10:56:52 AM - Rule name: Opening gallery Fetched !
+5/10/2011 10:56:52 AM - Rule name: OpeningANewView Fetched !
+5/10/2011 10:56:52 AM - Rule name: OpeningFilter Fetched !
+5/10/2011 10:56:52 AM - Rule name: OperationsOnCancelButtonFW Fetched !
+5/10/2011 10:56:52 AM - Rule name: OperationsOnCustomButtonInFW Fetched !
+5/10/2011 10:56:52 AM - Rule name: OperationsOnOkInFW Fetched !
+5/10/2011 10:56:52 AM - Rule name: Pre-PostFilter Fetched !
+5/10/2011 10:56:52 AM - Rule name: RemovingFilter Fetched !
+5/10/2011 10:56:52 AM - Rule name: SelectingView Fetched !
+5/10/2011 10:56:52 AM - Rule name: SelectingViewAssert Fetched !
+5/10/2011 10:56:52 AM - Rule name: ZLastReplacement Fetched !
+5/11/2011 9:31:30 AM - 
+
+
+
+------------ Tool Loading ------------
+Loading rules from: D:\svn\PFR0000081\pfr\QAA-Activities\GIM\Rules.
+5/11/2011 9:31:30 AM - Found: 17 saved rules.
+5/11/2011 9:31:30 AM - Rule name: ActionToolBar Fetched !
+5/11/2011 9:31:30 AM - Rule name: CheckingItemsInFiler Fetched !
+5/11/2011 9:31:30 AM - Rule name: CheckingItemsInFilter Fetched !
+5/11/2011 9:31:30 AM - Rule name: DeletingAViewFromGallery Fetched !
+5/11/2011 9:31:30 AM - Rule name: EditView-UseView Fetched !
+5/11/2011 9:31:30 AM - Rule name: HelpAbout Fetched !
+5/11/2011 9:31:30 AM - Rule name: Opening gallery Fetched !
+5/11/2011 9:31:30 AM - Rule name: OpeningANewView Fetched !
+5/11/2011 9:31:30 AM - Rule name: OpeningFilter Fetched !
+5/11/2011 9:31:30 AM - Rule name: OperationsOnCancelButtonFW Fetched !
+5/11/2011 9:31:30 AM - Rule name: OperationsOnCustomButtonInFW Fetched !
+5/11/2011 9:31:30 AM - Rule name: OperationsOnOkInFW Fetched !
+5/11/2011 9:31:30 AM - Rule name: Pre-PostFilter Fetched !
+5/11/2011 9:31:30 AM - Rule name: RemovingFilter Fetched !
+5/11/2011 9:31:30 AM - Rule name: SelectingView Fetched !
+5/11/2011 9:31:30 AM - Rule name: SelectingViewAssert Fetched !
+5/11/2011 9:31:30 AM - Rule name: ZLastReplacement Fetched !
+5/17/2011 11:55:15 AM - 
+
+
+
+------------ Tool Loading ------------
+Loading rules from: D:\svn\PFR0000081\pfr\QAA-Activities\GIM\Rules.
+5/17/2011 11:55:15 AM - Found: 16 saved rules.
+5/17/2011 11:55:15 AM - Rule name: 0020_ActionToolBar Fetched !
+5/17/2011 11:55:15 AM - Rule name: 0040_CheckingItemsInFilter Fetched !
+5/17/2011 11:55:15 AM - Rule name: 0060_DeletingAViewFromGallery Fetched !
+5/17/2011 11:55:15 AM - Rule name: 0080_EditView-UseView Fetched !
+5/17/2011 11:55:15 AM - Rule name: 0100_HelpAbout Fetched !
+5/17/2011 11:55:15 AM - Rule name: 0120_Opening gallery Fetched !
+5/17/2011 11:55:15 AM - Rule name: 0140_OpeningANewView Fetched !
+5/17/2011 11:55:15 AM - Rule name: 0160_OpeningFilter Fetched !
+5/17/2011 11:55:15 AM - Rule name: 0180_OperationsOnCancelButtonFW Fetched !
+5/17/2011 11:55:15 AM - Rule name: 0200_OperationsOnCustomButtonInFW Fetched !
+5/17/2011 11:55:15 AM - Rule name: 0220_OperationsOnOkInFW Fetched !
+5/17/2011 11:55:15 AM - Rule name: 0240_Pre-PostFilter Fetched !
+5/17/2011 11:55:15 AM - Rule name: 0260_RemovingFilter Fetched !
+5/17/2011 11:55:15 AM - Rule name: 0280_SelectingView Fetched !
+5/17/2011 11:55:15 AM - Rule name: 0300_SelectingViewAssert Fetched !
+5/17/2011 11:55:15 AM - Rule name: 0320_DynamicMatrixWithViewerComponent Fetched !
+5/17/2011 4:14:45 PM - 
+
+
+
+------------ Tool Loading ------------
+Loading rules from: D:\svn\PFR0000081\pfr\QAA-Activities\GIM\Rules.
+5/17/2011 4:14:45 PM - Found: 16 saved rules.
+5/17/2011 4:14:45 PM - Rule name: 0020_ActionToolBar Fetched !
+5/17/2011 4:14:45 PM - Rule name: 0040_CheckingItemsInFilter Fetched !
+5/17/2011 4:14:45 PM - Rule name: 0060_DeletingAViewFromGallery Fetched !
+5/17/2011 4:14:45 PM - Rule name: 0080_EditView-UseView Fetched !
+5/17/2011 4:14:45 PM - Rule name: 0100_HelpAbout Fetched !
+5/17/2011 4:14:45 PM - Rule name: 0120_Opening gallery Fetched !
+5/17/2011 4:14:45 PM - Rule name: 0140_OpeningANewView Fetched !
+5/17/2011 4:14:45 PM - Rule name: 0160_OpeningFilter Fetched !
+5/17/2011 4:14:45 PM - Rule name: 0180_OperationsOnCancelButtonFW Fetched !
+5/17/2011 4:14:45 PM - Rule name: 0200_OperationsOnCustomButtonInFW Fetched !
+5/17/2011 4:14:45 PM - Rule name: 0220_OperationsOnOkInFW Fetched !
+5/17/2011 4:14:45 PM - Rule name: 0240_Pre-PostFilter Fetched !
+5/17/2011 4:14:45 PM - Rule name: 0260_RemovingFilter Fetched !
+5/17/2011 4:14:45 PM - Rule name: 0280_SelectingView Fetched !
+5/17/2011 4:14:45 PM - Rule name: 0300_SelectingViewAssert Fetched !
+5/17/2011 4:14:45 PM - Rule name: 0320_DynamicMatrixWithViewerComponent Fetched !
+5/17/2011 4:22:12 PM - Found 16 file(s) to parse
+5/17/2011 4:22:14 PM - Parsed File: macroTestC11.xml
+5/17/2011 4:22:14 PM - File Stats: 11 replacement(s) in file macroTestC11.xml
+5/17/2011 4:22:14 PM - Parsed File: macroTestC12.xml
+5/17/2011 4:22:14 PM - File Stats: 3 replacement(s) in file macroTestC12.xml
+5/17/2011 4:22:15 PM - Parsed File: macroTestC13.xml
+5/17/2011 4:22:15 PM - File Stats: 6 replacement(s) in file macroTestC13.xml
+5/17/2011 4:22:16 PM - Parsed File: macroTestC31.xml
+5/17/2011 4:22:16 PM - File Stats: 9 replacement(s) in file macroTestC31.xml
+5/17/2011 4:22:16 PM - Parsed File: macroTestC4_1S1.xml
+5/17/2011 4:22:16 PM - File Stats: 7 replacement(s) in file macroTestC4_1S1.xml
+5/17/2011 4:22:16 PM - Parsed File: macroTestC4_1S2.xml
+5/17/2011 4:22:16 PM - File Stats: 8 replacement(s) in file macroTestC4_1S2.xml
+5/17/2011 4:22:17 PM - Parsed File: macroTestC4_2S1.xml
+5/17/2011 4:22:17 PM - File Stats: 5 replacement(s) in file macroTestC4_2S1.xml
+5/17/2011 4:22:17 PM - Parsed File: macroTestC4_2S2.xml
+5/17/2011 4:22:17 PM - File Stats: 2 replacement(s) in file macroTestC4_2S2.xml
+5/17/2011 4:22:18 PM - Parsed File: macroTestC4_3S1.xml
+5/17/2011 4:22:18 PM - File Stats: 6 replacement(s) in file macroTestC4_3S1.xml
+5/17/2011 4:22:19 PM - Parsed File: macroTestC4_3S2.xml
+5/17/2011 4:22:19 PM - File Stats: 3 replacement(s) in file macroTestC4_3S2.xml
+5/17/2011 4:22:19 PM - Parsed File: macroTestC5_1S1.xml
+5/17/2011 4:22:19 PM - File Stats: 5 replacement(s) in file macroTestC5_1S1.xml
+5/17/2011 4:22:20 PM - Parsed File: macroTestC5_1S2.xml
+5/17/2011 4:22:20 PM - File Stats: 5 replacement(s) in file macroTestC5_1S2.xml
+5/17/2011 4:22:20 PM - Parsed File: macroTestC5_1S3.xml
+5/17/2011 4:22:20 PM - File Stats: 5 replacement(s) in file macroTestC5_1S3.xml
+5/17/2011 4:22:20 PM - Parsed File: macroTestC5_1S4.xml
+5/17/2011 4:22:20 PM - File Stats: 3 replacement(s) in file macroTestC5_1S4.xml
+5/17/2011 4:22:21 PM - Parsed File: macroTestcase2S1.xml
+5/17/2011 4:22:21 PM - File Stats: 10 replacement(s) in file macroTestcase2S1.xml
+5/17/2011 4:22:21 PM - Parsed File: macroTestcase2S2.xml
+5/17/2011 4:22:21 PM - File Stats: 7 replacement(s) in file macroTestcase2S2.xml
+5/17/2011 6:01:38 PM - ERROR: The path is not of a legal form.
+5/17/2011 6:01:46 PM - 
+
+
+
+------------ Tool Loading ------------
+Loading rules from: D:\svn\PFR0000081\pfr\QAA-Activities\GIM\Rules.
+5/17/2011 6:01:46 PM - Found: 16 saved rules.
+5/17/2011 6:01:46 PM - Rule name: 0020_ActionToolBar Fetched !
+5/17/2011 6:01:46 PM - Rule name: 0040_CheckingItemsInFilter Fetched !
+5/17/2011 6:01:46 PM - Rule name: 0060_DeletingAViewFromGallery Fetched !
+5/17/2011 6:01:46 PM - Rule name: 0080_EditView-UseView Fetched !
+5/17/2011 6:01:46 PM - Rule name: 0100_HelpAbout Fetched !
+5/17/2011 6:01:46 PM - Rule name: 0120_Opening gallery Fetched !
+5/17/2011 6:01:46 PM - Rule name: 0140_OpeningANewView Fetched !
+5/17/2011 6:01:46 PM - Rule name: 0160_OpeningFilter Fetched !
+5/17/2011 6:01:46 PM - Rule name: 0180_OperationsOnCancelButtonFW Fetched !
+5/17/2011 6:01:46 PM - Rule name: 0200_OperationsOnCustomButtonInFW Fetched !
+5/17/2011 6:01:46 PM - Rule name: 0220_OperationsOnOkInFW Fetched !
+5/17/2011 6:01:46 PM - Rule name: 0240_Pre-PostFilter Fetched !
+5/17/2011 6:01:46 PM - Rule name: 0260_RemovingFilter Fetched !
+5/17/2011 6:01:46 PM - Rule name: 0280_SelectingView Fetched !
+5/17/2011 6:01:46 PM - Rule name: 0300_SelectingViewAssert Fetched !
+5/17/2011 6:01:46 PM - Rule name: 0320_DynamicMatrixWithViewerComponent Fetched !

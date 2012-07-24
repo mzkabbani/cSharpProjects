@@ -1,0 +1,12 @@
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\OldEventAutomaticConverter\bin\Debug\OldEventAutomaticConverter.exe
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\OldEventAutomaticConverter\bin\Debug\OldEventAutomaticConverter.pdb
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\OldEventAutomaticConverter\obj\Debug\ResolveAssemblyReference.cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\OldEventAutomaticConverter\obj\Debug\OldEventAutomaticConverter.MainForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\OldEventAutomaticConverter\obj\Debug\OldEventAutomaticConverter.Properties.Resources.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\OldEventAutomaticConverter\obj\Debug\OldEventAutomaticConverter.RulesDirectoryForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\OldEventAutomaticConverter\obj\Debug\OldEventAutomaticConverter.csproj.GenerateResource.Cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\OldEventAutomaticConverter\obj\Debug\OldEventAutomaticConverter.exe
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\OldEventAutomaticConverter\obj\Debug\OldEventAutomaticConverter.pdb
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\OldEventAutomaticConverter\bin\Debug\OldEventAutomaticConverter.exe.config
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\OldEventAutomaticConverter\bin\Debug\test.sdf
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\OldEventAutomaticConverter\obj\Debug\OldEventAutomaticConverter.customs.resources

@@ -1,0 +1,91 @@
+5/20/2011 4:39:05 PM - ERROR: The path is not of a legal form.
+
+
+
+
+------------ Tool Loading ------------
+Loading rules from: D:\svn\PFR0000081\pfr\QAA-Activities\GIM\Rules.
+Found: 19 saved rules.
+Rule name: 0020_ActionToolBar Fetched !
+Rule name: 0040_CheckingItemsInFilter Fetched !
+Rule name: 0060_DeletingAViewFromGallery Fetched !
+Rule name: 0080_EditView-UseView Fetched !
+Rule name: 0120_Opening gallery Fetched !
+Rule name: 0140_OpeningANewView Fetched !
+Rule name: 0160_OpeningFilter Fetched !
+Rule name: 0180_OperationsOnCancelButtonFW Fetched !
+Rule name: 0200_OperationsOnCustomButtonInFW Fetched !
+Rule name: 0220_OperationsOnOkInFW Fetched !
+Rule name: 0240_Pre-PostFilter Fetched !
+Rule name: 0260_RemovingFilter Fetched !
+Rule name: 0280_SelectingView Fetched !
+Rule name: 0300_SelectingViewAssert Fetched !
+Rule name: 0320_DynamicMatrixWithViewerComponent Fetched !
+Rule name: 0340_ADT Fetched !
+Rule name: 0360_ADT_MarketDataSet Fetched !
+Rule name: 0380_ADT_InternalFixingSet Fetched !
+Rule name: 0400_ADT_AccountingTemplate Fetched !
+Found 4860 file(s) to parse
+
+
+
+
+------------ Tool Loading ------------
+Loading rules from: D:\svn\PFR0000081\pfr\QAA-Activities\GIM\Rules.
+Found: 19 saved rules.
+Rule name: 0020_ActionToolBar Fetched !
+Rule name: 0040_CheckingItemsInFilter Fetched !
+Rule name: 0060_DeletingAViewFromGallery Fetched !
+Rule name: 0080_EditView-UseView Fetched !
+Rule name: 0120_Opening gallery Fetched !
+Rule name: 0140_OpeningANewView Fetched !
+Rule name: 0160_OpeningFilter Fetched !
+Rule name: 0180_OperationsOnCancelButtonFW Fetched !
+Rule name: 0200_OperationsOnCustomButtonInFW Fetched !
+Rule name: 0220_OperationsOnOkInFW Fetched !
+Rule name: 0240_Pre-PostFilter Fetched !
+Rule name: 0260_RemovingFilter Fetched !
+Rule name: 0280_SelectingView Fetched !
+Rule name: 0300_SelectingViewAssert Fetched !
+Rule name: 0320_DynamicMatrixWithViewerComponent Fetched !
+Rule name: 0340_ADT Fetched !
+Rule name: 0360_ADT_MarketDataSet Fetched !
+Rule name: 0380_ADT_InternalFixingSet Fetched !
+Rule name: 0400_ADT_AccountingTemplate Fetched !
+
+
+
+
+------------ Tool Loading ------------
+Loading rules from: D:\svn\PFR0000081\pfr\QAA-Activities\GIM\Rules.
+Found: 26 saved rules.
+6/3/2011 5:36:13 PM - Rule name: 0020_ActionToolBar Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0040_CheckingItemsInFilter Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0060_DeletingAViewFromGallery Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0080_EditView-UseView Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0120_Opening gallery Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0140_OpeningANewView Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0160_OpeningFilter Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0180_OperationsOnCancelButtonFW Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0200_OperationsOnCustomButtonInFW Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0220_OperationsOnOkInFW Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0240_Pre-PostFilter Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0260_RemovingFilter Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0280_SelectingView Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0281_SelectingView Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0300_SelectingViewAssert Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0320_DynamicMatrixWithViewerComponent Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0360_ADT_MarketDataSet Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0380_ADT_InternalFixingSet Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0400_ADT_AccountingTemplate Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0420_Layout_LoadLayout Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0440_Layout_LoadLayout Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0460_Find_SelectView Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0480_ADT Fetched !
+6/3/2011 5:36:13 PM - Rule name: 0500_Command_40009_OpenGallery Fetched !
+6/3/2011 5:36:13 PM - Rule name: 1200_Temp_Remove_Layout_Find Fetched !
+6/3/2011 5:36:13 PM - Rule name: 1201_Temp_Public_Unclassified_Duplicate Fetched !
+ERROR: Search text cannot be empty!
+ERROR: Search text cannot be empty!
+ERROR: Search text cannot be empty!
+ERROR: Search text cannot be empty!
