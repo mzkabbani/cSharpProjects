@@ -23,13 +23,17 @@ namespace MacroJoiner {
             try {
                 string[] applicableFiles = Directory.GetFiles(txtInputDir.Text, "eventsfiles.xml",SearchOption.AllDirectories);
                 for (int i = 0; i < applicableFiles.Length; i++) {
-                    List<string> joinedFilesBySession = JoinRespectiveEvents(applicableFiles[i]);
-                    Directory.CreateDirectory(txtOutputDir.Text + "/macro" + i);
-                    for (int j = 0; j < joinedFilesBySession.Count; j++) {
-                        string ouputdirBySession = txtOutputDir.Text + "/macro" + i + "/session" + j;
-                        Directory.CreateDirectory(ouputdirBySession);
-                        WriteFile(ouputdirBySession + "/macro.xml", joinedFilesBySession[j]);
-                    }
+
+                    if (!applicableFiles[i].Contains("__")) {
+                        List<string> joinedFilesBySession = JoinRespectiveEvents(applicableFiles[i]);
+                        Directory.CreateDirectory(txtOutputDir.Text + "/macro" + i);
+                        for (int j = 0; j < joinedFilesBySession.Count; j++) {
+                            string ouputdirBySession = txtOutputDir.Text + "/macro" + i + "/session" + j;
+                            Directory.CreateDirectory(ouputdirBySession);
+                            WriteFile(ouputdirBySession + "/macro.xml", joinedFilesBySession[j]);
+                        }
+
+                    } 
                 }
                 MessageBox.Show("DONE!");
             } catch (Exception ex) {
