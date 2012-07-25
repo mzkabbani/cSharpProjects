@@ -415,7 +415,7 @@ namespace XmlParsersAndUi.Forms {
                 FrontendUtils.ShowInformation("Event must be a valid xml!");
                 return false;
             }
-            if (!IsValidXml(replacement)) {
+            if (!string.IsNullOrEmpty(replacement)) {
                 FrontendUtils.ShowInformation("A replacement must be supplied!");
                 return false;
             }

@@ -55,9 +55,14 @@ namespace XmlParsersAndUi.Forms {
                 List<string> replacedEvents = e.Result as List<string>;
                 tvOutputSteps.Nodes.Clear();
                 dgvOutputResults.Rows.Clear();
+                Regex regex = new Regex("EventID.*?=.*?\"(\\d+)\"");
 
                 for (int i = 0; i < replacedEvents.Count; i++) {
-                    tvOutputSteps.Nodes.Add(replacedEvents[i]);
+                    if (replacedEvents[i].Contains("EventID")) {
+                        tvOutputSteps.Nodes.Add("Event ID "+regex.Match(replacedEvents[i]).Groups[1].Value + " Skipped!");
+                    } else {
+                        tvOutputSteps.Nodes.Add(replacedEvents[i]);
+                    }                    
                     dgvOutputResults.Rows.Add(new object[] { i + 1, replacedEvents[i] });
                 }
                 btnStartOperation.Enabled = true;
@@ -103,12 +108,16 @@ namespace XmlParsersAndUi.Forms {
                 fileRead = ParseTargetedFile(selectedCaptureEvents[i], fileRead);
             }
 
-            Regex regex = new Regex("&lt;!--(.*?)--&gt");
-            MatchCollection collection = regex.Matches(fileRead);
-            tvOutputSteps.Nodes.Clear();
+            XDocument xdoc = XDocument.Parse(fileRead);
 
-            for (int i = 0; i < collection.Count; i++) {
-                textGenerated.Add(collection[i].Groups[1].Value);
+            IEnumerable<XNode> nodes = xdoc.Descendants("Events").Nodes();
+            Regex regex = new Regex("&lt;!--(.*?)--&gt");  
+            foreach (XNode node in nodes) {
+                if (node.ToString().Contains("EventID")) {
+                    textGenerated.Add(node.ToString());
+                } else {
+                    textGenerated.Add(regex.Match(node.ToString()).Groups[1].Value);
+                }
             }
             return textGenerated;
         }
@@ -411,6 +420,16 @@ namespace XmlParsersAndUi.Forms {
         }
 
         #endregion
+
+        private void btnReset_Click(object sender, EventArgs e) {
+            try {
+                txtInputFile.ResetText();
+                tvOutputSteps.Nodes.Clear();
+                dgvOutputResults.Rows.Clear();
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message, ex);
+            }
+        }
 
 
     }

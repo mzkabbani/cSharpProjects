@@ -40,6 +40,7 @@
             this.Operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bwSearchReplace = new System.ComponentModel.BackgroundWorker();
             this.bwExportExcel = new System.ComponentModel.BackgroundWorker();
+            this.btnReset = new System.Windows.Forms.Button();
             this.gbInput.SuspendLayout();
             this.gbOutput.SuspendLayout();
             this.tcOutputForms.SuspendLayout();
@@ -52,6 +53,7 @@
             // 
             this.gbInput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbInput.Controls.Add(this.btnReset);
             this.gbInput.Controls.Add(this.btnStartOperation);
             this.gbInput.Controls.Add(this.btnBrowse);
             this.gbInput.Controls.Add(this.txtInputFile);
@@ -66,7 +68,7 @@
             // btnStartOperation
             // 
             this.btnStartOperation.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnStartOperation.Location = new System.Drawing.Point(325, 71);
+            this.btnStartOperation.Location = new System.Drawing.Point(284, 71);
             this.btnStartOperation.Name = "btnStartOperation";
             this.btnStartOperation.Size = new System.Drawing.Size(75, 23);
             this.btnStartOperation.TabIndex = 3;
@@ -210,6 +212,17 @@
             this.bwExportExcel.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwExportExcel_DoWork);
             this.bwExportExcel.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwExportExcel_RunWorkerCompleted);
             // 
+            // btnReset
+            // 
+            this.btnReset.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnReset.Location = new System.Drawing.Point(365, 71);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 4;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
+            // 
             // SDDGeneratorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -249,5 +262,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn StepIndex;
         private System.Windows.Forms.DataGridViewTextBoxColumn Operation;
         private System.ComponentModel.BackgroundWorker bwExportExcel;
+        private System.Windows.Forms.Button btnReset;
     }
 }
