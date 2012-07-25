@@ -116,7 +116,10 @@ namespace XmlParsersAndUi.Forms {
                 if (node.ToString().Contains("EventID")) {
                     textGenerated.Add(node.ToString());
                 } else {
-                    textGenerated.Add(regex.Match(node.ToString()).Groups[1].Value);
+                    MatchCollection collection = regex.Matches(node.ToString());
+                    foreach (Match match in collection) {
+                        textGenerated.Add(match.Groups[1].Value);
+                    }
                 }
             }
             return textGenerated;
@@ -147,7 +150,7 @@ namespace XmlParsersAndUi.Forms {
 
         private void ReplaceFoundNodes(ReplacementEvent replacementEvent, List<XNode> foundNodes) {
             foreach (XNode foundNode in foundNodes) {
-                foundNode.ReplaceWith("<!-- " + GetReplacementValueFromEvent(replacementEvent, foundNode) + " -->");
+                foundNode.ReplaceWith("<!-- " + GetReplacementValueFromEvent(replacementEvent, foundNode).Trim() + " -->");
             }
         }
 
