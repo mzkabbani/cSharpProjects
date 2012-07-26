@@ -10229,3 +10229,51 @@ A duplicate value cannot be inserted into a unique index. [ Table name = Folder_
 
 
 A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]
+
+
+
+
+7/26/2012 12:33:01 PM
+
+
+An exception occurred during the operation, making the result invalid.  Check InnerException for exception details.
+
+
+System.Reflection.TargetInvocationException: An exception occurred during the operation, making the result invalid.  Check InnerException for exception details. ---> System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.GetReplacementValueFromEvent(ReplacementEvent replacementEvent, XNode foundNode) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 174
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.ReplaceFoundNodes(ReplacementEvent replacementEvent, List`1 foundNodes) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 154
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.ParseTargetedFile(CaptureEvent captureEvent, String readText) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 148
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.SearchAndGenerate(String fileName, List`1 selectedCaptureEvents) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 109
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_DoWork(Object sender, DoWorkEventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 50
+   at System.ComponentModel.BackgroundWorker.OnDoWork(DoWorkEventArgs e)
+   at System.ComponentModel.BackgroundWorker.WorkerThreadStart(Object argument)
+   --- End of inner exception stack trace ---
+   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()
+   at System.ComponentModel.RunWorkerCompletedEventArgs.get_Result()
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 56
+
+
+
+
+7/26/2012 12:36:14 PM
+
+
+An exception occurred during the operation, making the result invalid.  Check InnerException for exception details.
+
+
+System.Reflection.TargetInvocationException: An exception occurred during the operation, making the result invalid.  Check InnerException for exception details. ---> System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.GetReplacementValueFromEvent(ReplacementEvent replacementEvent, XNode foundNode) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 174
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.ReplaceFoundNodes(ReplacementEvent replacementEvent, List`1 foundNodes) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 154
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.ParseTargetedFile(CaptureEvent captureEvent, String readText) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 148
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.SearchAndGenerate(String fileName, List`1 selectedCaptureEvents) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 109
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_DoWork(Object sender, DoWorkEventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 50
+   at System.ComponentModel.BackgroundWorker.OnDoWork(DoWorkEventArgs e)
+   at System.ComponentModel.BackgroundWorker.WorkerThreadStart(Object argument)
+   --- End of inner exception stack trace ---
+   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()
+   at System.ComponentModel.RunWorkerCompletedEventArgs.get_Result()
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 56
