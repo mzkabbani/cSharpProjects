@@ -22,6 +22,7 @@ namespace XmlParsersAndUi.Forms {
             if (!string.IsNullOrEmpty(passedFolderName)) {
                 txtNewName.Text = passedFolderName;
             }
+            txtNewName.Select();
         }
 
         private void btnCancel_Click(object sender, EventArgs e) {

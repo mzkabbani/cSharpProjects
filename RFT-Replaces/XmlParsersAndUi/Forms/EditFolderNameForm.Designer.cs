@@ -71,6 +71,7 @@
             this.Name = "EditFolderNameForm";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Folder Name";
             this.Load += new System.EventHandler(this.EditFolderNameForm_Load);
             this.ResumeLayout(false);

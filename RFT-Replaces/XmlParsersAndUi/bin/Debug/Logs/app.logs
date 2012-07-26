@@ -10218,3 +10218,14 @@ A duplicate value cannot be inserted into a unique index. [ Table name = Folder_
 
 
 A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]
+
+
+
+
+7/26/2012 9:38:26 AM
+
+
+A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]
+
+
+A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]

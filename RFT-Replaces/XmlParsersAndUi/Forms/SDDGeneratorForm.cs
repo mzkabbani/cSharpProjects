@@ -14,6 +14,7 @@ using System.IO;
 
 namespace XmlParsersAndUi.Forms {
     public partial class SDDGeneratorForm : Form {
+        
         public SDDGeneratorForm() {
             InitializeComponent();
         }
@@ -59,9 +60,11 @@ namespace XmlParsersAndUi.Forms {
 
                 for (int i = 0; i < replacedEvents.Count; i++) {
                     if (replacedEvents[i].Contains("EventID")) {
-                        tvOutputSteps.Nodes.Add("Event ID "+regex.Match(replacedEvents[i]).Groups[1].Value + " Skipped!");
+                    tvOutputSteps.Nodes.Add(i.ToString(),"Event ID "+regex.Match(replacedEvents[i]).Groups[1].Value + " Skipped!",0);
+              
                     } else {
-                        tvOutputSteps.Nodes.Add(replacedEvents[i]);
+                       tvOutputSteps.Nodes.Add(i.ToString(),replacedEvents[i],1);
+                       
                     }                    
                     dgvOutputResults.Rows.Add(new object[] { i + 1, replacedEvents[i] });
                 }
@@ -84,9 +87,7 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
-
         #region Search Code
-
 
         private List<string> SearchAndGenerate(string fileName, List<CaptureEvent> selectedCaptureEvents) {
             List<string> textGenerated = new List<string>();
@@ -226,7 +227,6 @@ namespace XmlParsersAndUi.Forms {
             }
             return captureEvent;
         }
-
 
         private List<XNode> ParseUsingSimpleList(CaptureEvent captureEvent, XDocument xdoc, List<string> foundEvents) {
             List<XNode> foundNodes = new List<XNode>();
@@ -433,7 +433,6 @@ namespace XmlParsersAndUi.Forms {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
         }
-
 
     }
 }

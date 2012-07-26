@@ -23,6 +23,9 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SDDGeneratorForm));
             this.gbInput = new System.Windows.Forms.GroupBox();
             this.btnStartOperation = new System.Windows.Forms.Button();
@@ -41,6 +44,7 @@
             this.bwSearchReplace = new System.ComponentModel.BackgroundWorker();
             this.bwExportExcel = new System.ComponentModel.BackgroundWorker();
             this.btnReset = new System.Windows.Forms.Button();
+            this.ilTreeNodes = new System.Windows.Forms.ImageList(this.components);
             this.gbInput.SuspendLayout();
             this.gbOutput.SuspendLayout();
             this.tcOutputForms.SuspendLayout();
@@ -143,8 +147,12 @@
             // tvOutputSteps
             // 
             this.tvOutputSteps.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tvOutputSteps.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tvOutputSteps.ImageIndex = 2;
+            this.tvOutputSteps.ImageList = this.ilTreeNodes;
             this.tvOutputSteps.Location = new System.Drawing.Point(3, 3);
             this.tvOutputSteps.Name = "tvOutputSteps";
+            this.tvOutputSteps.SelectedImageIndex = 2;
             this.tvOutputSteps.Size = new System.Drawing.Size(705, 304);
             this.tvOutputSteps.TabIndex = 0;
             // 
@@ -174,6 +182,8 @@
             // dgvOutputResults
             // 
             this.dgvOutputResults.AllowUserToAddRows = false;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.NavajoWhite;
+            this.dgvOutputResults.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvOutputResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
@@ -181,6 +191,14 @@
             this.dgvOutputResults.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.StepIndex,
             this.Operation});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvOutputResults.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvOutputResults.Location = new System.Drawing.Point(7, 7);
             this.dgvOutputResults.Name = "dgvOutputResults";
             this.dgvOutputResults.RowHeadersVisible = false;
@@ -223,6 +241,14 @@
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
+            // ilTreeNodes
+            // 
+            this.ilTreeNodes.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilTreeNodes.ImageStream")));
+            this.ilTreeNodes.TransparentColor = System.Drawing.Color.Transparent;
+            this.ilTreeNodes.Images.SetKeyName(0, "redx.skinny.vysm.gif");
+            this.ilTreeNodes.Images.SetKeyName(1, "green_check.gif");
+            this.ilTreeNodes.Images.SetKeyName(2, "YellowCircle.gif");
+            // 
             // SDDGeneratorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -263,5 +289,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Operation;
         private System.ComponentModel.BackgroundWorker bwExportExcel;
         private System.Windows.Forms.Button btnReset;
+        private System.Windows.Forms.ImageList ilTreeNodes;
     }
 }
