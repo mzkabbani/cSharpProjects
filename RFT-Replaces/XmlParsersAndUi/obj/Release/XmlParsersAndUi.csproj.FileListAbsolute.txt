@@ -61,3 +61,4 @@ C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\bin\Release\Automation.ProgressCircle.dll
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\Release\XmlParsersAndUi.Forms.MacroConverterConfForm.resources
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\Release\XmlParsersAndUi.Forms.SDDGeneratorForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\Release\XmlParsersAndUi.Forms.Multi_TestCaseForm.resources

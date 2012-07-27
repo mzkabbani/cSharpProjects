@@ -429,6 +429,7 @@ namespace XmlParsersAndUi.Forms {
                 txtInputFile.ResetText();
                 tvOutputSteps.Nodes.Clear();
                 dgvOutputResults.Rows.Clear();
+                btnStartOperation.Enabled = true;
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }

@@ -107,6 +107,7 @@
             this.lbAdvancedCE.Location = new System.Drawing.Point(7, 15);
             this.lbAdvancedCE.Name = "lbAdvancedCE";
             this.lbAdvancedCE.Size = new System.Drawing.Size(214, 654);
+            this.lbAdvancedCE.Sorted = true;
             this.lbAdvancedCE.TabIndex = 22;
             this.lbAdvancedCE.SelectedIndexChanged += new System.EventHandler(this.lbAdvancedCE_SelectedIndexChanged_1);
             // 

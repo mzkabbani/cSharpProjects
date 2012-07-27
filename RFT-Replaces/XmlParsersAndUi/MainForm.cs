@@ -665,5 +665,11 @@ namespace XmlParsersAndUi {
             }
         }
 
+        private void mulToolStripMenuItem_Click(object sender, EventArgs e) {
+            Multi_TestCaseForm form = new Multi_TestCaseForm();
+            form.MdiParent = this;
+            form.Show();
+        }
+
     }
 }

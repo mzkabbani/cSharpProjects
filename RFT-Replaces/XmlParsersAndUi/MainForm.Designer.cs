@@ -49,7 +49,6 @@
             this.tileHorizontalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.closeAllToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cleanupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.form1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.advancedRecToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -77,6 +76,10 @@
             this.tsConnectedTo = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.macroConverterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.macroToTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sDDGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sDDEventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -84,9 +87,7 @@
             this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.printPreviewToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.helpToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.macroToTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sDDGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sDDEventsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mulToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -288,7 +289,6 @@
             // testingToolStripMenuItem
             // 
             this.testingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cleanupToolStripMenuItem,
             this.form1ToolStripMenuItem,
             this.toolStripMenuItem1,
             this.advancedRecToolStripMenuItem,
@@ -308,18 +308,13 @@
             this.functionParserToolStripMenuItem,
             this.tabsToolStripMenuItem,
             this.macroConverterToolStripMenuItem,
-            this.macroToTextToolStripMenuItem});
+            this.macroToTextToolStripMenuItem,
+            this.toolStripMenuItem4,
+            this.mulToolStripMenuItem});
             this.testingToolStripMenuItem.Name = "testingToolStripMenuItem";
             this.testingToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.testingToolStripMenuItem.Text = "Testing";
             this.testingToolStripMenuItem.Visible = false;
-            // 
-            // cleanupToolStripMenuItem
-            // 
-            this.cleanupToolStripMenuItem.Name = "cleanupToolStripMenuItem";
-            this.cleanupToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.cleanupToolStripMenuItem.Text = "Cleanup ";
-            this.cleanupToolStripMenuItem.Click += new System.EventHandler(this.cleanupToolStripMenuItem_Click);
             // 
             // form1ToolStripMenuItem
             // 
@@ -508,6 +503,32 @@
             this.macroConverterToolStripMenuItem.Text = "MacroConverter";
             this.macroConverterToolStripMenuItem.Click += new System.EventHandler(this.macroConverterToolStripMenuItem_Click);
             // 
+            // macroToTextToolStripMenuItem
+            // 
+            this.macroToTextToolStripMenuItem.Name = "macroToTextToolStripMenuItem";
+            this.macroToTextToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.macroToTextToolStripMenuItem.Text = "MacroToText";
+            this.macroToTextToolStripMenuItem.Click += new System.EventHandler(this.macroToTextToolStripMenuItem_Click);
+            // 
+            // sDDGeneratorToolStripMenuItem
+            // 
+            this.sDDGeneratorToolStripMenuItem.Name = "sDDGeneratorToolStripMenuItem";
+            this.sDDGeneratorToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
+            this.sDDGeneratorToolStripMenuItem.Text = "SDD Generator";
+            this.sDDGeneratorToolStripMenuItem.Click += new System.EventHandler(this.sDDGeneratorToolStripMenuItem_Click);
+            // 
+            // sDDEventsToolStripMenuItem
+            // 
+            this.sDDEventsToolStripMenuItem.Name = "sDDEventsToolStripMenuItem";
+            this.sDDEventsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.sDDEventsToolStripMenuItem.Text = "SDD Events";
+            this.sDDEventsToolStripMenuItem.Click += new System.EventHandler(this.sDDEventsToolStripMenuItem_Click);
+            // 
+            // toolStripMenuItem4
+            // 
+            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
+            this.toolStripMenuItem4.Size = new System.Drawing.Size(194, 22);
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -577,26 +598,12 @@
             this.helpToolStripButton.Size = new System.Drawing.Size(23, 22);
             this.helpToolStripButton.Text = "Help";
             // 
-            // macroToTextToolStripMenuItem
+            // mulToolStripMenuItem
             // 
-            this.macroToTextToolStripMenuItem.Name = "macroToTextToolStripMenuItem";
-            this.macroToTextToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.macroToTextToolStripMenuItem.Text = "MacroToText";
-            this.macroToTextToolStripMenuItem.Click += new System.EventHandler(this.macroToTextToolStripMenuItem_Click);
-            // 
-            // sDDGeneratorToolStripMenuItem
-            // 
-            this.sDDGeneratorToolStripMenuItem.Name = "sDDGeneratorToolStripMenuItem";
-            this.sDDGeneratorToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
-            this.sDDGeneratorToolStripMenuItem.Text = "SDD Generator";
-            this.sDDGeneratorToolStripMenuItem.Click += new System.EventHandler(this.sDDGeneratorToolStripMenuItem_Click);
-            // 
-            // sDDEventsToolStripMenuItem
-            // 
-            this.sDDEventsToolStripMenuItem.Name = "sDDEventsToolStripMenuItem";
-            this.sDDEventsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.sDDEventsToolStripMenuItem.Text = "SDD Events";
-            this.sDDEventsToolStripMenuItem.Click += new System.EventHandler(this.sDDEventsToolStripMenuItem_Click);
+            this.mulToolStripMenuItem.Name = "mulToolStripMenuItem";
+            this.mulToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.mulToolStripMenuItem.Text = "Mul";
+            this.mulToolStripMenuItem.Click += new System.EventHandler(this.mulToolStripMenuItem_Click);
             // 
             // MainForm
             // 
@@ -679,7 +686,6 @@
         private System.Windows.Forms.ToolStripMenuItem convertToEnumToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem showDetailsFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testReplacementFOrmToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cleanupToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem jobPusherToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem envComparisonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setupToolStripMenuItem;
@@ -694,6 +700,8 @@
         private System.Windows.Forms.ToolStripMenuItem macroToTextToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sDDGeneratorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sDDEventsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
+        private System.Windows.Forms.ToolStripMenuItem mulToolStripMenuItem;
     }
 }
 

@@ -8,7 +8,9 @@ namespace XmlParsersAndUi {
        public string stepName;
        public string filepath;
        public string stepTitle;
-       public string stepEvents;
+       public string stepEvents;       
+       public int startStepId;
+       public int endStepId;
 
        public override string ToString() {
            return  stepName + " | " + stepTitle ;

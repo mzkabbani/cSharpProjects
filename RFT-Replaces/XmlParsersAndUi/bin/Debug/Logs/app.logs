@@ -10277,3 +10277,80 @@ Parameter name: index
    at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()
    at System.ComponentModel.RunWorkerCompletedEventArgs.get_Result()
    at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 56
+
+
+
+
+7/26/2012 2:31:20 PM
+
+
+A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]
+
+
+A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]
+
+
+
+
+7/26/2012 2:37:48 PM
+
+
+A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]
+
+
+A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]
+
+
+
+
+7/26/2012 2:38:06 PM
+
+
+A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]
+
+
+A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]
+
+
+
+
+7/26/2012 2:38:11 PM
+
+
+A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]
+
+
+A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]
+
+
+
+
+7/26/2012 2:39:15 PM
+
+
+A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]
+
+
+A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]
+
+
+
+
+7/26/2012 2:40:23 PM
+
+
+A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]
+
+
+A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]
+
+
+
+
+7/26/2012 2:41:27 PM
+
+
+A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]
+
+
+A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]
