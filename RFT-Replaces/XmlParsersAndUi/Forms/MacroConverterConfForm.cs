@@ -377,6 +377,7 @@ namespace XmlParsersAndUi.Forms {
 
         private void btnAddCaptureEvent_Click(object sender, EventArgs e) {
             try {
+                if (eventParsed) {
                 string ruleName = txtAOName.Text.Trim();
                 string ruleDescription = txtAODescription.Text.Trim();
                 string ruleEventIn = txtAOEventIn.Text.Trim();
@@ -395,6 +396,9 @@ namespace XmlParsersAndUi.Forms {
                 SetAllCombos();
                 BindCombos();
                 lbAdvancedCE.Select();
+                }else{
+                    FrontendUtils.ShowInformation("Please [Parse] the input event before proceeding");
+                }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
@@ -562,6 +566,7 @@ namespace XmlParsersAndUi.Forms {
 
         private void lbAdvancedCE_SelectedIndexChanged_1(object sender, EventArgs e) {
             try {
+                eventParsed = true;
                 captureNodesSelectedNames = new List<string>();
                 CaptureEvent captureEvent = new CaptureEvent();
                 captureEvent = lbAdvancedCE.SelectedItem as CaptureEvent;
@@ -603,7 +608,7 @@ namespace XmlParsersAndUi.Forms {
         private void btnResetAO_Click(object sender, EventArgs e) {
             try {
                 ResetForm();
-
+                eventParsed = false;
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
@@ -652,6 +657,7 @@ namespace XmlParsersAndUi.Forms {
             tvOutput.Nodes.Clear();
             dgvAttributes.Rows.Clear();
             captureEventNodes.Clear();
+
         }
 
         private void ParseUsingAdvancedList(CaptureEvent captureEvent, XDocument xdoc) {
@@ -913,11 +919,14 @@ namespace XmlParsersAndUi.Forms {
             HideAllGroupBoxesUnderParent(gbRuleDefinition.Controls);
         }
 
+        bool eventParsed = false;
+
         private void btnParse_Click(object sender, EventArgs e) {
             try {
                 if (IsValidXml(txtAOEventIn.Text)) {
                     ParseEvent(txtAOEventIn.Text);
                     btnAddCaptureEvent.Enabled = true;
+                    eventParsed = true;
                 } else {
                     FrontendUtils.ShowInformation("Event must be a valid xml!");
                 }
