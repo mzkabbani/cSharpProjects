@@ -52,7 +52,7 @@ namespace XmlParsersAndUi.Forms {
             Bitmap bitmap = FrontendUtils.GetScreenShot();
             string bitmapFileName = Path.GetTempPath() + DateTime.Now.Date.Day + "-" + DateTime.Now.Date.Month + "-" + DateTime.Now.Date.Year + "-" + DateTime.Now.Hour + "-" + DateTime.Now.Minute + "-" + DateTime.Now.Second + "-" + DateTime.Now.Millisecond + ".jpeg";
             bitmap.Save(bitmapFileName);
-            FrontendUtils.SendEmailWithAttachement(sentErrorText, sentException, bitmapFileName);
+            FrontendUtils.SendEmailWithAttachement(FrontendUtils.GetCurrentUser()+" - "+sentErrorText, sentException, bitmapFileName);
             this.Close();
         }
 
