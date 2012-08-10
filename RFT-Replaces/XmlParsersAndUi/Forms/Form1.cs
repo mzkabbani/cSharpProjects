@@ -571,6 +571,19 @@ namespace XmlParsersAndUi {
             }
         }
 
+        private void btnAdd32Customs_Click(object sender, EventArgs e) {
+            try {
+                string[] fileList = Directory.GetFiles(txtInputFile.Text, "*customs.xml", SearchOption.AllDirectories);
+                foreach (string filename in fileList) {
+                    string newFileName = Directory.GetParent(filename)+@"\"+Path.GetFileNameWithoutExtension(filename).Split(new char[] { '_' })[0] + "_32_" + Path.GetFileNameWithoutExtension(filename).Split(new char[] { '_' })[1]+".xml";
+                    File.Copy(filename, newFileName);
+                }
+            } catch (Exception ex) {
+                
+                throw;
+            }
+        }
+
 
 
     }

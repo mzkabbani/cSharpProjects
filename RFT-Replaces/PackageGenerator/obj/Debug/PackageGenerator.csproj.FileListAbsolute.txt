@@ -9,3 +9,4 @@ C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\obj\Debug\PackageGenerator.AddPropertyForm.resources
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\obj\Debug\PackageGenerator.ExceptionForm.resources
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\obj\Debug\PackageGenerator.PackageGenerator.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\obj\Debug\PackageGenerator.Forms.PackageNameForm.resources

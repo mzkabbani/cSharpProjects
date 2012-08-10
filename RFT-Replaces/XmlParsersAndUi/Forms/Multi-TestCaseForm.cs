@@ -160,7 +160,7 @@ namespace XmlParsersAndUi.Forms {
                     List<checkboxItems> selectedItems = GetSelectedItems(regex.Match(parts[j]).Groups[2].Value, regex.Match(parts[j]).Groups[3].Value,items);
                     
                     
-                    GenerateSplitFile(selectedItems, "sessionKey" + j, (j + 1) + "-" + regex.Match(parts[j]).Groups[1].Value.Replace(" ", "_"), 1, testCaseFolderName);
+                    GenerateSplitFile(selectedItems, "sessionKey" + i, (j + 1) + "-" + regex.Match(parts[j]).Groups[1].Value.Replace(" ", "_"), 1, testCaseFolderName);
                     for (int l = 0; l < selectedItems.Count; l++) {
                         CleanOutputDir(selectedItems[l]);
                     }

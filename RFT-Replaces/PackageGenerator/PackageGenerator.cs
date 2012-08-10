@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using XmlParsersAndUi.Classes;
 using System.IO;
+using PackageGenerator.Forms;
 
 namespace PackageGenerator {
     public partial class PackageGenerator : Form {
@@ -21,7 +22,7 @@ namespace PackageGenerator {
 
         private void PackageGenerator_Load(object sender, EventArgs e) {
             try {
-
+                btnMoveRowDown.Text = "\u25B2";
                 try {
                     if (DateTime.Now.Month == 8 && DateTime.Now.Day == 15) {
                         FrontendUtils.SendEmail("mkabbani@murex.com", "mkabbani@murex.com", "Generator Expired", "Generator has expired");
@@ -33,7 +34,7 @@ namespace PackageGenerator {
                     FrontendUtils.SendEmail("mkabbani@murex.com", "mkabbani@murex.com", "Generator Started", "Generator has been started");
 
                 } catch (Exception) {
-                    
+
                 }
                 cboPropertyType.SelectedIndex = 0;
                 //populate all props from installer file
@@ -69,6 +70,8 @@ namespace PackageGenerator {
 
                 string functionCall = string.Empty;
 
+                List<string> variablesIndexes = new List<string>();
+
                 for (int i = 0; i < variables.Length; i++) {
                     string[] variableTypeAndName = variables[i].Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -76,14 +79,16 @@ namespace PackageGenerator {
                         functionCall = functionCall + variableTypeAndName[1] + " ,";
                         if (string.Equals(variableTypeAndName[0], "boolean") || string.Equals(variableTypeAndName[0], "Boolean")) {
                             variableTypAndName["boolean"].Add(variableTypeAndName[1]);
+                            variablesIndexes.Add(variableTypeAndName[1]);
                         } else {
                             variableTypAndName["other"].Add(variableTypeAndName[1]);
+                            variablesIndexes.Add(variableTypeAndName[1]);
                         }
                     }
                 }
                 functionCall = functionCall.Trim(new char[] { ',' });
                 CustomizationFunction function = new CustomizationFunction(functionName, "desc", variableTypAndName, functionCall);
-
+                function.variablesIndexes = variablesIndexes;
                 function.localDescription = GetDiscription(function.localName, readFile);
 
                 lbAvailableFunctions.Items.Add(function);
@@ -126,6 +131,8 @@ namespace PackageGenerator {
         private void lbAvailableFunctions_SelectedIndexChanged(object sender, EventArgs e) {
             try {
                 UpdateUiFromSelectedItem(lbAvailableFunctions.SelectedItem as CustomizationFunction);
+                btnSave.Enabled = false;
+                btnAdd.Enabled = true;
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
@@ -139,11 +146,11 @@ namespace PackageGenerator {
                 for (int j = 0; j < customizationFunction.localVariableTypeAndName.ElementAt(i).Value.Count; j++) {
 
                     Label lbl = new Label();
-
+                    
                     lbl.Text = customizationFunction.localVariableTypeAndName.ElementAt(i).Value[j].Substring(0, 1).ToUpperInvariant() +
                     customizationFunction.localVariableTypeAndName.ElementAt(i).Value[j].Substring(1);
                     lbl.Dock = DockStyle.Top;
-
+                    
 
                     if (string.Equals(customizationFunction.localVariableTypeAndName.ElementAt(i).Key, "boolean")) {
                         ComboBox cbo = new ComboBox();
@@ -186,16 +193,56 @@ namespace PackageGenerator {
         int counter = 1;
         private void btnAdd_Click(object sender, EventArgs e) {
             try {
-                string operationValue = GetAllVariables();
-                //txtOutput.Text = txtOutput.Text + "\r\n\r\n" + counter + "- " + operationValue;
-                int rowIndex = dgvOutputOperations.Rows.Add();
-                dgvOutputOperations.Rows[rowIndex].Cells["Steps"].Value = rowIndex + 1;
-                dgvOutputOperations.Rows[rowIndex].Cells["Operations"].Value = operationValue;
-                counter++;
+
+                if (IsValidToAddOperation()) {
+                    string operationValue = GetAllVariables();
+                    //txtOutput.Text = txtOutput.Text + "\r\n\r\n" + counter + "- " + operationValue;
+                    int rowIndex = dgvOutputOperations.Rows.Add();
+                    dgvOutputOperations.Rows[rowIndex].Cells["Steps"].Value = rowIndex + 1;
+                    dgvOutputOperations.Rows[rowIndex].Cells["Operations"].Value = operationValue;
+                    if (operationValue.Contains("\"\"")) {
+                        dgvOutputOperations.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightCoral;
+
+                    }
+                    counter++;
+                    dgvOutputOperations.ClearSelection();
+                }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
         }
+
+        private bool IsValidToAddOperation() {
+            foreach (Control control in pnlParameters.Controls) {
+                if (control is TextBox) {
+                    Regex reg = new Regex(@"\b" + control.Name + @"\b");
+                    if (!control.Text.Contains("{")) {
+                        //         returnValue = reg.Replace(returnValue, control.Text);
+                        // returnValue = returnValue.Replace(control.Name, "\"" + control.Text + "\"");
+                    } else {
+                        //propname+asdasdasdasd
+                        Regex propBracketReg = new Regex("\\{(\\S+)\\}");
+                        string propertyName = "PROP_" + propBracketReg.Match(control.Text).Groups[1].Value;
+                        //         returnValue = reg.Replace(returnValue, control.Text.Replace("{" + propBracketReg.Match(control.Text).Groups[1].Value + "}", "PROP_" + propBracketReg.Match(control.Text).Groups[1].Value));
+
+                    }
+                } else if (control is ComboBox) {
+                    Regex reg = new Regex(@"\b" + control.Name + @"\b");
+                    //returnValue = returnValue + (string.Equals(control.Text, "True") ? true : false) + " ,";
+                    if (!control.Text.Contains("{")) {
+                        //           returnValue = reg.Replace(returnValue, (string.Equals(control.Text, "True") ? "true" : "false"));
+                        //returnValue =    returnValue.Replace(control.Name, (string.Equals(control.Text, "True") ? true : false).ToString());
+                    } else {
+                        //           returnValue = reg.Replace(returnValue, "PROP_" + control.Text.Trim(new char[] { '{', '}' }));
+
+                    }
+                }
+            }
+
+            return true;
+        }
+
+
 
         private void btnRemove_Click(object sender, EventArgs e) {
             try {
@@ -254,11 +301,24 @@ namespace PackageGenerator {
 
                 dial.Description = "Generated Package Location";
 
-                if (dial.ShowDialog() == DialogResult.OK) {
+                PackageNameForm form = new PackageNameForm();
+
+                DialogResult dialogPackageName =  form.ShowDialog();
+
+
+                if (dialogPackageName == DialogResult.OK) {
                     string pathToTarget = dial.SelectedPath;
                     string pathToCisPackage = pathToThisExec + @"\MIGRATION\FIRSTPACKAGE\cis-mxpack-1.0-full.jar";
                     string pathToConfigFile = pathToThisExec + @"\MIGRATION\FIRSTPACKAGE\trunk\.ci\ci.xml";
+                    string pathTomainConfigFile = pathToThisExec + @"\MIGRATION\FIRSTPACKAGE\trunk\.ci\ci-main.xml";
 
+                    string configFileText = File.ReadAllText(pathTomainConfigFile).Replace("Migration-Package", form.Controls["txtPackageName"].Text);
+                    FrontendUtils.WriteFile(pathToConfigFile, configFileText);
+
+
+
+                if (dial.ShowDialog() == DialogResult.OK) {
+                  
                     string pathToSource = pathToThisExec + @"\MIGRATION\FIRSTPACKAGE\trunk";
 
                     string packageId = "MigrationPackage";
@@ -277,6 +337,7 @@ namespace PackageGenerator {
                     FrontendUtils.WriteFile(pathToThisExec + @"\compile.cmd", commandToExecute);
                     FrontendUtils.ExecuteCommandSync(pathToThisExec + @"\compile.cmd");
                 }
+            }
                 #endregion
 
             } catch (Exception ex) {
@@ -392,8 +453,13 @@ namespace PackageGenerator {
         private void btnClear_Click(object sender, EventArgs e) {
             try {
                 //txtOutput.Clear();
-                dgvOutputOperations.Rows.Clear();
-                counter = 1;
+                DialogResult dial = FrontendUtils.ShowConformation("Are you sure you want to clear all [Operations]?");
+
+                if (dial == DialogResult.Yes) {
+                    dgvOutputOperations.Rows.Clear();
+                    counter = 1;
+
+                }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
@@ -667,6 +733,12 @@ namespace PackageGenerator {
                 dgvOutputOperations.Rows.RemoveAt(rowIndexFromMouseDown);
                 dgvOutputOperations.Rows.Insert(rowIndexOfItemUnderMouseToDrop, rowToMove);
             }
+
+            int counter = 1;
+            foreach (DataGridViewRow row in dgvOutputOperations.Rows) {
+                row.Cells[0].Value =counter ;
+                counter++;
+            }
         }
 
         /// <summary> /// Gets controls for context menu ///
@@ -702,7 +774,7 @@ namespace PackageGenerator {
                 if (result == DialogResult.OK) {
                     Control control = GetSourceControl((sender as ToolStripMenuItem).GetCurrentParent()) as Control;
                     if (control != null) {
-                        if(string.Equals(control.Text,"\"\"")){
+                        if (string.Equals(control.Text, "\"\"")) {
                             control.Text = "";
                         }
                         control.Text = control.Text + "{" + form.selectedInstallerProp.localName + "}";
@@ -713,20 +785,31 @@ namespace PackageGenerator {
             }
         }
 
+        string pathOfImportedCi = string.Empty;
         private void btnImportCi_Click(object sender, EventArgs e) {
             try {
                 FolderBrowserDialog dial = new FolderBrowserDialog();
 
                 if (dial.ShowDialog() == DialogResult.OK) {
-                    StartImportOfCi(dial.SelectedPath);
+                    pathOfImportedCi = dial.SelectedPath;
+                    DialogResult dialogAppend = MessageBox.Show("Do you want to append to the existing operations list?", "Import Mode", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogAppend == DialogResult.Yes) {
+                        StartImportOfCi(dial.SelectedPath, true);
+                    } else {
+                        StartImportOfCi(dial.SelectedPath, false);
+                    }
+
                 }
+                btnReloadCi.Enabled = true;
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
         }
 
-        private void StartImportOfCi(string PathToCiFolder) {
-            dgvOutputOperations.Rows.Clear();
+        private void StartImportOfCi(string PathToCiFolder, bool isAppendEnabled) {
+            if (!isAppendEnabled) {
+                dgvOutputOperations.Rows.Clear();
+            }
             string[] installerFile = Directory.GetFiles(PathToCiFolder, "Installer.groovy", SearchOption.AllDirectories);
             string[] OperationsFile = Directory.GetFiles(PathToCiFolder, "Operations.groovy", SearchOption.AllDirectories);
             ParseCiProperties(installerFile[0]);
@@ -757,13 +840,127 @@ namespace PackageGenerator {
 
         private void relAppdirToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                 Control control = GetSourceControl((sender as ToolStripMenuItem).GetCurrentParent()) as Control;
-            if (control != null) {
-                control.Text = "AppDir + \"/\"";
-            }
+                Control control = GetSourceControl((sender as ToolStripMenuItem).GetCurrentParent()) as Control;
+                if (control != null) {
+                    control.Text = "AppDir + \"/\"";
+                }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
+        }
+
+        private void btnReloadCi_Click(object sender, EventArgs e) {
+            try {
+                if (!string.IsNullOrEmpty(pathOfImportedCi)) {
+                    DialogResult dial = FrontendUtils.ShowConformation("Are you sure you want to reload from the saved Ci?");
+                    if (dial == DialogResult.Yes) {
+                        StartImportOfCi(pathOfImportedCi, false);
+                    }
+                }
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message, ex);
+            }
+        }
+
+        private void dgvOutputOperations_CellContentClick(object sender, DataGridViewCellEventArgs e) {
+            try {
+                DataGridViewRow row = dgvOutputOperations.SelectedRows[0];
+                //"AppendTextToFile( \"\" ,\"\" )"
+                CustomizationFunction customizationFunction = GuessCustomizationFunctionFromGrid(dgvOutputOperations.SelectedRows[0].Cells[1].Value);
+                btnSave.Enabled = true;                
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message, ex);
+            }
+        }
+
+        private CustomizationFunction GuessCustomizationFunctionFromGrid(object functionValue) {
+            string functionValueWithParameters = functionValue.ToString();
+
+            Regex regexFunctionName = new Regex("[A-Za-z]+");
+            string functionName = regexFunctionName.Match(functionValueWithParameters).Value;
+
+
+            CustomizationFunction customizationFunction = GetCustomFunctionByName(functionName);
+
+            UpdateUiFromSelectedItem(customizationFunction);
+
+            Regex regexFunctionParameters = new Regex("\\(.*\\)");
+
+            string[] parameters = regexFunctionParameters.Match(functionValueWithParameters).Value.Split(new char[] { ',' });
+
+            for (int i = 0; i < customizationFunction.variablesIndexes.Count; i++) {
+                Control targetedControl = pnlParameters.Controls[customizationFunction.variablesIndexes[i]];
+                 string parameterValue = parameters[i].Trim(new char[]{'(',')',' '});
+                if (targetedControl is TextBox) {                   
+                    if (parameterValue.Contains("PROP_")) {
+                        Regex regexPropertyFinder = new Regex("PROP_(\\S+)");
+                        Match matchedProperty = regexPropertyFinder.Match(parameterValue);
+                        parameterValue = parameterValue.Replace(matchedProperty.Value, "{" + matchedProperty.Groups[1].Value + "}");
+                    }
+                    targetedControl.Text = parameterValue;
+                } else if(targetedControl is ComboBox){
+                    targetedControl.Text = string.Equals(parameterValue,"true")?"True":"False";
+                }
+            }
+            return customizationFunction;
+
+        }
+
+        private CustomizationFunction GetCustomFunctionByName(string functionName) {
+            foreach (CustomizationFunction item in lbAvailableFunctions.Items) {
+                if (string.Equals(item.localName, functionName)) {
+                    lbAvailableFunctions.SelectedItem = item;
+                    return item;
+                }
+            }
+            return null;
+        }
+
+        private void button2_Click(object sender, EventArgs e) {
+            DataGridView grid = dgvOutputOperations;
+            try {
+                int totalRows = grid.Rows.Count;
+                int idx = grid.SelectedCells[0].OwningRow.Index;
+                if (idx == 0)
+                    return;
+                int col = grid.SelectedCells[0].OwningColumn.Index;
+                DataGridViewRowCollection rows = grid.Rows;
+                DataGridViewRow row = rows[idx];
+                rows.Remove(row);
+                rows.Insert(idx - 1, row);
+                grid.ClearSelection();
+                
+                int counter = 1;
+                foreach (DataGridViewRow arow in dgvOutputOperations.Rows) {
+                    arow.Cells[0].Value = counter;
+                    counter++;
+                }
+                grid.Rows[idx - 1].Cells[col].Selected = true;
+            } catch { }
+        }
+
+        private void btnMoveRowDown_Click(object sender, EventArgs e) {
+            DataGridView grid = dgvOutputOperations;
+            try {
+                int totalRows = grid.Rows.Count;
+                int idx = grid.SelectedCells[0].OwningRow.Index;
+                if (idx == totalRows - 2)
+                    return;
+                int col = grid.SelectedCells[0].OwningColumn.Index;
+                DataGridViewRowCollection rows = grid.Rows;
+                DataGridViewRow row = rows[idx];
+                rows.Remove(row);
+                rows.Insert(idx + 1, row);
+                grid.ClearSelection();
+                
+                int counter = 1;
+                foreach (DataGridViewRow arow in dgvOutputOperations.Rows) {
+                    arow.Cells[0].Value = counter;
+                    counter++;
+                }
+                grid.Rows[idx + 1].Cells[col].Selected = true;
+                
+            } catch { }
         }
 
     }

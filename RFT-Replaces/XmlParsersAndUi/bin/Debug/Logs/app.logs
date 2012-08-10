@@ -10354,3 +10354,983 @@ A duplicate value cannot be inserted into a unique index. [ Table name = Folder_
 
 
 A duplicate value cannot be inserted into a unique index. [ Table name = Folder_Name,Constraint name = UQ__Folder_Name__000000000000011A ]
+
+
+
+
+7/30/2012 11:26:24 AM
+
+
+An exception occurred during the operation, making the result invalid.  Check InnerException for exception details.
+
+
+System.Reflection.TargetInvocationException: An exception occurred during the operation, making the result invalid.  Check InnerException for exception details. ---> System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.GetReplacementValueFromEvent(ReplacementEvent replacementEvent, XNode foundNode) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 174
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.ReplaceFoundNodes(ReplacementEvent replacementEvent, List`1 foundNodes) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 154
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.ParseTargetedFile(CaptureEvent captureEvent, String readText) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 148
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.SearchAndGenerate(String fileName, List`1 selectedCaptureEvents) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 109
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_DoWork(Object sender, DoWorkEventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 50
+   at System.ComponentModel.BackgroundWorker.OnDoWork(DoWorkEventArgs e)
+   at System.ComponentModel.BackgroundWorker.WorkerThreadStart(Object argument)
+   --- End of inner exception stack trace ---
+   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()
+   at System.ComponentModel.RunWorkerCompletedEventArgs.get_Result()
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 56
+
+
+
+
+7/30/2012 11:29:52 AM
+
+
+An exception occurred during the operation, making the result invalid.  Check InnerException for exception details.
+
+
+System.Reflection.TargetInvocationException: An exception occurred during the operation, making the result invalid.  Check InnerException for exception details. ---> System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.GetReplacementValueFromEvent(ReplacementEvent replacementEvent, XNode foundNode) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 174
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.ReplaceFoundNodes(ReplacementEvent replacementEvent, List`1 foundNodes) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 154
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.ParseTargetedFile(CaptureEvent captureEvent, String readText) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 148
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.SearchAndGenerate(String fileName, List`1 selectedCaptureEvents) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 109
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_DoWork(Object sender, DoWorkEventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 50
+   at System.ComponentModel.BackgroundWorker.OnDoWork(DoWorkEventArgs e)
+   at System.ComponentModel.BackgroundWorker.WorkerThreadStart(Object argument)
+   --- End of inner exception stack trace ---
+   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()
+   at System.ComponentModel.RunWorkerCompletedEventArgs.get_Result()
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 56
+
+
+
+
+7/30/2012 12:07:30 PM
+
+
+Parameterized query 'UPDATE    Advanced_Recomendations_TextConv SET              isEnabled = @isEnabled WHERE     ( id=@id)' expects a parameter value which was not supplied.
+Parameter name: @isEnabled
+
+
+System.ArgumentNullException: Parameterized query 'UPDATE    Advanced_Recomendations_TextConv SET              isEnabled = @isEnabled WHERE     ( id=@id)' expects a parameter value which was not supplied.
+Parameter name: @isEnabled
+   at System.Data.SqlServerCe.SqlCeCommand.FillParameterDataBindings()
+   at System.Data.SqlServerCe.SqlCeCommand.ExecuteCommand(CommandBehavior behavior, String method, ResultSetOptions options)
+   at System.Data.SqlServerCe.SqlCeCommand.ExecuteNonQuery()
+   at XmlParsersAndUi.BackEndUtils.DisableAdvanceRecById(Int32 advanceRecId) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 200
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.btnDeleteAdvanceRec_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 945
+
+
+
+
+7/30/2012 2:38:42 PM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.populateTreeviewSingleEventFromDatabase(String document, CaptureEvent captureEvent) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 66
+
+
+
+
+7/30/2012 2:38:44 PM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.populateTreeviewSingleEventFromDatabase(String document, CaptureEvent captureEvent) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 66
+
+
+
+
+7/30/2012 2:40:15 PM
+
+
+Object reference not set to an instance of an object.
+
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.SaveUpdatedAttributes() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 260
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.btnAddCaptureEvent_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 387
+
+
+
+
+7/30/2012 2:40:22 PM
+
+
+Object reference not set to an instance of an object.
+
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.SaveUpdatedAttributes() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 260
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.btnAddCaptureEvent_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 387
+
+
+
+
+7/30/2012 2:40:48 PM
+
+
+Object reference not set to an instance of an object.
+
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.SaveUpdatedAttributes() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 260
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.btnAddCaptureEvent_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 387
+
+
+
+
+7/31/2012 4:02:30 PM
+
+
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step10_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step11_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step12_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step13_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step14_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step15_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step16_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step17_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step18_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step19_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step1_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step2_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step3_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step4_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step5_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step6_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step7_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step8_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrod\step9_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step10_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step11_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step12_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step13_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step14_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step15_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step16_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step17_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step18_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step19_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step1_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step2_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step3_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step4_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step5_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step6_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step7_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step8_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroc\step9_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step10_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step11_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step12_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step13_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step14_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step15_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step16_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step17_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step18_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step19_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step1_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step2_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step3_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step4_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step5_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step6_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step7_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step8_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macrob\step9_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step10_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step11_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step12_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step13_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step14_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step15_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step16_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step17_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step18_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step19_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step1_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step2_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step3_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step4_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step5_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step6_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step7_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step8_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001983\tpk\apps\fs\quality\public\automation\tests\macros\macroa\step9_customs.xml
+
+
+
+
+
+
+
+8/1/2012 11:10:20 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.GetRespectiveCapturePoint(CustomTreeNode customTreeNode, CaptureEvent captureEvent, XmlNode xNode, Int32 index, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 125
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 101
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 105
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.populateTreeviewSingleEventFromDatabase(String document, CaptureEvent captureEvent) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 72
+
+
+
+
+8/1/2012 11:10:50 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.GetRespectiveCapturePoint(CustomTreeNode customTreeNode, CaptureEvent captureEvent, XmlNode xNode, Int32 index, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 125
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 101
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 105
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.populateTreeviewSingleEventFromDatabase(String document, CaptureEvent captureEvent) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 72
+
+
+
+
+8/1/2012 11:12:09 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.GetRespectiveCapturePoint(CustomTreeNode customTreeNode, CaptureEvent captureEvent, XmlNode xNode, Int32 index, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 125
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 101
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 105
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.populateTreeviewSingleEventFromDatabase(String document, CaptureEvent captureEvent) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 72
+
+
+
+
+8/1/2012 11:12:56 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.GetRespectiveCapturePoint(CustomTreeNode customTreeNode, CaptureEvent captureEvent, XmlNode xNode, Int32 index, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 125
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 101
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 105
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.populateTreeviewSingleEventFromDatabase(String document, CaptureEvent captureEvent) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 72
+
+
+
+
+8/1/2012 11:15:14 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.GetRespectiveCapturePoint(CustomTreeNode customTreeNode, CaptureEvent captureEvent, XmlNode xNode, Int32 index, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 125
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 101
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 105
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.populateTreeviewSingleEventFromDatabase(String document, CaptureEvent captureEvent) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 72
+
+
+
+
+8/1/2012 11:34:45 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.GetRespectiveCapturePoint(CustomTreeNode customTreeNode, CaptureEvent captureEvent, XmlNode xNode, Int32 index, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 125
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 101
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 105
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.populateTreeviewSingleEventFromDatabase(String document, CaptureEvent captureEvent) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 72
+
+
+
+
+8/1/2012 11:36:50 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.GetRespectiveCapturePoint(CustomTreeNode customTreeNode, CaptureEvent captureEvent, XmlNode xNode, Int32 index, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 125
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 101
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 105
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.populateTreeviewSingleEventFromDatabase(String document, CaptureEvent captureEvent) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 72
+
+
+
+
+8/1/2012 11:44:15 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.BackEndUtils.GetReplacementEventByCaptureEventId(Int32 captureEventId, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 554
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 548
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsListTextConv() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 516
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 479
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.MacroConverter_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 22
+   at System.Windows.Forms.Form.OnLoad(EventArgs e)
+   at System.Windows.Forms.Form.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.WmShowWindow(Message& m)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   at System.Windows.Forms.ContainerControl.WndProc(Message& m)
+   at System.Windows.Forms.Form.WmShowWindow(Message& m)
+   at System.Windows.Forms.Form.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.IntCreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.UnsafeNativeMethods.CreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.NativeWindow.CreateHandle(CreateParams cp)
+   at System.Windows.Forms.Control.CreateHandle()
+   at System.Windows.Forms.Form.CreateHandle()
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Form.SetVisibleCore(Boolean value)
+   at System.Windows.Forms.Control.Show()
+   at XmlParsersAndUi.MainForm.sDDEventsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\MainForm.cs:line 652
+
+
+
+
+8/1/2012 11:46:09 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.BackEndUtils.GetReplacementEventByCaptureEventId(Int32 captureEventId, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 554
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 548
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsListTextConv() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 516
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 479
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.MacroConverter_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 22
+   at System.Windows.Forms.Form.OnLoad(EventArgs e)
+   at System.Windows.Forms.Form.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.WmShowWindow(Message& m)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   at System.Windows.Forms.ContainerControl.WndProc(Message& m)
+   at System.Windows.Forms.Form.WmShowWindow(Message& m)
+   at System.Windows.Forms.Form.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.IntCreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.UnsafeNativeMethods.CreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.NativeWindow.CreateHandle(CreateParams cp)
+   at System.Windows.Forms.Control.CreateHandle()
+   at System.Windows.Forms.Form.CreateHandle()
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Form.SetVisibleCore(Boolean value)
+   at System.Windows.Forms.Control.Show()
+   at XmlParsersAndUi.MainForm.sDDEventsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\MainForm.cs:line 652
+
+
+
+
+8/1/2012 11:46:35 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.BackEndUtils.GetReplacementEventByCaptureEventId(Int32 captureEventId, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 554
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 548
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsListTextConv() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 516
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 479
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.MacroConverter_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 22
+   at System.Windows.Forms.Form.OnLoad(EventArgs e)
+   at System.Windows.Forms.Form.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.WmShowWindow(Message& m)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   at System.Windows.Forms.ContainerControl.WndProc(Message& m)
+   at System.Windows.Forms.Form.WmShowWindow(Message& m)
+   at System.Windows.Forms.Form.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.IntCreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.UnsafeNativeMethods.CreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.NativeWindow.CreateHandle(CreateParams cp)
+   at System.Windows.Forms.Control.CreateHandle()
+   at System.Windows.Forms.Form.CreateHandle()
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Form.SetVisibleCore(Boolean value)
+   at System.Windows.Forms.Control.Show()
+   at XmlParsersAndUi.MainForm.sDDEventsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\MainForm.cs:line 652
+
+
+
+
+8/1/2012 11:47:15 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.BackEndUtils.GetReplacementEventByCaptureEventId(Int32 captureEventId, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 554
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 548
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsListTextConv() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 516
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 479
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.MacroConverter_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 22
+   at System.Windows.Forms.Form.OnLoad(EventArgs e)
+   at System.Windows.Forms.Form.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.WmShowWindow(Message& m)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   at System.Windows.Forms.ContainerControl.WndProc(Message& m)
+   at System.Windows.Forms.Form.WmShowWindow(Message& m)
+   at System.Windows.Forms.Form.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.IntCreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.UnsafeNativeMethods.CreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.NativeWindow.CreateHandle(CreateParams cp)
+   at System.Windows.Forms.Control.CreateHandle()
+   at System.Windows.Forms.Form.CreateHandle()
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Form.SetVisibleCore(Boolean value)
+   at System.Windows.Forms.Control.Show()
+   at XmlParsersAndUi.MainForm.sDDEventsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\MainForm.cs:line 652
+
+
+
+
+8/1/2012 11:48:43 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.BackEndUtils.GetReplacementEventByCaptureEventId(Int32 captureEventId, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 554
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 548
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsListTextConv() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 516
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 479
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.MacroConverter_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 22
+   at System.Windows.Forms.Form.OnLoad(EventArgs e)
+   at System.Windows.Forms.Form.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.WmShowWindow(Message& m)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   at System.Windows.Forms.ContainerControl.WndProc(Message& m)
+   at System.Windows.Forms.Form.WmShowWindow(Message& m)
+   at System.Windows.Forms.Form.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.IntCreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.UnsafeNativeMethods.CreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.NativeWindow.CreateHandle(CreateParams cp)
+   at System.Windows.Forms.Control.CreateHandle()
+   at System.Windows.Forms.Form.CreateHandle()
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Form.SetVisibleCore(Boolean value)
+   at System.Windows.Forms.Control.Show()
+   at XmlParsersAndUi.MainForm.sDDEventsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\MainForm.cs:line 652
+
+
+
+
+8/1/2012 11:49:08 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.BackEndUtils.GetReplacementEventByCaptureEventId(Int32 captureEventId, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 554
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 548
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsListTextConv() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 516
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 479
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.MacroConverter_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 22
+   at System.Windows.Forms.Form.OnLoad(EventArgs e)
+   at System.Windows.Forms.Form.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.WmShowWindow(Message& m)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   at System.Windows.Forms.ContainerControl.WndProc(Message& m)
+   at System.Windows.Forms.Form.WmShowWindow(Message& m)
+   at System.Windows.Forms.Form.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.IntCreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.UnsafeNativeMethods.CreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.NativeWindow.CreateHandle(CreateParams cp)
+   at System.Windows.Forms.Control.CreateHandle()
+   at System.Windows.Forms.Form.CreateHandle()
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Form.SetVisibleCore(Boolean value)
+   at System.Windows.Forms.Control.Show()
+   at XmlParsersAndUi.MainForm.sDDEventsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\MainForm.cs:line 652
+
+
+
+
+8/1/2012 11:50:57 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.BackEndUtils.GetReplacementEventByCaptureEventId(Int32 captureEventId, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 554
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 548
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsListTextConv() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 516
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 479
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.MacroConverter_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 22
+   at System.Windows.Forms.Form.OnLoad(EventArgs e)
+   at System.Windows.Forms.Form.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.WmShowWindow(Message& m)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   at System.Windows.Forms.ContainerControl.WndProc(Message& m)
+   at System.Windows.Forms.Form.WmShowWindow(Message& m)
+   at System.Windows.Forms.Form.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.IntCreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.UnsafeNativeMethods.CreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.NativeWindow.CreateHandle(CreateParams cp)
+   at System.Windows.Forms.Control.CreateHandle()
+   at System.Windows.Forms.Form.CreateHandle()
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Form.SetVisibleCore(Boolean value)
+   at System.Windows.Forms.Control.Show()
+   at XmlParsersAndUi.MainForm.sDDEventsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\MainForm.cs:line 652
+
+
+
+
+8/1/2012 11:51:39 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.BackEndUtils.GetReplacementEventByCaptureEventId(Int32 captureEventId, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 554
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 548
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsListTextConv() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 516
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 479
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.MacroConverter_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 22
+   at System.Windows.Forms.Form.OnLoad(EventArgs e)
+   at System.Windows.Forms.Form.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.WmShowWindow(Message& m)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   at System.Windows.Forms.ContainerControl.WndProc(Message& m)
+   at System.Windows.Forms.Form.WmShowWindow(Message& m)
+   at System.Windows.Forms.Form.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.IntCreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.UnsafeNativeMethods.CreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.NativeWindow.CreateHandle(CreateParams cp)
+   at System.Windows.Forms.Control.CreateHandle()
+   at System.Windows.Forms.Form.CreateHandle()
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Form.SetVisibleCore(Boolean value)
+   at System.Windows.Forms.Control.Show()
+   at XmlParsersAndUi.MainForm.sDDEventsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\MainForm.cs:line 652
+
+
+
+
+8/1/2012 11:52:41 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.GetRespectiveCapturePoint(CustomTreeNode customTreeNode, CaptureEvent captureEvent, XmlNode xNode, Int32 index, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 125
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 101
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 105
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.populateTreeviewSingleEventFromDatabase(String document, CaptureEvent captureEvent) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 72
+
+
+
+
+8/1/2012 11:53:30 AM
+
+
+Object reference not set to an instance of an object.
+
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at XmlParsersAndUi.BackEndUtils.InsertCapturePointsForTextConversion(Int32 RecommendationId, List`1 customNodesList) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 372
+   at XmlParsersAndUi.BackEndUtils.InsertCaptureEventForTextConversion(CaptureEvent captureEvent, ReplacementEvent replacementEvent) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 350
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.btnAddCaptureEvent_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 392
+
+
+
+
+8/1/2012 11:54:49 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.BackEndUtils.GetReplacementEventByCaptureEventId(Int32 captureEventId, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 554
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 548
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsListTextConv() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 516
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 479
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.MacroConverter_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 22
+   at System.Windows.Forms.Form.OnLoad(EventArgs e)
+   at System.Windows.Forms.Form.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.WmShowWindow(Message& m)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   at System.Windows.Forms.ContainerControl.WndProc(Message& m)
+   at System.Windows.Forms.Form.WmShowWindow(Message& m)
+   at System.Windows.Forms.Form.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.IntCreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.UnsafeNativeMethods.CreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.NativeWindow.CreateHandle(CreateParams cp)
+   at System.Windows.Forms.Control.CreateHandle()
+   at System.Windows.Forms.Form.CreateHandle()
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Form.SetVisibleCore(Boolean value)
+   at System.Windows.Forms.Control.Show()
+   at XmlParsersAndUi.MainForm.sDDEventsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\MainForm.cs:line 652
+
+
+
+
+8/1/2012 11:55:55 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.GetRespectiveCapturePoint(CustomTreeNode customTreeNode, CaptureEvent captureEvent, XmlNode xNode, Int32 index, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 125
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 101
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 105
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.populateTreeviewSingleEventFromDatabase(String document, CaptureEvent captureEvent) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 72
+
+
+
+
+8/1/2012 12:09:52 PM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.GetRespectiveCapturePoint(CustomTreeNode customTreeNode, CaptureEvent captureEvent, XmlNode xNode, Int32 index, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 125
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 101
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 105
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.populateTreeviewSingleEventFromDatabase(String document, CaptureEvent captureEvent) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 72
+
+
+
+
+8/1/2012 12:11:30 PM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.GetRespectiveCapturePoint(CustomTreeNode customTreeNode, CaptureEvent captureEvent, XmlNode xNode, Int32 index, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 125
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 101
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, Int32 level, Int32 parentIndex) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 105
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.populateTreeviewSingleEventFromDatabase(String document, CaptureEvent captureEvent) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 72
+
+
+
+
+8/1/2012 2:20:42 PM
+
+
+Object reference not set to an instance of an object.
+
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.SaveUpdatedAttributes() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 280
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.tvOutput_BeforeSelect(Object sender, TreeViewCancelEventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 392
+
+
+
+
+8/1/2012 2:21:21 PM
+
+
+Object reference not set to an instance of an object.
+
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.SaveUpdatedAttributes() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 280
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.tvOutput_BeforeSelect(Object sender, TreeViewCancelEventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 392
+
+
+
+
+8/1/2012 2:26:20 PM
+
+
+Object reference not set to an instance of an object.
+
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.SaveUpdatedAttributes() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 280
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.tvOutput_BeforeSelect(Object sender, TreeViewCancelEventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 392
+
+
+
+
+8/1/2012 3:12:21 PM
+
+
+Root element is missing.
+
+
+System.Xml.XmlException: Root element is missing.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.ThrowWithoutLineInfo(String res)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text)
+   at XmlParsersAndUi.Form1.ParseEvent(String eventMacro) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\Form1.cs:line 307
+   at XmlParsersAndUi.Form1.btnParseEvent_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\Form1.cs:line 296
+
+
+
+
+8/2/2012 10:41:44 AM
+
+
+An SqlCeParameter with ParameterName 'parentlevel' is not contained by this SqlCeParameterCollection.
+
+
+System.IndexOutOfRangeException: An SqlCeParameter with ParameterName 'parentlevel' is not contained by this SqlCeParameterCollection.
+   at System.Data.SqlServerCe.SqlCeCommand.CompileQueryPlan()
+   at System.Data.SqlServerCe.SqlCeCommand.ExecuteCommand(CommandBehavior behavior, String method, ResultSetOptions options)
+   at System.Data.SqlServerCe.SqlCeCommand.ExecuteNonQuery()
+   at XmlParsersAndUi.BackEndUtils.InsertCapturePointsAsTransactionForTextConversion(Int32 RecommendationId, List`1 customNodesList, SqlCeConnection conn, SqlCeTransaction transaction) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 242
+   at XmlParsersAndUi.BackEndUtils.SaveCaptureEventByIdForTextConversion(Int32 captureEventId, CaptureEvent captureEvent, ReplacementEvent replacementEvent) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 215
+
+
+
+
+8/2/2012 11:44:31 AM
+
+
+The column name is not valid. [ Node name (if any) = Rec_CapturePoints_TextConv,Column name = parentLevel ]
+
+
+The column name is not valid. [ Node name (if any) = Rec_CapturePoints_TextConv,Column name = parentLevel ]
+
+
+
+
+8/2/2012 12:35:51 PM
+
+
+An exception occurred during the operation, making the result invalid.  Check InnerException for exception details.
+
+
+System.Reflection.TargetInvocationException: An exception occurred during the operation, making the result invalid.  Check InnerException for exception details. ---> System.InvalidOperationException: The parent is missing.
+   at System.Xml.Linq.XNode.ReplaceWith(Object content)
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.ReplaceFoundNodes(ReplacementEvent replacementEvent, List`1 foundNodes) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 157
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.ParseTargetedFile(CaptureEvent captureEvent, String readText) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 151
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.SearchAndGenerate(String fileName, List`1 selectedCaptureEvents) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 110
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_DoWork(Object sender, DoWorkEventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 50
+   at System.ComponentModel.BackgroundWorker.OnDoWork(DoWorkEventArgs e)
+   at System.ComponentModel.BackgroundWorker.WorkerThreadStart(Object argument)
+   --- End of inner exception stack trace ---
+   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()
+   at System.ComponentModel.RunWorkerCompletedEventArgs.get_Result()
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 56
+
+
+
+
+8/2/2012 12:48:15 PM
+
+
+An exception occurred during the operation, making the result invalid.  Check InnerException for exception details.
+
+
+System.Reflection.TargetInvocationException: An exception occurred during the operation, making the result invalid.  Check InnerException for exception details. ---> System.InvalidOperationException: The parent is missing.
+   at System.Xml.Linq.XNode.ReplaceWith(Object content)
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.ReplaceFoundNodes(ReplacementEvent replacementEvent, List`1 foundNodes) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 157
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.ParseTargetedFile(CaptureEvent captureEvent, String readText) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 151
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.SearchAndGenerate(String fileName, List`1 selectedCaptureEvents) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 110
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_DoWork(Object sender, DoWorkEventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 50
+   at System.ComponentModel.BackgroundWorker.OnDoWork(DoWorkEventArgs e)
+   at System.ComponentModel.BackgroundWorker.WorkerThreadStart(Object argument)
+   --- End of inner exception stack trace ---
+   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()
+   at System.ComponentModel.RunWorkerCompletedEventArgs.get_Result()
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 56

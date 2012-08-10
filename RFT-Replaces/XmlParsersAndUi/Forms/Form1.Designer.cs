@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("item1");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("item1");
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.lvItems = new System.Windows.Forms.ListView();
             this.txtInputFile = new System.Windows.Forms.TextBox();
@@ -37,6 +37,7 @@
             this.cmbMain = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
+            this.btnAdd32Customs = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // txtOutput
@@ -57,7 +58,7 @@
             this.lvItems.AllowDrop = true;
             this.lvItems.FullRowSelect = true;
             this.lvItems.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
+            listViewItem2});
             this.lvItems.Location = new System.Drawing.Point(605, 262);
             this.lvItems.Name = "lvItems";
             this.lvItems.Size = new System.Drawing.Size(107, 288);
@@ -174,11 +175,22 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // btnAdd32Customs
+            // 
+            this.btnAdd32Customs.Location = new System.Drawing.Point(449, 9);
+            this.btnAdd32Customs.Name = "btnAdd32Customs";
+            this.btnAdd32Customs.Size = new System.Drawing.Size(137, 23);
+            this.btnAdd32Customs.TabIndex = 12;
+            this.btnAdd32Customs.Text = "Add 32 Customs";
+            this.btnAdd32Customs.UseVisualStyleBackColor = true;
+            this.btnAdd32Customs.Click += new System.EventHandler(this.btnAdd32Customs_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 673);
+            this.Controls.Add(this.btnAdd32Customs);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.cmbMain);
             this.Controls.Add(this.button1);
@@ -215,6 +227,7 @@
         private System.Windows.Forms.ComboBox cmbMain;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAdd32Customs;
     }
 }
 

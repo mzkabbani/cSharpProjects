@@ -92,6 +92,7 @@ namespace XmlParsersAndUi.Forms {
         private List<string> SearchAndGenerate(string fileName, List<CaptureEvent> selectedCaptureEvents) {
             List<string> textGenerated = new List<string>();
             string fileRead = FrontendUtils.ReadFile(fileName);
+            fileRead = fileRead.Replace("<!DOCTYPE MXClientScript>", "");
             if (fileRead.Contains("LoginInfo")) {
                 Regex regUsername = new Regex("<UserName>(.*?)</UserName>");
                 Regex regPasswrod = new Regex("<Password>(.*?)</Password>");
@@ -114,13 +115,15 @@ namespace XmlParsersAndUi.Forms {
             IEnumerable<XNode> nodes = xdoc.Descendants("Events").Nodes();
             Regex regex = new Regex("&lt;!--(.*?)--&gt");  
             foreach (XNode node in nodes) {
-                if (node.ToString().Contains("EventID")) {
-                    textGenerated.Add(node.ToString());
-                } else {
-                    MatchCollection collection = regex.Matches(node.ToString());
-                    foreach (Match match in collection) {
-                        textGenerated.Add(match.Groups[1].Value);
-                    }
+                if (node.NodeType != XmlNodeType.Comment) {
+                    if (node.ToString().Contains("EventID")) {
+                        textGenerated.Add(node.ToString());
+                    } else {
+                        MatchCollection collection = regex.Matches(node.ToString());
+                        foreach (Match match in collection) {
+                            textGenerated.Add(match.Groups[1].Value);
+                        }
+                    } 
                 }
             }
             return textGenerated;
@@ -162,7 +165,7 @@ namespace XmlParsersAndUi.Forms {
             XElement element = XElement.Parse(foundNode.ToString());
             for (int i = 0; i < replaceableValues.Count; i++) {
                 if (string.Equals(replaceableValues[i].attrName, "TextValue", StringComparison.InvariantCultureIgnoreCase)) {
-                    string textValue = element.DescendantsAndSelf(replaceableValues[i].nodeName).ElementAt(0).Value;
+                    string textValue = element.DescendantsAndSelf(replaceableValues[i].nodeName).ElementAt(0).Value.Trim();
 
                     if (completedEvent.Contains("{" + replaceableValues[i].nodeName + ":TextValue}")) {
                         completedEvent = completedEvent.Replace("{" + replaceableValues[i].nodeName + ":TextValue}", textValue);
@@ -171,7 +174,7 @@ namespace XmlParsersAndUi.Forms {
                     }
 
                 } else {
-                    string attrValue = element.DescendantsAndSelf(replaceableValues[i].nodeName).Attributes(replaceableValues[i].attrName).ElementAt(0).Value;
+                    string attrValue = element.DescendantsAndSelf(replaceableValues[i].nodeName).Attributes(replaceableValues[i].attrName).ElementAt(0).Value.Trim();
                     if (completedEvent.Contains("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrName + "}")) {
                         completedEvent = completedEvent.Replace("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrName + "}", attrValue);
 

@@ -9,7 +9,7 @@ namespace XmlParsersAndUi.Classes {
         public string localDescription;
         public Dictionary<string, List<string>> localVariableTypeAndName;
         public string functionCall;
-
+        public List<string> variablesIndexes = new List<string>();
 
         public CustomizationFunction(string name, string description, Dictionary<string, List<string>> variableNameAndType, string matchFunction) {
             localName = name;

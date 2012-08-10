@@ -18,6 +18,8 @@ namespace XmlParsersAndUi {
         public string nodeIncludedText;
         public int nodeLevel;
         public int nodeIndex;
+        public int parentLevel;
+        public int parentIndex;
         public CustomTreeNode(string text, XmlAttributeCollection attrCollection) {
             Attributes = attrCollection;
             if (this.Attributes != null) {

@@ -24,10 +24,10 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(PackageGenerator));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.lbAvailableFunctions = new System.Windows.Forms.ListBox();
@@ -80,12 +80,16 @@
             this.lbAvailableProps = new System.Windows.Forms.ListBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.dgvOutputOperations = new System.Windows.Forms.DataGridView();
-            this.Steps = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Operations = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmsAddPropertyMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addPropertyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relAppdirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnImportCi = new System.Windows.Forms.Button();
+            this.btnReloadCi = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
+            this.Steps = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Operations = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnMoveRowDown = new System.Windows.Forms.Button();
+            this.btnMoveRowUp = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.gbParameters.SuspendLayout();
@@ -122,9 +126,9 @@
             // btnGeneratePackage
             // 
             this.btnGeneratePackage.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnGeneratePackage.Location = new System.Drawing.Point(159, 673);
+            this.btnGeneratePackage.Location = new System.Drawing.Point(65, 648);
             this.btnGeneratePackage.Name = "btnGeneratePackage";
-            this.btnGeneratePackage.Size = new System.Drawing.Size(174, 23);
+            this.btnGeneratePackage.Size = new System.Drawing.Size(139, 23);
             this.btnGeneratePackage.TabIndex = 7;
             this.btnGeneratePackage.Text = "Generate Package";
             this.btnGeneratePackage.UseVisualStyleBackColor = true;
@@ -269,7 +273,7 @@
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.btnClear);
+            this.groupBox2.Controls.Add(this.btnSave);
             this.groupBox2.Controls.Add(this.btnAdd);
             this.groupBox2.Controls.Add(this.gbParameters);
             this.groupBox2.Controls.Add(this.txtDescription);
@@ -286,11 +290,11 @@
             // btnClear
             // 
             this.btnClear.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnClear.Location = new System.Drawing.Point(303, 343);
+            this.btnClear.Location = new System.Drawing.Point(645, 647);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(75, 23);
+            this.btnClear.Size = new System.Drawing.Size(139, 23);
             this.btnClear.TabIndex = 6;
-            this.btnClear.Text = "Clear";
+            this.btnClear.Text = "Clear All";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -369,9 +373,9 @@
             // btnExportCi
             // 
             this.btnExportCi.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnExportCi.Location = new System.Drawing.Point(339, 673);
+            this.btnExportCi.Location = new System.Drawing.Point(210, 648);
             this.btnExportCi.Name = "btnExportCi";
-            this.btnExportCi.Size = new System.Drawing.Size(174, 23);
+            this.btnExportCi.Size = new System.Drawing.Size(139, 23);
             this.btnExportCi.TabIndex = 10;
             this.btnExportCi.Text = "Export .Ci";
             this.btnExportCi.UseVisualStyleBackColor = true;
@@ -391,8 +395,13 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnReloadCi);
+            this.tabPage1.Controls.Add(this.btnClear);
+            this.tabPage1.Controls.Add(this.btnImportCi);
             this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Controls.Add(this.btnExportCi);
             this.tabPage1.Controls.Add(this.groupBox1);
+            this.tabPage1.Controls.Add(this.btnGeneratePackage);
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
@@ -600,6 +609,8 @@
             this.groupBox6.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox6.Controls.Add(this.btnMoveRowUp);
+            this.groupBox6.Controls.Add(this.btnMoveRowDown);
             this.groupBox6.Controls.Add(this.dgvOutputOperations);
             this.groupBox6.Location = new System.Drawing.Point(12, 410);
             this.groupBox6.Name = "groupBox6";
@@ -612,60 +623,50 @@
             // 
             this.dgvOutputOperations.AllowDrop = true;
             this.dgvOutputOperations.AllowUserToAddRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.LemonChiffon;
-            this.dgvOutputOperations.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOutputOperations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.LemonChiffon;
+            this.dgvOutputOperations.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            this.dgvOutputOperations.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOutputOperations.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvOutputOperations.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvOutputOperations.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Steps,
             this.Operations});
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvOutputOperations.DefaultCellStyle = dataGridViewCellStyle3;
-            this.dgvOutputOperations.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvOutputOperations.Location = new System.Drawing.Point(3, 16);
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvOutputOperations.DefaultCellStyle = dataGridViewCellStyle7;
+            this.dgvOutputOperations.Location = new System.Drawing.Point(6, 16);
             this.dgvOutputOperations.Name = "dgvOutputOperations";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgvOutputOperations.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgvOutputOperations.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvOutputOperations.RowHeadersVisible = false;
             this.dgvOutputOperations.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvOutputOperations.Size = new System.Drawing.Size(825, 234);
+            this.dgvOutputOperations.Size = new System.Drawing.Size(781, 234);
             this.dgvOutputOperations.TabIndex = 0;
             this.dgvOutputOperations.MouseDown += new System.Windows.Forms.MouseEventHandler(this.dgvOutputOperations_MouseDown);
             this.dgvOutputOperations.MouseMove += new System.Windows.Forms.MouseEventHandler(this.dgvOutputOperations_MouseMove);
             this.dgvOutputOperations.DragOver += new System.Windows.Forms.DragEventHandler(this.dgvOutputOperations_DragOver);
             this.dgvOutputOperations.DragDrop += new System.Windows.Forms.DragEventHandler(this.dgvOutputOperations_DragDrop);
-            // 
-            // Steps
-            // 
-            this.Steps.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Steps.FillWeight = 10F;
-            this.Steps.HeaderText = "Steps";
-            this.Steps.Name = "Steps";
-            // 
-            // Operations
-            // 
-            this.Operations.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Operations.HeaderText = "Operations";
-            this.Operations.Name = "Operations";
+            this.dgvOutputOperations.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOutputOperations_CellContentClick);
             // 
             // cmsAddPropertyMenu
             // 
@@ -692,23 +693,82 @@
             // btnImportCi
             // 
             this.btnImportCi.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnImportCi.Location = new System.Drawing.Point(519, 673);
+            this.btnImportCi.Location = new System.Drawing.Point(355, 648);
             this.btnImportCi.Name = "btnImportCi";
-            this.btnImportCi.Size = new System.Drawing.Size(174, 23);
+            this.btnImportCi.Size = new System.Drawing.Size(139, 23);
             this.btnImportCi.TabIndex = 12;
             this.btnImportCi.Text = "Import .Ci";
             this.btnImportCi.UseVisualStyleBackColor = true;
             this.btnImportCi.Click += new System.EventHandler(this.btnImportCi_Click);
+            // 
+            // btnReloadCi
+            // 
+            this.btnReloadCi.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnReloadCi.Enabled = false;
+            this.btnReloadCi.Location = new System.Drawing.Point(500, 647);
+            this.btnReloadCi.Name = "btnReloadCi";
+            this.btnReloadCi.Size = new System.Drawing.Size(139, 23);
+            this.btnReloadCi.TabIndex = 13;
+            this.btnReloadCi.Text = "Reload Ci";
+            this.btnReloadCi.UseVisualStyleBackColor = true;
+            this.btnReloadCi.Click += new System.EventHandler(this.btnReloadCi_Click);
+            // 
+            // btnSave
+            // 
+            this.btnSave.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnSave.Enabled = false;
+            this.btnSave.Location = new System.Drawing.Point(303, 343);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(75, 23);
+            this.btnSave.TabIndex = 6;
+            this.btnSave.Text = "Save";
+            this.btnSave.UseVisualStyleBackColor = true;
+            // 
+            // Steps
+            // 
+            this.Steps.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Steps.FillWeight = 10F;
+            this.Steps.HeaderText = "Steps";
+            this.Steps.Name = "Steps";
+            this.Steps.ReadOnly = true;
+            // 
+            // Operations
+            // 
+            this.Operations.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Operations.HeaderText = "Operations";
+            this.Operations.Name = "Operations";
+            this.Operations.ReadOnly = true;
+            // 
+            // btnMoveRowDown
+            // 
+            this.btnMoveRowDown.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnMoveRowDown.Image = ((System.Drawing.Image)(resources.GetObject("btnMoveRowDown.Image")));
+            this.btnMoveRowDown.Location = new System.Drawing.Point(793, 129);
+            this.btnMoveRowDown.Name = "btnMoveRowDown";
+            this.btnMoveRowDown.Size = new System.Drawing.Size(32, 57);
+            this.btnMoveRowDown.TabIndex = 7;
+            this.btnMoveRowDown.TabStop = false;
+            this.btnMoveRowDown.UseVisualStyleBackColor = true;
+            this.btnMoveRowDown.Click += new System.EventHandler(this.btnMoveRowDown_Click);
+            // 
+            // btnMoveRowUp
+            // 
+            this.btnMoveRowUp.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btnMoveRowUp.Image = ((System.Drawing.Image)(resources.GetObject("btnMoveRowUp.Image")));
+            this.btnMoveRowUp.Location = new System.Drawing.Point(793, 66);
+            this.btnMoveRowUp.Name = "btnMoveRowUp";
+            this.btnMoveRowUp.Size = new System.Drawing.Size(32, 57);
+            this.btnMoveRowUp.TabIndex = 8;
+            this.btnMoveRowUp.TabStop = false;
+            this.btnMoveRowUp.UseVisualStyleBackColor = true;
+            this.btnMoveRowUp.Click += new System.EventHandler(this.button2_Click);
             // 
             // PackageGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(852, 700);
-            this.Controls.Add(this.btnImportCi);
             this.Controls.Add(this.groupBox6);
-            this.Controls.Add(this.btnExportCi);
-            this.Controls.Add(this.btnGeneratePackage);
             this.Controls.Add(this.tabControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -785,11 +845,15 @@
         private System.Windows.Forms.ComboBox cboPropertyValue;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.DataGridView dgvOutputOperations;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Steps;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Operations;
         private System.Windows.Forms.ContextMenuStrip cmsAddPropertyMenu;
         private System.Windows.Forms.ToolStripMenuItem addPropertyToolStripMenuItem;
         private System.Windows.Forms.Button btnImportCi;
         private System.Windows.Forms.ToolStripMenuItem relAppdirToolStripMenuItem;
+        private System.Windows.Forms.Button btnReloadCi;
+        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Steps;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Operations;
+        private System.Windows.Forms.Button btnMoveRowDown;
+        private System.Windows.Forms.Button btnMoveRowUp;
     }
 }

@@ -70,6 +70,12 @@
     <Compile Include="Forms\ExceptionForm.Designer.cs">
       <DependentUpon>ExceptionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\PackageNameForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PackageNameForm.Designer.cs">
+      <DependentUpon>PackageNameForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PackageGenerator.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -86,6 +92,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ExceptionForm.resx">
       <DependentUpon>ExceptionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PackageNameForm.resx">
+      <DependentUpon>PackageNameForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PackageGenerator.resx">
       <DependentUpon>PackageGenerator.cs</DependentUpon>
@@ -133,6 +142,9 @@
     <Content Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\scripts\SetTagTextValueXsl.xsl" />
     <Content Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\scripts\SetTagValueXsl.xsl" />
     <Content Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\scripts\UncommentByPattern.xsl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

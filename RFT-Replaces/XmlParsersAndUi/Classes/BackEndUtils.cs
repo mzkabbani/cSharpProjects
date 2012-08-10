@@ -189,6 +189,20 @@ namespace XmlParsersAndUi {
 
         #region Text conversion
 
+
+        internal static void DisableAdvanceRecById(int advanceRecId) {
+            SqlCeConnection conn = GetSqlConnection();
+            try {
+                conn.Open();
+                SqlCeCommand command = new SqlCeCommand(SqlCommands.commandDisableAdvancedRecTextConv, conn);                
+                command.Parameters.Add("@id", advanceRecId);
+                command.Parameters.Add("@isEnabled", "0");
+                command.ExecuteNonQuery();
+            } finally {
+                conn.Close();
+            }
+        }
+
         internal static void SaveCaptureEventByIdForTextConversion(int captureEventId, CaptureEvent captureEvent, ReplacementEvent replacementEvent) {
             SqlCeTransaction transaction;
             SqlCeConnection conn = GetSqlConnection();
@@ -225,6 +239,9 @@ namespace XmlParsersAndUi {
                 command.Parameters.Add("@pointRecId", RecommendationId);
                 command.Parameters.Add("@Level", customNodesList[i].Level);
                 command.Parameters.Add("@ItemIndex", customNodesList[i].Index);
+                command.Parameters.Add("@parentLevel", customNodesList[i].Parent == null ? -1 : customNodesList[i].Parent.Level);
+                command.Parameters.Add("@parentIndex", customNodesList[i].Parent == null ? -1 : customNodesList[i].Parent.Index);
+
                 returnCode = Convert.ToInt32(command.ExecuteNonQuery());
                 SqlCeCommand commandMaxId = new SqlCeCommand(SqlCommands.commandMaxCapturePointIdTextConv, conn);
                 capturePointsIds.Add(Convert.ToInt32(commandMaxId.ExecuteScalar()));
@@ -355,6 +372,9 @@ namespace XmlParsersAndUi {
                     command.Parameters.Add("@pointRecId", RecommendationId);
                     command.Parameters.Add("@Level", customNodesList[i].Level);
                     command.Parameters.Add("@ItemIndex", customNodesList[i].Index);
+                    command.Parameters.Add("@parentLevel", customNodesList[i].Parent == null ? -1 : customNodesList[i].Parent.Level);
+                    command.Parameters.Add("@parentIndex", customNodesList[i].Parent == null ? -1 : customNodesList[i].Parent.Index);
+
                     returnCode = Convert.ToInt32(command.ExecuteNonQuery());
                     SqlCeCommand commandMaxId = new SqlCeCommand(SqlCommands.commandMaxCapturePointIdTextConv, conn);
                     capturePointsIds.Add(Convert.ToInt32(commandMaxId.ExecuteScalar()));
@@ -545,6 +565,8 @@ namespace XmlParsersAndUi {
                 CustomTreeNode treeNode = new CustomTreeNode(capturePointsTable.Rows[i].ItemArray[0].ToString(), attrCol);
                 treeNode.nodeLevel = Convert.ToInt32(capturePointsTable.Rows[i].ItemArray[4]);
                 treeNode.nodeIndex = Convert.ToInt32(capturePointsTable.Rows[i].ItemArray[5]);
+                treeNode.parentLevel=Convert.ToInt32(capturePointsTable.Rows[i].ItemArray[6]);
+                treeNode.parentIndex = Convert.ToInt32(capturePointsTable.Rows[i].ItemArray[7]);
                 treeNode.isNodeUsed = true;
                 string[] usedAttributeNames = capturePointsTable.Rows[i].ItemArray[1].ToString().Split(',');
                 string parentNode = capturePointsTable.Rows[i].ItemArray[2].ToString();

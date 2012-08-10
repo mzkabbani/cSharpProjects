@@ -36,8 +36,8 @@ namespace XmlParsersAndUi.Classes {
         public static string commandRemoveAllCapturePointsByRecIdTextConv = "Delete From Rec_CapturePoints_TextConv where pointRecId = @pointRecId";
 
         public static string commandInsertCapturePointTextConv = "INSERT INTO " +
-                                                 "Rec_CapturePoints_TextConv (pointText, pointUsedAttributes, pointParentNode,pointUsedAttribValues,pointRecId,Level,ItemIndex ) " +
-                                                 "VALUES (@pointText, @pointUsedAttributes, @pointParentNode, @pointUsedAttribValues, @pointRecId,@Level,@ItemIndex)";
+                                                 "Rec_CapturePoints_TextConv (pointText, pointUsedAttributes, pointParentNode,pointUsedAttribValues,pointRecId,Level,ItemIndex,parentLevel,parentIndex ) " +
+                                                 "VALUES (@pointText, @pointUsedAttributes, @pointParentNode, @pointUsedAttribValues, @pointRecId,@Level,@ItemIndex,@parentLevel,@parentIndex)";
 
         public static string commandMaxRecommendationIdTextConv = "SELECT MAX(id) " +
                                                           "FROM Advanced_Recomendations_TextConv";
@@ -45,7 +45,8 @@ namespace XmlParsersAndUi.Classes {
         public static string commandMaxCapturePointIdTextConv = "SELECT MAX(id) " +
                                                         "FROM Rec_CapturePoints_TextConv";
 
-        public static string commandGetAllRespectiveCapturePointsTextConv = "SELECT Rec_CapturePoints_TextConv.pointText, Rec_CapturePoints_TextConv.pointUsedAttributes, Rec_CapturePoints_TextConv.pointParentNode, Rec_CapturePoints_TextConv.pointUsedAttribValues, Rec_CapturePoints_TextConv.Level ,Rec_CapturePoints_TextConv.ItemIndex \n" +
+        public static string commandGetAllRespectiveCapturePointsTextConv = "SELECT Rec_CapturePoints_TextConv.pointText, Rec_CapturePoints_TextConv.pointUsedAttributes, Rec_CapturePoints_TextConv.pointParentNode, "+
+                                                                    " Rec_CapturePoints_TextConv.pointUsedAttribValues, Rec_CapturePoints_TextConv.Level ,Rec_CapturePoints_TextConv.ItemIndex ,Rec_CapturePoints_TextConv.parentLevel ,Rec_CapturePoints_TextConv.parentIndex \n" +
                                                                    "FROM Advanced_Recomendations_TextConv INNER JOIN  Rec_CapturePoints_TextConv ON Advanced_Recomendations_TextConv.id = Rec_CapturePoints_TextConv.pointRecId \n" +
                                                                    "WHERE (Rec_CapturePoints_TextConv.pointRecId = @pointRecId)";
 
@@ -106,19 +107,26 @@ namespace XmlParsersAndUi.Classes {
                                                             "Rec_CapturePoints_TextConv ON Advanced_Recomendations_TextConv.id = Rec_CapturePoints.pointRecId) AS derivedtbl_1";
 
         public static string commandGetAllrecommendationsTextConv = "SELECT * " +
-                                                            "FROM Advanced_Recomendations_TextConv";
+                                                            "FROM Advanced_Recomendations_TextConv "+
+                                                            "Where isEnabled=1";
 
 
         public static string commandInsertRecommendationTextConv = "INSERT INTO " +
-                                                            "Advanced_Recomendations_TextConv    (name, description, event_text, categoryId, usageCount, userId) " +
-                                                            "VALUES (@name,@description,@eventText, @categoryId, @usageCount, @userId)";
+                                                            "Advanced_Recomendations_TextConv    (name, description, event_text, categoryId, usageCount, userId,isEnabled) " +
+                                                            "VALUES (@name,@description,@eventText, @categoryId, @usageCount, @userId,1)";
 
         public static string commandSelectAdvancedRecByIdTextConv = "Select * " +
                                                             "From Advanced_Recomendations_TextConv " +
                                                             "Where id=@id";
 
         public static string commandSelectSumOfAllAdvancedRecUsageTextConv = "SELECT     SUM(usageCount) AS Total " +
-                                                                             "FROM         Advanced_Recomendations_TextConv";
+                                                                             "FROM         Advanced_Recomendations_TextConv "+
+                                                                             "Where isEnabled=1";
+
+        public static string commandDisableAdvancedRecTextConv = "UPDATE    Advanced_Recomendations_TextConv " +
+                                                                 "SET              isEnabled = @isEnabled " +
+                                                                 "WHERE     ( id=@id)";
+
 
         #endregion
 

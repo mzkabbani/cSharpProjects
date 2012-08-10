@@ -63,6 +63,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TDHTabCtl", "TdhTabCtl_src\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PackageGenerator", "PackageGenerator\PackageGenerator.csproj", "{0641C6DB-46CF-48F2-BA91-80A07084890F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrowButton", "..\ArrowButton\ArrowButton.csproj", "{70AF6133-296F-463F-9412-7EB19A6781DF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -193,6 +195,10 @@ Global
 		{0641C6DB-46CF-48F2-BA91-80A07084890F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0641C6DB-46CF-48F2-BA91-80A07084890F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0641C6DB-46CF-48F2-BA91-80A07084890F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{70AF6133-296F-463F-9412-7EB19A6781DF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{70AF6133-296F-463F-9412-7EB19A6781DF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{70AF6133-296F-463F-9412-7EB19A6781DF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{70AF6133-296F-463F-9412-7EB19A6781DF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

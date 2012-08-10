@@ -14,6 +14,7 @@ using XmlParsersAndUi.Classes;
 
 namespace XmlParsersAndUi.Forms {
     public partial class MacroConverterConfForm : Form {
+        
         public MacroConverterConfForm() {
             InitializeComponent();
         }
@@ -22,7 +23,7 @@ namespace XmlParsersAndUi.Forms {
             LoadAvailableARtoList();
             SetAllCombos();
             BindCombos();
-            if(lbAdvancedCE.Items.Count >0){
+            if (lbAdvancedCE.Items.Count > 0) {
                 lbAdvancedCE.SelectedIndex = 0;
             }
         }
@@ -69,7 +70,7 @@ namespace XmlParsersAndUi.Forms {
                 tNode = (TreeNode)tvOutput.Nodes[0];
                 //We make a call to addTreeNode, 
                 //where we'll add all of our nodes
-                addTreeNodeForSingleEventFromDatabase(xDoc.DocumentElement, tNode, captureEvent, 1, 0);
+                addTreeNodeForSingleEventFromDatabase(xDoc.DocumentElement, tNode, captureEvent, 1, 0, 0, 0);
                 //Expand the treeview to show all nodes
                 tvOutput.ExpandAll();
             } catch (XmlException xExc)
@@ -84,7 +85,8 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
-        private void addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, int level, int parentIndex) {
+        private void addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, int level, int index, int parentLevel, int parentIndex) {
+            int newParentLevel = 0;
             XmlNode xNode;
             TreeNode tNode;
             XmlNodeList xNodeList;
@@ -97,27 +99,51 @@ namespace XmlParsersAndUi.Forms {
                     xNode = xmlNode.ChildNodes[x];
                     if (xNode.NodeType != XmlNodeType.Text) {
                         CustomTreeNode customTreeNode = new CustomTreeNode(xNode.Name, xNode.Attributes);
-                        int index = x;
-                        customTreeNode = GetRespectiveCapturePoint(customTreeNode, captureEvent, xNode, index, level, parentIndex);
+                        int currentIndex = j;
+                        customTreeNode = GetRespectiveCapturePoint(customTreeNode, captureEvent, xNode, currentIndex, level, parentIndex, parentLevel);
                         treeNode.Nodes.Add(customTreeNode);
                         //nodeIncludedText
                         tNode = treeNode.Nodes[j];
-                        addTreeNodeForSingleEventFromDatabase(xNode, tNode, captureEvent, level + 1, index);
+                        newParentLevel = level;
+                        int newParentIndex = currentIndex;
+                        if (xNode.HasChildNodes) {
+                            //addTreeNodeForSingleEventFromDatabase(xNode, tNode, captureEvent, level + 1, 0, newParentIndex, newParentLevel);
+                            int indextElementTypeOnly = 0;
+                            for (int i = 0; i < xNode.ChildNodes.Count; i++) {
+                                XmlNode childNode = xNode.ChildNodes[i];
+                                if (childNode.NodeType != XmlNodeType.Text) {
+                                    
+                                    customTreeNode = new CustomTreeNode(childNode.Name, childNode.Attributes);
+                                    currentIndex = i;
+                                    customTreeNode = GetRespectiveCapturePoint(customTreeNode, captureEvent, childNode, indextElementTypeOnly, level + 1, j, level);
+                                    tNode.Nodes.Add(customTreeNode);
+                                    indextElementTypeOnly++;
+                                }
+                            }
+                        }
                     } else {
                         j = x - 1;
                     }
                 }
-            } else //No children, so add the outer xml (trimming off whitespace)
+
+            } else { //No children, so add the outer xml (trimming off whitespace)
                 // treeNode.Text = xmlNode.Name;
                 // treeNode.Text = xmlNode.Attributes["name"].Value;
                 treeNode.Text = xmlNode.Attributes["name"] == null ? xmlNode.Name : xmlNode.Attributes["name"].Value;
+            }
         }
+
+
+
+
         List<string> captureNodesSelectedNames = new List<string>();
 
-        private CustomTreeNode GetRespectiveCapturePoint(CustomTreeNode customTreeNode, CaptureEvent captureEvent, XmlNode xNode, int index, int level, int parentIndex) {
+        private CustomTreeNode GetRespectiveCapturePoint(CustomTreeNode customTreeNode, CaptureEvent captureEvent, XmlNode xNode, int index, int level, int parentIndex, int parentLevel) {
             for (int i = 1; i < captureEvent.CaptureEventCapturePointsList.Count; i++) {
                 if (captureEvent.CaptureEventCapturePointsList[i].nodeIndex == index &&
-                    captureEvent.CaptureEventCapturePointsList[i].nodeLevel == level) {
+                    captureEvent.CaptureEventCapturePointsList[i].nodeLevel == level &&
+                    captureEvent.CaptureEventCapturePointsList[i].parentIndex == parentIndex &&
+                    captureEvent.CaptureEventCapturePointsList[i].parentLevel == parentLevel) {
                     if (string.Equals(captureEvent.CaptureEventCapturePointsList[i].Text, xNode.Name)) {
                         if ((captureNodesSelectedNames.Count < captureEvent.CaptureEventCapturePointsList.Count - 1) || (!captureNodesSelectedNames.Contains(xNode.Name))) {
                             customTreeNode.customizedAttributeCollection = captureEvent.CaptureEventCapturePointsList[i].customizedAttributeCollection;
@@ -269,19 +295,19 @@ namespace XmlParsersAndUi.Forms {
                             if (normalAttrIndex != -1) {
                                 node.customizedAttributeCollection[normalAttrIndex].isUsed = true;
                                 node.customizedAttributeCollection[normalAttrIndex].attrName = row.Cells[1].Value.ToString();
-                                node.customizedAttributeCollection[normalAttrIndex].attrValue = row.Cells[2].Value.ToString();
-                                node.Attributes[(string)row.Cells[1].Value].Value = row.Cells[2].Value.ToString();
+                                node.customizedAttributeCollection[normalAttrIndex].attrValue = row.Cells[2].Value.ToString().Trim();
+                                node.Attributes[(string)row.Cells[1].Value].Value = row.Cells[2].Value.ToString().Trim();
                             } else {
                                 CustomizedAttribute attr = new CustomizedAttribute(node.Attributes[row.Cells[1].Value.ToString()], true);
                                 row.Cells[0].Value = true;
-                                attr.attrName = row.Cells[1].Value.ToString();
-                                attr.attrValue = row.Cells[2].Value.ToString();
+                                attr.attrName = row.Cells[1].Value.ToString().Trim();
+                                attr.attrValue = row.Cells[2].Value.ToString().Trim();
                                 node.customizedAttributeCollection.Add(attr);
                             }
                         } else {
                             (node.customizedAttributeCollection[attrIndex]).isUsed = true;
-                            (node.customizedAttributeCollection[attrIndex]).attrValue = row.Cells[2].Value.ToString(); ;
-                            node.Attributes[(string)row.Cells[1].Value].Value = row.Cells[2].Value.ToString();
+                            (node.customizedAttributeCollection[attrIndex]).attrValue = row.Cells[2].Value.ToString().Trim();
+                            node.Attributes[(string)row.Cells[1].Value].Value = row.Cells[2].Value.ToString().Trim();
                         }
                     } else {
                         int attrIndex = GetCustomizedAttrIndex(node.customizedAttributeCollection, row.Cells[1]);
@@ -341,7 +367,7 @@ namespace XmlParsersAndUi.Forms {
 
         void Recur(TreeNodeCollection nodeCollection) {
             if (nodeCollection != null) {
-                for (int i = 0; i < nodeCollection.Count; i++) {                    
+                for (int i = 0; i < nodeCollection.Count; i++) {
                     if (nodeCollection[i].Checked) {
                         (nodeCollection[i] as CustomTreeNode).isNodeUsed = true;
                         captureEventNodes.Add(nodeCollection[i] as CustomTreeNode); //(1)                        
@@ -376,27 +402,27 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private void btnAddCaptureEvent_Click(object sender, EventArgs e) {
-            try {
+            try {                
                 if (eventParsed) {
-                string ruleName = txtAOName.Text.Trim();
-                string ruleDescription = txtAODescription.Text.Trim();
-                string ruleEventIn = txtAOEventIn.Text.Trim();
-                string replacementText = txtTextValue.Text.Trim();
-                if (IsValidToAddRule(ruleName, ruleDescription, ruleEventIn, replacementText)) {
-                    Recur(tvOutput.Nodes);
-                    SaveUpdatedAttributes();
-                    CaptureEvent captureEvent = new CaptureEvent(ruleName, ruleDescription, ruleEventIn, captureEventNodes);
-                    captureEvent.captureEventCategory = Convert.ToInt32(cboCaptureType.SelectedValue);
-                    captureEvent.captureEventUsageCount = 0;
-                    ReplacementEvent replacementEvent = new ReplacementEvent("Replacement-" + ruleName, "Repalcement-" + ruleDescription, replacementText, 1, 0, FrontendUtils.LoggedInUserId);
-                    BackEndUtils.InsertCaptureEventForTextConversion(captureEvent, replacementEvent);
-                    FrontendUtils.ShowInformation("Capture event inserted successfully!");
-                }
-                LoadAvailableARtoList();
-                SetAllCombos();
-                BindCombos();
-                lbAdvancedCE.Select();
-                }else{
+                    string ruleName = txtAOName.Text.Trim();
+                    string ruleDescription = txtAODescription.Text.Trim();
+                    string ruleEventIn = txtAOEventIn.Text.Trim();
+                    string replacementText = txtTextValue.Text.Trim();
+                    if (IsValidToAddRule(ruleName, ruleDescription, ruleEventIn, replacementText, tvOutput.Nodes[0])) {
+                        Recur(tvOutput.Nodes);
+                        SaveUpdatedAttributes();
+                        CaptureEvent captureEvent = new CaptureEvent(ruleName, ruleDescription, ruleEventIn, captureEventNodes);
+                        captureEvent.captureEventCategory = Convert.ToInt32(cboCaptureType.SelectedValue);
+                        captureEvent.captureEventUsageCount = 0;
+                        ReplacementEvent replacementEvent = new ReplacementEvent("Replacement-" + ruleName, "Repalcement-" + ruleDescription, replacementText, 1, 0, FrontendUtils.LoggedInUserId);
+                        BackEndUtils.InsertCaptureEventForTextConversion(captureEvent, replacementEvent);
+                        FrontendUtils.ShowInformation("Capture event inserted successfully!");
+                    }
+                    LoadAvailableARtoList();
+                    SetAllCombos();
+                    BindCombos();
+                    lbAdvancedCE.Select();
+                } else {
                     FrontendUtils.ShowInformation("Please [Parse] the input event before proceeding");
                 }
             } catch (Exception ex) {
@@ -404,7 +430,7 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
-        private bool IsValidToAddRule(string ruleName, string ruleDescription, string ruleEventIn, string replacement) {
+        private bool IsValidToAddRule(string ruleName, string ruleDescription, string ruleEventIn, string replacement, TreeNode parentNode) {
             if (string.IsNullOrEmpty(ruleName)) {
                 FrontendUtils.ShowInformation("Rule name cannot be empty!");
                 return false;
@@ -421,6 +447,10 @@ namespace XmlParsersAndUi.Forms {
             }
             if (string.IsNullOrEmpty(replacement)) {
                 FrontendUtils.ShowInformation("A replacement must be supplied!");
+                return false;
+            }
+            if (!parentNode.Checked) {
+                FrontendUtils.ShowInformation("Event main node should be checked!");
                 return false;
             }
             return true;
@@ -503,9 +533,9 @@ namespace XmlParsersAndUi.Forms {
 
             for (int j = 0; (j < treeNodeNodes.Length) && (treeNodeNodes[j].isNodeUsed); j++) {
                 if (string.Equals(treeNodeNodes[j].Text, customTreeNode.Text) && !treeNodeNodes[j].nodeVisited) {
-                    if(treeNodeNodes[j].isNodeUsed){
-                        customTreeNode.Checked = true;
-                    }
+                    //if (treeNodeNodes[j].isNodeUsed) {
+                    //    customTreeNode.Checked = true;
+                    //}
                     treeNodeNodes[j].nodeVisited = true;
                     for (int k = 0; k < treeNodeNodes[j].customizedAttributeCollection.Count; k++) {
                         CustomizedAttribute customAttrFromDB = treeNodeNodes[j].customizedAttributeCollection[k];
@@ -567,6 +597,7 @@ namespace XmlParsersAndUi.Forms {
         private void lbAdvancedCE_SelectedIndexChanged_1(object sender, EventArgs e) {
             try {
                 eventParsed = true;
+                btnDeleteAdvanceRec.Enabled = true;
                 captureNodesSelectedNames = new List<string>();
                 CaptureEvent captureEvent = new CaptureEvent();
                 captureEvent = lbAdvancedCE.SelectedItem as CaptureEvent;
@@ -648,6 +679,7 @@ namespace XmlParsersAndUi.Forms {
             txtTextValue.Clear();
             btnAddCaptureEvent.Enabled = true;
             btnSaveCaptureEvent.Enabled = false;
+            btnDeleteAdvanceRec.Enabled = false;
             txtAOEventIn.ReadOnly = false;
             txtAOName.Focus();
             txtAOName.Clear();
@@ -925,7 +957,9 @@ namespace XmlParsersAndUi.Forms {
             try {
                 if (IsValidXml(txtAOEventIn.Text)) {
                     ParseEvent(txtAOEventIn.Text);
-                    btnAddCaptureEvent.Enabled = true;
+                    if (!txtAOEventIn.ReadOnly) {
+                        btnAddCaptureEvent.Enabled = true;
+                    }                    
                     eventParsed = true;
                 } else {
                     FrontendUtils.ShowInformation("Event must be a valid xml!");
@@ -935,6 +969,22 @@ namespace XmlParsersAndUi.Forms {
             }
 
 
+        }
+
+        private void btnDeleteAdvanceRec_Click(object sender, EventArgs e) {
+            try {
+                DialogResult dial = FrontendUtils.ShowConformation("Are you sure you want to delete [" + CurrentlySelectedCaptureEvent.CaptureEventName + "] ?");
+                if (dial == DialogResult.Yes) {
+                    BackEndUtils.DisableAdvanceRecById(CurrentlySelectedCaptureEvent.CaptureEventId);
+                    LoadAvailableARtoList();
+                    SetAllCombos();
+                    BindCombos();
+                    lbAdvancedCE.Select();
+                }
+
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message, ex);
+            }
         }
 
 

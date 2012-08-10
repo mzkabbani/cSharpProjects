@@ -53,6 +53,7 @@
             this.btnResetCaptureEvents = new System.Windows.Forms.Button();
             this.txtAOName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
+            this.btnDeleteAdvanceRec = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -127,6 +128,7 @@
             this.gbRuleDefinition.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbRuleDefinition.Controls.Add(this.btnDeleteAdvanceRec);
             this.gbRuleDefinition.Controls.Add(this.label14);
             this.gbRuleDefinition.Controls.Add(this.gbSpecificConfNodes);
             this.gbRuleDefinition.Controls.Add(this.cboCaptureType);
@@ -345,7 +347,7 @@
             // 
             this.btnAddCaptureEvent.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnAddCaptureEvent.Enabled = false;
-            this.btnAddCaptureEvent.Location = new System.Drawing.Point(127, 687);
+            this.btnAddCaptureEvent.Location = new System.Drawing.Point(61, 687);
             this.btnAddCaptureEvent.Name = "btnAddCaptureEvent";
             this.btnAddCaptureEvent.Size = new System.Drawing.Size(140, 23);
             this.btnAddCaptureEvent.TabIndex = 5;
@@ -357,7 +359,7 @@
             // 
             this.btnSaveCaptureEvent.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnSaveCaptureEvent.Enabled = false;
-            this.btnSaveCaptureEvent.Location = new System.Drawing.Point(273, 687);
+            this.btnSaveCaptureEvent.Location = new System.Drawing.Point(207, 687);
             this.btnSaveCaptureEvent.Name = "btnSaveCaptureEvent";
             this.btnSaveCaptureEvent.Size = new System.Drawing.Size(140, 23);
             this.btnSaveCaptureEvent.TabIndex = 6;
@@ -368,7 +370,7 @@
             // btnResetCaptureEvents
             // 
             this.btnResetCaptureEvents.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnResetCaptureEvents.Location = new System.Drawing.Point(419, 687);
+            this.btnResetCaptureEvents.Location = new System.Drawing.Point(353, 687);
             this.btnResetCaptureEvents.Name = "btnResetCaptureEvents";
             this.btnResetCaptureEvents.Size = new System.Drawing.Size(140, 23);
             this.btnResetCaptureEvents.TabIndex = 7;
@@ -394,6 +396,18 @@
             this.label8.Size = new System.Drawing.Size(38, 13);
             this.label8.TabIndex = 1;
             this.label8.Text = "Name:";
+            // 
+            // btnDeleteAdvanceRec
+            // 
+            this.btnDeleteAdvanceRec.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnDeleteAdvanceRec.Enabled = false;
+            this.btnDeleteAdvanceRec.Location = new System.Drawing.Point(499, 687);
+            this.btnDeleteAdvanceRec.Name = "btnDeleteAdvanceRec";
+            this.btnDeleteAdvanceRec.Size = new System.Drawing.Size(140, 23);
+            this.btnDeleteAdvanceRec.TabIndex = 19;
+            this.btnDeleteAdvanceRec.Text = "Delete";
+            this.btnDeleteAdvanceRec.UseVisualStyleBackColor = true;
+            this.btnDeleteAdvanceRec.Click += new System.EventHandler(this.btnDeleteAdvanceRec_Click);
             // 
             // MacroConverterConfForm
             // 
@@ -452,5 +466,6 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtTextValue;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnDeleteAdvanceRec;
     }
 }

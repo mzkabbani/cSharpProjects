@@ -117,6 +117,33 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="btnMoveRowUp.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAXFJREFUeF7t2GEK
+        gzAMhmFv4BF2lB11R/JIm4EVRFpNYtOk7SfIfkyx76MWdVmwQAACEIAABCAAAR+Bz37YbV9Xn8P7HpXi
+        v/91OoRj/HQIufhpEK7ih0fgxA+LIIkfDkETPwzCk/juEWrEd4tQM747BIv4bhAs48MjtIgPi9AyPhyC
+        R3wYBM94d4QI8W4Imvjt8AEkDbz0K9m2OYI2fhUA0LYhEd6CiNyZuTvz6X/6WKdFoDGaLVIAOosUkhYJ
+        gBYhDMA5noKkABqEEAC5eC2AFMEdoBT/BECC4ApwFf8UgIvgBnAXXwOAg+ACwImvBXCH0ByAG18T4Aqh
+        KYAkvjZACaEZgDTeAiCH0ARAE28FcEYwB9DGWwIcEUwBXqdne+lLh+ZRWHIMeu+gMYZdrAHChqeBAYD5
+        Rhj+TGoHiCsAVwDvo4j2Cgu/H24B3AK4BVgfRsPfy9oBYg7AHIA5YO45QDt3YD8IQAACEIAABOoL/AAI
+        FmVw6idxagAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="btnMoveRowDown.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAAEAAAABACAYAAACqaXHeAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAWlJREFUeF7t2OsN
+        wjAMRlE2YARGYVRG6khQS1Sqqj5sJ37E/Srxr0pyT0NQeTxwQQACEIAABCAAAR+B7zwN5+OzmoBZOPF0
+        T9kLAPgK4AzAIcg5B3AIVhXgPH38DFZ9+tSFHcBEKLsJsANG3wGvOeDZsD+tdwCtjdZodr3nkacGBEsA
+        iqe10RrNLhqcIrQIVgBLPI3vAqBFsABYx7sCaBB6A2zj3QGkCD0B9uJDACQIvQCO4sMAuAg9AM7iQwE4
+        CK0AV/HhAFcILQCc+BQAZwhaAG58GoAjBA2AJD4VwB6CFEAanw5giyAB0MSbA2gXNf1foLgA2nk+Zm9B
+        q4G1iyMELoDk3mVMl/jFQYvABZDe5xqfDSEkPgtCaHw0Qor4KIRU8d4IKeO9EFLHWyMMEW+FMFR8b4Qh
+        43shDB3filAiXotQKl6KUDKei1A6/grhFvFHCLeK3yLcMt7jrzvMAQEIQAACEIDAucAP4bhlcIIZcYMA
+        AAAASUVORK5CYII=
+</value>
+  </data>
   <metadata name="Steps.UserAddedColumn" type="System.Boolean, mscorlib, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -126,7 +153,6 @@
   <metadata name="cmsAddPropertyMenu.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAUAEBAAAAAAIABoBAAAVgAAACAgAAAAACAAqBAAAL4EAAAwMAAAAAAgAKglAABmFQAAQEAAAAAA
