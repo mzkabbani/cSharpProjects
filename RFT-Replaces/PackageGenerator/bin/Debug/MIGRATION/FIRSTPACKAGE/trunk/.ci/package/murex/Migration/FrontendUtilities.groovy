@@ -1,5 +1,6 @@
 package murex.Migration;
-
+import java.util.Formatter.DateTime;
+import org.codehaus.groovy.runtime.DateGroovyMethods;
 import org.codehaus.groovy.tools.shell.Shell;
 import javax.xml.transform.stream.StreamSource;
 import javax.xml.transform.TransformerFactory;
@@ -54,10 +55,12 @@ public  class FrontendUtilities extends Operations{
 	//desc-end
 	public def AppendTextToFile(def fileName, def textToAppend){
 		try{
+			LogInfo(LogFile,"Start Append to text file: $fileName")
 			new File(fileName).append("\r\n"+textToAppend);
+			LogInfo(LogFile,"End Append to text file: $fileName")
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 	}
 
@@ -70,7 +73,12 @@ public  class FrontendUtilities extends Operations{
 	public def SetUtilsLogDir(def logsDir){
 		this.LogDir = logsDir;
 		println this.LogDir;
-		LogFile = new File(AppdirPath+LogDir+"/"+LOG_FILE_NAME);
+		LogFile = new File(AppdirPath+LogDir+"/"+LOG_FILE_NAME);		
+			if(new File( LogFile.getParent()).mkdirs()){
+				LogInfo(LogFile, "Log Dir Setup Completed!")				
+				}
+			LogFile.createNewFile()
+			
 	}
 
 	//desc-start
@@ -95,11 +103,11 @@ public  class FrontendUtilities extends Operations{
 	}
 
 	//desc-start
-	//Name:DelteFile
+	//Name:DeleteFile
 	//Description:Deletes the specified file
 	//Parameter: fileName - File to delete
 	//desc-end
-	public def DelteFile(String fileName){
+	public def DeleteFile(String fileName){
 		try {
 			new File(fileName).delete();
 		} catch (Exception e) {
@@ -167,7 +175,7 @@ public  class FrontendUtilities extends Operations{
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 	}
 
@@ -204,7 +212,7 @@ public  class FrontendUtilities extends Operations{
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 	}
 
@@ -236,7 +244,7 @@ public  class FrontendUtilities extends Operations{
 			setTagTextValueFileXsl.delete();
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 	}
 
@@ -267,7 +275,7 @@ public  class FrontendUtilities extends Operations{
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 	}
 
@@ -294,7 +302,7 @@ public  class FrontendUtilities extends Operations{
 			setTagTextValueFileXsl.delete();
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 	}
 
@@ -320,7 +328,7 @@ public  class FrontendUtilities extends Operations{
 			setTagTextValueFileXsl.delete();
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 	}
 
@@ -346,7 +354,7 @@ public  class FrontendUtilities extends Operations{
 			appendToNodeFileXsl.delete();
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 	}
 
@@ -365,7 +373,7 @@ public  class FrontendUtilities extends Operations{
 			replacementXslFile.delete();
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 	}
 
@@ -392,7 +400,7 @@ public  class FrontendUtilities extends Operations{
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 	}
 
@@ -427,7 +435,8 @@ public  class FrontendUtilities extends Operations{
 	//desc-end
 	public def LogInfo(File file, def logText){
 		try {
-			file.append("\r\n"+logText);
+			
+			file.append("\r\n"+DateGroovyMethods.format(new Date(), 'yyyy/MM/dd hh:mm:ss')+"  "+logText);
 
 		} catch (Exception ex) {
 			LogError(file,"----ERROR----"+ex.message)
@@ -462,7 +471,7 @@ public  class FrontendUtilities extends Operations{
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 	}
 
@@ -470,10 +479,10 @@ public  class FrontendUtilities extends Operations{
 	private def RunXSLT(File xslt,File xml, def parameter,def parameterValue, def parameter1,def parameterValue1){
 		try{
 			if (xml.isFile()) {
-				LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),"Processing XMl with XSLT: $xml With $xslt")
-				LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Parameters:")
-				LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "$parameter $parameterValue")
-				LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "$parameter1 $parameterValue1")
+				LogInfo(LogFile,"Processing XMl with XSLT: $xml With $xslt")
+				LogInfo(LogFile, "Parameters:")
+				LogInfo(LogFile, "$parameter $parameterValue")
+				LogInfo(LogFile, "$parameter1 $parameterValue1")
 				def writer = new StringWriter()
 				def factory = TransformerFactory.newInstance()
 				def reader = new StringReader(ReadFile(xslt))
@@ -483,11 +492,11 @@ public  class FrontendUtilities extends Operations{
 				transformer.setParameter(parameter1,parameterValue1);
 				transformer.transform(new StreamSource(new FileReader(xml.getPath())), new StreamResult(writer))
 				xml.write(writer.toString())
-				LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Writing new File: $xml")
+				LogInfo(LogFile, "Writing new File: $xml")
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 	}
 
@@ -495,9 +504,9 @@ public  class FrontendUtilities extends Operations{
 	private def RunXSLT(File xslt,File xml, def parameter,def parameterValue){
 		try{
 			if (xml.isFile()) {
-				LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),"Processing XMl with XSLT: $xml With $xslt")
-				LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),"Parameters:")
-				LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "$parameter $parameterValue")
+				LogInfo(LogFile,"Processing XMl with XSLT: $xml With $xslt")
+				LogInfo(LogFile,"Parameters:")
+				LogInfo(LogFile, "$parameter $parameterValue")
 				def writer = new StringWriter()
 				def factory = TransformerFactory.newInstance()
 				def reader = new StringReader(ReadFile(xslt))
@@ -506,25 +515,25 @@ public  class FrontendUtilities extends Operations{
 				transformer.setParameter(parameter,parameterValue);
 				transformer.transform(new StreamSource(new FileReader(xml.getPath())), new StreamResult(writer))
 				xml.write(writer.toString())
-				LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Writing new File: $xml")
+				LogInfo(LogFile, "Writing new File: $xml")
 			}
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 	}
 
 	//functional
 	private def processFileInplace(file, Closure processText) {
 		try{
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Processing File in Place: $file")
+			LogInfo(LogFile, "Processing File in Place: $file")
 			def text = file.text
 			file.write(processText(text))
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Done Processing File in Place: $file")
+			LogInfo(LogFile, "Done Processing File in Place: $file")
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 	}
 
@@ -537,16 +546,16 @@ public  class FrontendUtilities extends Operations{
 	//desc-end
 	public def RegexReplaceInFile(File targetFile,def pattern,def replacement){
 		try{
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Applying Regex to file: $targetFile")
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Pattern: $pattern")
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Replacement: $replacement")
+			LogInfo(LogFile, "Applying Regex to file: $targetFile")
+			LogInfo(LogFile, "Pattern: $pattern")
+			LogInfo(LogFile, "Replacement: $replacement")
 
 			processFileInplace(targetFile){ text -> text.replaceAll(/$pattern/,replacement)}
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Done Applying Regex to file: $targetFile")
+			LogInfo(LogFile, "Done Applying Regex to file: $targetFile")
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 	}
 
@@ -557,10 +566,10 @@ public  class FrontendUtilities extends Operations{
 	//desc-end
 	public def DeleteDirectory(def directory){
 		try {
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Deleting Directory: $directory")
+			LogInfo(LogFile, "Deleting Directory: $directory")
 
 			new AntBuilder().delete(dir: directory)
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Done Deleting Directory: $directory")
+			LogInfo(LogFile, "Done Deleting Directory: $directory")
 		} catch (Exception e) {
 			println e.toString();
 		}
@@ -574,12 +583,12 @@ public  class FrontendUtilities extends Operations{
 	//desc-end
 	public def BackupFile(def fileName,def ApplicationDirectoryPath){
 		try {
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Backing up File: $fileName")
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Backup Dir: $BackupDir")
+			LogInfo(LogFile, "Backing up File: $fileName")
+			LogInfo(LogFile, "Backup Dir: $BackupDir")
 			def appDir = ApplicationDirectoryPath;
 			def backupFileName=fileName.replace (ApplicationDirectoryPath, this.BackupDir)
 			CopyFile(fileName, backupFileName)
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Done Backing up File: $fileName to $backupFileName")
+			LogInfo(LogFile, "Done Backing up File: $fileName to $backupFileName")
 		} catch (Exception e) {
 			println e.toString();
 		}
@@ -595,12 +604,12 @@ public  class FrontendUtilities extends Operations{
 	//desc-end
 	public def BackupFile(def fileName,def ApplicationDirectoryPath, def BackupDirectoryPath){
 		try {
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Backing up File: $fileName")
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Backup Dir: $BackupDirectoryPath")
+			LogInfo(LogFile, "Backing up File: $fileName")
+			LogInfo(LogFile, "Backup Dir: $BackupDirectoryPath")
 			def appDir = ApplicationDirectoryPath;
 			def backupFileName=fileName.replace (ApplicationDirectoryPath, BackupDirectoryPath)
 			CopyFile(fileName, backupFileName)
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Done Backing up File: $fileName to $backupFileName")
+			LogInfo(LogFile, "Done Backing up File: $fileName to $backupFileName")
 
 		} catch (Exception e) {
 			println e.toString();
@@ -615,11 +624,11 @@ public  class FrontendUtilities extends Operations{
 	//desc-end
 	public def ChmodDir(File Dir, def mod){
 		try{
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Applying Chmod to Dir:  $Dir")
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Mod:  $mod")
+			LogInfo(LogFile, "Applying Chmod to Dir:  $Dir")
+			LogInfo(LogFile, "Mod:  $mod")
 			def commandText = "chmod "+mod+" "+Dir;
 			def returnValue = ExecuteCommandInShell(commandText, Dir);
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Done Applyinh Chmod:  $Dir")
+			LogInfo(LogFile, "Done Applyinh Chmod:  $Dir")
 			return returnValue
 		}
 		catch(Exception ex){
@@ -635,11 +644,11 @@ public  class FrontendUtilities extends Operations{
 	//desc-end
 	public def ChmodFile(File fileName, def mod){
 		try{
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Applying Chmod to File:  $fileName")
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Mod:  $mod")
+			LogInfo(LogFile, "Applying Chmod to File:  $fileName")
+			LogInfo(LogFile, "Mod:  $mod")
 			def commandText = "chmod "+mod+" "+fileName;
 			def returnValue =  ExecuteCommandInShell(commandText, fileName.parentFile);
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Applying Chmod to Dir:  $fileName")
+			LogInfo(LogFile, "Applying Chmod to Dir:  $fileName")
 			return returnValue;
 		}
 		catch(Exception ex){
@@ -648,6 +657,25 @@ public  class FrontendUtilities extends Operations{
 	}
 
 	//desc-start
+	//Name:ConvertDos2Unix
+	//Description: Converts plain text files in DOS format to UNIX format.
+	//Parameter: fileName - File path to convert	
+	//desc-end
+	public def ConvertDos2Unix(def fileName){
+		try{
+			LogInfo(LogFile, "Start Applying dos2unix conversion on:  $fileName")
+			
+			def commandText = "dos2unix "+fileName;
+			def returnValue =  ExecuteCommandInShell(commandText, new File(fileName).parentFile);
+			LogInfo(LogFile, "End Applying dos2unix conversion on:  $fileName")
+			return returnValue;
+		}
+		catch(Exception ex){
+			println ex.toString();
+		}
+	}
+	
+	//desc-start
 	//Name:ExecuteCommandInShell
 	//Description:Executes the specified command in the supplied directory.
 	//Parameter: commandText - command text
@@ -655,14 +683,14 @@ public  class FrontendUtilities extends Operations{
 	//desc-end
 	public def ExecuteCommandInShell(String commandText, File directoryContext){
 		try{
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Start Execute Command in Shell:  $commandText")
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Context:  $directoryContext")
+			LogInfo(LogFile, "Start Execute Command in Shell:  $commandText")
+			LogInfo(LogFile, "Context:  $directoryContext")
 
 
 			def returnValue = commandText.execute(null,directoryContext).toString();
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Return Value:  $returnValue")
+			LogInfo(LogFile, "Return Value:  $returnValue")
 
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "End Execute Command in Shell:  $commandText")
+			LogInfo(LogFile, "End Execute Command in Shell:  $commandText")
 
 			return returnValue;
 		}
@@ -679,12 +707,12 @@ public  class FrontendUtilities extends Operations{
 	public def ExecuteScriptInShell(File fileName){
 		def fileText = fileName.getText();
 		try{
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Execute Script In Shell:  $fileName")
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Script Text:  $fileText")
+			LogInfo(LogFile, "Execute Script In Shell:  $fileName")
+			LogInfo(LogFile, "Script Text:  $fileText")
 
 			def returnValue =  fileName.toString().execute(null,fileName.parentFile).toString();
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Return Value:  $returnValue")
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Execute Script In Shell:  $fileName")
+			LogInfo(LogFile, "Return Value:  $returnValue")
+			LogInfo(LogFile, "Execute Script In Shell:  $fileName")
 
 			return returnValue
 
@@ -702,16 +730,16 @@ public  class FrontendUtilities extends Operations{
 	//desc-end
 	public def CopyFile(def sourceFile,def destinationFile){
 		try{
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Copy File From:  $sourceFile")
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Copy File To:  $destinationFile")
+			LogInfo(LogFile, +" Copy File From:  $sourceFile")
+			LogInfo(LogFile, "Copy File To:  $destinationFile")
 
 			def ant = new AntBuilder();
 			ant.copy(file: sourceFile,tofile: destinationFile)
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "End Copy File To:  $destinationFile")
+			LogInfo(LogFile, "End Copy File To:  $destinationFile")
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 	}
 
@@ -719,14 +747,14 @@ public  class FrontendUtilities extends Operations{
 	private def ReadFile(File fileName){
 		def fileText;
 		try{
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Read File:  $fileName")
+			LogInfo(LogFile, "Read File:  $fileName")
 
 			fileText = fileName.getText();
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "End Read File:  $fileName")
+			LogInfo(LogFile, "End Read File:  $fileName")
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 		return fileText
 	}
@@ -740,27 +768,27 @@ public  class FrontendUtilities extends Operations{
 	public def CopyAllFiles(def fromDirectory,def toDirectory){
 		def ant = new AntBuilder();
 		try{
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Copy All Files From:  $fromDirectory")
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Copy All Files To:  $toDirectory")
+			LogInfo(LogFile, "Copy All Files From:  $fromDirectory")
+			LogInfo(LogFile, "Copy All Files To:  $toDirectory")
 
 			ant.copy(toDir:toDirectory,overwrite:true) {
 				fileset(dir:fromDirectory){
 				}
 			}
 
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "End Copy All Files To:  $toDirectory")
+			LogInfo(LogFile, "End Copy All Files To:  $toDirectory")
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 	}
 
 	//functional
 	private def GenerateRandomNumber(def maxNumber){
-		LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Generate Random:  $maxNumber")
+		LogInfo(LogFile, "Generate Random:  $maxNumber")
 		def random= new Random();
 		Integer number =  random.nextInt(maxNumber);
-		LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Done Generate Random:  $number")
+		LogInfo(LogFile, "Done Generate Random:  $number")
 		return number;
 	}
 
@@ -768,17 +796,17 @@ public  class FrontendUtilities extends Operations{
 	private def FileTextMatched(File fileName, def pattern){
 		def matcher;
 		try{
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Get File Text Matched:  $fileName")
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "Pattern:  $pattern")
+			LogInfo(LogFile, "Get File Text Matched:  $fileName")
+			LogInfo(LogFile, "Pattern:  $pattern")
 			def fileText = fileName.getText();
 			matcher = "test" =~ /te/
 			assert matcher instanceof Matcher
 			matcher = fileText =~ pattern
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"), "End Get File Text Matched:  $fileName")
+			LogInfo(LogFile, "End Get File Text Matched:  $fileName")
 
 		} catch (Exception e) {
 			// TODO: handle exception
-			LogInfo(new File(AppdirPath+"/$LOG_FILE_NAME"),e.message)
+			LogInfo(LogFile,e.message)
 		}
 		return matcher
 	}

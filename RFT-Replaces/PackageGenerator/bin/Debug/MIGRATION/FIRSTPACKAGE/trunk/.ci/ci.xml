@@ -22,8 +22,9 @@
 				<classPath>package</classPath> 
 				<className>murex.Migration.Installer</className> 
 			</wizardRef> 
-			<filename>Migration-Package</filename>
+			<filename>8888</filename>
 		</package> 
 	</mxpack> 
 
 </ciConfig> 
+

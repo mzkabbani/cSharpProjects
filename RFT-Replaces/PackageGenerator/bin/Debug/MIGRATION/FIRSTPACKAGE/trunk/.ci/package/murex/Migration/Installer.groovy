@@ -18,11 +18,11 @@ public class Installer{
 				
 				Map<String, Object> props  = new HashMap<String, Object>();	
 				
-				property(name:'Customiztions_Logs_Dir'){
+				property(name:'Customizations_Logs_Dir'){
 					description = 'Logs directory'
-					defaultValue = './Logs';
+					defaultValue = '/Logs';
 				}
-				props.put("Customiztions_Logs_Dir", Customiztions_Logs_Dir)
+				props.put("Customizations_Logs_Dir", Customizations_Logs_Dir)
 			
 				
 				property(name:'Customizations_Backup_Dir'){
@@ -56,7 +56,7 @@ props.put("GenericProp", GenericProp)
 					println"======dest:$dest=== dest.path:$test ===="
 					Operations operations = new Operations();
 					//public def StartMigration(def AppDir, def logDir, def backupDir){
-					operations.StartMigration(dest.getCanonicalPath(),Customiztions_Logs_Dir,Customizations_Backup_Dir, props);
+					operations.StartMigration(dest.getCanonicalPath(),Customizations_Logs_Dir,Customizations_Backup_Dir, props);
 				
 				}
 			}

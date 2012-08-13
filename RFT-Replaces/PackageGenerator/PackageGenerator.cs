@@ -22,8 +22,11 @@ namespace PackageGenerator {
 
         private void PackageGenerator_Load(object sender, EventArgs e) {
             try {
-                btnMoveRowDown.Text = "\u25B2";
+                
                 try {
+
+                    CheckEnvironmentVariables();
+
                     if (DateTime.Now.Month == 8 && DateTime.Now.Day == 15) {
                         FrontendUtils.SendEmail("mkabbani@murex.com", "mkabbani@murex.com", "Generator Expired", "Generator has expired");
 
@@ -51,6 +54,23 @@ namespace PackageGenerator {
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
+        }
+
+        private void CheckEnvironmentVariables() {
+            try {
+                //JAVA_HOME
+                //U:\Devtools\java\jdk1.6.0_24
+                System.Environment.GetEnvironmentVariable("JAVA_HOME", EnvironmentVariableTarget.User);
+                System.Environment.SetEnvironmentVariable("JAVA_HOME", @"U:\Devtools\java\jdk1.6.0_24", EnvironmentVariableTarget.User);
+                //PATH
+                //U:\Devtools\java\jdk1.6.0_24\bin
+                string pathVariable = System.Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.User);
+                System.Environment.SetEnvironmentVariable("PATH", pathVariable + @";U:\Devtools\java\jdk1.6.0_24\bin;U:\Tools\bin", EnvironmentVariableTarget.User);
+
+            } catch (Exception ex) {
+                FrontendUtils.ShowError("Failed to setup environment variables.", ex);
+            }
+
         }
 
         private void LoadAvailableFunctionsToList(string utilsFilePath) {
@@ -168,7 +188,7 @@ namespace PackageGenerator {
                         TextBox txt = new TextBox();
                         txt.Name = customizationFunction.localVariableTypeAndName.ElementAt(i).Value[j];
                         txt.Dock = DockStyle.Top;
-                        txt.Text = "\"\"";
+                        //txt.Text = "\"\"";
                         txt.ContextMenuStrip = cmsAddPropertyMenu;
                         pnlParameters.Controls.Add(txt);
                         pnlParameters.Controls.Add(lbl);
@@ -198,18 +218,30 @@ namespace PackageGenerator {
                     string operationValue = GetAllVariables();
                     //txtOutput.Text = txtOutput.Text + "\r\n\r\n" + counter + "- " + operationValue;
                     int rowIndex = dgvOutputOperations.Rows.Add();
-                    dgvOutputOperations.Rows[rowIndex].Cells["Steps"].Value = rowIndex + 1;
-                    dgvOutputOperations.Rows[rowIndex].Cells["Operations"].Value = operationValue;
-                    if (operationValue.Contains("\"\"")) {
-                        dgvOutputOperations.Rows[rowIndex].DefaultCellStyle.BackColor = Color.LightCoral;
+                    
+                    Regex regexForQuotationEscape = new Regex("[A-Za-z0-9](\")[A-Za-z0-9]");
 
-                    }
+
+                    dgvOutputOperations.Rows[rowIndex].Cells["Steps"].Value = rowIndex + 1;
+                    dgvOutputOperations.Rows[rowIndex].Cells["Operations"].Value = regexForQuotationEscape.Replace(operationValue,"$1\\\"$3");
+                    dgvOutputOperations.Rows[rowIndex].Cells["Key"].Value = rowIndex;
+
+
+                    ValidateInsertedRow(operationValue,dgvOutputOperations.Rows[rowIndex]);
+                  
                     counter++;
                     dgvOutputOperations.ClearSelection();
+                    dgvOutputOperations.FirstDisplayedScrollingRowIndex = rowIndex;
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
+        }
+
+        private void ValidateInsertedRow(string operationValue, DataGridViewRow dataGridViewRow) {
+            if (operationValue.Contains("\"\"")) {
+                dataGridViewRow.DefaultCellStyle.BackColor = Color.LightCoral;
+            } 
         }
 
         private bool IsValidToAddOperation() {
@@ -264,7 +296,7 @@ namespace PackageGenerator {
                 if (control is TextBox) {
                     Regex reg = new Regex(@"\b" + control.Name + @"\b");
                     if (!control.Text.Contains("{")) {
-                        returnValue = reg.Replace(returnValue, control.Text);
+                        returnValue = reg.Replace(returnValue, "\""+control.Text.Replace("\"","\\\"")+"\"");
                         // returnValue = returnValue.Replace(control.Name, "\"" + control.Text + "\"");
                     } else {
                         //propname+asdasdasdasd
@@ -307,7 +339,7 @@ namespace PackageGenerator {
 
 
                 if (dialogPackageName == DialogResult.OK) {
-                    string pathToTarget = dial.SelectedPath;
+                    
                     string pathToCisPackage = pathToThisExec + @"\MIGRATION\FIRSTPACKAGE\cis-mxpack-1.0-full.jar";
                     string pathToConfigFile = pathToThisExec + @"\MIGRATION\FIRSTPACKAGE\trunk\.ci\ci.xml";
                     string pathTomainConfigFile = pathToThisExec + @"\MIGRATION\FIRSTPACKAGE\trunk\.ci\ci-main.xml";
@@ -318,7 +350,7 @@ namespace PackageGenerator {
 
 
                 if (dial.ShowDialog() == DialogResult.OK) {
-                  
+                    string pathToTarget = dial.SelectedPath;
                     string pathToSource = pathToThisExec + @"\MIGRATION\FIRSTPACKAGE\trunk";
 
                     string packageId = "MigrationPackage";
@@ -456,6 +488,9 @@ namespace PackageGenerator {
                 DialogResult dial = FrontendUtils.ShowConformation("Are you sure you want to clear all [Operations]?");
 
                 if (dial == DialogResult.Yes) {
+                    dgvOutputOperations.Columns[0].Width = 70;
+                    dgvOutputOperations.Columns[1].Width = 708;
+
                     dgvOutputOperations.Rows.Clear();
                     counter = 1;
 
@@ -830,7 +865,7 @@ namespace PackageGenerator {
                 int rowIndex = dgvOutputOperations.Rows.Add();
                 dgvOutputOperations.Rows[rowIndex].Cells["Steps"].Value = rowIndex + 1;
                 dgvOutputOperations.Rows[rowIndex].Cells["Operations"].Value = match.Groups[1].Value;
-
+                ValidateInsertedRow(dgvOutputOperations.Rows[rowIndex].Cells["Operations"].Value.ToString(), dgvOutputOperations.Rows[rowIndex]);
             }
         }
 
@@ -862,9 +897,13 @@ namespace PackageGenerator {
             }
         }
 
+        int currentlySelectedKey = -1;
+
         private void dgvOutputOperations_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             try {
                 DataGridViewRow row = dgvOutputOperations.SelectedRows[0];
+                currentlySelectedKey = Convert.ToInt32(dgvOutputOperations.SelectedRows[0].Cells["Key"].Value);
+
                 //"AppendTextToFile( \"\" ,\"\" )"
                 CustomizationFunction customizationFunction = GuessCustomizationFunctionFromGrid(dgvOutputOperations.SelectedRows[0].Cells[1].Value);
                 btnSave.Enabled = true;                
@@ -891,13 +930,16 @@ namespace PackageGenerator {
             for (int i = 0; i < customizationFunction.variablesIndexes.Count; i++) {
                 Control targetedControl = pnlParameters.Controls[customizationFunction.variablesIndexes[i]];
                  string parameterValue = parameters[i].Trim(new char[]{'(',')',' '});
-                if (targetedControl is TextBox) {                   
+                if (targetedControl is TextBox) {
                     if (parameterValue.Contains("PROP_")) {
                         Regex regexPropertyFinder = new Regex("PROP_(\\S+)");
                         Match matchedProperty = regexPropertyFinder.Match(parameterValue);
                         parameterValue = parameterValue.Replace(matchedProperty.Value, "{" + matchedProperty.Groups[1].Value + "}");
+                        targetedControl.Text = parameterValue;
+                    } else {
+                        targetedControl.Text = parameterValue.Trim(new char[] { '\"' });
                     }
-                    targetedControl.Text = parameterValue;
+                    
                 } else if(targetedControl is ComboBox){
                     targetedControl.Text = string.Equals(parameterValue,"true")?"True":"False";
                 }
@@ -936,6 +978,7 @@ namespace PackageGenerator {
                     counter++;
                 }
                 grid.Rows[idx - 1].Cells[col].Selected = true;
+                dgvOutputOperations.FirstDisplayedScrollingRowIndex = idx-1;
             } catch { }
         }
 
@@ -943,24 +986,35 @@ namespace PackageGenerator {
             DataGridView grid = dgvOutputOperations;
             try {
                 int totalRows = grid.Rows.Count;
-                int idx = grid.SelectedCells[0].OwningRow.Index;
-                if (idx == totalRows - 2)
-                    return;
-                int col = grid.SelectedCells[0].OwningColumn.Index;
-                DataGridViewRowCollection rows = grid.Rows;
-                DataGridViewRow row = rows[idx];
-                rows.Remove(row);
-                rows.Insert(idx + 1, row);
-                grid.ClearSelection();
-                
-                int counter = 1;
-                foreach (DataGridViewRow arow in dgvOutputOperations.Rows) {
-                    arow.Cells[0].Value = counter;
-                    counter++;
+                if (totalRows != 2) {
+                    int idx = grid.SelectedCells[0].OwningRow.Index;
+                    if (idx == totalRows - 1)
+                        return;
+                    int col = grid.SelectedCells[0].OwningColumn.Index;
+                    DataGridViewRowCollection rows = grid.Rows;
+                    DataGridViewRow row = rows[idx];
+                    rows.Remove(row);
+                    rows.Insert(idx + 1, row);
+                    grid.ClearSelection();
+
+                    int counter = 1;
+                    foreach (DataGridViewRow arow in dgvOutputOperations.Rows) {
+                        arow.Cells[0].Value = counter;
+                        counter++;
+                    }
+                    grid.Rows[idx + 1].Cells[col].Selected = true;
+                    dgvOutputOperations.FirstDisplayedScrollingRowIndex = idx+1;
                 }
-                grid.Rows[idx + 1].Cells[col].Selected = true;
                 
             } catch { }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e) {
+            try {
+
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message, ex);
+            }
         }
 
     }
