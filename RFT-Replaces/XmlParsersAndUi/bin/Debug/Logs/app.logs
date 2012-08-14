@@ -11334,3 +11334,1223 @@ System.Reflection.TargetInvocationException: An exception occurred during the op
    at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()
    at System.ComponentModel.RunWorkerCompletedEventArgs.get_Result()
    at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 56
+
+
+
+
+8/14/2012 10:48:00 AM
+
+
+Year, Month, and Day parameters describe an un-representable DateTime.
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 380
+
+
+
+
+8/14/2012 10:48:07 AM
+
+
+Object reference not set to an instance of an object.
+
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.bgDoServerWork_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 991
+
+
+
+
+8/14/2012 10:49:13 AM
+
+
+550 /hp305srv1/apps/qa14180_TPK0001592_6929197/logs/logs: No such file or directory.
+
+
+
+FtpLib.FtpException: 550 /hp305srv1/apps/qa14180_TPK0001592_6929197/logs/logs: No such file or directory.
+
+   at FtpLib.FtpConnection.Error()
+   at FtpLib.FtpConnection.SetCurrentDirectory(String directory)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.GetVersionFile(String appDirectory, String host) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 1395
+
+
+
+
+8/14/2012 10:49:17 AM
+
+
+550 /hp308srv/apps/qa23393_TPK0001023_6933727/logs/logs: No such file or directory.
+
+
+
+FtpLib.FtpException: 550 /hp308srv/apps/qa23393_TPK0001023_6933727/logs/logs: No such file or directory.
+
+   at FtpLib.FtpConnection.Error()
+   at FtpLib.FtpConnection.SetCurrentDirectory(String directory)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.GetVersionFile(String appDirectory, String host) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 1395
+
+
+
+
+8/14/2012 11:25:22 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 11:25:22 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 11:25:22 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 11:25:22 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 11:25:22 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 11:25:22 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 11:25:22 AM
+
+
+Value was either too large or too small for an Int32.
+
+
+System.OverflowException: Value was either too large or too small for an Int32.
+   at System.Number.ParseInt32(String s, NumberStyles style, NumberFormatInfo info)
+   at System.Convert.ToInt32(String value)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 389
+
+
+
+
+8/14/2012 11:58:44 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 11:59:34 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 12:00:17 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:20 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 1:16:20 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 1:16:20 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 1:16:20 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 1:16:20 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 1:16:20 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:21 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:22 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:22 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:22 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:22 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:22 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:22 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:22 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:22 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:22 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:22 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:22 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/14/2012 1:16:22 PM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379

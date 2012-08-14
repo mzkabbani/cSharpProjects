@@ -374,13 +374,19 @@ namespace XmlParsersAndUi.Forms {
 
                                 if (diffRegex.Matches(fileName).Count == 0) {
                                     DateTime date;
-                                    if (splitFileName[7].Contains(":")) {
-                                        date = new DateTime(DateTime.Now.Year, monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[0]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[1]), 0);
-                                    } else {
-                                        date = new DateTime(Convert.ToInt32(splitFileName[6]), monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]));
+                                    try {
+                                        if (splitFileName[7].Contains(":")) {
+                                            date = new DateTime(DateTime.Now.Year, monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[0]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[1]), 0);
+                                        } else {
+                                            date = new DateTime(Convert.ToInt32(splitFileName[7]), monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]));
+                                        }
+                                    } catch (Exception ex) {
+                                        FrontendUtils.LogError("Could not get Date", ex);
+                                        date = DateTime.Now;
                                     }
 
-                                    int fileSize = (Convert.ToInt32(splitFileName[4]) / 1024) == 0 ? 1 : (Convert.ToInt32(splitFileName[4]) / 1024);
+
+                                    long fileSize = (Convert.ToInt64(splitFileName[4]) / 1024) == 0 ? 1 : (Convert.ToInt64(splitFileName[4]) / 1024);
 
                                     results.Rows.Add(new object[] { counter, "Added", fileSize, date.ToString(), GetFileTypeFromExtension(splitFileName[8]), splitFileName[8] });
 
@@ -391,38 +397,25 @@ namespace XmlParsersAndUi.Forms {
 
                                 if (diffRegex.Matches(fileName).Count == 0) {
                                     DateTime date;
-                                    if (splitFileName[7].Contains(":")) {
-                                        date = new DateTime(DateTime.Now.Year, monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[0]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[1]), 0);
-                                    } else {
-                                        date = new DateTime(Convert.ToInt32(splitFileName[6]), monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]));
+
+                                    try {
+                                        if (splitFileName[7].Contains(":")) {
+                                            date = new DateTime(DateTime.Now.Year, monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[0]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[1]), 0);
+                                        } else {
+                                            date = new DateTime(Convert.ToInt32(splitFileName[7]), monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]));
+                                        }
+                                    } catch (Exception ex) {
+                                        FrontendUtils.LogError("Could not get Date", ex);
+                                        date = DateTime.Now;
                                     }
-                                    int fileSize = (Convert.ToInt32(splitFileName[4]) / 1024) == 0 ? 1 : (Convert.ToInt32(splitFileName[4]) / 1024);
+                                    long fileSize = (Convert.ToInt64(splitFileName[4]) / 1024) == 0 ? 1 : (Convert.ToInt64(splitFileName[4]) / 1024);
 
                                     results.Rows.Add(new object[] { counter, "Modified", fileSize, date.ToString(), GetFileTypeFromExtension(splitFileName[8]), splitFileName[8] });
                                 }
                             }
                             counter++;
-
-                            //    int rowIndex = dgvResults.Rows.Add();
-                            //    dgvResults.Rows[rowIndex].ContextMenuStrip = dgvContextMenu;
-                            //    dgvResults.Rows[rowIndex].Cells[0].Value = counter;
-                            //    counter++;
-                            //    if (j == 2) {
-                            //        dgvResults.Rows[rowIndex].Cells[1].Value = "Added";
-                            //    } else {
-                            //        dgvResults.Rows[rowIndex].Cells[1].Value = "Modified";
-                            //    }
-                            //    dgvResults.Rows[rowIndex].Cells[3].Value = splitByLines[k].Replace("/net/" + refHost + refEnv, "").Replace("/net/" + inputHost + inputEnv, "");
-                            //    dgvResults.Rows[rowIndex].Cells[2].Value = GetFileTypeFromExtension(dgvResults.Rows[rowIndex].Cells[3].Value.ToString());
-                            //}
                         }
-                    }
-                    //    SAVED_SEARCH_RESULTS = new DataTable();
-                    //    SAVED_SEARCH_RESULTS = CopyDataGridToDataTable(dgvResults);
-                    //    RemoveDiffFilesFromResults("diff.*");
-                    //    SAVED_SEARCH_RESULTS = CopyDataGridToDataTable(dgvResults);
-                    //    GOLDEN_ORIGINAL_RESTULS = new DataTable();
-                    //    GOLDEN_ORIGINAL_RESTULS = SAVED_SEARCH_RESULTS.Copy();
+                    }                 
 
                     SAVED_SEARCH_RESULTS = results.Copy();
                     GOLDEN_ORIGINAL_RESTULS = results.Copy();

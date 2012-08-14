@@ -91,6 +91,12 @@
             this.Steps = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Operations = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox7 = new System.Windows.Forms.GroupBox();
+            this.txtImportFileList = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.btnBrowse = new System.Windows.Forms.Button();
+            this.lbFilesForImport = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.gbParameters.SuspendLayout();
@@ -102,6 +108,8 @@
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutputOperations)).BeginInit();
             this.cmsAddPropertyMenu.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.groupBox7.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -416,14 +424,14 @@
             // 
             // tabPage2
             // 
-            this.tabPage2.Controls.Add(this.gbProperty);
-            this.tabPage2.Controls.Add(this.groupBox4);
+            this.tabPage2.Controls.Add(this.groupBox7);
+            this.tabPage2.Controls.Add(this.groupBox3);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(844, 674);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Properties";
+            this.tabPage2.Text = "Configuration";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // gbProperty
@@ -443,9 +451,9 @@
             this.gbProperty.Controls.Add(this.label10);
             this.gbProperty.Controls.Add(this.txtPropertyName);
             this.gbProperty.Controls.Add(this.label9);
-            this.gbProperty.Location = new System.Drawing.Point(203, 9);
+            this.gbProperty.Location = new System.Drawing.Point(206, 22);
             this.gbProperty.Name = "gbProperty";
-            this.gbProperty.Size = new System.Drawing.Size(633, 371);
+            this.gbProperty.Size = new System.Drawing.Size(616, 371);
             this.gbProperty.TabIndex = 2;
             this.gbProperty.TabStop = false;
             this.gbProperty.Text = "Property";
@@ -461,14 +469,14 @@
             "False"});
             this.cboPropertyValue.Location = new System.Drawing.Point(53, 177);
             this.cboPropertyValue.Name = "cboPropertyValue";
-            this.cboPropertyValue.Size = new System.Drawing.Size(131, 21);
+            this.cboPropertyValue.Size = new System.Drawing.Size(114, 21);
             this.cboPropertyValue.TabIndex = 12;
             this.cboPropertyValue.Visible = false;
             // 
             // btnReset
             // 
             this.btnReset.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnReset.Location = new System.Drawing.Point(400, 342);
+            this.btnReset.Location = new System.Drawing.Point(392, 342);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(75, 23);
             this.btnReset.TabIndex = 11;
@@ -479,7 +487,7 @@
             // btnRemoveProperty
             // 
             this.btnRemoveProperty.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnRemoveProperty.Location = new System.Drawing.Point(319, 342);
+            this.btnRemoveProperty.Location = new System.Drawing.Point(311, 342);
             this.btnRemoveProperty.Name = "btnRemoveProperty";
             this.btnRemoveProperty.Size = new System.Drawing.Size(75, 23);
             this.btnRemoveProperty.TabIndex = 10;
@@ -490,7 +498,7 @@
             // btnSaveProperty
             // 
             this.btnSaveProperty.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnSaveProperty.Location = new System.Drawing.Point(238, 342);
+            this.btnSaveProperty.Location = new System.Drawing.Point(230, 342);
             this.btnSaveProperty.Name = "btnSaveProperty";
             this.btnSaveProperty.Size = new System.Drawing.Size(75, 23);
             this.btnSaveProperty.TabIndex = 9;
@@ -501,7 +509,7 @@
             // btnAddProperty
             // 
             this.btnAddProperty.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnAddProperty.Location = new System.Drawing.Point(157, 342);
+            this.btnAddProperty.Location = new System.Drawing.Point(149, 342);
             this.btnAddProperty.Name = "btnAddProperty";
             this.btnAddProperty.Size = new System.Drawing.Size(75, 23);
             this.btnAddProperty.TabIndex = 8;
@@ -529,7 +537,7 @@
             "Boolean"});
             this.cboPropertyType.Location = new System.Drawing.Point(52, 151);
             this.cboPropertyType.Name = "cboPropertyType";
-            this.cboPropertyType.Size = new System.Drawing.Size(131, 21);
+            this.cboPropertyType.Size = new System.Drawing.Size(114, 21);
             this.cboPropertyType.TabIndex = 6;
             this.cboPropertyType.SelectedIndexChanged += new System.EventHandler(this.cboPropertyType_SelectedIndexChanged);
             // 
@@ -539,7 +547,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPropertyValue.Location = new System.Drawing.Point(52, 178);
             this.txtPropertyValue.Name = "txtPropertyValue";
-            this.txtPropertyValue.Size = new System.Drawing.Size(233, 20);
+            this.txtPropertyValue.Size = new System.Drawing.Size(216, 20);
             this.txtPropertyValue.TabIndex = 5;
             this.txtPropertyValue.Visible = false;
             // 
@@ -559,7 +567,7 @@
             this.txtPropertyDesc.Location = new System.Drawing.Point(53, 58);
             this.txtPropertyDesc.Multiline = true;
             this.txtPropertyDesc.Name = "txtPropertyDesc";
-            this.txtPropertyDesc.Size = new System.Drawing.Size(552, 87);
+            this.txtPropertyDesc.Size = new System.Drawing.Size(535, 87);
             this.txtPropertyDesc.TabIndex = 3;
             // 
             // label10
@@ -577,7 +585,7 @@
                         | System.Windows.Forms.AnchorStyles.Right)));
             this.txtPropertyName.Location = new System.Drawing.Point(53, 29);
             this.txtPropertyName.Name = "txtPropertyName";
-            this.txtPropertyName.Size = new System.Drawing.Size(304, 20);
+            this.txtPropertyName.Size = new System.Drawing.Size(287, 20);
             this.txtPropertyName.TabIndex = 1;
             // 
             // label9
@@ -592,7 +600,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.lbAvailableProps);
-            this.groupBox4.Location = new System.Drawing.Point(3, 6);
+            this.groupBox4.Location = new System.Drawing.Point(6, 19);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(194, 374);
             this.groupBox4.TabIndex = 1;
@@ -776,6 +784,72 @@
             this.Key.Name = "Key";
             this.Key.Visible = false;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
+                        | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox3.Controls.Add(this.groupBox4);
+            this.groupBox3.Controls.Add(this.gbProperty);
+            this.groupBox3.Location = new System.Drawing.Point(8, 6);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(828, 400);
+            this.groupBox3.TabIndex = 3;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Properties";
+            // 
+            // groupBox7
+            // 
+            this.groupBox7.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox7.Controls.Add(this.lbFilesForImport);
+            this.groupBox7.Controls.Add(this.btnBrowse);
+            this.groupBox7.Controls.Add(this.txtImportFileList);
+            this.groupBox7.Controls.Add(this.label11);
+            this.groupBox7.Location = new System.Drawing.Point(9, 413);
+            this.groupBox7.Name = "groupBox7";
+            this.groupBox7.Size = new System.Drawing.Size(827, 253);
+            this.groupBox7.TabIndex = 4;
+            this.groupBox7.TabStop = false;
+            this.groupBox7.Text = "File Import";
+            // 
+            // txtImportFileList
+            // 
+            this.txtImportFileList.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtImportFileList.Location = new System.Drawing.Point(11, 38);
+            this.txtImportFileList.Name = "txtImportFileList";
+            this.txtImportFileList.Size = new System.Drawing.Size(729, 20);
+            this.txtImportFileList.TabIndex = 3;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(7, 22);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(77, 13);
+            this.label11.TabIndex = 2;
+            this.label11.Text = "Import File List:";
+            // 
+            // btnBrowse
+            // 
+            this.btnBrowse.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnBrowse.Location = new System.Drawing.Point(746, 36);
+            this.btnBrowse.Name = "btnBrowse";
+            this.btnBrowse.Size = new System.Drawing.Size(75, 23);
+            this.btnBrowse.TabIndex = 13;
+            this.btnBrowse.Text = "Browse";
+            this.btnBrowse.UseVisualStyleBackColor = true;
+            // 
+            // lbFilesForImport
+            // 
+            this.lbFilesForImport.ColumnWidth = 50;
+            this.lbFilesForImport.FormattingEnabled = true;
+            this.lbFilesForImport.Location = new System.Drawing.Point(11, 65);
+            this.lbFilesForImport.Name = "lbFilesForImport";
+            this.lbFilesForImport.Size = new System.Drawing.Size(810, 173);
+            this.lbFilesForImport.TabIndex = 14;
+            // 
             // PackageGenerator
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -800,6 +874,9 @@
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutputOperations)).EndInit();
             this.cmsAddPropertyMenu.ResumeLayout(false);
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox7.ResumeLayout(false);
+            this.groupBox7.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -868,5 +945,11 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Steps;
         private System.Windows.Forms.DataGridViewTextBoxColumn Operations;
         private System.Windows.Forms.DataGridViewTextBoxColumn Key;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox7;
+        private System.Windows.Forms.Button btnBrowse;
+        private System.Windows.Forms.TextBox txtImportFileList;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ListBox lbFilesForImport;
     }
 }
