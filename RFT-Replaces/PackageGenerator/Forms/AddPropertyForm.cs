@@ -6,7 +6,6 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using XmlParsersAndUi.Classes;
 
 namespace PackageGenerator {
     public partial class AddPropertyForm : Form {

@@ -27,7 +27,7 @@ public class Installer{
 				
 				property(name:'Customizations_Backup_Dir'){
 					description = 'Backup directory'
-					defaultValue = './Backup';
+					defaultValue = '/Backup';
 				}				
 				props.put("Customizations_Backup_Dir", Customizations_Backup_Dir)
 			

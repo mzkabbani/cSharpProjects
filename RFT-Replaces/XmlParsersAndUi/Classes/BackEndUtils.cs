@@ -28,7 +28,7 @@ namespace XmlParsersAndUi {
             EnvComparisonOnlyForEnv = 500
         }
 
-        private static SqlCeConnection GetSqlConnection() {
+        public static SqlCeConnection GetSqlConnection() {
             SqlCeConnection sqlConnection1 = new SqlCeConnection();
             //sqlConnection1.ConnectionString = @"Data Source=C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Database.sdf";
 
@@ -194,7 +194,7 @@ namespace XmlParsersAndUi {
             SqlCeConnection conn = GetSqlConnection();
             try {
                 conn.Open();
-                SqlCeCommand command = new SqlCeCommand(SqlCommands.commandDisableAdvancedRecTextConv, conn);                
+                SqlCeCommand command = new SqlCeCommand(SqlCommands.commandDisableAdvancedRecTextConv, conn);
                 command.Parameters.Add("@id", advanceRecId);
                 command.Parameters.Add("@isEnabled", "0");
                 command.ExecuteNonQuery();
@@ -516,7 +516,7 @@ namespace XmlParsersAndUi {
                 }
                 for (int i = 0; i < dataTable.Rows.Count; i++) {
                     DataTable capturePointsTable = GetRespectiveCapturePointsForTextConversion(dataTable.Rows[i].ItemArray[6], conn);
-                    allCaptureEvens.Add(GetCaptureEventItem(dataTable.Rows[i], capturePointsTable, conn));
+                    allCaptureEvens.Add(GetCaptureEventItemForTextConverion(dataTable.Rows[i], capturePointsTable, conn));
                 }
             } finally {
                 conn.Close();
@@ -552,9 +552,22 @@ namespace XmlParsersAndUi {
             return capture;
         }
 
-        private static ReplacementEvent GetReplacementEventByCaptureEventId(int captureEventId, SqlCeConnection conn) {
+        private static CaptureEvent GetCaptureEventItemForTextConverion(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) {
+            List<CustomTreeNode> customCapturePointList = GetCustomCapturePointListFromTable(capturePointsTable);
+            CaptureEvent capture = new CaptureEvent(Convert.ToInt32(advancedRecRow["id"]), advancedRecRow["name"].ToString(), advancedRecRow["description"].ToString(), advancedRecRow["event_text"].ToString(), Convert.ToInt32(advancedRecRow["categoryId"]), Convert.ToInt32(advancedRecRow["usageCount"]), customCapturePointList, FrontendUtils.LoggedInUserId);
+            capture.Replacement = GetReplacementEventByCaptureEventIdForTextConverion(capture.CaptureEventId, conn);
+            return capture;
+        }
+
+        private static ReplacementEvent GetReplacementEventByCaptureEventIdForTextConverion(int captureEventId, SqlCeConnection conn) {
             List<ReplacementEvent> replacements = GetAvailableReplacementsByCaptureIdForTextConversion(captureEventId, conn);
             return replacements[0];
+        }
+
+        private static ReplacementEvent GetReplacementEventByCaptureEventId(int captureEventId, SqlCeConnection conn) {
+            List<ReplacementEvent> replacements = GetAvailableReplacementsByCaptureId(captureEventId, conn);
+            
+            return replacements.Count>0?replacements[0]:null;
         }
 
         private static List<CustomTreeNode> GetCustomCapturePointListFromTable(DataTable capturePointsTable) {
@@ -565,7 +578,7 @@ namespace XmlParsersAndUi {
                 CustomTreeNode treeNode = new CustomTreeNode(capturePointsTable.Rows[i].ItemArray[0].ToString(), attrCol);
                 treeNode.nodeLevel = Convert.ToInt32(capturePointsTable.Rows[i].ItemArray[4]);
                 treeNode.nodeIndex = Convert.ToInt32(capturePointsTable.Rows[i].ItemArray[5]);
-                treeNode.parentLevel=Convert.ToInt32(capturePointsTable.Rows[i].ItemArray[6]);
+                treeNode.parentLevel = Convert.ToInt32(capturePointsTable.Rows[i].ItemArray[6]);
                 treeNode.parentIndex = Convert.ToInt32(capturePointsTable.Rows[i].ItemArray[7]);
                 treeNode.isNodeUsed = true;
                 string[] usedAttributeNames = capturePointsTable.Rows[i].ItemArray[1].ToString().Split(',');
@@ -948,7 +961,7 @@ namespace XmlParsersAndUi {
                 using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(command)) {
                     adapter.Fill(dataTable);
                 }
-                captureEvent = GetCaptureEventItem(dataTable.Rows[0], capturePointsTable,conn);
+                captureEvent = GetCaptureEventItem(dataTable.Rows[0], capturePointsTable, conn);
                 SqlCeCommand incrementUsageCount = new SqlCeCommand(SqlCommands.commandUpdateRecommendationUsageCountById);
                 incrementUsageCount.Parameters.Add("@usageCount", currentUsageCount + 1);
                 incrementUsageCount.Parameters.Add("@id", (int)RecId);
@@ -1057,20 +1070,42 @@ namespace XmlParsersAndUi {
             return replacementEvents;
         }
 
-        public static List<ReplacementEvent> GetAvailableReplacementsByCaptureId(int captureEventId) {
+        public static List<ReplacementEvent> GetAvailableReplacementsByCaptureId(int captureEventId, SqlCeConnection conn) {
             //commandGetCapturePointReplacements
             List<ReplacementEvent> replacementEvents = new List<ReplacementEvent>();
-            DataSet availableReplacementsAsDataset = GetAvailableReplacementsAsDataset(captureEventId);
-            foreach (DataRow row in availableReplacementsAsDataset.Tables[0].Rows) {
-                ReplacementEvent repEvent = new ReplacementEvent(Convert.ToInt32(row["id"]),
-                                                                 Convert.ToInt32(row["userId"]),
-                                                                 row["name"].ToString(),
-                                                                 row["description"].ToString(),
-                                                                 row["value"].ToString(),
-                                                                 Convert.ToInt32(row["typeId"]),
-                                                                 Convert.ToInt32(row["capturePointId"]),
-                                                                 Convert.ToInt32(row["usageCount"]));
-                replacementEvents.Add(repEvent);
+
+            if (conn.State == ConnectionState.Open) {
+                DataSet availableReplacementsAsDataset = GetAvailableReplacementsAsDataset(captureEventId, conn);
+                foreach (DataRow row in availableReplacementsAsDataset.Tables[0].Rows) {
+                    ReplacementEvent repEvent = new ReplacementEvent(Convert.ToInt32(row["id"]),
+                                                                     Convert.ToInt32(row["userId"]),
+                                                                     row["name"].ToString(),
+                                                                     row["description"].ToString(),
+                                                                     row["value"].ToString(),
+                                                                     Convert.ToInt32(row["typeId"]),
+                                                                     Convert.ToInt32(row["capturePointId"]),
+                                                                     Convert.ToInt32(row["usageCount"]));
+                    replacementEvents.Add(repEvent);
+                }
+            } else {
+
+                try {
+                    conn.Open();
+                    DataSet availableReplacementsAsDataset = GetAvailableReplacementsAsDataset(captureEventId, conn);
+                    foreach (DataRow row in availableReplacementsAsDataset.Tables[0].Rows) {
+                        ReplacementEvent repEvent = new ReplacementEvent(Convert.ToInt32(row["id"]),
+                                                                         Convert.ToInt32(row["userId"]),
+                                                                         row["name"].ToString(),
+                                                                         row["description"].ToString(),
+                                                                         row["value"].ToString(),
+                                                                         Convert.ToInt32(row["typeId"]),
+                                                                         Convert.ToInt32(row["capturePointId"]),
+                                                                         Convert.ToInt32(row["usageCount"]));
+                        replacementEvents.Add(repEvent);
+                    }
+                } finally {
+                    conn.Close();
+                }
             }
             return replacementEvents;
         }
@@ -1090,18 +1125,13 @@ namespace XmlParsersAndUi {
 
 
 
-        private static DataSet GetAvailableReplacementsAsDataset(int captureEventId) {
-            SqlCeConnection conn = GetSqlConnection();
+        private static DataSet GetAvailableReplacementsAsDataset(int captureEventId, SqlCeConnection conn) {
             SqlCeCommand getAllReplacementsByCaptureIDCommand = new SqlCeCommand(SqlCommands.commandGetCapturePointReplacements, conn);
             getAllReplacementsByCaptureIDCommand.Parameters.Add("@capturePointId", captureEventId);
             DataSet dataSet = new DataSet();
-            try {
-                SqlCeDataAdapter da = new SqlCeDataAdapter(getAllReplacementsByCaptureIDCommand);
-                SqlCeCommandBuilder cb = new SqlCeCommandBuilder(da);
-                da.Fill(dataSet);
-            } finally {
-                conn.Close();
-            }
+            SqlCeDataAdapter da = new SqlCeDataAdapter(getAllReplacementsByCaptureIDCommand);
+            SqlCeCommandBuilder cb = new SqlCeCommandBuilder(da);
+            da.Fill(dataSet);
             return dataSet;
         }
 

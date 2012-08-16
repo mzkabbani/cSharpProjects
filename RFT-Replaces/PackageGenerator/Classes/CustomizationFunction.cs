@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace XmlParsersAndUi.Classes {
+namespace PackageGenerator {
     public class CustomizationFunction {
         public string localName;
         public string localDescription;

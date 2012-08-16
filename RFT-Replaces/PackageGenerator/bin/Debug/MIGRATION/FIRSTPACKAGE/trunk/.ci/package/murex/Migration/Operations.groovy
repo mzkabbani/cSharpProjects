@@ -3,7 +3,7 @@ package murex.Migration;
 public class Operations {
 	
 	public def StartMigration(def AppDir, def logDir, def backupDir, Map<String, Object> properties){		
-		println "Package Deployment Starting!" + AppDir;
+		println "Package Deployment Starting!"
 		println "AppDir======>" + AppDir;
 		println "logDir======>" + logDir;
 		println "backupDir===>" + backupDir;		
@@ -26,7 +26,6 @@ public class Operations {
 		
 		
 		//Start-Operations
-	frontEndUtilities.AppendTextToFile( "C:/Documents and Settings/mkabbani/My Documents/My Received Files/macro00001.xml" ,"asdasd" );
 	//End-Operations
 		
 def PROP_GenericProp = properties.get("GenericProp");

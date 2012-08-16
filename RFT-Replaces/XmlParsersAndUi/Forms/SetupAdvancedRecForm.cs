@@ -829,7 +829,7 @@ namespace XmlParsersAndUi {
 
         private void FillReplacementsListBox() {
             lbAvailableReplacements.Items.Clear();
-            List<ReplacementEvent> availableReplacements = BackEndUtils.GetAvailableReplacementsByCaptureId(((CaptureEvent)cboCapturePoint.SelectedItem).CaptureEventId);
+            List<ReplacementEvent> availableReplacements = BackEndUtils.GetAvailableReplacementsByCaptureId(((CaptureEvent)cboCapturePoint.SelectedItem).CaptureEventId, BackEndUtils.GetSqlConnection());
             for (int i = 0; i < availableReplacements.Count; i++) {
                 lbAvailableReplacements.Items.Add(availableReplacements[i]);
             }

@@ -12554,3 +12554,875 @@ System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an 
    at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
    at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
    at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 381
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 10:45:11 AM
+
+
+Could not get Date
+
+
+System.ArgumentOutOfRangeException: Year, Month, and Day parameters describe an un-representable DateTime.
+   at System.DateTime.DateToTicks(Int32 year, Int32 month, Int32 day)
+   at System.DateTime..ctor(Int32 year, Int32 month, Int32 day, Int32 hour, Int32 minute, Int32 second)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 379
+
+
+
+
+8/16/2012 11:03:26 AM
+
+
+Index was outside the bounds of the array.
+
+
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at XmlParsersAndUi.BackEndUtils.GetCustomCapturePointListFromTable(DataTable capturePointsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 568
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 549
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 540
+   at XmlParsersAndUi.SetupAdvancedRecForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 477
+   at XmlParsersAndUi.SetupAdvancedRecForm.SetupAdvancedRecForm_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 431
+
+
+
+
+8/16/2012 11:04:59 AM
+
+
+Index was outside the bounds of the array.
+
+
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at XmlParsersAndUi.BackEndUtils.GetCustomCapturePointListFromTable(DataTable capturePointsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 568
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 549
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 540
+   at XmlParsersAndUi.SetupAdvancedRecForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 477
+   at XmlParsersAndUi.SetupAdvancedRecForm.SetupAdvancedRecForm_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 431
+
+
+
+
+8/16/2012 11:05:25 AM
+
+
+Index was outside the bounds of the array.
+
+
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at XmlParsersAndUi.BackEndUtils.GetCustomCapturePointListFromTable(DataTable capturePointsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 568
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 549
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 540
+   at XmlParsersAndUi.SetupAdvancedRecForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 477
+   at XmlParsersAndUi.SetupAdvancedRecForm.SetupAdvancedRecForm_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 431
+
+
+
+
+8/16/2012 11:05:38 AM
+
+
+Index was outside the bounds of the array.
+
+
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at XmlParsersAndUi.BackEndUtils.GetCustomCapturePointListFromTable(DataTable capturePointsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 568
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 549
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 540
+   at XmlParsersAndUi.SetupAdvancedRecForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 477
+   at XmlParsersAndUi.SetupAdvancedRecForm.SetupAdvancedRecForm_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 431
+
+
+
+
+8/16/2012 11:06:20 AM
+
+
+Index was outside the bounds of the array.
+
+
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at XmlParsersAndUi.BackEndUtils.GetCustomCapturePointListFromTable(DataTable capturePointsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 568
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 549
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 540
+   at XmlParsersAndUi.SetupAdvancedRecForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 477
+   at XmlParsersAndUi.SetupAdvancedRecForm.SetupAdvancedRecForm_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 431
+
+
+
+
+8/16/2012 11:10:29 AM
+
+
+Index was outside the bounds of the array.
+
+
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at XmlParsersAndUi.BackEndUtils.GetCustomCapturePointListFromTable(DataTable capturePointsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 568
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 549
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 540
+   at XmlParsersAndUi.SetupAdvancedRecForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 477
+   at XmlParsersAndUi.SetupAdvancedRecForm.SetupAdvancedRecForm_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 431
+
+
+
+
+8/16/2012 11:15:43 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.BackEndUtils.GetReplacementEventByCaptureEventId(Int32 captureEventId, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 557
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 551
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 540
+   at XmlParsersAndUi.SetupAdvancedRecForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 477
+   at XmlParsersAndUi.SetupAdvancedRecForm.SetupAdvancedRecForm_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 431
+
+
+
+
+8/16/2012 11:32:50 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.BackEndUtils.GetReplacementEventByCaptureEventId(Int32 captureEventId, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 569
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 551
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 540
+   at XmlParsersAndUi.SetupAdvancedRecForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 477
+   at XmlParsersAndUi.SetupAdvancedRecForm.SetupAdvancedRecForm_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 431
+
+
+
+
+8/16/2012 11:35:58 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.BackEndUtils.GetReplacementEventByCaptureEventId(Int32 captureEventId, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 569
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 551
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 540
+   at XmlParsersAndUi.SetupAdvancedRecForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 477
+   at XmlParsersAndUi.SetupAdvancedRecForm.SetupAdvancedRecForm_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 431
+
+
+
+
+8/16/2012 11:36:40 AM
+
+
+Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Index was out of range. Must be non-negative and less than the size of the collection.
+Parameter name: index
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException(ExceptionArgument argument, ExceptionResource resource)
+   at System.ThrowHelper.ThrowArgumentOutOfRangeException()
+   at System.Collections.Generic.List`1.get_Item(Int32 index)
+   at XmlParsersAndUi.BackEndUtils.GetReplacementEventByCaptureEventId(Int32 captureEventId, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 569
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 551
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 540
+   at XmlParsersAndUi.SetupAdvancedRecForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 477
+   at XmlParsersAndUi.SetupAdvancedRecForm.SetupAdvancedRecForm_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 431
+
+
+
+
+8/16/2012 12:19:22 PM
+
+
+@value : String truncation: max=750, len=1017, value='<propertyConfigs xsi:type="complexPropertyConfig" CodeName="610397668" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <type>murex.components.evaluation.portfolio.management.SimulationSimpleView</type>
+                        <xmlValue>
+                            <xsdType>
+                                <CodeName>SimulationSimpleView</CodeName>
+                                <CodeNamespace>generated</CodeNamespace>
+                                <groupId>0</groupId>
+                                <type>murex.components.evaluation.portfolio.management.SimulationSimpleView</type>
+                            </xsdType>
+                        
+							<simulationView CodeName="{CodeName}">
+                <simulationViewTab extension="{extension}" table="{table}">
+                  <tabPath>{CodeName}</tabPath>
+                </simulationViewTab>
+              </simulationView> 
+
+                        </xmlValue>
+                    </propertyConfigs>'.
+
+
+System.InvalidOperationException: @value : String truncation: max=750, len=1017, value='<propertyConfigs xsi:type="complexPropertyConfig" CodeName="610397668" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <type>murex.components.evaluation.portfolio.management.SimulationSimpleView</type>
+                        <xmlValue>
+                            <xsdType>
+                                <CodeName>SimulationSimpleView</CodeName>
+                                <CodeNamespace>generated</CodeNamespace>
+                                <groupId>0</groupId>
+                                <type>murex.components.evaluation.portfolio.management.SimulationSimpleView</type>
+                            </xsdType>
+                        
+							<simulationView CodeName="{CodeName}">
+                <simulationViewTab extension="{extension}" table="{table}">
+                  <tabPath>{CodeName}</tabPath>
+                </simulationViewTab>
+              </simulationView> 
+
+                        </xmlValue>
+                    </propertyConfigs>'.
+   at System.Data.SqlServerCe.SqlCeCommand.FillParameterDataBindings()
+   at System.Data.SqlServerCe.SqlCeCommand.ExecuteCommand(CommandBehavior behavior, String method, ResultSetOptions options)
+   at System.Data.SqlServerCe.SqlCeCommand.ExecuteNonQuery()
+   at XmlParsersAndUi.BackEndUtils.InsertNewReplacement(ReplacementEvent replacementEvent) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 1046
+   at XmlParsersAndUi.SetupAdvancedRecForm.btnAddReplacementEvent_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 842
+
+
+
+
+8/16/2012 12:19:52 PM
+
+
+@value : String truncation: max=750, len=961, value='<propertyConfigs xsi:type="complexPropertyConfig" CodeName="610397668" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <type>murex.components.evaluation.portfolio.management.SimulationSimpleView</type>
+                        <xmlValue>
+                            <xsdType>
+                                <CodeName>SimulationSimpleView</CodeName>
+                                <CodeNamespace>generated</CodeNamespace>
+                                <groupId>0</groupId>
+                                <type>murex.components.evaluation.portfolio.management.SimulationSimpleView</type>
+                            </xsdType><simulationView CodeName="{CodeName}">
+                <simulationViewTab extension="{extension}" table="{table}">
+                  <tabPath>{CodeName}</tabPath>
+                </simulationViewTab>
+              </simulationView> 
+			  </xmlValue>
+                    </propertyConfigs>'.
+
+
+System.InvalidOperationException: @value : String truncation: max=750, len=961, value='<propertyConfigs xsi:type="complexPropertyConfig" CodeName="610397668" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+                        <type>murex.components.evaluation.portfolio.management.SimulationSimpleView</type>
+                        <xmlValue>
+                            <xsdType>
+                                <CodeName>SimulationSimpleView</CodeName>
+                                <CodeNamespace>generated</CodeNamespace>
+                                <groupId>0</groupId>
+                                <type>murex.components.evaluation.portfolio.management.SimulationSimpleView</type>
+                            </xsdType><simulationView CodeName="{CodeName}">
+                <simulationViewTab extension="{extension}" table="{table}">
+                  <tabPath>{CodeName}</tabPath>
+                </simulationViewTab>
+              </simulationView> 
+			  </xmlValue>
+                    </propertyConfigs>'.
+   at System.Data.SqlServerCe.SqlCeCommand.FillParameterDataBindings()
+   at System.Data.SqlServerCe.SqlCeCommand.ExecuteCommand(CommandBehavior behavior, String method, ResultSetOptions options)
+   at System.Data.SqlServerCe.SqlCeCommand.ExecuteNonQuery()
+   at XmlParsersAndUi.BackEndUtils.InsertNewReplacement(ReplacementEvent replacementEvent) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 1046
+   at XmlParsersAndUi.SetupAdvancedRecForm.btnAddReplacementEvent_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 842
+
+
+
+
+8/16/2012 12:24:00 PM
+
+
+Specified argument was out of the range of valid values.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Forms.SecondLevelCleanupForm.GetParametrizedRepFromGenericOne(ReplacementEvent replacementEvent, XNode xNode) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SecondLevelCleanupForm.cs:line 392
+   at XmlParsersAndUi.Forms.SecondLevelCleanupForm.btnStartReplacementOp_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SecondLevelCleanupForm.cs:line 931
+
+
+
+
+8/16/2012 12:24:21 PM
+
+
+Specified argument was out of the range of valid values.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Forms.SecondLevelCleanupForm.GetParametrizedRepFromGenericOne(ReplacementEvent replacementEvent, XNode xNode) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SecondLevelCleanupForm.cs:line 392
+   at XmlParsersAndUi.Forms.SecondLevelCleanupForm.btnStartReplacementOp_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SecondLevelCleanupForm.cs:line 931
+
+
+
+
+8/16/2012 12:26:19 PM
+
+
+Specified argument was out of the range of valid values.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Forms.SecondLevelCleanupForm.GetParametrizedRepFromGenericOne(ReplacementEvent replacementEvent, XNode xNode) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SecondLevelCleanupForm.cs:line 392
+   at XmlParsersAndUi.Forms.SecondLevelCleanupForm.btnStartReplacementOp_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SecondLevelCleanupForm.cs:line 931
+
+
+
+
+8/16/2012 12:30:36 PM
+
+
+Specified argument was out of the range of valid values.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Forms.SecondLevelCleanupForm.GetParametrizedRepFromGenericOne(ReplacementEvent replacementEvent, XNode xNode) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SecondLevelCleanupForm.cs:line 392
+   at XmlParsersAndUi.Forms.SecondLevelCleanupForm.btnStartReplacementOp_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SecondLevelCleanupForm.cs:line 931
+
+
+
+
+8/16/2012 12:31:08 PM
+
+
+Specified argument was out of the range of valid values.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Forms.SecondLevelCleanupForm.GetParametrizedRepFromGenericOne(ReplacementEvent replacementEvent, XNode xNode) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SecondLevelCleanupForm.cs:line 392
+   at XmlParsersAndUi.Forms.SecondLevelCleanupForm.btnStartReplacementOp_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SecondLevelCleanupForm.cs:line 931
+
+
+
+
+8/16/2012 12:37:09 PM
+
+
+'"' is an unexpected token. The expected token is ';'. Line 71, position 57.
+
+
+System.Xml.XmlException: '"' is an unexpected token. The expected token is ';'. Line 71, position 57.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String[] args)
+   at System.Xml.XmlTextReaderImpl.ThrowUnexpectedToken(String expectedToken1, String expectedToken2)
+   at System.Xml.XmlTextReaderImpl.ThrowUnexpectedToken(Int32 pos, String expectedToken1, String expectedToken2)
+   at System.Xml.XmlTextReaderImpl.HandleEntityReference(Boolean isInAttributeValue, EntityExpandType expandType, Int32& charRefEndPos)
+   at System.Xml.XmlTextReaderImpl.ParseAttributeValueSlow(Int32 curPos, Char quoteChar, NodeData attr)
+   at System.Xml.XmlTextReaderImpl.ParseAttributes()
+   at System.Xml.XmlTextReaderImpl.ParseElement()
+   at System.Xml.XmlTextReaderImpl.ParseElementContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.XmlLoader.LoadNode(Boolean skipOverWhitespace)
+   at System.Xml.XmlLoader.LoadDocSequence(XmlDocument parentDoc)
+   at System.Xml.XmlLoader.Load(XmlDocument doc, XmlReader reader, Boolean preserveWhitespace)
+   at System.Xml.XmlDocument.Load(XmlReader reader)
+   at System.Xml.XmlDocument.LoadXml(String xml)
+   at XmlParsersAndUi.FrontendUtils.FormatXml(String sUnformattedXml) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\FrontendUtils.cs:line 100
+   at XmlParsersAndUi.Forms.SecondLevelCleanupForm.btnStartReplacementOp_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SecondLevelCleanupForm.cs:line 940

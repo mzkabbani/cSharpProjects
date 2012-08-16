@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
-using XmlParsersAndUi.Classes;
 using System.IO;
 using PackageGenerator.Forms;
 
@@ -22,7 +21,7 @@ namespace PackageGenerator {
 
         private void PackageGenerator_Load(object sender, EventArgs e) {
             try {
-                
+
                 try {
 
                     CheckEnvironmentVariables();
@@ -166,11 +165,11 @@ namespace PackageGenerator {
                 for (int j = 0; j < customizationFunction.localVariableTypeAndName.ElementAt(i).Value.Count; j++) {
 
                     Label lbl = new Label();
-                    
+
                     lbl.Text = customizationFunction.localVariableTypeAndName.ElementAt(i).Value[j].Substring(0, 1).ToUpperInvariant() +
                     customizationFunction.localVariableTypeAndName.ElementAt(i).Value[j].Substring(1);
                     lbl.Dock = DockStyle.Top;
-                    
+
 
                     if (string.Equals(customizationFunction.localVariableTypeAndName.ElementAt(i).Key, "boolean")) {
                         ComboBox cbo = new ComboBox();
@@ -218,17 +217,17 @@ namespace PackageGenerator {
                     string operationValue = GetAllVariables();
                     //txtOutput.Text = txtOutput.Text + "\r\n\r\n" + counter + "- " + operationValue;
                     int rowIndex = dgvOutputOperations.Rows.Add();
-                    
+
                     Regex regexForQuotationEscape = new Regex("[A-Za-z0-9](\")[A-Za-z0-9]");
 
 
                     dgvOutputOperations.Rows[rowIndex].Cells["Steps"].Value = rowIndex + 1;
-                    dgvOutputOperations.Rows[rowIndex].Cells["Operations"].Value = regexForQuotationEscape.Replace(operationValue,"$1\\\"$3");
+                    dgvOutputOperations.Rows[rowIndex].Cells["Operations"].Value = regexForQuotationEscape.Replace(operationValue, "$1\\\"$3");
                     dgvOutputOperations.Rows[rowIndex].Cells["Key"].Value = rowIndex;
 
 
-                    ValidateInsertedRow(operationValue,dgvOutputOperations.Rows[rowIndex]);
-                  
+                    ValidateInsertedRow(operationValue, dgvOutputOperations.Rows[rowIndex]);
+
                     counter++;
                     dgvOutputOperations.ClearSelection();
                     dgvOutputOperations.FirstDisplayedScrollingRowIndex = rowIndex;
@@ -241,7 +240,7 @@ namespace PackageGenerator {
         private void ValidateInsertedRow(string operationValue, DataGridViewRow dataGridViewRow) {
             if (operationValue.Contains("\"\"")) {
                 dataGridViewRow.DefaultCellStyle.BackColor = Color.LightCoral;
-            } 
+            }
         }
 
         private bool IsValidToAddOperation() {
@@ -296,7 +295,7 @@ namespace PackageGenerator {
                 if (control is TextBox) {
                     Regex reg = new Regex(@"\b" + control.Name + @"\b");
                     if (!control.Text.Contains("{")) {
-                        returnValue = reg.Replace(returnValue, "\""+control.Text.Replace("\"","\\\"")+"\"");
+                        returnValue = reg.Replace(returnValue, "\"" + control.Text.Replace("\"", "\\\"") + "\"");
                         // returnValue = returnValue.Replace(control.Name, "\"" + control.Text + "\"");
                     } else {
                         //propname+asdasdasdasd
@@ -335,11 +334,11 @@ namespace PackageGenerator {
 
                 PackageNameForm form = new PackageNameForm();
 
-                DialogResult dialogPackageName =  form.ShowDialog();
+                DialogResult dialogPackageName = form.ShowDialog();
 
 
                 if (dialogPackageName == DialogResult.OK) {
-                    
+
                     string pathToCisPackage = pathToThisExec + @"\MIGRATION\FIRSTPACKAGE\cis-mxpack-1.0-full.jar";
                     string pathToConfigFile = pathToThisExec + @"\MIGRATION\FIRSTPACKAGE\trunk\.ci\ci.xml";
                     string pathTomainConfigFile = pathToThisExec + @"\MIGRATION\FIRSTPACKAGE\trunk\.ci\ci-main.xml";
@@ -349,27 +348,27 @@ namespace PackageGenerator {
 
 
 
-                if (dial.ShowDialog() == DialogResult.OK) {
-                    string pathToTarget = dial.SelectedPath;
-                    string pathToSource = pathToThisExec + @"\MIGRATION\FIRSTPACKAGE\trunk";
+                    if (dial.ShowDialog() == DialogResult.OK) {
+                        string pathToTarget = dial.SelectedPath;
+                        string pathToSource = pathToThisExec + @"\MIGRATION\FIRSTPACKAGE\trunk";
 
-                    string packageId = "MigrationPackage";
+                        string packageId = "MigrationPackage";
 
-                    string commandToExecute = "java -jar \"" + pathToCisPackage + "\"" +
-                                              " " +
-                                              "-configfile:\"" + pathToConfigFile + "\"" +
-                                              " " +
-                                              "-source:\"" + pathToSource + "\"" +
-                                              " " +
-                                              "-target:\"" + pathToTarget + "\"" +
-                                              " " +
-                                              "-packageid:" + packageId;
+                        string commandToExecute = "java -jar \"" + pathToCisPackage + "\"" +
+                                                  " " +
+                                                  "-configfile:\"" + pathToConfigFile + "\"" +
+                                                  " " +
+                                                  "-source:\"" + pathToSource + "\"" +
+                                                  " " +
+                                                  "-target:\"" + pathToTarget + "\"" +
+                                                  " " +
+                                                  "-packageid:" + packageId;
 
 
-                    FrontendUtils.WriteFile(pathToThisExec + @"\compile.cmd", commandToExecute);
-                    FrontendUtils.ExecuteCommandSync(pathToThisExec + @"\compile.cmd");
+                        FrontendUtils.WriteFile(pathToThisExec + @"\compile.cmd", commandToExecute);
+                        FrontendUtils.ExecuteCommandSync(pathToThisExec + @"\compile.cmd");
+                    }
                 }
-            }
                 #endregion
 
             } catch (Exception ex) {
@@ -771,7 +770,7 @@ namespace PackageGenerator {
 
             int counter = 1;
             foreach (DataGridViewRow row in dgvOutputOperations.Rows) {
-                row.Cells[0].Value =counter ;
+                row.Cells[0].Value = counter;
                 counter++;
             }
         }
@@ -906,7 +905,7 @@ namespace PackageGenerator {
 
                 //"AppendTextToFile( \"\" ,\"\" )"
                 CustomizationFunction customizationFunction = GuessCustomizationFunctionFromGrid(dgvOutputOperations.SelectedRows[0].Cells[1].Value);
-                btnSave.Enabled = true;                
+                btnSave.Enabled = true;
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
@@ -929,7 +928,7 @@ namespace PackageGenerator {
 
             for (int i = 0; i < customizationFunction.variablesIndexes.Count; i++) {
                 Control targetedControl = pnlParameters.Controls[customizationFunction.variablesIndexes[i]];
-                 string parameterValue = parameters[i].Trim(new char[]{'(',')',' '});
+                string parameterValue = parameters[i].Trim(new char[] { '(', ')', ' ' });
                 if (targetedControl is TextBox) {
                     if (parameterValue.Contains("PROP_")) {
                         Regex regexPropertyFinder = new Regex("PROP_(\\S+)");
@@ -939,9 +938,9 @@ namespace PackageGenerator {
                     } else {
                         targetedControl.Text = parameterValue.Trim(new char[] { '\"' });
                     }
-                    
-                } else if(targetedControl is ComboBox){
-                    targetedControl.Text = string.Equals(parameterValue,"true")?"True":"False";
+
+                } else if (targetedControl is ComboBox) {
+                    targetedControl.Text = string.Equals(parameterValue, "true") ? "True" : "False";
                 }
             }
             return customizationFunction;
@@ -971,14 +970,14 @@ namespace PackageGenerator {
                 rows.Remove(row);
                 rows.Insert(idx - 1, row);
                 grid.ClearSelection();
-                
+
                 int counter = 1;
                 foreach (DataGridViewRow arow in dgvOutputOperations.Rows) {
                     arow.Cells[0].Value = counter;
                     counter++;
                 }
                 grid.Rows[idx - 1].Cells[col].Selected = true;
-                dgvOutputOperations.FirstDisplayedScrollingRowIndex = idx-1;
+                dgvOutputOperations.FirstDisplayedScrollingRowIndex = idx - 1;
             } catch { }
         }
 
@@ -1003,9 +1002,9 @@ namespace PackageGenerator {
                         counter++;
                     }
                     grid.Rows[idx + 1].Cells[col].Selected = true;
-                    dgvOutputOperations.FirstDisplayedScrollingRowIndex = idx+1;
+                    dgvOutputOperations.FirstDisplayedScrollingRowIndex = idx + 1;
                 }
-                
+
             } catch { }
         }
 

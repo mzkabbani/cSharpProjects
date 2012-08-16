@@ -20,7 +20,7 @@ namespace XmlParsersAndUi.Classes {
         public static string commandMaxCapturePointId = "SELECT MAX(id) " +
                                                         "FROM Rec_CapturePoints";
 
-        public static string commandGetAllRespectiveCapturePoints = "SELECT Rec_CapturePoints.pointText, Rec_CapturePoints.pointUsedAttributes, Rec_CapturePoints.pointParentNode, Rec_CapturePoints.pointUsedAttribValues, Rec_CapturePoints.Level ,Rec_CapturePoints.ItemIndex \n" +
+        public static string commandGetAllRespectiveCapturePoints = "SELECT Rec_CapturePoints.pointText, Rec_CapturePoints.pointUsedAttributes, Rec_CapturePoints.pointParentNode, Rec_CapturePoints.pointUsedAttribValues, Rec_CapturePoints.Level ,Rec_CapturePoints.ItemIndex ,Rec_CapturePoints.parentLevel, Rec_CapturePoints.parentIndex \n" +
                                                                    "FROM Advanced_Recommendations INNER JOIN  Rec_CapturePoints ON Advanced_Recommendations.id = Rec_CapturePoints.pointRecId \n" +
                                                                    "WHERE (Rec_CapturePoints.pointRecId = @pointRecId)";
 

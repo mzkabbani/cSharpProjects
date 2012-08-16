@@ -796,7 +796,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 pnlAvailableReplacements.Controls.Clear();
                 ComplexCaptureMatchObject complexCaptureMatchObject = dgvResults[1, e.RowIndex].Value as ComplexCaptureMatchObject;
-                List<ReplacementEvent> availableReplacements = BackEndUtils.GetAvailableReplacementsByCaptureId(complexCaptureMatchObject.captureEvent.CaptureEventId);
+                List<ReplacementEvent> availableReplacements = BackEndUtils.GetAvailableReplacementsByCaptureId(complexCaptureMatchObject.captureEvent.CaptureEventId, BackEndUtils.GetSqlConnection());
                 int highestPopularity = -1;
                 for (int i = 0; i < availableReplacements.Count; i++) {
                     CustomizedReplacement customizedReplacement = new CustomizedReplacement();

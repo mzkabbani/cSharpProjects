@@ -148,3 +148,19 @@ The database file cannot be found. Check the path to the database. [ Data Source
 
 
 The database file cannot be found. Check the path to the database. [ Data Source = X:\beast\Test_Automation\Database_Automation.sdf ]
+
+
+
+
+8/16/2012 11:01:35 AM
+
+
+Index was outside the bounds of the array.
+
+
+System.IndexOutOfRangeException: Index was outside the bounds of the array.
+   at XmlParsersAndUi.BackEndUtils.GetCustomCapturePointListFromTable(DataTable capturePointsTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 561
+   at XmlParsersAndUi.BackEndUtils.GetCaptureEventItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 549
+   at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 528
+   at XmlParsersAndUi.SetupAdvancedRecForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 477
+   at XmlParsersAndUi.SetupAdvancedRecForm.SetupAdvancedRecForm_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 431

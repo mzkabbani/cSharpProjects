@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace XmlParsersAndUi.Classes {
+namespace PackageGenerator {
     public class InstallerProp {
         public enum PropType {
             StringProperty = 1,
