@@ -95,70 +95,6 @@ namespace XmlParsersAndUi {
         string readText = string.Empty;
         private void btnParse_Click(object sender, EventArgs e) {
 
-            try {
-                StreamReader reader = new StreamReader(txtInputFile.Text);
-
-                try {
-                    readText = reader.ReadToEnd();
-                } finally {
-                    reader.Close();
-                }
-
-                // string xmlText = @"<Elements><Elemen><test id=''></test></Elemen><Elemen><test id='2'></test></Elemen><Elemen><test></test></Elemen></Elements>";
-
-
-
-
-                // ParseEvent(readText);==needed
-
-
-
-
-
-
-                //tvOutput.chil
-
-                //cmbMain.Items.Add("");
-                //txtInputFile.Text = @"D:\TPK1681\VIX_MACROS\macro20.xml";
-                //XDocument xmlDocument = XDocument.Load(txtInputFile.Text);
-
-                //IEnumerable<XElement> childred = 
-                //       object patterns = xmlDocument.XPathEvaluate(@"MXClientScript\Events");
-                //         IEnumerable<XElement> children = xmlDocument.XPathSelectElements(@"MXClientScript/Events");
-
-                //       IEnumerable<XElement> childrenByXpath = xmlDocument.XPathSelectElements(@"MXClientScript/Events/Modify");
-
-                //      IEnumerable<XElement> ie= childrenByXpath.Descendants();
-
-                //       IEnumerable<XElement> children1 = (from child in xmlDocument.XPathSelectElements(@"MXClientScript/Events").Elements("Modify").Descendants("Cell").Descendants("Focus") 
-                //                                 where child.Attribute("FocusCode").Value=="_ADT_OBJ_ATM___Date___0" 
-                //                                 select child);
-
-
-
-                ////List<string> attributes = new List<string>() { "","",""};
-                //Dictionary<string, string> attributesAndValues = new Dictionary<string, string>();
-                //attributesAndValues.Add("FocusCode", "_ADT_OBJ_ATM___Date___0");
-                //attributesAndValues.Add("PanelFather", "OBJECT_12");
-
-                //foreach (XElement elementFromXpath in children) {
-                //   // string attrValue = elementFromXpath.Attribute("Code").Value;
-                //    XAttribute xattr = new XAttribute("EventID", "");
-                //    if(elementFromXpath.Elements("Modify").Count() > 0){                        
-                //       IEnumerable<XElement> childNodes =  elementFromXpath.Elements("Modify");
-                //       foreach (XElement xElement in childNodes) {
-                //           foreach (var item in attributesAndValues) {
-                //               //xElement.Descendants("Focus").Attributes(item.Key).First().Value
-                //               if (xElement.Descendants("Focus").Attributes(item.Key).First().Value != item.Value) {
-                //                   return;
-                //               }
-                //           }        
-                //       }
-                //    }                    
-                //}
-            } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
-            }
         }
 
         private void FindChildren() {
@@ -581,6 +517,28 @@ namespace XmlParsersAndUi {
             } catch (Exception ex) {
                 
                 throw;
+            }
+        }
+
+        private void button3_Click(object sender, EventArgs e) {
+            try {
+                string filePath = txtInputFile.Text;
+                string readFile = FrontendUtils.ReadFile(filePath);
+
+                Regex reg = new Regex("http.*.xml");
+
+                MatchCollection matches = reg.Matches(readFile);
+
+                string exportScript = string.Empty;
+ 
+                foreach (Match match in matches) {
+                    exportScript = exportScript + "svn export " + match.Value+"\r\n";
+                }
+
+                FrontendUtils.WriteFile("D:\\outputExportScript.cmd", exportScript);
+
+            } catch (Exception ex) {
+                
             }
         }
 

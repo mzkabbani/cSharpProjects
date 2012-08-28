@@ -13,6 +13,7 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>IconsLandVistaMultimediaIconsDemo-ICO-VCR-CircleBlue-PlayModeRepeatAllHot %281%29.ico</ApplicationIcon>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -25,7 +26,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -45,6 +45,22 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
@@ -77,8 +93,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\CustomizationFunction.cs" />
-    <Compile Include="Classes\FrontendUtils.cs" />
     <Compile Include="Classes\InstallerPropertyObject.cs" />
+    <Compile Include="Controls\CheckboxGridView.cs">
+    </Compile>
+    <Compile Include="Controls\CheckboxGridView.Designer.cs">
+      <DependentUpon>CheckboxGridView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,17 +111,17 @@
     <Compile Include="Forms\AddPropertyForm.Designer.cs">
       <DependentUpon>AddPropertyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\ExceptionForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ExceptionForm.Designer.cs">
-      <DependentUpon>ExceptionForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Forms\PackageNameForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\PackageNameForm.Designer.cs">
       <DependentUpon>PackageNameForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\SelectPackageNameAndStorageForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\SelectPackageNameAndStorageForm.Designer.cs">
+      <DependentUpon>SelectPackageNameAndStorageForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Mainform.cs">
       <SubType>Form</SubType>
@@ -123,11 +143,11 @@
     <EmbeddedResource Include="Forms\AddPropertyForm.resx">
       <DependentUpon>AddPropertyForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ExceptionForm.resx">
-      <DependentUpon>ExceptionForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Forms\PackageNameForm.resx">
       <DependentUpon>PackageNameForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\SelectPackageNameAndStorageForm.resx">
+      <DependentUpon>SelectPackageNameAndStorageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Mainform.resx">
       <DependentUpon>Mainform.cs</DependentUpon>
@@ -212,7 +232,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controls\" />
+    <ProjectReference Include="..\Automation.Common\Automation.Common.csproj">
+      <Project>{F2CA3F3F-B7AE-4378-B4B6-B0BA9903C67D}</Project>
+      <Name>Automation.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

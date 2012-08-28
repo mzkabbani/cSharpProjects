@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows.Forms;
 using log4net;
 using System.IO;
+using Automation.Common.Utils;
 
 namespace PackageGenerator {
     static class Program {
@@ -21,12 +22,30 @@ namespace PackageGenerator {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             try {
+                FrontendUtils.CreateLogsDirectory();
+                CheckEnvironmentVariables();
                 Application.Run(new Mainform());
             } catch (Exception ex) {
                 throw;
             }
         }
 
+        private static void CheckEnvironmentVariables() {
+            try {
+                //JAVA_HOME
+                //U:\Devtools\java\jdk1.6.0_24
+                System.Environment.GetEnvironmentVariable("JAVA_HOME", EnvironmentVariableTarget.User);
+                System.Environment.SetEnvironmentVariable("JAVA_HOME", @"U:\Devtools\java\jdk1.6.0_24", EnvironmentVariableTarget.User);
+                //PATH
+                //U:\Devtools\java\jdk1.6.0_24\bin
+                string pathVariable = System.Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.User);
+                System.Environment.SetEnvironmentVariable("PATH", pathVariable + @";U:\Devtools\java\jdk1.6.0_24\bin;U:\Tools\bin", EnvironmentVariableTarget.User);
+
+            } catch (Exception ex) {
+                FrontendUtils.ShowError("Failed to setup environment variables.", ex);
+            }
+
+        }
         private static void GlobalUnhandledExceptionHandler(object sender, UnhandledExceptionEventArgs e) {
             Exception ex = default(Exception);
             ex = (Exception)e.ExceptionObject;

@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("item1");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("item1");
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.lvItems = new System.Windows.Forms.ListView();
             this.txtInputFile = new System.Windows.Forms.TextBox();
@@ -38,6 +38,9 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnAdd32Customs = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.button4 = new System.Windows.Forms.Button();
+            this.grpBoxAttr.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtOutput
@@ -58,7 +61,7 @@
             this.lvItems.AllowDrop = true;
             this.lvItems.FullRowSelect = true;
             this.lvItems.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem6});
             this.lvItems.Location = new System.Drawing.Point(605, 262);
             this.lvItems.Name = "lvItems";
             this.lvItems.Size = new System.Drawing.Size(107, 288);
@@ -87,14 +90,14 @@
             this.btnParse.TabIndex = 3;
             this.btnParse.Text = "Parse File";
             this.btnParse.UseVisualStyleBackColor = true;
-            this.btnParse.Click += new System.EventHandler(this.btnParse_Click);
+            this.btnParse.Click += new System.EventHandler(this.button3_Click);
             // 
             // tvOutput
             // 
             this.tvOutput.CheckBoxes = true;
-            this.tvOutput.Location = new System.Drawing.Point(12, 70);
+            this.tvOutput.Location = new System.Drawing.Point(12, 155);
             this.tvOutput.Name = "tvOutput";
-            this.tvOutput.Size = new System.Drawing.Size(230, 441);
+            this.tvOutput.Size = new System.Drawing.Size(230, 356);
             this.tvOutput.TabIndex = 4;
             this.tvOutput.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvOutput_AfterSelect);
             // 
@@ -110,6 +113,7 @@
             // 
             // grpBoxAttr
             // 
+            this.grpBoxAttr.Controls.Add(this.button3);
             this.grpBoxAttr.Location = new System.Drawing.Point(248, 70);
             this.grpBoxAttr.Name = "grpBoxAttr";
             this.grpBoxAttr.Size = new System.Drawing.Size(276, 441);
@@ -185,11 +189,32 @@
             this.btnAdd32Customs.UseVisualStyleBackColor = true;
             this.btnAdd32Customs.Click += new System.EventHandler(this.btnAdd32Customs_Click);
             // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(6, 19);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(130, 23);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "Extract Addops";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // button4
+            // 
+            this.button4.Location = new System.Drawing.Point(12, 89);
+            this.button4.Name = "button4";
+            this.button4.Size = new System.Drawing.Size(75, 23);
+            this.button4.TabIndex = 13;
+            this.button4.Text = "button4";
+            this.button4.UseVisualStyleBackColor = true;
+            this.button4.Click += new System.EventHandler(this.button3_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 673);
+            this.Controls.Add(this.button4);
             this.Controls.Add(this.btnAdd32Customs);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.cmbMain);
@@ -207,6 +232,7 @@
             this.Name = "Form1";
             this.Text = "Main Form";
             this.Load += new System.EventHandler(this.Form1_Load);
+            this.grpBoxAttr.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -228,6 +254,8 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button btnAdd32Customs;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button4;
     }
 }
 

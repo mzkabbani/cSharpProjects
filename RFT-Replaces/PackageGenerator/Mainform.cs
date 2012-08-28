@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
 using PackageGenerator.Forms;
+using Automation.Common.Utils;
+using Automation.Common;
 
 namespace PackageGenerator {
     public partial class Mainform : Form {
@@ -18,12 +20,13 @@ namespace PackageGenerator {
 
         private void Mainform_Load(object sender, EventArgs e) {
             try {
-
-                CheckEnvironmentVariables();
-
+                AddHeaderCheckBox();
                 //FrontendUtils.SendUsageNotification("Started");
-                FrontendUtils.SendEmail("mkabbani@murex.com", "mkabbani@murex.com", "Generator Started", "Generator has been started");
 
+                try {
+                    FrontendUtils.SendEmail("mkabbani@murex.com", "mkabbani@murex.com", "Generator Started", "Generator has been started");
+                } catch (Exception) {
+                }
 
                 cboPropertyType.SelectedIndex = 0;
                 //populate all props from installer file
@@ -42,25 +45,109 @@ namespace PackageGenerator {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
         }
+
+
+        #region DGV CheckboxCol
+        int TotalCheckBoxes = 0;
+        int TotalCheckedCheckBoxes = 0;
+        CheckBox HeaderCheckBox = null;
+        bool IsHeaderCheckBoxClicked = false;
+
+        private void AddHeaderCheckBox() {
+            HeaderCheckBox = new CheckBox();
+
+            HeaderCheckBox.Size = new Size(15, 15);
+
+            //Add the CheckBox into the DataGridView
+            this.dgvOutputOperations.Controls.Add(HeaderCheckBox);
+
+            HeaderCheckBox.KeyUp += new KeyEventHandler(HeaderCheckBox_KeyUp);
+            HeaderCheckBox.MouseClick += new MouseEventHandler(HeaderCheckBox_MouseClick);
+            dgvOutputOperations.CellValueChanged +=
+               new DataGridViewCellEventHandler(dgvSelectAll_CellValueChanged);
+            dgvOutputOperations.CurrentCellDirtyStateChanged +=
+              new EventHandler(dgvSelectAll_CurrentCellDirtyStateChanged);
+            dgvOutputOperations.CellPainting +=
+              new DataGridViewCellPaintingEventHandler(dgvSelectAll_CellPainting);
+        }
+
+        private void dgvSelectAll_CurrentCellDirtyStateChanged(object sender, EventArgs e) {
+            if (dgvOutputOperations.CurrentCell is DataGridViewCheckBoxCell)
+                dgvOutputOperations.CommitEdit(DataGridViewDataErrorContexts.Commit);
+        }
+
+        private void dgvSelectAll_CellPainting(object sender,
+             DataGridViewCellPaintingEventArgs e) {
+            if (e.RowIndex == -1 && e.ColumnIndex == 0)
+                ResetHeaderCheckBoxLocation(e.ColumnIndex, e.RowIndex);
+        }
+
+        private void ResetHeaderCheckBoxLocation(int ColumnIndex, int RowIndex) {
+            //Get the column header cell bounds
+            Rectangle oRectangle = this.dgvOutputOperations.GetCellDisplayRectangle(ColumnIndex, RowIndex, true);
+
+            Point oPoint = new Point();
+
+            oPoint.X = oRectangle.Location.X + (oRectangle.Width - HeaderCheckBox.Width) / 2 + 1;
+            oPoint.X = oRectangle.Location.X + oRectangle.Width - HeaderCheckBox.Width - 2;
+
+            oPoint.Y = oRectangle.Location.Y + (oRectangle.Height - HeaderCheckBox.Height) / 2 + 1;
+
+            //Change the location of the CheckBox to make it stay on the header
+            HeaderCheckBox.Location = oPoint;
+        }
+
+        private void dgvSelectAll_CellValueChanged(object sender, DataGridViewCellEventArgs e) {
+            if (e.ColumnIndex == 0) {
+                if (!IsHeaderCheckBoxClicked)
+                    RowCheckBoxClick((DataGridViewCheckBoxCell)dgvOutputOperations[e.ColumnIndex, e.RowIndex]);
+            }
+        }
+
+        private void HeaderCheckBoxClick(CheckBox HCheckBox) {
+            IsHeaderCheckBoxClicked = true;
+
+            foreach (DataGridViewRow Row in dgvOutputOperations.Rows)
+                ((DataGridViewCheckBoxCell)Row.Cells["CommentUsage"]).Value = HCheckBox.Checked;
+
+            dgvOutputOperations.RefreshEdit();
+
+            TotalCheckedCheckBoxes = HCheckBox.Checked ? TotalCheckBoxes : 0;
+
+            IsHeaderCheckBoxClicked = false;
+        }
+
+        private void HeaderCheckBox_MouseClick(object sender, MouseEventArgs e) {
+            HeaderCheckBoxClick((CheckBox)sender);
+        }
+
+        private void RowCheckBoxClick(DataGridViewCheckBoxCell RCheckBox) {
+            if (RCheckBox != null) {
+                //Modify Counter;            
+                if ((bool)RCheckBox.Value && TotalCheckedCheckBoxes < TotalCheckBoxes)
+                    TotalCheckedCheckBoxes++;
+                else if (TotalCheckedCheckBoxes > 0)
+                    TotalCheckedCheckBoxes--;
+
+                //Change state of the header CheckBox.
+                if (TotalCheckedCheckBoxes < TotalCheckBoxes)
+                    HeaderCheckBox.Checked = false;
+                else if (TotalCheckedCheckBoxes == TotalCheckBoxes)
+                    HeaderCheckBox.Checked = true;
+            }
+        }
+
+        private void HeaderCheckBox_KeyUp(object sender, KeyEventArgs e) {
+            if (e.KeyCode == Keys.Space)
+                HeaderCheckBoxClick((CheckBox)sender);
+
+        }
+        #endregion
+
         string pathToThisExec = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
 
 
-        private void CheckEnvironmentVariables() {
-            try {
-                //JAVA_HOME
-                //U:\Devtools\java\jdk1.6.0_24
-                System.Environment.GetEnvironmentVariable("JAVA_HOME", EnvironmentVariableTarget.User);
-                System.Environment.SetEnvironmentVariable("JAVA_HOME", @"U:\Devtools\java\jdk1.6.0_24", EnvironmentVariableTarget.User);
-                //PATH
-                //U:\Devtools\java\jdk1.6.0_24\bin
-                string pathVariable = System.Environment.GetEnvironmentVariable("PATH", EnvironmentVariableTarget.User);
-                System.Environment.SetEnvironmentVariable("PATH", pathVariable + @";U:\Devtools\java\jdk1.6.0_24\bin;U:\Tools\bin", EnvironmentVariableTarget.User);
 
-            } catch (Exception ex) {
-                FrontendUtils.ShowError("Failed to setup environment variables.", ex);
-            }
-
-        }
 
         private void LoadAvailableFunctionsToList(string utilsFilePath) {
             string readFile = FrontendUtils.ReadFile(utilsFilePath);
@@ -139,7 +226,10 @@ namespace PackageGenerator {
 
         private void lbAvailableFunctions_SelectedIndexChanged(object sender, EventArgs e) {
             try {
+                pnlParameters.Visible = false;
                 UpdateUiFromSelectedItem(lbAvailableFunctions.SelectedItem as CustomizationFunction);
+                pnlParameters.Visible = true;
+                txtFunctionComment.Text = "Add comment here...";
                 btnSave.Enabled = false;
                 btnAdd.Enabled = true;
             } catch (Exception ex) {
@@ -155,7 +245,7 @@ namespace PackageGenerator {
                 for (int j = 0; j < customizationFunction.localVariableTypeAndName.ElementAt(i).Value.Count; j++) {
 
                     Label lbl = new Label();
-
+                    lbl.Visible = false;
                     lbl.Text = customizationFunction.localVariableTypeAndName.ElementAt(i).Value[j].Substring(0, 1).ToUpperInvariant() +
                     customizationFunction.localVariableTypeAndName.ElementAt(i).Value[j].Substring(1);
                     lbl.Dock = DockStyle.Top;
@@ -163,6 +253,7 @@ namespace PackageGenerator {
 
                     if (string.Equals(customizationFunction.localVariableTypeAndName.ElementAt(i).Key, "boolean")) {
                         ComboBox cbo = new ComboBox();
+                        cbo.Visible = false;
                         cbo.Items.Add("True");
                         cbo.Items.Add("False");
                         cbo.DropDownStyle = ComboBoxStyle.DropDown;
@@ -172,20 +263,25 @@ namespace PackageGenerator {
                         cbo.ContextMenuStrip = cmsAddPropertyMenu;
                         pnlParameters.Controls.Add(cbo);
                         pnlParameters.Controls.Add(lbl);
+                       
 
                     } else {
                         TextBox txt = new TextBox();
+                        txt.Visible = false;
                         txt.Name = customizationFunction.localVariableTypeAndName.ElementAt(i).Value[j];
                         txt.Dock = DockStyle.Top;
                         //txt.Text = "\"\"";
                         txt.ContextMenuStrip = cmsAddPropertyMenu;
                         pnlParameters.Controls.Add(txt);
                         pnlParameters.Controls.Add(lbl);
-
+                        
                     }
-
                 }
             }
+            foreach (Control control in pnlParameters.Controls) {
+                control.Visible = true;
+            }
+
         }
 
         //void txt_TextChanged(object sender, EventArgs e) {
@@ -203,24 +299,28 @@ namespace PackageGenerator {
         private void btnAdd_Click(object sender, EventArgs e) {
             try {
 
-                if (IsValidToAddOperation()) {
-                    string operationValue = GetAllVariables();
-                    //txtOutput.Text = txtOutput.Text + "\r\n\r\n" + counter + "- " + operationValue;
-                    int rowIndex = dgvOutputOperations.Rows.Add();
+                if (lbAvailableFunctions.SelectedItem != null) {
+                    if (IsValidToAddOperation()) {
+                        string operationValue = GetAllVariables();
+                        //txtOutput.Text = txtOutput.Text + "\r\n\r\n" + counter + "- " + operationValue;
+                        int rowIndex = dgvOutputOperations.Rows.Add();
 
-                    Regex regexForQuotationEscape = new Regex("[A-Za-z0-9](\")[A-Za-z0-9]");
-
-
-                    dgvOutputOperations.Rows[rowIndex].Cells["Steps"].Value = rowIndex + 1;
-                    dgvOutputOperations.Rows[rowIndex].Cells["Operations"].Value = regexForQuotationEscape.Replace(operationValue, "$1\\\"$3");
-                    dgvOutputOperations.Rows[rowIndex].Cells["Key"].Value = rowIndex;
+                        Regex regexForQuotationEscape = new Regex("[A-Za-z0-9](\")[A-Za-z0-9]");
 
 
-                    ValidateInsertedRow(operationValue, dgvOutputOperations.Rows[rowIndex]);
+                        dgvOutputOperations.Rows[rowIndex].Cells["Steps"].Value = rowIndex + 1;
+                        dgvOutputOperations.Rows[rowIndex].Cells["Operations"].Value = regexForQuotationEscape.Replace(operationValue, "$1\\\"$3");
+                        dgvOutputOperations.Rows[rowIndex].Cells["Key"].Value = rowIndex;
+                        dgvOutputOperations.Rows[rowIndex].Cells["Comment"].Value = txtFunctionComment.Text.Trim();
+                        dgvOutputOperations.Rows[rowIndex].Cells["CommentUsage"].Value = true;
 
-                    counter++;
-                    dgvOutputOperations.ClearSelection();
-                    dgvOutputOperations.FirstDisplayedScrollingRowIndex = rowIndex;
+
+                        ValidateInsertedRow(operationValue, dgvOutputOperations.Rows[rowIndex]);
+
+                        counter++;
+                        dgvOutputOperations.ClearSelection();
+                        dgvOutputOperations.FirstDisplayedScrollingRowIndex = rowIndex;
+                    }
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -286,9 +386,20 @@ namespace PackageGenerator {
             foreach (Control control in pnlParameters.Controls) {
                 if (control is TextBox) {
                     Regex reg = new Regex(@"\b" + control.Name + @"\b");
-                    if (!control.Text.Contains("{")) {
+                    if (!control.Text.Contains("{") && !control.Text.Contains("AppDir")) {
                         returnValue = reg.Replace(returnValue, "\"" + control.Text.Replace("\"", "\\\"") + "\"");
                         // returnValue = returnValue.Replace(control.Name, "\"" + control.Text + "\"");
+                    } else if (control.Text.Contains("AppDir")) {
+                        if (!control.Text.Contains("\"")) {
+                            returnValue = reg.Replace(returnValue, control.Text.Replace("+ ", "+ \"") + "\"");
+
+                        } else {
+                            returnValue = reg.Replace(returnValue, control.Text);
+                        }
+                        //else {
+                        //    returnValue = reg.Replace(returnValue, control.Text.Replace("\"", "\\\""));
+                        //}
+
                     } else {
                         //propname+asdasdasdasd
                         Regex propBracketReg = new Regex("\\{(\\S+)\\}");
@@ -313,7 +424,7 @@ namespace PackageGenerator {
 
         private void btnGeneratePackage_Click(object sender, EventArgs e) {
             try {
-                string workingDir = Path.GetTempPath();
+                string workingDir = Path.GetTempPath() + "\\Migration";
 
 
 
@@ -321,6 +432,9 @@ namespace PackageGenerator {
 
                 #region Copy Migration And get linked files
                 if (Directory.Exists(pathToThisExec + @"\MIGRATION")) {
+                    if (Directory.Exists(workingDir)) {
+                        Directory.Delete(workingDir, true);
+                    }
 
                     FrontendUtils.CopyDirectory(pathToThisExec + @"\MIGRATION", workingDir + @"\MIGRATION");
 
@@ -378,34 +492,31 @@ namespace PackageGenerator {
                 }
                 #endregion
 
-                #region Cleanup
-                Directory.Delete(workingDir + @"\MIGRATION", true);
-                #endregion
-
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void GetLinkedFiles(string pathToAppDir) {
+            SharpSvn.SvnClient client = new SharpSvn.SvnClient();
+            client.Authentication.Clear();
             for (int i = 0; i < dgvFilesToImport.Rows.Count; i++) {
                 //Relative || Link//
                 string fileRelativePath = dgvFilesToImport.Rows[i].Cells["relativePath"].Value.ToString();
                 string fileLink = dgvFilesToImport.Rows[i].Cells["fileLink"].Value.ToString();
-                using (SharpSvn.SvnClient client = new SharpSvn.SvnClient()) {
-                    client.Authentication.Clear(); // prevents checking cached credentials
-                    SharpSvn.SvnUriTarget target = new SharpSvn.SvnUriTarget(dgvFilesToImport.Rows[i].Cells["fileLink"].Value.ToString());
-                    Directory.CreateDirectory(pathToAppDir + @"\" + dgvFilesToImport.Rows[i].Cells["relativePath"].Value.ToString());
-                    try {
-                        SharpSvn.SvnExportArgs svnExportArgs = new SharpSvn.SvnExportArgs();
-                        svnExportArgs.Overwrite = true;
-                        client.Export(target,
-                            pathToAppDir + @"\" + dgvFilesToImport.Rows[i].Cells["relativePath"].Value.ToString() + @"\" + Path.GetFileName(dgvFilesToImport.Rows[i].Cells["fileLink"].Value.ToString()),
-                            svnExportArgs);
-                    } catch (Exception ex) {
-                        FrontendUtils.LogError(ex.Message, ex);
-                    }
+
+                SharpSvn.SvnUriTarget target = new SharpSvn.SvnUriTarget(dgvFilesToImport.Rows[i].Cells["fileLink"].Value.ToString());
+                Directory.CreateDirectory(pathToAppDir + @"\" + dgvFilesToImport.Rows[i].Cells["relativePath"].Value.ToString());
+                try {
+                    SharpSvn.SvnExportArgs svnExportArgs = new SharpSvn.SvnExportArgs();
+                    svnExportArgs.Overwrite = true;
+                    client.Export(target,
+                        pathToAppDir + @"\" + dgvFilesToImport.Rows[i].Cells["relativePath"].Value.ToString() + @"\" + Path.GetFileName(dgvFilesToImport.Rows[i].Cells["fileLink"].Value.ToString()),
+                        svnExportArgs);
+                } catch (Exception ex) {
+                    FrontendUtils.LogError(ex.Message, ex);
                 }
+
             }
         }
 
@@ -447,7 +558,7 @@ namespace PackageGenerator {
             //get formatted properties from UI
             //add properties to operations file
             string allProperties = GetAllPropertiesForOperations();
-            operationFile = operationFile.Replace("}}", allProperties + "\r\n\r\n}}");
+            operationFile = operationFile.Replace("\t//Start-Operations", allProperties + "\r\n\r\n//Start-Operations");
 
 
             //get formatted function calls from UI
@@ -470,8 +581,10 @@ namespace PackageGenerator {
 
         private string ExtractOperationsFromGridView() {
             string extractedOperations = string.Empty;
+            string funtionComment = string.Empty;
             for (int i = 0; i < dgvOutputOperations.Rows.Count; i++) {
-                extractedOperations = extractedOperations + "\r\n\tfrontEndUtilities." + dgvOutputOperations.Rows[i].Cells["Operations"].Value + ";";
+                funtionComment = dgvOutputOperations.Rows[i].Cells["Comment"].Value.ToString();
+                extractedOperations = extractedOperations + "\r\n\t\r\n\t/*" + funtionComment + "*/\r\n\tfrontEndUtilities." + dgvOutputOperations.Rows[i].Cells["Operations"].Value + ";";
             }
             return extractedOperations;
         }
@@ -517,15 +630,15 @@ namespace PackageGenerator {
         private void btnClear_Click(object sender, EventArgs e) {
             try {
                 //txtOutput.Clear();
-                DialogResult dial = FrontendUtils.ShowConformation("Are you sure you want to clear all [Operations]?");
+                if (dgvOutputOperations.Rows.Count > 0) {
+                    DialogResult dial = FrontendUtils.ShowConformation("Are you sure you want to clear all [Operations]?");
 
-                if (dial == DialogResult.Yes) {
-                    dgvOutputOperations.Columns[0].Width = 70;
-                    dgvOutputOperations.Columns[1].Width = 708;
+                    if (dial == DialogResult.Yes) {
 
-                    dgvOutputOperations.Rows.Clear();
-                    counter = 1;
+                        dgvOutputOperations.Rows.Clear();
+                        counter = 1;
 
+                    }
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -534,17 +647,33 @@ namespace PackageGenerator {
 
         private void btnExportCi_Click(object sender, EventArgs e) {
             try {
+                if (dgvOutputOperations.Rows.Count > 0 || dgvFilesToImport.Rows.Count > 0) {
 
-                PreparePackageForGeneration();
+                    PreparePackageForGeneration();
 
-                string pathToThisExec = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
-                string pathToDotCiFolder = pathToThisExec + @"\MIGRATION\FIRSTPACKAGE\trunk";
-                FolderBrowserDialog dialog = new FolderBrowserDialog();
-                dialog.ShowNewFolderButton = true;
-                if (dialog.ShowDialog() == DialogResult.OK) {
-                    FrontendUtils.CopyDirectory(pathToDotCiFolder, dialog.SelectedPath);
-                    File.Delete(dialog.SelectedPath + @"\.ci\package\murex\Migration\main.groovy");
-                    File.Delete(dialog.SelectedPath + @"\.ci\package\murex\Migration\installMain.groovy");
+                    string pathToThisExec = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                    string pathToDotCiFolder = pathToThisExec + @"\MIGRATION\FIRSTPACKAGE\trunk";
+                    FolderBrowserDialog dialog = new FolderBrowserDialog();
+                    dialog.ShowNewFolderButton = true;
+                    if (dialog.ShowDialog() == DialogResult.OK) {
+                        FrontendUtils.CopyDirectory(pathToDotCiFolder, dialog.SelectedPath);
+                        File.Delete(dialog.SelectedPath + @"\.ci\package\murex\Migration\main.groovy");
+                        File.Delete(dialog.SelectedPath + @"\.ci\package\murex\Migration\installMain.groovy");
+                        File.Delete(dialog.SelectedPath + @"\.ci\ci-main.xml");
+
+
+                        if (dgvFilesToImport.Rows.Count > 0) {
+                            DialogResult dialogExportCiAndFileList =
+                                         MessageBox.Show("Do you want to export both [.Ci] and [File List] objects?" +
+                                                         "\nPress [Yes] for exporting all objects, [No] for exporting [.Ci] only.", "Export Package", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (dialogExportCiAndFileList == DialogResult.Yes) {
+                                string outputFileName = dialog.SelectedPath + @"\ImportFileList.txt";
+                                ExportFileList(outputFileName);
+                            }
+                        }
+
+                        FrontendUtils.ShowInformation("Export Completed!");
+                    }
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -674,22 +803,23 @@ namespace PackageGenerator {
 
         private void btnReset_Click(object sender, EventArgs e) {
             try {
-                lbAvailableProps.ClearSelected();
-                btnAddProperty.Enabled = true;
-                btnSaveProperty.Enabled = false;
-
-                txtPropertyName.ReadOnly = false;
-                txtPropertyName.Clear();
-                txtPropertyDesc.Clear();
-                txtPropertyValue.Clear();
-                cboPropertyValue.SelectedIndex = 0;
-                cboPropertyType.SelectedIndex = 0;
-
-
-
+                ResetPorpertyDefinitionPart();
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
+        }
+
+        private void ResetPorpertyDefinitionPart() {
+            lbAvailableProps.ClearSelected();
+            btnAddProperty.Enabled = true;
+            btnSaveProperty.Enabled = false;
+
+            txtPropertyName.ReadOnly = false;
+            txtPropertyName.Clear();
+            txtPropertyDesc.Clear();
+            txtPropertyValue.Clear();
+            cboPropertyValue.SelectedIndex = 0;
+            cboPropertyType.SelectedIndex = 0;
         }
 
         private void btnAddProperty_Click(object sender, EventArgs e) {
@@ -705,6 +835,7 @@ namespace PackageGenerator {
                                                       txtPropertyValue.Visible ? txtPropertyValue.Text : cboPropertyValue.SelectedItem.ToString().ToLower());
 
                         lbAvailableProps.Items.Add(selectedInstallerPropertyObject);
+                        ResetPorpertyDefinitionPart();
                     } else {
                         FrontendUtils.ShowInformation("The property name is already in use, please choose a unique name!");
                     }
@@ -853,24 +984,31 @@ namespace PackageGenerator {
         }
 
         string pathOfImportedCi = string.Empty;
+
         private void btnImportCi_Click(object sender, EventArgs e) {
             try {
                 FolderBrowserDialog dial = new FolderBrowserDialog();
-
+                dial.Description = "Select folder containing .ci and file list";
                 if (dial.ShowDialog() == DialogResult.OK) {
-                    pathOfImportedCi = dial.SelectedPath;
-                    if (dgvOutputOperations.Rows.Count > 0) {
-                        DialogResult dialogAppend = MessageBox.Show("Do you want to append to the existing operations list?", "Import Mode", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                        if (dialogAppend == DialogResult.Yes) {
-                            StartImportOfCi(dial.SelectedPath, true);
+                    if (Directory.Exists(dial.SelectedPath + @"\.ci")) {
+                        pathOfImportedCi = dial.SelectedPath;
+                        if (dgvOutputOperations.Rows.Count > 0) {
+                            DialogResult dialogAppend = MessageBox.Show("Do you want to append to the existing operations list?", "Import Mode", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                            if (dialogAppend == DialogResult.Yes) {
+                                StartImportOfCi(dial.SelectedPath, true);
+                            } else {
+                                StartImportOfCi(dial.SelectedPath, false);
+                            }
                         } else {
                             StartImportOfCi(dial.SelectedPath, false);
                         }
-                    } else {
-                        StartImportOfCi(dial.SelectedPath, false);
+                        btnReloadCi.Enabled = true;
+                    }
+                    string[] applicableImportFileListFiles = Directory.GetFiles(dial.SelectedPath, "*.txt");
+                    if (applicableImportFileListFiles.Length > 0) {
+                        ImportFilesListFile(applicableImportFileListFiles[0]);
                     }
                 }
-                btnReloadCi.Enabled = true;
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
@@ -892,14 +1030,19 @@ namespace PackageGenerator {
 
             string allOperations = operationsRegex.Match(readOperationsFile).Groups[1].Value;
 
-            Regex anOperation = new Regex(@"frontEndUtilities.(.*);");
+            //Regex anOperation = new Regex(@"frontEndUtilities.(.*);");
+            //Regex anOperation = new Regex(@"/\*(.*?)\*/.*?frontEndUtilities.(.*?);");
+            Regex anOperation = new Regex("/\\*(.*?)\\*/.*?frontEndUtilities.(.*?);", RegexOptions.Singleline);
             MatchCollection mCollection = anOperation.Matches(allOperations);
 
             foreach (Match match in mCollection) {
                 //SetUtilsLogDir(logDir, );
                 int rowIndex = dgvOutputOperations.Rows.Add();
-                dgvOutputOperations.Rows[rowIndex].Cells["Steps"].Value = rowIndex + 1;
-                dgvOutputOperations.Rows[rowIndex].Cells["Operations"].Value = match.Groups[1].Value;
+                dgvOutputOperations.Rows[rowIndex].Cells["Steps"].Value = (rowIndex + 1);
+                dgvOutputOperations.Rows[rowIndex].Cells["Operations"].Value = match.Groups[2].Value;
+                dgvOutputOperations.Rows[rowIndex].Cells["Key"].Value = rowIndex;
+                dgvOutputOperations.Rows[rowIndex].Cells["CommentUsage"].Value = true;
+                dgvOutputOperations.Rows[rowIndex].Cells["Comment"].Value = match.Groups[1].Value;
                 ValidateInsertedRow(dgvOutputOperations.Rows[rowIndex].Cells["Operations"].Value.ToString(), dgvOutputOperations.Rows[rowIndex]);
             }
         }
@@ -936,12 +1079,17 @@ namespace PackageGenerator {
 
         private void dgvOutputOperations_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             try {
-                DataGridViewRow row = dgvOutputOperations.SelectedRows[0];
-                currentlySelectedKey = Convert.ToInt32(dgvOutputOperations.SelectedRows[0].Cells["Key"].Value);
+                if (dgvOutputOperations.SelectedRows.Count > 0) {
+                    DataGridViewRow row = dgvOutputOperations.SelectedRows[0];
+                    currentlySelectedKey = Convert.ToInt32(dgvOutputOperations.SelectedRows[0].Cells["Key"].Value);
 
-                //"AppendTextToFile( \"\" ,\"\" )"
-                CustomizationFunction customizationFunction = GuessCustomizationFunctionFromGrid(dgvOutputOperations.SelectedRows[0].Cells[1].Value);
-                btnSave.Enabled = true;
+                    //"AppendTextToFile( \"\" ,\"\" )"
+                    CustomizationFunction customizationFunction = GuessCustomizationFunctionFromGrid(dgvOutputOperations.SelectedRows[0].Cells["Operations"].Value);
+                    //add comment to ui
+                    txtFunctionComment.Text = row.Cells["Comment"].Value.ToString();
+
+                    btnSave.Enabled = true;
+                }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
@@ -955,8 +1103,10 @@ namespace PackageGenerator {
 
 
             CustomizationFunction customizationFunction = GetCustomFunctionByName(functionName);
-
+            
+            pnlParameters.Visible = false;
             UpdateUiFromSelectedItem(customizationFunction);
+            pnlParameters.Visible = true;
 
             Regex regexFunctionParameters = new Regex("\\(.*\\)");
 
@@ -1005,15 +1155,18 @@ namespace PackageGenerator {
                 DataGridViewRow row = rows[idx];
                 rows.Remove(row);
                 rows.Insert(idx - 1, row);
-                grid.ClearSelection();
+                //grid.ClearSelection();
 
                 int counter = 1;
-                foreach (DataGridViewRow arow in dgvOutputOperations.Rows) {
-                    arow.Cells[0].Value = counter;
-                    counter++;
-                }
+                grid.ClearSelection();
                 grid.Rows[idx - 1].Cells[col].Selected = true;
                 dgvOutputOperations.FirstDisplayedScrollingRowIndex = idx - 1;
+                foreach (DataGridViewRow arow in dgvOutputOperations.Rows) {
+                    arow.Cells[1].Value = counter;
+                    counter++;
+                }
+
+
             } catch { }
         }
 
@@ -1030,15 +1183,18 @@ namespace PackageGenerator {
                     DataGridViewRow row = rows[idx];
                     rows.Remove(row);
                     rows.Insert(idx + 1, row);
-                    grid.ClearSelection();
+                    //  grid.ClearSelection();
 
                     int counter = 1;
-                    foreach (DataGridViewRow arow in dgvOutputOperations.Rows) {
-                        arow.Cells[0].Value = counter;
-                        counter++;
-                    }
+                    grid.ClearSelection();
                     grid.Rows[idx + 1].Cells[col].Selected = true;
                     dgvOutputOperations.FirstDisplayedScrollingRowIndex = idx + 1;
+                    foreach (DataGridViewRow arow in dgvOutputOperations.Rows) {
+                        arow.Cells[1].Value = counter;
+                        counter++;
+                    }
+
+
                 }
 
             } catch { }
@@ -1051,7 +1207,9 @@ namespace PackageGenerator {
                 int rowIndex = GetRowIndexFromCurrentlySelectedKey(currentlySelectedKey);
 
                 Regex regexForQuotationEscape = new Regex("[A-Za-z0-9](\")[A-Za-z0-9]");
-                dgvOutputOperations.Rows[rowIndex].Cells["Operations"].Value = regexForQuotationEscape.Replace(operationValue, "$1\\\"$3");
+                dgvOutputOperations.Rows[rowIndex].Cells["Operations"].Value =
+                    regexForQuotationEscape.Match(operationValue).Success ? operationValue : regexForQuotationEscape.Replace(operationValue, "$1\\\"$3");
+                dgvOutputOperations.Rows[rowIndex].Cells["Comment"].Value = txtFunctionComment.Text.Trim();
 
                 ValidateInsertedRow(operationValue, dgvOutputOperations.Rows[rowIndex]);
 
@@ -1077,19 +1235,24 @@ namespace PackageGenerator {
             try {
                 OpenFileDialog dialog = new OpenFileDialog();
                 if (dialog.ShowDialog() == DialogResult.OK) {
-                    if (dgvFilesToImport.Rows.Count > 0) {
-                        DialogResult dial = FrontendUtils.ShowConformation("Do you want to append the files to the existing list?");
-                        if (dial == DialogResult.Yes) {
-                            ReadFileAndInsertIntoList(dialog.FileName, true);
-                        } else {
-                            ReadFileAndInsertIntoList(dialog.FileName, false);
-                        }
-                    } else {
-                        ReadFileAndInsertIntoList(dialog.FileName, false);
-                    }
+                    string exportFilePath = dialog.FileName;
+                    ImportFilesListFile(exportFilePath);
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
+            }
+        }
+
+        private void ImportFilesListFile(string exportFilePath) {
+            if (dgvFilesToImport.Rows.Count > 0) {
+                DialogResult dial = FrontendUtils.ShowConformation("Do you want to append the files to the existing list?");
+                if (dial == DialogResult.Yes) {
+                    ReadFileAndInsertIntoList(exportFilePath, true);
+                } else {
+                    ReadFileAndInsertIntoList(exportFilePath, false);
+                }
+            } else {
+                ReadFileAndInsertIntoList(exportFilePath, false);
             }
         }
 
@@ -1099,44 +1262,53 @@ namespace PackageGenerator {
             bool inputcorrupt = false;
             for (int i = 0; i < fileLines.Length; i++) {
                 string[] fileLinesSplit = fileLines[i].Split(new char[] { ';' });
-                if (IsValidToAddFileImport(fileLinesSplit[1], fileLinesSplit[0])) {
+                string fileLink = fileLinesSplit[0].Trim(new char[] { '\\', '/' });
+                string fileRelPath = fileLinesSplit.Length > 0 ? fileLinesSplit[1].Trim(new char[] { '\\', '/' }) : "";
+                if (IsValidToAddFileImport(fileLink, fileRelPath, true)) {
                     int rowIndex = dgvFilesToImport.Rows.Add();
-                    dgvFilesToImport.Rows[rowIndex].Cells[0].Value = fileLinesSplit[1];//relative
-                    dgvFilesToImport.Rows[rowIndex].Cells[1].Value = fileLinesSplit[0];//link
+                    dgvFilesToImport.Rows[rowIndex].Cells["fileLink"].Value = fileLink;//relative
+                    dgvFilesToImport.Rows[rowIndex].Cells["relativePath"].Value = fileRelPath;//link
                 } else {
                     inputcorrupt = true;
                 }
             }
             if (inputcorrupt) {
-                FrontendUtils.ShowInformation("The input file provided is corrupt!\r\nNot all files were added.");
+                FrontendUtils.ShowInformation("Not all files were added, input file has errors");
             }
         }
 
         private void btnAddFileToImport_Click(object sender, EventArgs e) {
             try {
-                if (IsValidToAddFileImport(txtImportFileLink.Text, txtRelativePathToImport.Text)) {
+                string fileLink = txtImportFileLink.Text.Trim(new char[] { '\\', '/' });
+                string fileRelPath = txtRelativePathToImport.Text.Trim(new char[] { '\\', '/' });
+                if (IsValidToAddFileImport(fileLink, fileRelPath, false)) {
                     int rowIndex = dgvFilesToImport.Rows.Add();
-                    dgvFilesToImport.Rows[rowIndex].Cells[0].Value = txtRelativePathToImport.Text;//relative
-                    dgvFilesToImport.Rows[rowIndex].Cells[1].Value = txtImportFileLink.Text;//link 
+                    dgvFilesToImport.Rows[rowIndex].Cells["relativePath"].Value = txtRelativePathToImport.Text;//relative
+                    dgvFilesToImport.Rows[rowIndex].Cells["fileLink"].Value = txtImportFileLink.Text;//link 
+                    ResetFileImportPart();
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
         }
 
-        private bool IsValidToAddFileImport(string fileLink, string fileRelPath) {
+
+
+        private bool IsValidToAddFileImport(string fileLink, string fileRelPath, bool bulkImport) {
             if (string.IsNullOrEmpty(fileLink)) {
-                FrontendUtils.ShowInformation("[File Link] cannot be empty!");
+                if (!bulkImport) {
+                    FrontendUtils.ShowInformation("[File Link] cannot be empty!");
+                }
                 return false;
             }
-            if (string.IsNullOrEmpty(fileRelPath)) {
-                FrontendUtils.ShowInformation("[Relative File Path] cannot be empty!");
-                return false;
-            }
+
             bool duplicate = false;
             for (int i = 0; i < dgvFilesToImport.Rows.Count && !duplicate; i++) {
-                if (string.Equals(dgvFilesToImport.Rows[i].Cells["relativePath"].Value, fileRelPath)) {
-                    FrontendUtils.ShowInformation("[Relative File Path] already exists!");
+                if (string.Equals(dgvFilesToImport.Rows[i].Cells["relativePath"].Value, fileRelPath) &&
+                    string.Equals(dgvFilesToImport.Rows[i].Cells["fileLink"].Value, fileLink)) {
+                    if (!bulkImport) {
+                        FrontendUtils.ShowInformation("File already exists!");
+                    }
                     dgvFilesToImport.FirstDisplayedScrollingRowIndex = i;
                     dgvFilesToImport.Rows[i].Selected = true;
                     duplicate = true;
@@ -1149,8 +1321,8 @@ namespace PackageGenerator {
         private void btnSaveFileToImport_Click(object sender, EventArgs e) {
             try {
                 int rowIndex = dgvFilesToImport.SelectedRows[0].Index;
-                dgvFilesToImport.Rows[rowIndex].Cells[0].Value = txtRelativePathToImport.Text;//relative
-                dgvFilesToImport.Rows[rowIndex].Cells[1].Value = txtImportFileLink.Text;//link
+                dgvFilesToImport.Rows[rowIndex].Cells["relativePath"].Value = txtRelativePathToImport.Text;//relative
+                dgvFilesToImport.Rows[rowIndex].Cells["fileLink"].Value = txtImportFileLink.Text;//link
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
@@ -1158,9 +1330,12 @@ namespace PackageGenerator {
 
         private void btnDelteFileToImport_Click(object sender, EventArgs e) {
             try {
-                DialogResult dial = FrontendUtils.ShowConformation("Are you sure you want to delete the file import operation?");
-                if (dial == DialogResult.Yes) {
-                    dgvFilesToImport.Rows.RemoveAt(dgvFilesToImport.SelectedRows[0].Index);
+                if (dgvFilesToImport.SelectedRows.Count > 0) {
+                    DialogResult dial = FrontendUtils.ShowConformation("Are you sure you want to delete the file import operation?");
+
+                    if (dial == DialogResult.Yes) {
+                        dgvFilesToImport.Rows.RemoveAt(dgvFilesToImport.SelectedRows[0].Index);
+                    }
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -1169,21 +1344,30 @@ namespace PackageGenerator {
 
         private void btnResetFileToImport_Click(object sender, EventArgs e) {
             try {
-                txtImportFileLink.ResetText();
-                txtRelativePathToImport.ResetText();
-                dgvFilesToImport.ClearSelection();
+                ResetFileImportPart();
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
         }
 
+        private void ResetFileImportPart() {
+            btnAddFileToImport.Enabled = true;
+            btnSaveFileToImport.Enabled = false;
+            txtImportFileLink.ResetText();
+            txtRelativePathToImport.ResetText();
+            dgvFilesToImport.ClearSelection();
+        }
+
         private void dgvFilesToImport_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             try {
-                string fileRelPath = dgvFilesToImport.SelectedRows[0].Cells[0].Value.ToString();
-                string fileLink = dgvFilesToImport.SelectedRows[0].Cells[1].Value.ToString();
-                txtImportFileLink.Text = fileLink;
-                txtRelativePathToImport.Text = fileRelPath;
-
+                if (dgvFilesToImport.SelectedRows.Count > 0) {
+                    btnSaveFileToImport.Enabled = true;
+                    btnAddFileToImport.Enabled = false;
+                    string fileRelPath = dgvFilesToImport.SelectedRows[0].Cells["relativePath"].Value.ToString();
+                    string fileLink = dgvFilesToImport.SelectedRows[0].Cells["fileLink"].Value.ToString();
+                    txtImportFileLink.Text = fileLink;
+                    txtRelativePathToImport.Text = fileRelPath;
+                }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
@@ -1191,19 +1375,285 @@ namespace PackageGenerator {
 
         private void btnExportFiles_Click(object sender, EventArgs e) {
             try {
-                SaveFileDialog fileSave = new SaveFileDialog();
-                DialogResult dial = fileSave.ShowDialog();
-                if (dial == DialogResult.OK) {
-                    string fileToExport = string.Empty;
-                    for (int i = 0; i < dgvFilesToImport.Rows.Count; i++) {
-                        fileToExport = fileToExport + dgvFilesToImport.Rows[i].Cells["fileLink"].Value.ToString() +
-                                            ";" + dgvFilesToImport.Rows[i].Cells["relativePath"].Value.ToString() + "\r\n";
+                if (dgvFilesToImport.Rows.Count > 0) {
+                    SaveFileDialog fileSave = new SaveFileDialog();
+                    DialogResult dial = fileSave.ShowDialog();
+                    if (dial == DialogResult.OK) {
+                        if (!string.IsNullOrEmpty(fileSave.FileName)) {
+                            string outputFilePath = fileSave.FileName;
+                            ExportFileList(outputFilePath);
+                        } else {
+                            FrontendUtils.ShowInformation("Filename cannot be empty!");
+                        }
                     }
-                    FrontendUtils.WriteFile(fileSave.FileName, fileToExport);
+                } else {
+                    FrontendUtils.ShowInformation("There are no items in the import list!");
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
         }
+
+        private void ExportFileList(string outputFilePath) {
+            string fileToExport = string.Empty;
+            for (int i = 0; i < dgvFilesToImport.Rows.Count; i++) {
+                fileToExport = fileToExport + dgvFilesToImport.Rows[i].Cells["fileLink"].Value.ToString() +
+                                    ";" + dgvFilesToImport.Rows[i].Cells["relativePath"].Value.ToString() + "\r\n";
+            }
+            FrontendUtils.WriteFile(outputFilePath, fileToExport);
+        }
+
+        private void exportCustomizationLogToolStripMenuItem_Click(object sender, EventArgs e) {
+            try {
+                if (dgvOutputOperations.Rows.Count > 0) {
+                    SaveFileDialog fileSave = new SaveFileDialog();
+                    DialogResult dial = fileSave.ShowDialog();
+                    if (dial == DialogResult.OK) {
+                        if (!string.IsNullOrEmpty(fileSave.FileName)) {
+                            string outputFilePath = fileSave.FileName;
+                            ExportOperationsLogFile(outputFilePath);
+                        } else {
+                            FrontendUtils.ShowInformation("Filename cannot be empty!");
+                        }
+                    }
+                } else {
+                    FrontendUtils.ShowInformation("There are no items operations list!");
+
+                }
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message, ex);
+            }
+        }
+
+        private void ExportOperationsLogFile(string outputFilePath) {
+            string logToExport = string.Empty;
+            dgvOutputOperations.ClearSelection();
+            DataSet set = new DataSet("Customizations Log Set");
+
+            DataTable table = new DataTable("Checked Operations Log");
+            table.Columns.Add("Step");           
+            table.Columns.Add("Comment");
+            table.Columns.Add("Operation");
+
+            DataTable tableOriginal = new DataTable("Original Operations Log");
+            tableOriginal.Columns.Add("Step");           
+            tableOriginal.Columns.Add("Comment");
+            tableOriginal.Columns.Add("Operation");
+
+            DataTable tableLinkedFiles = new DataTable("Linked File List");
+            tableLinkedFiles.Columns.Add("FileLink");
+            tableLinkedFiles.Columns.Add("RelativePath");
+            
+
+            for (int i = 0; i < dgvOutputOperations.Rows.Count; i++) {
+                if ((bool)dgvOutputOperations.Rows[i].Cells["CommentUsage"].Value == true) {
+                    if (!string.Equals(dgvOutputOperations.Rows[i].Cells["Comment"].Value ,"")) {
+                        table.Rows.Add(new object[] { dgvOutputOperations.Rows[i].Cells["Steps"].Value,                                                 
+                                                      dgvOutputOperations.Rows[i].Cells["Comment"].Value,
+                                                      dgvOutputOperations.Rows[i].Cells["Operations"].Value}); 
+                    }
+                }
+                tableOriginal.Rows.Add(new object[] { dgvOutputOperations.Rows[i].Cells["Steps"].Value,
+                                                      dgvOutputOperations.Rows[i].Cells["Comment"].Value,
+                                                      dgvOutputOperations.Rows[i].Cells["Operations"].Value}); 
+            }
+
+
+            for (int j = 0; j < dgvFilesToImport.Rows.Count; j++) {
+                tableLinkedFiles.Rows.Add(new object[] {dgvFilesToImport.Rows[j].Cells["fileLink"].Value,
+                                                        dgvFilesToImport.Rows[j].Cells["relativePath"].Value});
+            }
+
+            set.Tables.Add(tableLinkedFiles);
+            set.Tables.Add(table);
+            set.Tables.Add(tableOriginal);
+
+
+            FastExportingMethod.ExportToExcel(set, outputFilePath);
+
+
+        }
+        //string checkedVals = "True";
+        bool checkedVals = true;
+        private void selectGroupToolStripMenuItem_Click(object sender, EventArgs e) {
+            try {
+
+                DataGridViewSelectedRowCollection selectedRows = dgvOutputOperations.SelectedRows;
+                for (int i = 0; i < selectedRows.Count; i++) {
+                    selectedRows[i].Cells["CommentUsage"].Value = checkedVals;
+
+                }
+                checkedVals = !checkedVals;
+                //if (string.Equals(checkedVals, "True")) {
+                //    checkedVals = "False";
+                //} else {
+                //    checkedVals = "True";                
+                //}
+                dgvOutputOperations.ClearSelection();
+
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message, ex);
+            }
+        }
+
+        private void dgvOutputOperations_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e) {
+            if (e.ColumnIndex == 0) {
+                for (int i = 0; i < dgvOutputOperations.Rows.Count; i++) {
+                    dgvOutputOperations.Rows[i].Cells[0].Value = dgvColumnHeader.CheckAll;
+                }
+            }
+        }
+
+        private void releasePackageToolStripMenuItem_Click(object sender, EventArgs e) {
+            try {
+                StartReleaseProcess();
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message, ex);
+            }
+        }
+
+
+
+        private void StartReleaseProcess() {
+
+
+            SelectPackageNameAndStorageForm selectPackageNameAndStorageForm = new SelectPackageNameAndStorageForm();
+            selectPackageNameAndStorageForm.ShowDialog();
+               
+            if (selectPackageNameAndStorageForm.DialogResult == DialogResult.OK) {
+                //     if (!string.IsNullOrEmpty(releaseStorageLocation) && !string.IsNullOrEmpty(releasePackageName)) {
+                string stamp = DateTime.Now.ToShortDateString() + "-" + DateTime.Now.ToShortTimeString();
+                stamp = stamp.Replace('/', '-').Replace(" ", "").Replace(":","");
+                string releaseStorageLocation = selectPackageNameAndStorageForm.Controls["gbOutputSettings"].Controls["txtOutputPath"].Text;
+                releaseStorageLocation = releaseStorageLocation+"/"+stamp+"-Release";
+                string releasePackageName = selectPackageNameAndStorageForm.Controls["gbOutputSettings"].Controls["txtPackageName"].Text;
+         
+                //1
+                GeneratePackageJarAndExportCiAndFileList(releaseStorageLocation, releasePackageName, stamp);
+                ExportOperationsLogFile(releaseStorageLocation + "/"+stamp+"-Release-CustomizationLog.xls");
+                FrontendUtils.ShowInformation("Release Completed!");
+                // } 
+            }
+
+
+
+
+        }
+
+        private void GeneratePackageJarAndExportCiAndFileList(string storageLocation, string packageName, string stamp) {
+            string workingDir = Path.GetTempPath() + "\\Migration";
+
+            #region Write Operation and Installer files to this exec path
+
+            PreparePackageForGeneration();
+
+            #endregion
+
+            #region Export Ci from exec path And Linked Files List
+            string pathToThisExec = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            string pathToDotCiFolder = pathToThisExec + @"\MIGRATION\FIRSTPACKAGE\trunk";
+
+
+            string pathToExportDirectory = storageLocation + "\\"+stamp+"-Release-Export";
+            if (Directory.Exists(pathToExportDirectory)) {
+                Directory.Delete(pathToExportDirectory,true);
+                Directory.CreateDirectory(pathToExportDirectory);
+            }
+            FrontendUtils.CopyDirectory(pathToDotCiFolder, pathToExportDirectory);
+           
+            File.Delete(pathToExportDirectory + @"\.ci\package\murex\Migration\main.groovy");
+            File.Delete(pathToExportDirectory + @"\.ci\package\murex\Migration\installMain.groovy");
+            File.Delete(pathToExportDirectory + @"\.ci\ci-main.xml");
+
+
+            if (dgvFilesToImport.Rows.Count > 0) {
+                string outputFileName = pathToExportDirectory + @"\ImportFileList.txt";
+                ExportFileList(outputFileName);
+
+            }
+            #endregion                   
+
+            #region Copy Migration ready from exec path to temp dir And get linked files
+
+            if (Directory.Exists(pathToThisExec + @"\MIGRATION")) {
+                if (Directory.Exists(workingDir)) {
+                    Directory.Delete(workingDir, true);
+                }
+
+                FrontendUtils.CopyDirectory(pathToThisExec + @"\MIGRATION", workingDir + @"\MIGRATION");
+
+            }
+            string pathToAppDir = workingDir + @"\MIGRATION\FIRSTPACKAGE\trunk\";
+
+            GetLinkedFiles(pathToAppDir);
+
+            #endregion
+
+            #region Create Generation Command and Generate
+
+            string pathToCisPackage = workingDir + @"\MIGRATION\FIRSTPACKAGE\cis-mxpack-1.0-full.jar";
+            string pathToConfigFile = workingDir + @"\MIGRATION\FIRSTPACKAGE\trunk\.ci\ci.xml";
+            string pathTomainConfigFile = workingDir + @"\MIGRATION\FIRSTPACKAGE\trunk\.ci\ci-main.xml";
+
+            string configFileText = File.ReadAllText(pathTomainConfigFile).Replace("Migration-Package", stamp+"-"+packageName );
+            FrontendUtils.WriteFile(pathToConfigFile, configFileText);
+
+
+
+
+            string pathToTarget = storageLocation;
+            string pathToSource = workingDir + @"\MIGRATION\FIRSTPACKAGE\trunk";
+
+            string packageId = "MigrationPackage";
+
+            string commandToExecute = "java -jar \"" + pathToCisPackage + "\"" +
+                                      " " +
+                                      "-configfile:\"" + pathToConfigFile + "\"" +
+                                      " " +
+                                      "-source:\"" + pathToSource + "\"" +
+                                      " " +
+                                      "-target:\"" + pathToTarget + "\"" +
+                                      " " +
+                                      "-packageid:" + packageId;
+
+
+            FrontendUtils.WriteFile(workingDir + @"\compile.cmd", commandToExecute);
+            FrontendUtils.ExecuteCommandSync(workingDir + @"\compile.cmd");
+
+
+            #endregion
+
+        }
+
+        private void dgvOutputOperations_SelectionChanged(object sender, EventArgs e) {
+            try {
+                if (dgvOutputOperations.SelectedRows.Count > 0) {
+                    DataGridViewRow row = dgvOutputOperations.SelectedRows[0];
+
+                    if (dgvOutputOperations.SelectedRows[0].Cells["Operations"].Value != null) {
+                        currentlySelectedKey = Convert.ToInt32(dgvOutputOperations.SelectedRows[0].Cells["Key"].Value);
+
+                        //"AppendTextToFile( \"\" ,\"\" )"
+                        CustomizationFunction customizationFunction = GuessCustomizationFunctionFromGrid(dgvOutputOperations.SelectedRows[0].Cells["Operations"].Value);
+                        //add comment to ui
+                        txtFunctionComment.Text = row.Cells["Comment"].Value.ToString();
+
+                        btnSave.Enabled = true;
+                    }
+                }
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message, ex);
+            }
+        }
+
+        private void dgvOutputOperations_RowsRemoved(object sender, DataGridViewRowsRemovedEventArgs e) {
+           
+        }
+
+        private void dgvOutputOperations_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e) {
+
+        }
+
+
     }
 }
