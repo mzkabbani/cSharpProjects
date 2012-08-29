@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using Automation.Common.Utils;
+using System.IO;
 
 namespace PackageGenerator.Forms {
     public partial class SelectPackageNameAndStorageForm : Form {
@@ -35,6 +36,15 @@ namespace PackageGenerator.Forms {
 
         private void btnCancel_Click(object sender, EventArgs e) {
             this.Close();
+        }
+
+        private void SelectPackageNameAndStorageForm_Load(object sender, EventArgs e) {
+            try {
+                 string pathToThisExec = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+                 txtOutputPath.Text = pathToThisExec+"\\Released";
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message, ex);
+            }
         }
 
 

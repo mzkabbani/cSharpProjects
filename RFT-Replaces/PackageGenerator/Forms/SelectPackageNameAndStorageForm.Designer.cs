@@ -24,13 +24,13 @@
         /// </summary>
         private void InitializeComponent() {
             this.gbOutputSettings = new System.Windows.Forms.GroupBox();
+            this.btnCancel = new System.Windows.Forms.Button();
+            this.btnProceed = new System.Windows.Forms.Button();
+            this.btnBrowseFolder = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.txtPackageName = new System.Windows.Forms.TextBox();
             this.txtOutputPath = new System.Windows.Forms.TextBox();
-            this.btnBrowseFolder = new System.Windows.Forms.Button();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.btnProceed = new System.Windows.Forms.Button();
             this.gbOutputSettings.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,6 +49,38 @@
             this.gbOutputSettings.TabIndex = 0;
             this.gbOutputSettings.TabStop = false;
             this.gbOutputSettings.Text = "Output Settings";
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnCancel.Location = new System.Drawing.Point(257, 72);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(75, 23);
+            this.btnCancel.TabIndex = 5;
+            this.btnCancel.Text = "Cancel";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
+            // 
+            // btnProceed
+            // 
+            this.btnProceed.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.btnProceed.Location = new System.Drawing.Point(176, 72);
+            this.btnProceed.Name = "btnProceed";
+            this.btnProceed.Size = new System.Drawing.Size(75, 23);
+            this.btnProceed.TabIndex = 4;
+            this.btnProceed.Text = "Proceed";
+            this.btnProceed.UseVisualStyleBackColor = true;
+            this.btnProceed.Click += new System.EventHandler(this.btnProceed_Click);
+            // 
+            // btnBrowseFolder
+            // 
+            this.btnBrowseFolder.Location = new System.Drawing.Point(477, 20);
+            this.btnBrowseFolder.Name = "btnBrowseFolder";
+            this.btnBrowseFolder.Size = new System.Drawing.Size(25, 23);
+            this.btnBrowseFolder.TabIndex = 3;
+            this.btnBrowseFolder.Text = "...";
+            this.btnBrowseFolder.UseVisualStyleBackColor = true;
+            this.btnBrowseFolder.Click += new System.EventHandler(this.btnBrowseFolder_Click);
             // 
             // label2
             // 
@@ -74,6 +106,7 @@
             this.txtPackageName.Name = "txtPackageName";
             this.txtPackageName.Size = new System.Drawing.Size(375, 20);
             this.txtPackageName.TabIndex = 1;
+            this.txtPackageName.Text = "Migration-Package";
             // 
             // txtOutputPath
             // 
@@ -81,38 +114,6 @@
             this.txtOutputPath.Name = "txtOutputPath";
             this.txtOutputPath.Size = new System.Drawing.Size(375, 20);
             this.txtOutputPath.TabIndex = 0;
-            // 
-            // btnBrowseFolder
-            // 
-            this.btnBrowseFolder.Location = new System.Drawing.Point(477, 20);
-            this.btnBrowseFolder.Name = "btnBrowseFolder";
-            this.btnBrowseFolder.Size = new System.Drawing.Size(25, 23);
-            this.btnBrowseFolder.TabIndex = 3;
-            this.btnBrowseFolder.Text = "...";
-            this.btnBrowseFolder.UseVisualStyleBackColor = true;
-            this.btnBrowseFolder.Click += new System.EventHandler(this.btnBrowseFolder_Click);
-            // 
-            // btnCancel
-            // 
-            this.btnCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnCancel.Location = new System.Drawing.Point(257, 72);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(75, 23);
-            this.btnCancel.TabIndex = 5;
-            this.btnCancel.Text = "Cancel";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
-            // 
-            // btnProceed
-            // 
-            this.btnProceed.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnProceed.Location = new System.Drawing.Point(176, 72);
-            this.btnProceed.Name = "btnProceed";
-            this.btnProceed.Size = new System.Drawing.Size(75, 23);
-            this.btnProceed.TabIndex = 4;
-            this.btnProceed.Text = "Proceed";
-            this.btnProceed.UseVisualStyleBackColor = true;
-            this.btnProceed.Click += new System.EventHandler(this.btnProceed_Click);
             // 
             // SelectPackageNameAndStorageForm
             // 
@@ -125,6 +126,7 @@
             this.MinimizeBox = false;
             this.Name = "SelectPackageNameAndStorageForm";
             this.Text = "Release Setup";
+            this.Load += new System.EventHandler(this.SelectPackageNameAndStorageForm_Load);
             this.gbOutputSettings.ResumeLayout(false);
             this.gbOutputSettings.PerformLayout();
             this.ResumeLayout(false);

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Net;
 using System.Xml.Linq;
+using Automation.Common.Utils;
 
 namespace XmlParsersAndUi.Forms {
     public partial class OracleUpdaterForm : Form {

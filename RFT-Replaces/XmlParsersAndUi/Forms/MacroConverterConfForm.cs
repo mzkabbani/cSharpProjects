@@ -11,6 +11,9 @@ using System.Xml;
 using System.Data.SqlServerCe;
 using System.Text.RegularExpressions;
 using XmlParsersAndUi.Classes;
+using Automation.Common.Utils;
+using Automation.Common;
+using Automation.Backend;
 
 namespace XmlParsersAndUi.Forms {
     public partial class MacroConverterConfForm : Form {

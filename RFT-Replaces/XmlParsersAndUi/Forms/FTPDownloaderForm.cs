@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using FtpLib;
 using System.Text.RegularExpressions;
+using Automation.Common.Utils;
 
 namespace XmlParsersAndUi.Forms {
 

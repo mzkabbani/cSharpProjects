@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using XmlParsersAndUi.Classes;
 using System.IO;
+using Automation.Common.Utils;
 
 namespace XmlParsersAndUi.Forms {
     public partial class PackageGenerator : Form {

@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using Utilities.WinForms;
 using XmlParsersAndUi.Classes;
+using Automation.Common.Utils;
 
 namespace XmlParsersAndUi {
     public partial class BulkCustomsForm : Form {

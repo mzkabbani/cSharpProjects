@@ -10,6 +10,7 @@ using System.IO;
 using System.Threading;
 using Tamir.SharpSsh;
 using System.Text.RegularExpressions;
+using Automation.Common.Utils;
 
 namespace XmlParsersAndUi.Forms {
     public partial class RemoteServer : Form {

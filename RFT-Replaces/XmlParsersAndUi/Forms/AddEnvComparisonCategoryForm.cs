@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using XmlParsersAndUi.Classes;
+using Automation.Common.Utils;
+using Automation.Common;
 
 namespace XmlParsersAndUi.Forms {
     public partial class EnvComparisonCategoryForm : Form {

@@ -43,8 +43,11 @@ namespace PackageGenerator {
             this.btnMoveRowUp = new System.Windows.Forms.Button();
             this.btnMoveRowDown = new System.Windows.Forms.Button();
             this.dgvOutputOperations = new System.Windows.Forms.DataGridView();
-            this.cmsCommentSelection = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.selectGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.CommentUsage = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Steps = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Operations = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnImportCi = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -66,6 +69,8 @@ namespace PackageGenerator {
             this.groupBox7 = new System.Windows.Forms.GroupBox();
             this.btnExportFiles = new System.Windows.Forms.Button();
             this.dgvFilesToImport = new System.Windows.Forms.DataGridView();
+            this.relativePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.fileLink = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnImportFileList = new System.Windows.Forms.Button();
             this.btnResetFileToImport = new System.Windows.Forms.Button();
             this.btnRemoveFileToImport = new System.Windows.Forms.Button();
@@ -92,6 +97,8 @@ namespace PackageGenerator {
             this.label10 = new System.Windows.Forms.Label();
             this.txtPropertyName = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.cmsCommentSelection = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.selectGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsAddPropertyMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addPropertyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relAppdirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -110,18 +117,10 @@ namespace PackageGenerator {
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.CommentUsage = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.Steps = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Operations = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Key = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.relativePath = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fileLink = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutputOperations)).BeginInit();
-            this.cmsCommentSelection.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.gbParameters.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -131,6 +130,7 @@ namespace PackageGenerator {
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.gbProperty.SuspendLayout();
+            this.cmsCommentSelection.SuspendLayout();
             this.cmsAddPropertyMenu.SuspendLayout();
             this.msMainMenu.SuspendLayout();
             this.SuspendLayout();
@@ -273,19 +273,39 @@ namespace PackageGenerator {
             this.dgvOutputOperations.SelectionChanged += new System.EventHandler(this.dgvOutputOperations_SelectionChanged);
             this.dgvOutputOperations.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOutputOperations_CellContentClick);
             // 
-            // cmsCommentSelection
+            // CommentUsage
             // 
-            this.cmsCommentSelection.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.selectGroupToolStripMenuItem});
-            this.cmsCommentSelection.Name = "cmsCommentSelection";
-            this.cmsCommentSelection.Size = new System.Drawing.Size(147, 26);
+            this.CommentUsage.FillWeight = 10F;
+            this.CommentUsage.HeaderText = "Comment";
+            this.CommentUsage.Name = "CommentUsage";
+            this.CommentUsage.Width = 80;
             // 
-            // selectGroupToolStripMenuItem
+            // Steps
             // 
-            this.selectGroupToolStripMenuItem.Name = "selectGroupToolStripMenuItem";
-            this.selectGroupToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
-            this.selectGroupToolStripMenuItem.Text = "Check Group";
-            this.selectGroupToolStripMenuItem.Click += new System.EventHandler(this.selectGroupToolStripMenuItem_Click);
+            this.Steps.FillWeight = 10F;
+            this.Steps.HeaderText = "Steps";
+            this.Steps.Name = "Steps";
+            this.Steps.ReadOnly = true;
+            this.Steps.Width = 70;
+            // 
+            // Operations
+            // 
+            this.Operations.HeaderText = "Operations";
+            this.Operations.Name = "Operations";
+            this.Operations.ReadOnly = true;
+            this.Operations.Width = 1020;
+            // 
+            // Key
+            // 
+            this.Key.HeaderText = "Key";
+            this.Key.Name = "Key";
+            this.Key.Visible = false;
+            // 
+            // Comment
+            // 
+            this.Comment.HeaderText = "Comment";
+            this.Comment.Name = "Comment";
+            this.Comment.Visible = false;
             // 
             // btnClear
             // 
@@ -574,6 +594,20 @@ namespace PackageGenerator {
             this.dgvFilesToImport.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFilesToImport_CellContentClick);
             this.dgvFilesToImport.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFilesToImport_CellContentClick);
             // 
+            // relativePath
+            // 
+            this.relativePath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.relativePath.HeaderText = "Relative Path";
+            this.relativePath.Name = "relativePath";
+            this.relativePath.ReadOnly = true;
+            // 
+            // fileLink
+            // 
+            this.fileLink.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.fileLink.HeaderText = "File Link";
+            this.fileLink.Name = "fileLink";
+            this.fileLink.ReadOnly = true;
+            // 
             // btnImportFileList
             // 
             this.btnImportFileList.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -861,6 +895,20 @@ namespace PackageGenerator {
             this.label9.TabIndex = 0;
             this.label9.Text = "Name: ";
             // 
+            // cmsCommentSelection
+            // 
+            this.cmsCommentSelection.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectGroupToolStripMenuItem});
+            this.cmsCommentSelection.Name = "cmsCommentSelection";
+            this.cmsCommentSelection.Size = new System.Drawing.Size(147, 26);
+            // 
+            // selectGroupToolStripMenuItem
+            // 
+            this.selectGroupToolStripMenuItem.Name = "selectGroupToolStripMenuItem";
+            this.selectGroupToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
+            this.selectGroupToolStripMenuItem.Text = "Check Group";
+            this.selectGroupToolStripMenuItem.Click += new System.EventHandler(this.selectGroupToolStripMenuItem_Click);
+            // 
             // cmsAddPropertyMenu
             // 
             this.cmsAddPropertyMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -997,54 +1045,6 @@ namespace PackageGenerator {
             this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             this.dataGridViewTextBoxColumn6.ReadOnly = true;
             // 
-            // CommentUsage
-            // 
-            this.CommentUsage.FillWeight = 10F;
-            this.CommentUsage.HeaderText = "Comment";
-            this.CommentUsage.Name = "CommentUsage";
-            this.CommentUsage.Width = 80;
-            // 
-            // Steps
-            // 
-            this.Steps.FillWeight = 10F;
-            this.Steps.HeaderText = "Steps";
-            this.Steps.Name = "Steps";
-            this.Steps.ReadOnly = true;
-            this.Steps.Width = 70;
-            // 
-            // Operations
-            // 
-            this.Operations.HeaderText = "Operations";
-            this.Operations.Name = "Operations";
-            this.Operations.ReadOnly = true;
-            this.Operations.Width = 1020;
-            // 
-            // Key
-            // 
-            this.Key.HeaderText = "Key";
-            this.Key.Name = "Key";
-            this.Key.Visible = false;
-            // 
-            // Comment
-            // 
-            this.Comment.HeaderText = "Comment";
-            this.Comment.Name = "Comment";
-            this.Comment.Visible = false;
-            // 
-            // relativePath
-            // 
-            this.relativePath.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.relativePath.HeaderText = "Relative Path";
-            this.relativePath.Name = "relativePath";
-            this.relativePath.ReadOnly = true;
-            // 
-            // fileLink
-            // 
-            this.fileLink.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.fileLink.HeaderText = "File Link";
-            this.fileLink.Name = "fileLink";
-            this.fileLink.ReadOnly = true;
-            // 
             // Mainform
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1063,7 +1063,6 @@ namespace PackageGenerator {
             this.tabPage1.ResumeLayout(false);
             this.groupBox6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvOutputOperations)).EndInit();
-            this.cmsCommentSelection.ResumeLayout(false);
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.gbParameters.ResumeLayout(false);
@@ -1076,6 +1075,7 @@ namespace PackageGenerator {
             this.groupBox4.ResumeLayout(false);
             this.gbProperty.ResumeLayout(false);
             this.gbProperty.PerformLayout();
+            this.cmsCommentSelection.ResumeLayout(false);
             this.cmsAddPropertyMenu.ResumeLayout(false);
             this.msMainMenu.ResumeLayout(false);
             this.msMainMenu.PerformLayout();

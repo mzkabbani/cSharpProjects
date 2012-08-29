@@ -7,6 +7,9 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using System.IO;
+using Automation.Common.Utils;
+using Automation.Common;
+using Automation.Backend;
 
 namespace XmlParsersAndUi {
     public partial class SetupSimpleRecForm : Form {

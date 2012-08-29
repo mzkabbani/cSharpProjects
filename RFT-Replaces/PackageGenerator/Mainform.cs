@@ -637,7 +637,7 @@ namespace PackageGenerator {
 
                         dgvOutputOperations.Rows.Clear();
                         counter = 1;
-
+                        btnSave.Enabled = false;
                     }
                 }
             } catch (Exception ex) {
@@ -1527,7 +1527,7 @@ namespace PackageGenerator {
                 string releaseStorageLocation = selectPackageNameAndStorageForm.Controls["gbOutputSettings"].Controls["txtOutputPath"].Text;
                 releaseStorageLocation = releaseStorageLocation+"/"+stamp+"-Release";
                 string releasePackageName = selectPackageNameAndStorageForm.Controls["gbOutputSettings"].Controls["txtPackageName"].Text;
-         
+                stamp = DateTime.Now.Ticks.ToString();
                 //1
                 GeneratePackageJarAndExportCiAndFileList(releaseStorageLocation, releasePackageName, stamp);
                 ExportOperationsLogFile(releaseStorageLocation + "/"+stamp+"-Release-CustomizationLog.xls");

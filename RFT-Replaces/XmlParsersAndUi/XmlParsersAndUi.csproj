@@ -100,7 +100,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Classes\BackEndUtils.cs" />
     <Compile Include="Forms\BulkCustomsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,7 +112,6 @@
     <Compile Include="Forms\BulkMacroSplitterForm.Designer.cs">
       <DependentUpon>BulkMacroSplitterForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\CaptureEvent.cs" />
     <Compile Include="Classes\checkboxItems.cs" />
     <Compile Include="Forms\SimpleCleanupForm.cs">
       <SubType>Form</SubType>
@@ -127,7 +125,6 @@
     <Compile Include="Forms\ConfigBuilder.Designer.cs">
       <DependentUpon>ConfigBuilder.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\CustomTreeNode.cs" />
     <Compile Include="Forms\DatabaseViewer.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,7 +150,6 @@
     <Compile Include="Forms\Form2.Designer.cs">
       <DependentUpon>Form2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\FrontendUtils.cs" />
     <Compile Include="Classes\ListViewItem.cs" />
     <Compile Include="Classes\MacroEvent.cs" />
     <Compile Include="MainForm.cs">
@@ -226,9 +222,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\EditFolderNameForm.resx">
       <DependentUpon>EditFolderNameForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Forms\ExceptionForm.resx">
-      <DependentUpon>ExceptionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FindXpathForm.resx">
       <DependentUpon>FindXpathForm.cs</DependentUpon>
@@ -318,7 +311,6 @@
     <Compile Include="Forms\SetupSimpleRecForm.Designer.cs">
       <DependentUpon>SetupSimpleRecForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Classes\SimpleRecommendationObject.cs" />
     <Compile Include="Forms\SlashAdderToEventsFiles.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -337,22 +329,16 @@
     <None Include="Resources\comparison.sh">
     </None>
     <Content Include="Resources\791891-blender.gif" />
-    <Compile Include="Classes\ApplicationConfigObject.cs" />
     <Compile Include="Classes\ApplicationIdleTimer.cs" />
     <Compile Include="Classes\BackGroundWorkerObject.cs" />
-    <Compile Include="Classes\ComparisonCategory.cs" />
     <Compile Include="Classes\CustomizationFunction.cs" />
-    <Compile Include="Classes\EnvComparisonFilter.cs" />
     <Compile Include="Classes\ComplexCaptureMatchObject.cs" />
     <Compile Include="Classes\EnvComparatorWorker.cs" />
     <Compile Include="Classes\ExportDatagridWorkerObject.cs" />
     <Compile Include="Classes\FastExportingMethod.cs" />
-    <Compile Include="Classes\FormInfo.cs" />
     <Compile Include="Classes\InstallerPropertyObject.cs" />
     <Compile Include="Classes\MainAppVariables.cs" />
     <Compile Include="Classes\NodeAndAttributeCouple.cs" />
-    <Compile Include="Classes\ReplacementEvent.cs" />
-    <Compile Include="Classes\SqlCommands.cs" />
     <Compile Include="Classes\SuperListView.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -436,12 +422,6 @@
     </Compile>
     <Compile Include="Forms\EnvironmentComparisonForm.Designer.cs">
       <DependentUpon>EnvironmentComparisonForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Forms\ExceptionForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Forms\ExceptionForm.Designer.cs">
-      <DependentUpon>ExceptionForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\FindForm.cs">
       <SubType>Form</SubType>
@@ -594,6 +574,14 @@
     <ProjectReference Include="..\..\TextDiff\DifferenceEngine\DifferenceEngine.csproj">
       <Project>{8AE4897A-EA74-49B1-BA55-D892C27AF9C9}</Project>
       <Name>DifferenceEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Automation.Backend\Automation.Backend.csproj">
+      <Project>{6350A836-106C-4C78-A6B2-A7C14D560D90}</Project>
+      <Name>Automation.Backend</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Automation.Common\Automation.Common.csproj">
+      <Project>{F2CA3F3F-B7AE-4378-B4B6-B0BA9903C67D}</Project>
+      <Name>Automation.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

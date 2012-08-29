@@ -14,6 +14,9 @@ using System.Data.SqlServerCe;
 using System.IO;
 using System.Text.RegularExpressions;
 using XmlParsersAndUi.Classes;
+using Automation.Common.Utils;
+using Automation.Common;
+using Automation.Backend;
 
 namespace XmlParsersAndUi {
     public partial class SetupAdvancedRecForm : Form {
@@ -74,6 +77,7 @@ namespace XmlParsersAndUi {
                 FrontendUtils.ShowError(xExc.Message, xExc);
             } catch (Exception ex) //General exception
              {
+                
                 FrontendUtils.ShowError(ex.Message, ex);
             } finally {
                 this.Cursor = Cursors.Default; //Change the cursor back

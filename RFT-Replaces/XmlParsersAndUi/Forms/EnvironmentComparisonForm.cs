@@ -12,6 +12,9 @@ using System.Text.RegularExpressions;
 using XmlParsersAndUi.Classes;
 using System.IO;
 using Tamir.SharpSsh.jsch;
+using Automation.Common.Utils;
+using Automation.Common;
+using Automation.Backend;
 namespace XmlParsersAndUi.Forms {
     public partial class EnvironmentComparisonForm : Form {
 
@@ -1202,7 +1205,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 if (tcComparisonTabs.SelectedIndex != 0) {
                     ResetForm();
-                    cboFilterType.DataSource = Enum.GetValues(typeof(XmlParsersAndUi.Classes.EnvComparisonFilter.ComparisonFilterType));
+                    cboFilterType.DataSource = Enum.GetValues(typeof(EnvComparisonFilter.ComparisonFilterType));
 
                     ReloadAllFiltersFromDatabase();
                 }

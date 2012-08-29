@@ -11,6 +11,7 @@ using System.Text.RegularExpressions;
 using System.Diagnostics;
 using System.Xml;
 using XmlParsersAndUi.Forms;
+using Automation.Common.Utils;
 
 namespace XmlParsersAndUi {
     public partial class BulkMacroSplitterForm : Form {

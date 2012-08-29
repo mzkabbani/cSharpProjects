@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using XmlParsersAndUi.Classes;
+using Automation.Common.Utils;
 
 namespace XmlParsersAndUi.Forms {
     public partial class AddPropertyForm : Form {

@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Security.AccessControl;
 using System.Threading;
 using System.Text.RegularExpressions;
+using Automation.Common.Utils;
 
 namespace XmlParsersAndUi {
     public partial class RftReplacementForm : Form {

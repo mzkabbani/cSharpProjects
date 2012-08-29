@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using Automation.Common.Utils;
 
 namespace XmlParsersAndUi.Forms {
     public partial class FindForm : Form {

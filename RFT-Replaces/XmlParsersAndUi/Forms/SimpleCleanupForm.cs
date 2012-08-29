@@ -12,6 +12,9 @@ using XmlParsersAndUi.Properties;
 using DifferenceEngine;
 using System.Collections;
 using System.Diagnostics;
+using Automation.Common.Utils;
+using Automation.Common;
+using Automation.Backend;
 
 namespace XmlParsersAndUi {
     public partial class CleanupForm : Form {

@@ -67,6 +67,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArrowButton", "..\ArrowButt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Common", "Automation.Common\Automation.Common.csproj", "{F2CA3F3F-B7AE-4378-B4B6-B0BA9903C67D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Automation.Backend", "Automation.Backend\Automation.Backend.csproj", "{6350A836-106C-4C78-A6B2-A7C14D560D90}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -275,6 +277,12 @@ Global
 		{F2CA3F3F-B7AE-4378-B4B6-B0BA9903C67D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F2CA3F3F-B7AE-4378-B4B6-B0BA9903C67D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F2CA3F3F-B7AE-4378-B4B6-B0BA9903C67D}.Release|x86.ActiveCfg = Release|Any CPU
+		{6350A836-106C-4C78-A6B2-A7C14D560D90}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6350A836-106C-4C78-A6B2-A7C14D560D90}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6350A836-106C-4C78-A6B2-A7C14D560D90}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{6350A836-106C-4C78-A6B2-A7C14D560D90}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6350A836-106C-4C78-A6B2-A7C14D560D90}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6350A836-106C-4C78-A6B2-A7C14D560D90}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

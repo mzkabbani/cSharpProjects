@@ -10,6 +10,7 @@ using System.Xml.Linq;
 using System.IO;
 using System.Collections;
 using System.Xml;
+using Automation.Common.Utils;
 
 namespace XmlParsersAndUi {
     public partial class ConfigBuilder : Form {

@@ -8,6 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using XmlParsersAndUi.Controls;
 using XmlParsersAndUi.Classes;
+using Automation.Common.Utils;
+using Automation.Common;
+using Automation.Backend;
 
 namespace XmlParsersAndUi.Forms {
     public partial class testReplacements : Form {

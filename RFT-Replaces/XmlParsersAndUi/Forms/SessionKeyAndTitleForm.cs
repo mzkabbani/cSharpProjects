@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using XmlParsersAndUi.Forms;
+using Automation.Common.Utils;
 
 namespace XmlParsersAndUi {
     public partial class SessionKeyAndTitleForm : Form {

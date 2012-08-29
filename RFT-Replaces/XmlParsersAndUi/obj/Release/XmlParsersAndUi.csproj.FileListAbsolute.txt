@@ -17,7 +17,6 @@ C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\bin\Release\Database.sdf
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\Release\XmlParsersAndUi.DatabaseViewer.resources
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\Release\XmlParsersAndUi.RftReplacementForm.resources
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\Release\XmlParsersAndUi.Forms.ExceptionForm.resources
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\Release\XmlParsersAndUi.Forms.UsersStatus.resources
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\Release\XmlParsersAndUi.Forms.OracleUpdaterForm.resources
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\Release\XmlParsersAndUi.Forms.ApplicationPreferencesForm.resources
@@ -62,3 +61,7 @@ C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\Release\XmlParsersAndUi.Forms.MacroConverterConfForm.resources
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\Release\XmlParsersAndUi.Forms.SDDGeneratorForm.resources
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\Release\XmlParsersAndUi.Forms.Multi_TestCaseForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\bin\Release\Automation.Common.pdb
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\bin\Release\Automation.Backend.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\bin\Release\Automation.Backend.pdb
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\bin\Release\Automation.Common.dll

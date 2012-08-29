@@ -129,12 +129,6 @@
     <Compile Include="Mainform.Designer.cs">
       <DependentUpon>Mainform.cs</DependentUpon>
     </Compile>
-    <Compile Include="PackageGenerator.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="PackageGenerator.Designer.cs">
-      <DependentUpon>PackageGenerator.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -151,9 +145,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Mainform.resx">
       <DependentUpon>Mainform.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="PackageGenerator.resx">
-      <DependentUpon>PackageGenerator.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using XmlParsersAndUi.Classes;
 using XmlParsersAndUi.Forms;
+using Automation.Common;
 
 namespace XmlParsersAndUi.Controls {
     public partial class CustomizedReplacement : UserControl {

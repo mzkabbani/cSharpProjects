@@ -10,6 +10,7 @@ using System.IO;
 using FtpLib;
 using Tamir.SharpSsh;
 using System.Text.RegularExpressions;
+using Automation.Common.Utils;
 
 namespace XmlParsersAndUi.Forms {
 

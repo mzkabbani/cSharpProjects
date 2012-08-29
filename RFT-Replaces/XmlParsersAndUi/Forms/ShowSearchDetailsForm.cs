@@ -8,6 +8,9 @@ using System.Text;
 using System.Windows.Forms;
 using XmlParsersAndUi.Classes;
 using XmlParsersAndUi.Controls;
+using Automation.Common.Utils;
+using Automation.Backend;
+using Automation.Common;
 
 namespace XmlParsersAndUi.Forms {
     public partial class ShowSearchDetailsForm : Form {

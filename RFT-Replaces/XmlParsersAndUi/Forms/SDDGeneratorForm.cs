@@ -11,6 +11,9 @@ using System.Xml.Linq;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.IO;
+using Automation.Common.Utils;
+using Automation.Common;
+using Automation.Backend;
 
 namespace XmlParsersAndUi.Forms {
     public partial class SDDGeneratorForm : Form {
