@@ -60,10 +60,9 @@ namespace Automation.Common{
                 //    excelWorkbook.Sheets.get_Item(++sheetIndex),
                 //    Type.Missing, 1, XlSheetType.xlWorksheet);
 
-                Worksheets excelSheets = (Worksheets)excelWorkbook.Sheets;
-
-                Worksheet excelSheet = (Worksheet)excelSheets.Add(
-                excelSheets.get_Item(++sheetIndex),
+                
+                Worksheet excelSheet = (Worksheet)excelWorkbook.Sheets.Add(
+                excelWorkbook.Sheets.get_Item(++sheetIndex),
                 Type.Missing, 1, XlSheetType.xlWorksheet);
 
 				excelSheet.Name = dt.TableName;
@@ -78,7 +77,7 @@ namespace Automation.Common{
 				((Range) excelSheet.Rows[1, Type.Missing]).Font.Bold = true;
 
                 Marshal.ReleaseComObject(excelSheet);
-                Marshal.ReleaseComObject(excelSheets);
+                Marshal.ReleaseComObject(excelWorkbook.Sheets);
 			}
             
 			// Save and Close the Workbook

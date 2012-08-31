@@ -592,3 +592,74 @@ System.ArgumentException: ParentColumns and ChildColumns should be the same leng
    at PackageGenerator.Mainform.getDifferentRecords(DataTable FirstDataTable, DataTable SecondDataTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 917
    at PackageGenerator.Mainform.StartComparison(String filename1, String filename2) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 991
    at PackageGenerator.Mainform.compareCustomizationsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1726
+
+
+
+
+8/31/2012 3:28:06 PM
+
+
+Unable to cast COM object of type 'System.__ComObject' to interface type 'Microsoft.Office.Interop.Excel.Worksheets'. This operation failed because the QueryInterface call on the COM component for the interface with IID '{000208B1-0000-0000-C000-000000000046}' failed due to the following error: No such interface supported (Exception from HRESULT: 0x80004002 (E_NOINTERFACE)).
+
+
+System.InvalidCastException: Unable to cast COM object of type 'System.__ComObject' to interface type 'Microsoft.Office.Interop.Excel.Worksheets'. This operation failed because the QueryInterface call on the COM component for the interface with IID '{000208B1-0000-0000-C000-000000000046}' failed due to the following error: No such interface supported (Exception from HRESULT: 0x80004002 (E_NOINTERFACE)).
+   at Automation.Common.FastExportingMethod.ExportToExcel(DataSet dataSet, String outputPath) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\Automation.Common\Utils\FastExportingMethod.cs:line 63
+   at PackageGenerator.Mainform.ExportOperationsLogFile(String outputFilePath) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 673
+   at PackageGenerator.Mainform.StartReleaseProcess() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 688
+   at PackageGenerator.Mainform.releasePackageToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1388
+
+
+
+
+8/31/2012 3:28:34 PM
+
+
+Unable to cast COM object of type 'System.__ComObject' to interface type 'Microsoft.Office.Interop.Excel.Worksheets'. This operation failed because the QueryInterface call on the COM component for the interface with IID '{000208B1-0000-0000-C000-000000000046}' failed due to the following error: No such interface supported (Exception from HRESULT: 0x80004002 (E_NOINTERFACE)).
+
+
+System.InvalidCastException: Unable to cast COM object of type 'System.__ComObject' to interface type 'Microsoft.Office.Interop.Excel.Worksheets'. This operation failed because the QueryInterface call on the COM component for the interface with IID '{000208B1-0000-0000-C000-000000000046}' failed due to the following error: No such interface supported (Exception from HRESULT: 0x80004002 (E_NOINTERFACE)).
+   at Automation.Common.FastExportingMethod.ExportToExcel(DataSet dataSet, String outputPath) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\Automation.Common\Utils\FastExportingMethod.cs:line 63
+   at PackageGenerator.Mainform.ExportOperationsLogFile(String outputFilePath) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 673
+   at PackageGenerator.Mainform.exportCustomizationLogToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1440
+
+
+
+
+8/31/2012 3:31:37 PM
+
+
+Unable to cast COM object of type 'System.__ComObject' to interface type 'Microsoft.Office.Interop.Excel.Worksheets'. This operation failed because the QueryInterface call on the COM component for the interface with IID '{000208B1-0000-0000-C000-000000000046}' failed due to the following error: No such interface supported (Exception from HRESULT: 0x80004002 (E_NOINTERFACE)).
+
+
+System.InvalidCastException: Unable to cast COM object of type 'System.__ComObject' to interface type 'Microsoft.Office.Interop.Excel.Worksheets'. This operation failed because the QueryInterface call on the COM component for the interface with IID '{000208B1-0000-0000-C000-000000000046}' failed due to the following error: No such interface supported (Exception from HRESULT: 0x80004002 (E_NOINTERFACE)).
+   at Automation.Common.FastExportingMethod.ExportToExcel(DataSet dataSet, String outputPath) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\Automation.Common\Utils\FastExportingMethod.cs:line 63
+   at PackageGenerator.Mainform.StartComparison(String filename1, String filename2) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 937
+   at PackageGenerator.Mainform.compareCustomizationsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1655
+
+
+
+
+8/31/2012 4:01:20 PM
+
+
+Unable to cast COM object of type 'System.__ComObject' to interface type 'Microsoft.Office.Interop.Excel.Worksheets'. This operation failed because the QueryInterface call on the COM component for the interface with IID '{000208B1-0000-0000-C000-000000000046}' failed due to the following error: No such interface supported (Exception from HRESULT: 0x80004002 (E_NOINTERFACE)).
+
+
+System.InvalidCastException: Unable to cast COM object of type 'System.__ComObject' to interface type 'Microsoft.Office.Interop.Excel.Worksheets'. This operation failed because the QueryInterface call on the COM component for the interface with IID '{000208B1-0000-0000-C000-000000000046}' failed due to the following error: No such interface supported (Exception from HRESULT: 0x80004002 (E_NOINTERFACE)).
+   at Automation.Common.FastExportingMethod.ExportToExcel(DataSet dataSet, String outputPath) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\Automation.Common\Utils\FastExportingMethod.cs:line 63
+   at PackageGenerator.Mainform.ExportOperationsLogFile(String outputFilePath) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 673
+   at PackageGenerator.Mainform.exportCustomizationLogToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1440
+
+
+
+
+8/31/2012 4:51:01 PM
+
+
+Object reference not set to an instance of an object.
+
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at Automation.Common.FastExportingMethod.ExportToExcel(DataSet dataSet, String outputPath) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\Automation.Common\Utils\FastExportingMethod.cs:line 65
+   at PackageGenerator.Mainform.ExportOperationsLogFile(String outputFilePath) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 673
+   at PackageGenerator.Mainform.exportCustomizationLogToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1440
