@@ -572,13 +572,13 @@ namespace XmlParsersAndUi.Forms {
 
         private bool IsValidToStartSearching(string inputDir, List<CaptureEvent> currentlyUsedCaptures) {
             if (string.IsNullOrEmpty(inputDir)) {
-                FrontendUtils.ShowInformation("Input directory cannot be empty!");
+                FrontendUtils.ShowInformation("Input directory cannot be empty!", true);
                 return false;
             } else if (!Directory.Exists(inputDir)) {
-                FrontendUtils.ShowInformation("Input directory does not exist!");
+                FrontendUtils.ShowInformation("Input directory does not exist!", true);
                 return false;
             } else if (currentlyUsedCaptures.Count < 1) {
-                FrontendUtils.ShowInformation("No search patterns are selected!");
+                FrontendUtils.ShowInformation("No search patterns are selected!", true);
                 return false;
             }
             return true;
@@ -954,7 +954,7 @@ namespace XmlParsersAndUi.Forms {
                 gbAffectedFiles.Visible = true;
                 fillTree(changedFiles);
                 tvAffectedFiles.ExpandAll();
-                FrontendUtils.ShowInformation("Replacement done!");
+                FrontendUtils.ShowInformation("Replacement done!",false);
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Text;
 using Microsoft.Office.Interop.Excel;
+using System.Runtime.InteropServices;
 
 namespace Automation.Common{
 
@@ -17,13 +18,12 @@ namespace Automation.Common{
 
 			// Create a new Excel Workbook
 			Workbook excelWorkbook = excelApp.Workbooks.Add(Type.Missing);
-
+            
 			int sheetIndex = 0;
 
 			// Copy each DataTable
 			foreach (System.Data.DataTable dt in dataSet.Tables)
 			{
-
 				// Copy the DataTable to an object array
 				object[,] rawData = new object[dt.Rows.Count + 1, dt.Columns.Count];
 
@@ -56,9 +56,15 @@ namespace Automation.Common{
 						(dt.Columns.Count - 1) % colCharsetLen, 1);
 
 				// Create a new Sheet
-				Worksheet excelSheet = (Worksheet) excelWorkbook.Sheets.Add(
-					excelWorkbook.Sheets.get_Item(++sheetIndex),
-					Type.Missing, 1, XlSheetType.xlWorksheet);
+                //Worksheet excelSheet = (Worksheet) excelWorkbook.Sheets.Add(
+                //    excelWorkbook.Sheets.get_Item(++sheetIndex),
+                //    Type.Missing, 1, XlSheetType.xlWorksheet);
+
+                Worksheets excelSheets = (Worksheets)excelWorkbook.Sheets;
+
+                Worksheet excelSheet = (Worksheet)excelSheets.Add(
+                excelSheets.get_Item(++sheetIndex),
+                Type.Missing, 1, XlSheetType.xlWorksheet);
 
 				excelSheet.Name = dt.TableName;
 
@@ -69,25 +75,28 @@ namespace Automation.Common{
 				excelSheet.get_Range(excelRange, Type.Missing).Value2 = rawData;
 
 				// Mark the first row as BOLD
-				((Range) excelSheet.Rows[1, Type.Missing]).Font.Bold = true;               
-                
+				((Range) excelSheet.Rows[1, Type.Missing]).Font.Bold = true;
+
+                Marshal.ReleaseComObject(excelSheet);
+                Marshal.ReleaseComObject(excelSheets);
 			}
             
 			// Save and Close the Workbook
 			excelWorkbook.SaveAs(outputPath, XlFileFormat.xlWorkbookNormal, Type.Missing,
 				Type.Missing, Type.Missing, Type.Missing, XlSaveAsAccessMode.xlExclusive,
 				Type.Missing, Type.Missing, Type.Missing, Type.Missing, Type.Missing);
-			excelWorkbook.Close(true, Type.Missing, Type.Missing);
-			excelWorkbook = null;
-
+			
+            excelWorkbook.Close(true, Type.Missing, Type.Missing);			
+          
 			// Release the Application object
 			excelApp.Quit();
-			excelApp = null;
-
+            
 			// Collect the unreferenced objects
-			GC.Collect();
+			GC.Collect();            
 			GC.WaitForPendingFinalizers();
-
+            Marshal.ReleaseComObject(excelWorkbook);  
+            Marshal.ReleaseComObject(excelApp);
+            
 		}
 
 	}

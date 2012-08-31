@@ -125,7 +125,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "SelectPackageNameAndStorageForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Release Setup";
+            this.TopMost = true;
             this.Load += new System.EventHandler(this.SelectPackageNameAndStorageForm_Load);
             this.gbOutputSettings.ResumeLayout(false);
             this.gbOutputSettings.PerformLayout();

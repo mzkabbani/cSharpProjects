@@ -381,7 +381,7 @@ namespace XmlParsersAndUi {
                     ParseEvent(txtAOEventIn.Text);
                     btnAdd.Enabled = true;
                 } else {
-                    FrontendUtils.ShowInformation("Event must be a valid xml!");
+                    FrontendUtils.ShowInformation("Event must be a valid xml!",true);
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -400,7 +400,7 @@ namespace XmlParsersAndUi {
                     captureEvent.captureEventCategory = Convert.ToInt32(cboCaptureType.SelectedValue);
                     captureEvent.captureEventUsageCount = 0;
                     BackEndUtils.InsertCaptureEvent(captureEvent);
-                    FrontendUtils.ShowInformation("Capture event inserted successfully!");
+                    FrontendUtils.ShowInformation("Capture event inserted successfully!",false);
                 }
                 LoadAvailableARtoList();
                 SetAllCombos();
@@ -413,17 +413,17 @@ namespace XmlParsersAndUi {
 
         private bool IsValidToAddRule(string ruleName, string ruleDescription, string ruleEventIn) {
             if (string.IsNullOrEmpty(ruleName)) {
-                FrontendUtils.ShowInformation("Rule name cannot be empty!");
+                FrontendUtils.ShowInformation("Rule name cannot be empty!",true);
                 return false;
             } else if (string.IsNullOrEmpty(ruleDescription)) {
-                FrontendUtils.ShowInformation("Description cannot be empty!");
+                FrontendUtils.ShowInformation("Description cannot be empty!",true);
                 return false;
             } else if (string.IsNullOrEmpty(ruleEventIn)) {
-                FrontendUtils.ShowInformation("Event in cannot be empty!");
+                FrontendUtils.ShowInformation("Event in cannot be empty!",true);
                 return false;
             }
             if (!IsValidXml(ruleEventIn)) {
-                FrontendUtils.ShowInformation("Event must be a valid xml!");
+                FrontendUtils.ShowInformation("Event must be a valid xml!",true);
                 return false;
             }
             return true;
@@ -854,23 +854,23 @@ namespace XmlParsersAndUi {
 
         private bool IsValidToAddReplacement(string replacementName, string replacementDescription, string replacementValue) {
             if (string.IsNullOrEmpty(replacementName)) {
-                FrontendUtils.ShowInformation("Replacement name cannot be empty!");
+                FrontendUtils.ShowInformation("Replacement name cannot be empty!", true);
                 return false;
             }
             if (string.IsNullOrEmpty(replacementDescription)) {
-                FrontendUtils.ShowInformation("Replacement description cannot be empty!");
+                FrontendUtils.ShowInformation("Replacement description cannot be empty!", true);
                 return false;
             }
             if (string.IsNullOrEmpty(replacementValue)) {
-                FrontendUtils.ShowInformation("Replacement value cannot be empty!");
+                FrontendUtils.ShowInformation("Replacement value cannot be empty!", true);
                 return false;
             }
             if (lbAvailableReplacements.Items.Contains(replacementName)) {
-                FrontendUtils.ShowInformation("Replacement name is in use!");
+                FrontendUtils.ShowInformation("Replacement name is in use!", true);
                 return false;
             }
             if (!IsValidXml(replacementValue)) {
-                FrontendUtils.ShowInformation("Replacement value must be a valid xml!");
+                FrontendUtils.ShowInformation("Replacement value must be a valid xml!", true);
                 return false;
             }
             return true;
@@ -991,9 +991,9 @@ namespace XmlParsersAndUi {
                 foreach (string pattern in foundPatterns) {
                     output = output + pattern + "\n";
                 }
-                FrontendUtils.ShowInformation("Found the following variables:\n" + output);
+                FrontendUtils.ShowInformation("Found the following variables:\n" + output,false);
             } else {
-                FrontendUtils.ShowInformation("No variables found!");
+                FrontendUtils.ShowInformation("No variables found!",false);
             }
         }
 

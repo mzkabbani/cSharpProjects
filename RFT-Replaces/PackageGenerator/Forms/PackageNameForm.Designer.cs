@@ -57,7 +57,9 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "PackageNameForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Generated Package Name";
+            this.TopMost = true;
             this.ResumeLayout(false);
             this.PerformLayout();
 

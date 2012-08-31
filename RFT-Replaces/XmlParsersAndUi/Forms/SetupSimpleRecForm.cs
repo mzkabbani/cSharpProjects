@@ -160,7 +160,7 @@ namespace XmlParsersAndUi {
                     newRecObj.fileName = "sample";
                     BackEndUtils.UpdateSimpleRecByName(newRecObj, txtOptionName.Text);
                     LoadSimpleOptions();
-                    FrontendUtils.ShowInformation("The Simple Recommendation is now updated!");
+                    FrontendUtils.ShowInformation("The Simple Recommendation is now updated!",false);
                     lbOptions.SelectedIndex = 0;
                     #region old code
                     //newRecObj.fileName = (lbOptions.SelectedItem as SimpleRecommendationObject).fileName;

@@ -26,7 +26,7 @@ namespace PackageGenerator.Forms {
         private void btnProceed_Click(object sender, EventArgs e) {
             try {
                 if (string.IsNullOrEmpty(txtOutputPath.Text.Trim()) || string.IsNullOrEmpty(txtPackageName.Text.Trim())) {
-                    FrontendUtils.ShowInformation("[Output Path] and [Package Name] are mandatory fields!");
+                    FrontendUtils.ShowInformation("[Output Path] and [Package Name] are mandatory fields!", true);
                     this.DialogResult = DialogResult.Cancel;
                 }
             } catch (Exception ex) {

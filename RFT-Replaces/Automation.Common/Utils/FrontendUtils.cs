@@ -19,9 +19,9 @@ namespace Automation.Common.Utils {
     public static class FrontendUtils {
 
         public enum UiPrepareFor {
-            Save=1,
-            Add=2,
-            Reset=3
+            Save = 1,
+            Add = 2,
+            Reset = 3
         }
 
         public static int LoggedInUserId {
@@ -73,7 +73,7 @@ namespace Automation.Common.Utils {
                     new System.Diagnostics.ProcessStartInfo(fileName);
 
                 procStartInfo.UseShellExecute = true;
-                
+
                 // The following commands are needed to redirect the standard output.
                 // This means that it will be redirected to the Process.StandardOutput StreamReader.
                 //procStartInfo.RedirectStandardOutput = true;
@@ -81,17 +81,17 @@ namespace Automation.Common.Utils {
                 // Do not create the black window.
                 procStartInfo.CreateNoWindow = false;
                 // Now we create a process, assign its ProcessStartInfo and start it
-                System.Diagnostics.Process proc = new System.Diagnostics.Process();                
+                System.Diagnostics.Process proc = new System.Diagnostics.Process();
                 proc.StartInfo = procStartInfo;
                 proc.Start();
                 // Get the output into a string
                 return "";
                 // Display the command output.
-              
+
             } catch (Exception objException) {
                 // Log the exception
             }
-           return string.Empty;
+            return string.Empty;
         }
 
         public static string FormatXml(string sUnformattedXml) {
@@ -120,7 +120,7 @@ namespace Automation.Common.Utils {
             return sb.ToString();
         }
 
-        
+
         static string logFilePath = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\Logs\app.logs";
 
         [DllImport("User32.dll")]
@@ -200,9 +200,14 @@ namespace Automation.Common.Utils {
             return bmpScreenshot;
         }
 
-        public static void ShowInformation(string infoText) {
-            MessageBox.Show(infoText, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
+        public static void ShowInformation(string infoText, bool asError) {
+            if (asError) {
+                MessageBox.Show(infoText, "Error", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+            } else {
+                MessageBox.Show(infoText, "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+  
+            }
+         }
 
         public static void CheckoutPath(string repositoryLocation, string localLocation) {
             try {
@@ -219,6 +224,12 @@ namespace Automation.Common.Utils {
                 p.WaitForExit();
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message, "SVN checkout issue");
+            }
+        }
+
+        public static void SetColumnsHeadersToBold(DataGridView grid) {
+            for (int i = 0; i < grid.Columns.Count; i++) {
+                grid.Columns[i].HeaderCell.Style.Font = new Font("Arial", 8, FontStyle.Bold);
             }
         }
 
@@ -304,7 +315,7 @@ namespace Automation.Common.Utils {
             //newmsg.Attachments.Add(att);
             SmtpClient smtp = new SmtpClient("Barid.lb.murex.com");
             smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential();           
+            smtp.Credentials = new NetworkCredential();
             smtp.Send(newmsg);
         }
 
@@ -346,13 +357,24 @@ namespace Automation.Common.Utils {
             //smtp.EnableSsl = true;           
             smtp.Send(newmsg);
         }
-          
+
 
 
         public static void BindCombo(ComboBox cboReplacementType, System.Data.DataTable datable, string displayMember, string valueMember) {
             cboReplacementType.DataSource = datable.DefaultView;
             cboReplacementType.DisplayMember = displayMember;
             cboReplacementType.ValueMember = valueMember;
+        }
+
+        public static string GetFileOpenDialog() {
+            string selectedFilePath = string.Empty;
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Filter = "All files (*.*)|*.*";
+            DialogResult dialogResult = dialog.ShowDialog();
+            if(dialogResult == DialogResult.OK){
+                selectedFilePath = dialog.FileName;
+            }
+            return selectedFilePath;
         }
     }
 }

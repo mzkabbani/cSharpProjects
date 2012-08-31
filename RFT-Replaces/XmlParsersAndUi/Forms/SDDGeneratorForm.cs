@@ -424,7 +424,7 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private void bwExportExcel_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
-            FrontendUtils.ShowInformation("Export Completed");
+            FrontendUtils.ShowInformation("Export Completed",false);
             btnExport.Enabled = true;
         }
 

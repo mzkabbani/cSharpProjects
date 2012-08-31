@@ -431,3 +431,164 @@ System.Data.DuplicateNameException: A column named 'Step' already belongs to thi
    at System.Data.DataColumnCollection.Add(String columnName)
    at PackageGenerator.Mainform.ExportOperationsLogFile(String outputFilePath) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1430
    at PackageGenerator.Mainform.exportCustomizationLogToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1405
+
+
+
+
+8/29/2012 3:54:28 PM
+
+
+Cannot find column Operation.
+
+
+System.IndexOutOfRangeException: Cannot find column Operation.
+   at System.Data.DataTable.ParseSortString(String sortString)
+   at System.Data.Select..ctor(DataTable table, String filterExpression, String sort, DataViewRowState recordStates)
+   at System.Data.DataTable.Select(String filterExpression, String sort)
+   at PackageGenerator.Mainform.StartComparison(String filename1, String filename2) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1746
+   at PackageGenerator.Mainform.compareCustomizationsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1654
+
+
+
+
+8/29/2012 4:10:27 PM
+
+
+'table' argument cannot be null.
+Parameter name: table
+
+
+System.ArgumentNullException: 'table' argument cannot be null.
+Parameter name: table
+   at System.Data.DataTableCollection.BaseAdd(DataTable table)
+   at System.Data.DataTableCollection.Add(DataTable table)
+   at PackageGenerator.Mainform.StartComparison(String filename1, String filename2) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1749
+   at PackageGenerator.Mainform.compareCustomizationsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1654
+
+
+
+
+8/29/2012 4:11:00 PM
+
+
+'table' argument cannot be null.
+Parameter name: table
+
+
+System.ArgumentNullException: 'table' argument cannot be null.
+Parameter name: table
+   at System.Data.DataTableCollection.BaseAdd(DataTable table)
+   at System.Data.DataTableCollection.Add(DataTable table)
+   at PackageGenerator.Mainform.StartComparison(String filename1, String filename2) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1749
+   at PackageGenerator.Mainform.compareCustomizationsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1654
+
+
+
+
+8/29/2012 4:38:49 PM
+
+
+A column named 'Operation' already belongs to this DataTable.
+
+
+System.Data.DuplicateNameException: A column named 'Operation' already belongs to this DataTable.
+   at System.Data.DataColumnCollection.RegisterColumnName(String name, DataColumn column, DataTable table)
+   at System.Data.DataColumnCollection.BaseAdd(DataColumn column)
+   at System.Data.DataColumnCollection.AddAt(Int32 index, DataColumn column)
+   at System.Data.DataColumnCollection.Add(String columnName)
+   at PackageGenerator.Mainform.getDifferentRecords(DataTable FirstDataTable, DataTable SecondDataTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1693
+   at PackageGenerator.Mainform.StartComparison(String filename1, String filename2) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1813
+   at PackageGenerator.Mainform.compareCustomizationsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1654
+
+
+
+
+8/29/2012 4:40:49 PM
+
+
+At least one element in the source array could not be cast down to the destination array type.
+
+
+System.InvalidCastException: At least one element in the source array could not be cast down to the destination array type.
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length, Boolean reliable)
+   at System.Array.CopyTo(Array array, Int32 index)
+   at PackageGenerator.Mainform.getDifferentRecords(DataTable FirstDataTable, DataTable SecondDataTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1703
+   at PackageGenerator.Mainform.StartComparison(String filename1, String filename2) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1813
+   at PackageGenerator.Mainform.compareCustomizationsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1654
+
+
+
+
+8/29/2012 5:03:13 PM
+
+
+Attempted to access an element as a type incompatible with the array.
+
+
+System.ArrayTypeMismatchException: Attempted to access an element as a type incompatible with the array.
+   at PackageGenerator.Mainform.getDifferentRecords(DataTable FirstDataTable, DataTable SecondDataTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1705
+   at PackageGenerator.Mainform.StartComparison(String filename1, String filename2) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1822
+   at PackageGenerator.Mainform.compareCustomizationsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1654
+
+
+
+
+8/29/2012 5:17:06 PM
+
+
+At least one element in the source array could not be cast down to the destination array type.
+
+
+System.InvalidCastException: At least one element in the source array could not be cast down to the destination array type.
+   at System.Array.Copy(Array sourceArray, Int32 sourceIndex, Array destinationArray, Int32 destinationIndex, Int32 length, Boolean reliable)
+   at System.Array.CopyTo(Array array, Int32 index)
+   at PackageGenerator.Mainform.getDifferentRecords(DataTable FirstDataTable, DataTable SecondDataTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1715
+   at PackageGenerator.Mainform.StartComparison(String filename1, String filename2) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1815
+   at PackageGenerator.Mainform.compareCustomizationsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1654
+
+
+
+
+8/29/2012 5:24:42 PM
+
+
+Exception from HRESULT: 0x800A03EC
+
+
+System.Runtime.InteropServices.COMException (0x800A03EC): Exception from HRESULT: 0x800A03EC
+   at Microsoft.Office.Interop.Excel.WorkbookClass.SaveAs(Object Filename, Object FileFormat, Object Password, Object WriteResPassword, Object ReadOnlyRecommended, Object CreateBackup, XlSaveAsAccessMode AccessMode, Object ConflictResolution, Object AddToMru, Object TextCodepage, Object TextVisualLayout, Object Local)
+   at Automation.Common.FastExportingMethod.ExportToExcel(DataSet dataSet, String outputPath) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\Automation.Common\Utils\FastExportingMethod.cs:line 77
+   at PackageGenerator.Mainform.StartComparison(String filename1, String filename2) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1818
+   at PackageGenerator.Mainform.compareCustomizationsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1654
+
+
+
+
+8/29/2012 5:48:47 PM
+
+
+A DataTable named 'ResultDataTable' already belongs to this DataSet.
+
+
+System.Data.DuplicateNameException: A DataTable named 'ResultDataTable' already belongs to this DataSet.
+   at System.Data.DataTableCollection.RegisterName(String name, String tbNamespace)
+   at System.Data.DataTableCollection.BaseAdd(DataTable table)
+   at System.Data.DataTableCollection.Add(DataTable table)
+   at PackageGenerator.Mainform.StartComparison(String filename1, String filename2) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1764
+   at PackageGenerator.Mainform.compareCustomizationsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1654
+
+
+
+
+8/30/2012 3:13:44 PM
+
+
+ParentColumns and ChildColumns should be the same length.
+
+
+System.ArgumentException: ParentColumns and ChildColumns should be the same length.
+   at System.Data.DataRelation.Create(String relationName, DataColumn[] parentColumns, DataColumn[] childColumns, Boolean createConstraints)
+   at System.Data.DataRelation..ctor(String relationName, DataColumn[] parentColumns, DataColumn[] childColumns, Boolean createConstraints)
+   at PackageGenerator.Mainform.getDifferentRecords(DataTable FirstDataTable, DataTable SecondDataTable) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 917
+   at PackageGenerator.Mainform.StartComparison(String filename1, String filename2) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 991
+   at PackageGenerator.Mainform.compareCustomizationsToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1726

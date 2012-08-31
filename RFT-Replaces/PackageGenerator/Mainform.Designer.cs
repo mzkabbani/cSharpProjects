@@ -36,6 +36,8 @@ namespace PackageGenerator {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.btnReloadCi = new System.Windows.Forms.Button();
@@ -106,6 +108,7 @@ namespace PackageGenerator {
             this.packagesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.generatePackageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.releasePackageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compareCustomizationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.importExportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.iToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportPackageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -147,7 +150,7 @@ namespace PackageGenerator {
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(1001, 788);
-            this.tabControl1.TabIndex = 12;
+            this.tabControl1.TabIndex = 0;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
             // 
             // tabPage1
@@ -175,7 +178,7 @@ namespace PackageGenerator {
             this.btnReloadCi.Location = new System.Drawing.Point(572, 732);
             this.btnReloadCi.Name = "btnReloadCi";
             this.btnReloadCi.Size = new System.Drawing.Size(139, 23);
-            this.btnReloadCi.TabIndex = 13;
+            this.btnReloadCi.TabIndex = 3;
             this.btnReloadCi.Text = "Reload Ci";
             this.btnReloadCi.UseVisualStyleBackColor = true;
             this.btnReloadCi.Click += new System.EventHandler(this.btnReloadCi_Click);
@@ -203,7 +206,7 @@ namespace PackageGenerator {
             this.btnMoveRowUp.Location = new System.Drawing.Point(938, 73);
             this.btnMoveRowUp.Name = "btnMoveRowUp";
             this.btnMoveRowUp.Size = new System.Drawing.Size(32, 68);
-            this.btnMoveRowUp.TabIndex = 8;
+            this.btnMoveRowUp.TabIndex = 1;
             this.btnMoveRowUp.TabStop = false;
             this.btnMoveRowUp.UseVisualStyleBackColor = true;
             this.btnMoveRowUp.Click += new System.EventHandler(this.button2_Click);
@@ -215,7 +218,7 @@ namespace PackageGenerator {
             this.btnMoveRowDown.Location = new System.Drawing.Point(938, 147);
             this.btnMoveRowDown.Name = "btnMoveRowDown";
             this.btnMoveRowDown.Size = new System.Drawing.Size(32, 68);
-            this.btnMoveRowDown.TabIndex = 7;
+            this.btnMoveRowDown.TabIndex = 2;
             this.btnMoveRowDown.TabStop = false;
             this.btnMoveRowDown.UseVisualStyleBackColor = true;
             this.btnMoveRowDown.Click += new System.EventHandler(this.btnMoveRowDown_Click);
@@ -269,7 +272,6 @@ namespace PackageGenerator {
             this.dgvOutputOperations.TabIndex = 0;
             this.dgvOutputOperations.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvOutputOperations_ColumnHeaderMouseClick);
             this.dgvOutputOperations.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOutputOperations_CellContentClick);
-            this.dgvOutputOperations.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dgvOutputOperations_RowsRemoved);
             this.dgvOutputOperations.SelectionChanged += new System.EventHandler(this.dgvOutputOperations_SelectionChanged);
             this.dgvOutputOperations.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvOutputOperations_CellContentClick);
             // 
@@ -313,7 +315,7 @@ namespace PackageGenerator {
             this.btnClear.Location = new System.Drawing.Point(717, 732);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(139, 23);
-            this.btnClear.TabIndex = 6;
+            this.btnClear.TabIndex = 4;
             this.btnClear.Text = "Clear All";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -324,7 +326,7 @@ namespace PackageGenerator {
             this.btnImportCi.Location = new System.Drawing.Point(427, 732);
             this.btnImportCi.Name = "btnImportCi";
             this.btnImportCi.Size = new System.Drawing.Size(139, 23);
-            this.btnImportCi.TabIndex = 12;
+            this.btnImportCi.TabIndex = 2;
             this.btnImportCi.Text = "Import Package";
             this.btnImportCi.UseVisualStyleBackColor = true;
             this.btnImportCi.Click += new System.EventHandler(this.btnImportCi_Click);
@@ -358,7 +360,7 @@ namespace PackageGenerator {
             this.txtFunctionComment.Multiline = true;
             this.txtFunctionComment.Name = "txtFunctionComment";
             this.txtFunctionComment.Size = new System.Drawing.Size(665, 67);
-            this.txtFunctionComment.TabIndex = 8;
+            this.txtFunctionComment.TabIndex = 2;
             this.txtFunctionComment.Text = "Add comment here...";
             // 
             // label3
@@ -377,7 +379,7 @@ namespace PackageGenerator {
             this.btnSave.Location = new System.Drawing.Point(378, 390);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(139, 23);
-            this.btnSave.TabIndex = 6;
+            this.btnSave.TabIndex = 4;
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = true;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
@@ -388,7 +390,7 @@ namespace PackageGenerator {
             this.btnAdd.Location = new System.Drawing.Point(233, 390);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(139, 23);
-            this.btnAdd.TabIndex = 5;
+            this.btnAdd.TabIndex = 3;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -425,7 +427,7 @@ namespace PackageGenerator {
             this.txtDescription.Name = "txtDescription";
             this.txtDescription.ReadOnly = true;
             this.txtDescription.Size = new System.Drawing.Size(665, 67);
-            this.txtDescription.TabIndex = 3;
+            this.txtDescription.TabIndex = 1;
             // 
             // label2
             // 
@@ -445,7 +447,7 @@ namespace PackageGenerator {
             this.txtFunctionName.Name = "txtFunctionName";
             this.txtFunctionName.ReadOnly = true;
             this.txtFunctionName.Size = new System.Drawing.Size(478, 20);
-            this.txtFunctionName.TabIndex = 1;
+            this.txtFunctionName.TabIndex = 0;
             // 
             // label1
             // 
@@ -462,7 +464,7 @@ namespace PackageGenerator {
             this.btnExportCi.Location = new System.Drawing.Point(282, 732);
             this.btnExportCi.Name = "btnExportCi";
             this.btnExportCi.Size = new System.Drawing.Size(139, 23);
-            this.btnExportCi.TabIndex = 10;
+            this.btnExportCi.TabIndex = 1;
             this.btnExportCi.Text = "Export Package";
             this.btnExportCi.UseVisualStyleBackColor = true;
             this.btnExportCi.Click += new System.EventHandler(this.btnExportCi_Click);
@@ -494,7 +496,7 @@ namespace PackageGenerator {
             this.btnGeneratePackage.Location = new System.Drawing.Point(137, 732);
             this.btnGeneratePackage.Name = "btnGeneratePackage";
             this.btnGeneratePackage.Size = new System.Drawing.Size(139, 23);
-            this.btnGeneratePackage.TabIndex = 7;
+            this.btnGeneratePackage.TabIndex = 0;
             this.btnGeneratePackage.Text = "Generate Package";
             this.btnGeneratePackage.UseVisualStyleBackColor = true;
             this.btnGeneratePackage.Click += new System.EventHandler(this.btnGeneratePackage_Click);
@@ -540,7 +542,7 @@ namespace PackageGenerator {
             this.btnExportFiles.Location = new System.Drawing.Point(868, 162);
             this.btnExportFiles.Name = "btnExportFiles";
             this.btnExportFiles.Size = new System.Drawing.Size(102, 23);
-            this.btnExportFiles.TabIndex = 22;
+            this.btnExportFiles.TabIndex = 8;
             this.btnExportFiles.Text = "Export File List";
             this.btnExportFiles.UseVisualStyleBackColor = true;
             this.btnExportFiles.Click += new System.EventHandler(this.btnExportFiles_Click);
@@ -590,7 +592,7 @@ namespace PackageGenerator {
             this.dgvFilesToImport.RowTemplate.DefaultCellStyle.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dgvFilesToImport.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvFilesToImport.Size = new System.Drawing.Size(851, 409);
-            this.dgvFilesToImport.TabIndex = 21;
+            this.dgvFilesToImport.TabIndex = 2;
             this.dgvFilesToImport.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFilesToImport_CellContentClick);
             this.dgvFilesToImport.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvFilesToImport_CellContentClick);
             // 
@@ -614,7 +616,7 @@ namespace PackageGenerator {
             this.btnImportFileList.Location = new System.Drawing.Point(868, 133);
             this.btnImportFileList.Name = "btnImportFileList";
             this.btnImportFileList.Size = new System.Drawing.Size(102, 23);
-            this.btnImportFileList.TabIndex = 20;
+            this.btnImportFileList.TabIndex = 7;
             this.btnImportFileList.Text = "Import File List";
             this.btnImportFileList.UseVisualStyleBackColor = true;
             this.btnImportFileList.Click += new System.EventHandler(this.btnImportFileList_Click);
@@ -625,7 +627,7 @@ namespace PackageGenerator {
             this.btnResetFileToImport.Location = new System.Drawing.Point(868, 104);
             this.btnResetFileToImport.Name = "btnResetFileToImport";
             this.btnResetFileToImport.Size = new System.Drawing.Size(102, 23);
-            this.btnResetFileToImport.TabIndex = 19;
+            this.btnResetFileToImport.TabIndex = 6;
             this.btnResetFileToImport.Text = "Reset";
             this.btnResetFileToImport.UseVisualStyleBackColor = true;
             this.btnResetFileToImport.Click += new System.EventHandler(this.btnResetFileToImport_Click);
@@ -636,7 +638,7 @@ namespace PackageGenerator {
             this.btnRemoveFileToImport.Location = new System.Drawing.Point(868, 75);
             this.btnRemoveFileToImport.Name = "btnRemoveFileToImport";
             this.btnRemoveFileToImport.Size = new System.Drawing.Size(102, 23);
-            this.btnRemoveFileToImport.TabIndex = 18;
+            this.btnRemoveFileToImport.TabIndex = 5;
             this.btnRemoveFileToImport.Text = "Remove";
             this.btnRemoveFileToImport.UseVisualStyleBackColor = true;
             this.btnRemoveFileToImport.Click += new System.EventHandler(this.btnDelteFileToImport_Click);
@@ -647,7 +649,7 @@ namespace PackageGenerator {
             this.btnAddFileToImport.Location = new System.Drawing.Point(868, 17);
             this.btnAddFileToImport.Name = "btnAddFileToImport";
             this.btnAddFileToImport.Size = new System.Drawing.Size(102, 23);
-            this.btnAddFileToImport.TabIndex = 17;
+            this.btnAddFileToImport.TabIndex = 3;
             this.btnAddFileToImport.Text = "Add";
             this.btnAddFileToImport.UseVisualStyleBackColor = true;
             this.btnAddFileToImport.Click += new System.EventHandler(this.btnAddFileToImport_Click);
@@ -659,7 +661,7 @@ namespace PackageGenerator {
             this.txtRelativePathToImport.Location = new System.Drawing.Point(90, 45);
             this.txtRelativePathToImport.Name = "txtRelativePathToImport";
             this.txtRelativePathToImport.Size = new System.Drawing.Size(772, 20);
-            this.txtRelativePathToImport.TabIndex = 16;
+            this.txtRelativePathToImport.TabIndex = 1;
             // 
             // label13
             // 
@@ -677,7 +679,7 @@ namespace PackageGenerator {
             this.btnSaveFileToImport.Location = new System.Drawing.Point(868, 46);
             this.btnSaveFileToImport.Name = "btnSaveFileToImport";
             this.btnSaveFileToImport.Size = new System.Drawing.Size(102, 23);
-            this.btnSaveFileToImport.TabIndex = 13;
+            this.btnSaveFileToImport.TabIndex = 4;
             this.btnSaveFileToImport.Text = "Save";
             this.btnSaveFileToImport.UseVisualStyleBackColor = true;
             this.btnSaveFileToImport.Click += new System.EventHandler(this.btnSaveFileToImport_Click);
@@ -689,7 +691,7 @@ namespace PackageGenerator {
             this.txtImportFileLink.Location = new System.Drawing.Point(90, 19);
             this.txtImportFileLink.Name = "txtImportFileLink";
             this.txtImportFileLink.Size = new System.Drawing.Size(772, 20);
-            this.txtImportFileLink.TabIndex = 3;
+            this.txtImportFileLink.TabIndex = 0;
             // 
             // label11
             // 
@@ -725,6 +727,7 @@ namespace PackageGenerator {
             // 
             // lbAvailableProps
             // 
+            this.lbAvailableProps.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbAvailableProps.FormattingEnabled = true;
             this.lbAvailableProps.Location = new System.Drawing.Point(6, 19);
             this.lbAvailableProps.Name = "lbAvailableProps";
@@ -768,7 +771,7 @@ namespace PackageGenerator {
             this.cboPropertyValue.Location = new System.Drawing.Point(53, 177);
             this.cboPropertyValue.Name = "cboPropertyValue";
             this.cboPropertyValue.Size = new System.Drawing.Size(263, 21);
-            this.cboPropertyValue.TabIndex = 12;
+            this.cboPropertyValue.TabIndex = 3;
             this.cboPropertyValue.Visible = false;
             // 
             // btnReset
@@ -777,7 +780,7 @@ namespace PackageGenerator {
             this.btnReset.Location = new System.Drawing.Point(657, 114);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(102, 23);
-            this.btnReset.TabIndex = 11;
+            this.btnReset.TabIndex = 8;
             this.btnReset.Text = "Reset";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
@@ -788,7 +791,7 @@ namespace PackageGenerator {
             this.btnRemoveProperty.Location = new System.Drawing.Point(657, 85);
             this.btnRemoveProperty.Name = "btnRemoveProperty";
             this.btnRemoveProperty.Size = new System.Drawing.Size(102, 23);
-            this.btnRemoveProperty.TabIndex = 10;
+            this.btnRemoveProperty.TabIndex = 7;
             this.btnRemoveProperty.Text = "Remove";
             this.btnRemoveProperty.UseVisualStyleBackColor = true;
             this.btnRemoveProperty.Click += new System.EventHandler(this.btnRemoveProperty_Click);
@@ -799,7 +802,7 @@ namespace PackageGenerator {
             this.btnSaveProperty.Location = new System.Drawing.Point(657, 56);
             this.btnSaveProperty.Name = "btnSaveProperty";
             this.btnSaveProperty.Size = new System.Drawing.Size(102, 23);
-            this.btnSaveProperty.TabIndex = 9;
+            this.btnSaveProperty.TabIndex = 6;
             this.btnSaveProperty.Text = "Save";
             this.btnSaveProperty.UseVisualStyleBackColor = true;
             this.btnSaveProperty.Click += new System.EventHandler(this.btnSaveProperty_Click);
@@ -810,7 +813,7 @@ namespace PackageGenerator {
             this.btnAddProperty.Location = new System.Drawing.Point(657, 27);
             this.btnAddProperty.Name = "btnAddProperty";
             this.btnAddProperty.Size = new System.Drawing.Size(102, 23);
-            this.btnAddProperty.TabIndex = 8;
+            this.btnAddProperty.TabIndex = 5;
             this.btnAddProperty.Text = "Add";
             this.btnAddProperty.UseVisualStyleBackColor = true;
             this.btnAddProperty.Click += new System.EventHandler(this.btnAddProperty_Click);
@@ -836,7 +839,7 @@ namespace PackageGenerator {
             this.cboPropertyType.Location = new System.Drawing.Point(53, 151);
             this.cboPropertyType.Name = "cboPropertyType";
             this.cboPropertyType.Size = new System.Drawing.Size(263, 21);
-            this.cboPropertyType.TabIndex = 6;
+            this.cboPropertyType.TabIndex = 2;
             this.cboPropertyType.SelectedIndexChanged += new System.EventHandler(this.cboPropertyType_SelectedIndexChanged);
             // 
             // txtPropertyValue
@@ -846,7 +849,7 @@ namespace PackageGenerator {
             this.txtPropertyValue.Location = new System.Drawing.Point(53, 178);
             this.txtPropertyValue.Name = "txtPropertyValue";
             this.txtPropertyValue.Size = new System.Drawing.Size(365, 20);
-            this.txtPropertyValue.TabIndex = 5;
+            this.txtPropertyValue.TabIndex = 4;
             this.txtPropertyValue.Visible = false;
             // 
             // lblPropValue
@@ -866,7 +869,7 @@ namespace PackageGenerator {
             this.txtPropertyDesc.Multiline = true;
             this.txtPropertyDesc.Name = "txtPropertyDesc";
             this.txtPropertyDesc.Size = new System.Drawing.Size(598, 87);
-            this.txtPropertyDesc.TabIndex = 3;
+            this.txtPropertyDesc.TabIndex = 1;
             // 
             // label10
             // 
@@ -884,7 +887,7 @@ namespace PackageGenerator {
             this.txtPropertyName.Location = new System.Drawing.Point(53, 29);
             this.txtPropertyName.Name = "txtPropertyName";
             this.txtPropertyName.Size = new System.Drawing.Size(598, 20);
-            this.txtPropertyName.TabIndex = 1;
+            this.txtPropertyName.TabIndex = 0;
             // 
             // label9
             // 
@@ -907,7 +910,6 @@ namespace PackageGenerator {
             this.selectGroupToolStripMenuItem.Name = "selectGroupToolStripMenuItem";
             this.selectGroupToolStripMenuItem.Size = new System.Drawing.Size(146, 22);
             this.selectGroupToolStripMenuItem.Text = "Check Group";
-            this.selectGroupToolStripMenuItem.Click += new System.EventHandler(this.selectGroupToolStripMenuItem_Click);
             // 
             // cmsAddPropertyMenu
             // 
@@ -946,7 +948,8 @@ namespace PackageGenerator {
             // 
             this.packagesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.generatePackageToolStripMenuItem,
-            this.releasePackageToolStripMenuItem});
+            this.releasePackageToolStripMenuItem,
+            this.compareCustomizationsToolStripMenuItem});
             this.packagesToolStripMenuItem.Name = "packagesToolStripMenuItem";
             this.packagesToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
             this.packagesToolStripMenuItem.Text = "Packages";
@@ -954,16 +957,23 @@ namespace PackageGenerator {
             // generatePackageToolStripMenuItem
             // 
             this.generatePackageToolStripMenuItem.Name = "generatePackageToolStripMenuItem";
-            this.generatePackageToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.generatePackageToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.generatePackageToolStripMenuItem.Text = "Generate Package";
             this.generatePackageToolStripMenuItem.Click += new System.EventHandler(this.btnGeneratePackage_Click);
             // 
             // releasePackageToolStripMenuItem
             // 
             this.releasePackageToolStripMenuItem.Name = "releasePackageToolStripMenuItem";
-            this.releasePackageToolStripMenuItem.Size = new System.Drawing.Size(198, 22);
+            this.releasePackageToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.releasePackageToolStripMenuItem.Text = "Release Customizations";
             this.releasePackageToolStripMenuItem.Click += new System.EventHandler(this.releasePackageToolStripMenuItem_Click);
+            // 
+            // compareCustomizationsToolStripMenuItem
+            // 
+            this.compareCustomizationsToolStripMenuItem.Name = "compareCustomizationsToolStripMenuItem";
+            this.compareCustomizationsToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.compareCustomizationsToolStripMenuItem.Text = "Compare Customizations";
+            this.compareCustomizationsToolStripMenuItem.Click += new System.EventHandler(this.compareCustomizationsToolStripMenuItem_Click);
             // 
             // importExportToolStripMenuItem
             // 
@@ -999,6 +1009,10 @@ namespace PackageGenerator {
             // dataGridViewCheckBoxColumn1
             // 
             this.dataGridViewCheckBoxColumn1.ContextMenuStrip = this.cmsCommentSelection;
+            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle9.NullValue = false;
+            this.dataGridViewCheckBoxColumn1.DefaultCellStyle = dataGridViewCellStyle9;
             this.dataGridViewCheckBoxColumn1.FillWeight = 10F;
             this.dataGridViewCheckBoxColumn1.HeaderText = "Comment";
             this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
@@ -1006,6 +1020,8 @@ namespace PackageGenerator {
             // 
             // dataGridViewTextBoxColumn1
             // 
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dataGridViewTextBoxColumn1.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewTextBoxColumn1.FillWeight = 10F;
             this.dataGridViewTextBoxColumn1.HeaderText = "Steps";
             this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
@@ -1167,6 +1183,7 @@ namespace PackageGenerator {
         private System.Windows.Forms.DataGridViewTextBoxColumn Operations;
         private System.Windows.Forms.DataGridViewTextBoxColumn Key;
         private System.Windows.Forms.DataGridViewTextBoxColumn Comment;
+        private System.Windows.Forms.ToolStripMenuItem compareCustomizationsToolStripMenuItem;
 
         
     }
