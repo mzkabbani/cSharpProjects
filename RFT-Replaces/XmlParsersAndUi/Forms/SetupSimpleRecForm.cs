@@ -38,7 +38,7 @@ namespace XmlParsersAndUi {
             for (int i = 0; i < simpleOptionFiles.Length; i++) {
                 SimpleRecommendationObject simpleRecom = ConvertToObject(FrontendUtils.ReadFile(simpleOptionFiles[i]));
                 simpleRecom.fileName = Path.GetFileName(simpleOptionFiles[i]);
-                BackEndUtils.InsertNewSimpleRecommendation(simpleRecom);
+                Simple_Recommendation.InsertNewSimpleRecommendation(simpleRecom);
                 lbOptions.Items.Add(simpleRecom);
             }
         }
@@ -72,7 +72,7 @@ namespace XmlParsersAndUi {
             //LoadOptionsIntoList(inputDir); 
             #endregion
 
-            List<SimpleRecommendationObject> allSimpleRecs = BackEndUtils.GetAllSimpleRecsAsList();
+            List<SimpleRecommendationObject> allSimpleRecs = Simple_Recommendation.GetAllSimpleRecsAsList();
             InsertSimpleRecIntoListbox(allSimpleRecs);
         }
 
@@ -158,7 +158,7 @@ namespace XmlParsersAndUi {
                 if (IsValidToSaveObject(txtOptionName.Text.Trim(), txtOptionDesc.Text.Trim(), txtOptionPattern.Text.Trim(), txtOptionReplacement.Text.Trim())) {
                     SimpleRecommendationObject newRecObj = FillSimpleOpiton((lbOptions.SelectedItem as SimpleRecommendationObject).optionName, txtOptionDesc.Text.Trim(), txtOptionPattern.Text.Trim(), txtOptionReplacement.Text.Trim(), chkIsRegex.Checked);
                     newRecObj.fileName = "sample";
-                    BackEndUtils.UpdateSimpleRecByName(newRecObj, txtOptionName.Text);
+                    Simple_Recommendation.UpdateSimpleRecByName(newRecObj, txtOptionName.Text);
                     LoadSimpleOptions();
                     FrontendUtils.ShowInformation("The Simple Recommendation is now updated!",false);
                     lbOptions.SelectedIndex = 0;
@@ -203,7 +203,7 @@ namespace XmlParsersAndUi {
                     string fileName = DateTime.Now.Ticks + ".simpleO";
                     newRecObj.fileName = fileName;
                     //string filePath = inputDir + @"\" + fileName;
-                    BackEndUtils.InsertNewSimpleRecommendation(newRecObj);
+                    Simple_Recommendation.InsertNewSimpleRecommendation(newRecObj);
                     //List<SimpleRecommendationObject> allSimpleRecs = BackEndUtils.GetAllSimpleRecsAsList();
                     //RefreshUiFromList(allSimpleRecs);
                     LoadSimpleOptions();

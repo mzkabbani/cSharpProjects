@@ -160,7 +160,7 @@ namespace XmlParsersAndUi {
                     //handle events files now
                     UpdateEventsFilesStepsToFastMode(goodFiles);
                     MainForm.appProcessing = false;
-                    FrontendUtils.ShowInformation("Bulk customs completed, parsed [" + goodFiles.Count + "] applicable custom files.");
+                    FrontendUtils.ShowInformation("Bulk customs completed, parsed [" + goodFiles.Count + "] applicable custom files.",false);
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);

@@ -31,7 +31,7 @@ namespace XmlParsersAndUi.Forms {
 
         private void SelectFolderNameForm_Load(object sender, EventArgs e) {
             try {
-                DataSet dataSet = BackEndUtils.GetAllFolderNamesAsDataset();
+                DataSet dataSet = Folder_Names.GetAllFolderNamesAsDataset();
                 dataSet.Relations.Add("NodeRelation", dataSet.Tables[0].Columns["id"], dataSet.Tables[0].Columns["parentId"]);
 
                 foreach (DataRow dataRow in dataSet.Tables[0].Rows) {

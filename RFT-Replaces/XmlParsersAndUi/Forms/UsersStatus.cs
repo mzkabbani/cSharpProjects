@@ -29,7 +29,7 @@ namespace XmlParsersAndUi.Forms {
         
         private void LoadForm() {
             dgvUserStatus.DataSource = null;
-            DataSet dataSet = BackEndUtils.GetAllUsersTableAsDataSet();
+            DataSet dataSet = UserStatus.GetAllUsersTableAsDataSet();
             dgvUserStatus.DataSource = dataSet.Tables[0];
             dgvUserStatus.Columns["onlineStatus"].Visible = false;
             dgvUserStatus.Columns["loginCount"].Visible = false;
@@ -51,14 +51,14 @@ namespace XmlParsersAndUi.Forms {
         #region Events
 
         private void btnUpdateUSer_Click(object sender, EventArgs e) {
-            int userId = BackEndUtils.GetUserIdByUsername(txtUserName.Text);
-            BackEndUtils.UpdateUserStatusById(userId, !islogin);
+            int userId = UserStatus.GetUserIdByUsername(txtUserName.Text);
+            UserStatus.UpdateUserStatusById(userId, !islogin);
             islogin = !islogin;
             LoadForm();
         }
 
         private void btnInsertUser_Click(object sender, EventArgs e) {
-            BackEndUtils.InsertNewUser(txtUserNameInsert.Text);
+            UserStatus.InsertNewUser(txtUserNameInsert.Text);
             LoadForm();
         }
 

@@ -13426,3 +13426,50 @@ System.Xml.XmlException: '"' is an unexpected token. The expected token is ';'. 
    at System.Xml.XmlDocument.LoadXml(String xml)
    at XmlParsersAndUi.FrontendUtils.FormatXml(String sUnformattedXml) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\FrontendUtils.cs:line 100
    at XmlParsersAndUi.Forms.SecondLevelCleanupForm.btnStartReplacementOp_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SecondLevelCleanupForm.cs:line 940
+
+
+
+
+9/3/2012 11:27:48 AM
+
+
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\6_testing_credit_notice\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\6_testing_credit_notice\step6_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\5-IndexVersioning\5-3\5-3-3\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\5-IndexVersioning\5-3\5-3-3\step5_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\5-IndexVersioning\5-2\5-2-4\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\5-IndexVersioning\5-2\5-2-4\step6_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\5-IndexVersioning\5-1\5-4-BulkcreditsettlementnoticeonCRDItrade\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\5-IndexVersioning\5-1\5-4-BulkcreditsettlementnoticeonCRDItrade\step8_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\329a\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\329a\step8_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\328\3\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\328\3\step23_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\328\3\step27_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\328\2b\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\328\2b\step2_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\328\2b\step3_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\328\2b\step6_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\328\2\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\328\2\step19_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\328\1\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\328\1\step15_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\327\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\327\step10_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\327\step14_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\327\step17_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\326\3\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\326\3\step4_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\326\3\step8_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\326\2b\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\326\2b\step1_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\326\2\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\326\2\step38_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\326\2\step39_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\326\1\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\326\1\step33_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\324\eventsfiles.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\324\step15_customs.xml
+D:\EclipseWorkspaceOrig\TPK0001023\tpk\apps\fs\quality\public\automation\tests\macros\324\step18_customs.xml
+
+

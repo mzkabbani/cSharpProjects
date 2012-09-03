@@ -180,7 +180,7 @@ namespace XmlParsersAndUi {
             try {
                 if (IsValidToReplace(txtRemoteDest.Text, txtDest.Text)) {
                     ReplaceFiles(txtRemoteDest.Text, txtDest.Text);
-                    FrontendUtils.ShowInformation("DONE!");
+                    FrontendUtils.ShowInformation("DONE!",false);
                 }
 
             } catch (Exception ex) {
@@ -219,7 +219,7 @@ namespace XmlParsersAndUi {
                 }
                 GetFilesByFtp(txtServer.Text, txtRemoteDest.Text);
                 canOpen = true;
-                FrontendUtils.ShowInformation("Screen update completed!");
+                FrontendUtils.ShowInformation("Screen update completed!",false);
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }

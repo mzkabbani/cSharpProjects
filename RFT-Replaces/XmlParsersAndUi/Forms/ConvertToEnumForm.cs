@@ -19,7 +19,7 @@ namespace XmlParsersAndUi.Forms {
 
         private void btnStart_Click(object sender, EventArgs e) {
             string generatedEnum = "public enum ApplicationConfigKeys {";
-            List<ApplicationConfigObject> allAppConfig = BackEndUtils.GetAllApplicationConfigAsList();
+            List<ApplicationConfigObject> allAppConfig = Application_Settings.GetAllApplicationConfigAsList();
             
             foreach (ApplicationConfigObject config in allAppConfig) {
                 generatedEnum = generatedEnum + "\r\n" + config.key + " = "+config.id+",";

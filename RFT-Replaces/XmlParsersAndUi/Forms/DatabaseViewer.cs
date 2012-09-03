@@ -23,7 +23,7 @@ namespace XmlParsersAndUi {
 
                 cboTableNames.DataSource = set.Tables[0].DefaultView;
                 cboTableNames.DisplayMember = "TABLE_NAME";
-                dgvRecomendations.DataSource = BackEndUtils.GetAllAdvancedRecs();
+                dgvRecomendations.DataSource = Advanced_Recommendations.GetAllAdvancedRecs();
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }

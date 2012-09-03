@@ -265,22 +265,22 @@ namespace XmlParsersAndUi {
                 this.Text = this.Text +" v." +APPLICATION_VERSION + " - Welcome " + loggedInUser + "!";
                 XmlNodeList configFileNodes = LoadConfigFileNodes();
                 SetBackEndConnectionParameter(configFileNodes);
-                string applicationVersion = (string)BackEndUtils.GetAppConfigValueByKey(BackEndUtils.ApplicationConfigKeys.ApplicationVersion);
+                string applicationVersion = (string)Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.ApplicationVersion);
 
                 if (string.Equals(applicationVersion, APPLICATION_VERSION)){ 
                     // || string.Equals(loggedInUser, "mkabbani")) {
-                    bool TIMER_ENABLED = Convert.ToBoolean(BackEndUtils.GetAppConfigValueByKey(BackEndUtils.ApplicationConfigKeys.EnableTimerKey));
+                    bool TIMER_ENABLED = Convert.ToBoolean(Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.EnableTimerKey));
                     if (TIMER_ENABLED) {
-                        CONFIGURED_IDLE_TIME = Convert.ToInt32(BackEndUtils.GetAppConfigValueByKey(BackEndUtils.ApplicationConfigKeys.TimerDurationKey));
+                        CONFIGURED_IDLE_TIME = Convert.ToInt32(Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.TimerDurationKey));
                         CheckIdleTime();
                     }
-                    int userId = BackEndUtils.GetUserIdByUsername(loggedInUser);
+                    int userId = UserStatus.GetUserIdByUsername(loggedInUser);
                     if (userId < 1) {
-                        userId = BackEndUtils.InsertNewUser(loggedInUser);
+                        userId = UserStatus.InsertNewUser(loggedInUser);
                     }
                     FrontendUtils.LoggedInUserId = userId;
-                    BackEndUtils.UpdateUserStatusById(userId, true);
-                    List<string> priviligedUsersList = BackEndUtils.GetPriviligedUsersAsList();
+                    UserStatus.UpdateUserStatusById(userId, true);
+                    List<string> priviligedUsersList = Application_Settings.GetPriviligedUsersAsList();
                     UpdateUIForPriviligedUsers(priviligedUsersList, loggedInUser);
                 } else {
                     this.menuStrip.Enabled = false;
@@ -388,8 +388,8 @@ namespace XmlParsersAndUi {
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
             try {
-                int userId = BackEndUtils.GetUserIdByUsername(loggedInUser);
-                BackEndUtils.UpdateUserStatusById(userId, false);
+                int userId = UserStatus.GetUserIdByUsername(loggedInUser);
+                UserStatus.UpdateUserStatusById(userId, false);
                 FrontendUtils.SendUsageNotification(loggedInUser + " has exited the application!");
                 Environment.Exit(2);
             } catch (Exception ex) {

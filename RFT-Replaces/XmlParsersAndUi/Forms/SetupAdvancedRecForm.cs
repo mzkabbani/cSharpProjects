@@ -399,7 +399,7 @@ namespace XmlParsersAndUi {
                     CaptureEvent captureEvent = new CaptureEvent(ruleName, ruleDescription, ruleEventIn, captureEventNodes);
                     captureEvent.captureEventCategory = Convert.ToInt32(cboCaptureType.SelectedValue);
                     captureEvent.captureEventUsageCount = 0;
-                    BackEndUtils.InsertCaptureEvent(captureEvent);
+                    Advanced_Recommendations.InsertCaptureEvent(captureEvent);
                     FrontendUtils.ShowInformation("Capture event inserted successfully!",false);
                 }
                 LoadAvailableARtoList();
@@ -444,9 +444,9 @@ namespace XmlParsersAndUi {
         private void BindCombos() {
             string displayMember = "categoryName";
             string valueMember = "id";
-            DataTable replacementDatable = BackEndUtils.GetAllReplacementCategoriesAsDataTable();
+            DataTable replacementDatable = Replacement_Events_Categories.GetAllReplacementCategoriesAsDataTable();
             FrontendUtils.BindCombo(cboReplacementType, replacementDatable, displayMember, valueMember);
-            DataTable captureDatatable = BackEndUtils.GetAllCaptureCategoriesAsDataTable();
+            DataTable captureDatatable = Advanced_Recommendation_Categories.GetAllCaptureCategoriesAsDataTable();
             FrontendUtils.BindCombo(cboCaptureType, captureDatatable, displayMember, valueMember);
         }
 
@@ -478,7 +478,7 @@ namespace XmlParsersAndUi {
 
         private void LoadAvailableARtoList() {
             lbAdvancedCE.Items.Clear();
-            List<CaptureEvent> allCaptureEvents = BackEndUtils.GetAllAdvancedRecsAsList();
+            List<CaptureEvent> allCaptureEvents = Advanced_Recommendations.GetAllAdvancedRecsAsList();
             for (int i = 0; i < allCaptureEvents.Count; i++) {
                 lbAdvancedCE.Items.Add(allCaptureEvents[i]);
                 cboCapturePoint.Items.Add(allCaptureEvents[i]);
@@ -833,7 +833,7 @@ namespace XmlParsersAndUi {
 
         private void FillReplacementsListBox() {
             lbAvailableReplacements.Items.Clear();
-            List<ReplacementEvent> availableReplacements = BackEndUtils.GetAvailableReplacementsByCaptureId(((CaptureEvent)cboCapturePoint.SelectedItem).CaptureEventId, BackEndUtils.GetSqlConnection());
+            List<ReplacementEvent> availableReplacements = Advanced_Replacements.GetAvailableReplacementsByCaptureId(((CaptureEvent)cboCapturePoint.SelectedItem).CaptureEventId, BackEndUtils.GetSqlConnection());
             for (int i = 0; i < availableReplacements.Count; i++) {
                 lbAvailableReplacements.Items.Add(availableReplacements[i]);
             }
@@ -843,7 +843,7 @@ namespace XmlParsersAndUi {
             try {
                 if (IsValidToAddReplacement(txtReplacementName.Text.Trim(), txtReplacementDesc.Text.Trim(), txtReplacementRep.Text.Trim())) {
                     ReplacementEvent replacementEvent = new ReplacementEvent(txtReplacementName.Text.Trim(), txtReplacementDesc.Text.Trim(), txtReplacementRep.Text.Trim(), Convert.ToInt32(cboReplacementType.SelectedValue), ((CaptureEvent)cboCapturePoint.SelectedItem).CaptureEventId, FrontendUtils.LoggedInUserId);
-                    BackEndUtils.InsertNewReplacement(replacementEvent);
+                    Advanced_Replacements.InsertNewReplacement(replacementEvent);
                     FillReplacementsListBox();
                     UpdateUi(FrontendUtils.UiPrepareFor.Add);
                 }
@@ -969,7 +969,7 @@ namespace XmlParsersAndUi {
                 selectedReplacementEvent.description = txtReplacementDesc.Text;
                 selectedReplacementEvent.Value = txtReplacementRep.Text;
                 selectedReplacementEvent.typeId = Convert.ToInt32(cboReplacementType.SelectedValue);
-                BackEndUtils.SaveReplacementEvent(selectedReplacementEvent);
+                Advanced_Replacements.SaveReplacementEvent(selectedReplacementEvent);
                 FillReplacementsListBox();
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -1019,7 +1019,7 @@ namespace XmlParsersAndUi {
                 CaptureEvent captureEvent = new CaptureEvent(txtAOName.Text, txtAODescription.Text, txtAOEventIn.Text, captureEventNodes);
                 captureEvent.captureEventCategory = Convert.ToInt32(cboCaptureType.SelectedValue);
                 captureEvent.captureEventUsageCount = CurrentlySelectedCaptureEvent.captureEventUsageCount;
-                BackEndUtils.SaveCaptureEventById(CurrentlySelectedCaptureEvent.CaptureEventId, captureEvent);
+                Advanced_Recommendations.SaveCaptureEventById(CurrentlySelectedCaptureEvent.CaptureEventId, captureEvent);
                 LoadAvailableARtoList();
                 SetAllCombos();
                 BindCombos();

@@ -149,15 +149,15 @@ namespace XmlParsersAndUi.Forms {
                 }
                 connection.Login();
                 if (!connection.DirectoryExists(refEnv)) {
-                    FrontendUtils.ShowInformation("The reference environment path is incorrect!");
+                    FrontendUtils.ShowInformation("The reference environment path is incorrect!",true);
                     return false;
                 }
                 if (!connection.FileExists(refEnv + "/mxg2000_settings.sh")) {
-                    FrontendUtils.ShowInformation("The reference environment path is incorrect!");
+                    FrontendUtils.ShowInformation("The reference environment path is incorrect!", true);
                     return false;
                 }
                 if (connection.FileExists(refEnv + "/clean.log")) {
-                    FrontendUtils.ShowInformation("The reference environment is cleaned!");
+                    FrontendUtils.ShowInformation("The reference environment is cleaned!", true);
                     return false;
                 }
             } finally {
@@ -182,16 +182,16 @@ namespace XmlParsersAndUi.Forms {
                 }
                 connection.Login();
                 if (!connection.DirectoryExists(inputEnv)) {
-                    FrontendUtils.ShowInformation("The input environment path is incorrect!");
+                    FrontendUtils.ShowInformation("The input environment path is incorrect!",true);
                     return false;
                 }
 
                 if (!connection.FileExists(inputEnv + "/mxg2000_settings.sh")) {
-                    FrontendUtils.ShowInformation("The input environment path is incorrect!");
+                    FrontendUtils.ShowInformation("The input environment path is incorrect!", true);
                     return false;
                 }
                 if (connection.FileExists(inputEnv + "/clean.log")) {
-                    FrontendUtils.ShowInformation("The input environment is cleaned!");
+                    FrontendUtils.ShowInformation("The input environment is cleaned!", true);
                     return false;
                 }
             } finally {
@@ -216,7 +216,7 @@ namespace XmlParsersAndUi.Forms {
                 }
                 connection.Login();
                 if (!connection.DirectoryExists(compareScriptLocation)) {
-                    FrontendUtils.ShowInformation("Could not connect to master host!");
+                    FrontendUtils.ShowInformation("Could not connect to master host!", true);
                     return false;
                 }
                 if (!connection.FileExists(compareScriptLocation + "/comparison.sh")) {
@@ -463,16 +463,16 @@ namespace XmlParsersAndUi.Forms {
 
         private bool IsValidToStartComparison(string inputEnv, string inputHost, string refEnv, string refHost) {
             if (string.IsNullOrEmpty(inputEnv)) {
-                FrontendUtils.ShowInformation("Input Environment cannot be empty!");
+                FrontendUtils.ShowInformation("Input Environment cannot be empty!", true);
                 return false;
             } else if (string.IsNullOrEmpty(inputHost)) {
-                FrontendUtils.ShowInformation("Input Host cannot be empty!");
+                FrontendUtils.ShowInformation("Input Host cannot be empty!", true);
                 return false;
             } else if (string.IsNullOrEmpty(refEnv)) {
-                FrontendUtils.ShowInformation("Reference Environment cannot be empty!");
+                FrontendUtils.ShowInformation("Reference Environment cannot be empty!", true);
                 return false;
             } else if (string.IsNullOrEmpty(refHost)) {
-                FrontendUtils.ShowInformation("Reference Host cannot be empty!");
+                FrontendUtils.ShowInformation("Reference Host cannot be empty!", true);
                 return false;
             }
             return true;
@@ -480,7 +480,7 @@ namespace XmlParsersAndUi.Forms {
 
         private void LoadAllAvailableFiltersToCheckListBox() {
             clbAvailableFilters.Items.Clear();
-            DataSet AllFilters = BackEndUtils.GetAllAvailableFiltersAsDataset();
+            DataSet AllFilters = Env_Comparison_Filters.GetAllAvailableFiltersAsDataset();
             foreach (DataRow row in AllFilters.Tables[0].Rows) {
                 EnvComparisonFilter filter =
                   new EnvComparisonFilter(Convert.ToInt32(row["id"]),
@@ -1074,7 +1074,7 @@ namespace XmlParsersAndUi.Forms {
 
         private void ReloadAllFiltersFromDatabase() {
             lbFilters.Items.Clear();
-            DataSet dataSet = BackEndUtils.GetAllAvailableFiltersAsDataset();
+            DataSet dataSet = Env_Comparison_Filters.GetAllAvailableFiltersAsDataset();
             foreach (DataRow row in dataSet.Tables[0].Rows) {
                 EnvComparisonFilter filter =
                   new EnvComparisonFilter(Convert.ToInt32(row["id"]),
@@ -1098,13 +1098,13 @@ namespace XmlParsersAndUi.Forms {
 
         private bool IsValidToAddFilter(string name, string description, string pattern) {
             if (string.IsNullOrEmpty(name)) {
-                FrontendUtils.ShowInformation("Name field cannot be empty!");
+                FrontendUtils.ShowInformation("Name field cannot be empty!", true);
                 return false;
             } else if (string.IsNullOrEmpty(description)) {
-                FrontendUtils.ShowInformation("Description field cannot be empty!");
+                FrontendUtils.ShowInformation("Description field cannot be empty!", true);
                 return false;
             } else if (string.IsNullOrEmpty(pattern)) {
-                FrontendUtils.ShowInformation("Pattern field cannot be empty!");
+                FrontendUtils.ShowInformation("Pattern field cannot be empty!", true);
                 return false;
             }
             bool found = false;
@@ -1114,7 +1114,7 @@ namespace XmlParsersAndUi.Forms {
                 }
             }
             if (found) {
-                FrontendUtils.ShowInformation("Filter name must be unique!");
+                FrontendUtils.ShowInformation("Filter name must be unique!", true);
                 return false;
             }
             return true;
@@ -1124,13 +1124,13 @@ namespace XmlParsersAndUi.Forms {
             if (filterId < 1) {
                 return false;
             } else if (string.IsNullOrEmpty(name)) {
-                FrontendUtils.ShowInformation("Name field cannot be empty!");
+                FrontendUtils.ShowInformation("Name field cannot be empty!", true);
                 return false;
             } else if (string.IsNullOrEmpty(description)) {
-                FrontendUtils.ShowInformation("Description field cannot be empty!");
+                FrontendUtils.ShowInformation("Description field cannot be empty!", true);
                 return false;
             } else if (string.IsNullOrEmpty(pattern)) {
-                FrontendUtils.ShowInformation("Pattern field cannot be empty!");
+                FrontendUtils.ShowInformation("Pattern field cannot be empty!", true);
                 return false;
             }
             bool found = false;
@@ -1142,7 +1142,7 @@ namespace XmlParsersAndUi.Forms {
                 }
             }
             if (found) {
-                FrontendUtils.ShowInformation("Filter name must be unique!");
+                FrontendUtils.ShowInformation("Filter name must be unique!", true);
                 return false;
             }
             return true;
@@ -1175,7 +1175,7 @@ namespace XmlParsersAndUi.Forms {
                 string pattern = txtFilterPattern.Text.Trim();
                 if (IsValidToAddFilter(name, description, pattern)) {
                     EnvComparisonFilter filter = new EnvComparisonFilter(-1, name, description, pattern, cboFilterType.SelectedIndex, FrontendUtils.LoggedInUserId);
-                    int filterId = BackEndUtils.InserNewFilter(filter);
+                    int filterId = Env_Comparison_Filters.InserNewFilter(filter);
                     ResetForm();
                     ReloadAllFiltersFromDatabase();
                 }
@@ -1222,7 +1222,7 @@ namespace XmlParsersAndUi.Forms {
                 string pattern = txtFilterPattern.Text.Trim();
                 if (IsValidToSaveFilter(filterId, name, description, pattern)) {
                     EnvComparisonFilter filter = new EnvComparisonFilter(filterId, name, description, pattern, (int)cboFilterType.SelectedItem, FrontendUtils.LoggedInUserId);
-                    BackEndUtils.UpdatedFilterById(filter);
+                    Env_Comparison_Filters.UpdatedFilterById(filter);
                     ReloadAllFiltersFromDatabase();
                 }
             } catch (Exception ex) {
@@ -1244,7 +1244,7 @@ namespace XmlParsersAndUi.Forms {
         #endregion
 
         private void EnvironmentComparisonForm_Load(object sender, EventArgs e) {
-            LOCAL_TA_USAGE = string.Equals(BackEndUtils.GetAppConfigValueByKey(BackEndUtils.ApplicationConfigKeys.EnvComparisonOnlyForEnv).ToString(), "True") ? true : false;
+            LOCAL_TA_USAGE = string.Equals(Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.EnvComparisonOnlyForEnv).ToString(), "True") ? true : false;
             LoadSavedFolderNames();
         }
 
@@ -1331,7 +1331,7 @@ namespace XmlParsersAndUi.Forms {
                 string inpVersionFile = GetVersionFile(txtInputEnv.Text, txtInpHost.Text);
 
                 if (string.IsNullOrEmpty(refReadFile) || string.IsNullOrEmpty(inpVersionFile)) {
-                    FrontendUtils.ShowInformation("Could not validate versions!");
+                    FrontendUtils.ShowInformation("Could not validate versions!",true);
                     btnStart.Enabled = true;
                     btnValidateVersion.Enabled = true;
                     return;
@@ -1356,7 +1356,7 @@ namespace XmlParsersAndUi.Forms {
                 if (!string.Equals(refBuildId, inputBuildId)) {
                     lblInputVersionBid.ForeColor = Color.LimeGreen;
                     lblReferenceVersionBid.ForeColor = Color.LightCoral;
-                    FrontendUtils.ShowInformation("The reference environment build id is not identical to the build id of the customized environment");
+                    FrontendUtils.ShowInformation("The reference environment build id is not identical to the build id of the customized environment",true);
 
                 } else {
                     //equal builds
@@ -1416,7 +1416,7 @@ namespace XmlParsersAndUi.Forms {
                 //pcProgress.Visible = false;
                 //pcProgress.Rotate = false;
                 gbResultsGrid.Enabled = true;
-                FrontendUtils.ShowInformation("Export completed!");
+                FrontendUtils.ShowInformation("Export completed!",false);
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
@@ -1510,7 +1510,7 @@ namespace XmlParsersAndUi.Forms {
             allTreeNodes = new List<ComparisonCategoryTreeNode>();
             LoopOverAllTreeNodes();
 
-            BackEndUtils.UpdateEnvComparisonCategoriesTransaction(allTreeNodes);
+            Env_Comparison_Categories.UpdateEnvComparisonCategoriesTransaction(allTreeNodes);
         }
 
         private void LoopOverAllTreeNodes() {
@@ -1546,7 +1546,7 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private void LoadSavedFolderNames() {
-            DataSet dataSet = BackEndUtils.GetAllAvailableEnvCompCategsAsDataset();
+            DataSet dataSet = Env_Comparison_Categories.GetAllAvailableEnvCompCategsAsDataset();
             dataSet.Relations.Add("NodeRelation", dataSet.Tables[0].Columns["id"], dataSet.Tables[0].Columns["parentId"]);
             foreach (DataRow dataRow in dataSet.Tables[0].Rows) {
                 if (dataRow.IsNull("parentId")) {
@@ -1574,11 +1574,11 @@ namespace XmlParsersAndUi.Forms {
                 if (comparisonCategoryTreeNode.Nodes.Count > 0) {
                     foreach (ComparisonCategoryTreeNode node in comparisonCategoryTreeNode.Nodes) {
                         tvResultsCategories.Nodes.Remove(node);
-                        BackEndUtils.DeleteEnvComparisonCategoryById(node.comparisonCategory.categoryId);
+                        Env_Comparison_Categories.DeleteEnvComparisonCategoryById(node.comparisonCategory.categoryId);
                     }
                 }
                 tvResultsCategories.Nodes.Remove(comparisonCategoryTreeNode);
-                BackEndUtils.DeleteEnvComparisonCategoryById(comparisonCategoryTreeNode.comparisonCategory.categoryId);
+                Env_Comparison_Categories.DeleteEnvComparisonCategoryById(comparisonCategoryTreeNode.comparisonCategory.categoryId);
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }

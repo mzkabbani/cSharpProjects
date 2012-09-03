@@ -418,15 +418,15 @@ namespace XmlParsersAndUi.Forms {
                         captureEvent.captureEventCategory = Convert.ToInt32(cboCaptureType.SelectedValue);
                         captureEvent.captureEventUsageCount = 0;
                         ReplacementEvent replacementEvent = new ReplacementEvent("Replacement-" + ruleName, "Repalcement-" + ruleDescription, replacementText, 1, 0, FrontendUtils.LoggedInUserId);
-                        BackEndUtils.InsertCaptureEventForTextConversion(captureEvent, replacementEvent);
-                        FrontendUtils.ShowInformation("Capture event inserted successfully!");
+                        Advanced_Recomendations_TextConv.InsertCaptureEventForTextConversion(captureEvent, replacementEvent);
+                        FrontendUtils.ShowInformation("Capture event inserted successfully!",false);
                     }
                     LoadAvailableARtoList();
                     SetAllCombos();
                     BindCombos();
                     lbAdvancedCE.Select();
                 } else {
-                    FrontendUtils.ShowInformation("Please [Parse] the input event before proceeding");
+                    FrontendUtils.ShowInformation("Please [Parse] the input event before proceeding",true);
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -435,25 +435,25 @@ namespace XmlParsersAndUi.Forms {
 
         private bool IsValidToAddRule(string ruleName, string ruleDescription, string ruleEventIn, string replacement, TreeNode parentNode) {
             if (string.IsNullOrEmpty(ruleName)) {
-                FrontendUtils.ShowInformation("Rule name cannot be empty!");
+                FrontendUtils.ShowInformation("Rule name cannot be empty!",true);
                 return false;
             } else if (string.IsNullOrEmpty(ruleDescription)) {
-                FrontendUtils.ShowInformation("Description cannot be empty!");
+                FrontendUtils.ShowInformation("Description cannot be empty!", true);
                 return false;
             } else if (string.IsNullOrEmpty(ruleEventIn)) {
-                FrontendUtils.ShowInformation("Event in cannot be empty!");
+                FrontendUtils.ShowInformation("Event in cannot be empty!", true);
                 return false;
             }
             if (!IsValidXml(ruleEventIn)) {
-                FrontendUtils.ShowInformation("Event must be a valid xml!");
+                FrontendUtils.ShowInformation("Event must be a valid xml!", true);
                 return false;
             }
             if (string.IsNullOrEmpty(replacement)) {
-                FrontendUtils.ShowInformation("A replacement must be supplied!");
+                FrontendUtils.ShowInformation("A replacement must be supplied!", true);
                 return false;
             }
             if (!parentNode.Checked) {
-                FrontendUtils.ShowInformation("Event main node should be checked!");
+                FrontendUtils.ShowInformation("Event main node should be checked!", true);
                 return false;
             }
             return true;
@@ -473,7 +473,7 @@ namespace XmlParsersAndUi.Forms {
         private void BindCombos() {
             string displayMember = "categoryName";
             string valueMember = "id";
-            DataTable captureDatatable = BackEndUtils.GetAllCaptureCategoriesAsDataTable();
+            DataTable captureDatatable = Advanced_Recommendation_Categories.GetAllCaptureCategoriesAsDataTable();
             FrontendUtils.BindCombo(cboCaptureType, captureDatatable, displayMember, valueMember);
         }
 
@@ -505,7 +505,7 @@ namespace XmlParsersAndUi.Forms {
 
         private void LoadAvailableARtoList() {
             lbAdvancedCE.Items.Clear();
-            List<CaptureEvent> allCaptureEvents = BackEndUtils.GetAllAdvancedRecsAsListTextConv();
+            List<CaptureEvent> allCaptureEvents = Advanced_Recomendations_TextConv.GetAllAdvancedRecsAsListTextConv();
             for (int i = 0; i < allCaptureEvents.Count; i++) {
                 lbAdvancedCE.Items.Add(allCaptureEvents[i]);
             }
@@ -881,9 +881,9 @@ namespace XmlParsersAndUi.Forms {
                 foreach (string pattern in foundPatterns) {
                     output = output + pattern + "\n";
                 }
-                FrontendUtils.ShowInformation("Found the following variables:\n" + output);
+                FrontendUtils.ShowInformation("Found the following variables:\n" + output,false);
             } else {
-                FrontendUtils.ShowInformation("No variables found!");
+                FrontendUtils.ShowInformation("No variables found!",false);
             }
         }
 
@@ -904,7 +904,7 @@ namespace XmlParsersAndUi.Forms {
 
                 selectedReplacementEvent.id = CurrentlySelectedCaptureEvent.Replacement.id;
 
-                BackEndUtils.SaveCaptureEventByIdForTextConversion(CurrentlySelectedCaptureEvent.CaptureEventId, captureEvent, selectedReplacementEvent);
+                Advanced_Recomendations_TextConv.SaveCaptureEventByIdForTextConversion(CurrentlySelectedCaptureEvent.CaptureEventId, captureEvent, selectedReplacementEvent);
                 LoadAvailableARtoList();
                 SetAllCombos();
                 BindCombos();
@@ -965,7 +965,7 @@ namespace XmlParsersAndUi.Forms {
                     }                    
                     eventParsed = true;
                 } else {
-                    FrontendUtils.ShowInformation("Event must be a valid xml!");
+                    FrontendUtils.ShowInformation("Event must be a valid xml!",true);
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -978,7 +978,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 DialogResult dial = FrontendUtils.ShowConformation("Are you sure you want to delete [" + CurrentlySelectedCaptureEvent.CaptureEventName + "] ?");
                 if (dial == DialogResult.Yes) {
-                    BackEndUtils.DisableAdvanceRecById(CurrentlySelectedCaptureEvent.CaptureEventId);
+                    Advanced_Recomendations_TextConv.DisableAdvanceRecById(CurrentlySelectedCaptureEvent.CaptureEventId);
                     LoadAvailableARtoList();
                     SetAllCombos();
                     BindCombos();

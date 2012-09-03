@@ -54,13 +54,13 @@ namespace XmlParsersAndUi.Forms {
 
         private void LoadAvailableAdvancedRecommendations() {
             lvAdvancedRules.Clear();
-            DataSet dataSet = BackEndUtils.GetAllAdvancedRecCategoriesAsDataset();
+            DataSet dataSet = Advanced_Recommendation_Categories.GetAllAdvancedRecCategoriesAsDataset();
             foreach (DataRow dataRow in dataSet.Tables[0].Rows) {
                 lvAdvancedRules.Groups.Add(dataRow["id"].ToString(), dataRow["categoryName"].ToString());
             }
             AllCategories = dataSet;
 
-            DataSet newDataSet = BackEndUtils.GetAllAdvancedRecsAsDataSet();
+            DataSet newDataSet = Advanced_Recommendations.GetAllAdvancedRecsAsDataSet();
             currentlyLoadedEvents = new Dictionary<int, CaptureEvent>();
             foreach (DataRow dataRow in newDataSet.Tables[0].Rows) {
                 System.Windows.Forms.ListViewItem item = lvAdvancedRules.Items.Add(dataRow["id"].ToString(), dataRow["name"].ToString(), 0);
@@ -75,7 +75,7 @@ namespace XmlParsersAndUi.Forms {
                 currentlyLoadedEvents.Add(Convert.ToInt32(item.Tag), capture);
             }
             AllAdvancedRecs = newDataSet;
-            CAPTURE_TOTAL_USAGE_COUNT = BackEndUtils.GetTotalAdvanceRecUsageCount();
+            CAPTURE_TOTAL_USAGE_COUNT = Advanced_Recommendations.GetTotalAdvanceRecUsageCount();
         }
 
         private void SetupUiFromCapturePoint(CaptureEvent capture) {
@@ -592,7 +592,7 @@ namespace XmlParsersAndUi.Forms {
             for (int i = 0; i < currentlyUsedCaptures.Count; i++) {
                 ComplexCaptureMatchObject complexCaptureMatchObject = new ComplexCaptureMatchObject();
 
-                complexCaptureMatchObject.captureEvent = BackEndUtils.SelectAdvancedRecByIdAndIncrementUsage(currentlyUsedCaptures[i].CaptureEventId, currentlyUsedCaptures[i].captureEventUsageCount);
+                complexCaptureMatchObject.captureEvent = Advanced_Recommendations.SelectAdvancedRecByIdAndIncrementUsage(currentlyUsedCaptures[i].CaptureEventId, currentlyUsedCaptures[i].captureEventUsageCount);
 
                 for (int j = 0; j < bgWorkerObject.targetedFiles.Count; j++) {
                     string readText = string.Empty;
@@ -714,7 +714,7 @@ namespace XmlParsersAndUi.Forms {
 
                 DialogResult dialogResult = FrontendUtils.ShowConformation("Search completed, with " + lblFoundNodesCound.Text + " total hits!\n Proceed to replacement?");
                 if (dialogResult == DialogResult.Yes) {
-                    REPLACEMENT_TOTAL_USAGE_COUNT = BackEndUtils.GetTotalAdvanceReplacementUsageCount();
+                    REPLACEMENT_TOTAL_USAGE_COUNT = Advanced_Replacements.GetTotalAdvanceReplacementUsageCount();
                     SetupUiForReplacements();
                 }
 
@@ -744,7 +744,7 @@ namespace XmlParsersAndUi.Forms {
                 //testReplacements form = new testReplacements(backGroundWorkerObject);
                 //form.MdiParent = this.MdiParent;
                 //form.Show();
-                REPLACEMENT_TOTAL_USAGE_COUNT = BackEndUtils.GetTotalAdvanceReplacementUsageCount();
+                REPLACEMENT_TOTAL_USAGE_COUNT = Advanced_Replacements.GetTotalAdvanceReplacementUsageCount();
                 SetupUiForReplacements();
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -799,7 +799,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 pnlAvailableReplacements.Controls.Clear();
                 ComplexCaptureMatchObject complexCaptureMatchObject = dgvResults[1, e.RowIndex].Value as ComplexCaptureMatchObject;
-                List<ReplacementEvent> availableReplacements = BackEndUtils.GetAvailableReplacementsByCaptureId(complexCaptureMatchObject.captureEvent.CaptureEventId, BackEndUtils.GetSqlConnection());
+                List<ReplacementEvent> availableReplacements = Advanced_Replacements.GetAvailableReplacementsByCaptureId(complexCaptureMatchObject.captureEvent.CaptureEventId, BackEndUtils.GetSqlConnection());
                 int highestPopularity = -1;
                 for (int i = 0; i < availableReplacements.Count; i++) {
                     CustomizedReplacement customizedReplacement = new CustomizedReplacement();
@@ -976,7 +976,7 @@ namespace XmlParsersAndUi.Forms {
 
         private void SecondLevelCleanupForm_Load(object sender, EventArgs e) {
             try {
-                CLEANUPFORM_EVENTS_SEARCH_PATTERN = BackEndUtils.GetAppConfigValueByKey(BackEndUtils.ApplicationConfigKeys.CleanUpEventsSearchPattern) as string;
+                CLEANUPFORM_EVENTS_SEARCH_PATTERN = Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.CleanUpEventsSearchPattern) as string;
 
 
                 BACKUP_DIRECTORY = Path.GetTempPath() + @"\Backup-" + DateTime.Now.Ticks;

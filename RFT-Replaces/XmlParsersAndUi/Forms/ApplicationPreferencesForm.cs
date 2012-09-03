@@ -29,7 +29,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 tvPreferenceSections.ExpandAll();
                 txtConnectedDatabase.Text = BackEndUtils.ConnectionParamter;
-                dataSet = BackEndUtils.GetAppPrefsDataset();
+                dataSet = Application_Settings.GetAppPrefsDataset();
                 dgvDatabasePrefs.DataSource = dataSet.Tables[0];
                 LoadSavedFolderNames();
             } catch (Exception ex) {
@@ -49,7 +49,7 @@ namespace XmlParsersAndUi.Forms {
 
         private void btnSave_Click(object sender, EventArgs e) {
             try {
-                BackEndUtils.UpdatePrefs(dataSet);
+                Application_Settings.UpdatePrefs(dataSet);
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
@@ -85,7 +85,7 @@ namespace XmlParsersAndUi.Forms {
 
         private void LoadSavedFolderNames() {
 
-            DataSet dataSet = BackEndUtils.GetAllFolderNamesAsDataset();
+            DataSet dataSet = Folder_Names.GetAllFolderNamesAsDataset();
             dataSet.Relations.Add("NodeRelation", dataSet.Tables[0].Columns["id"], dataSet.Tables[0].Columns["parentId"]);
 
             foreach (DataRow dataRow in dataSet.Tables[0].Rows) {
@@ -101,7 +101,7 @@ namespace XmlParsersAndUi.Forms {
 
         private void SaveUpdatedTreeView() {
             LoopOverAllTreeNodes();
-            BackEndUtils.UpdateTreeNodesTransaction(allTreeNodes);
+            Folder_Names.UpdateTreeNodesTransaction(allTreeNodes);
         }
 
         private void LoopOverAllTreeNodes() {

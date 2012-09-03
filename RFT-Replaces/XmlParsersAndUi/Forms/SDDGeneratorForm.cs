@@ -25,7 +25,7 @@ namespace XmlParsersAndUi.Forms {
         private void btnStartOperation_Click(object sender, EventArgs e) {
             try {
                 btnStartOperation.Enabled = false;
-                List<CaptureEvent> allCaptureEvents = BackEndUtils.GetAllAdvancedRecsAsListTextConv();
+                List<CaptureEvent> allCaptureEvents = Advanced_Recomendations_TextConv.GetAllAdvancedRecsAsListTextConv();
                 BackGroundWorkerObject workerObject = new BackGroundWorkerObject();
                 workerObject.selectedCaptureEvents = allCaptureEvents;
                 workerObject.targetedFiles = new List<FileToParseObject>();

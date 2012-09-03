@@ -26,7 +26,7 @@ namespace XmlParsersAndUi.Forms {
 
         private void ShowSearchDetailsForm_Load(object sender, EventArgs e) {
             try {
-                List<ReplacementEvent> availableReplacements = BackEndUtils.GetAvailableReplacementsByCaptureId(captureEvent.CaptureEventId, BackEndUtils.GetSqlConnection());
+                List<ReplacementEvent> availableReplacements = Advanced_Replacements.GetAvailableReplacementsByCaptureId(captureEvent.CaptureEventId, BackEndUtils.GetSqlConnection());
                 for (int i = 0; i < availableReplacements.Count; i++) {
                     CustomizedReplacement customizedReplacement = new CustomizedReplacement();
                     customizedReplacement.Click += new EventHandler(customizedReplacement_Click);
@@ -57,7 +57,7 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private double SetPopularity(ReplacementEvent replacementEvent) {
-            int totalUsage = BackEndUtils.GetTotalAdvanceReplacementUsageCount();
+            int totalUsage = Advanced_Replacements.GetTotalAdvanceReplacementUsageCount();
             return (((double)replacementEvent.usageCount / totalUsage) * 20);
 
 

@@ -560,11 +560,11 @@ namespace XmlParsersAndUi.Forms {
 
                         lbAvailableProps.Items.Add(selectedInstallerPropertyObject);
                     } else {
-                        FrontendUtils.ShowInformation("The property name is already in use, please choose a unique name!");
+                        FrontendUtils.ShowInformation("The property name is already in use, please choose a unique name!",true);
                     }
 
                 } else {
-                    FrontendUtils.ShowInformation("Please make sure all fields are filled");
+                    FrontendUtils.ShowInformation("Please make sure all fields are filled",true);
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -600,7 +600,7 @@ namespace XmlParsersAndUi.Forms {
                     installerProp.localDefaultValue = txtPropertyValue.Visible ? txtPropertyValue.Text : cboPropertyValue.SelectedItem.ToString().ToLower();
 
                 } else {
-                    FrontendUtils.ShowInformation("Please make sure all fields are filled");
+                    FrontendUtils.ShowInformation("Please make sure all fields are filled",true);
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);

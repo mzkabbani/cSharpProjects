@@ -177,7 +177,7 @@ namespace XmlParsersAndUi {
             //LoadOptionsIntoList(inputDir); 
             #endregion
 
-            List<SimpleRecommendationObject> allSimpleRecs = BackEndUtils.GetAllSimpleRecsAsList();
+            List<SimpleRecommendationObject> allSimpleRecs = Simple_Recommendation.GetAllSimpleRecsAsList();
             InsertSimpleRecIntoListbox(allSimpleRecs);
         }
 
@@ -327,7 +327,7 @@ namespace XmlParsersAndUi {
                     BackupInputDirectory(txtInputDir.Text, backupDirectory + Path.GetFileName(txtInputDir.Text));
                     ParseEventFiles(txtInputDir.Text, clbSelectedoptions.CheckedItems);
                     tvFilesAffected.ExpandAll();
-                    FrontendUtils.ShowInformation("The cleanup is done!");
+                    FrontendUtils.ShowInformation("The cleanup is done!",false);
                     btnStart.Enabled = false;
                 }
             } catch (Exception ex) {
@@ -338,7 +338,7 @@ namespace XmlParsersAndUi {
         private void CleanupForm_Load(object sender, EventArgs e) {
             try {
                 // checkout the simple recommendatiosn and load them into the ui
-                CLEANUPFORM_EVENTS_SEARCH_PATTERN = BackEndUtils.GetAppConfigValueByKey(BackEndUtils.ApplicationConfigKeys.CleanUpEventsSearchPattern) as string;
+                CLEANUPFORM_EVENTS_SEARCH_PATTERN = Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.CleanUpEventsSearchPattern) as string;
                 txtInputDir.Text = inputDir;
                 LoadSimpleOptions();
             } catch (Exception ex) {
@@ -366,7 +366,7 @@ namespace XmlParsersAndUi {
 
         private void btnReloadOptions_Click(object sender, EventArgs e) {
             try {
-                CLEANUPFORM_EVENTS_SEARCH_PATTERN = BackEndUtils.GetAppConfigValueByKey(BackEndUtils.ApplicationConfigKeys.CleanUpEventsSearchPattern) as string;
+                CLEANUPFORM_EVENTS_SEARCH_PATTERN = Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.CleanUpEventsSearchPattern) as string;
                 LoadSimpleOptions();
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);

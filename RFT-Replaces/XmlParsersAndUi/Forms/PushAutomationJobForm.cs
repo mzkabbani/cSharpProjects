@@ -127,7 +127,7 @@ namespace XmlParsersAndUi.Forms {
                 result = result + ssh.ReadResponse();
 
                 Regex reg = new Regex("PAR\\.DJOB\\.\\d+");
-                FrontendUtils.ShowInformation(reg.Match(result).Value + " Pushed!");
+                FrontendUtils.ShowInformation(reg.Match(result).Value + " Pushed!",false);
 
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
