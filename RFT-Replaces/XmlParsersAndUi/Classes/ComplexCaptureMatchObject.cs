@@ -7,7 +7,7 @@ using Automation.Common;
 
 namespace XmlParsersAndUi.Classes {
     public class ComplexCaptureMatchObject {
-        public CaptureEvent captureEvent;  
+        public AdvancedRecomendation captureEvent;  
         public List<FileAndNumberOfMatches> fileNamesHit = new List<FileAndNumberOfMatches>();
         public ReplacementEvent usedReplacementEvent;
     }

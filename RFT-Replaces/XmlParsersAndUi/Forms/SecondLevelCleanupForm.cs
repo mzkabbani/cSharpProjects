@@ -34,14 +34,14 @@ namespace XmlParsersAndUi.Forms {
 
         DataSet AllCategories = new DataSet();
         DataSet AllAdvancedRecs = new DataSet();
-        CaptureEvent currentlySelectedEvent;
-        List<CaptureEvent> currentlyUsedCaptures = new List<CaptureEvent>();
+        AdvancedRecomendation currentlySelectedEvent;
+        List<AdvancedRecomendation> currentlyUsedCaptures = new List<AdvancedRecomendation>();
         BackGroundWorkerObject backGroundWorkerObject = new BackGroundWorkerObject();
         int totalFoundNodes = 0;
         private DiffEngineLevel _level;
         string outputDirectory;
         string BACKUP_DIRECTORY;
-        Dictionary<int, CaptureEvent> currentlyLoadedEvents;
+        Dictionary<int, AdvancedRecomendation> currentlyLoadedEvents;
         int CAPTURE_TOTAL_USAGE_COUNT;
         int REPLACEMENT_TOTAL_USAGE_COUNT;
         //mutex on the radio button event
@@ -61,13 +61,13 @@ namespace XmlParsersAndUi.Forms {
             AllCategories = dataSet;
 
             DataSet newDataSet = Advanced_Recommendations.GetAllAdvancedRecsAsDataSet();
-            currentlyLoadedEvents = new Dictionary<int, CaptureEvent>();
+            currentlyLoadedEvents = new Dictionary<int, AdvancedRecomendation>();
             foreach (DataRow dataRow in newDataSet.Tables[0].Rows) {
                 System.Windows.Forms.ListViewItem item = lvAdvancedRules.Items.Add(dataRow["id"].ToString(), dataRow["name"].ToString(), 0);
                 item.Group = lvAdvancedRules.Groups[dataRow["categoryId"].ToString()];
                 item.Tag = dataRow["id"].ToString();//tag holding the id of the rec
                 item.ImageIndex = 1;
-                CaptureEvent capture = new CaptureEvent();
+                AdvancedRecomendation capture = new AdvancedRecomendation();
                 capture.CaptureEventId = Convert.ToInt32(item.Tag);
                 capture.CaptureEventName = dataRow["name"].ToString();
                 capture.CaptureEventDescription = dataRow["description"].ToString();
@@ -78,13 +78,13 @@ namespace XmlParsersAndUi.Forms {
             CAPTURE_TOTAL_USAGE_COUNT = Advanced_Recommendations.GetTotalAdvanceRecUsageCount();
         }
 
-        private void SetupUiFromCapturePoint(CaptureEvent capture) {
+        private void SetupUiFromCapturePoint(AdvancedRecomendation capture) {
             txtRuleName.Text = capture.CaptureEventName;
             txtRuleDescription.Text = capture.CaptureEventDescription;
             SetPopularity(capture);
         }
 
-        private void SetPopularity(CaptureEvent capture) {
+        private void SetPopularity(AdvancedRecomendation capture) {
             srcPopularity.m_hoverStar = 0;
             srcPopularity.m_selectedStar = 0;
             srcPopularity.Invalidate();
@@ -95,7 +95,7 @@ namespace XmlParsersAndUi.Forms {
             srcPopularity.Invalidate();
         }
 
-        private List<CaptureEvent> AddCapturePointToList(List<CaptureEvent> currentlyUsedCaptures, CaptureEvent currentlySelectedEvent) {
+        private List<AdvancedRecomendation> AddCapturePointToList(List<AdvancedRecomendation> currentlyUsedCaptures, AdvancedRecomendation currentlySelectedEvent) {
             bool found = false;
             if (currentlyUsedCaptures.Count == 0) {
                 currentlyUsedCaptures.Add(currentlySelectedEvent);
@@ -112,8 +112,8 @@ namespace XmlParsersAndUi.Forms {
             return currentlyUsedCaptures;
         }
 
-        private List<CaptureEvent> RemoveCapturePointFromList(List<CaptureEvent> currentlyUsedCaptures, int captureEventId) {
-            List<CaptureEvent> UsedCaptures = new List<CaptureEvent>();
+        private List<AdvancedRecomendation> RemoveCapturePointFromList(List<AdvancedRecomendation> currentlyUsedCaptures, int captureEventId) {
+            List<AdvancedRecomendation> UsedCaptures = new List<AdvancedRecomendation>();
             for (int i = 0; i < currentlyUsedCaptures.Count; i++) {
                 if (currentlyUsedCaptures[i].CaptureEventId != captureEventId) {
                     UsedCaptures.Add(currentlyUsedCaptures[i]);
@@ -122,7 +122,7 @@ namespace XmlParsersAndUi.Forms {
             return UsedCaptures;
         }
 
-        private void ParseTargetedFile(CaptureEvent captureEvent, string readText, ComplexCaptureMatchObject complexCaptureMatchObject, string fileName) {
+        private void ParseTargetedFile(AdvancedRecomendation captureEvent, string readText, ComplexCaptureMatchObject complexCaptureMatchObject, string fileName) {
             captureEvent = GetCapturePointListType(captureEvent);
             XDocument xdoc = XDocument.Parse(readText);
             List<string> foundEvents = new List<string>();
@@ -165,7 +165,7 @@ namespace XmlParsersAndUi.Forms {
             return totalMatches;
         }
 
-        private void StartParsingInput(List<CaptureEvent> currentlyUsedCaptures, string readText, string fileName, ComplexCaptureMatchObject complexCaptureMatchObject) {
+        private void StartParsingInput(List<AdvancedRecomendation> currentlyUsedCaptures, string readText, string fileName, ComplexCaptureMatchObject complexCaptureMatchObject) {
             XDocument xdoc = XDocument.Parse(readText);
             for (int i = 0; i < currentlyUsedCaptures.Count; i++) {
                 complexCaptureMatchObject.captureEvent = currentlyUsedCaptures[i];
@@ -193,7 +193,7 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
-        private CaptureEvent GetCapturePointListType(CaptureEvent captureEvent) {
+        private AdvancedRecomendation GetCapturePointListType(AdvancedRecomendation captureEvent) {
             List<CustomTreeNode> list = captureEvent.CaptureEventCapturePointsList;
             captureEvent.capturePointListType = CapturePointListType.SimpleList;
             for (int listCount = 1; listCount < list.Count; listCount++) {
@@ -205,7 +205,7 @@ namespace XmlParsersAndUi.Forms {
             return captureEvent;
         }
 
-        private List<XNode> ParseUsingAdvancedList(CaptureEvent captureEvent, XDocument xdoc) {
+        private List<XNode> ParseUsingAdvancedList(AdvancedRecomendation captureEvent, XDocument xdoc) {
             var test21 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
                          where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
                          select new {
@@ -284,7 +284,7 @@ namespace XmlParsersAndUi.Forms {
             return found;
         }
 
-        private List<XNode> ParseUsingSimpleList(CaptureEvent captureEvent, XDocument xdoc, List<string> foundEvents) {
+        private List<XNode> ParseUsingSimpleList(AdvancedRecomendation captureEvent, XDocument xdoc, List<string> foundEvents) {
             List<XNode> foundNodes = new List<XNode>();
             switch (captureEvent.CaptureEventCapturePointsList.Count) {
                 case 1:
@@ -570,7 +570,7 @@ namespace XmlParsersAndUi.Forms {
 
         }
 
-        private bool IsValidToStartSearching(string inputDir, List<CaptureEvent> currentlyUsedCaptures) {
+        private bool IsValidToStartSearching(string inputDir, List<AdvancedRecomendation> currentlyUsedCaptures) {
             if (string.IsNullOrEmpty(inputDir)) {
                 FrontendUtils.ShowInformation("Input directory cannot be empty!", true);
                 return false;
@@ -755,8 +755,8 @@ namespace XmlParsersAndUi.Forms {
             try {
                 btnStart.Enabled = true;
 
-                currentlySelectedEvent = new CaptureEvent();
-                currentlyUsedCaptures = new List<CaptureEvent>();
+                currentlySelectedEvent = new AdvancedRecomendation();
+                currentlyUsedCaptures = new List<AdvancedRecomendation>();
                 backGroundWorkerObject = new BackGroundWorkerObject();
                 totalFoundNodes = 0;
 
@@ -1037,7 +1037,7 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private void ClearAllAdvancedRules() {
-            currentlyUsedCaptures = new List<CaptureEvent>();
+            currentlyUsedCaptures = new List<AdvancedRecomendation>();
             LoadAvailableAdvancedRecommendations();
         }
 

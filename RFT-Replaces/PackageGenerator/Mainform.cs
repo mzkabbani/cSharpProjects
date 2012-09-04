@@ -13,12 +13,15 @@ using Automation.Common.Utils;
 using Automation.Common;
 using System.Data.OleDb;
 using System.Runtime.InteropServices;
+using System.Diagnostics;
+using PackageGenerator.Classes;
 
 namespace PackageGenerator {
     public partial class Mainform : Form {
 
         #region Variables
 
+        PackageBeingGeneratredForm packageGenForm;
         int currentlySelectedKey = -1;
         string pathToThisExec = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         int counter = 1;
@@ -77,7 +80,7 @@ namespace PackageGenerator {
                     string pathToTarget = dial.SelectedPath;
                     string pathToSource = workingDir + @"\MIGRATION\FIRSTPACKAGE\trunk";
                     string packageId = "MigrationPackage";
-                    string commandToExecute = "java -jar \"" + pathToCisPackage + "\"" +
+                    string commandToExecute = "-jar \"" + pathToCisPackage + "\"" +
                                               " " +
                                               "-configfile:\"" + pathToConfigFile + "\"" +
                                               " " +
@@ -86,14 +89,26 @@ namespace PackageGenerator {
                                               "-target:\"" + pathToTarget + "\"" +
                                               " " +
                                               "-packageid:" + packageId;
-                    FrontendUtils.WriteFile(workingDir + @"\compile.cmd", commandToExecute);
-                    FrontendUtils.ExecuteCommandSync(workingDir + @"\compile.cmd");
+                    //FrontendUtils.WriteFile(workingDir + @"\compile.cmd", commandToExecute);
+                    bwPackageGenerator.RunWorkerAsync(commandToExecute);
+                    packageGenForm = new PackageBeingGeneratredForm();
+                    packageGenForm.ShowDialog();
+                    
+                    //StartGeneratingPackageInBackground(commandToExecute);
+                   
+
+                
                 }
             }
 
             #endregion
 
         }
+
+        private void StartGeneratingPackageInBackground(object argument) {
+            FrontendUtils.ExecuteCommandSync(argument as string);
+        }
+
 
         private void LoadAvailableFunctionsToList(string utilsFilePath) {
             string readFile = FrontendUtils.ReadFile(utilsFilePath);
@@ -630,7 +645,7 @@ namespace PackageGenerator {
             FrontendUtils.WriteFile(outputFilePath, fileToExport);
         }
 
-        private void ExportOperationsLogFile(string outputFilePath) {
+        private void ExportOperationsLogFile(string outputFilePath, bool showCompletedPopup) {
             string logToExport = string.Empty;
             dgvOutputOperations.ClearSelection();
             DataSet set = new DataSet("Customizations Log Set");
@@ -670,7 +685,12 @@ namespace PackageGenerator {
             set.Tables.Add(tableLinkedFiles);
             set.Tables.Add(table);
             set.Tables.Add(tableOriginal);
-            FastExportingMethod.ExportToExcel(set, outputFilePath);
+            ExportExcelObject exportExcelObject = new ExportExcelObject();
+            exportExcelObject.exportDataSet = set;
+            exportExcelObject.outputFilePath = outputFilePath;
+            exportExcelObject.showCompletedPopup = showCompletedPopup;
+            bwExcelExporter.RunWorkerAsync(exportExcelObject);
+            //FastExportingMethod.ExportToExcel(set, outputFilePath);
         }
 
         private void StartReleaseProcess() {
@@ -684,9 +704,9 @@ namespace PackageGenerator {
                 string releasePackageName = selectPackageNameAndStorageForm.Controls["gbOutputSettings"].Controls["txtPackageName"].Text;
                 stamp = DateTime.Now.Ticks.ToString();
                 //1
+                ExportOperationsLogFile(releaseStorageLocation + "/" + stamp + "-Release-CustomizationLog.xls", false);
                 GeneratePackageJarAndExportCiAndFileList(releaseStorageLocation, releasePackageName, stamp);
-                ExportOperationsLogFile(releaseStorageLocation + "/" + stamp + "-Release-CustomizationLog.xls");
-                FrontendUtils.ShowInformation("Release Completed!", false);
+                 // FrontendUtils.ShowInformation("Release Completed!", false);
             }
         }
 
@@ -755,7 +775,7 @@ namespace PackageGenerator {
 
             string packageId = "MigrationPackage";
 
-            string commandToExecute = "java -jar \"" + pathToCisPackage + "\"" +
+            string commandToExecute = "-jar \"" + pathToCisPackage + "\"" +
                                       " " +
                                       "-configfile:\"" + pathToConfigFile + "\"" +
                                       " " +
@@ -766,9 +786,11 @@ namespace PackageGenerator {
                                       "-packageid:" + packageId;
 
 
-            FrontendUtils.WriteFile(workingDir + @"\compile.cmd", commandToExecute);
-            FrontendUtils.ExecuteCommandSync(workingDir + @"\compile.cmd");
-
+            //FrontendUtils.WriteFile(workingDir + @"\compile.cmd", commandToExecute);
+            //FrontendUtils.ExecuteCommandSync(workingDir + @"\compile.cmd");
+            bwPackageGenerator.RunWorkerAsync(commandToExecute);
+            packageGenForm = new PackageBeingGeneratredForm();
+            packageGenForm.ShowDialog();
 
             #endregion
 
@@ -934,8 +956,13 @@ namespace PackageGenerator {
 
             if (dialogResult == DialogResult.OK) {
                 if (!string.IsNullOrEmpty(dialog.FileName)) {
-                    FastExportingMethod.ExportToExcel(set, dialog.FileName);
-                    FrontendUtils.ShowInformation("Results generation completed!", false);
+                    ExportExcelObject exportExcelObject = new ExportExcelObject();
+                    exportExcelObject.exportDataSet = set;
+                    exportExcelObject.outputFilePath = dialog.FileName;
+                    exportExcelObject.showCompletedPopup = true;
+                    bwExcelExporter.RunWorkerAsync(exportExcelObject);
+                    //FastExportingMethod.ExportToExcel(set, dialog.FileName);
+                    //FrontendUtils.ShowInformation("Results generation completed!", false);
                 } else {
                     FrontendUtils.ShowInformation("Please select a file name!", true);
                 }
@@ -1437,7 +1464,7 @@ namespace PackageGenerator {
                     if (dial == DialogResult.OK) {
                         if (!string.IsNullOrEmpty(fileSave.FileName)) {
                             string outputFilePath = fileSave.FileName;
-                            ExportOperationsLogFile(outputFilePath);
+                            ExportOperationsLogFile(outputFilePath,true);
                         } else {
                             FrontendUtils.ShowInformation("Filename cannot be empty!", true);
                         }
@@ -1759,7 +1786,46 @@ namespace PackageGenerator {
 
         }
 
+      
+
         #endregion
+
+
+        #region Worker Events
+
+        private void bwPackageGenerator_DoWork(object sender, DoWorkEventArgs e) {
+            StartGeneratingPackageInBackground(e.Argument);
+        }
+
+        private void bwPackageGenerator_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
+            if (packageGenForm != null) {
+                packageGenForm.Visible = false;
+                packageGenForm.Close();
+
+                System.Threading.Thread.Sleep(10);
+                FrontendUtils.ShowInformation("Package generation completed!", false);
+            }
+        }
+
+        private void bwExcelExporter_DoWork(object sender, DoWorkEventArgs e) {
+            ExportExcelObject exportExcelObject = e.Argument as ExportExcelObject;
+            FastExportingMethod.ExportToExcel(exportExcelObject.exportDataSet, exportExcelObject.outputFilePath);
+            e.Result = e.Argument;
+        }
+
+        private void bwExcelExporter_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
+            if (!e.Cancelled && e.Error == null) {
+
+                ExportExcelObject exportExcelObject = e.Result as ExportExcelObject;
+                if (exportExcelObject.showCompletedPopup) {
+                    FrontendUtils.ShowInformation("Excel export is completed for [" + exportExcelObject.outputFilePath + "]", false);
+                }
+
+            }
+        } 
+
+        #endregion
+        
 
     }
 }

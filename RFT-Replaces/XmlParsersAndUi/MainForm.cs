@@ -505,7 +505,7 @@ namespace XmlParsersAndUi {
 
         private void showDetailsFormToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                CaptureEvent obj = new CaptureEvent();
+                AdvancedRecomendation obj = new AdvancedRecomendation();
                 ShowSearchDetailsForm form = new ShowSearchDetailsForm(obj);
                 form.MdiParent = this;
                 form.Show();

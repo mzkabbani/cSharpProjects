@@ -25,7 +25,7 @@ namespace XmlParsersAndUi.Forms {
         private void btnStartOperation_Click(object sender, EventArgs e) {
             try {
                 btnStartOperation.Enabled = false;
-                List<CaptureEvent> allCaptureEvents = Advanced_Recomendations_TextConv.GetAllAdvancedRecsAsListTextConv();
+                List<AdvancedRecomendation> allCaptureEvents = Advanced_Recomendations_TextConv.GetAllAdvancedRecsAsListTextConv();
                 BackGroundWorkerObject workerObject = new BackGroundWorkerObject();
                 workerObject.selectedCaptureEvents = allCaptureEvents;
                 workerObject.targetedFiles = new List<FileToParseObject>();
@@ -92,7 +92,7 @@ namespace XmlParsersAndUi.Forms {
 
         #region Search Code
 
-        private List<string> SearchAndGenerate(string fileName, List<CaptureEvent> selectedCaptureEvents) {
+        private List<string> SearchAndGenerate(string fileName, List<AdvancedRecomendation> selectedCaptureEvents) {
             List<string> textGenerated = new List<string>();
             string fileRead = FrontendUtils.ReadFile(fileName);
             fileRead = fileRead.Replace("<!DOCTYPE MXClientScript>", "");
@@ -132,7 +132,7 @@ namespace XmlParsersAndUi.Forms {
             return textGenerated;
         }
 
-        private string ParseTargetedFile(CaptureEvent captureEvent, string readText) {
+        private string ParseTargetedFile(AdvancedRecomendation captureEvent, string readText) {
             captureEvent = GetCapturePointListType(captureEvent);
             XDocument xdoc = XDocument.Parse(readText);
             List<string> foundEvents = new List<string>();
@@ -222,7 +222,7 @@ namespace XmlParsersAndUi.Forms {
             return couples;
         }
 
-        private CaptureEvent GetCapturePointListType(CaptureEvent captureEvent) {
+        private AdvancedRecomendation GetCapturePointListType(AdvancedRecomendation captureEvent) {
             List<CustomTreeNode> list = captureEvent.CaptureEventCapturePointsList;
             captureEvent.capturePointListType = CapturePointListType.SimpleList;
             for (int listCount = 1; listCount < list.Count; listCount++) {
@@ -234,7 +234,7 @@ namespace XmlParsersAndUi.Forms {
             return captureEvent;
         }
 
-        private List<XNode> ParseUsingSimpleList(CaptureEvent captureEvent, XDocument xdoc, List<string> foundEvents) {
+        private List<XNode> ParseUsingSimpleList(AdvancedRecomendation captureEvent, XDocument xdoc, List<string> foundEvents) {
             List<XNode> foundNodes = new List<XNode>();
             switch (captureEvent.CaptureEventCapturePointsList.Count) {
                 case 1:
@@ -321,7 +321,7 @@ namespace XmlParsersAndUi.Forms {
             return found;
         }
 
-        private List<XNode> ParseUsingAdvancedList(CaptureEvent captureEvent, XDocument xdoc) {
+        private List<XNode> ParseUsingAdvancedList(AdvancedRecomendation captureEvent, XDocument xdoc) {
             var test21 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
                          where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
                          select new {

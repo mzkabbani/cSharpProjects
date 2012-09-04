@@ -70,26 +70,39 @@ namespace Automation.Common.Utils {
                 // Incidentally, /c tells cmd that we want it to execute the command that follows,
                 // and then exit.
                 System.Diagnostics.ProcessStartInfo procStartInfo =
-                    new System.Diagnostics.ProcessStartInfo(fileName);
+                    new System.Diagnostics.ProcessStartInfo("java.exe",fileName);
 
-                procStartInfo.UseShellExecute = true;
+                 procStartInfo.UseShellExecute = false;
+                 procStartInfo.CreateNoWindow = false;
+               
+                procStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
+                Process proc;
 
+                if ((proc = Process.Start(procStartInfo)) == null) {
+                    throw new InvalidOperationException("??");
+                }
+
+                
+                proc.WaitForExit();
+                int exitCode = proc.ExitCode;
+                proc.Close();
                 // The following commands are needed to redirect the standard output.
                 // This means that it will be redirected to the Process.StandardOutput StreamReader.
                 //procStartInfo.RedirectStandardOutput = true;
                 //procStartInfo.UseShellExecute = false;
                 // Do not create the black window.
-                procStartInfo.CreateNoWindow = false;
+              //  procStartInfo.CreateNoWindow = false;
                 // Now we create a process, assign its ProcessStartInfo and start it
-                System.Diagnostics.Process proc = new System.Diagnostics.Process();
-                proc.StartInfo = procStartInfo;
-                proc.Start();
+              //  System.Diagnostics.Process proc = new System.Diagnostics.Process();
+             //   proc.StartInfo = procStartInfo;
+             //   proc.Start();
                 // Get the output into a string
                 return "";
                 // Display the command output.
 
             } catch (Exception objException) {
                 // Log the exception
+                FrontendUtils.LogError(objException.Message, objException);
             }
             return string.Empty;
         }

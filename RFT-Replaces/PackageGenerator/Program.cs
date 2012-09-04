@@ -24,7 +24,9 @@ namespace PackageGenerator {
             try {
                 FrontendUtils.CreateLogsDirectory();
                 CheckEnvironmentVariables();
+               // Application.Run(new Mainform());
                 Application.Run(new Mainform());
+
             } catch (Exception ex) {
                 throw;
             }

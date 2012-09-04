@@ -22,3 +22,5 @@ C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\obj\x86\Release\PackageGenerator.Forms.SelectPackageNameAndStorageForm.resources
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\bin\x86\Release\Automation.Common.dll
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\obj\x86\Release\PackageGenerator.Forms.ExcelComparisonForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\bin\x86\Release\Automation.ProgressCircle.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\obj\x86\Release\PackageGenerator.Forms.PackageBeingGeneratredForm.resources

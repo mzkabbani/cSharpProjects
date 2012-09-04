@@ -97,6 +97,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classes\CustomizationFunction.cs" />
+    <Compile Include="Classes\ExportExcelObject.cs" />
     <Compile Include="Classes\InstallerPropertyObject.cs" />
     <Compile Include="Controls\CheckboxGridView.cs">
     </Compile>
@@ -120,6 +121,12 @@
     </Compile>
     <Compile Include="Forms\ExcelComparisonForm.Designer.cs">
       <DependentUpon>ExcelComparisonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\PackageBeingGeneratredForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\PackageBeingGeneratredForm.Designer.cs">
+      <DependentUpon>PackageBeingGeneratredForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\PackageNameForm.cs">
       <SubType>Form</SubType>
@@ -149,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ExcelComparisonForm.resx">
       <DependentUpon>ExcelComparisonForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\PackageBeingGeneratredForm.resx">
+      <DependentUpon>PackageBeingGeneratredForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PackageNameForm.resx">
       <DependentUpon>PackageNameForm.cs</DependentUpon>
@@ -236,6 +246,10 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\ProgressCircle\ProgressCircle\ProgressCircle.csproj">
+      <Project>{279C7A4A-F932-4D73-8A4E-E3D7E2E50357}</Project>
+      <Name>ProgressCircle</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Automation.Common\Automation.Common.csproj">
       <Project>{F2CA3F3F-B7AE-4378-B4B6-B0BA9903C67D}</Project>
       <Name>Automation.Common</Name>

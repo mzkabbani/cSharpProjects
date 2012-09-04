@@ -663,3 +663,54 @@ System.NullReferenceException: Object reference not set to an instance of an obj
    at Automation.Common.FastExportingMethod.ExportToExcel(DataSet dataSet, String outputPath) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\Automation.Common\Utils\FastExportingMethod.cs:line 65
    at PackageGenerator.Mainform.ExportOperationsLogFile(String outputFilePath) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 673
    at PackageGenerator.Mainform.exportCustomizationLogToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1440
+
+
+
+
+9/3/2012 5:28:07 PM
+
+
+The process cannot access the file 'cis-mxpack-1.0-full.jar' because it is being used by another process.
+
+
+System.IO.IOException: The process cannot access the file 'cis-mxpack-1.0-full.jar' because it is being used by another process.
+   at System.IO.Directory.DeleteHelper(String fullPath, String userPath, Boolean recursive)
+   at System.IO.Directory.Delete(String fullPath, String userPath, Boolean recursive)
+   at System.IO.Directory.Delete(String path, Boolean recursive)
+   at PackageGenerator.Mainform.StartPackageJarGeneration() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 52
+   at PackageGenerator.Mainform.btnGeneratePackage_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1659
+
+
+
+
+9/3/2012 5:57:10 PM
+
+
+Forms that are not enabled cannot be displayed as a modal dialog box. Set the form's enabled property to true before calling showDialog.
+
+
+System.InvalidOperationException: Forms that are not enabled cannot be displayed as a modal dialog box. Set the form's enabled property to true before calling showDialog.
+   at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
+   at System.Windows.Forms.Form.ShowDialog()
+   at PackageGenerator.Mainform.StartPackageJarGeneration() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 94
+   at PackageGenerator.Mainform.btnGeneratePackage_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1655
+
+
+
+
+9/4/2012 9:47:54 AM
+
+
+The given path's format is not supported.
+
+
+System.NotSupportedException: The given path's format is not supported.
+   at System.Security.Util.StringExpressionSet.CanonicalizePath(String path, Boolean needFullPath)
+   at System.Security.Util.StringExpressionSet.CreateListFromExpressions(String[] str, Boolean needFullPath)
+   at System.Security.Permissions.FileIOPermission.AddPathList(FileIOPermissionAccess access, AccessControlActions control, String[] pathListOrig, Boolean checkForDuplicates, Boolean needFullPath, Boolean copyPathList)
+   at System.Security.Permissions.FileIOPermission..ctor(FileIOPermissionAccess access, String[] pathList, Boolean checkForDuplicates, Boolean needFullPath)
+   at System.IO.DirectoryInfo..ctor(String path)
+   at Automation.Common.Utils.FrontendUtils.CopyDirectory(String sourceDirectory, String targetDirectory) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\Automation.Common\Utils\FrontendUtils.cs:line 41
+   at PackageGenerator.Mainform.GeneratePackageJarAndExportCiAndFileList(String storageLocation, String packageName, String stamp) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 726
+   at PackageGenerator.Mainform.StartReleaseProcess() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 701
+   at PackageGenerator.Mainform.releasePackageToolStripMenuItem_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\Mainform.cs:line 1404

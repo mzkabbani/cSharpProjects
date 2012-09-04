@@ -7,7 +7,7 @@ using Automation.Common;
 namespace XmlParsersAndUi.Classes {
     public class BackGroundWorkerObject {
 
-        public List<CaptureEvent> selectedCaptureEvents = new List<CaptureEvent>();
+        public List<AdvancedRecomendation> selectedCaptureEvents = new List<AdvancedRecomendation>();
         public List<FileToParseObject> targetedFiles = new List<FileToParseObject>();
         public object returnObject;
         public List<ComplexCaptureMatchObject> returnedComplexCaptureMatchObject = new List<ComplexCaptureMatchObject>();

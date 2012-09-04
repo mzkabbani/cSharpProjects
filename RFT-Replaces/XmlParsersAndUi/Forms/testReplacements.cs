@@ -51,7 +51,7 @@ namespace XmlParsersAndUi.Forms {
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e) {
             try {
                 pnlAvailableReplacements.Controls.Clear();
-                CaptureEvent captureEvent = dgvResults[1, e.RowIndex].Value as CaptureEvent;
+                AdvancedRecomendation captureEvent = dgvResults[1, e.RowIndex].Value as AdvancedRecomendation;
                 List<ReplacementEvent> availableReplacements = Advanced_Replacements.GetAvailableReplacementsByCaptureId(captureEvent.CaptureEventId,BackEndUtils.GetSqlConnection());
                 for (int i = 0; i < availableReplacements.Count; i++) {
                     CustomizedReplacement customizedReplacement = new CustomizedReplacement();

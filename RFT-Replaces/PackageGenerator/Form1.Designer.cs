@@ -32,6 +32,7 @@
             this.ClientSize = new System.Drawing.Size(289, 255);
             this.Name = "Form1";
             this.Text = "Form1";
+
             this.ResumeLayout(false);
 
         }

@@ -46,7 +46,7 @@ namespace XmlParsersAndUi.Forms {
             IEnumerable<XElement> children = xmlDocument.Elements();
         }
 
-        private void ParseEventFromDatabase(CaptureEvent captureEvent) {
+        private void ParseEventFromDatabase(AdvancedRecomendation captureEvent) {
             xmlDocument = XDocument.Parse(captureEvent.CaptureEventEventText);
             populateTreeviewSingleEventFromDatabase(xmlDocument.ToString(), captureEvent);
             //IEnumerable<XElement> childred = 
@@ -54,7 +54,7 @@ namespace XmlParsersAndUi.Forms {
             IEnumerable<XElement> children = xmlDocument.Elements();
         }
 
-        private void populateTreeviewSingleEventFromDatabase(string document, CaptureEvent captureEvent) {
+        private void populateTreeviewSingleEventFromDatabase(string document, AdvancedRecomendation captureEvent) {
             try {
                 //Just a good practice -- change the cursor to a 
                 //wait cursor while the nodes populate
@@ -88,7 +88,7 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
-        private void addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, CaptureEvent captureEvent, int level, int index, int parentLevel, int parentIndex) {
+        private void addTreeNodeForSingleEventFromDatabase(XmlNode xmlNode, TreeNode treeNode, AdvancedRecomendation captureEvent, int level, int index, int parentLevel, int parentIndex) {
             int newParentLevel = 0;
             XmlNode xNode;
             TreeNode tNode;
@@ -141,7 +141,7 @@ namespace XmlParsersAndUi.Forms {
 
         List<string> captureNodesSelectedNames = new List<string>();
 
-        private CustomTreeNode GetRespectiveCapturePoint(CustomTreeNode customTreeNode, CaptureEvent captureEvent, XmlNode xNode, int index, int level, int parentIndex, int parentLevel) {
+        private CustomTreeNode GetRespectiveCapturePoint(CustomTreeNode customTreeNode, AdvancedRecomendation captureEvent, XmlNode xNode, int index, int level, int parentIndex, int parentLevel) {
             for (int i = 1; i < captureEvent.CaptureEventCapturePointsList.Count; i++) {
                 if (captureEvent.CaptureEventCapturePointsList[i].nodeIndex == index &&
                     captureEvent.CaptureEventCapturePointsList[i].nodeLevel == level &&
@@ -414,7 +414,7 @@ namespace XmlParsersAndUi.Forms {
                     if (IsValidToAddRule(ruleName, ruleDescription, ruleEventIn, replacementText, tvOutput.Nodes[0])) {
                         Recur(tvOutput.Nodes);
                         SaveUpdatedAttributes();
-                        CaptureEvent captureEvent = new CaptureEvent(ruleName, ruleDescription, ruleEventIn, captureEventNodes);
+                        AdvancedRecomendation captureEvent = new AdvancedRecomendation(ruleName, ruleDescription, ruleEventIn, captureEventNodes);
                         captureEvent.captureEventCategory = Convert.ToInt32(cboCaptureType.SelectedValue);
                         captureEvent.captureEventUsageCount = 0;
                         ReplacementEvent replacementEvent = new ReplacementEvent("Replacement-" + ruleName, "Repalcement-" + ruleDescription, replacementText, 1, 0, FrontendUtils.LoggedInUserId);
@@ -505,13 +505,13 @@ namespace XmlParsersAndUi.Forms {
 
         private void LoadAvailableARtoList() {
             lbAdvancedCE.Items.Clear();
-            List<CaptureEvent> allCaptureEvents = Advanced_Recomendations_TextConv.GetAllAdvancedRecsAsListTextConv();
+            List<AdvancedRecomendation> allCaptureEvents = Advanced_Recomendations_TextConv.GetAllAdvancedRecsAsListTextConv();
             for (int i = 0; i < allCaptureEvents.Count; i++) {
                 lbAdvancedCE.Items.Add(allCaptureEvents[i]);
             }
         }
 
-        private void InterpretCaptureEvent(CaptureEvent captureEvent) {
+        private void InterpretCaptureEvent(AdvancedRecomendation captureEvent) {
             ParseEventFromDatabase(captureEvent);
             CustomTreeNode[] customArray = new CustomTreeNode[captureEvent.CaptureEventCapturePointsList.Count];
             captureEvent.CaptureEventCapturePointsList.CopyTo(customArray);
@@ -595,15 +595,15 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
-        CaptureEvent CurrentlySelectedCaptureEvent;
+        AdvancedRecomendation CurrentlySelectedCaptureEvent;
 
         private void lbAdvancedCE_SelectedIndexChanged_1(object sender, EventArgs e) {
             try {
                 eventParsed = true;
                 btnDeleteAdvanceRec.Enabled = true;
                 captureNodesSelectedNames = new List<string>();
-                CaptureEvent captureEvent = new CaptureEvent();
-                captureEvent = lbAdvancedCE.SelectedItem as CaptureEvent;
+                AdvancedRecomendation captureEvent = new AdvancedRecomendation();
+                captureEvent = lbAdvancedCE.SelectedItem as AdvancedRecomendation;
 
                 if (captureEvent != null) {
                     btnAddCaptureEvent.Enabled = false;
@@ -611,7 +611,7 @@ namespace XmlParsersAndUi.Forms {
                     txtAOEventIn.ReadOnly = true;
                     tvOutput.Nodes.Clear();
                     dgvAttributes.Rows.Clear();
-                    CaptureEvent workingEvent = new CaptureEvent(captureEvent.CaptureEventId,
+                    AdvancedRecomendation workingEvent = new AdvancedRecomendation(captureEvent.CaptureEventId,
                                                                  captureEvent.CaptureEventName,
                                                                  captureEvent.CaptureEventDescription,
                                                                  captureEvent.CaptureEventEventText,
@@ -695,7 +695,7 @@ namespace XmlParsersAndUi.Forms {
 
         }
 
-        private void ParseUsingAdvancedList(CaptureEvent captureEvent, XDocument xdoc) {
+        private void ParseUsingAdvancedList(AdvancedRecomendation captureEvent, XDocument xdoc) {
             var test21 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
                          where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
                          select new {
@@ -739,7 +739,7 @@ namespace XmlParsersAndUi.Forms {
             //}
         }
 
-        private void ParseUsingSimpleList(CaptureEvent captureEvent, XDocument xdoc, List<string> foundEvents) {
+        private void ParseUsingSimpleList(AdvancedRecomendation captureEvent, XDocument xdoc, List<string> foundEvents) {
             switch (captureEvent.CaptureEventCapturePointsList.Count) {
                 case 1:
                     var q1 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
@@ -800,7 +800,7 @@ namespace XmlParsersAndUi.Forms {
             return false;
         }
 
-        private CaptureEvent GetCapturePointListType(CaptureEvent captureEvent) {
+        private AdvancedRecomendation GetCapturePointListType(AdvancedRecomendation captureEvent) {
             List<CustomTreeNode> list = captureEvent.CaptureEventCapturePointsList;
             captureEvent.capturePointListType = CapturePointListType.SimpleList;
             for (int listCount = 1; listCount < list.Count; listCount++) {
@@ -892,7 +892,7 @@ namespace XmlParsersAndUi.Forms {
                 tvOutput.Select();
                 Recur(tvOutput.Nodes);
                 SaveUpdatedAttributes();
-                CaptureEvent captureEvent = new CaptureEvent(txtAOName.Text, txtAODescription.Text, txtAOEventIn.Text, captureEventNodes);
+                AdvancedRecomendation captureEvent = new AdvancedRecomendation(txtAOName.Text, txtAODescription.Text, txtAOEventIn.Text, captureEventNodes);
                 captureEvent.captureEventCategory = Convert.ToInt32(cboCaptureType.SelectedValue);
                 captureEvent.captureEventUsageCount = CurrentlySelectedCaptureEvent.captureEventUsageCount;
                 ReplacementEvent selectedReplacementEvent = new ReplacementEvent("Replacement-" + txtAOName.Text, "Replacement-" + txtAODescription.Text, txtTextValue.Text, 1);

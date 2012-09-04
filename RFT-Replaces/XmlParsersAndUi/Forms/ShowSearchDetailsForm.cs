@@ -15,11 +15,11 @@ using Automation.Common;
 namespace XmlParsersAndUi.Forms {
     public partial class ShowSearchDetailsForm : Form {
 
-        public CaptureEvent captureEvent;
+        public AdvancedRecomendation captureEvent;
         public ReplacementEvent selectedReplacementEvent;
 
 
-        public ShowSearchDetailsForm(CaptureEvent passedCaptureEvent) {
+        public ShowSearchDetailsForm(AdvancedRecomendation passedCaptureEvent) {
             InitializeComponent();
             captureEvent = passedCaptureEvent;
         }
