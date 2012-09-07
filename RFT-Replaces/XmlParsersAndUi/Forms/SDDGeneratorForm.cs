@@ -157,7 +157,12 @@ namespace XmlParsersAndUi.Forms {
 
         private void ReplaceFoundNodes(ReplacementEvent replacementEvent, List<XNode> foundNodes) {
             foreach (XNode foundNode in foundNodes) {
-                foundNode.ReplaceWith("<!-- " + GetReplacementValueFromEvent(replacementEvent, foundNode).Trim() + " -->");
+                try {
+                    foundNode.ReplaceWith("<!-- " + GetReplacementValueFromEvent(replacementEvent, foundNode).Trim() + " -->");
+
+                } catch (Exception ex) {                    
+                    // replacement failed
+                }
             }
         }
 
@@ -440,6 +445,7 @@ namespace XmlParsersAndUi.Forms {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
         }
+
 
     }
 }

@@ -57,7 +57,8 @@ namespace XmlParsersAndUi {
             for (int i = 0; i < configFileNodes.Count; i++) {
                 if (configFileNodes[i].NodeType == XmlNodeType.Element && configFileNodes[i].Attributes["key"] != null) {
                     if (string.Equals(configFileNodes[i].Attributes["key"].Value, "ConnectionParameter")) {
-                        BackEndUtils.ConnectionParamter = configFileNodes[i].Attributes["value"].Value;
+
+                        Automation.Backend.BackEndUtils.ConnectionParamter = configFileNodes[i].Attributes["value"].Value;
                         
                         // tsConnectedTo.Text = "Connected to " + Directory.GetParent(BackEndUtils.ConnectionParamter);
                     }
@@ -68,8 +69,8 @@ namespace XmlParsersAndUi {
                     }
                 }
             }
-            if (string.IsNullOrEmpty(BackEndUtils.ConnectionParamter)) {
-                BackEndUtils.ConnectionParamter = @"X:\beast\Test_Automation\Database.sdf";
+            if (string.IsNullOrEmpty(Automation.Backend.BackEndUtils.ConnectionParamter)) {
+                Automation.Backend.BackEndUtils.ConnectionParamter = @"X:\beast\Test_Automation\Database.sdf";
             }
         }
 

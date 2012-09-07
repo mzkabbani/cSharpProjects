@@ -657,11 +657,11 @@ public  class FrontendUtilities extends Operations{
 	}
 
 	//desc-start
-	//Name:ConvertDos2Unix
+	//Name:ConvertDosToUnix
 	//Description: Converts plain text files in DOS format to UNIX format.
 	//Parameter: fileName - File path to convert	
 	//desc-end
-	public def ConvertDos2Unix(def fileName){
+	public def ConvertDosToUnix(def fileName){
 		try{
 			LogInfo(LogFile, "Start Applying dos2unix conversion on:  $fileName")
 			

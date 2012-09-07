@@ -164,3 +164,80 @@ System.IndexOutOfRangeException: Index was outside the bounds of the array.
    at XmlParsersAndUi.BackEndUtils.GetAllAdvancedRecsAsList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Classes\BackEndUtils.cs:line 528
    at XmlParsersAndUi.SetupAdvancedRecForm.LoadAvailableARtoList() in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 477
    at XmlParsersAndUi.SetupAdvancedRecForm.SetupAdvancedRecForm_Load(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 431
+
+
+
+
+9/6/2012 3:14:24 PM
+
+
+The column name is not valid. [ Node name (if any) = Rec_CapturePoints_TextConv,Column name = parentLevel ]
+
+
+The column name is not valid. [ Node name (if any) = Rec_CapturePoints_TextConv,Column name = parentLevel ]
+
+
+
+
+9/6/2012 3:16:16 PM
+
+
+The column name is not valid. [ Node name (if any) = Rec_CapturePoints_TextConv,Column name = parentLevel ]
+
+
+The column name is not valid. [ Node name (if any) = Rec_CapturePoints_TextConv,Column name = parentLevel ]
+
+
+
+
+9/6/2012 3:22:42 PM
+
+
+The column name is not valid. [ Node name (if any) = Rec_CapturePoints_TextConv,Column name = parentLevel ]
+
+
+The column name is not valid. [ Node name (if any) = Rec_CapturePoints_TextConv,Column name = parentLevel ]
+
+
+
+
+9/6/2012 4:03:09 PM
+
+
+The column name is not valid. [ Node name (if any) = Rec_CapturePoints_TextConv,Column name = parentLevel ]
+
+
+The column name is not valid. [ Node name (if any) = Rec_CapturePoints_TextConv,Column name = parentLevel ]
+
+
+
+
+9/6/2012 4:03:33 PM
+
+
+The column name is not valid. [ Node name (if any) = Rec_CapturePoints_TextConv,Column name = parentLevel ]
+
+
+The column name is not valid. [ Node name (if any) = Rec_CapturePoints_TextConv,Column name = parentLevel ]
+
+
+
+
+9/6/2012 4:05:07 PM
+
+
+The column name is not valid. [ Node name (if any) = Rec_CapturePoints_TextConv,Column name = parentLevel ]
+
+
+The column name is not valid. [ Node name (if any) = Rec_CapturePoints_TextConv,Column name = parentLevel ]
+
+
+
+
+9/6/2012 4:05:35 PM
+
+
+The column name is not valid. [ Node name (if any) = Rec_CapturePoints_TextConv,Column name = parentLevel ]
+
+
+The column name is not valid. [ Node name (if any) = Rec_CapturePoints_TextConv,Column name = parentLevel ]

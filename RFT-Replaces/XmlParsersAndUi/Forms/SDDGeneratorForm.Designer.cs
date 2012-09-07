@@ -24,10 +24,11 @@
         /// </summary>
         private void InitializeComponent() {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(SDDGeneratorForm));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.gbInput = new System.Windows.Forms.GroupBox();
+            this.btnReset = new System.Windows.Forms.Button();
             this.btnStartOperation = new System.Windows.Forms.Button();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.txtInputFile = new System.Windows.Forms.TextBox();
@@ -36,6 +37,7 @@
             this.tcOutputForms = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tvOutputSteps = new System.Windows.Forms.TreeView();
+            this.ilTreeNodes = new System.Windows.Forms.ImageList(this.components);
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnExport = new System.Windows.Forms.Button();
             this.dgvOutputResults = new System.Windows.Forms.DataGridView();
@@ -43,8 +45,6 @@
             this.Operation = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bwSearchReplace = new System.ComponentModel.BackgroundWorker();
             this.bwExportExcel = new System.ComponentModel.BackgroundWorker();
-            this.btnReset = new System.Windows.Forms.Button();
-            this.ilTreeNodes = new System.Windows.Forms.ImageList(this.components);
             this.gbInput.SuspendLayout();
             this.gbOutput.SuspendLayout();
             this.tcOutputForms.SuspendLayout();
@@ -68,6 +68,17 @@
             this.gbInput.TabIndex = 0;
             this.gbInput.TabStop = false;
             this.gbInput.Text = "Input Macros";
+            // 
+            // btnReset
+            // 
+            this.btnReset.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btnReset.Location = new System.Drawing.Point(365, 71);
+            this.btnReset.Name = "btnReset";
+            this.btnReset.Size = new System.Drawing.Size(75, 23);
+            this.btnReset.TabIndex = 4;
+            this.btnReset.Text = "Reset";
+            this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // btnStartOperation
             // 
@@ -156,6 +167,14 @@
             this.tvOutputSteps.Size = new System.Drawing.Size(705, 304);
             this.tvOutputSteps.TabIndex = 0;
             // 
+            // ilTreeNodes
+            // 
+            this.ilTreeNodes.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilTreeNodes.ImageStream")));
+            this.ilTreeNodes.TransparentColor = System.Drawing.Color.Transparent;
+            this.ilTreeNodes.Images.SetKeyName(0, "redx.skinny.vysm.gif");
+            this.ilTreeNodes.Images.SetKeyName(1, "green_check.gif");
+            this.ilTreeNodes.Images.SetKeyName(2, "YellowCircle.gif");
+            // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.btnExport);
@@ -182,8 +201,8 @@
             // dgvOutputResults
             // 
             this.dgvOutputResults.AllowUserToAddRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.NavajoWhite;
-            this.dgvOutputResults.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.NavajoWhite;
+            this.dgvOutputResults.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvOutputResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
                         | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
@@ -191,14 +210,14 @@
             this.dgvOutputResults.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.StepIndex,
             this.Operation});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Info;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvOutputResults.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Info;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvOutputResults.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvOutputResults.Location = new System.Drawing.Point(7, 7);
             this.dgvOutputResults.Name = "dgvOutputResults";
             this.dgvOutputResults.RowHeadersVisible = false;
@@ -230,25 +249,6 @@
             this.bwExportExcel.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwExportExcel_DoWork);
             this.bwExportExcel.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bwExportExcel_RunWorkerCompleted);
             // 
-            // btnReset
-            // 
-            this.btnReset.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnReset.Location = new System.Drawing.Point(365, 71);
-            this.btnReset.Name = "btnReset";
-            this.btnReset.Size = new System.Drawing.Size(75, 23);
-            this.btnReset.TabIndex = 4;
-            this.btnReset.Text = "Reset";
-            this.btnReset.UseVisualStyleBackColor = true;
-            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
-            // 
-            // ilTreeNodes
-            // 
-            this.ilTreeNodes.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("ilTreeNodes.ImageStream")));
-            this.ilTreeNodes.TransparentColor = System.Drawing.Color.Transparent;
-            this.ilTreeNodes.Images.SetKeyName(0, "redx.skinny.vysm.gif");
-            this.ilTreeNodes.Images.SetKeyName(1, "green_check.gif");
-            this.ilTreeNodes.Images.SetKeyName(2, "YellowCircle.gif");
-            // 
             // SDDGeneratorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -259,6 +259,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SDDGeneratorForm";
             this.Text = "SDD Generator";
+          
             this.gbInput.ResumeLayout(false);
             this.gbInput.PerformLayout();
             this.gbOutput.ResumeLayout(false);

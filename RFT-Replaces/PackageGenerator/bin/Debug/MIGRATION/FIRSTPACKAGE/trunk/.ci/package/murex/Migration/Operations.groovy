@@ -25,12 +25,18 @@ public class Operations {
 		
 		
 		
-		//Start-Operations
-	//End-Operations
-		
-def PROP_GenericProp = properties.get("GenericProp");
+	def PROP_GenericProp = properties.get("GenericProp");
 
 
+//Start-Operations
+	
+	/*Add comment here...*/
+	frontEndUtilities.ExecuteCommandInShell( "launchmxj.app -c -scriptant /MXJ_ANT_BUILD_FILE:public.mxres.script.assembly.MXpress-Install-Navigation-Maintenance.mxres /MXJ_ANT_TARGET:install" ,new File("/dell037srv/apps/qa16485_TPK0000982_7018645/"));
+	
+	/*Add comment here...*/
+	frontEndUtilities.ExecuteCommandInShell( "launchmxj.app -c -scriptant /MXJ_ANT_BUILD_FILE:public.mxres.script.assembly.MXpress-Install-Navigation-Maintenance.mxres /MXJ_ANT_TARGET:install > MXpress-Installer-maintenance.log" ,new File("/dell037srv/apps/qa16485_TPK0000982_7018645/") );
+	//End-Operations
+		
 }}
 
 
