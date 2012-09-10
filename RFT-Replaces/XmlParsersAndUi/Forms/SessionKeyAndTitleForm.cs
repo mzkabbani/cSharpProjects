@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using XmlParsersAndUi.Forms;
 using Automation.Common.Utils;
+using XmlParsersAndUi.Classes;
 
 namespace XmlParsersAndUi {
     public partial class SessionKeyAndTitleForm : Form {
@@ -42,7 +43,7 @@ namespace XmlParsersAndUi {
                 this.DialogResult = DialogResult.No;
                 return;
             }
-            if (Directory.Exists(currentOutputDir + @"\" + txtTitle.Text)) {
+            if (Directory.Exists(currentOutputDir + @"\" + txtTitle.Text+"-"+eventsGroupNameAndID.OperationGeneratedID)) {
                 DialogResult dialogResult = MessageBox.Show("Selected directory already exists, do you want to overrite?", "Directory Exists", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.No) {
                     this.DialogResult = DialogResult.Abort;
@@ -56,6 +57,8 @@ namespace XmlParsersAndUi {
             txtSessionKey.Text = random.Next(8999).ToString();
         }
 
+       public EventsGroupNameAndID eventsGroupNameAndID;
+
         private void btnSelectFolderName_Click(object sender, EventArgs e) {
             try {
                 SelectFolderNameForm form = new SelectFolderNameForm();
@@ -64,7 +67,8 @@ namespace XmlParsersAndUi {
                 DialogResult result =  form.ShowDialog();
                 
                 if(result == DialogResult.OK){
-                   txtTitle.Text =  form.SelectedString;
+                   eventsGroupNameAndID = form.selectedOperation;
+                   txtOperation.Text =  form.selectedOperation.OperationName;
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);

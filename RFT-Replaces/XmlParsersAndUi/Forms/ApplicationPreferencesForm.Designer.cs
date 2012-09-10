@@ -129,7 +129,7 @@
             // 
             this.gbFolderNaming.Controls.Add(this.btnSaveFolderNames);
             this.gbFolderNaming.Controls.Add(this.tvFolderNames);
-            this.gbFolderNaming.Location = new System.Drawing.Point(6, 342);
+            this.gbFolderNaming.Location = new System.Drawing.Point(6, 343);
             this.gbFolderNaming.Name = "gbFolderNaming";
             this.gbFolderNaming.Size = new System.Drawing.Size(483, 470);
             this.gbFolderNaming.TabIndex = 3;

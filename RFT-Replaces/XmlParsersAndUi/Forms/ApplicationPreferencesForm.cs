@@ -91,7 +91,7 @@ namespace XmlParsersAndUi.Forms {
             foreach (DataRow dataRow in dataSet.Tables[0].Rows) {
                 if (dataRow.IsNull("parentId")) {
                     TreeNode node = CreateNode(dataRow["folderName"].ToString(), true);
-
+                    node.Tag = dataRow["generatedID"].ToString();
                     tvFolderNames.Nodes.Add(node);
                     RecursivelyPopulate(dataRow, node);
                 }
@@ -129,11 +129,18 @@ namespace XmlParsersAndUi.Forms {
                 EditFolderNameForm form = new EditFolderNameForm();
                 DialogResult dialog = form.ShowDialog();
                 if (dialog == DialogResult.OK) {
-                    tvFolderNames.SelectedNode.Nodes.Add(form.Controls["txtNewName"].Text);
+                  TreeNode addedNode=  tvFolderNames.SelectedNode.Nodes.Add(form.Controls["txtNewName"].Text);
+                  addedNode.Tag = GenerateRandomHEX();
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
+        }
+
+        private string GenerateRandomHEX() {
+            string generatedHEX = string.Empty;
+            generatedHEX =  FrontendUtils.GetRandomHexNumber(4);
+            return generatedHEX;
         }
 
         private void saveNameToolStripMenuItem_Click(object sender, EventArgs e) {

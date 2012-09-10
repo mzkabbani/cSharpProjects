@@ -310,7 +310,7 @@ namespace XmlParsersAndUi {
                         chkLstAllStepEvents.Items.Remove(selectedItems[i]);
                     }
                     int startIndex = Convert.ToInt32(((NumericUpDown)form.Controls["nudStartIndex"]).Value);
-                    GenerateSplitFile(selectedItems, form.sessionKey, form.Controls["txtTitle"].Text, startIndex);
+                    GenerateSplitFile(selectedItems, form.sessionKey, form.Controls["txtTitle"].Text + "-" + form.eventsGroupNameAndID.OperationGeneratedID, startIndex);
                     // if(chkFsEvents.Checked){
                     //     fsEventsFile = PrepareFsEventsFile(selectedItems,oldEventsFile);
                     //      oldEventsFile = fsEventsFile;

@@ -43,6 +43,20 @@ namespace Automation.Common.Utils {
             CopyAll(diSource, diTarget);
         }
 
+
+      
+
+        public static string GetRandomHexNumber(int digits) {
+            Random random = new Random();
+            byte[] buffer = new byte[digits / 2];
+            random.NextBytes(buffer);
+            string result = String.Concat(buffer.Select(x => x.ToString("X2")).ToArray());
+            if (digits % 2 == 0) {
+                return result;
+            }
+            return result + random.Next(16).ToString("X");
+        }
+
         public static void CopyAll(DirectoryInfo source, DirectoryInfo target) {
             // Check if the target directory exists, if not, create it.
             if (Directory.Exists(target.FullName) == false) {

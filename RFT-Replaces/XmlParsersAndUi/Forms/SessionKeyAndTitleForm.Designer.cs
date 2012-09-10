@@ -32,6 +32,8 @@
             this.label3 = new System.Windows.Forms.Label();
             this.nudStartIndex = new System.Windows.Forms.NumericUpDown();
             this.btnSelectFolderName = new System.Windows.Forms.Button();
+            this.txtOperation = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudStartIndex)).BeginInit();
             this.SuspendLayout();
             // 
@@ -55,8 +57,7 @@
             // 
             this.txtTitle.Location = new System.Drawing.Point(81, 38);
             this.txtTitle.Name = "txtTitle";
-            this.txtTitle.ReadOnly = true;
-            this.txtTitle.Size = new System.Drawing.Size(143, 20);
+            this.txtTitle.Size = new System.Drawing.Size(199, 20);
             this.txtTitle.TabIndex = 3;
             // 
             // label2
@@ -70,7 +71,7 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(149, 103);
+            this.btnCancel.Location = new System.Drawing.Point(149, 131);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(75, 23);
             this.btnCancel.TabIndex = 4;
@@ -81,7 +82,7 @@
             // btnProceed
             // 
             this.btnProceed.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btnProceed.Location = new System.Drawing.Point(68, 103);
+            this.btnProceed.Location = new System.Drawing.Point(68, 131);
             this.btnProceed.Name = "btnProceed";
             this.btnProceed.Size = new System.Drawing.Size(75, 23);
             this.btnProceed.TabIndex = 5;
@@ -92,7 +93,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 66);
+            this.label3.Location = new System.Drawing.Point(7, 92);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(64, 13);
             this.label3.TabIndex = 6;
@@ -100,7 +101,7 @@
             // 
             // nudStartIndex
             // 
-            this.nudStartIndex.Location = new System.Drawing.Point(81, 64);
+            this.nudStartIndex.Location = new System.Drawing.Point(81, 90);
             this.nudStartIndex.Minimum = new decimal(new int[] {
             1,
             0,
@@ -117,7 +118,7 @@
             // 
             // btnSelectFolderName
             // 
-            this.btnSelectFolderName.Location = new System.Drawing.Point(230, 36);
+            this.btnSelectFolderName.Location = new System.Drawing.Point(230, 62);
             this.btnSelectFolderName.Name = "btnSelectFolderName";
             this.btnSelectFolderName.Size = new System.Drawing.Size(47, 23);
             this.btnSelectFolderName.TabIndex = 8;
@@ -125,12 +126,31 @@
             this.btnSelectFolderName.UseVisualStyleBackColor = true;
             this.btnSelectFolderName.Click += new System.EventHandler(this.btnSelectFolderName_Click);
             // 
+            // txtOperation
+            // 
+            this.txtOperation.Location = new System.Drawing.Point(81, 64);
+            this.txtOperation.Name = "txtOperation";
+            this.txtOperation.ReadOnly = true;
+            this.txtOperation.Size = new System.Drawing.Size(143, 20);
+            this.txtOperation.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(7, 67);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(56, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Operation:";
+            // 
             // SessionKeyAndTitleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(292, 138);
+            this.ClientSize = new System.Drawing.Size(292, 166);
             this.ControlBox = false;
+            this.Controls.Add(this.txtOperation);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnSelectFolderName);
             this.Controls.Add(this.nudStartIndex);
             this.Controls.Add(this.label3);
@@ -165,5 +185,7 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.NumericUpDown nudStartIndex;
         private System.Windows.Forms.Button btnSelectFolderName;
+        private System.Windows.Forms.TextBox txtOperation;
+        private System.Windows.Forms.Label label4;
     }
 }

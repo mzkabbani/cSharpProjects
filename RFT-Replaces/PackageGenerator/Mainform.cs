@@ -19,6 +19,7 @@ using PackageGenerator.Classes;
 namespace PackageGenerator {
     public partial class Mainform : Form {
 
+
         #region Variables
 
         PackageBeingGeneratredForm packageGenForm;
@@ -693,7 +694,7 @@ namespace PackageGenerator {
             //FastExportingMethod.ExportToExcel(set, outputFilePath);
         }
 
-        private void StartReleaseProcess() {
+        private void StartPublishingProcess() {
             SelectPackageNameAndStorageForm selectPackageNameAndStorageForm = new SelectPackageNameAndStorageForm();
             selectPackageNameAndStorageForm.ShowDialog();
             if (selectPackageNameAndStorageForm.DialogResult == DialogResult.OK) {
@@ -1409,10 +1410,10 @@ namespace PackageGenerator {
             }
         }
 
-        private void releasePackageToolStripMenuItem_Click(object sender, EventArgs e) {
+        private void publishPackageToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
                 if(IsValidToStartPackageJarGeneration()){
-                    StartReleaseProcess();
+                    StartPublishingProcess();
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -1801,7 +1802,6 @@ namespace PackageGenerator {
             if (packageGenForm != null) {
                 packageGenForm.Visible = false;
                 packageGenForm.Close();
-
                 System.Threading.Thread.Sleep(10);
                 FrontendUtils.ShowInformation("Package generation completed!", false);
             }
@@ -1815,12 +1815,10 @@ namespace PackageGenerator {
 
         private void bwExcelExporter_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
             if (!e.Cancelled && e.Error == null) {
-
                 ExportExcelObject exportExcelObject = e.Result as ExportExcelObject;
                 if (exportExcelObject.showCompletedPopup) {
                     FrontendUtils.ShowInformation("Excel export is completed for [" + exportExcelObject.outputFilePath + "]", false);
                 }
-
             }
         } 
 

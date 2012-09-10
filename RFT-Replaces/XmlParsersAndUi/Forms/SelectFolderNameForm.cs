@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using Automation.Common.Utils;
 using Automation.Backend;
+using XmlParsersAndUi.Classes;
 
 namespace XmlParsersAndUi.Forms {
     public partial class SelectFolderNameForm : Form {
@@ -24,6 +25,7 @@ namespace XmlParsersAndUi.Forms {
         private void RecursivelyPopulate(DataRow dbRow, TreeNode node) {
             foreach (DataRow childRow in dbRow.GetChildRows("NodeRelation")) {
                 TreeNode childNode = CreateNode(childRow["folderName"].ToString(), true);
+                childNode.Tag = childRow["generatedID"].ToString();
                 node.Nodes.Add(childNode);
                 RecursivelyPopulate(childRow, childNode);
             }
@@ -37,21 +39,22 @@ namespace XmlParsersAndUi.Forms {
                 foreach (DataRow dataRow in dataSet.Tables[0].Rows) {
                     if(dataRow.IsNull("parentId")){
                         TreeNode node = CreateNode(dataRow["folderName"].ToString(),true);
-                        
-                        tvFolderNames.Nodes.Add(node);
+                        node.Tag = dataRow["generatedID"].ToString();
+                        tvOperationNames.Nodes.Add(node);
                         RecursivelyPopulate(dataRow, node);
                     }
                 }
-                tvFolderNames.ExpandAll();
+                tvOperationNames.ExpandAll();
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
         }
 
-        public string SelectedString;
+        public EventsGroupNameAndID selectedOperation;
 
         private void tvFolderNames_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) {
-            SelectedString = tvFolderNames.SelectedNode.Text;
+            //selectedOperation = new EventsGroupNameAndID(tvFolderNames.SelectedNode.Text,tvFolderNames.SelectedNode);
+            selectedOperation = new EventsGroupNameAndID(tvOperationNames.SelectedNode.Text, tvOperationNames.SelectedNode.Tag.ToString());
             this.DialogResult = DialogResult.OK;
         }
     }
