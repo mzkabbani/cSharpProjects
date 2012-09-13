@@ -34,11 +34,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
+            this.chkAllOneFile = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.chkAllOneFile);
             this.groupBox1.Controls.Add(this.btnShowOutput);
             this.groupBox1.Controls.Add(this.btnBrowseOutDir);
             this.groupBox1.Controls.Add(this.btnBrowseInDir);
@@ -137,6 +139,16 @@
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
+            // chkAllOneFile
+            // 
+            this.chkAllOneFile.AutoSize = true;
+            this.chkAllOneFile.Location = new System.Drawing.Point(404, 73);
+            this.chkAllOneFile.Name = "chkAllOneFile";
+            this.chkAllOneFile.Size = new System.Drawing.Size(112, 17);
+            this.chkAllOneFile.TabIndex = 9;
+            this.chkAllOneFile.Text = "Generate One File";
+            this.chkAllOneFile.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -164,6 +176,7 @@
         private System.Windows.Forms.Button btnBrowseOutDir;
         private System.Windows.Forms.Button btnBrowseInDir;
         private System.Windows.Forms.Button btnShowOutput;
+        private System.Windows.Forms.CheckBox chkAllOneFile;
     }
 }
 

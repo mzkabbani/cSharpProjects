@@ -21,20 +21,34 @@ namespace MacroJoiner {
 
         private void btnStart_Click(object sender, EventArgs e) {
             try {
+                string allFilesText = "<MXClientScript><Events>";
                 string[] applicableFiles = Directory.GetFiles(txtInputDir.Text, "eventsfiles.xml",SearchOption.AllDirectories);
                 for (int i = 0; i < applicableFiles.Length; i++) {
 
                     if (!applicableFiles[i].Contains("__")) {
                         List<string> joinedFilesBySession = JoinRespectiveEvents(applicableFiles[i]);
-                        Directory.CreateDirectory(txtOutputDir.Text + "/macro" + i);
-                        for (int j = 0; j < joinedFilesBySession.Count; j++) {
-                            string ouputdirBySession = txtOutputDir.Text + "/macro" + i + "/session" + j;
-                            Directory.CreateDirectory(ouputdirBySession);
-                            WriteFile(ouputdirBySession + "/macro.xml", joinedFilesBySession[j]);
+                        if (!chkAllOneFile.Checked) {
+                        Directory.CreateDirectory(txtOutputDir.Text + "/macro" + i);                        
+                            for (int j = 0; j < joinedFilesBySession.Count; j++) {
+                                string ouputdirBySession = txtOutputDir.Text + "/macro" + i + "/session" + j;
+                                Directory.CreateDirectory(ouputdirBySession);
+                                WriteFile(ouputdirBySession + "/macro.xml", joinedFilesBySession[j]);
+                            }
+                        } else {
+                            for (int j = 0; j < joinedFilesBySession.Count; j++) {
+                                string ouputdirBySession = txtOutputDir.Text;
+                                Directory.CreateDirectory(ouputdirBySession);
+                                allFilesText = allFilesText +
+                                    joinedFilesBySession[j].Replace("<MXClientScript>", "").Replace("<Events>", "").Replace("</MXClientScript>", "").Replace("</Events>", "");
+                                          }
                         }
 
                     } 
                 }
+                if (chkAllOneFile.Checked) {
+                    WriteFile(txtOutputDir.Text + "/macro.xml", allFilesText + "</Events></MXClientScript>");
+                    
+                }   
                 MessageBox.Show("DONE!");
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message);

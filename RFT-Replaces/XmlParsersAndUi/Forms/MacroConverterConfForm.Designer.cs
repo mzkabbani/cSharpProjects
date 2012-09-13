@@ -30,6 +30,7 @@
             this.lbAdvancedCE = new System.Windows.Forms.ListBox();
             this.btnReloadCapturePoints = new System.Windows.Forms.Button();
             this.gbRuleDefinition = new System.Windows.Forms.GroupBox();
+            this.btnDeleteAdvanceRec = new System.Windows.Forms.Button();
             this.label14 = new System.Windows.Forms.Label();
             this.gbSpecificConfNodes = new System.Windows.Forms.GroupBox();
             this.grpBoxAttr = new System.Windows.Forms.GroupBox();
@@ -53,7 +54,6 @@
             this.btnResetCaptureEvents = new System.Windows.Forms.Button();
             this.txtAOName = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.btnDeleteAdvanceRec = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -144,6 +144,18 @@
             this.gbRuleDefinition.TabIndex = 2;
             this.gbRuleDefinition.TabStop = false;
             this.gbRuleDefinition.Text = "Rule Definition";
+            // 
+            // btnDeleteAdvanceRec
+            // 
+            this.btnDeleteAdvanceRec.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnDeleteAdvanceRec.Enabled = false;
+            this.btnDeleteAdvanceRec.Location = new System.Drawing.Point(499, 687);
+            this.btnDeleteAdvanceRec.Name = "btnDeleteAdvanceRec";
+            this.btnDeleteAdvanceRec.Size = new System.Drawing.Size(140, 23);
+            this.btnDeleteAdvanceRec.TabIndex = 19;
+            this.btnDeleteAdvanceRec.Text = "Delete";
+            this.btnDeleteAdvanceRec.UseVisualStyleBackColor = true;
+            this.btnDeleteAdvanceRec.Click += new System.EventHandler(this.btnDeleteAdvanceRec_Click);
             // 
             // label14
             // 
@@ -396,18 +408,6 @@
             this.label8.Size = new System.Drawing.Size(38, 13);
             this.label8.TabIndex = 1;
             this.label8.Text = "Name:";
-            // 
-            // btnDeleteAdvanceRec
-            // 
-            this.btnDeleteAdvanceRec.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnDeleteAdvanceRec.Enabled = false;
-            this.btnDeleteAdvanceRec.Location = new System.Drawing.Point(499, 687);
-            this.btnDeleteAdvanceRec.Name = "btnDeleteAdvanceRec";
-            this.btnDeleteAdvanceRec.Size = new System.Drawing.Size(140, 23);
-            this.btnDeleteAdvanceRec.TabIndex = 19;
-            this.btnDeleteAdvanceRec.Text = "Delete";
-            this.btnDeleteAdvanceRec.UseVisualStyleBackColor = true;
-            this.btnDeleteAdvanceRec.Click += new System.EventHandler(this.btnDeleteAdvanceRec_Click);
             // 
             // MacroConverterConfForm
             // 

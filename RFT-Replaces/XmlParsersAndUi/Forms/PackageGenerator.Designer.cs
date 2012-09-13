@@ -84,8 +84,8 @@
             this.Operations = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cmsAddPropertyMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addPropertyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnImportCi = new System.Windows.Forms.Button();
             this.relAppdirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnImportCi = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.gbParameters.SuspendLayout();
@@ -673,14 +673,21 @@
             this.addPropertyToolStripMenuItem,
             this.relAppdirToolStripMenuItem});
             this.cmsAddPropertyMenu.Name = "cmsAddPropertyMenu";
-            this.cmsAddPropertyMenu.Size = new System.Drawing.Size(153, 70);
+            this.cmsAddPropertyMenu.Size = new System.Drawing.Size(150, 48);
             // 
             // addPropertyToolStripMenuItem
             // 
             this.addPropertyToolStripMenuItem.Name = "addPropertyToolStripMenuItem";
-            this.addPropertyToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addPropertyToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.addPropertyToolStripMenuItem.Text = "Add Property";
             this.addPropertyToolStripMenuItem.Click += new System.EventHandler(this.addPropertyToolStripMenuItem_Click);
+            // 
+            // relAppdirToolStripMenuItem
+            // 
+            this.relAppdirToolStripMenuItem.Name = "relAppdirToolStripMenuItem";
+            this.relAppdirToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.relAppdirToolStripMenuItem.Text = "Rel. Appdir";
+            this.relAppdirToolStripMenuItem.Click += new System.EventHandler(this.relAppdirToolStripMenuItem_Click);
             // 
             // btnImportCi
             // 
@@ -692,13 +699,6 @@
             this.btnImportCi.Text = "Import .Ci";
             this.btnImportCi.UseVisualStyleBackColor = true;
             this.btnImportCi.Click += new System.EventHandler(this.btnImportCi_Click);
-            // 
-            // relAppdirToolStripMenuItem
-            // 
-            this.relAppdirToolStripMenuItem.Name = "relAppdirToolStripMenuItem";
-            this.relAppdirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.relAppdirToolStripMenuItem.Text = "Rel. Appdir";
-            this.relAppdirToolStripMenuItem.Click += new System.EventHandler(this.relAppdirToolStripMenuItem_Click);
             // 
             // PackageGenerator
             // 

@@ -30,6 +30,8 @@
             this.btnShowOutput = new System.Windows.Forms.Button();
             this.btnSplitFile = new System.Windows.Forms.Button();
             this.chkLstAllStepEvents = new System.Windows.Forms.CheckedListBox();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.renameStepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.btnGroup = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chkFsEvents = new System.Windows.Forms.CheckBox();
@@ -42,11 +44,9 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.txtDirectory = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.renameStepToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label4
@@ -94,6 +94,23 @@
             this.chkLstAllStepEvents.Name = "chkLstAllStepEvents";
             this.chkLstAllStepEvents.Size = new System.Drawing.Size(446, 259);
             this.chkLstAllStepEvents.TabIndex = 0;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.renameStepToolStripMenuItem});
+            this.contextMenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.contextMenuStrip1.ShowImageMargin = false;
+            this.contextMenuStrip1.Size = new System.Drawing.Size(125, 26);
+            // 
+            // renameStepToolStripMenuItem
+            // 
+            this.renameStepToolStripMenuItem.Name = "renameStepToolStripMenuItem";
+            this.renameStepToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.renameStepToolStripMenuItem.Text = "Rename Step";
+            this.renameStepToolStripMenuItem.Click += new System.EventHandler(this.renameStepToolStripMenuItem_Click);
             // 
             // btnGroup
             // 
@@ -221,23 +238,6 @@
             this.label3.TabIndex = 19;
             this.label3.Text = "Input File:";
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.renameStepToolStripMenuItem});
-            this.contextMenuStrip1.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.VerticalStackWithOverflow;
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
-            this.contextMenuStrip1.ShowImageMargin = false;
-            this.contextMenuStrip1.Size = new System.Drawing.Size(128, 48);
-            // 
-            // renameStepToolStripMenuItem
-            // 
-            this.renameStepToolStripMenuItem.Name = "renameStepToolStripMenuItem";
-            this.renameStepToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
-            this.renameStepToolStripMenuItem.Text = "Rename Step";
-            this.renameStepToolStripMenuItem.Click += new System.EventHandler(this.renameStepToolStripMenuItem_Click);
-            // 
             // BulkMacroSplitterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -252,11 +252,11 @@
             this.Name = "BulkMacroSplitterForm";
             this.Text = "Macro Splitter";
             this.Load += new System.EventHandler(this.BulkMacroSplitterForm_Load);
+            this.contextMenuStrip1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }

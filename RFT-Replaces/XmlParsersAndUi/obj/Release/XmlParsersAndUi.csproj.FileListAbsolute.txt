@@ -65,3 +65,7 @@ C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\bin\Release\Automation.Backend.dll
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\bin\Release\Automation.Backend.pdb
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\bin\Release\Automation.Common.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\bin\Release\Maintenance-Reduction.exe.manifest
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\bin\Release\Maintenance-Reduction.application
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\Release\Maintenance-Reduction.exe.manifest
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\Release\Maintenance-Reduction.application

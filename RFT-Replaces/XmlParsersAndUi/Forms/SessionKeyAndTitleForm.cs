@@ -38,18 +38,31 @@ namespace XmlParsersAndUi {
 
         private void btnProceed_Click(object sender, EventArgs e) {
             sessionKey = txtSessionKey.Text;
-            if (string.IsNullOrEmpty(txtTitle.Text)) {
-                FrontendUtils.ShowError("Please select a folder name!", new Exception());
-                this.DialogResult = DialogResult.No;
-                return;
+            if (IsValidToProceed()) {
+                this.DialogResult = DialogResult.OK;            
             }
-            if (Directory.Exists(currentOutputDir + @"\" + txtTitle.Text+"-"+eventsGroupNameAndID.OperationGeneratedID)) {
+        }
+
+        private bool IsValidToProceed() {
+            if (string.IsNullOrEmpty(txtTitle.Text)) {
+                FrontendUtils.ShowInformation("Please input a folder name!", true);
+                //    this.DialogResult = DialogResult.No;
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(txtOperation.Text)) {
+                FrontendUtils.ShowInformation("Please select an operation!", true);
+                //  this.DialogResult = DialogResult.No;
+                return false;
+            }
+            if (Directory.Exists(currentOutputDir + @"\" + txtTitle.Text + "-" + eventsGroupNameAndID.OperationGeneratedID)) {
                 DialogResult dialogResult = MessageBox.Show("Selected directory already exists, do you want to overrite?", "Directory Exists", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.No) {
                     this.DialogResult = DialogResult.Abort;
-                    return;
+                    return false;
                 }
             }
+            return true;
         }
 
         private void SessionKeyAndTitleForm_Load(object sender, EventArgs e) {

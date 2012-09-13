@@ -31,6 +31,7 @@
             this.tcComparisonTabs = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.pcProgress = new Utezduyar.Windows.Forms.ProgressCircle();
             this.label11 = new System.Windows.Forms.Label();
             this.lblProgess = new System.Windows.Forms.Label();
             this.gbCustomFilters = new System.Windows.Forms.GroupBox();
@@ -99,7 +100,6 @@
             this.undoLastDeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bgDoServerWork = new System.ComponentModel.BackgroundWorker();
             this.bgwExportToExcel = new System.ComponentModel.BackgroundWorker();
-            this.pcProgress = new Utezduyar.Windows.Forms.ProgressCircle();
             this.tcComparisonTabs.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -160,6 +160,16 @@
             this.groupBox2.TabIndex = 3;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Results";
+            // 
+            // pcProgress
+            // 
+            this.pcProgress.Location = new System.Drawing.Point(334, 104);
+            this.pcProgress.Name = "pcProgress";
+            this.pcProgress.RingColor = System.Drawing.Color.White;
+            this.pcProgress.RingThickness = 10;
+            this.pcProgress.Size = new System.Drawing.Size(150, 150);
+            this.pcProgress.TabIndex = 0;
+            this.pcProgress.Visible = false;
             // 
             // label11
             // 
@@ -901,16 +911,6 @@
             this.bgwExportToExcel.WorkerSupportsCancellation = true;
             this.bgwExportToExcel.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwExportToExcel_DoWork);
             this.bgwExportToExcel.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwExportToExcel_RunWorkerCompleted);
-            // 
-            // pcProgress
-            // 
-            this.pcProgress.Location = new System.Drawing.Point(334, 104);
-            this.pcProgress.Name = "pcProgress";
-            this.pcProgress.RingColor = System.Drawing.Color.White;
-            this.pcProgress.RingThickness = 10;
-            this.pcProgress.Size = new System.Drawing.Size(150, 150);
-            this.pcProgress.TabIndex = 0;
-            this.pcProgress.Visible = false;
             // 
             // EnvironmentComparisonForm
             // 

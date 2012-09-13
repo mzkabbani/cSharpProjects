@@ -145,6 +145,8 @@ namespace XmlParsersAndUi.Forms {
 
         private void btnStart_Click(object sender, EventArgs e) {
             string[] directories = Directory.GetDirectories(txtInputDir.Text);
+            string buildPartText = "<automation.runtasks tasksteptitle=\"${partTitle}\"><sequential>${buildText}</sequential></automation.runtasks>";
+            string completeBuild = "";
             for (int i = 0; i < directories.Length; i++) {
                 string[] textFile = Directory.GetFiles(directories[i], "*.txt");
                 string[] xmlFile = Directory.GetFiles(directories[i], "*.xml");
@@ -167,15 +169,17 @@ namespace XmlParsersAndUi.Forms {
                     }
                     buildText = buildText +
                         "<automation.macroplayback eventsfile=\""+
-                        "${datastore}.macros."+(j+1)+"-" + regex.Match(parts[j]).Groups[1].Value.Replace(" ", "_")+".eventsfiles.xml\""+
+                        "${datastore}.macros." + testCaseFolderName + "." + (j + 1) + "-" + regex.Match(parts[j]).Groups[1].Value.Replace(" ", "_") + ".eventsfiles.xml\"" +
                         " kernelsteptitle=\"" + regex.Match(parts[j]).Groups[1].Value + "\" createstep=\"false\" />\r\n";
                 }
-                FrontendUtils.WriteFile(directories[i] + @"\buildFile.txt", buildText);
+                completeBuild = completeBuild + "\n\n\n"+buildPartText.Replace("${partTitle}", testCaseFolderName).Replace("${buildText}", buildText);
+                //FrontendUtils.WriteFile(directories[i] + @"\buildFile.txt", buildText);
          
                 //List<checkboxItems> selectedItems = new List<checkboxItems>();
                 //GenerateSplitFile(selectedItems, "sessionKey", "outFolderName", 1);
             }
-
+            FrontendUtils.WriteFile(txtOutputDir.Text + @"\buildFile.txt", completeBuild);
+     
         }
 
         private List<checkboxItems> GetSelectedItems(string from, string to, List<checkboxItems> items) {

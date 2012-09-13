@@ -15,6 +15,7 @@ using System.Data.OleDb;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using PackageGenerator.Classes;
+using System.Reflection;
 
 namespace PackageGenerator {
     public partial class Mainform : Form {
@@ -26,7 +27,7 @@ namespace PackageGenerator {
         int currentlySelectedKey = -1;
         string pathToThisExec = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
         int counter = 1;
-        private Rectangle dragBoxFromMouseDown;
+        private System.Drawing.Rectangle dragBoxFromMouseDown;
         private int rowIndexFromMouseDown;
         private int rowIndexOfItemUnderMouseToDrop;
 
@@ -844,14 +845,14 @@ namespace PackageGenerator {
 
         //}
 
-        private DataTable getDifferentRecords(DataTable FirstDataTable, DataTable SecondDataTable) {
+        private System.Data.DataTable getDifferentRecords(System.Data.DataTable FirstDataTable, System.Data.DataTable SecondDataTable) {
             //Create Empty Table     
-            DataTable ResultDataTable = new DataTable("ResultDataTable");
+            System.Data.DataTable ResultDataTable = new System.Data.DataTable("ResultDataTable");
 
             //use a Dataset to make use of a DataRelation object     
             using (DataSet ds = new DataSet()) {
                 //Add tables     
-                ds.Tables.AddRange(new DataTable[] { FirstDataTable.Copy(), SecondDataTable.Copy() });
+                ds.Tables.AddRange(new System.Data.DataTable[] { FirstDataTable.Copy(), SecondDataTable.Copy() });
 
                 //Get Columns for DataRelation     
                 DataColumn[] firstColumns = new DataColumn[ds.Tables[0].Columns.Count];
@@ -909,45 +910,117 @@ namespace PackageGenerator {
             return ResultDataTable;
         }
 
+        public List<DataTable> Import(string path) {
+            List<DataTable> foundDataTables = new List<DataTable>();
+            Microsoft.Office.Interop.Excel.ApplicationClass app = new Microsoft.Office.Interop.Excel.ApplicationClass();
+            Microsoft.Office.Interop.Excel.Workbook workBook = app.Workbooks.Open(path, 0, true, 5, "", "", true, Microsoft.Office.Interop.Excel.XlPlatform.xlWindows, "\t", false, false, 0, true, 1, 0);
+            Microsoft.Office.Interop.Excel.Sheets sheets = workBook.Worksheets;
+
+            foreach (Microsoft.Office.Interop.Excel.Worksheet sheet in sheets) {
+                DataTable dt = new DataTable(sheet.Name);
+                if (sheet.Name.Contains("Operation")) {
+                    int index = 0;
+                    object rowIndex = 2;                   
+                    dt.Columns.Add("Step");
+                    dt.Columns.Add("Comment");
+                    dt.Columns.Add("Operation");
+                    DataRow row;
+                    while (((Microsoft.Office.Interop.Excel.Range)sheet.Cells[rowIndex, 1]).Value2 != null) {
+                        rowIndex = 2 + index;
+                        row = dt.NewRow();
+                        row[0] = Convert.ToString(((Microsoft.Office.Interop.Excel.Range)sheet.Cells[rowIndex, 1]).Value2);
+                        row[1] = Convert.ToString(((Microsoft.Office.Interop.Excel.Range)sheet.Cells[rowIndex, 2]).Value2);
+                        row[2] = Convert.ToString(((Microsoft.Office.Interop.Excel.Range)sheet.Cells[rowIndex, 3]).Value2);
+                        index++;
+                        dt.Rows.Add(row);
+                    }
+                } else if (sheet.Name.Contains("Linked")) {
+                    int index = 0;
+                    object rowIndex = 2;                    
+                    dt.Columns.Add("FileLink");
+                    dt.Columns.Add("RelativePath");   
+                    DataRow row;
+                    while (((Microsoft.Office.Interop.Excel.Range)sheet.Cells[rowIndex, 1]).Value2 != null) {
+                        rowIndex = 2 + index;
+                        row = dt.NewRow();
+                        row[0] = Convert.ToString(((Microsoft.Office.Interop.Excel.Range)sheet.Cells[rowIndex, 1]).Value2);
+                        row[1] = Convert.ToString(((Microsoft.Office.Interop.Excel.Range)sheet.Cells[rowIndex, 2]).Value2);
+                           index++;
+                        dt.Rows.Add(row);
+                    } 
+                }
+                foundDataTables.Add(dt);   
+            }
+            app.Workbooks.Close();   
+            return foundDataTables;
+        }
+
+
+
         public void StartComparison(string filename1, string filename2) {
-            List<string> file1_sheets = GetExcelSheets(filename1);
-            List<string> file2_sheets = GetExcelSheets(filename2);
-            // Create connection string variable. Modify the "Data Source"
-            // parameter as appropriate for your environment.
-            String sConnectionString1 = "Provider=Microsoft.ACE.OLEDB.12.0;" +
-            "Data Source=" + filename1 + ";" +
-            "Extended Properties=Excel 12.0;";
+         //  List<string> file1_sheets = GetExcelSheets(filename1);
+      //  List<string> file2_sheets = GetExcelSheets(filename2);
+            List<DataTable> tableImportedFile1= Import(filename1);
+            List<DataTable> tableImportedFile2 = Import(filename2);
 
-            String sConnectionString2 = "Provider=Microsoft.ACE.OLEDB.12.0;" +
-            "Data Source=" + filename2 + ";" +
-            "Extended Properties=Excel 12.0;";
 
-            // Create connection object by using the preceding connection string.
-            OleDbConnection objConnfileOne = new OleDbConnection(sConnectionString1);
-            OleDbConnection objConnFileTwo = new OleDbConnection(sConnectionString2);
+           
 
-            // Open connection with the database.
-            objConnfileOne.Open();
-            objConnFileTwo.Open();
+            //// Create connection string variable. Modify the "Data Source"
+            //// parameter as appropriate for your environment.
+            //String sConnectionString1 = "Provider=Microsoft.ACE.OLEDB.12.0;" +
+            //"Data Source=" + filename1 + ";" +
+            //"Extended Properties=Excel 12.0;";
+
+            //String sConnectionString2 = "Provider=Microsoft.ACE.OLEDB.12.0;" +
+            //"Data Source=" + filename2 + ";" +
+            //"Extended Properties=Excel 12.0;";
+
+            //// Create connection object by using the preceding connection string.
+            //OleDbConnection objConnfileOne = new OleDbConnection(sConnectionString1);
+            //OleDbConnection objConnFileTwo = new OleDbConnection(sConnectionString2);
+
+            //// Open connection with the database.
+            //objConnfileOne.Open();
+            //objConnFileTwo.Open();
             // The code to follow uses a SQL SELECT command to display the data from the worksheet.
             DataSet set = new DataSet("Changes Set");
             DataTable dtResult = new DataTable();
 
-            for (int i = 0; i < file1_sheets.Count; i++) {
-                if (file2_sheets.Contains(file1_sheets[i])) {
-                    DataTable sheetToDataTableOne = GetDataTableFromSheet(file1_sheets[i], objConnfileOne);
-                    sheetToDataTableOne.TableName = file1_sheets[i] + "-in-SheetOne";
-                    DataTable sheetToDataTableTwo = GetDataTableFromSheet(file1_sheets[i], objConnFileTwo);
-                    sheetToDataTableTwo.TableName = file2_sheets[i] + "-in-SheetTwo";
-                    dtResult = getDifferentRecords(sheetToDataTableOne, sheetToDataTableTwo);
-                    dtResult.TableName = file1_sheets[i] + "-Results";
-                    set.Tables.Add(dtResult);
+            foreach (DataTable table in tableImportedFile1) {
+
+                foreach (DataTable table2 in tableImportedFile2) {
+                    if (string.Equals(table.TableName, table2.TableName) && !table.TableName.Contains("Sheet")) {
+                        table.TableName = table.TableName ;
+                        table2.TableName = table2.TableName + "-in-SheetTwo";
+                        dtResult = getDifferentRecords(table, table2);
+                        dtResult.TableName = table.TableName+"-Diff";
+                        set.Tables.Add(dtResult);
+                    }
                 }
+
             }
 
-            // Clean up objects.
-            objConnfileOne.Close();
-            objConnFileTwo.Close();
+
+
+            //for (int i = 0; i < file1_sheets.Count; i++) {
+            //    if (file2_sheets.Contains(file1_sheets[i])) {
+            //        DataTable sheetToDataTableOne = GetDataTableFromSheet(file1_sheets[i], objConnfileOne);
+            //        sheetToDataTableOne.TableName = file1_sheets[i] + "-in-SheetOne";
+            //        DataTable sheetToDataTableTwo = GetDataTableFromSheet(file1_sheets[i], objConnFileTwo);
+            //        sheetToDataTableOne.Merge(sheetToDataTableTwo);
+            //        DataTable table3 = sheetToDataTableOne.GetChanges();
+
+            //        sheetToDataTableTwo.TableName = file2_sheets[i] + "-in-SheetTwo";
+            //        dtResult = getDifferentRecords(sheetToDataTableOne, sheetToDataTableTwo);
+            //        dtResult.TableName = file1_sheets[i] + "-Results";
+            //        set.Tables.Add(dtResult);
+            //    }
+            //}
+
+            //// Clean up objects.
+            //objConnfileOne.Close();
+            //objConnFileTwo.Close();
 
             SaveFileDialog dialog = new SaveFileDialog();
             dialog.Title = "Enter file name to save comparison results";
@@ -970,8 +1043,8 @@ namespace PackageGenerator {
             }
         }
 
-        private DataTable GetDataTableFromSheet(string file1_sheet, OleDbConnection objConn) {
-            DataTable dt1 = new DataTable();
+        private System.Data.DataTable GetDataTableFromSheet(string file1_sheet, OleDbConnection objConn) {
+            System.Data.DataTable dt1 = new System.Data.DataTable();
             // Create new OleDbCommand to return data from worksheet.
             OleDbCommand objCmdSelect = new OleDbCommand("SELECT * FROM [" + file1_sheet + "$]", objConn);
             // Create new OleDbDataAdapter that is used to build a DataSet
@@ -1694,11 +1767,11 @@ namespace PackageGenerator {
 
         int TotalCheckBoxes = 0;
         int TotalCheckedCheckBoxes = 0;
-        CheckBox HeaderCheckBox = null;
+        System.Windows.Forms.CheckBox HeaderCheckBox = null;
         bool IsHeaderCheckBoxClicked = false;
 
         private void AddHeaderCheckBox() {
-            HeaderCheckBox = new CheckBox();
+            HeaderCheckBox = new System.Windows.Forms.CheckBox();
 
             HeaderCheckBox.Size = new Size(15, 15);
 
@@ -1748,7 +1821,7 @@ namespace PackageGenerator {
             }
         }
 
-        private void HeaderCheckBoxClick(CheckBox HCheckBox) {
+        private void HeaderCheckBoxClick(System.Windows.Forms.CheckBox HCheckBox) {
             IsHeaderCheckBoxClicked = true;
 
             foreach (DataGridViewRow Row in dgvOutputOperations.Rows)
@@ -1762,7 +1835,7 @@ namespace PackageGenerator {
         }
 
         private void HeaderCheckBox_MouseClick(object sender, MouseEventArgs e) {
-            HeaderCheckBoxClick((CheckBox)sender);
+            HeaderCheckBoxClick((System.Windows.Forms.CheckBox)sender);
         }
 
         private void RowCheckBoxClick(DataGridViewCheckBoxCell RCheckBox) {

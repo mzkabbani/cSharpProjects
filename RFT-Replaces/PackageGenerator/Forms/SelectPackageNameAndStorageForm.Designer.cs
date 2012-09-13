@@ -128,7 +128,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Release Setup";
+            this.Text = "Publishing Setup";
             this.TopMost = true;
             this.Load += new System.EventHandler(this.SelectPackageNameAndStorageForm_Load);
             this.gbOutputSettings.ResumeLayout(false);

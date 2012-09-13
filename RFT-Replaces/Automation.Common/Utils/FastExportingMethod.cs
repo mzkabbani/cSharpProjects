@@ -64,8 +64,11 @@ namespace Automation.Common{
                 Worksheet excelSheet = (Worksheet)excelWorkbook.Sheets.Add(
                 excelWorkbook.Sheets.get_Item(++sheetIndex),
                 Type.Missing, 1, XlSheetType.xlWorksheet);
+                if(!string.IsNullOrEmpty(dt.TableName)){
+                    excelSheet.Name = dt.TableName;               
+                }
 
-				excelSheet.Name = dt.TableName;
+				//excelSheet.Name = dt.TableName;
 
 				// Fast data export to Excel
 				string excelRange = string.Format("A1:{0}{1}",

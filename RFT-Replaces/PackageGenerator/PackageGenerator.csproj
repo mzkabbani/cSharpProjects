@@ -12,7 +12,7 @@
     <AssemblyName>PackageGenerator</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <ApplicationIcon>IconsLandVistaMultimediaIconsDemo-ICO-VCR-CircleBlue-PlayModeRepeatAllHot %281%29.ico</ApplicationIcon>
+    <ApplicationIcon>main.ico</ApplicationIcon>
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
@@ -198,6 +198,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="IconsLandVistaMultimediaIconsDemo-ICO-VCR-CircleBlue-PlayModeRepeatAllHot %281%29.ico" />
+    <Content Include="main.ico" />
     <Content Include="MIGRATION\FIRSTPACKAGE\cis-mxpack-1.0-full.jar" />
     <Content Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\ci.xml" />
     <Content Include="MIGRATION\FIRSTPACKAGE\trunk\.ci\package\files\approvalMXpress.txt" />

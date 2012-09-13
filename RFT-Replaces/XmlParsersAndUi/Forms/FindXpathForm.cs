@@ -23,9 +23,12 @@ namespace XmlParsersAndUi {
                 XmlNodeList nodes = doc.SelectNodes(txtFinder.Text.Split('=')[0]);
 
                 foreach (XmlNode node in nodes) {
-                    if (string.Equals(node.Value, txtFinder.Text.Split('=')[1])) {
-                        txtXpathOut.Text = txtXpathOut.Text + FindXPath(node) + "\r\n";
-                    }
+                    txtXpathOut.Text = txtXpathOut.Text + "\r\n" + node.Value;
+
+
+            //        if (string.Equals(node.Value, txtFinder.Text.Split('=')[1])) {
+                //        txtXpathOut.Text = txtXpathOut.Text + FindXPath(node) + "\r\n";
+                //    }
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);

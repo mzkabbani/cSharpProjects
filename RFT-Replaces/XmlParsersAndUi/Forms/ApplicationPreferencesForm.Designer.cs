@@ -48,6 +48,7 @@
             this.saveNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tvPreferenceSections = new System.Windows.Forms.TreeView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.addBulkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gbParentPrefs.SuspendLayout();
             this.gbConnectedDatabase.SuspendLayout();
             this.gbDatabasePrefs.SuspendLayout();
@@ -159,21 +160,22 @@
             // 
             this.cmsItemOptions.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addChildToolStripMenuItem,
-            this.saveNameToolStripMenuItem});
+            this.saveNameToolStripMenuItem,
+            this.addBulkToolStripMenuItem});
             this.cmsItemOptions.Name = "cmsItemOptions";
-            this.cmsItemOptions.Size = new System.Drawing.Size(131, 48);
+            this.cmsItemOptions.Size = new System.Drawing.Size(153, 92);
             // 
             // addChildToolStripMenuItem
             // 
             this.addChildToolStripMenuItem.Name = "addChildToolStripMenuItem";
-            this.addChildToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.addChildToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addChildToolStripMenuItem.Text = "Add Child";
             this.addChildToolStripMenuItem.Click += new System.EventHandler(this.addChildToolStripMenuItem_Click);
             // 
             // saveNameToolStripMenuItem
             // 
             this.saveNameToolStripMenuItem.Name = "saveNameToolStripMenuItem";
-            this.saveNameToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.saveNameToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.saveNameToolStripMenuItem.Text = "Rename";
             this.saveNameToolStripMenuItem.Click += new System.EventHandler(this.saveNameToolStripMenuItem_Click);
             // 
@@ -207,6 +209,13 @@
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Sections";
+            // 
+            // addBulkToolStripMenuItem
+            // 
+            this.addBulkToolStripMenuItem.Name = "addBulkToolStripMenuItem";
+            this.addBulkToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.addBulkToolStripMenuItem.Text = "Add Bulk";
+            this.addBulkToolStripMenuItem.Click += new System.EventHandler(this.addBulkToolStripMenuItem_Click);
             // 
             // ApplicationPreferencesForm
             // 
@@ -247,5 +256,6 @@
         private System.Windows.Forms.GroupBox gbConnectedDatabase;
         private System.Windows.Forms.TreeView tvPreferenceSections;
         private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.ToolStripMenuItem addBulkToolStripMenuItem;
     }
 }

@@ -676,5 +676,15 @@ namespace XmlParsersAndUi {
             form.Show();
         }
 
+        private void findXpathToolStripMenuItem_Click(object sender, EventArgs e) {
+            try {
+                FindXpathForm form = new FindXpathForm();
+                form.MdiParent = this;
+                form.Show();
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message, ex);
+            }
+        }
+
     }
 }

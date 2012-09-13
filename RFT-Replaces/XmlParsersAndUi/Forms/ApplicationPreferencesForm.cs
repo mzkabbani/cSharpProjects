@@ -78,6 +78,7 @@ namespace XmlParsersAndUi.Forms {
         private void RecursivelyPopulate(DataRow dbRow, TreeNode node) {
             foreach (DataRow childRow in dbRow.GetChildRows("NodeRelation")) {
                 TreeNode childNode = CreateNode(childRow["folderName"].ToString(), true);
+                childNode.Tag = childRow["generatedID"].ToString();
                 node.Nodes.Add(childNode);
                 RecursivelyPopulate(childRow, childNode);
             }
@@ -101,6 +102,9 @@ namespace XmlParsersAndUi.Forms {
 
         private void SaveUpdatedTreeView() {
             LoopOverAllTreeNodes();
+            //for (int i = 0; i < allTreeNodes.Count; i++) {
+            //    allTreeNodes[i].Tag = GenerateRandomHEX();
+            //}
             Folder_Names.UpdateTreeNodesTransaction(allTreeNodes);
         }
 
@@ -120,6 +124,22 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
+        private bool IsValidToAddNode(TreeNodeCollection treeNodeCollection, string newNodeName) {
+            foreach (TreeNode treeNode in treeNodeCollection) {
+               if(string.Equals(treeNode.Text,newNodeName)){
+                   FrontendUtils.ShowInformation("Node name must be unique!",true);
+                   return false;
+               } 
+            }            
+            return true;
+        }
+
+        private string GenerateRandomHEX() {
+            string generatedHEX = string.Empty;
+            generatedHEX = FrontendUtils.GetRandomHexNumber(4);
+            return generatedHEX;
+        }
+
         #endregion
 
         #region Events
@@ -129,19 +149,18 @@ namespace XmlParsersAndUi.Forms {
                 EditFolderNameForm form = new EditFolderNameForm();
                 DialogResult dialog = form.ShowDialog();
                 if (dialog == DialogResult.OK) {
-                  TreeNode addedNode=  tvFolderNames.SelectedNode.Nodes.Add(form.Controls["txtNewName"].Text);
-                  addedNode.Tag = GenerateRandomHEX();
+
+                    string newNodeName = form.Controls["txtNewName"].Text;
+                    if (IsValidToAddNode(tvFolderNames.SelectedNode.Nodes, newNodeName)) {
+                        TreeNode addedNode = tvFolderNames.SelectedNode.Nodes.Add(newNodeName);
+                        addedNode.Tag = GenerateRandomHEX();
+                        
+                    }
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
-        }
-
-        private string GenerateRandomHEX() {
-            string generatedHEX = string.Empty;
-            generatedHEX =  FrontendUtils.GetRandomHexNumber(4);
-            return generatedHEX;
-        }
+        }           
 
         private void saveNameToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
@@ -208,6 +227,29 @@ namespace XmlParsersAndUi.Forms {
         } 
 
         #endregion
+
+        private void addBulkToolStripMenuItem_Click(object sender, EventArgs e) {
+            try {
+                BulkFolderNamesInsertion form = new BulkFolderNamesInsertion();
+                DialogResult dialog =  form.ShowDialog();
+
+                if (dialog == DialogResult.OK) {
+                    string[] newNames = form.Controls["txtBulkFolderNames"].Text.Split(new string[]{"\r\n"},StringSplitOptions.RemoveEmptyEntries);
+
+
+                    for (int i = 0; i < newNames.Length; i++) {
+                        string newNodeName = newNames[i];
+                        if (IsValidToAddNode(tvFolderNames.SelectedNode.Nodes, newNodeName)) {
+                            TreeNode addedNode = tvFolderNames.SelectedNode.Nodes.Add(newNodeName);
+                            addedNode.Tag = GenerateRandomHEX();
+                        } 
+                    }
+                }
+
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message, ex);
+            }
+        }
 
 
         #endregion
