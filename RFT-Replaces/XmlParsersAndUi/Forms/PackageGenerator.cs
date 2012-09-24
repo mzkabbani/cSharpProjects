@@ -10,6 +10,7 @@ using System.Text.RegularExpressions;
 using XmlParsersAndUi.Classes;
 using System.IO;
 using Automation.Common.Utils;
+using Automation.Common.Classes.Monitoring;
 
 namespace XmlParsersAndUi.Forms {
     public partial class PackageGenerator : Form {
@@ -22,6 +23,13 @@ namespace XmlParsersAndUi.Forms {
 
         private void PackageGenerator_Load(object sender, EventArgs e) {
             try {
+                try {
+                    if (!string.IsNullOrEmpty(MonitorObject.username)) {
+                        MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
+                    }
+                } catch (Exception) {
+
+                }
                 cboPropertyType.SelectedIndex = 0;
                 //populate all props from installer file
 

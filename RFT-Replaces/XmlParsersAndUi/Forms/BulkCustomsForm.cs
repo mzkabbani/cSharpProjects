@@ -12,6 +12,7 @@ using System.Xml;
 using Utilities.WinForms;
 using XmlParsersAndUi.Classes;
 using Automation.Common.Utils;
+using Automation.Common.Classes.Monitoring;
 
 namespace XmlParsersAndUi {
     public partial class BulkCustomsForm : Form {
@@ -206,7 +207,9 @@ namespace XmlParsersAndUi {
         }
 
         private void BulkCustomsForm_Load(object sender, EventArgs e) {
-           
+            if (!string.IsNullOrEmpty(MonitorObject.username)) {
+                MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
+            }
         }
 
         #endregion

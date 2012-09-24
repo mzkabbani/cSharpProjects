@@ -349,6 +349,7 @@
     <Content Include="Resources\791891-blender.gif" />
     <Compile Include="Classes\ApplicationIdleTimer.cs" />
     <Compile Include="Classes\BackGroundWorkerObject.cs" />
+    <Compile Include="Classes\BulkMacroTreeNode.cs" />
     <Compile Include="Classes\CustomizationFunction.cs" />
     <Compile Include="Classes\ComplexCaptureMatchObject.cs" />
     <Compile Include="Classes\EnvComparatorWorker.cs" />
@@ -424,6 +425,12 @@
     <Compile Include="Forms\BulkFolderNamesInsertion.Designer.cs">
       <DependentUpon>BulkFolderNamesInsertion.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\BulkMacroBuildXmlForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BulkMacroBuildXmlForm.Designer.cs">
+      <DependentUpon>BulkMacroBuildXmlForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ConfigureFolderNamesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -435,6 +442,12 @@
     </Compile>
     <Compile Include="Forms\ConvertToEnumForm.Designer.cs">
       <DependentUpon>ConvertToEnumForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\BulkMacroSplitterTreeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\BulkMacroSplitterTreeForm.Designer.cs">
+      <DependentUpon>BulkMacroSplitterTreeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\EditFolderNameForm.cs">
       <SubType>Form</SubType>
@@ -568,6 +581,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\BulkFolderNamesInsertion.resx">
       <DependentUpon>BulkFolderNamesInsertion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BulkMacroBuildXmlForm.resx">
+      <DependentUpon>BulkMacroBuildXmlForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BulkMacroSplitterTreeForm.resx">
+      <DependentUpon>BulkMacroSplitterTreeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\MacroConverterConfForm.resx">
       <DependentUpon>MacroConverterConfForm.cs</DependentUpon>

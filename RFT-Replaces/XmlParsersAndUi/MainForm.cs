@@ -17,6 +17,8 @@ using Automation.Common.Utils;
 using Automation.Common.Forms;
 using Automation.Backend;
 using Automation.Common;
+using Automation.Common.Classes.Monitoring;
+using Automation.Backend.Classes;
 
 
 namespace XmlParsersAndUi {
@@ -260,6 +262,8 @@ namespace XmlParsersAndUi {
 
         private void MainForm_Load(object sender, EventArgs e) {
             try {
+                
+
                 MainAppVariables.AppVersion = APPLICATION_VERSION;
                 loggedInUser = FrontendUtils.GetCurrentUser();
                 FrontendUtils.CreateLogsDirectory();
@@ -283,6 +287,13 @@ namespace XmlParsersAndUi {
                     UserStatus.UpdateUserStatusById(userId, true);
                     List<string> priviligedUsersList = Application_Settings.GetPriviligedUsersAsList();
                     UpdateUIForPriviligedUsers(priviligedUsersList, loggedInUser);
+                    MonitorObject.username = loggedInUser;
+                    MonitorObject.loginTime = DateTime.Now;
+                    MonitorObject.formAndAccessTime = new List<FormAndAccessTime>();
+                    MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
+                    
+                    
+
                 } else {
                     this.menuStrip.Enabled = false;
                     Exception ex = new InvalidAsynchronousStateException("The application is out date. Please update to the latest version!");
@@ -317,7 +328,8 @@ namespace XmlParsersAndUi {
         private void macroSplitToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
                 FrontendUtils.SendUsageNotification("Macro split started by " + loggedInUser);
-                BulkMacroSplitterForm form = new BulkMacroSplitterForm();
+
+                BulkMacroSplitterTreeForm form = new BulkMacroSplitterTreeForm();
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
@@ -353,6 +365,7 @@ namespace XmlParsersAndUi {
 
         private void advancedRecToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
+                FrontendUtils.SendUsageNotification("Setup Advanced Recs started by " + loggedInUser);
                 SetupAdvancedRecForm form = new SetupAdvancedRecForm();
                 form.MdiParent = this;
                 form.Show();
@@ -379,6 +392,7 @@ namespace XmlParsersAndUi {
 
         private void rFTUpdaterToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
+                FrontendUtils.SendUsageNotification("RFT updater started by " + loggedInUser);
                 RftReplacementForm form = new RftReplacementForm();
                 form.MdiParent = this;
                 form.Show();
@@ -389,6 +403,10 @@ namespace XmlParsersAndUi {
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
             try {
+
+                MonitorObject.logoutTime = DateTime.Now;
+
+                Monitor.InsertNewMonitorObject();
                 int userId = UserStatus.GetUserIdByUsername(loggedInUser);
                 UserStatus.UpdateUserStatusById(userId, false);
                 FrontendUtils.SendUsageNotification(loggedInUser + " has exited the application!");
@@ -486,6 +504,7 @@ namespace XmlParsersAndUi {
 
         private void secondLevelCleanupToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
+                FrontendUtils.SendUsageNotification("Second Level Cleanup started by " + loggedInUser);
                 SecondLevelCleanupForm form = new SecondLevelCleanupForm();
                 form.MdiParent = this;
                 form.Show();
@@ -537,6 +556,7 @@ namespace XmlParsersAndUi {
 
         private void envComparisonToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
+                FrontendUtils.SendUsageNotification("Environment Comparison started by " + loggedInUser);
                 EnvironmentComparisonForm form = new EnvironmentComparisonForm();
 
                 bool found = false;
@@ -556,6 +576,7 @@ namespace XmlParsersAndUi {
 
         private void advancedRecommendationsToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
+                FrontendUtils.SendUsageNotification("Setup Advanced Rec started " + loggedInUser);
                 SetupAdvancedRecForm form = new SetupAdvancedRecForm();
                 form.MdiParent = this;
                 form.Show();
@@ -577,6 +598,7 @@ namespace XmlParsersAndUi {
 
         private void envComparisonToolStripMenuItem1_Click(object sender, EventArgs e) {
             try {
+                FrontendUtils.SendUsageNotification("Environment comparison started by " + loggedInUser);
                 EnvironmentComparisonForm form = new EnvironmentComparisonForm();
                 bool found = false;
                 foreach (Form childForm in this.MdiChildren) {
@@ -595,6 +617,7 @@ namespace XmlParsersAndUi {
 
         private void fTPToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
+                FrontendUtils.SendUsageNotification("FTP downloader started by " + loggedInUser);
                 FTPDownloaderForm form = new FTPDownloaderForm();
                 form.MdiParent = this;
                 form.Show();
@@ -605,6 +628,7 @@ namespace XmlParsersAndUi {
 
         private void functionParserToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
+                FrontendUtils.SendUsageNotification("Package Gen started by " + loggedInUser);
                 PackageGenerator form = new PackageGenerator();
                 form.MdiParent = this;
                 form.Show();
@@ -615,6 +639,7 @@ namespace XmlParsersAndUi {
 
         private void packagingToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
+                FrontendUtils.SendUsageNotification("Package Gen started by " + loggedInUser);
                 PackageGenerator form = new PackageGenerator();
                 form.MdiParent = this;
                 form.Show();
@@ -632,6 +657,7 @@ namespace XmlParsersAndUi {
 
         private void macroConverterToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
+                FrontendUtils.SendUsageNotification("Macro Converter configuration started by " + loggedInUser);
                 MacroConverterConfForm form = new MacroConverterConfForm();
                 form.MdiParent = this;
                 form.Show();
@@ -642,6 +668,7 @@ namespace XmlParsersAndUi {
 
         private void macroToTextToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
+                FrontendUtils.SendUsageNotification("SDD generator started by " + loggedInUser);
                 SDDGeneratorForm form = new SDDGeneratorForm();
                 form.MdiParent = this;
                 form.Show();
@@ -652,6 +679,7 @@ namespace XmlParsersAndUi {
 
         private void sDDEventsToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
+                FrontendUtils.SendUsageNotification("Macro Converter configuration started by " + loggedInUser);
                 MacroConverterConfForm form = new MacroConverterConfForm();
                 form.MdiParent = this;
                 form.Show();
@@ -662,6 +690,7 @@ namespace XmlParsersAndUi {
 
         private void sDDGeneratorToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
+                FrontendUtils.SendUsageNotification("SDD generator started by " + loggedInUser);
                 SDDGeneratorForm form = new SDDGeneratorForm();
                 form.MdiParent = this;
                 form.Show();
@@ -681,6 +710,17 @@ namespace XmlParsersAndUi {
                 FindXpathForm form = new FindXpathForm();
                 form.MdiParent = this;
                 form.Show();
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message, ex);
+            }
+        }
+
+        private void newBulkMacrosToolStripMenuItem_Click(object sender, EventArgs e) {
+            try {
+                BulkMacroSplitterTreeForm form = new BulkMacroSplitterTreeForm();
+                form.MdiParent = this;
+                form.Show();
+
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }

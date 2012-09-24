@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("item1");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("item1");
             this.txtOutput = new System.Windows.Forms.TextBox();
             this.lvItems = new System.Windows.Forms.ListView();
             this.txtInputFile = new System.Windows.Forms.TextBox();
@@ -31,6 +31,7 @@
             this.tvOutput = new System.Windows.Forms.TreeView();
             this.btnPopulateTV = new System.Windows.Forms.Button();
             this.grpBoxAttr = new System.Windows.Forms.GroupBox();
+            this.button3 = new System.Windows.Forms.Button();
             this.txtEventIn = new System.Windows.Forms.TextBox();
             this.btnParseEvent = new System.Windows.Forms.Button();
             this.gbChildren = new System.Windows.Forms.GroupBox();
@@ -38,8 +39,10 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnAdd32Customs = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
+            this.btnUpdateConfig = new System.Windows.Forms.Button();
+            this.button5 = new System.Windows.Forms.Button();
+            this.txtConfi = new System.Windows.Forms.TextBox();
             this.grpBoxAttr.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,7 +64,7 @@
             this.lvItems.AllowDrop = true;
             this.lvItems.FullRowSelect = true;
             this.lvItems.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem6});
+            listViewItem1});
             this.lvItems.Location = new System.Drawing.Point(605, 262);
             this.lvItems.Name = "lvItems";
             this.lvItems.Size = new System.Drawing.Size(107, 288);
@@ -103,7 +106,7 @@
             // 
             // btnPopulateTV
             // 
-            this.btnPopulateTV.Location = new System.Drawing.Point(13, 38);
+            this.btnPopulateTV.Location = new System.Drawing.Point(15, 80);
             this.btnPopulateTV.Name = "btnPopulateTV";
             this.btnPopulateTV.Size = new System.Drawing.Size(75, 26);
             this.btnPopulateTV.TabIndex = 5;
@@ -114,12 +117,22 @@
             // grpBoxAttr
             // 
             this.grpBoxAttr.Controls.Add(this.button3);
-            this.grpBoxAttr.Location = new System.Drawing.Point(248, 70);
+            this.grpBoxAttr.Location = new System.Drawing.Point(250, 112);
             this.grpBoxAttr.Name = "grpBoxAttr";
             this.grpBoxAttr.Size = new System.Drawing.Size(276, 441);
             this.grpBoxAttr.TabIndex = 6;
             this.grpBoxAttr.TabStop = false;
             this.grpBoxAttr.Text = "Attributes";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(6, 19);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(130, 23);
+            this.button3.TabIndex = 13;
+            this.button3.Text = "Extract Addops";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // txtEventIn
             // 
@@ -153,7 +166,7 @@
             this.cmbMain.FormattingEnabled = true;
             this.cmbMain.Items.AddRange(new object[] {
             "AvailableTests"});
-            this.cmbMain.Location = new System.Drawing.Point(338, 41);
+            this.cmbMain.Location = new System.Drawing.Point(340, 83);
             this.cmbMain.Name = "cmbMain";
             this.cmbMain.Size = new System.Drawing.Size(121, 21);
             this.cmbMain.TabIndex = 0;
@@ -161,7 +174,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(198, 41);
+            this.button1.Location = new System.Drawing.Point(200, 83);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(119, 23);
             this.button1.TabIndex = 10;
@@ -171,7 +184,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(94, 38);
+            this.button2.Location = new System.Drawing.Point(96, 80);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 24);
             this.button2.TabIndex = 11;
@@ -189,19 +202,9 @@
             this.btnAdd32Customs.UseVisualStyleBackColor = true;
             this.btnAdd32Customs.Click += new System.EventHandler(this.btnAdd32Customs_Click);
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(6, 19);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(130, 23);
-            this.button3.TabIndex = 13;
-            this.button3.Text = "Extract Addops";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(12, 89);
+            this.button4.Location = new System.Drawing.Point(14, 131);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(75, 23);
             this.button4.TabIndex = 13;
@@ -209,11 +212,42 @@
             this.button4.UseVisualStyleBackColor = true;
             this.button4.Click += new System.EventHandler(this.button3_Click);
             // 
+            // btnUpdateConfig
+            // 
+            this.btnUpdateConfig.Location = new System.Drawing.Point(96, 131);
+            this.btnUpdateConfig.Name = "btnUpdateConfig";
+            this.btnUpdateConfig.Size = new System.Drawing.Size(119, 57);
+            this.btnUpdateConfig.TabIndex = 14;
+            this.btnUpdateConfig.Text = "Update Config";
+            this.btnUpdateConfig.UseVisualStyleBackColor = true;
+            this.btnUpdateConfig.Click += new System.EventHandler(this.btnUpdateConfig_Click);
+            // 
+            // button5
+            // 
+            this.button5.Location = new System.Drawing.Point(96, 110);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(119, 23);
+            this.button5.TabIndex = 15;
+            this.button5.Text = "UpdateConfig";
+            this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
+            // 
+            // txtConfi
+            // 
+            this.txtConfi.Location = new System.Drawing.Point(15, 38);
+            this.txtConfi.Name = "txtConfi";
+            this.txtConfi.Size = new System.Drawing.Size(334, 20);
+            this.txtConfi.TabIndex = 16;
+            this.txtConfi.Text = "C:\\Documents and Settings\\mkabbani\\Desktop\\test.txt";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(805, 673);
+            this.Controls.Add(this.txtConfi);
+            this.Controls.Add(this.button5);
+            this.Controls.Add(this.btnUpdateConfig);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.btnAdd32Customs);
             this.Controls.Add(this.button2);
@@ -256,6 +290,9 @@
         private System.Windows.Forms.Button btnAdd32Customs;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Button btnUpdateConfig;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.TextBox txtConfi;
     }
 }
 

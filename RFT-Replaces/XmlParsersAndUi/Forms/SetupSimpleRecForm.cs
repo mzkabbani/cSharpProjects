@@ -10,6 +10,7 @@ using System.IO;
 using Automation.Common.Utils;
 using Automation.Common;
 using Automation.Backend;
+using Automation.Common.Classes.Monitoring;
 
 namespace XmlParsersAndUi {
     public partial class SetupSimpleRecForm : Form {
@@ -126,6 +127,14 @@ namespace XmlParsersAndUi {
                 LoadSimpleOptions();
                 btnAdd.Enabled = true;
                 btnSave.Enabled = false;
+
+                try {
+                    if (!string.IsNullOrEmpty(MonitorObject.username)) {
+                        MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
+                    }
+                } catch (Exception) {
+
+                }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }

@@ -91,8 +91,29 @@
     <Compile Include="Classes\CustomTreeNode.cs" />
     <Compile Include="Classes\EnvComparisonFilter.cs" />
     <Compile Include="Classes\FormInfo.cs" />
+    <Compile Include="Classes\Monitoring\MonitorObject.cs" />
     <Compile Include="Classes\ReplacementEvent.cs" />
     <Compile Include="Classes\SimpleRecommendationObject.cs" />
+    <Compile Include="Controls\EditorTextDir.cs" />
+    <Compile Include="Controls\EditorTextDirUI.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Controls\EventArgs.cs" />
+    <Compile Include="Controls\MWCheckBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MWCommon.cs" />
+    <Compile Include="Controls\MWEnums.cs" />
+    <Compile Include="Controls\MWLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MWScrollLabel.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\MWTreeNodeWrapper.cs" />
+    <Compile Include="Controls\MWTreeView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +128,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Controls\EditorTextDirUI.resx">
+      <DependentUpon>EditorTextDirUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MWCheckBox.resx">
+      <DependentUpon>MWCheckBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MWLabel.resx">
+      <DependentUpon>MWLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MWScrollLabel.resx">
+      <DependentUpon>MWScrollLabel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Controls\MWTreeView.resx">
+      <DependentUpon>MWTreeView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\ExceptionForm.resx">
       <DependentUpon>ExceptionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -162,6 +198,10 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Controls\info.txt" />
+    <Content Include="Controls\MWControls_Changelog.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

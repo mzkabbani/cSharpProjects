@@ -14,10 +14,11 @@ using System.IO;
 using Automation.Common.Utils;
 using Automation.Common;
 using Automation.Backend;
+using Automation.Common.Classes.Monitoring;
 
 namespace XmlParsersAndUi.Forms {
     public partial class SDDGeneratorForm : Form {
-        
+
         public SDDGeneratorForm() {
             InitializeComponent();
         }
@@ -63,12 +64,12 @@ namespace XmlParsersAndUi.Forms {
 
                 for (int i = 0; i < replacedEvents.Count; i++) {
                     if (replacedEvents[i].Contains("EventID")) {
-                    tvOutputSteps.Nodes.Add(i.ToString(),"Event ID "+regex.Match(replacedEvents[i]).Groups[1].Value + " Skipped!",0);
-              
+                        tvOutputSteps.Nodes.Add(i.ToString(), "Event ID " + regex.Match(replacedEvents[i]).Groups[1].Value + " Skipped!", 0);
+
                     } else {
-                       tvOutputSteps.Nodes.Add(i.ToString(),replacedEvents[i],1);
-                       
-                    }                    
+                        tvOutputSteps.Nodes.Add(i.ToString(), replacedEvents[i], 1);
+
+                    }
                     dgvOutputResults.Rows.Add(new object[] { i + 1, replacedEvents[i] });
                 }
                 btnStartOperation.Enabled = true;
@@ -116,7 +117,7 @@ namespace XmlParsersAndUi.Forms {
             XDocument xdoc = XDocument.Parse(fileRead);
 
             IEnumerable<XNode> nodes = xdoc.Descendants("Events").Nodes();
-            Regex regex = new Regex("&lt;!--(.*?)--&gt");  
+            Regex regex = new Regex("&lt;!--(.*?)--&gt");
             foreach (XNode node in nodes) {
                 if (node.NodeType != XmlNodeType.Comment) {
                     if (node.ToString().Contains("EventID")) {
@@ -126,7 +127,7 @@ namespace XmlParsersAndUi.Forms {
                         foreach (Match match in collection) {
                             textGenerated.Add(match.Groups[1].Value);
                         }
-                    } 
+                    }
                 }
             }
             return textGenerated;
@@ -160,7 +161,7 @@ namespace XmlParsersAndUi.Forms {
                 try {
                     foundNode.ReplaceWith("<!-- " + GetReplacementValueFromEvent(replacementEvent, foundNode).Trim() + " -->");
 
-                } catch (Exception ex) {                    
+                } catch (Exception ex) {
                     // replacement failed
                 }
             }
@@ -182,16 +183,17 @@ namespace XmlParsersAndUi.Forms {
                     }
 
                 } else {
-                    string attrValue = element.DescendantsAndSelf(replaceableValues[i].nodeName).Attributes(replaceableValues[i].attrName).ElementAt(0).Value.Trim();
-                    if (completedEvent.Contains("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrName + "}")) {
-                        completedEvent = completedEvent.Replace("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrName + "}", attrValue);
-
-                    } else {
-                        completedEvent = completedEvent.Replace("{" + replaceableValues[i].attrName + "}", attrValue);
-
+                    if (element.DescendantsAndSelf(replaceableValues[i].nodeName).Attributes(replaceableValues[i].attrName).Count() >= replaceableValues[i].index) {
+                        string attrValue = element.DescendantsAndSelf(replaceableValues[i].nodeName).Attributes(replaceableValues[i].attrName).ElementAt(replaceableValues[i].index).Value.Trim();
+                        if (completedEvent.Contains("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrName + "}")) {
+                            completedEvent = completedEvent.Replace("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrName + "}", attrValue);
+                        } else if (completedEvent.Contains("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrNameWithAt + "}")) {
+                            completedEvent = completedEvent.Replace("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrNameWithAt + "}", attrValue);
+                        } else if (completedEvent.Contains("{" + replaceableValues[i].attrName + "}")) {
+                            completedEvent = completedEvent.Replace("{" + replaceableValues[i].attrName + "}", attrValue);
+                        }
                     }
                 }
-
             }
             return completedEvent;
         }
@@ -216,6 +218,11 @@ namespace XmlParsersAndUi.Forms {
                 if (caughtParameters[i].Contains(':')) {
                     couple.nodeName = caughtParameters[i].Split(new char[] { ':' })[0];
                     couple.attrName = caughtParameters[i].Split(new char[] { ':' })[1];
+                    if (couple.attrName.Split(new char[] { '@' }).Length > 1) {
+                        couple.attrNameWithAt = couple.attrName;
+                        couple.index = Convert.ToInt32(couple.attrName.Split(new char[] { '@' })[1]);
+                        couple.attrName = couple.attrName.Split(new char[] { '@' })[0];
+                    }
                     couples.Add(couple);
                 } else {
                     couple.nodeName = nodeName;
@@ -429,7 +436,7 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private void bwExportExcel_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
-            FrontendUtils.ShowInformation("Export Completed",false);
+            FrontendUtils.ShowInformation("Export Completed", false);
             btnExport.Enabled = true;
         }
 
@@ -443,6 +450,16 @@ namespace XmlParsersAndUi.Forms {
                 btnStartOperation.Enabled = true;
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
+            }
+        }
+
+        private void SDDGeneratorForm_Load(object sender, EventArgs e) {
+            try {
+                if (!string.IsNullOrEmpty(MonitorObject.username)) {
+                    MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
+                }
+            } catch (Exception) {
+
             }
         }
 

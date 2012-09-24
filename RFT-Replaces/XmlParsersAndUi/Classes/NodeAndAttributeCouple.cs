@@ -7,5 +7,7 @@ namespace XmlParsersAndUi.Classes {
     public class NodeAndAttributeCouple {
         public string nodeName;
         public string attrName;
+        public string attrNameWithAt;
+        public int index = 0;
     }
 }

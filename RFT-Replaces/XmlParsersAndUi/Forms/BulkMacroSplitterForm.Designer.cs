@@ -44,6 +44,7 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.txtDirectory = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.txtShowBuildFile = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -67,7 +68,7 @@
             // 
             // btnShowOutput
             // 
-            this.btnShowOutput.Location = new System.Drawing.Point(164, 464);
+            this.btnShowOutput.Location = new System.Drawing.Point(82, 464);
             this.btnShowOutput.Name = "btnShowOutput";
             this.btnShowOutput.Size = new System.Drawing.Size(157, 23);
             this.btnShowOutput.TabIndex = 3;
@@ -238,11 +239,21 @@
             this.label3.TabIndex = 19;
             this.label3.Text = "Input File:";
             // 
+            // txtShowBuildFile
+            // 
+            this.txtShowBuildFile.Location = new System.Drawing.Point(245, 464);
+            this.txtShowBuildFile.Name = "txtShowBuildFile";
+            this.txtShowBuildFile.Size = new System.Drawing.Size(157, 23);
+            this.txtShowBuildFile.TabIndex = 4;
+            this.txtShowBuildFile.Text = "Show Build";
+            this.txtShowBuildFile.UseVisualStyleBackColor = true;
+            // 
             // BulkMacroSplitterForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(484, 491);
+            this.Controls.Add(this.txtShowBuildFile);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnShowOutput);
@@ -282,5 +293,6 @@
         private System.Windows.Forms.CheckBox chkFsEvents;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
         private System.Windows.Forms.ToolStripMenuItem renameStepToolStripMenuItem;
+        private System.Windows.Forms.Button txtShowBuildFile;
     }
 }

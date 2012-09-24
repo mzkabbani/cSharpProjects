@@ -29,6 +29,11 @@ namespace XmlParsersAndUi {
         string oldEventsFile = string.Empty;
         bool check = true;
         string fsEventsFile = string.Empty;
+        string buildFileText = string.Empty;
+        string buildFileTextGrouped = string.Empty;
+         string buildMacroStep = "<automation.macroplayback eventsfile=\"${datastore}.macros.${OutputFolderName}.eventsfiles.xml\""+
+                                " kernelsteptitle=\"{TestTitle}\" createstep=\"false\" />";
+
 
         #endregion
 
@@ -133,6 +138,13 @@ namespace XmlParsersAndUi {
             }
 
 
+            eventsFile = WriteEventsFile(eventsFile);
+            buildFileText = buildMacroStep.Replace("${OutputFolderName}", Path.GetFileName(txtOutputDir.Text));
+          
+
+        }
+
+        private string WriteEventsFile(string eventsFile) {
             StreamWriter eventsfilesWriter = new StreamWriter(txtOutputDir.Text + @"\eventsfiles.xml");
             try {
                 eventsFile = eventsFile + "</Steps>";
@@ -143,6 +155,7 @@ namespace XmlParsersAndUi {
                     eventsfilesWriter.Close();
                 }
             }
+            return eventsFile;
         }
 
         private string PrepareFsEventsFile(List<checkboxItems> selectedItems, string oldEventsFile) {
@@ -185,8 +198,10 @@ namespace XmlParsersAndUi {
             }
         }
 
-        private void CreateBuildXmlFile(string parentTitle, string pathOfEventsFile) {
+        private void CreateBuildXmlFile(string parentTitle, string outputFolderName) {
             //writer.Write("<project default=\"allSequence\"><target name=\"allSequence\"><automation.macroplayback eventsfile=\"${datastore}." + pathOfEventsFile + " kernelsteptitle=\"" + parentTitle + "\" createstep=\"false\" />  </target></project>");
+
+            buildFileTextGrouped = buildFileTextGrouped + "\r\n\r\n" + buildMacroStep.Replace("${OutputFolderName}", outputFolderName).Replace("{TestTitle}", parentTitle);
 
         }
 
@@ -310,13 +325,12 @@ namespace XmlParsersAndUi {
                         chkLstAllStepEvents.Items.Remove(selectedItems[i]);
                     }
                     int startIndex = Convert.ToInt32(((NumericUpDown)form.Controls["nudStartIndex"]).Value);
-                    GenerateSplitFile(selectedItems, form.sessionKey, form.Controls["txtTitle"].Text + "-" + form.eventsGroupNameAndID.OperationGeneratedID, startIndex);
-                    // if(chkFsEvents.Checked){
-                    //     fsEventsFile = PrepareFsEventsFile(selectedItems,oldEventsFile);
-                    //      oldEventsFile = fsEventsFile;
-                    //   }
-                    CreateBuildXmlFile(form.Controls["txtTitle"].Text, form.Controls["txtTitle"].Text + @"\eventsfiles.xml");
-                    //groupNumber++;
+                    string outputFolderName = form.Controls["txtTitle"].Text + "-" + form.eventsGroupNameAndID.OperationGeneratedID;
+                    GenerateSplitFile(selectedItems, form.sessionKey, outputFolderName, startIndex);
+
+
+                    CreateBuildXmlFile(form.Controls["txtTitle"].Text, outputFolderName );
+                    
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -379,6 +393,8 @@ namespace XmlParsersAndUi {
             //    Random random = new Random(DateTime.Now.Millisecond);
             //  txtSessionKey.Text = random.Next(8999).ToString();
         }
+
+       
 
         private void btnSplitFile_Click(object sender, EventArgs e) {
             try {

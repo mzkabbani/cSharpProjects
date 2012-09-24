@@ -17,6 +17,7 @@ using XmlParsersAndUi.Classes;
 using Automation.Common.Utils;
 using Automation.Common;
 using Automation.Backend;
+using Automation.Common.Classes.Monitoring;
 
 namespace XmlParsersAndUi {
     public partial class SetupAdvancedRecForm : Form {
@@ -431,7 +432,13 @@ namespace XmlParsersAndUi {
 
         private void SetupAdvancedRecForm_Load(object sender, EventArgs e) {
             try {
+                try {
+                    if (!string.IsNullOrEmpty(MonitorObject.username)) {
+                        MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
+                    }
+                } catch (Exception) {
 
+                }
                 LoadAvailableARtoList();
                 SetAllCombos();
                 BindCombos();

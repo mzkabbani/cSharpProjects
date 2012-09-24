@@ -10,6 +10,7 @@ using System.IO;
 using FtpLib;
 using System.Text.RegularExpressions;
 using Automation.Common.Utils;
+using Automation.Common.Classes.Monitoring;
 
 namespace XmlParsersAndUi.Forms {
 
@@ -136,6 +137,16 @@ namespace XmlParsersAndUi.Forms {
                 txtHost.Text = remoteLocation;
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
+            }
+        }
+
+        private void FTPDownloaderForm_Load(object sender, EventArgs e) {
+            try {
+                if (!string.IsNullOrEmpty(MonitorObject.username)) {
+                    MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
+                }
+            } catch (Exception) {
+                
             }
         }
     }

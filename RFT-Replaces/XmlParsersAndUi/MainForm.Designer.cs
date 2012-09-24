@@ -53,26 +53,20 @@
             this.testingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.form1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.advancedRecToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testExceptionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userStatusToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.nicknameSpecificToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.form2ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.remoteServerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.selectFolderNameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.convertToEnumToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.showDetailsFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.testReplacementFOrmToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.jobPusherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.envComparisonToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.functionParserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tabsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.macroConverterToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.macroToTextToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripMenuItem4 = new System.Windows.Forms.ToolStripMenuItem();
             this.mulToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.findXpathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -88,7 +82,6 @@
             this.tsConnectedTo = new System.Windows.Forms.ToolStripStatusLabel();
             this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.findXpathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip.SuspendLayout();
             this.toolStrip.SuspendLayout();
             this.statusStrip.SuspendLayout();
@@ -306,25 +299,18 @@
             this.testingToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.form1ToolStripMenuItem,
             this.toolStripMenuItem1,
-            this.advancedRecToolStripMenuItem,
             this.testExceptionToolStripMenuItem,
             this.userStatusToolStripMenuItem,
-            this.toolStripMenuItem2,
             this.nicknameSpecificToolStripMenuItem,
             this.form2ToolStripMenuItem1,
-            this.toolStripMenuItem3,
             this.remoteServerToolStripMenuItem,
             this.selectFolderNameToolStripMenuItem,
             this.convertToEnumToolStripMenuItem,
             this.showDetailsFormToolStripMenuItem,
             this.testReplacementFOrmToolStripMenuItem,
             this.jobPusherToolStripMenuItem,
-            this.envComparisonToolStripMenuItem,
             this.functionParserToolStripMenuItem,
             this.tabsToolStripMenuItem,
-            this.macroConverterToolStripMenuItem,
-            this.macroToTextToolStripMenuItem,
-            this.toolStripMenuItem4,
             this.mulToolStripMenuItem,
             this.findXpathToolStripMenuItem});
             this.testingToolStripMenuItem.Name = "testingToolStripMenuItem";
@@ -346,13 +332,6 @@
             this.toolStripMenuItem1.Text = "Database Viewer";
             this.toolStripMenuItem1.Click += new System.EventHandler(this.toolStripMenuItem1_Click);
             // 
-            // advancedRecToolStripMenuItem
-            // 
-            this.advancedRecToolStripMenuItem.Name = "advancedRecToolStripMenuItem";
-            this.advancedRecToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.advancedRecToolStripMenuItem.Text = "Advanced Rec";
-            this.advancedRecToolStripMenuItem.Click += new System.EventHandler(this.advancedRecToolStripMenuItem_Click);
-            // 
             // testExceptionToolStripMenuItem
             // 
             this.testExceptionToolStripMenuItem.Name = "testExceptionToolStripMenuItem";
@@ -367,11 +346,6 @@
             this.userStatusToolStripMenuItem.Text = "UserStatus";
             this.userStatusToolStripMenuItem.Click += new System.EventHandler(this.userStatusToolStripMenuItem_Click);
             // 
-            // toolStripMenuItem2
-            // 
-            this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(194, 22);
-            // 
             // nicknameSpecificToolStripMenuItem
             // 
             this.nicknameSpecificToolStripMenuItem.Name = "nicknameSpecificToolStripMenuItem";
@@ -385,11 +359,6 @@
             this.form2ToolStripMenuItem1.Size = new System.Drawing.Size(194, 22);
             this.form2ToolStripMenuItem1.Text = "Form2";
             this.form2ToolStripMenuItem1.Click += new System.EventHandler(this.form2ToolStripMenuItem1_Click);
-            // 
-            // toolStripMenuItem3
-            // 
-            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
-            this.toolStripMenuItem3.Size = new System.Drawing.Size(194, 22);
             // 
             // remoteServerToolStripMenuItem
             // 
@@ -433,13 +402,6 @@
             this.jobPusherToolStripMenuItem.Text = "Job Pusher";
             this.jobPusherToolStripMenuItem.Click += new System.EventHandler(this.jobPusherToolStripMenuItem_Click);
             // 
-            // envComparisonToolStripMenuItem
-            // 
-            this.envComparisonToolStripMenuItem.Name = "envComparisonToolStripMenuItem";
-            this.envComparisonToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.envComparisonToolStripMenuItem.Text = "Env Comparison";
-            this.envComparisonToolStripMenuItem.Click += new System.EventHandler(this.envComparisonToolStripMenuItem_Click);
-            // 
             // functionParserToolStripMenuItem
             // 
             this.functionParserToolStripMenuItem.Name = "functionParserToolStripMenuItem";
@@ -454,31 +416,19 @@
             this.tabsToolStripMenuItem.Text = "Tabs";
             this.tabsToolStripMenuItem.Click += new System.EventHandler(this.tabsToolStripMenuItem_Click);
             // 
-            // macroConverterToolStripMenuItem
-            // 
-            this.macroConverterToolStripMenuItem.Name = "macroConverterToolStripMenuItem";
-            this.macroConverterToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.macroConverterToolStripMenuItem.Text = "MacroConverter";
-            this.macroConverterToolStripMenuItem.Click += new System.EventHandler(this.macroConverterToolStripMenuItem_Click);
-            // 
-            // macroToTextToolStripMenuItem
-            // 
-            this.macroToTextToolStripMenuItem.Name = "macroToTextToolStripMenuItem";
-            this.macroToTextToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.macroToTextToolStripMenuItem.Text = "MacroToText";
-            this.macroToTextToolStripMenuItem.Click += new System.EventHandler(this.macroToTextToolStripMenuItem_Click);
-            // 
-            // toolStripMenuItem4
-            // 
-            this.toolStripMenuItem4.Name = "toolStripMenuItem4";
-            this.toolStripMenuItem4.Size = new System.Drawing.Size(194, 22);
-            // 
             // mulToolStripMenuItem
             // 
             this.mulToolStripMenuItem.Name = "mulToolStripMenuItem";
             this.mulToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
             this.mulToolStripMenuItem.Text = "Mul";
             this.mulToolStripMenuItem.Click += new System.EventHandler(this.mulToolStripMenuItem_Click);
+            // 
+            // findXpathToolStripMenuItem
+            // 
+            this.findXpathToolStripMenuItem.Name = "findXpathToolStripMenuItem";
+            this.findXpathToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+            this.findXpathToolStripMenuItem.Text = "Find Xpath";
+            this.findXpathToolStripMenuItem.Click += new System.EventHandler(this.findXpathToolStripMenuItem_Click);
             // 
             // toolStrip
             // 
@@ -607,13 +557,6 @@
             this.pictureBox1.TabStop = false;
             this.pictureBox1.Visible = false;
             // 
-            // findXpathToolStripMenuItem
-            // 
-            this.findXpathToolStripMenuItem.Name = "findXpathToolStripMenuItem";
-            this.findXpathToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-            this.findXpathToolStripMenuItem.Text = "Find Xpath";
-            this.findXpathToolStripMenuItem.Click += new System.EventHandler(this.findXpathToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -677,18 +620,15 @@
         private System.Windows.Forms.ToolStripMenuItem helpersToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bulkCustomsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem advancedRecToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem form1ToolStripMenuItem;
         private System.Windows.Forms.ToolStripStatusLabel tsAppStatus;
         private System.Windows.Forms.ToolStripMenuItem rFTUpdaterToolStripMenuItem;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.ToolStripMenuItem testExceptionToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userStatusToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem2;
         private System.Windows.Forms.ToolStripMenuItem nicknameSpecificToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem form2ToolStripMenuItem1;
         private System.Windows.Forms.ToolStripStatusLabel tsConnectedTo;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem remoteServerToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem selectFolderNameToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem secondLevelCleanupToolStripMenuItem;
@@ -696,7 +636,6 @@
         private System.Windows.Forms.ToolStripMenuItem showDetailsFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem testReplacementFOrmToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem jobPusherToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem envComparisonToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem setupToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem simpleRecommendationsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem advancedRecommendationsToolStripMenuItem;
@@ -705,11 +644,8 @@
         private System.Windows.Forms.ToolStripMenuItem functionParserToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem packagingToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tabsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem macroConverterToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem macroToTextToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sDDGeneratorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sDDEventsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem4;
         private System.Windows.Forms.ToolStripMenuItem mulToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem findXpathToolStripMenuItem;
     }

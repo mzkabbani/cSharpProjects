@@ -15,6 +15,7 @@ using System.Diagnostics;
 using Automation.Common.Utils;
 using Automation.Common;
 using Automation.Backend;
+using Automation.Common.Classes.Monitoring;
 
 namespace XmlParsersAndUi {
     public partial class CleanupForm : Form {
@@ -337,6 +338,10 @@ namespace XmlParsersAndUi {
 
         private void CleanupForm_Load(object sender, EventArgs e) {
             try {
+                if (!string.IsNullOrEmpty(MonitorObject.username)) {
+                    MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
+
+                }
                 // checkout the simple recommendatiosn and load them into the ui
                 CLEANUPFORM_EVENTS_SEARCH_PATTERN = Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.CleanUpEventsSearchPattern) as string;
                 txtInputDir.Text = inputDir;

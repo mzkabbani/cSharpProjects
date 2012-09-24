@@ -333,17 +333,21 @@ namespace Automation.Common.Utils {
         }
 
         public static void SendEmail(string sender, string recipient, string subject, string body) {
-            MailAddress mailfrom = new MailAddress("autoengine@murex.com", sender);
-            MailAddress mailto = new MailAddress(recipient);
-            MailMessage newmsg = new MailMessage(mailfrom, mailto);
-            newmsg.Subject = subject;
-            newmsg.Body = body;
-            //Attachment att = new Attachment("C:\\...file path");
-            //newmsg.Attachments.Add(att);
-            SmtpClient smtp = new SmtpClient("Barid.lb.murex.com");
-            smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new NetworkCredential();
-            smtp.Send(newmsg);
+            try {
+                MailAddress mailfrom = new MailAddress("autoengine@murex.com", sender);
+                MailAddress mailto = new MailAddress(recipient);
+                MailMessage newmsg = new MailMessage(mailfrom, mailto);
+                newmsg.Subject = subject;
+                newmsg.Body = body;
+                //Attachment att = new Attachment("C:\\...file path");
+                //newmsg.Attachments.Add(att);
+                SmtpClient smtp = new SmtpClient("Barid.lb.murex.com");
+                smtp.UseDefaultCredentials = false;
+                smtp.Credentials = new NetworkCredential();
+                smtp.Send(newmsg);
+            } catch (Exception ex) {
+                
+            }
         }
 
         public static void SendUsageNotification(string Title) {

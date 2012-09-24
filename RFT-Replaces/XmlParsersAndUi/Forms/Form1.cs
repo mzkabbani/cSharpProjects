@@ -544,6 +544,120 @@ namespace XmlParsersAndUi {
             }
         }
 
+        private void btnUpdateConfig_Click(object sender, EventArgs e) {
+            try 
+            {
+                string configTPKS = FrontendUtils.ReadFile(txtConfi.Text);
+
+                string[] split = configTPKS.Split(new string[] { "\r\n" },StringSplitOptions.RemoveEmptyEntries);
+
+                Dictionary<string, List<string>> tpkNickname = new Dictionary<string, List<string>>();
+                
+                for (int i = 0; i < split.Length; i++) {
+                    if (tpkNickname.Count > 0) {
+                        if (tpkNickname.Keys.Contains(split[i].Split(new char[] { '\t' })[0])) {
+                            tpkNickname[split[i].Split(new char[] { '\t' })[0]].Add(split[i].Split(new char[] { '\t' })[1]);
+                        } else {
+                            List<string> values = new List<string>() { split[i].Split(new char[] { '\t' })[1] };
+                            tpkNickname.Add(split[i].Split(new char[] { '\t' })[0], values);
+
+                        }
+                    } else {
+
+                        List<string> values = new List<string>() { split[i].Split(new char[] { '\t' })[1] };
+                        tpkNickname.Add(split[i].Split(new char[] { '\t' })[0], values);
+
+                    }
+                 }
+
+
+                string[] configFiles =  Directory.GetFiles(txtInputFile.Text, "config.xml",SearchOption.AllDirectories);
+
+                for (int i = 0; i < configFiles.Length; i++) {
+                    string tpkNumber = "";
+                    XDocument xdoc = new XDocument();
+                    try {
+                       tpkNumber = Directory.GetParent(configFiles[i]).Name;
+
+                        xdoc = XDocument.Parse(FrontendUtils.ReadFile(configFiles[i]));
+                    } catch (Exception ex) {
+                        FrontendUtils.ShowError(ex.Message, ex);
+                    }
+
+
+                    if (tpkNickname.Keys.Contains(tpkNumber)) {
+                        for (int j = 0; j < tpkNickname[tpkNumber].Count; j++) {
+                            var item = from c1 in xdoc.Descendants("AvailableTests").Descendants("AvailableTest")
+                                       where string.Equals(c1.Descendants("NickName").ElementAt(0).Value, tpkNickname[tpkNumber][j])
+                                       select new { elements = c1.DescendantsAndSelf() };
+
+                            //from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
+                            //         where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
+                            //         select new {
+                            //             elements = c1.DescendantNodesAndSelf()
+                            //         };
+
+
+                            try {
+                                if (item.ElementAt(0).elements.ElementAt(0).Nodes().Count() > 0) {
+
+                                    if (item.ElementAt(0).elements.ElementAt(0).Element("Customize") != null) {
+                                        item.ElementAt(0).elements.ElementAt(0).Element("Customize").Add(
+                                                                new XElement("MxGen"));
+                                        item.ElementAt(0).elements.ElementAt(0).Element("Customize").Element("MxGen").Add(
+                                        new XElement("FullRightsUser", "USER_FULLRIGHTS"));
+                                    } else {
+                                        item.ElementAt(0).elements.ElementAt(0).Add(new XElement("Customize"));
+                                        item.ElementAt(0).elements.ElementAt(0).Element("Customize").Add(
+                                                                   new XElement("MxGen"));
+                                        item.ElementAt(0).elements.ElementAt(0).Element("Customize").Element("MxGen").Add(
+                                        new XElement("FullRightsUser", "USER_FULLRIGHTS"));
+                                    }
+
+                                }
+                            } catch (Exception ex) {
+                                FrontendUtils.ShowError(ex.Message, ex);
+                            }
+
+                        }
+
+                        xdoc.Save(configFiles[i]); 
+                    }
+                
+                }
+
+
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message, ex);
+            }
+        }
+
+        private void button5_Click(object sender, EventArgs e) {
+            try {
+
+                string[] configFiles = Directory.GetFiles(txtInputFile.Text, "config.xml");
+
+                for (int i = 0; i < configFiles.Length; i++) {
+                    XDocument xdoc = XDocument.Parse(FrontendUtils.ReadFile(configFiles[i]));
+
+                    xdoc.Descendants("AvailableTests").Descendants("AvailableTest");
+                    var item = from c1 in xdoc.Descendants("AvailableTests").Descendants("AvailableTest")
+                               where string.Equals(c1.Descendants("NickName").ElementAt(0).Value, "DEFAULT_CONFIG")
+                               select new { elements = c1.DescendantsAndSelf() };
+
+                    //from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
+                    //         where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
+                    //         select new {
+                    //             elements = c1.DescendantNodesAndSelf()
+                    //         };
+                }
+
+
+            } catch (Exception ex) {
+
+            }
+        }
+
 
 
     }

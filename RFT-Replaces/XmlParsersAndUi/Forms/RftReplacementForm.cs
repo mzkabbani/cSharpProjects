@@ -13,6 +13,7 @@ using System.Security.AccessControl;
 using System.Threading;
 using System.Text.RegularExpressions;
 using Automation.Common.Utils;
+using Automation.Common.Classes.Monitoring;
 
 namespace XmlParsersAndUi {
     public partial class RftReplacementForm : Form {
@@ -240,6 +241,9 @@ namespace XmlParsersAndUi {
         private void Form1_Load(object sender, EventArgs e) {
             if (!Directory.Exists(downloadDir)) {
                 Directory.CreateDirectory(downloadDir);
+            }
+            if (!string.IsNullOrEmpty(MonitorObject.username)) {
+                MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
             }
         }
 

@@ -18,6 +18,7 @@ using System.Collections;
 using Automation.Common.Utils;
 using Automation.Common;
 using Automation.Backend;
+using Automation.Common.Classes.Monitoring;
 
 namespace XmlParsersAndUi.Forms {
     public partial class SecondLevelCleanupForm : Form {
@@ -389,13 +390,13 @@ namespace XmlParsersAndUi.Forms {
             XElement element = XElement.Parse(xNode.ToString());
             for (int i = 0; i < replaceableValues.Count; i++) {
                 if (string.Equals(replaceableValues[i].attrName, "TextValue", StringComparison.InvariantCultureIgnoreCase)) {
-                  string textValue =   element.DescendantsAndSelf(replaceableValues[i].nodeName).ElementAt(0).Value;
-                  completedEvent = completedEvent.Replace("{TextValue}", textValue);       
+                    string textValue = element.DescendantsAndSelf(replaceableValues[i].nodeName).ElementAt(0).Value;
+                    completedEvent = completedEvent.Replace("{TextValue}", textValue);
                 } else {
                     string attrValue = element.DescendantsAndSelf(replaceableValues[i].nodeName).Attributes(replaceableValues[i].attrName).ElementAt(0).Value;
                     completedEvent = completedEvent.Replace("{" + replaceableValues[i].attrName + "}", attrValue);
                 }
-                
+
             }
             return completedEvent;
         }
@@ -954,7 +955,7 @@ namespace XmlParsersAndUi.Forms {
                 gbAffectedFiles.Visible = true;
                 fillTree(changedFiles);
                 tvAffectedFiles.ExpandAll();
-                FrontendUtils.ShowInformation("Replacement done!",false);
+                FrontendUtils.ShowInformation("Replacement done!", false);
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
@@ -977,7 +978,9 @@ namespace XmlParsersAndUi.Forms {
         private void SecondLevelCleanupForm_Load(object sender, EventArgs e) {
             try {
                 CLEANUPFORM_EVENTS_SEARCH_PATTERN = Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.CleanUpEventsSearchPattern) as string;
-
+                if (!string.IsNullOrEmpty(MonitorObject.username)) {
+                    MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
+                }
 
                 BACKUP_DIRECTORY = Path.GetTempPath() + @"\Backup-" + DateTime.Now.Ticks;
                 if (!Directory.Exists(BACKUP_DIRECTORY)) {

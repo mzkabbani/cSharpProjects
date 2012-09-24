@@ -100,6 +100,7 @@
             this.undoLastDeleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bgDoServerWork = new System.ComponentModel.BackgroundWorker();
             this.bgwExportToExcel = new System.ComponentModel.BackgroundWorker();
+            this.btnStartFromFile = new System.Windows.Forms.Button();
             this.tcComparisonTabs.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -455,6 +456,7 @@
             // 
             this.gbConfiguration.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
                         | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbConfiguration.Controls.Add(this.btnStartFromFile);
             this.gbConfiguration.Controls.Add(this.btnValidateVersion);
             this.gbConfiguration.Controls.Add(this.groupBox7);
             this.gbConfiguration.Controls.Add(this.groupBox6);
@@ -912,6 +914,17 @@
             this.bgwExportToExcel.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bgwExportToExcel_DoWork);
             this.bgwExportToExcel.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bgwExportToExcel_RunWorkerCompleted);
             // 
+            // btnStartFromFile
+            // 
+            this.btnStartFromFile.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnStartFromFile.Location = new System.Drawing.Point(585, 185);
+            this.btnStartFromFile.Name = "btnStartFromFile";
+            this.btnStartFromFile.Size = new System.Drawing.Size(109, 23);
+            this.btnStartFromFile.TabIndex = 12;
+            this.btnStartFromFile.Text = "Start";
+            this.btnStartFromFile.UseVisualStyleBackColor = true;
+            this.btnStartFromFile.Click += new System.EventHandler(this.btnStartFromFile_Click);
+            // 
             // EnvironmentComparisonForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1024,6 +1037,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn FileModifyDate;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.Button btnStartFromFile;
 
     }
 }

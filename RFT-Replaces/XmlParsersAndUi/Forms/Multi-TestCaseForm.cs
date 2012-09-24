@@ -169,7 +169,7 @@ namespace XmlParsersAndUi.Forms {
                     }
                     buildText = buildText +
                         "<automation.macroplayback eventsfile=\""+
-                        "${datastore}.macros." + testCaseFolderName + "." + (j + 1) + "-" + regex.Match(parts[j]).Groups[1].Value.Replace(" ", "_") + ".eventsfiles.xml\"" +
+                        "${datastore}.macros." + testCaseFolderName.Replace(" ","_") + "." + (j + 1) + "-" + regex.Match(parts[j]).Groups[1].Value.Replace(" ", "_") + ".eventsfiles.xml\"" +
                         " kernelsteptitle=\"" + regex.Match(parts[j]).Groups[1].Value + "\" createstep=\"false\" />\r\n";
                 }
                 completeBuild = completeBuild + "\n\n\n"+buildPartText.Replace("${partTitle}", testCaseFolderName).Replace("${buildText}", buildText);
@@ -211,7 +211,7 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private void GenerateSplitFile(List<checkboxItems> selectedItems, string sessionKey, string folderName, int startIndex, string testCaseFolderName) {
-            string eventsFileDirectory = Directory.GetParent(selectedItems[0].filepath)+@"\"+testCaseFolderName + @"\" + folderName;
+            string eventsFileDirectory = Directory.GetParent(selectedItems[0].filepath)+@"\"+testCaseFolderName.Replace(" " ,"_") + @"\" + folderName;
             Directory.CreateDirectory(eventsFileDirectory);
 
             string eventsFileText = "<Steps label=\"Automatically Generated\">";

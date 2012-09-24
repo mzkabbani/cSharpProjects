@@ -14,6 +14,7 @@ using XmlParsersAndUi.Classes;
 using Automation.Common.Utils;
 using Automation.Common;
 using Automation.Backend;
+using Automation.Common.Classes.Monitoring;
 
 namespace XmlParsersAndUi.Forms {
     public partial class MacroConverterConfForm : Form {
@@ -23,6 +24,13 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private void MacroConverter_Load(object sender, EventArgs e) {
+            try {
+                if (!string.IsNullOrEmpty(MonitorObject.username)) {
+                    MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
+                }
+            } catch (Exception) {
+
+            }
             LoadAvailableARtoList();
             SetAllCombos();
             BindCombos();

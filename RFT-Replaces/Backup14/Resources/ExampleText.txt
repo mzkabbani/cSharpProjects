@@ -1,5 +1,0 @@
-Try selecting the SearchableTextBox, and pressing Ctrl-F to find text. In the text boxes, Ctrl-H to replace text.
-
-This example form contains a control of each of the four types SearchableTextBox, SearchableRichTextBox, SearchableListView and SearchableTreeView.
-
-Each control is filled with some test data so you can try out searches.

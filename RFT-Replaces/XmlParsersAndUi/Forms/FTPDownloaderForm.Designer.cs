@@ -189,6 +189,7 @@
             this.MaximizeBox = false;
             this.Name = "FTPDownloaderForm";
             this.Text = "Downloader";
+            this.Load += new System.EventHandler(this.FTPDownloaderForm_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

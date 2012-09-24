@@ -15,6 +15,7 @@ using Tamir.SharpSsh.jsch;
 using Automation.Common.Utils;
 using Automation.Common;
 using Automation.Backend;
+using Automation.Common.Classes.Monitoring;
 namespace XmlParsersAndUi.Forms {
     public partial class EnvironmentComparisonForm : Form {
 
@@ -433,6 +434,87 @@ namespace XmlParsersAndUi.Forms {
         }
 
 
+        private void ParseComparisonResults(string localFileName,string inputEnv, string inputHost, string refEnv, string refHost, out DataTable resultsTable){
+        
+           string readFile = FrontendUtils.ReadFile(localFileName);
+                    //      Regex regex = new Regex("-.*-");            
+                    string[] array = new string[1];
+                    //  array[0]= regex.Match(readFile).Value;
+                    array[0] = "\n\n";
+                    string[] splitFile = readFile.Split(array, StringSplitOptions.RemoveEmptyEntries);
+                    int counter = 1;
+                    bgDoServerWork.ReportProgress(5, "Displaying Results...");
+                    Regex diffRegex = new Regex("diff.*");
+                    DataTable results = new DataTable();
+                    results.Columns.Add("Number");
+                    results.Columns.Add("Operation");
+                    results.Columns.Add("FileSize");
+                    results.Columns.Add("FileModifyDate");
+                    results.Columns.Add("FileType");
+                    results.Columns.Add("FileName");
+
+                    List<string> monthAbbreviations = new List<string>() { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+
+                    for (int j = 2; j < splitFile.Length; j++) {
+                        string[] splitByLines = splitFile[j].Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                        for (int k = 3; k < splitByLines.Length; k++) {
+                            //-rw-rw-r--   1 autoengine murex       1201 Jul 10 16:58 test.txt
+                            //-rwxrwxr-x   1 autoengine murex        546 May 10  2008 script.sh*
+                            // "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", and "Dec"
+                            if (j == 2) {
+                                string fileName = splitByLines[k].Replace("/net/" + refHost + refEnv, "").Replace("/net/" + inputHost + inputEnv, "");
+                                string[] splitFileName = fileName.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                                if (diffRegex.Matches(fileName).Count == 0) {
+                                    DateTime date;
+                                    try {
+                                        if (splitFileName[7].Contains(":")) {
+                                            date = new DateTime(DateTime.Now.Year, monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[0]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[1]), 0);
+                                        } else {
+                                            date = new DateTime(Convert.ToInt32(splitFileName[7]), monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]));
+                                        }
+                                    } catch (Exception ex) {
+                                        FrontendUtils.LogError("Could not get Date", ex);
+                                        date = DateTime.Now;
+                                    }
+
+
+                                    long fileSize = (Convert.ToInt64(splitFileName[4]) / 1024) == 0 ? 1 : (Convert.ToInt64(splitFileName[4]) / 1024);
+
+                                    results.Rows.Add(new object[] { counter, "Added", fileSize, date.ToString(), GetFileTypeFromExtension(splitFileName[8]), splitFileName[8] });
+
+                                }
+                            } else {
+                                string fileName = splitByLines[k].Replace("/net/" + refHost + refEnv, "").Replace("/net/" + inputHost + inputEnv, "");
+                                string[] splitFileName = fileName.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                                if (diffRegex.Matches(fileName).Count == 0) {
+                                    DateTime date;
+
+                                    try {
+                                        if (splitFileName[7].Contains(":")) {
+                                            date = new DateTime(DateTime.Now.Year, monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[0]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[1]), 0);
+                                        } else {
+                                            date = new DateTime(Convert.ToInt32(splitFileName[7]), monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]));
+                                        }
+                                    } catch (Exception ex) {
+                                        FrontendUtils.LogError("Could not get Date", ex);
+                                        date = DateTime.Now;
+                                    }
+                                    long fileSize = (Convert.ToInt64(splitFileName[4]) / 1024) == 0 ? 1 : (Convert.ToInt64(splitFileName[4]) / 1024);
+
+                                    results.Rows.Add(new object[] { counter, "Modified", fileSize, date.ToString(), GetFileTypeFromExtension(splitFileName[8]), splitFileName[8] });
+                                }
+                            }
+                            counter++;
+                        }
+                    }                 
+
+                    SAVED_SEARCH_RESULTS = results.Copy();
+                    GOLDEN_ORIGINAL_RESTULS = results.Copy();
+                    resultsTable = SAVED_SEARCH_RESULTS;
+        
+        }
 
         private string CopyComparisonScript(string refHost, string refEnv) {
             string remoteScriptName = string.Empty;
@@ -1244,6 +1326,9 @@ namespace XmlParsersAndUi.Forms {
         #endregion
 
         private void EnvironmentComparisonForm_Load(object sender, EventArgs e) {
+            if (!string.IsNullOrEmpty(MonitorObject.username)) {
+                MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
+            }
             LOCAL_TA_USAGE = string.Equals(Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.EnvComparisonOnlyForEnv).ToString(), "True") ? true : false;
             LoadSavedFolderNames();
         }
@@ -1582,6 +1667,45 @@ namespace XmlParsersAndUi.Forms {
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
+        }
+
+        private void btnStartFromFile_Click(object sender, EventArgs e) {
+            try {
+                DataTable resultsTable = new DataTable();
+                ParseComparisonResults(@"D:\comparison file\tmp8FE.tmp", txtInputEnv.Text, txtInpHost.Text, txtRefEnv.Text, txtRefHost.Text, out resultsTable);
+
+
+               
+                FillDataGridFromDataTable(resultsTable);
+                lblProgess.Visible = false;
+                pcProgress.Visible = false;
+                pcProgress.Rotate = false;
+                gbResultsGrid.Visible = true;
+                gbFilters.Enabled = true;
+                gbFilters.Visible = true;
+                gbCustomFilters.Visible = true;
+                LoadAllAvailableFiltersToCheckListBox();
+                //SearchSafeResults = CopyDataGridToDataTable(dgvResults);
+                Total_Number_Diffs = SAVED_SEARCH_RESULTS.Rows.Count;
+                lblTotalFiles.Text = "Remaining files: " + SAVED_SEARCH_RESULTS.Rows.Count + "/" + Total_Number_Diffs + "\nSize: " + GetTotalFilesSize(SAVED_SEARCH_RESULTS) + " KB";
+                List<EnvComparisonFilter> preFilters = GetPrefilterList(clbAvailableFilters);
+
+                if (preFilters.Count > 0) {
+                    string collectedPrefilters = GetFormattedPrefiltersForDisplay(preFilters);
+                    DialogResult dialog = FrontendUtils.ShowConformation("Comparsion completed!\nAuto cleanup the following types?\n\n" + collectedPrefilters);
+                    if (dialog == DialogResult.Yes) {
+                        ApplySelectedFiltersToSearchResults(preFilters);
+                    } else {
+                        for (int i = 0; i < clbAvailableFilters.Items.Count; i++) {
+                            clbAvailableFilters.SetItemCheckState(i, CheckState.Unchecked);
+                        }
+                    }
+                }
+
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message, ex);
+            }
+        
         }
 
     }

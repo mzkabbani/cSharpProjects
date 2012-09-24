@@ -259,6 +259,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "SDDGeneratorForm";
             this.Text = "SDD Generator";
+            this.Load += new System.EventHandler(this.SDDGeneratorForm_Load);
             this.gbInput.ResumeLayout(false);
             this.gbInput.PerformLayout();
             this.gbOutput.ResumeLayout(false);

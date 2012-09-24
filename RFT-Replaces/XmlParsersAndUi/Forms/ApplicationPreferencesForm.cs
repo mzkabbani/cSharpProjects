@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using XmlParsersAndUi.Classes;
 using Automation.Common.Utils;
 using Automation.Backend;
+using Automation.Common.Classes.Monitoring;
 
 namespace XmlParsersAndUi.Forms {
     public partial class ApplicationPreferencesForm : Form {
@@ -27,6 +28,13 @@ namespace XmlParsersAndUi.Forms {
 
         private void ApplicationPreferencesForm_Load(object sender, EventArgs e) {
             try {
+                try {
+                    if (!string.IsNullOrEmpty(MonitorObject.username)) {
+                        MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
+                    }
+                } catch (Exception) {
+
+                }
                 tvPreferenceSections.ExpandAll();
                 txtConnectedDatabase.Text = BackEndUtils.ConnectionParamter;
                 dataSet = Application_Settings.GetAppPrefsDataset();

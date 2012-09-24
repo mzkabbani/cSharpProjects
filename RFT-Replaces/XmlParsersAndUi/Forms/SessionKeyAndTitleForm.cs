@@ -44,7 +44,7 @@ namespace XmlParsersAndUi {
         }
 
         private bool IsValidToProceed() {
-            if (string.IsNullOrEmpty(txtTitle.Text)) {
+            if (string.IsNullOrEmpty(txtFolderName.Text)) {
                 FrontendUtils.ShowInformation("Please input a folder name!", true);
                 //    this.DialogResult = DialogResult.No;
                 return false;
@@ -55,10 +55,10 @@ namespace XmlParsersAndUi {
                 //  this.DialogResult = DialogResult.No;
                 return false;
             }
-            if (Directory.Exists(currentOutputDir + @"\" + txtTitle.Text + "-" + eventsGroupNameAndID.OperationGeneratedID)) {
+            if (Directory.Exists(currentOutputDir + @"\" + txtFolderName.Text + "-" + eventsGroupNameAndID.OperationGeneratedID)) {
                 DialogResult dialogResult = MessageBox.Show("Selected directory already exists, do you want to overrite?", "Directory Exists", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (dialogResult == DialogResult.No) {
-                    this.DialogResult = DialogResult.Abort;
+                    //this.DialogResult = DialogResult.Abort;
                     return false;
                 }
             }
@@ -89,6 +89,16 @@ namespace XmlParsersAndUi {
         }
 
         #endregion   
+
+        private void txtTestTitle_TextChanged(object sender, EventArgs e) {
+            try {
+                if (!string.IsNullOrEmpty(txtTestTitle.Text)) {
+                    txtFolderName.Text = txtTestTitle.Text.Replace(" ","_");                
+                }
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message, ex);
+            }
+        }
 
        
     }
