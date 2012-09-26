@@ -1,25 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-
-using System.Text;
-using System.Windows.Forms;
-using System.Configuration;
-using System.IO;
-using System.Xml;
-using Utilities.WinForms;
-using XmlParsersAndUi.Forms;
-using XmlParsersAndUi.Classes;
 using System.Diagnostics;
-using Automation.Common.Utils;
-using Automation.Common.Forms;
+using System.Drawing;
+using System.IO;
+using System.Windows.Forms;
+using System.Xml;
+
 using Automation.Backend;
+using Automation.Backend.Classes;
 using Automation.Common;
 using Automation.Common.Classes.Monitoring;
-using Automation.Backend.Classes;
-
+using Automation.Common.Forms;
+using Automation.Common.Utils;
+using Utilities.WinForms;
+using XmlParsersAndUi.Classes;
+using XmlParsersAndUi.Forms;
 
 namespace XmlParsersAndUi {
     public partial class MainForm : Form {
@@ -61,7 +57,7 @@ namespace XmlParsersAndUi {
                     if (string.Equals(configFileNodes[i].Attributes["key"].Value, "ConnectionParameter")) {
 
                         Automation.Backend.BackEndUtils.ConnectionParamter = configFileNodes[i].Attributes["value"].Value;
-                        
+
                         // tsConnectedTo.Text = "Connected to " + Directory.GetParent(BackEndUtils.ConnectionParamter);
                     }
                     if (string.Equals(configFileNodes[i].Attributes["key"].Value, "ConnectionParameter2")) {
@@ -262,7 +258,7 @@ namespace XmlParsersAndUi {
 
         private void MainForm_Load(object sender, EventArgs e) {
             try {
-                
+
 
                 MainAppVariables.AppVersion = APPLICATION_VERSION;
                 loggedInUser = FrontendUtils.GetCurrentUser();
@@ -272,7 +268,7 @@ namespace XmlParsersAndUi {
                 SetBackEndConnectionParameter(configFileNodes);
                 string applicationVersion = (string)Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.ApplicationVersion);
 
-                if (string.Equals(applicationVersion, APPLICATION_VERSION)){ 
+                if (string.Equals(applicationVersion, APPLICATION_VERSION)) {
                     // || string.Equals(loggedInUser, "mkabbani")) {
                     bool TIMER_ENABLED = Convert.ToBoolean(Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.EnableTimerKey));
                     if (TIMER_ENABLED) {
@@ -291,8 +287,8 @@ namespace XmlParsersAndUi {
                     MonitorObject.loginTime = DateTime.Now;
                     MonitorObject.formAndAccessTime = new List<FormAndAccessTime>();
                     MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
-                    
-                    
+
+
 
                 } else {
                     this.menuStrip.Enabled = false;

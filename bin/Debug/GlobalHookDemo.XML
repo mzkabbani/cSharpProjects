@@ -4,6 +4,23 @@
         <name>GlobalHookDemo</name>
     </assembly>
     <members>
+        <member name="F:GlobalHookDemo.Form21.components">
+            <summary>
+            Required designer variable.
+            </summary>
+        </member>
+        <member name="M:GlobalHookDemo.Form21.Dispose(System.Boolean)">
+            <summary>
+            Clean up any resources being used.
+            </summary>
+            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        </member>
+        <member name="M:GlobalHookDemo.Form21.InitializeComponent">
+            <summary>
+            Required method for Designer support - do not modify
+            the contents of this method with the code editor.
+            </summary>
+        </member>
         <member name="T:gma.System.Windows.UserActivityHook">
             <summary>
             This class allows you to tap keyboard and mouse and / or to detect their activity even when an 
@@ -546,23 +563,6 @@
             <remarks>
             http://msdn.microsoft.com/library/default.asp?url=/library/en-us/winui/winui/windowsuserinterface/windowing/hooks/hookreference/hookfunctions/callwndproc.asp
             </remarks>
-        </member>
-        <member name="F:GlobalHookDemo.Form21.components">
-            <summary>
-            Required designer variable.
-            </summary>
-        </member>
-        <member name="M:GlobalHookDemo.Form21.Dispose(System.Boolean)">
-            <summary>
-            Clean up any resources being used.
-            </summary>
-            <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
-        </member>
-        <member name="M:GlobalHookDemo.Form21.InitializeComponent">
-            <summary>
-            Required method for Designer support - do not modify
-            the contents of this method with the code editor.
-            </summary>
         </member>
     </members>
 </doc>

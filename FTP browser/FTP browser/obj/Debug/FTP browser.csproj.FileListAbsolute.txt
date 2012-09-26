@@ -6,5 +6,5 @@ C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FTP 
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FTP browser\FTP browser\obj\Debug\FTP browser.csproj.GenerateResource.Cache
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FTP browser\FTP browser\obj\Debug\FTP browser.exe
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FTP browser\FTP browser\obj\Debug\FTP browser.pdb
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FTP browser\FTP browser\bin\Debug\ftplib.pdb
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FTP browser\FTP browser\bin\Debug\ftplib.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\FTP browser\FTP browser\bin\Debug\ftplib.pdb

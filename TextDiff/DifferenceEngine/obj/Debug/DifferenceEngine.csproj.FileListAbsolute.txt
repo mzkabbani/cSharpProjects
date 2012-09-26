@@ -1,5 +1,5 @@
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\TextDiff\DifferenceEngine\obj\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\TextDiff\DifferenceEngine\bin\Debug\Automation.Diff.dll
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\TextDiff\DifferenceEngine\bin\Debug\Automation.Diff.pdb
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\TextDiff\DifferenceEngine\obj\Debug\ResolveAssemblyReference.cache
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\TextDiff\DifferenceEngine\obj\Debug\Automation.Diff.dll
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\TextDiff\DifferenceEngine\obj\Debug\Automation.Diff.pdb

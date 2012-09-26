@@ -1534,8 +1534,7 @@ namespace PackageGenerator {
         private void dgvOutputOperations_SelectionChanged(object sender, EventArgs e) {
             try {
                 if (dgvOutputOperations.SelectedRows.Count > 0) {
-                    DataGridViewRow row = dgvOutputOperations.SelectedRows[0];
-
+                    DataGridViewRow row = dgvOutputOperations.SelectedRows[0]; 
                     if (dgvOutputOperations.SelectedRows[0].Cells["Operations"].Value != null) {
                         currentlySelectedKey = Convert.ToInt32(dgvOutputOperations.SelectedRows[0].Cells["Key"].Value);
 
@@ -1551,9 +1550,32 @@ namespace PackageGenerator {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
         }
-
+        
+	 /// <summary> /// Gets controls for context menu ///
+        /// </summary> /// <param name="Sender">Sender object from menu event handler</param> ///
+        /// <returns></returns> 
+        private object GetSourceControl(Object Sender) {
+            // ContextMenuStrip sended?
+            if (Sender as ContextMenuStrip != null) {
+                ContextMenuStrip cms = Sender as ContextMenuStrip;
+                return cms.SourceControl;
+            }
+            var item = Sender as ToolStripItem;
+            // move to root item   
+            while (item.OwnerItem != null) {
+                item = item.OwnerItem;
+            }
+            // we have root item now, so lets take ContextMenuStrip object   
+            var menuObject = item.Owner as ContextMenuStrip;
+            if (menuObject != null) {
+                return menuObject.SourceControl;
+            }
+            return null;
+        }
+        
         private void relAppdirToolStripMenuItem_Click(object sender, EventArgs e) {
-            try {
+            
+        	try {
                 Control control = GetSourceControl((sender as ToolStripMenuItem).GetCurrentParent()) as Control;
                 if (control != null) {
                     control.Text = "AppDir + \"/\"";

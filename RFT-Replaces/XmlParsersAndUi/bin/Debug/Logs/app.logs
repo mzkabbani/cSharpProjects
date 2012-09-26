@@ -15337,3 +15337,30 @@ System.NullReferenceException: Object reference not set to an instance of an obj
    at System.Windows.Forms.Form.ShowDialog(IWin32Window owner)
    at System.Windows.Forms.Form.ShowDialog()
    at XmlParsersAndUi.SessionKeyAndTitleForm.btnSelectFolderName_Click(Object sender, EventArgs e) in C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SessionKeyAndTitleForm.cs:line 67
+
+
+
+
+9/26/2012 9:55:48 AM
+
+
+Illegal characters in path.
+
+
+System.ArgumentException: Illegal characters in path.
+   at System.IO.Path.CheckInvalidPathChars(String path)
+   at System.IO.Path.GetFileName(String path)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize)
+   at System.IO.StreamReader..ctor(String path)
+   at XmlParsersAndUi.MainForm.testExceptionToolStripMenuItem_Click(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\MainForm.cs:line 421
+
+
+
+
+9/26/2012 9:55:50 AM
+
+
+wow
+
+

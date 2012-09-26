@@ -89,7 +89,9 @@ namespace FTP_browser {
                     ListboxItem selectedItem = lstFiles.SelectedItem as ListboxItem;
                     ftp.SetLocalDirectory(workingDirectory);
                     ftp.GetFile(selectedItem.fileName,false);
-                   
+                    
+         
+                    
                     StreamReader reader = new StreamReader(workingDirectory + @"\" + selectedItem.fileName,Encoding.Default);
                     txtFileContent.Text = reader.ReadToEnd().Replace("\n","\r\n");
                     
