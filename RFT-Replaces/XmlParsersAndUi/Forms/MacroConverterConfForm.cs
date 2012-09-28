@@ -605,9 +605,11 @@ namespace XmlParsersAndUi.Forms {
 
         AdvancedRecomendation CurrentlySelectedCaptureEvent;
 
-        private void lbAdvancedCE_SelectedIndexChanged_1(object sender, EventArgs e) {
+      private void lbAdvancedCE_SelectedIndexChanged_1(object sender, EventArgs e) {
             try {
-                 captureNodesSelectedNames = new List<string>();
+                eventParsed = true;
+                btnDeleteAdvanceRec.Enabled = true;
+                captureNodesSelectedNames = new List<string>();
                 AdvancedRecomendation captureEvent = new AdvancedRecomendation();
                 captureEvent = lbAdvancedCE.SelectedItem as AdvancedRecomendation;
 
@@ -625,6 +627,7 @@ namespace XmlParsersAndUi.Forms {
                                                                  captureEvent.captureEventUsageCount,
                                                                  captureEvent.CaptureEventCapturePointsList,
                                                                  captureEvent.captureEventuserId);
+                    workingEvent.Replacement = captureEvent.Replacement;
                     CurrentlySelectedCaptureEvent = workingEvent;
                     for (int i = 0; i < captureEvent.CaptureEventCapturePointsList.Count; i++) {
                         captureEvent.CaptureEventCapturePointsList[i].nodeVisited = false;
@@ -633,11 +636,11 @@ namespace XmlParsersAndUi.Forms {
                     txtAOName.Text = workingEvent.CaptureEventName;
                     txtAODescription.Text = workingEvent.CaptureEventDescription;
                     txtAOEventIn.Text = workingEvent.CaptureEventEventText;
+                    txtTextValue.Text = workingEvent.Replacement.Value;
                     InterpretCaptureEvent(workingEvent);
 
                     RecurResetTag(tvOutput.Nodes);
                 }
-                
 
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);

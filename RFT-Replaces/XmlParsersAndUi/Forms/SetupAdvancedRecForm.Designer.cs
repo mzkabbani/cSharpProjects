@@ -113,7 +113,7 @@
         	this.tabControl1.Location = new System.Drawing.Point(0, 0);
         	this.tabControl1.Name = "tabControl1";
         	this.tabControl1.SelectedIndex = 0;
-        	this.tabControl1.Size = new System.Drawing.Size(954, 714);
+        	this.tabControl1.Size = new System.Drawing.Size(1054, 714);
         	this.tabControl1.TabIndex = 2;
         	this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
         	// 
@@ -124,7 +124,7 @@
         	this.tabPage1.Location = new System.Drawing.Point(4, 22);
         	this.tabPage1.Name = "tabPage1";
         	this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-        	this.tabPage1.Size = new System.Drawing.Size(946, 688);
+        	this.tabPage1.Size = new System.Drawing.Size(1046, 688);
         	this.tabPage1.TabIndex = 0;
         	this.tabPage1.Text = "Capture Events";
         	this.tabPage1.UseVisualStyleBackColor = true;
@@ -138,7 +138,7 @@
         	this.groupBox2.Controls.Add(this.btnReloadCapturePoints);
         	this.groupBox2.Location = new System.Drawing.Point(6, 6);
         	this.groupBox2.Name = "groupBox2";
-        	this.groupBox2.Size = new System.Drawing.Size(227, 674);
+        	this.groupBox2.Size = new System.Drawing.Size(267, 674);
         	this.groupBox2.TabIndex = 16;
         	this.groupBox2.TabStop = false;
         	this.groupBox2.Text = "Available Capture Events";
@@ -147,17 +147,18 @@
         	// 
         	this.lbAdvancedCE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
         	        	        	| System.Windows.Forms.AnchorStyles.Left)));
+        	this.lbAdvancedCE.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.lbAdvancedCE.FormattingEnabled = true;
         	this.lbAdvancedCE.Location = new System.Drawing.Point(7, 15);
         	this.lbAdvancedCE.Name = "lbAdvancedCE";
-        	this.lbAdvancedCE.Size = new System.Drawing.Size(214, 615);
+        	this.lbAdvancedCE.Size = new System.Drawing.Size(254, 615);
         	this.lbAdvancedCE.TabIndex = 22;
         	this.lbAdvancedCE.SelectedIndexChanged += new System.EventHandler(this.lbAdvancedCE_SelectedIndexChanged_1);
         	// 
         	// btnReloadCapturePoints
         	// 
         	this.btnReloadCapturePoints.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-        	this.btnReloadCapturePoints.Location = new System.Drawing.Point(35, 639);
+        	this.btnReloadCapturePoints.Location = new System.Drawing.Point(55, 639);
         	this.btnReloadCapturePoints.Name = "btnReloadCapturePoints";
         	this.btnReloadCapturePoints.Size = new System.Drawing.Size(156, 23);
         	this.btnReloadCapturePoints.TabIndex = 0;
@@ -179,9 +180,9 @@
         	this.gbRuleDefinition.Controls.Add(this.btnResetCaptureEvents);
         	this.gbRuleDefinition.Controls.Add(this.txtAOName);
         	this.gbRuleDefinition.Controls.Add(this.label8);
-        	this.gbRuleDefinition.Location = new System.Drawing.Point(239, 6);
+        	this.gbRuleDefinition.Location = new System.Drawing.Point(279, 6);
         	this.gbRuleDefinition.Name = "gbRuleDefinition";
-        	this.gbRuleDefinition.Size = new System.Drawing.Size(699, 674);
+        	this.gbRuleDefinition.Size = new System.Drawing.Size(759, 674);
         	this.gbRuleDefinition.TabIndex = 2;
         	this.gbRuleDefinition.TabStop = false;
         	this.gbRuleDefinition.Text = "Rule Definition";
@@ -190,7 +191,7 @@
         	// 
         	this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
         	this.label14.AutoSize = true;
-        	this.label14.Location = new System.Drawing.Point(493, 25);
+        	this.label14.Location = new System.Drawing.Point(553, 25);
         	this.label14.Name = "label14";
         	this.label14.Size = new System.Drawing.Size(34, 13);
         	this.label14.TabIndex = 18;
@@ -206,7 +207,7 @@
         	this.gbSpecificConfNodes.Controls.Add(this.label5);
         	this.gbSpecificConfNodes.Location = new System.Drawing.Point(7, 286);
         	this.gbSpecificConfNodes.Name = "gbSpecificConfNodes";
-        	this.gbSpecificConfNodes.Size = new System.Drawing.Size(686, 353);
+        	this.gbSpecificConfNodes.Size = new System.Drawing.Size(746, 353);
         	this.gbSpecificConfNodes.TabIndex = 8;
         	this.gbSpecificConfNodes.TabStop = false;
         	this.gbSpecificConfNodes.Text = "Nodes & Attributes";
@@ -219,7 +220,7 @@
         	this.grpBoxAttr.Controls.Add(this.dgvAttributes);
         	this.grpBoxAttr.Location = new System.Drawing.Point(245, 20);
         	this.grpBoxAttr.Name = "grpBoxAttr";
-        	this.grpBoxAttr.Size = new System.Drawing.Size(428, 327);
+        	this.grpBoxAttr.Size = new System.Drawing.Size(488, 327);
         	this.grpBoxAttr.TabIndex = 21;
         	this.grpBoxAttr.TabStop = false;
         	this.grpBoxAttr.Text = "Attributes";
@@ -238,7 +239,7 @@
         	this.dgvAttributes.Location = new System.Drawing.Point(3, 16);
         	this.dgvAttributes.Name = "dgvAttributes";
         	this.dgvAttributes.RowHeadersVisible = false;
-        	this.dgvAttributes.Size = new System.Drawing.Size(422, 308);
+        	this.dgvAttributes.Size = new System.Drawing.Size(482, 308);
         	this.dgvAttributes.TabIndex = 0;
         	// 
         	// useAttribute
@@ -265,11 +266,11 @@
         	this.tvOutput.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
         	        	        	| System.Windows.Forms.AnchorStyles.Left)));
         	this.tvOutput.CheckBoxes = true;
+        	this.tvOutput.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.tvOutput.Location = new System.Drawing.Point(6, 36);
         	this.tvOutput.Name = "tvOutput";
         	this.tvOutput.Size = new System.Drawing.Size(223, 311);
         	this.tvOutput.TabIndex = 20;
-        //	this.tvOutput.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.TvOutputAfterCheck);
         	this.tvOutput.BeforeSelect += new System.Windows.Forms.TreeViewCancelEventHandler(this.tvOutput_BeforeSelect);
         	this.tvOutput.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.tvOutput_AfterSelect);
         	// 
@@ -286,12 +287,13 @@
         	// 
         	this.cboCaptureType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
         	this.cboCaptureType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        	this.cboCaptureType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.cboCaptureType.FormattingEnabled = true;
         	this.cboCaptureType.Items.AddRange(new object[] {
         	        	        	"one",
         	        	        	"two",
         	        	        	"three"});
-        	this.cboCaptureType.Location = new System.Drawing.Point(533, 22);
+        	this.cboCaptureType.Location = new System.Drawing.Point(593, 22);
         	this.cboCaptureType.Name = "cboCaptureType";
         	this.cboCaptureType.Size = new System.Drawing.Size(154, 21);
         	this.cboCaptureType.TabIndex = 17;
@@ -308,7 +310,7 @@
         	this.gbSpecificConfDef.Controls.Add(this.label7);
         	this.gbSpecificConfDef.Location = new System.Drawing.Point(6, 58);
         	this.gbSpecificConfDef.Name = "gbSpecificConfDef";
-        	this.gbSpecificConfDef.Size = new System.Drawing.Size(687, 222);
+        	this.gbSpecificConfDef.Size = new System.Drawing.Size(747, 222);
         	this.gbSpecificConfDef.TabIndex = 2;
         	this.gbSpecificConfDef.TabStop = false;
         	this.gbSpecificConfDef.Text = "Definition";
@@ -316,7 +318,7 @@
         	// btnParse
         	// 
         	this.btnParse.Anchor = System.Windows.Forms.AnchorStyles.Top;
-        	this.btnParse.Location = new System.Drawing.Point(273, 193);
+        	this.btnParse.Location = new System.Drawing.Point(303, 193);
         	this.btnParse.Name = "btnParse";
         	this.btnParse.Size = new System.Drawing.Size(140, 23);
         	this.btnParse.TabIndex = 16;
@@ -332,7 +334,7 @@
         	this.txtAODescription.Location = new System.Drawing.Point(7, 32);
         	this.txtAODescription.Multiline = true;
         	this.txtAODescription.Name = "txtAODescription";
-        	this.txtAODescription.Size = new System.Drawing.Size(675, 52);
+        	this.txtAODescription.Size = new System.Drawing.Size(735, 52);
         	this.txtAODescription.TabIndex = 1;
         	// 
         	// txtAOEventIn
@@ -343,7 +345,7 @@
         	this.txtAOEventIn.Location = new System.Drawing.Point(7, 104);
         	this.txtAOEventIn.Multiline = true;
         	this.txtAOEventIn.Name = "txtAOEventIn";
-        	this.txtAOEventIn.Size = new System.Drawing.Size(675, 83);
+        	this.txtAOEventIn.Size = new System.Drawing.Size(735, 83);
         	this.txtAOEventIn.TabIndex = 3;
         	// 
         	// label6
@@ -368,7 +370,7 @@
         	// 
         	this.btnAddCaptureEvent.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
         	this.btnAddCaptureEvent.Enabled = false;
-        	this.btnAddCaptureEvent.Location = new System.Drawing.Point(126, 645);
+        	this.btnAddCaptureEvent.Location = new System.Drawing.Point(156, 645);
         	this.btnAddCaptureEvent.Name = "btnAddCaptureEvent";
         	this.btnAddCaptureEvent.Size = new System.Drawing.Size(140, 23);
         	this.btnAddCaptureEvent.TabIndex = 5;
@@ -380,7 +382,7 @@
         	// 
         	this.btnSaveCaptureEvent.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
         	this.btnSaveCaptureEvent.Enabled = false;
-        	this.btnSaveCaptureEvent.Location = new System.Drawing.Point(272, 645);
+        	this.btnSaveCaptureEvent.Location = new System.Drawing.Point(302, 645);
         	this.btnSaveCaptureEvent.Name = "btnSaveCaptureEvent";
         	this.btnSaveCaptureEvent.Size = new System.Drawing.Size(140, 23);
         	this.btnSaveCaptureEvent.TabIndex = 6;
@@ -391,7 +393,7 @@
         	// btnResetCaptureEvents
         	// 
         	this.btnResetCaptureEvents.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-        	this.btnResetCaptureEvents.Location = new System.Drawing.Point(418, 645);
+        	this.btnResetCaptureEvents.Location = new System.Drawing.Point(448, 645);
         	this.btnResetCaptureEvents.Name = "btnResetCaptureEvents";
         	this.btnResetCaptureEvents.Size = new System.Drawing.Size(140, 23);
         	this.btnResetCaptureEvents.TabIndex = 7;
@@ -406,7 +408,7 @@
         	this.txtAOName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.txtAOName.Location = new System.Drawing.Point(49, 22);
         	this.txtAOName.Name = "txtAOName";
-        	this.txtAOName.Size = new System.Drawing.Size(346, 20);
+        	this.txtAOName.Size = new System.Drawing.Size(406, 20);
         	this.txtAOName.TabIndex = 0;
         	// 
         	// label8
@@ -424,7 +426,7 @@
         	this.tabPage2.Location = new System.Drawing.Point(4, 22);
         	this.tabPage2.Name = "tabPage2";
         	this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-        	this.tabPage2.Size = new System.Drawing.Size(946, 688);
+        	this.tabPage2.Size = new System.Drawing.Size(1046, 688);
         	this.tabPage2.TabIndex = 1;
         	this.tabPage2.Text = "Replacement";
         	this.tabPage2.UseVisualStyleBackColor = true;
@@ -436,7 +438,7 @@
         	this.groupBox6.Dock = System.Windows.Forms.DockStyle.Fill;
         	this.groupBox6.Location = new System.Drawing.Point(3, 3);
         	this.groupBox6.Name = "groupBox6";
-        	this.groupBox6.Size = new System.Drawing.Size(940, 682);
+        	this.groupBox6.Size = new System.Drawing.Size(1040, 682);
         	this.groupBox6.TabIndex = 2;
         	this.groupBox6.TabStop = false;
         	this.groupBox6.Text = "Replacement Events Definition";
@@ -458,9 +460,9 @@
         	this.groupBox8.Controls.Add(this.txtReplacementRep);
         	this.groupBox8.Controls.Add(this.label10);
         	this.groupBox8.Controls.Add(this.label11);
-        	this.groupBox8.Location = new System.Drawing.Point(257, 16);
+        	this.groupBox8.Location = new System.Drawing.Point(299, 16);
         	this.groupBox8.Name = "groupBox8";
-        	this.groupBox8.Size = new System.Drawing.Size(677, 663);
+        	this.groupBox8.Size = new System.Drawing.Size(735, 663);
         	this.groupBox8.TabIndex = 10;
         	this.groupBox8.TabStop = false;
         	this.groupBox8.Text = "Definition";
@@ -468,7 +470,7 @@
         	// btnResetReplacement
         	// 
         	this.btnResetReplacement.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-        	this.btnResetReplacement.Location = new System.Drawing.Point(422, 634);
+        	this.btnResetReplacement.Location = new System.Drawing.Point(451, 634);
         	this.btnResetReplacement.Name = "btnResetReplacement";
         	this.btnResetReplacement.Size = new System.Drawing.Size(75, 23);
         	this.btnResetReplacement.TabIndex = 15;
@@ -490,7 +492,7 @@
         	// 
         	this.label13.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
         	this.label13.AutoSize = true;
-        	this.label13.Location = new System.Drawing.Point(477, 23);
+        	this.label13.Location = new System.Drawing.Point(535, 23);
         	this.label13.Name = "label13";
         	this.label13.Size = new System.Drawing.Size(34, 13);
         	this.label13.TabIndex = 11;
@@ -500,12 +502,13 @@
         	// 
         	this.cboReplacementType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
         	this.cboReplacementType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        	this.cboReplacementType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.cboReplacementType.FormattingEnabled = true;
         	this.cboReplacementType.Items.AddRange(new object[] {
         	        	        	"one",
         	        	        	"two",
         	        	        	"three"});
-        	this.cboReplacementType.Location = new System.Drawing.Point(517, 20);
+        	this.cboReplacementType.Location = new System.Drawing.Point(575, 20);
         	this.cboReplacementType.Name = "cboReplacementType";
         	this.cboReplacementType.Size = new System.Drawing.Size(154, 21);
         	this.cboReplacementType.TabIndex = 10;
@@ -513,7 +516,7 @@
         	// btnAddReplacementEvent
         	// 
         	this.btnAddReplacementEvent.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-        	this.btnAddReplacementEvent.Location = new System.Drawing.Point(341, 634);
+        	this.btnAddReplacementEvent.Location = new System.Drawing.Point(370, 634);
         	this.btnAddReplacementEvent.Name = "btnAddReplacementEvent";
         	this.btnAddReplacementEvent.Size = new System.Drawing.Size(75, 23);
         	this.btnAddReplacementEvent.TabIndex = 9;
@@ -525,10 +528,11 @@
         	// 
         	this.txtReplacementDesc.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
         	        	        	| System.Windows.Forms.AnchorStyles.Right)));
+        	this.txtReplacementDesc.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.txtReplacementDesc.Location = new System.Drawing.Point(91, 46);
         	this.txtReplacementDesc.Multiline = true;
         	this.txtReplacementDesc.Name = "txtReplacementDesc";
-        	this.txtReplacementDesc.Size = new System.Drawing.Size(580, 123);
+        	this.txtReplacementDesc.Size = new System.Drawing.Size(638, 123);
         	this.txtReplacementDesc.TabIndex = 3;
         	// 
         	// label9
@@ -544,7 +548,7 @@
         	// 
         	this.btnSaveReplacement.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
         	this.btnSaveReplacement.Enabled = false;
-        	this.btnSaveReplacement.Location = new System.Drawing.Point(260, 634);
+        	this.btnSaveReplacement.Location = new System.Drawing.Point(289, 634);
         	this.btnSaveReplacement.Name = "btnSaveReplacement";
         	this.btnSaveReplacement.Size = new System.Drawing.Size(75, 23);
         	this.btnSaveReplacement.TabIndex = 8;
@@ -556,19 +560,21 @@
         	// 
         	this.txtReplacementName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
         	        	        	| System.Windows.Forms.AnchorStyles.Right)));
+        	this.txtReplacementName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.txtReplacementName.Location = new System.Drawing.Point(91, 17);
         	this.txtReplacementName.Name = "txtReplacementName";
-        	this.txtReplacementName.Size = new System.Drawing.Size(224, 20);
+        	this.txtReplacementName.Size = new System.Drawing.Size(282, 20);
         	this.txtReplacementName.TabIndex = 1;
         	// 
         	// txtReplacementRep
         	// 
         	this.txtReplacementRep.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
         	        	        	| System.Windows.Forms.AnchorStyles.Right)));
+        	this.txtReplacementRep.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.txtReplacementRep.Location = new System.Drawing.Point(91, 175);
         	this.txtReplacementRep.Multiline = true;
         	this.txtReplacementRep.Name = "txtReplacementRep";
-        	this.txtReplacementRep.Size = new System.Drawing.Size(580, 123);
+        	this.txtReplacementRep.Size = new System.Drawing.Size(638, 123);
         	this.txtReplacementRep.TabIndex = 5;
         	// 
         	// label10
@@ -598,7 +604,7 @@
         	this.groupBox7.Dock = System.Windows.Forms.DockStyle.Left;
         	this.groupBox7.Location = new System.Drawing.Point(3, 16);
         	this.groupBox7.Name = "groupBox7";
-        	this.groupBox7.Size = new System.Drawing.Size(248, 663);
+        	this.groupBox7.Size = new System.Drawing.Size(290, 663);
         	this.groupBox7.TabIndex = 9;
         	this.groupBox7.TabStop = false;
         	this.groupBox7.Text = "Replacements";
@@ -606,7 +612,7 @@
         	// btnRefreshReplacements
         	// 
         	this.btnRefreshReplacements.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-        	this.btnRefreshReplacements.Location = new System.Drawing.Point(87, 634);
+        	this.btnRefreshReplacements.Location = new System.Drawing.Point(108, 634);
         	this.btnRefreshReplacements.Name = "btnRefreshReplacements";
         	this.btnRefreshReplacements.Size = new System.Drawing.Size(75, 23);
         	this.btnRefreshReplacements.TabIndex = 10;
@@ -618,20 +624,22 @@
         	// 
         	this.lbAvailableReplacements.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
         	        	        	| System.Windows.Forms.AnchorStyles.Left)));
+        	this.lbAvailableReplacements.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.lbAvailableReplacements.FormattingEnabled = true;
         	this.lbAvailableReplacements.Location = new System.Drawing.Point(6, 53);
         	this.lbAvailableReplacements.Name = "lbAvailableReplacements";
-        	this.lbAvailableReplacements.Size = new System.Drawing.Size(236, 576);
+        	this.lbAvailableReplacements.Size = new System.Drawing.Size(278, 576);
         	this.lbAvailableReplacements.TabIndex = 8;
         	this.lbAvailableReplacements.SelectedIndexChanged += new System.EventHandler(this.lbAvailableReplacements_SelectedIndexChanged);
         	// 
         	// cboCapturePoint
         	// 
         	this.cboCapturePoint.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        	this.cboCapturePoint.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.cboCapturePoint.FormattingEnabled = true;
         	this.cboCapturePoint.Location = new System.Drawing.Point(72, 20);
         	this.cboCapturePoint.Name = "cboCapturePoint";
-        	this.cboCapturePoint.Size = new System.Drawing.Size(165, 21);
+        	this.cboCapturePoint.Size = new System.Drawing.Size(212, 21);
         	this.cboCapturePoint.TabIndex = 7;
         	this.cboCapturePoint.SelectedIndexChanged += new System.EventHandler(this.cboCapturePoint_SelectedIndexChanged);
         	// 
@@ -824,7 +832,7 @@
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
         	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-        	this.ClientSize = new System.Drawing.Size(954, 714);
+        	this.ClientSize = new System.Drawing.Size(1054, 714);
         	this.Controls.Add(this.tabControl1);
         	this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
         	this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
