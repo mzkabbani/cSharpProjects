@@ -357,6 +357,8 @@
     <None Include="Resources\MainBackground.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ProfilingSessions\Session20120926_170438.sdps" />
+    <Content Include="ProfilingSessions\Session20120926_180520.sdps" />
     <Content Include="Resources\pharmaceutical-automation.jpg" />
     <Content Include="XmlParsersAndUi.cd" />
   </ItemGroup>

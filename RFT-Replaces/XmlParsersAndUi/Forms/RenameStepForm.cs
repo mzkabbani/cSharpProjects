@@ -12,8 +12,8 @@ namespace XmlParsersAndUi.Forms {
         string defaultStepTitle;
 
         public RenameStepForm(string oldStepTitle) {
-            InitializeComponent();
-            defaultStepTitle = oldStepTitle;
+        	InitializeComponent();
+        	defaultStepTitle = oldStepTitle;
         }
 
         private void RenameStepForm_Load(object sender, EventArgs e) {

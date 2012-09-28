@@ -660,5 +660,28 @@ namespace XmlParsersAndUi {
 
 
 
+        
+        void Button6Click(object sender, EventArgs e)
+        {
+        	string path = string.Empty;
+        	try {       		
+        	
+        		string[] folders = Directory.GetDirectories("D:\\sites-Stream","*sites",SearchOption.AllDirectories);
+        	    string fileRead = FrontendUtils.ReadFile("D:\\sites-Stream\\goodsites.txt");
+        		
+        		for (int i = 0; i < folders.Length; i++) {        		
+        			path = path+"\r\n"+folders[i];
+        	    	
+        	    	//if (folders[i].Contains("sites")) {
+   					//FrontendUtils.WriteFile(folders[i]+"\\sites.mxres",fileRead);
+        				
+   				//	}
+        			
+        		}
+        		
+        	} catch (Exception ex) {
+        		FrontendUtils.ShowError(ex.Message,ex);
+        	}
+        }
     }
 }

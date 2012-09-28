@@ -37,7 +37,7 @@ namespace XmlParsersAndUi.Forms {
                 dataSet.Relations.Add("NodeRelation", dataSet.Tables[0].Columns["id"], dataSet.Tables[0].Columns["parentId"]);
 
                 foreach (DataRow dataRow in dataSet.Tables[0].Rows) {
-                    if(dataRow.IsNull("parentId")){
+                    if(dataRow.IsNull("parentId")) {
                         TreeNode node = CreateNode(dataRow["folderName"].ToString(),true);
                         node.Tag = dataRow["generatedID"].ToString();
                         tvOperationNames.Nodes.Add(node);
@@ -56,6 +56,36 @@ namespace XmlParsersAndUi.Forms {
             //selectedOperation = new EventsGroupNameAndID(tvFolderNames.SelectedNode.Text,tvFolderNames.SelectedNode);
             selectedOperation = new EventsGroupNameAndID(tvOperationNames.SelectedNode.Text, tvOperationNames.SelectedNode.Tag.ToString());
             this.DialogResult = DialogResult.OK;
+        }
+
+       private void SelectFolderNameFormKeyPress(object sender, KeyPressEventArgs e) {
+            try {
+        		if (e.KeyChar==15) {
+					  selectedOperation = new EventsGroupNameAndID(tvOperationNames.SelectedNode.Text, tvOperationNames.SelectedNode.Tag.ToString());
+          		      this.DialogResult = DialogResult.OK;
+				}
+        		
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message,ex);
+            }
+        }
+        
+        void TvOperationNamesKeyPress(object sender, KeyPressEventArgs e)
+        {
+        	
+        	  try {
+        		if (e.KeyChar==13) {
+					  selectedOperation = new EventsGroupNameAndID(tvOperationNames.SelectedNode.Text, tvOperationNames.SelectedNode.Tag.ToString());
+          		      this.DialogResult = DialogResult.OK;
+				}
+        		if (e.KeyChar==27) {
+					  selectedOperation = new EventsGroupNameAndID(tvOperationNames.SelectedNode.Text, tvOperationNames.SelectedNode.Tag.ToString());
+          		      this.DialogResult = DialogResult.OK;
+				}
+        		
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message,ex);
+            }
         }
     }
 }

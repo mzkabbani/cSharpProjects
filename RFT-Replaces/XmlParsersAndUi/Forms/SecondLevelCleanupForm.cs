@@ -86,14 +86,14 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private void SetPopularity(AdvancedRecomendation capture) {
-            srcPopularity.m_hoverStar = 0;
-            srcPopularity.m_selectedStar = 0;
-            srcPopularity.Invalidate();
+            srcPopularityAdded.m_hoverStar = 0;
+            srcPopularityAdded.m_selectedStar = 0;
+            srcPopularityAdded.Invalidate();
             double usagePercent = ((double)capture.captureEventUsageCount / CAPTURE_TOTAL_USAGE_COUNT) * 20;
-            srcPopularity.m_hoverStar = (int)usagePercent;
-            srcPopularity.m_selectedStar = (int)usagePercent;
-            srcPopularity.m_hovering = true;
-            srcPopularity.Invalidate();
+            srcPopularityAdded.m_hoverStar = (int)usagePercent;
+            srcPopularityAdded.m_selectedStar = (int)usagePercent;
+            srcPopularityAdded.m_hovering = true;
+            srcPopularityAdded.Invalidate();
         }
 
         private List<AdvancedRecomendation> AddCapturePointToList(List<AdvancedRecomendation> currentlyUsedCaptures, AdvancedRecomendation currentlySelectedEvent) {
@@ -401,7 +401,39 @@ namespace XmlParsersAndUi.Forms {
             return completedEvent;
         }
 
-        private List<NodeAndAttributeCouple> GetReplacementParametersFromValue(string replacementValue) {
+      private string GetReplacementValueFromEvent(ReplacementEvent replacementEvent, XNode foundNode) {
+            // may be a bug .... ex: with two view-selection under action performed 
+            List<NodeAndAttributeCouple> replaceableValues = GetReplacementParametersFromValue(replacementEvent.Value);
+            string completedEvent = replacementEvent.Value;
+            XElement element = XElement.Parse(foundNode.ToString());
+            for (int i = 0; i < replaceableValues.Count; i++) {
+                if (string.Equals(replaceableValues[i].attrName, "TextValue", StringComparison.InvariantCultureIgnoreCase)) {
+                    string textValue = element.DescendantsAndSelf(replaceableValues[i].nodeName).ElementAt(0).Value.Trim();
+
+                    if (completedEvent.Contains("{" + replaceableValues[i].nodeName + ":TextValue}")) {
+                        completedEvent = completedEvent.Replace("{" + replaceableValues[i].nodeName + ":TextValue}", textValue);
+                    } else {
+                        completedEvent = completedEvent.Replace("{TextValue}", textValue);
+                    }
+
+                } else {
+                    if (element.DescendantsAndSelf(replaceableValues[i].nodeName).Attributes(replaceableValues[i].attrName).Count() >= replaceableValues[i].index) {
+                        string attrValue = element.DescendantsAndSelf(replaceableValues[i].nodeName).Attributes(replaceableValues[i].attrName).ElementAt(replaceableValues[i].index).Value.Trim();
+                        if (completedEvent.Contains("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrName + "}")) {
+                            completedEvent = completedEvent.Replace("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrName + "}", attrValue);
+                        } else if (completedEvent.Contains("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrNameWithAt + "}")) {
+                            completedEvent = completedEvent.Replace("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrNameWithAt + "}", attrValue);
+                        } else if (completedEvent.Contains("{" + replaceableValues[i].attrName + "}")) {
+                            completedEvent = completedEvent.Replace("{" + replaceableValues[i].attrName + "}", attrValue);
+                        }
+                    }
+                }
+            }
+            return completedEvent;
+        }        
+        
+        
+         private List<NodeAndAttributeCouple> GetReplacementParametersFromValue(string replacementValue) {
             List<NodeAndAttributeCouple> couples = new List<NodeAndAttributeCouple>();
             List<string> caughtParameters = new List<string>();
 
@@ -418,9 +450,21 @@ namespace XmlParsersAndUi.Forms {
                 Regex secondRegex = new Regex("<(.*?)\\s");
                 string nodeName = secondRegex.Match(firstMatch).Groups[1].Value;
                 NodeAndAttributeCouple couple = new NodeAndAttributeCouple();
-                couple.nodeName = nodeName;
-                couple.attrName = caughtParameters[i];
-                couples.Add(couple);
+                if (caughtParameters[i].Contains(':')) {
+                    couple.nodeName = caughtParameters[i].Split(new char[] { ':' })[0];
+                    couple.attrName = caughtParameters[i].Split(new char[] { ':' })[1];
+                    if (couple.attrName.Split(new char[] { '@' }).Length > 1) {
+                        couple.attrNameWithAt = couple.attrName;
+                        couple.index = Convert.ToInt32(couple.attrName.Split(new char[] { '@' })[1]);
+                        couple.attrName = couple.attrName.Split(new char[] { '@' })[0];
+                    }
+                    couples.Add(couple);
+                } else {
+                    couple.nodeName = nodeName;
+                    couple.attrName = caughtParameters[i];
+                    couples.Add(couple);
+                }
+
             }
             return couples;
         }
@@ -787,9 +831,9 @@ namespace XmlParsersAndUi.Forms {
                 txtRuleDescription.ResetText();
                 txtRuleName.ResetText();
 
-                srcPopularity.m_hoverStar = 0;
-                srcPopularity.m_selectedStar = 0;
-                srcPopularity.Invalidate();
+                srcPopularityAdded.m_hoverStar = 0;
+                srcPopularityAdded.m_selectedStar = 0;
+                srcPopularityAdded.Invalidate();
 
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -932,7 +976,7 @@ namespace XmlParsersAndUi.Forms {
                             readText = regexForNewLines.Replace(readText, "\n   ");
                             oldReadFile = FrontendUtils.FormatXml(readText);
                             for (int k = 0; k < capturesAndReplacements[i].fileNamesHit[j].matchedNodes.Count; k++) {
-                                string parametrizedReplacement = GetParametrizedRepFromGenericOne(capturesAndReplacements[i].usedReplacementEvent, capturesAndReplacements[i].fileNamesHit[j].matchedNodes[k]);
+                                string parametrizedReplacement = GetReplacementValueFromEvent(capturesAndReplacements[i].usedReplacementEvent, capturesAndReplacements[i].fileNamesHit[j].matchedNodes[k]);
                                 parametrizedReplacement = regexForNewLines.Replace(parametrizedReplacement, "\n   ");
                                 string foundNodes = capturesAndReplacements[i].fileNamesHit[j].matchedNodes[k].ToString();
                                 foundNodes = regexForNewLines.Replace(foundNodes, "\n   ");
