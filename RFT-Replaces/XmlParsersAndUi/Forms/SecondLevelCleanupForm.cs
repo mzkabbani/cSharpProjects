@@ -968,30 +968,32 @@ namespace XmlParsersAndUi.Forms {
                 }
 
                 for (int i = 0; i < capturesAndReplacements.Count; i++) {
-                    if (capturesAndReplacements[i].usedReplacementEvent != null) {
-                        for (int j = 0; j < capturesAndReplacements[i].fileNamesHit.Count; j++) {
-                            string readText = FrontendUtils.ReadFile(capturesAndReplacements[i].fileNamesHit[j].fileName);
-                            readText = XDocument.Parse(readText).ToString();
-
-                            readText = regexForNewLines.Replace(readText, "\n   ");
-                            oldReadFile = FrontendUtils.FormatXml(readText);
-                            for (int k = 0; k < capturesAndReplacements[i].fileNamesHit[j].matchedNodes.Count; k++) {
-                                string parametrizedReplacement = GetReplacementValueFromEvent(capturesAndReplacements[i].usedReplacementEvent, capturesAndReplacements[i].fileNamesHit[j].matchedNodes[k]);
-                                parametrizedReplacement = regexForNewLines.Replace(parametrizedReplacement, "\n   ");
-                                string foundNodes = capturesAndReplacements[i].fileNamesHit[j].matchedNodes[k].ToString();
-                                foundNodes = regexForNewLines.Replace(foundNodes, "\n   ");
-
-                                readText = readText.Replace(foundNodes, parametrizedReplacement);
-
-                            }
-
-                            readText = FrontendUtils.FormatXml(readText);
-                            if (!string.Equals(oldReadFile, readText)) {
-                                changedFiles.Add(capturesAndReplacements[i].fileNamesHit[j].fileName);
-                                string fileSystemPathSource = capturesAndReplacements[i].fileNamesHit[j].fileName.Replace(inputDirectory, outputDirectory);
-                                FrontendUtils.WriteFile(fileSystemPathSource, oldReadFile);
-                            }
-                            FrontendUtils.WriteFile(capturesAndReplacements[i].fileNamesHit[j].fileName, readText);
+                    if (capturesAndReplacements[i].usedReplacementEvent != null ) {
+                		if (capturesAndReplacements[i].captureEvent.captureEventCategory != (int)AdvancedRecomendationCategory.Verbal) {
+                        	for (int j = 0; j < capturesAndReplacements[i].fileNamesHit.Count; j++) {
+	                            string readText = FrontendUtils.ReadFile(capturesAndReplacements[i].fileNamesHit[j].fileName);
+	                            readText = XDocument.Parse(readText).ToString();
+	
+	                            readText = regexForNewLines.Replace(readText, "\n   ");
+	                            oldReadFile = FrontendUtils.FormatXml(readText);
+	                            for (int k = 0; k < capturesAndReplacements[i].fileNamesHit[j].matchedNodes.Count; k++) {
+	                                string parametrizedReplacement = GetReplacementValueFromEvent(capturesAndReplacements[i].usedReplacementEvent, capturesAndReplacements[i].fileNamesHit[j].matchedNodes[k]);
+	                                parametrizedReplacement = regexForNewLines.Replace(parametrizedReplacement, "\n   ");
+	                                string foundNodes = capturesAndReplacements[i].fileNamesHit[j].matchedNodes[k].ToString();
+	                                foundNodes = regexForNewLines.Replace(foundNodes, "\n   ");
+	
+	                                readText = readText.Replace(foundNodes, parametrizedReplacement);
+	
+	                            }
+	
+	                            readText = FrontendUtils.FormatXml(readText);
+	                            if (!string.Equals(oldReadFile, readText)) {
+	                                changedFiles.Add(capturesAndReplacements[i].fileNamesHit[j].fileName);
+	                                string fileSystemPathSource = capturesAndReplacements[i].fileNamesHit[j].fileName.Replace(inputDirectory, outputDirectory);
+	                                FrontendUtils.WriteFile(fileSystemPathSource, oldReadFile);
+	                            }
+	                            FrontendUtils.WriteFile(capturesAndReplacements[i].fileNamesHit[j].fileName, readText);
+	                        }
                         }
                     }
                 }

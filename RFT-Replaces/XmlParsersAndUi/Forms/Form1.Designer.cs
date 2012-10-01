@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-        	System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("item1");
+        	System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("item1");
         	this.txtOutput = new System.Windows.Forms.TextBox();
         	this.lvItems = new System.Windows.Forms.ListView();
         	this.txtInputFile = new System.Windows.Forms.TextBox();
@@ -44,6 +44,7 @@
         	this.button5 = new System.Windows.Forms.Button();
         	this.txtConfi = new System.Windows.Forms.TextBox();
         	this.button6 = new System.Windows.Forms.Button();
+        	this.btnUtilsParser = new System.Windows.Forms.Button();
         	this.grpBoxAttr.SuspendLayout();
         	this.SuspendLayout();
         	// 
@@ -65,7 +66,7 @@
         	this.lvItems.AllowDrop = true;
         	this.lvItems.FullRowSelect = true;
         	this.lvItems.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-        	        	        	listViewItem2});
+        	        	        	listViewItem1});
         	this.lvItems.Location = new System.Drawing.Point(605, 262);
         	this.lvItems.Name = "lvItems";
         	this.lvItems.Size = new System.Drawing.Size(107, 288);
@@ -251,11 +252,22 @@
         	this.button6.UseVisualStyleBackColor = true;
         	this.button6.Click += new System.EventHandler(this.Button6Click);
         	// 
+        	// btnUtilsParser
+        	// 
+        	this.btnUtilsParser.Location = new System.Drawing.Point(30, 290);
+        	this.btnUtilsParser.Name = "btnUtilsParser";
+        	this.btnUtilsParser.Size = new System.Drawing.Size(141, 54);
+        	this.btnUtilsParser.TabIndex = 18;
+        	this.btnUtilsParser.Text = "utilsParser";
+        	this.btnUtilsParser.UseVisualStyleBackColor = true;
+        	this.btnUtilsParser.Click += new System.EventHandler(this.BtnUtilsParserClick);
+        	// 
         	// Form1
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
         	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         	this.ClientSize = new System.Drawing.Size(805, 673);
+        	this.Controls.Add(this.btnUtilsParser);
         	this.Controls.Add(this.button6);
         	this.Controls.Add(this.txtConfi);
         	this.Controls.Add(this.button5);
@@ -282,6 +294,7 @@
         	this.ResumeLayout(false);
         	this.PerformLayout();
         }
+        private System.Windows.Forms.Button btnUtilsParser;
         private System.Windows.Forms.Button button6;
 
         #endregion

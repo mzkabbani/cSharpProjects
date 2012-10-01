@@ -361,7 +361,7 @@ namespace XmlParsersAndUi {
 
                     }
 
-                    readText = regex.Replace(readText, "sync=\"true\"");
+                    readText = regex.Replace(readText, "wait.after.start=\"10\"");
 
                     StreamWriter writer = new StreamWriter(fileList[i]);
                     try {
@@ -682,6 +682,46 @@ namespace XmlParsersAndUi {
         	} catch (Exception ex) {
         		FrontendUtils.ShowError(ex.Message,ex);
         	}
+        }
+        
+        void BtnUtilsParserClick(object sender, EventArgs e)
+        {
+        	   string[] fileList = Directory.GetFiles(txtInputFile.Text, "utils.xml", SearchOption.AllDirectories);
+			
+        	   string operatedFiles = "";
+
+            Regex regex = new Regex("wait.after.start=\"\\d+\"");
+            for (int i = 0; i < fileList.Length; i++) {
+                StreamReader reader = new StreamReader(fileList[i]);
+                operatedFiles = operatedFiles +"\r\n"+fileList[i];
+                string readText = string.Empty;
+                try {
+                    readText = reader.ReadToEnd();
+
+                } finally {
+                    if (reader != null) {
+                        reader.Close();
+                        reader.Dispose();
+
+                    }
+
+                    readText = regex.Replace(readText, "wait.after.start=\"10\"");
+
+                    StreamWriter writer = new StreamWriter(fileList[i]);
+                    try {
+                        writer.Write(readText);
+                    } finally {
+                        if (writer != null) {
+                            writer.Flush();
+                            writer.Close();
+                            writer.Dispose();
+                        }
+                    }
+                }
+
+            }
+ 			operatedFiles = operatedFiles +"";
+            MessageBox.Show("Done");
         }
     }
 }
