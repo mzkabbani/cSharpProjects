@@ -23,7 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-        	System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("item1");
+        	System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("item1");
         	this.txtOutput = new System.Windows.Forms.TextBox();
         	this.lvItems = new System.Windows.Forms.ListView();
         	this.txtInputFile = new System.Windows.Forms.TextBox();
@@ -45,7 +45,10 @@
         	this.txtConfi = new System.Windows.Forms.TextBox();
         	this.button6 = new System.Windows.Forms.Button();
         	this.btnUtilsParser = new System.Windows.Forms.Button();
+        	this.txtConnx = new System.Windows.Forms.TextBox();
+        	this.btnTestConn = new System.Windows.Forms.Button();
         	this.grpBoxAttr.SuspendLayout();
+        	this.gbChildren.SuspendLayout();
         	this.SuspendLayout();
         	// 
         	// txtOutput
@@ -66,7 +69,7 @@
         	this.lvItems.AllowDrop = true;
         	this.lvItems.FullRowSelect = true;
         	this.lvItems.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-        	        	        	listViewItem1});
+        	        	        	listViewItem2});
         	this.lvItems.Location = new System.Drawing.Point(605, 262);
         	this.lvItems.Name = "lvItems";
         	this.lvItems.Size = new System.Drawing.Size(107, 288);
@@ -100,7 +103,7 @@
         	// tvOutput
         	// 
         	this.tvOutput.CheckBoxes = true;
-        	this.tvOutput.Location = new System.Drawing.Point(12, 409);
+        	this.tvOutput.Location = new System.Drawing.Point(6, 56);
         	this.tvOutput.Name = "tvOutput";
         	this.tvOutput.Size = new System.Drawing.Size(230, 102);
         	this.tvOutput.TabIndex = 4;
@@ -119,9 +122,10 @@
         	// grpBoxAttr
         	// 
         	this.grpBoxAttr.Controls.Add(this.button3);
+        	this.grpBoxAttr.Controls.Add(this.tvOutput);
         	this.grpBoxAttr.Location = new System.Drawing.Point(250, 112);
         	this.grpBoxAttr.Name = "grpBoxAttr";
-        	this.grpBoxAttr.Size = new System.Drawing.Size(276, 441);
+        	this.grpBoxAttr.Size = new System.Drawing.Size(276, 183);
         	this.grpBoxAttr.TabIndex = 6;
         	this.grpBoxAttr.TabStop = false;
         	this.grpBoxAttr.Text = "Attributes";
@@ -156,9 +160,11 @@
         	// 
         	// gbChildren
         	// 
-        	this.gbChildren.Location = new System.Drawing.Point(13, 517);
+        	this.gbChildren.Controls.Add(this.btnTestConn);
+        	this.gbChildren.Controls.Add(this.txtConnx);
+        	this.gbChildren.Location = new System.Drawing.Point(13, 432);
         	this.gbChildren.Name = "gbChildren";
-        	this.gbChildren.Size = new System.Drawing.Size(636, 144);
+        	this.gbChildren.Size = new System.Drawing.Size(636, 229);
         	this.gbChildren.TabIndex = 9;
         	this.gbChildren.TabStop = false;
         	this.gbChildren.Text = "Children";
@@ -262,6 +268,24 @@
         	this.btnUtilsParser.UseVisualStyleBackColor = true;
         	this.btnUtilsParser.Click += new System.EventHandler(this.BtnUtilsParserClick);
         	// 
+        	// txtConnx
+        	// 
+        	this.txtConnx.Location = new System.Drawing.Point(6, 19);
+        	this.txtConnx.Multiline = true;
+        	this.txtConnx.Name = "txtConnx";
+        	this.txtConnx.Size = new System.Drawing.Size(449, 112);
+        	this.txtConnx.TabIndex = 8;
+        	// 
+        	// btnTestConn
+        	// 
+        	this.btnTestConn.Location = new System.Drawing.Point(51, 137);
+        	this.btnTestConn.Name = "btnTestConn";
+        	this.btnTestConn.Size = new System.Drawing.Size(141, 54);
+        	this.btnTestConn.TabIndex = 19;
+        	this.btnTestConn.Text = "Test Conn";
+        	this.btnTestConn.UseVisualStyleBackColor = true;
+        	this.btnTestConn.Click += new System.EventHandler(this.BtnTestConnClick);
+        	// 
         	// Form1
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -282,7 +306,6 @@
         	this.Controls.Add(this.txtEventIn);
         	this.Controls.Add(this.grpBoxAttr);
         	this.Controls.Add(this.btnPopulateTV);
-        	this.Controls.Add(this.tvOutput);
         	this.Controls.Add(this.btnParse);
         	this.Controls.Add(this.txtInputFile);
         	this.Controls.Add(this.lvItems);
@@ -291,9 +314,13 @@
         	this.Text = "Main Form";
         	this.Load += new System.EventHandler(this.Form1_Load);
         	this.grpBoxAttr.ResumeLayout(false);
+        	this.gbChildren.ResumeLayout(false);
+        	this.gbChildren.PerformLayout();
         	this.ResumeLayout(false);
         	this.PerformLayout();
         }
+        private System.Windows.Forms.Button btnTestConn;
+        private System.Windows.Forms.TextBox txtConnx;
         private System.Windows.Forms.Button btnUtilsParser;
         private System.Windows.Forms.Button button6;
 

@@ -210,8 +210,8 @@ namespace XmlParsersAndUi.Forms {
             var test21 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
                          where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
                          select new {
-                             elements = c1.DescendantNodesAndSelf()
-                         };
+                elements = c1.DescendantNodesAndSelf()
+            };
             List<bool> foundlist = new List<bool>();
             for (int i = 0; i < test21.Count(); i++) {
                 bool found = true;
@@ -270,9 +270,9 @@ namespace XmlParsersAndUi.Forms {
                 } else if (c1.Attribute(list[i].attrName) == null) {
                     found = false;
                 }
-                    //else if (!string.Equals(c1.Attribute(list[i].attrName).Value, list[i].attrValue)) {
-                    //    found = false;
-                    //}
+                //else if (!string.Equals(c1.Attribute(list[i].attrName).Value, list[i].attrValue)) {
+                //    found = false;
+                //}
                 else {
                     Regex regex = new Regex(list[i].attrValue);
                     if (regex.Matches(c1.Attribute(list[i].attrName).Value).Count > 0) {
@@ -288,62 +288,62 @@ namespace XmlParsersAndUi.Forms {
         private List<XNode> ParseUsingSimpleList(AdvancedRecomendation captureEvent, XDocument xdoc, List<string> foundEvents) {
             List<XNode> foundNodes = new List<XNode>();
             switch (captureEvent.CaptureEventCapturePointsList.Count) {
-                case 1:
-                    var q1 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
-                             where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
-                             select new {
-                                 elements = c1.DescendantNodesAndSelf()
-                             };
-                    for (int i = 0; i < q1.Count(); i++) {
-                        foundEvents.Add(q1.ElementAt(i).elements.ElementAt(0).ToString());
-                        foundNodes.Add(q1.ElementAt(i).elements.ElementAt(0));
-                    }
-                    break;
-                case 2:
-                    var q2 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
-                             where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
-                             from c2 in c1.Elements(captureEvent.CaptureEventCapturePointsList[1].Text)
-                             where AllAttributesAvailable(c2, captureEvent.CaptureEventCapturePointsList[1].customizedAttributeCollection)
-                             select new {
-                                 elements = c1.DescendantNodesAndSelf()
-                             };
-                    for (int i = 0; i < q2.Count(); i++) {
-                        foundEvents.Add(q2.ElementAt(i).elements.ElementAt(0).ToString());
-                        foundNodes.Add(q2.ElementAt(i).elements.ElementAt(0));
-                    }
-                    break;
-                case 3:
-                    var q3 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
-                             where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
-                             from c2 in c1.Elements(captureEvent.CaptureEventCapturePointsList[1].Text)
-                             where AllAttributesAvailable(c2, captureEvent.CaptureEventCapturePointsList[1].customizedAttributeCollection)
-                             from c3 in c2.Elements(captureEvent.CaptureEventCapturePointsList[2].Text)
-                             where AllAttributesAvailable(c3, captureEvent.CaptureEventCapturePointsList[2].customizedAttributeCollection)
-                             select new {
-                                 elements = c1.DescendantNodesAndSelf()
-                             };
-                    for (int i = 0; i < q3.Count(); i++) {
-                        foundEvents.Add(q3.ElementAt(i).elements.ElementAt(0).ToString());
-                        foundNodes.Add(q3.ElementAt(i).elements.ElementAt(0));
-                    }
-                    break;
-                case 4:
-                    var q4 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
-                             where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
-                             from c2 in c1.Elements(captureEvent.CaptureEventCapturePointsList[1].Text)
-                             where AllAttributesAvailable(c2, captureEvent.CaptureEventCapturePointsList[1].customizedAttributeCollection)
-                             from c3 in c2.Elements(captureEvent.CaptureEventCapturePointsList[2].Text)
-                             where AllAttributesAvailable(c3, captureEvent.CaptureEventCapturePointsList[2].customizedAttributeCollection)
-                             from c4 in c3.Elements(captureEvent.CaptureEventCapturePointsList[3].Text)
-                             where AllAttributesAvailable(c4, captureEvent.CaptureEventCapturePointsList[3].customizedAttributeCollection)
-                             select new {
-                                 elements = c1.DescendantNodesAndSelf()
-                             };
-                    for (int i = 0; i < q4.Count(); i++) {
-                        foundEvents.Add(q4.ElementAt(i).elements.ElementAt(0).ToString());
-                        foundNodes.Add(q4.ElementAt(i).elements.ElementAt(0));
-                    }
-                    break;
+            case 1:
+                var q1 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
+                         where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
+                         select new {
+                    elements = c1.DescendantNodesAndSelf()
+                };
+                for (int i = 0; i < q1.Count(); i++) {
+                    foundEvents.Add(q1.ElementAt(i).elements.ElementAt(0).ToString());
+                    foundNodes.Add(q1.ElementAt(i).elements.ElementAt(0));
+                }
+                break;
+            case 2:
+                var q2 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
+                         where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
+                         from c2 in c1.Elements(captureEvent.CaptureEventCapturePointsList[1].Text)
+                         where AllAttributesAvailable(c2, captureEvent.CaptureEventCapturePointsList[1].customizedAttributeCollection)
+                         select new {
+                    elements = c1.DescendantNodesAndSelf()
+                };
+                for (int i = 0; i < q2.Count(); i++) {
+                    foundEvents.Add(q2.ElementAt(i).elements.ElementAt(0).ToString());
+                    foundNodes.Add(q2.ElementAt(i).elements.ElementAt(0));
+                }
+                break;
+            case 3:
+                var q3 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
+                         where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
+                         from c2 in c1.Elements(captureEvent.CaptureEventCapturePointsList[1].Text)
+                         where AllAttributesAvailable(c2, captureEvent.CaptureEventCapturePointsList[1].customizedAttributeCollection)
+                         from c3 in c2.Elements(captureEvent.CaptureEventCapturePointsList[2].Text)
+                         where AllAttributesAvailable(c3, captureEvent.CaptureEventCapturePointsList[2].customizedAttributeCollection)
+                         select new {
+                    elements = c1.DescendantNodesAndSelf()
+                };
+                for (int i = 0; i < q3.Count(); i++) {
+                    foundEvents.Add(q3.ElementAt(i).elements.ElementAt(0).ToString());
+                    foundNodes.Add(q3.ElementAt(i).elements.ElementAt(0));
+                }
+                break;
+            case 4:
+                var q4 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
+                         where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
+                         from c2 in c1.Elements(captureEvent.CaptureEventCapturePointsList[1].Text)
+                         where AllAttributesAvailable(c2, captureEvent.CaptureEventCapturePointsList[1].customizedAttributeCollection)
+                         from c3 in c2.Elements(captureEvent.CaptureEventCapturePointsList[2].Text)
+                         where AllAttributesAvailable(c3, captureEvent.CaptureEventCapturePointsList[2].customizedAttributeCollection)
+                         from c4 in c3.Elements(captureEvent.CaptureEventCapturePointsList[3].Text)
+                         where AllAttributesAvailable(c4, captureEvent.CaptureEventCapturePointsList[3].customizedAttributeCollection)
+                         select new {
+                    elements = c1.DescendantNodesAndSelf()
+                };
+                for (int i = 0; i < q4.Count(); i++) {
+                    foundEvents.Add(q4.ElementAt(i).elements.ElementAt(0).ToString());
+                    foundNodes.Add(q4.ElementAt(i).elements.ElementAt(0));
+                }
+                break;
             }
             return foundNodes;
         }
@@ -378,13 +378,10 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
-        private double SetPopularity(ReplacementEvent replacementEvent) {
-
-            return (((double)replacementEvent.usageCount / REPLACEMENT_TOTAL_USAGE_COUNT) * 20);
-        }
+     
 
         private string GetParametrizedRepFromGenericOne(ReplacementEvent replacementEvent, XNode xNode) {
-            // may be a bug .... ex: with two view-selection under action performed 
+            // may be a bug .... ex: with two view-selection under action performed
             List<NodeAndAttributeCouple> replaceableValues = GetReplacementParametersFromValue(replacementEvent.Value);
             string completedEvent = replacementEvent.Value;
             XElement element = XElement.Parse(xNode.ToString());
@@ -401,39 +398,42 @@ namespace XmlParsersAndUi.Forms {
             return completedEvent;
         }
 
-      private string GetReplacementValueFromEvent(ReplacementEvent replacementEvent, XNode foundNode) {
-            // may be a bug .... ex: with two view-selection under action performed 
-            List<NodeAndAttributeCouple> replaceableValues = GetReplacementParametersFromValue(replacementEvent.Value);
-            string completedEvent = replacementEvent.Value;
-            XElement element = XElement.Parse(foundNode.ToString());
-            for (int i = 0; i < replaceableValues.Count; i++) {
-                if (string.Equals(replaceableValues[i].attrName, "TextValue", StringComparison.InvariantCultureIgnoreCase)) {
-                    string textValue = element.DescendantsAndSelf(replaceableValues[i].nodeName).ElementAt(0).Value.Trim();
+        private string GetReplacementValueFromEvent(ReplacementEvent replacementEvent, XNode foundNode) {
+            // may be a bug .... ex: with two view-selection under action performed
+            string completedEvent = string.Empty;
+            if (!string.Equals(replacementEvent.Value,"{EmptyString}")) {
+                List<NodeAndAttributeCouple> replaceableValues = GetReplacementParametersFromValue(replacementEvent.Value);
+                completedEvent = replacementEvent.Value;
+                XElement element = XElement.Parse(foundNode.ToString());
+                for (int i = 0; i < replaceableValues.Count; i++) {
+                    if (string.Equals(replaceableValues[i].attrName, "TextValue", StringComparison.InvariantCultureIgnoreCase)) {
+                        string textValue = element.DescendantsAndSelf(replaceableValues[i].nodeName).ElementAt(0).Value.Trim();
 
-                    if (completedEvent.Contains("{" + replaceableValues[i].nodeName + ":TextValue}")) {
-                        completedEvent = completedEvent.Replace("{" + replaceableValues[i].nodeName + ":TextValue}", textValue);
+                        if (completedEvent.Contains("{" + replaceableValues[i].nodeName + ":TextValue}")) {
+                            completedEvent = completedEvent.Replace("{" + replaceableValues[i].nodeName + ":TextValue}", textValue);
+                        } else {
+                            completedEvent = completedEvent.Replace("{TextValue}", textValue);
+                        }
+
                     } else {
-                        completedEvent = completedEvent.Replace("{TextValue}", textValue);
-                    }
-
-                } else {
-                    if (element.DescendantsAndSelf(replaceableValues[i].nodeName).Attributes(replaceableValues[i].attrName).Count() >= replaceableValues[i].index) {
-                        string attrValue = element.DescendantsAndSelf(replaceableValues[i].nodeName).Attributes(replaceableValues[i].attrName).ElementAt(replaceableValues[i].index).Value.Trim();
-                        if (completedEvent.Contains("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrName + "}")) {
-                            completedEvent = completedEvent.Replace("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrName + "}", attrValue);
-                        } else if (completedEvent.Contains("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrNameWithAt + "}")) {
-                            completedEvent = completedEvent.Replace("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrNameWithAt + "}", attrValue);
-                        } else if (completedEvent.Contains("{" + replaceableValues[i].attrName + "}")) {
-                            completedEvent = completedEvent.Replace("{" + replaceableValues[i].attrName + "}", attrValue);
+                        if (element.DescendantsAndSelf(replaceableValues[i].nodeName).Attributes(replaceableValues[i].attrName).Count() >= replaceableValues[i].index) {
+                            string attrValue = element.DescendantsAndSelf(replaceableValues[i].nodeName).Attributes(replaceableValues[i].attrName).ElementAt(replaceableValues[i].index).Value.Trim();
+                            if (completedEvent.Contains("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrName + "}")) {
+                                completedEvent = completedEvent.Replace("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrName + "}", attrValue);
+                            } else if (completedEvent.Contains("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrNameWithAt + "}")) {
+                                completedEvent = completedEvent.Replace("{" + replaceableValues[i].nodeName + ":" + replaceableValues[i].attrNameWithAt + "}", attrValue);
+                            } else if (completedEvent.Contains("{" + replaceableValues[i].attrName + "}")) {
+                                completedEvent = completedEvent.Replace("{" + replaceableValues[i].attrName + "}", attrValue);
+                            }
                         }
                     }
                 }
             }
             return completedEvent;
-        }        
-        
-        
-         private List<NodeAndAttributeCouple> GetReplacementParametersFromValue(string replacementValue) {
+        }
+
+
+        private List<NodeAndAttributeCouple> GetReplacementParametersFromValue(string replacementValue) {
             List<NodeAndAttributeCouple> couples = new List<NodeAndAttributeCouple>();
             List<string> caughtParameters = new List<string>();
 
@@ -527,9 +527,9 @@ namespace XmlParsersAndUi.Forms {
             } catch (Exception ex) {
                 this.Cursor = Cursors.Default;
                 string tmp = string.Format("{0}{1}{1}***STACK***{1}{2}",
-                    ex.Message,
-                    Environment.NewLine,
-                    ex.StackTrace);
+                                           ex.Message,
+                                           Environment.NewLine,
+                                           ex.StackTrace);
                 MessageBox.Show(tmp, "Compare Error");
                 return;
             }
@@ -602,9 +602,15 @@ namespace XmlParsersAndUi.Forms {
                 pcProgress.Rotate = true;
                 pcProgress.ForeColor = Color.DodgerBlue;
                 FolderToParse = txtInputDir.Text;
-                string[] filesToParse = Directory.GetFiles(FolderToParse, CLEANUPFORM_EVENTS_SEARCH_PATTERN, SearchOption.AllDirectories);
-                for (int i = 0; i < filesToParse.Length; i++) {
-                    FileToParseObject fileToParse = new FileToParseObject(filesToParse[i], false);
+
+                
+          
+                FileData[] files =  FastDirectoryEnumerator.GetFiles(FolderToParse,CLEANUPFORM_EVENTS_SEARCH_PATTERN, SearchOption.AllDirectories);
+         
+           
+                  
+                for (int i = 0; i < files.Length; i++) {
+                	FileToParseObject fileToParse = new FileToParseObject(files[i].Path, false);
                     backWorkerObject.targetedFiles.Add(fileToParse);
                 }
                 bgwSearchForMatches.RunWorkerAsync(backWorkerObject);
@@ -652,7 +658,7 @@ namespace XmlParsersAndUi.Forms {
 
 
 
-            //for (int i = 0; i < bgWorkerObject.targetedFiles.Count; i++) {               
+            //for (int i = 0; i < bgWorkerObject.targetedFiles.Count; i++) {
 
             //    StartParsingInput(currentlyUsedCaptures, readText, fileName, complexCaptureMatchObject);
 
@@ -759,7 +765,7 @@ namespace XmlParsersAndUi.Forms {
 
                 DialogResult dialogResult = FrontendUtils.ShowConformation("Search completed, with " + lblFoundNodesCound.Text + " total hits!\n Proceed to replacement?");
                 if (dialogResult == DialogResult.Yes) {
-                    REPLACEMENT_TOTAL_USAGE_COUNT = Advanced_Replacements.GetTotalAdvanceReplacementUsageCount();
+                    //REPLACEMENT_TOTAL_USAGE_COUNT = Advanced_Replacements.GetTotalAdvanceReplacementUsageCount();
                     SetupUiForReplacements();
                 }
 
@@ -789,7 +795,7 @@ namespace XmlParsersAndUi.Forms {
                 //testReplacements form = new testReplacements(backGroundWorkerObject);
                 //form.MdiParent = this.MdiParent;
                 //form.Show();
-                REPLACEMENT_TOTAL_USAGE_COUNT = Advanced_Replacements.GetTotalAdvanceReplacementUsageCount();
+             //   REPLACEMENT_TOTAL_USAGE_COUNT = Advanced_Replacements.GetTotalAdvanceReplacementUsageCount();
                 SetupUiForReplacements();
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -843,34 +849,43 @@ namespace XmlParsersAndUi.Forms {
         private void dgvResults_CellClick(object sender, DataGridViewCellEventArgs e) {
             try {
                 pnlAvailableReplacements.Controls.Clear();
-                ComplexCaptureMatchObject complexCaptureMatchObject = dgvResults[1, e.RowIndex].Value as ComplexCaptureMatchObject;
-                List<ReplacementEvent> availableReplacements = Advanced_Replacements.GetAvailableReplacementsByCaptureId(complexCaptureMatchObject.captureEvent.CaptureEventId, BackEndUtils.GetSqlConnection());
-                int highestPopularity = -1;
-                for (int i = 0; i < availableReplacements.Count; i++) {
-                    CustomizedReplacement customizedReplacement = new CustomizedReplacement();
-                    customizedReplacement.Click += new EventHandler(customizedReplacement_Click);
-                    customizedReplacement.Location = new System.Drawing.Point(3, 3 + (176 * (i)) + 6);
-                    customizedReplacement.Name = availableReplacements[i].name;
-                    customizedReplacement.repDescription = availableReplacements[i].description;
-                    customizedReplacement.repName = availableReplacements[i].name;
-                    customizedReplacement.repReplacement = availableReplacements[i].Value;
-                    customizedReplacement.replacementEvent = availableReplacements[i];
-                    customizedReplacement.Size = new System.Drawing.Size(558, 170);
-                    customizedReplacement.TabIndex = i;
-                    customizedReplacement.Visible = true;
-                    customizedReplacement.popularity = (int)SetPopularity(availableReplacements[i]);
-                    customizedReplacement.rbSelectedReplacement.CheckedChanged += new EventHandler(rbSelectedReplacement_CheckedChanged);
-                    customizedReplacement.MouseClick += new MouseEventHandler(rbSelectedReplacement_CheckedChanged);
-                    pnlAvailableReplacements.Controls.Add(customizedReplacement);
-
-                    // this checks the replacement with highest popularity                    
-                    if (customizedReplacement.popularity > highestPopularity) {
-                        customizedReplacement.rbSelectedReplacement.Checked = true;
-                        highestPopularity = customizedReplacement.popularity;
-                        complexCaptureMatchObject.usedReplacementEvent = customizedReplacement.replacementEvent;
-                    }
+                if (e.RowIndex >=0) {               	
+	                ComplexCaptureMatchObject complexCaptureMatchObject = dgvResults[1, e.RowIndex].Value as ComplexCaptureMatchObject;
+	                List<ReplacementEvent> availableReplacements = Advanced_Replacements.GetAvailableReplacementsByCaptureId(complexCaptureMatchObject.captureEvent.CaptureEventId, BackEndUtils.GetSqlConnection());
+	                int highestPopularity = -1;
+	                
+	                int totalUsageCount = 1;
+	                
+	                for (int j = 0; j < availableReplacements.Count; j++) {
+	                	totalUsageCount = totalUsageCount + availableReplacements[j].usageCount;
+	                }
+	                
+	                for (int i = 0; i < availableReplacements.Count; i++) {
+	                    CustomizedReplacement customizedReplacement = new CustomizedReplacement();
+	                    customizedReplacement.Click += new EventHandler(customizedReplacement_Click);
+	                    customizedReplacement.Location = new System.Drawing.Point(3, 3 + (176 * (i)) + 6);
+	                    customizedReplacement.Name = availableReplacements[i].name;
+	                    customizedReplacement.repDescription = availableReplacements[i].description;
+	                    customizedReplacement.repName = availableReplacements[i].name;
+	                    customizedReplacement.repReplacement = availableReplacements[i].Value;
+	                    customizedReplacement.replacementEvent = availableReplacements[i];
+	                    customizedReplacement.Size = new System.Drawing.Size(558, 170);
+	                    customizedReplacement.TabIndex = i;
+	                    customizedReplacement.Visible = true;
+	                    customizedReplacement.popularity = (int)(((double)availableReplacements[i].usageCount / totalUsageCount) * 20);
+	                    customizedReplacement.rbSelectedReplacement.CheckedChanged += new EventHandler(rbSelectedReplacement_CheckedChanged);
+	                    customizedReplacement.MouseClick += new MouseEventHandler(rbSelectedReplacement_CheckedChanged);
+	                    pnlAvailableReplacements.Controls.Add(customizedReplacement);
+	
+	                    // this checks the replacement with highest popularity
+	                    if (customizedReplacement.popularity > highestPopularity) {
+	                        customizedReplacement.rbSelectedReplacement.Checked = true;
+	                        highestPopularity = customizedReplacement.popularity;
+	                        complexCaptureMatchObject.usedReplacementEvent = customizedReplacement.replacementEvent;
+	                    }
+	                }
+	                pnlAvailableReplacements.Focus();
                 }
-                pnlAvailableReplacements.Focus();
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
@@ -969,39 +984,48 @@ namespace XmlParsersAndUi.Forms {
 
                 for (int i = 0; i < capturesAndReplacements.Count; i++) {
                     if (capturesAndReplacements[i].usedReplacementEvent != null ) {
-                		if (capturesAndReplacements[i].captureEvent.captureEventCategory != (int)AdvancedRecomendationCategory.Verbal) {
-                        	for (int j = 0; j < capturesAndReplacements[i].fileNamesHit.Count; j++) {
-	                            string readText = FrontendUtils.ReadFile(capturesAndReplacements[i].fileNamesHit[j].fileName);
-	                            readText = XDocument.Parse(readText).ToString();
-	
-	                            readText = regexForNewLines.Replace(readText, "\n   ");
-	                            oldReadFile = FrontendUtils.FormatXml(readText);
-	                            for (int k = 0; k < capturesAndReplacements[i].fileNamesHit[j].matchedNodes.Count; k++) {
-	                                string parametrizedReplacement = GetReplacementValueFromEvent(capturesAndReplacements[i].usedReplacementEvent, capturesAndReplacements[i].fileNamesHit[j].matchedNodes[k]);
-	                                parametrizedReplacement = regexForNewLines.Replace(parametrizedReplacement, "\n   ");
-	                                string foundNodes = capturesAndReplacements[i].fileNamesHit[j].matchedNodes[k].ToString();
-	                                foundNodes = regexForNewLines.Replace(foundNodes, "\n   ");
-	
-	                                readText = readText.Replace(foundNodes, parametrizedReplacement);
-	
-	                            }
-	
-	                            readText = FrontendUtils.FormatXml(readText);
-	                            if (!string.Equals(oldReadFile, readText)) {
-	                                changedFiles.Add(capturesAndReplacements[i].fileNamesHit[j].fileName);
-	                                string fileSystemPathSource = capturesAndReplacements[i].fileNamesHit[j].fileName.Replace(inputDirectory, outputDirectory);
-	                                FrontendUtils.WriteFile(fileSystemPathSource, oldReadFile);
-	                            }
-	                            FrontendUtils.WriteFile(capturesAndReplacements[i].fileNamesHit[j].fileName, readText);
-	                        }
+                        if (capturesAndReplacements[i].captureEvent.captureEventCategory != (int)AdvancedRecomendationCategory.Verbal) {
+                            for (int j = 0; j < capturesAndReplacements[i].fileNamesHit.Count; j++) {
+                                string readText = FrontendUtils.ReadFile(capturesAndReplacements[i].fileNamesHit[j].fileName);
+                                readText = XDocument.Parse(readText).ToString();
+
+                                readText = regexForNewLines.Replace(readText, "\n   ");
+                                oldReadFile = FrontendUtils.FormatXml(readText);
+                                for (int k = 0; k < capturesAndReplacements[i].fileNamesHit[j].matchedNodes.Count; k++) {
+                                    string parametrizedReplacement = GetReplacementValueFromEvent(capturesAndReplacements[i].usedReplacementEvent, capturesAndReplacements[i].fileNamesHit[j].matchedNodes[k]);
+                                    parametrizedReplacement = regexForNewLines.Replace(parametrizedReplacement, "\n   ");
+                                    string foundNodes = capturesAndReplacements[i].fileNamesHit[j].matchedNodes[k].ToString();
+                                    foundNodes = regexForNewLines.Replace(foundNodes, "\n   ");
+
+                                    readText = readText.Replace(foundNodes, parametrizedReplacement);
+
+                                }
+
+                                readText = FrontendUtils.FormatXml(readText);
+                                if (!string.Equals(oldReadFile, readText)) {
+                                    changedFiles.Add(capturesAndReplacements[i].fileNamesHit[j].fileName);
+                                    string fileSystemPathSource = capturesAndReplacements[i].fileNamesHit[j].fileName.Replace(inputDirectory, outputDirectory);
+                                    FrontendUtils.WriteFile(fileSystemPathSource, oldReadFile);
+                                }
+                                FrontendUtils.WriteFile(capturesAndReplacements[i].fileNamesHit[j].fileName, readText);
+                            }
                         }
                     }
                 }
-
+				
+                
+                
                 gbAffectedFiles.Visible = true;
                 fillTree(changedFiles);
                 tvAffectedFiles.ExpandAll();
                 FrontendUtils.ShowInformation("Replacement done!", false);
+                
+				
+			                
+                					
+                	Advanced_Replacements.IncrementReplacementsListUsageById(capturesAndReplacements);
+                
+               
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }

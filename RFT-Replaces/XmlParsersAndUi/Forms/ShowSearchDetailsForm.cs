@@ -39,7 +39,7 @@ namespace XmlParsersAndUi.Forms {
                     customizedReplacement.replacementEvent = availableReplacements[i];
                     customizedReplacement.Size = new System.Drawing.Size(790, 207);
                     customizedReplacement.TabIndex = 0;
-                    customizedReplacement.popularity = (int)SetPopularity(availableReplacements[i]);
+                  //  customizedReplacement.popularity = (int)SetPopularity(availableReplacements[i]);
 
                     pnlReplacements.Controls.Add(customizedReplacement);
                 }
@@ -56,12 +56,12 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
-        private double SetPopularity(ReplacementEvent replacementEvent) {
-            int totalUsage = Advanced_Replacements.GetTotalAdvanceReplacementUsageCount();
-            return (((double)replacementEvent.usageCount / totalUsage) * 20);
-
-
-        }
+//        private double SetPopularity(ReplacementEvent replacementEvent) {
+//            int totalUsage = Advanced_Replacements.GetTotalAdvanceReplacementUsageCount();
+//            return (((double)replacementEvent.usageCount / totalUsage) * 20);
+//
+//
+//        }
 
         private void ShowSearchDetailsForm_FormClosing(object sender, FormClosingEventArgs e) {
             if (selectedReplacementEvent != null) {

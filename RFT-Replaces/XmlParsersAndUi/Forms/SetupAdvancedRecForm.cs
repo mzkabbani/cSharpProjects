@@ -941,7 +941,7 @@ namespace XmlParsersAndUi {
                 FrontendUtils.ShowInformation("Replacement name is in use!", true);
                 return false;
             }
-            if (!IsValidXml(replacementValue) && ConfigureToValidateXml) {
+        	if (!IsValidXml(replacementValue) && ConfigureToValidateXml && !string.Equals(replacementValue,"{EmptyString}")) {
                 FrontendUtils.ShowInformation("Replacement value must be a valid xml!", true);
                 return false;
             }

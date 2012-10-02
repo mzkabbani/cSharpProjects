@@ -549,6 +549,7 @@
         	this.Controls.Add(this.gbSearchResults);
         	this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
         	this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+        	this.MaximizeBox = false;
         	this.Name = "SecondLevelCleanupForm";
         	this.Text = "Second Level Cleanup";
         	this.Load += new System.EventHandler(this.SecondLevelCleanupForm_Load);

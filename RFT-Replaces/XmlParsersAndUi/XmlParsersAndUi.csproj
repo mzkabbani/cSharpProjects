@@ -371,7 +371,6 @@
     <Compile Include="Classes\BackGroundWorkerObject.cs" />
     <Compile Include="Classes\BulkMacroTreeNode.cs" />
     <Compile Include="Classes\CustomizationFunction.cs" />
-    <Compile Include="Classes\ComplexCaptureMatchObject.cs" />
     <Compile Include="Classes\EnvComparatorWorker.cs" />
     <Compile Include="Classes\EventsGroupNameAndID.cs" />
     <Compile Include="Classes\ExportDatagridWorkerObject.cs" />

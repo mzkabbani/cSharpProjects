@@ -106,15 +106,15 @@ namespace XmlParsersAndUi {
             var selectedElementsFirstRun = from c in newXDocument.Descendants("element")
                                            where string.Equals(c.Attribute("name").Value, cmbMain.Text)
                                            select new {
-                                               s1 = c
-                                           };
+                s1 = c
+            };
             if (selectedElementsFirstRun.ElementAt(0).s1.HasElements) {
 
                 var selectedElements = from c in newXDocument.Descendants("element")
                                        where string.Equals(c.Attribute("name").Value, cmbMain.Text)
                                        select new {
-                                           s1 = c.Descendants("element")
-                                       };
+                    s1 = c.Descendants("element")
+                };
 
                 IEnumerable<XElement> sElements = selectedElements.ElementAt(0).s1;
                 ComboBox cmbNew = new ComboBox();
@@ -139,20 +139,20 @@ namespace XmlParsersAndUi {
             dlg.FileName = Application.StartupPath + "\\..\\..\\example.xml";
             if (dlg.ShowDialog() == DialogResult.OK) {
                 try {
-                    //Just a good practice -- change the cursor to a 
+                    //Just a good practice -- change the cursor to a
                     //wait cursor while the nodes populate
                     this.Cursor = Cursors.WaitCursor;
                     //First, we'll load the Xml document
                     XmlDocument xDoc = new XmlDocument();
                     xDoc.Load(dlg.FileName);
-                    //Now, clear out the treeview, 
+                    //Now, clear out the treeview,
                     //and add the first (root) node
                     tvOutput.Nodes.Clear();
                     tvOutput.Nodes.Add(new
-                      TreeNode(xDoc.DocumentElement.Name));
+                                       TreeNode(xDoc.DocumentElement.Name));
                     TreeNode tNode = new TreeNode();
                     tNode = (TreeNode)tvOutput.Nodes[0];
-                    //We make a call to addTreeNode, 
+                    //We make a call to addTreeNode,
                     //where we'll add all of our nodes
                     addTreeNode(xDoc.DocumentElement, tNode);
                     //Expand the treeview to show all nodes
@@ -161,8 +161,7 @@ namespace XmlParsersAndUi {
                     //Exception is thrown is there is an error in the Xml
                 {
                     FrontendUtils.ShowError(xExc.Message, xExc);
-                } catch (Exception ex) //General exception
-                {
+                } catch (Exception ex) { //General exception
                     FrontendUtils.ShowError(ex.Message, ex);
                 } finally {
                     this.Cursor = Cursors.Default; //Change the cursor back
@@ -175,12 +174,11 @@ namespace XmlParsersAndUi {
             XmlNode xNode;
             TreeNode tNode;
             XmlNodeList xNodeList;
-            if (xmlNode.HasChildNodes) //The current node has children
-    {
+            if (xmlNode.HasChildNodes) { //The current node has children
                 xNodeList = xmlNode.ChildNodes;
                 for (int x = 0; x <= xNodeList.Count - 1; x++)
-                //Loop through the child nodes
-        {
+                    //Loop through the child nodes
+                {
                     xNode = xmlNode.ChildNodes[x];
                     //treeNode.Nodes.Add(new TreeNode(xNode.Name));
                     treeNode.Nodes.Add(new CustomTreeNode(xNode.Name, xNode.Attributes));
@@ -244,7 +242,7 @@ namespace XmlParsersAndUi {
 
             xmlDocument = XDocument.Parse(eventMacro);
             populateTreeviewSingleEvent(xmlDocument.ToString());
-            //IEnumerable<XElement> childred = 
+            //IEnumerable<XElement> childred =
             //       object patterns = xmlDocument.XPathEvaluate(@"MXClientScript\Events");
             IEnumerable<XElement> children = xmlDocument.Elements();
 
@@ -254,31 +252,30 @@ namespace XmlParsersAndUi {
 
         private void populateTreeviewSingleEvent(string document) {
             try {
-                //Just a good practice -- change the cursor to a 
+                //Just a good practice -- change the cursor to a
                 //wait cursor while the nodes populate
                 XmlDocument xDoc = new XmlDocument();
                 xDoc.LoadXml(document);
                 this.Cursor = Cursors.WaitCursor;
-                //First, we'll load the Xml document                   
-                //Now, clear out the treeview, 
+                //First, we'll load the Xml document
+                //Now, clear out the treeview,
                 //and add the first (root) node
                 tvOutput.Nodes.Clear();
                 tvOutput.Nodes.Add(new
-                  CustomTreeNode(xDoc.DocumentElement.Name, xDoc.DocumentElement.Attributes));
+                                   CustomTreeNode(xDoc.DocumentElement.Name, xDoc.DocumentElement.Attributes));
 
                 TreeNode tNode = new TreeNode();
                 tNode = (TreeNode)tvOutput.Nodes[0];
-                //We make a call to addTreeNode, 
+                //We make a call to addTreeNode,
                 //where we'll add all of our nodes
                 addTreeNodeForSingleEvent(xDoc.DocumentElement, tNode);
                 //Expand the treeview to show all nodes
                 tvOutput.ExpandAll();
             } catch (XmlException xExc)
                 //Exception is thrown is there is an error in the Xml
-             {
+            {
                 FrontendUtils.ShowError(xExc.Message, xExc);
-            } catch (Exception ex) //General exception
-             {
+            } catch (Exception ex) { //General exception
                 FrontendUtils.ShowError(ex.Message, ex);
             } finally {
                 this.Cursor = Cursors.Default; //Change the cursor back
@@ -291,12 +288,11 @@ namespace XmlParsersAndUi {
             XmlNode xNode;
             TreeNode tNode;
             XmlNodeList xNodeList;
-            if (xmlNode.HasChildNodes) //The current node has children
-    {
+            if (xmlNode.HasChildNodes) { //The current node has children
                 xNodeList = xmlNode.ChildNodes;
                 for (int x = 0; x <= xNodeList.Count - 1; x++)
-                //Loop through the child nodes
-        {
+                    //Loop through the child nodes
+                {
                     xNode = xmlNode.ChildNodes[x];
                     //treeNode.Nodes.Add(new TreeNode(xNode.Name));
                     treeNode.Nodes.Add(new CustomTreeNode(xNode.Name, xNode.Attributes));
@@ -325,8 +321,8 @@ namespace XmlParsersAndUi {
             var q1 = from c in xmlDocument.Descendants("element")
                      where string.Equals(c.Attribute("name").Value, SelectedText)
                      select new {
-                         s1 = (string)c.Value
-                     };
+                s1 = (string)c.Value
+            };
 
         }
 
@@ -500,12 +496,12 @@ namespace XmlParsersAndUi {
             System.Collections.Specialized.StringCollection();
             if (lvItems.SelectedItems.Count > 0) {
                 filePath.Add(lvItems.SelectedItems[0].Text);
-                DataObject dataObject = new DataObject();                
+                DataObject dataObject = new DataObject();
                 //dataObject.SetFileDropList(filePath);
                 dataObject.SetText("testtesttest");
                 dataObject.SetData("test");
-                //dataObject.SetData("testtesttest");                
-                lvItems.DoDragDrop("test1111233", DragDropEffects.Move | DragDropEffects.Copy);                
+                //dataObject.SetData("testtesttest");
+                lvItems.DoDragDrop("test1111233", DragDropEffects.Move | DragDropEffects.Copy);
             }
         }
 
@@ -517,7 +513,7 @@ namespace XmlParsersAndUi {
                     File.Copy(filename, newFileName);
                 }
             } catch (Exception ex) {
-                
+
                 throw;
             }
         }
@@ -532,7 +528,7 @@ namespace XmlParsersAndUi {
                 MatchCollection matches = reg.Matches(readFile);
 
                 string exportScript = string.Empty;
- 
+
                 foreach (Match match in matches) {
                     exportScript = exportScript + "svn export " + match.Value+"\r\n";
                 }
@@ -540,35 +536,39 @@ namespace XmlParsersAndUi {
                 FrontendUtils.WriteFile("D:\\outputExportScript.cmd", exportScript);
 
             } catch (Exception ex) {
-                
+
             }
         }
 
         private void btnUpdateConfig_Click(object sender, EventArgs e) {
-            try 
-            {
+            try {
                 string configTPKS = FrontendUtils.ReadFile(txtConfi.Text);
 
                 string[] split = configTPKS.Split(new string[] { "\r\n" },StringSplitOptions.RemoveEmptyEntries);
 
                 Dictionary<string, List<string>> tpkNickname = new Dictionary<string, List<string>>();
-                
+
                 for (int i = 0; i < split.Length; i++) {
                     if (tpkNickname.Count > 0) {
                         if (tpkNickname.Keys.Contains(split[i].Split(new char[] { '\t' })[0])) {
                             tpkNickname[split[i].Split(new char[] { '\t' })[0]].Add(split[i].Split(new char[] { '\t' })[1]);
-                        } else {
-                            List<string> values = new List<string>() { split[i].Split(new char[] { '\t' })[1] };
+                        }
+                        else {
+                            List<string> values = new List<string>() {
+                                split[i].Split(new char[] { '\t' })[1]
+                            };
                             tpkNickname.Add(split[i].Split(new char[] { '\t' })[0], values);
 
                         }
                     } else {
 
-                        List<string> values = new List<string>() { split[i].Split(new char[] { '\t' })[1] };
+                        List<string> values = new List<string>() {
+                            split[i].Split(new char[] { '\t' })[1]
+                        };
                         tpkNickname.Add(split[i].Split(new char[] { '\t' })[0], values);
 
                     }
-                 }
+                }
 
 
                 string[] configFiles =  Directory.GetFiles(txtInputFile.Text, "config.xml",SearchOption.AllDirectories);
@@ -577,7 +577,7 @@ namespace XmlParsersAndUi {
                     string tpkNumber = "";
                     XDocument xdoc = new XDocument();
                     try {
-                       tpkNumber = Directory.GetParent(configFiles[i]).Name;
+                        tpkNumber = Directory.GetParent(configFiles[i]).Name;
 
                         xdoc = XDocument.Parse(FrontendUtils.ReadFile(configFiles[i]));
                     } catch (Exception ex) {
@@ -603,15 +603,15 @@ namespace XmlParsersAndUi {
 
                                     if (item.ElementAt(0).elements.ElementAt(0).Element("Customize") != null) {
                                         item.ElementAt(0).elements.ElementAt(0).Element("Customize").Add(
-                                                                new XElement("MxGen"));
+                                            new XElement("MxGen"));
                                         item.ElementAt(0).elements.ElementAt(0).Element("Customize").Element("MxGen").Add(
-                                        new XElement("FullRightsUser", "USER_FULLRIGHTS"));
+                                            new XElement("FullRightsUser", "USER_FULLRIGHTS"));
                                     } else {
                                         item.ElementAt(0).elements.ElementAt(0).Add(new XElement("Customize"));
                                         item.ElementAt(0).elements.ElementAt(0).Element("Customize").Add(
-                                                                   new XElement("MxGen"));
+                                            new XElement("MxGen"));
                                         item.ElementAt(0).elements.ElementAt(0).Element("Customize").Element("MxGen").Add(
-                                        new XElement("FullRightsUser", "USER_FULLRIGHTS"));
+                                            new XElement("FullRightsUser", "USER_FULLRIGHTS"));
                                     }
 
                                 }
@@ -621,9 +621,9 @@ namespace XmlParsersAndUi {
 
                         }
 
-                        xdoc.Save(configFiles[i]); 
+                        xdoc.Save(configFiles[i]);
                     }
-                
+
                 }
 
 
@@ -660,35 +660,33 @@ namespace XmlParsersAndUi {
 
 
 
-        
-        void Button6Click(object sender, EventArgs e)
-        {
-        	string path = string.Empty;
-        	try {       		
-        	
-        		string[] folders = Directory.GetDirectories("D:\\sites-Stream","*sites",SearchOption.AllDirectories);
-        	    string fileRead = FrontendUtils.ReadFile("D:\\sites-Stream\\goodsites.txt");
-        		
-        		for (int i = 0; i < folders.Length; i++) {        		
-        			path = path+"\r\n"+folders[i];
-        	    	
-        	    	//if (folders[i].Contains("sites")) {
-   					//FrontendUtils.WriteFile(folders[i]+"\\sites.mxres",fileRead);
-        				
-   				//	}
-        			
-        		}
-        		
-        	} catch (Exception ex) {
-        		FrontendUtils.ShowError(ex.Message,ex);
-        	}
+
+        void Button6Click(object sender, EventArgs e) {
+            string path = string.Empty;
+            try {
+
+                string[] folders = Directory.GetDirectories("D:\\sites-Stream","*sites",SearchOption.AllDirectories);
+                string fileRead = FrontendUtils.ReadFile("D:\\sites-Stream\\goodsites.txt");
+
+                for (int i = 0; i < folders.Length; i++) {
+                    path = path+"\r\n"+folders[i];
+
+                    //if (folders[i].Contains("sites")) {
+                    //FrontendUtils.WriteFile(folders[i]+"\\sites.mxres",fileRead);
+
+                    //  }
+
+                }
+
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message,ex);
+            }
         }
-        
-        void BtnUtilsParserClick(object sender, EventArgs e)
-        {
-        	   string[] fileList = Directory.GetFiles(txtInputFile.Text, "utils.xml", SearchOption.AllDirectories);
-			
-        	   string operatedFiles = "";
+
+        void BtnUtilsParserClick(object sender, EventArgs e) {
+            string[] fileList = Directory.GetFiles(txtInputFile.Text, "utils.xml", SearchOption.AllDirectories);
+
+            string operatedFiles = "";
 
             Regex regex = new Regex("wait.after.start=\"\\d+\"");
             for (int i = 0; i < fileList.Length; i++) {
@@ -720,8 +718,22 @@ namespace XmlParsersAndUi {
                 }
 
             }
- 			operatedFiles = operatedFiles +"";
+            operatedFiles = operatedFiles +"";
             MessageBox.Show("Done");
+        }
+
+        void BtnTestConnClick(object sender, EventArgs e) {
+            string connectionString = txtConnx.Text;
+            System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection(connectionString);
+
+            try {
+                conn.Open();
+
+            } catch (Exception ex) {
+                MessageBox.Show(ex.Message+"\r\n\r\n"+ex.StackTrace);
+            } finally {
+                conn.Close();
+            }
         }
     }
 }

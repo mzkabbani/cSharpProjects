@@ -30,7 +30,7 @@ namespace XmlParsersAndUi {
 
         #region Variables
 
-        string APPLICATION_VERSION = "1.1.1";
+        public string APPLICATION_VERSION = "1.1.1";
         private int childFormNumber = 0;
         string loggedInUser = string.Empty;
         int idleCounter = 0;
@@ -256,10 +256,25 @@ namespace XmlParsersAndUi {
             idleCounter++;
         }
 
+        private void StartCheckIfKickTimer() {
+            System.Windows.Forms.Timer checkKickTimer = new System.Windows.Forms.Timer();
+            checkKickTimer.Tick += new EventHandler(this.checkKickTimer_Tick);
+            // Start the timer
+            checkKickTimer.Start();
+            checkKickTimer.Interval = 60000;
+        }
+
+        private void checkKickTimer_Tick(object sender, EventArgs e) {
+            if(UserStatus.IsUserKicked(loggedInUser)) {
+                int userId = UserStatus.GetUserIdByUsername(loggedInUser);
+                UserStatus.UpdateUserStatusById(userId, false);
+                Application.ExitThread();
+                Application.Exit();
+            }
+        }
+
         private void MainForm_Load(object sender, EventArgs e) {
             try {
-
-
                 MainAppVariables.AppVersion = APPLICATION_VERSION;
                 loggedInUser = FrontendUtils.GetCurrentUser();
                 FrontendUtils.CreateLogsDirectory();
@@ -267,8 +282,10 @@ namespace XmlParsersAndUi {
                 XmlNodeList configFileNodes = LoadConfigFileNodes();
                 SetBackEndConnectionParameter(configFileNodes);
                 string applicationVersion = (string)Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.ApplicationVersion);
-
+                GlobalApplicationSettings.ApplicationVersion = APPLICATION_VERSION;
+                GlobalApplicationSettings.ApplicationVersionInDB=applicationVersion;
                 if (string.Equals(applicationVersion, APPLICATION_VERSION)) {
+                    StartCheckIfKickTimer();
                     // || string.Equals(loggedInUser, "mkabbani")) {
                     bool TIMER_ENABLED = Convert.ToBoolean(Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.EnableTimerKey));
                     if (TIMER_ENABLED) {

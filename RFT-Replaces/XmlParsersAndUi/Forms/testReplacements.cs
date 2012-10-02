@@ -65,7 +65,7 @@ namespace XmlParsersAndUi.Forms {
                     customizedReplacement.Size = new System.Drawing.Size(566, 119);
                     customizedReplacement.TabIndex = i;
                     customizedReplacement.Visible = true;
-                    customizedReplacement.popularity = (int)SetPopularity(availableReplacements[i]);
+                   // customizedReplacement.popularity = (int)SetPopularity(availableReplacements[i]);
                     pnlAvailableReplacements.Controls.Add(customizedReplacement);
                 }
                 pnlAvailableReplacements.Focus();
@@ -74,12 +74,12 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
-        private double SetPopularity(ReplacementEvent replacementEvent) {
-            int totalUsage = Advanced_Replacements.GetTotalAdvanceReplacementUsageCount();
-            return (((double)replacementEvent.usageCount / totalUsage) * 20);
-
-
-        }
+//        private double SetPopularity(ReplacementEvent replacementEvent) {
+//            int totalUsage = Advanced_Replacements.GetTotalAdvanceReplacementUsageCount();
+//            return (((double)replacementEvent.usageCount / totalUsage) * 20);
+//
+//
+//        }
 
         private void customizedReplacement_Click(object sender, EventArgs e) {
         
