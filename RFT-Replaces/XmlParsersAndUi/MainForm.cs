@@ -30,7 +30,7 @@ namespace XmlParsersAndUi {
 
         #region Variables
 
-        public string APPLICATION_VERSION = "1.1.1";
+        public string APPLICATION_VERSION = "1.1.2";
         private int childFormNumber = 0;
         string loggedInUser = string.Empty;
         int idleCounter = 0;

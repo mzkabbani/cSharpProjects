@@ -1,6 +1,7 @@
 package murex.Migration;
 
 
+
 public class Installer{
 	AntBuilder ant 
 
@@ -22,6 +23,12 @@ public class Installer{
 					description = 'Logs directory'
 					defaultValue = '/Logs';
 				}
+				
+				property(name:'dbType') {
+					description = 'Database server type'					
+					type = DbType
+				}
+				
 				props.put("Customizations_Logs_Dir", Customizations_Logs_Dir)
 			
 				

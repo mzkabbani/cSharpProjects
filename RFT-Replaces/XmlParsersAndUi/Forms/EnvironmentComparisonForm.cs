@@ -55,78 +55,78 @@ namespace XmlParsersAndUi.Forms {
             }
 
             switch (fileExtention.ToLower()) {
-                case ".sh":
-                    fileType = "Script";
-                    break;
-                case ".pl":
-                    fileType = "Perl";
-                    break;
-                case ".pm":
-                    fileType = "Perl";
-                    break;
-                case ".mxres":
-                    fileType = "Config";
-                    break;
-                case ".so":
-                    fileType = "Library";
-                    break;
-                case ".binary":
-                    fileType = "Binary";
-                    break;
-                case ".xdb":
-                    fileType = "Report";
-                    break;
-                case ".xml":
-                    fileType = "XML";
-                    break;
-                case ".directory":
-                    fileType = "Directory";
-                    break;
-                case ".xsl":
-                    fileType = "XSL";
-                    break;
-                case ".csv":
-                    fileType = "CSV";
-                    break;
-                case ".txt":
-                    fileType = "Text";
-                    break;
-                case ".jar":
-                    fileType = "JAR";
-                    break;
-                case ".sql":
-                    fileType = "SQL";
-                    break;
-                case ".logs":
-                    fileType = "Logs";
-                    break;
-                case ".log":
-                    fileType = "Logs";
-                    break;
-                case ".gz":
-                    fileType = "Archive";
-                    break;
-                case ".properties":
-                    fileType = "Properties file";
-                    break;
-                case ".props":
-                    fileType = "Properties file";
-                    break;
-                case ".cmd":
-                    fileType = "Command";
-                    break;
-                case ".html":
-                    fileType = "Hypertext Markup Language";
-                    break;
-                case ".bat":
-                    fileType = "Batch file";
-                    break;
-                case ".cfg":
-                    fileType = "Configuration file";
-                    break;
-                default:
-                    fileType = fileExtention.ToUpper().Trim(new char[] { '.' });
-                    break;
+            case ".sh":
+                fileType = "Script";
+                break;
+            case ".pl":
+                fileType = "Perl";
+                break;
+            case ".pm":
+                fileType = "Perl";
+                break;
+            case ".mxres":
+                fileType = "Config";
+                break;
+            case ".so":
+                fileType = "Library";
+                break;
+            case ".binary":
+                fileType = "Binary";
+                break;
+            case ".xdb":
+                fileType = "Report";
+                break;
+            case ".xml":
+                fileType = "XML";
+                break;
+            case ".directory":
+                fileType = "Directory";
+                break;
+            case ".xsl":
+                fileType = "XSL";
+                break;
+            case ".csv":
+                fileType = "CSV";
+                break;
+            case ".txt":
+                fileType = "Text";
+                break;
+            case ".jar":
+                fileType = "JAR";
+                break;
+            case ".sql":
+                fileType = "SQL";
+                break;
+            case ".logs":
+                fileType = "Logs";
+                break;
+            case ".log":
+                fileType = "Logs";
+                break;
+            case ".gz":
+                fileType = "Archive";
+                break;
+            case ".properties":
+                fileType = "Properties file";
+                break;
+            case ".props":
+                fileType = "Properties file";
+                break;
+            case ".cmd":
+                fileType = "Command";
+                break;
+            case ".html":
+                fileType = "Hypertext Markup Language";
+                break;
+            case ".bat":
+                fileType = "Batch file";
+                break;
+            case ".cfg":
+                fileType = "Configuration file";
+                break;
+            default:
+                fileType = fileExtention.ToUpper().Trim(new char[] { '.' });
+                break;
             }
             return fileType;
         }
@@ -254,7 +254,7 @@ namespace XmlParsersAndUi.Forms {
                     //Remove terminal emulation characters
                     ssh.RemoveTerminalEmulationCharacters = true;
                     //Writing to the SSH channel
-                    //tmReturn.Start();                    
+                    //tmReturn.Start();
                     //Remove terminal emulation characters
                     ssh.RemoveTerminalEmulationCharacters = true;
                     //Writing to the SSH channel
@@ -348,7 +348,7 @@ namespace XmlParsersAndUi.Forms {
                 }
                 try {
                     string readFile = FrontendUtils.ReadFile(localFileName);
-                    //      Regex regex = new Regex("-.*-");            
+                    //      Regex regex = new Regex("-.*-");
                     string[] array = new string[1];
                     //  array[0]= regex.Match(readFile).Value;
                     array[0] = "\n\n";
@@ -364,7 +364,8 @@ namespace XmlParsersAndUi.Forms {
                     results.Columns.Add("FileType");
                     results.Columns.Add("FileName");
 
-                    List<string> monthAbbreviations = new List<string>() { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+                    List<string> monthAbbreviations = new List<string>() { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+                    };
 
                     for (int j = 2; j < splitFile.Length; j++) {
                         string[] splitByLines = splitFile[j].Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
@@ -419,7 +420,7 @@ namespace XmlParsersAndUi.Forms {
                             }
                             counter++;
                         }
-                    }                 
+                    }
 
                     SAVED_SEARCH_RESULTS = results.Copy();
                     GOLDEN_ORIGINAL_RESTULS = results.Copy();
@@ -434,86 +435,87 @@ namespace XmlParsersAndUi.Forms {
         }
 
 
-        private void ParseComparisonResults(string localFileName,string inputEnv, string inputHost, string refEnv, string refHost, out DataTable resultsTable){
-        
-           string readFile = FrontendUtils.ReadFile(localFileName);
-                    //      Regex regex = new Regex("-.*-");            
-                    string[] array = new string[1];
-                    //  array[0]= regex.Match(readFile).Value;
-                    array[0] = "\n\n";
-                    string[] splitFile = readFile.Split(array, StringSplitOptions.RemoveEmptyEntries);
-                    int counter = 1;
-                    bgDoServerWork.ReportProgress(5, "Displaying Results...");
-                    Regex diffRegex = new Regex("diff.*");
-                    DataTable results = new DataTable();
-                    results.Columns.Add("Number");
-                    results.Columns.Add("Operation");
-                    results.Columns.Add("FileSize");
-                    results.Columns.Add("FileModifyDate");
-                    results.Columns.Add("FileType");
-                    results.Columns.Add("FileName");
+        private void ParseComparisonResults(string localFileName,string inputEnv, string inputHost, string refEnv, string refHost, out DataTable resultsTable) {
 
-                    List<string> monthAbbreviations = new List<string>() { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec" };
+            string readFile = FrontendUtils.ReadFile(localFileName);
+            //      Regex regex = new Regex("-.*-");
+            string[] array = new string[1];
+            //  array[0]= regex.Match(readFile).Value;
+            array[0] = "\n\n";
+            string[] splitFile = readFile.Split(array, StringSplitOptions.RemoveEmptyEntries);
+            int counter = 1;
+            bgDoServerWork.ReportProgress(5, "Displaying Results...");
+            Regex diffRegex = new Regex("diff.*");
+            DataTable results = new DataTable();
+            results.Columns.Add("Number");
+            results.Columns.Add("Operation");
+            results.Columns.Add("FileSize");
+            results.Columns.Add("FileModifyDate");
+            results.Columns.Add("FileType");
+            results.Columns.Add("FileName");
 
-                    for (int j = 2; j < splitFile.Length; j++) {
-                        string[] splitByLines = splitFile[j].Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
-                        for (int k = 3; k < splitByLines.Length; k++) {
-                            //-rw-rw-r--   1 autoengine murex       1201 Jul 10 16:58 test.txt
-                            //-rwxrwxr-x   1 autoengine murex        546 May 10  2008 script.sh*
-                            // "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", and "Dec"
-                            if (j == 2) {
-                                string fileName = splitByLines[k].Replace("/net/" + refHost + refEnv, "").Replace("/net/" + inputHost + inputEnv, "");
-                                string[] splitFileName = fileName.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            List<string> monthAbbreviations = new List<string>() { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+            };
 
-                                if (diffRegex.Matches(fileName).Count == 0) {
-                                    DateTime date;
-                                    try {
-                                        if (splitFileName[7].Contains(":")) {
-                                            date = new DateTime(DateTime.Now.Year, monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[0]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[1]), 0);
-                                        } else {
-                                            date = new DateTime(Convert.ToInt32(splitFileName[7]), monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]));
-                                        }
-                                    } catch (Exception ex) {
-                                        FrontendUtils.LogError("Could not get Date", ex);
-                                        date = DateTime.Now;
-                                    }
+            for (int j = 2; j < splitFile.Length; j++) {
+                string[] splitByLines = splitFile[j].Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                for (int k = 3; k < splitByLines.Length; k++) {
+                    //-rw-rw-r--   1 autoengine murex       1201 Jul 10 16:58 test.txt
+                    //-rwxrwxr-x   1 autoengine murex        546 May 10  2008 script.sh*
+                    // "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", and "Dec"
+                    if (j == 2) {
+                        string fileName = splitByLines[k].Replace("/net/" + refHost + refEnv, "").Replace("/net/" + inputHost + inputEnv, "");
+                        string[] splitFileName = fileName.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
 
-
-                                    long fileSize = (Convert.ToInt64(splitFileName[4]) / 1024) == 0 ? 1 : (Convert.ToInt64(splitFileName[4]) / 1024);
-
-                                    results.Rows.Add(new object[] { counter, "Added", fileSize, date.ToString(), GetFileTypeFromExtension(splitFileName[8]), splitFileName[8] });
-
+                        if (diffRegex.Matches(fileName).Count == 0) {
+                            DateTime date;
+                            try {
+                                if (splitFileName[7].Contains(":")) {
+                                    date = new DateTime(DateTime.Now.Year, monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[0]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[1]), 0);
+                                } else {
+                                    date = new DateTime(Convert.ToInt32(splitFileName[7]), monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]));
                                 }
-                            } else {
-                                string fileName = splitByLines[k].Replace("/net/" + refHost + refEnv, "").Replace("/net/" + inputHost + inputEnv, "");
-                                string[] splitFileName = fileName.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
-                                if (diffRegex.Matches(fileName).Count == 0) {
-                                    DateTime date;
-
-                                    try {
-                                        if (splitFileName[7].Contains(":")) {
-                                            date = new DateTime(DateTime.Now.Year, monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[0]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[1]), 0);
-                                        } else {
-                                            date = new DateTime(Convert.ToInt32(splitFileName[7]), monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]));
-                                        }
-                                    } catch (Exception ex) {
-                                        FrontendUtils.LogError("Could not get Date", ex);
-                                        date = DateTime.Now;
-                                    }
-                                    long fileSize = (Convert.ToInt64(splitFileName[4]) / 1024) == 0 ? 1 : (Convert.ToInt64(splitFileName[4]) / 1024);
-
-                                    results.Rows.Add(new object[] { counter, "Modified", fileSize, date.ToString(), GetFileTypeFromExtension(splitFileName[8]), splitFileName[8] });
-                                }
+                            } catch (Exception ex) {
+                                FrontendUtils.LogError("Could not get Date", ex);
+                                date = DateTime.Now;
                             }
-                            counter++;
-                        }
-                    }                 
 
-                    SAVED_SEARCH_RESULTS = results.Copy();
-                    GOLDEN_ORIGINAL_RESTULS = results.Copy();
-                    resultsTable = SAVED_SEARCH_RESULTS;
-        
+
+                            long fileSize = (Convert.ToInt64(splitFileName[4]) / 1024) == 0 ? 1 : (Convert.ToInt64(splitFileName[4]) / 1024);
+
+                            results.Rows.Add(new object[] { counter, "Added", fileSize, date.ToString(), GetFileTypeFromExtension(splitFileName[8]), splitFileName[8] });
+
+                        }
+                    } else {
+                        string fileName = splitByLines[k].Replace("/net/" + refHost + refEnv, "").Replace("/net/" + inputHost + inputEnv, "");
+                        string[] splitFileName = fileName.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+
+                        if (diffRegex.Matches(fileName).Count == 0) {
+                            DateTime date;
+
+                            try {
+                                if (splitFileName[7].Contains(":")) {
+                                    date = new DateTime(DateTime.Now.Year, monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[0]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[1]), 0);
+                                } else {
+                                    date = new DateTime(Convert.ToInt32(splitFileName[7]), monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]));
+                                }
+                            } catch (Exception ex) {
+                                FrontendUtils.LogError("Could not get Date", ex);
+                                date = DateTime.Now;
+                            }
+                            long fileSize = (Convert.ToInt64(splitFileName[4]) / 1024) == 0 ? 1 : (Convert.ToInt64(splitFileName[4]) / 1024);
+
+                            results.Rows.Add(new object[] { counter, "Modified", fileSize, date.ToString(), GetFileTypeFromExtension(splitFileName[8]), splitFileName[8] });
+                        }
+                    }
+                    counter++;
+                }
+            }
+
+            SAVED_SEARCH_RESULTS = results.Copy();
+            GOLDEN_ORIGINAL_RESTULS = results.Copy();
+            resultsTable = SAVED_SEARCH_RESULTS;
+
         }
 
         private string CopyComparisonScript(string refHost, string refEnv) {
@@ -565,17 +567,17 @@ namespace XmlParsersAndUi.Forms {
             DataSet AllFilters = Env_Comparison_Filters.GetAllAvailableFiltersAsDataset();
             foreach (DataRow row in AllFilters.Tables[0].Rows) {
                 EnvComparisonFilter filter =
-                  new EnvComparisonFilter(Convert.ToInt32(row["id"]),
-                                          row["name"].ToString(),
-                                          row["description"].ToString(),
-                                          row["filter"].ToString(),
-                                          Convert.ToInt32(row["filterType"]),
-                                          Convert.ToInt32(row["userid"]));
+                    new EnvComparisonFilter(Convert.ToInt32(row["id"]),
+                                            row["name"].ToString(),
+                                            row["description"].ToString(),
+                                            row["filter"].ToString(),
+                                            Convert.ToInt32(row["filterType"]),
+                                            Convert.ToInt32(row["userid"]));
                 clbAvailableFilters.Items.Add(filter);
             }
         }
 
-       
+
 
         private DataTable CopyDataGridToDataTable(DataGridView dgvResults) {
             DataTable gridValues = new DataTable("Original Diff Result");
@@ -603,7 +605,7 @@ namespace XmlParsersAndUi.Forms {
             DataTable resultTable = SAVED_SEARCH_RESULTS.Copy();
             resultTable.Rows.Clear();
             foreach (EnvComparisonFilter filter in selectedFilters) {
-                Regex regex = new Regex(filter.localFilterPattern);
+                Regex regex = new Regex(filter.FilterPattern);
                 int availableRows = workingTable.Rows.Count;
                 resultTable.Rows.Clear();
                 foreach (DataRow row in workingTable.Rows) {
@@ -937,7 +939,7 @@ namespace XmlParsersAndUi.Forms {
                 //            //int startIndex = 0;
                 //            int counter = 1;
                 //            int restableCounter = 1;
-                //            for (int i = 0; i < GOLDEN_ORIGINAL_RESTULS.Rows.Count; i++) {                                
+                //            for (int i = 0; i < GOLDEN_ORIGINAL_RESTULS.Rows.Count; i++) {
                 //                if (restableCounter == maxNumberOfRows || (restableCounter < maxNumberOfRows && (i == GOLDEN_ORIGINAL_RESTULS.Rows.Count - 1))) {
                 //                    set.Tables.Add(splitTable);
                 //                    splitTable = new DataTable("Original Results-" + counter);
@@ -955,7 +957,7 @@ namespace XmlParsersAndUi.Forms {
 
                 //        FastExportingMethod.ExportToExcel(set, dial.FileName);
                 //    }
-                //} 
+                //}
                 #endregion
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -972,8 +974,8 @@ namespace XmlParsersAndUi.Forms {
 
         public static string WildcardToRegex(string pattern) {
             return "^" + Regex.Escape(pattern).
-            Replace("\\*", ".*").
-            Replace("\\?", ".") + "$";
+                   Replace("\\*", ".*").
+                   Replace("\\?", ".") + "$";
         }
 
         DataTable GOLDEN_ORIGINAL_RESTULS = new DataTable();
@@ -1103,7 +1105,7 @@ namespace XmlParsersAndUi.Forms {
         private string GetFormattedPrefiltersForDisplay(List<EnvComparisonFilter> preFilters) {
             string formattedPreFilters = string.Empty;
             for (int i = 0; i < preFilters.Count; i++) {
-                formattedPreFilters = formattedPreFilters + "  - " + preFilters[i].localName + " [" + preFilters[i].localFilterPattern + "]\n";
+                formattedPreFilters = formattedPreFilters + "  - " + preFilters[i].Name + " [" + preFilters[i].FilterPattern + "]\n";
             }
             return formattedPreFilters;
         }
@@ -1112,7 +1114,7 @@ namespace XmlParsersAndUi.Forms {
             List<EnvComparisonFilter> prefilters = new List<EnvComparisonFilter>();
             for (int i = 0; i < clbAvailableFilters.Items.Count; i++) {
                 EnvComparisonFilter filter = clbAvailableFilters.Items[i] as EnvComparisonFilter;
-                if (filter.localFilterType == (int)EnvComparisonFilter.ComparisonFilterType.PreFilter) {
+                if (filter.FilterType == (int)EnvComparisonFilter.ComparisonFilterType.PreFilter) {
                     //prefilters = prefilters + "-" + filter.localName + " [" + filter.localFilterPattern + "]\n";
                     prefilters.Add(filter);
                     clbAvailableFilters.SetItemChecked(i, true);
@@ -1156,15 +1158,43 @@ namespace XmlParsersAndUi.Forms {
 
         private void ReloadAllFiltersFromDatabase() {
             lbFilters.Items.Clear();
+            lvAvailableFilters.Items.Clear();
             DataSet dataSet = Env_Comparison_Filters.GetAllAvailableFiltersAsDataset();
             foreach (DataRow row in dataSet.Tables[0].Rows) {
                 EnvComparisonFilter filter =
-                  new EnvComparisonFilter(Convert.ToInt32(row["id"]),
-                                          row["name"].ToString(),
-                                          row["description"].ToString(),
-                                          row["filter"].ToString(),
-                                          Convert.ToInt32(row["filterType"]),
-                                          Convert.ToInt32(row["userid"]));
+                    new EnvComparisonFilter(Convert.ToInt32(row["id"]),
+                                            row["name"].ToString(),
+                                            row["description"].ToString(),
+                                            row["filter"].ToString(),
+                                            Convert.ToInt32(row["filterType"]),
+                                            Convert.ToInt32(row["userid"]),
+                                            string.Equals(row["userid"].ToString(),1),
+                                            row["filterScript"].ToString(),
+                                            row["exclusionList"].ToString());
+
+
+
+                switch (Convert.ToInt32(row["filterType"])) {
+
+                case (int)EnvComparisonFilter.ComparisonFilterType.Regular:
+                    System.Windows.Forms.ListViewItem item = lvAvailableFilters.Items.Add(filter.Name,filter.Name);
+                    item.Group =  lvAvailableFilters.Groups["lvgRegularGroup"];
+                    item.Tag = filter;
+                    break;
+                case (int)EnvComparisonFilter.ComparisonFilterType.PreFilter:
+                    item = lvAvailableFilters.Items.Add(filter.Name,filter.Name);
+                    item.Group =  lvAvailableFilters.Groups["lvgPrefilter"];
+                    item.Tag = filter;
+                    break;
+                case (int)EnvComparisonFilter.ComparisonFilterType.Deletion:
+                    item = lvAvailableFilters.Items.Add(filter.Name,filter.Name);
+                    item.Group =  lvAvailableFilters.Groups["lvgDeletionFilter"];
+                    item.Tag = filter;
+                    break;
+                default:
+                    break;
+                }
+
                 lbFilters.Items.Add(filter);
             }
         }
@@ -1176,6 +1206,11 @@ namespace XmlParsersAndUi.Forms {
             lbFilters.ClearSelected();
             btnAddFilter.Enabled = true;
             btnSaveFilter.Enabled = false;
+            txtExclusionList.Clear();
+            txtGeneratedScript.Clear();
+            if(cboFilterType.Items.Count>0) {
+                cboFilterType.SelectedIndex = 0;
+            }
         }
 
         private bool IsValidToAddFilter(string name, string description, string pattern) {
@@ -1215,28 +1250,32 @@ namespace XmlParsersAndUi.Forms {
                 FrontendUtils.ShowInformation("Pattern field cannot be empty!", true);
                 return false;
             }
-            bool found = false;
-            for (int i = 0; i < lbFilters.Items.Count && !found; i++) {
-                if (string.Equals(lbFilters.Items[i].ToString(), name)) {
-                    if ((lbFilters.SelectedItem as EnvComparisonFilter).filterId != (lbFilters.Items[i] as EnvComparisonFilter).filterId) {
-                        found = true;
-                    }
-                }
-            }
-            if (found) {
-                FrontendUtils.ShowInformation("Filter name must be unique!", true);
-                return false;
-            }
             return true;
         }
 
         private void FillUiFromSelectedFilter(EnvComparisonFilter selectedFilter) {
-            txtFilterName.Text = selectedFilter.localName;
-            txtFilterDescription.Text = selectedFilter.localDescription;
-            txtFilterPattern.Text = selectedFilter.localFilterPattern;
+            txtFilterName.Text = selectedFilter.Name;
+            txtFilterDescription.Text = selectedFilter.Description;
+            txtFilterPattern.Text = selectedFilter.FilterPattern;
             btnAddFilter.Enabled = false;
             btnSaveFilter.Enabled = true;
-            cboFilterType.SelectedIndex = selectedFilter.localFilterType;
+            cboFilterType.SelectedIndex = selectedFilter.FilterType;
+            if (selectedFilter.FilterType == (int)EnvComparisonFilter.ComparisonFilterType.Deletion) {
+                cboRemoveFileOrFolder.SelectedIndex = selectedFilter.IsFolderDeletion ? 1 : 0;
+                txtGeneratedScript.Text = string.IsNullOrEmpty(selectedFilter.FilterScript) ? GetGeneratedScript(selectedFilter.FilterPattern,selectedFilter.IsFolderDeletion) : selectedFilter.FilterScript;
+                txtExclusionList.Text = selectedFilter.ExclusionList;
+            }
+        }
+
+        private string GetGeneratedScript(string filterPattern, bool isFolderDeletion) {
+            string generatedScript = string.Empty;
+            if (isFolderDeletion) {
+                generatedScript = "rm -rf "+filterPattern;
+            } else {
+                generatedScript = "rm "+filterPattern;
+            }
+
+            return generatedScript;
         }
 
         #endregion
@@ -1256,10 +1295,23 @@ namespace XmlParsersAndUi.Forms {
                 string description = txtFilterDescription.Text.Trim();
                 string pattern = txtFilterPattern.Text.Trim();
                 if (IsValidToAddFilter(name, description, pattern)) {
-                    EnvComparisonFilter filter = new EnvComparisonFilter(-1, name, description, pattern, cboFilterType.SelectedIndex, FrontendUtils.LoggedInUserId);
-                    int filterId = Env_Comparison_Filters.InserNewFilter(filter);
-                    ResetForm();
-                    ReloadAllFiltersFromDatabase();
+                    if (cboFilterType.SelectedIndex == (int)EnvComparisonFilter.ComparisonFilterType.Deletion) {
+                        //deletionMode
+                        //cboRemoveFileOrFolder.SelectedIndex=0 ==> file
+                        //cboRemoveFileOrFolder.SelectedIndex=1 ==> folder
+                        EnvComparisonFilter filter = new EnvComparisonFilter(-1, name, description, pattern, cboFilterType.SelectedIndex, FrontendUtils.LoggedInUserId, cboRemoveFileOrFolder.SelectedIndex==1, txtGeneratedScript.Text,txtExclusionList.Text);
+                        int filterId = Env_Comparison_Filters.InserNewFilter(filter);
+                        FrontendUtils.ShowInformation("Deletion Filter ["+txtFilterName.Text+"] has beed added.",false);
+                        ResetForm();
+                        ReloadAllFiltersFromDatabase();
+                    } else {
+                        //all other modes
+                        EnvComparisonFilter filter = new EnvComparisonFilter(-1, name, description, pattern, cboFilterType.SelectedIndex, FrontendUtils.LoggedInUserId);
+                        int filterId = Env_Comparison_Filters.InserNewFilter(filter);
+                        FrontendUtils.ShowInformation("Filter ["+txtFilterName.Text+"] has beed added.",false);
+                        ResetForm();
+                        ReloadAllFiltersFromDatabase();
+                    }
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -1285,10 +1337,16 @@ namespace XmlParsersAndUi.Forms {
 
         private void tcComparisonTabs_SelectedIndexChanged(object sender, EventArgs e) {
             try {
-                if (tcComparisonTabs.SelectedIndex != 0) {
+
+                //tcComparisonTabs.SelectedIndex = 0 ==> cleanup
+                //tcComparisonTabs.SelectedIndex = 1 ==> comparison
+                //tcComparisonTabs.SelectedIndex = 2 ==> configuration
+
+                if (tcComparisonTabs.SelectedTab.Equals(tpCleanup)) {
+                    PopulateCleanupFilters();
+                } else {
                     ResetForm();
                     cboFilterType.DataSource = Enum.GetValues(typeof(EnvComparisonFilter.ComparisonFilterType));
-
                     ReloadAllFiltersFromDatabase();
                 }
             } catch (Exception ex) {
@@ -1296,16 +1354,55 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
+        private void PopulateCleanupFilters() {
+            clbAvailableCleanupFilters.Items.Clear();
+            DataSet dataSet = Env_Comparison_Filters.GetAllAvailableFiltersAsDataset();
+            foreach (DataRow row in dataSet.Tables[0].Rows) {
+                EnvComparisonFilter filter =
+                    new EnvComparisonFilter(Convert.ToInt32(row["id"]),
+                                            row["name"].ToString(),
+                                            row["description"].ToString(),
+                                            row["filter"].ToString(),
+                                            Convert.ToInt32(row["filterType"]),
+                                            Convert.ToInt32(row["userid"]),
+                                            string.Equals(row["userid"].ToString(),1),
+                                            row["filterScript"].ToString(),
+                                            row["exclusionList"].ToString());
+
+
+                if (Convert.ToInt32(row["filterType"]) == (int)EnvComparisonFilter.ComparisonFilterType.Deletion) {
+                    clbAvailableCleanupFilters.Items.Add(filter,true);
+                }
+            }
+
+        }
+
         private void btnSaveFilter_Click(object sender, EventArgs e) {
             try {
-                int filterId = (lbFilters.SelectedItem as EnvComparisonFilter).filterId;
-                string name = txtFilterName.Text.Trim();
-                string description = txtFilterDescription.Text.Trim();
-                string pattern = txtFilterPattern.Text.Trim();
-                if (IsValidToSaveFilter(filterId, name, description, pattern)) {
-                    EnvComparisonFilter filter = new EnvComparisonFilter(filterId, name, description, pattern, (int)cboFilterType.SelectedItem, FrontendUtils.LoggedInUserId);
-                    Env_Comparison_Filters.UpdatedFilterById(filter);
-                    ReloadAllFiltersFromDatabase();
+
+
+                if (lvAvailableFilters.SelectedItems.Count > 0) {
+                    EnvComparisonFilter envComparisonFilter = (lvAvailableFilters.SelectedItems[0].Tag as EnvComparisonFilter);
+
+                    if (envComparisonFilter !=null) {
+                        int filterId = envComparisonFilter.filterId;
+                        string name = txtFilterName.Text.Trim();
+                        string description = txtFilterDescription.Text.Trim();
+                        string pattern = txtFilterPattern.Text.Trim();
+                        if (IsValidToSaveFilter(filterId, name, description, pattern)) {
+
+                            EnvComparisonFilter filter = new EnvComparisonFilter(filterId, name, description, pattern, (int)cboFilterType.SelectedItem, FrontendUtils.LoggedInUserId);
+
+                            if (cboFilterType.SelectedIndex == (int)EnvComparisonFilter.ComparisonFilterType.Deletion) {
+                                filter.IsFolderDeletion = cboRemoveFileOrFolder.SelectedIndex == 1;
+                                filter.FilterScript = txtGeneratedScript.Text;
+                                filter.ExclusionList = txtExclusionList.Text;
+                            }
+                            Env_Comparison_Filters.UpdatedFilterById(filter);
+                            ReloadAllFiltersFromDatabase();
+                            FrontendUtils.ShowInformation("Filter ["+filter.Name+"] is saved.",false);
+                        }
+                    }
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -1331,6 +1428,7 @@ namespace XmlParsersAndUi.Forms {
             }
             LOCAL_TA_USAGE = string.Equals(Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.EnvComparisonOnlyForEnv).ToString(), "True") ? true : false;
             LoadSavedFolderNames();
+            PopulateCleanupFilters();
         }
 
         #endregion
@@ -1460,10 +1558,16 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
+        
+        string environmentSize;
+        
         private string GetVersionFile(string appDirectory, string host) {
+        	//generates size.log containing env size
+        	GenerateSizeFile();
             string readFile = string.Empty;
             FtpConnection connection = new FtpConnection(host, "mxftp", "mxftp");
             string localFileName = Path.GetTempFileName();
+            string localSizeFileName = Path.GetTempFileName();
             try {
                 try {
                     try {
@@ -1476,11 +1580,18 @@ namespace XmlParsersAndUi.Forms {
                     connection.SetCurrentDirectory(appDirectory + "/logs");
                     //Path.GetTempFileName
                     connection.GetFile("mxversion.log", localFileName, false);
+                    connection.SetCurrentDirectory(appDirectory );
+                    //Path.GetTempFileName
+                    connection.GetFile("size.log", localSizeFileName, false);
+                    
+                    
                 } finally {
                     connection.Close();
                     connection.Dispose();
                 }
                 readFile = FrontendUtils.ReadFile(localFileName);
+                string sizeFileRead = FrontendUtils.ReadFile(localSizeFileName);
+                environmentSize = sizeFileRead.Replace("\t.\n","");
             } catch (Exception ex) {
                 //   FrontendUtils.ShowInformation("Could not validate environment version \n["+appDirectory+"]");
                 FrontendUtils.LogError(ex.Message, ex);
@@ -1646,10 +1757,10 @@ namespace XmlParsersAndUi.Forms {
         private ComparisonCategoryTreeNode CreateNode(DataRow dataRow, bool p) {
             ComparisonCategoryTreeNode node = new ComparisonCategoryTreeNode(dataRow["name"].ToString());
             node.comparisonCategory = new ComparisonCategory(Convert.ToInt32(dataRow["id"]),
-                dataRow["name"].ToString(),
-                dataRow["description"].ToString(),
-                dataRow["path"].ToString(),
-                dataRow["parentId"] == DBNull.Value ? -1 : Convert.ToInt32(dataRow["parentId"]));
+                    dataRow["name"].ToString(),
+                    dataRow["description"].ToString(),
+                    dataRow["path"].ToString(),
+                    dataRow["parentId"] == DBNull.Value ? -1 : Convert.ToInt32(dataRow["parentId"]));
             return node;
         }
 
@@ -1673,9 +1784,6 @@ namespace XmlParsersAndUi.Forms {
             try {
                 DataTable resultsTable = new DataTable();
                 ParseComparisonResults(@"D:\comparison file\tmp8FE.tmp", txtInputEnv.Text, txtInpHost.Text, txtRefEnv.Text, txtRefHost.Text, out resultsTable);
-
-
-               
                 FillDataGridFromDataTable(resultsTable);
                 lblProgess.Visible = false;
                 pcProgress.Visible = false;
@@ -1689,7 +1797,6 @@ namespace XmlParsersAndUi.Forms {
                 Total_Number_Diffs = SAVED_SEARCH_RESULTS.Rows.Count;
                 lblTotalFiles.Text = "Remaining files: " + SAVED_SEARCH_RESULTS.Rows.Count + "/" + Total_Number_Diffs + "\nSize: " + GetTotalFilesSize(SAVED_SEARCH_RESULTS) + " KB";
                 List<EnvComparisonFilter> preFilters = GetPrefilterList(clbAvailableFilters);
-
                 if (preFilters.Count > 0) {
                     string collectedPrefilters = GetFormattedPrefiltersForDisplay(preFilters);
                     DialogResult dialog = FrontendUtils.ShowConformation("Comparsion completed!\nAuto cleanup the following types?\n\n" + collectedPrefilters);
@@ -1701,12 +1808,179 @@ namespace XmlParsersAndUi.Forms {
                         }
                     }
                 }
-
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
-        
         }
 
+
+        void CboFilterTypeSelectedIndexChanged(object sender, EventArgs e) {
+            //setup for deletion
+            if(cboFilterType.SelectedIndex == (int)EnvComparisonFilter.ComparisonFilterType.Deletion) {
+                txtFilterPattern.Size = new Size(339, 23);
+                cboRemoveFileOrFolder.SelectedIndex=0;
+                cboRemoveFileOrFolder.Visible = true;
+                lblGeneratedScript.Visible = true;
+                txtGeneratedScript.Visible = true;
+                btnGetScript.Visible = true;
+                lblExcludeList.Visible = true;
+                txtExclusionList.Visible = true;
+            } else {
+                //setup for all other operations
+                txtFilterPattern.Size = new Size(496, 78);
+                cboRemoveFileOrFolder.Visible = false;
+                lblGeneratedScript.Visible = false;
+                txtGeneratedScript.Visible = false;
+                btnGetScript.Visible = false;
+                lblExcludeList.Visible = false;
+                txtExclusionList.Visible = false;
+            }
+        }
+
+        void LvAvailableFiltersSelectedIndexChanged(object sender, EventArgs e) {
+            try {
+                if (lvAvailableFilters.SelectedItems.Count >0) {
+                    EnvComparisonFilter selectedFilter =  lvAvailableFilters.SelectedItems[0].Tag as EnvComparisonFilter;
+                    if (selectedFilter != null) {
+                        FillUiFromSelectedFilter(selectedFilter);
+                    }
+                }
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message,ex);
+            }
+        }
+
+        void BtnGetScriptClick(object sender, EventArgs e) {
+            try {
+                txtGeneratedScript.Clear();
+                txtGeneratedScript.Text =  GetGeneratedScript(txtFilterPattern.Text,cboRemoveFileOrFolder.SelectedIndex==1);
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message,ex);
+            }
+        }
+
+        private void RunScriptsOnServer(List<EnvComparisonFilter> selectedFilters) {
+            string scriptToRun = "find . -name \"#pattern#\" | egrep -v \"#exclusionList#\" | cut -d\":\" -f1 | xargs rm ";
+            //CopyComparisonScript(refHost, refEnv);
+            SshStream ssh = new SshStream(txtHostForCleanup.Text, "autoengine", "");
+            //Set the end of response matcher character
+            string response = string.Empty;
+            try {
+                ssh.Prompt = "\\$";
+                //Remove terminal emulation characters
+                ssh.RemoveTerminalEmulationCharacters = true;
+                //Writing to the SSH channel
+                //tmReturn.Start();
+                //Remove terminal emulation characters
+                ssh.RemoveTerminalEmulationCharacters = true;
+                //Writing to the SSH channel
+                ssh.Write("cd " + txtInputEnvForCleanup.Text);
+                //Reading from the SSH channel
+                response = ssh.ReadResponse();
+                //file * | grep directory | egrep -v "exclusion|list" | cut -d":" -f1 | xargs rm-Rf
+                foreach (EnvComparisonFilter cleanupFilter in selectedFilters) {
+                    string script =   scriptToRun.Replace("#pattern#",cleanupFilter.FilterPattern).Replace("#exclusionList#", cleanupFilter.ExclusionList.Replace(",","|")) + (cleanupFilter.IsFolderDeletion ? "" : "-Rf");
+                    ssh.Write(script);
+                    response = ssh.ReadResponse();
+                    Console.WriteLine(response);
+                }
+            } catch (Exception ex) {
+                FrontendUtils.LogError(ex.Message, ex);
+            }
+        }
+
+        void BtnStartCleanupClick(object sender, EventArgs e) {
+            try {
+                List<EnvComparisonFilter> selectedFilters = new List<EnvComparisonFilter>();
+                for (int i = 0; i < clbAvailableCleanupFilters.CheckedItems.Count; i++) {
+                    selectedFilters.Add(clbAvailableCleanupFilters.CheckedItems[i] as EnvComparisonFilter);
+                }
+                RunScriptsOnServer(selectedFilters);
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message,ex);
+            }
+        }
+
+        void TxtInputEnvForCleanupTextChanged(object sender, EventArgs e) {
+            try {
+                string remoteLocation = txtInputEnvForCleanup.Text.Trim();
+                if (string.IsNullOrEmpty(remoteLocation)) {
+                    return;
+                }
+                string[] splitter = new string[] { @"/" };
+                string[] remoteLocationSplit = remoteLocation.Split(splitter, StringSplitOptions.RemoveEmptyEntries);
+                remoteLocation = Regex.Match(remoteLocationSplit[0], @"[a-zA-Z]+[0-9]+[a-zA-Z]+|[a-zA-Z]+", RegexOptions.Compiled).Value;
+                txtHostForCleanup.Text = remoteLocation;
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message, ex);
+            }
+        }
+
+        private string GetEnvironmentInformation() {
+            string envInformation = string.Empty;
+            //launcmxj.app
+            //MAJOR_VERSION=3.1
+            //MINOR_VERSION=23
+            //get env build id
+            //get env size
+            Regex versionAndBuildIDRegex = new Regex("MX.*?(\\d+.\\d+.\\S+).*?(\\d+-\\d+-\\d+-\\d+)");
+            string inpVersionFile = GetVersionFile(txtInputEnvForCleanup.Text, txtHostForCleanup.Text);
+            if (!string.IsNullOrEmpty(inpVersionFile) ) {
+                string refBuildId = string.Empty;
+                string inputBuildId = string.Empty;
+                if (versionAndBuildIDRegex.Match(inpVersionFile).Groups.Count > 1) {
+                    envInformation = envInformation + "Version: "+ versionAndBuildIDRegex.Match(inpVersionFile).Groups[1].Value;
+                    envInformation = envInformation + "\r\nBuild Id: "+versionAndBuildIDRegex.Match(inpVersionFile).Groups[2].Value;
+
+                    Regex ReleaseVersionRegex = new Regex("Release: (.*)");
+                    if (ReleaseVersionRegex.Match(inpVersionFile).Groups.Count > 1) {
+                        envInformation = envInformation + "\r\n"+ReleaseVersionRegex.Match(inpVersionFile).Value;
+                    }	
+                    if (!string.IsNullOrEmpty(environmentSize)) {
+						envInformation = envInformation +"\r\nEnvironment Size: "+ environmentSize;
+					}
+                }
+            }
+             GenerateSizeFile();
+            return envInformation;
+        }
+
+
+        private string GenerateSizeFile() {
+            SshStream ssh = new SshStream(txtHostForCleanup.Text, "autoengine", "");
+            //Set the end of response matcher character
+            string response = string.Empty;
+            try {
+                ssh.Prompt = "\\$";
+                //Remove terminal emulation characters
+                ssh.RemoveTerminalEmulationCharacters = true;
+                //Writing to the SSH channel
+                //tmReturn.Start();
+                //Remove terminal emulation characters
+                ssh.RemoveTerminalEmulationCharacters = true;
+                //Writing to the SSH channel
+                ssh.Write("cd " + txtInputEnvForCleanup.Text);
+                //Reading from the SSH channel
+                response = ssh.ReadResponse();
+                //file * | grep directory | egrep -v "exclusion|list" | cut -d":" -f1 | xargs rm-Rf
+                ssh.Write("du -sh > size.log");
+                response = ssh.ReadResponse();
+                ssh.Write("du -sh > size.log");
+                response = ssh.ReadResponse();
+                Console.WriteLine(response);
+				return "Env Size: "+response;
+            } catch (Exception ex) {
+                FrontendUtils.LogError(ex.Message, ex);
+            }
+            return string.Empty;
+        }
+
+        void BtnGetEnvInfoClick(object sender, EventArgs e) {
+            try {
+                lblEnvironmentInfo.Text = GetEnvironmentInformation();
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message,ex);
+            }
+        }
     }
 }
