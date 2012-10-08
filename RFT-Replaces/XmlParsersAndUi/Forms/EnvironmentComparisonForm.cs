@@ -43,6 +43,12 @@ namespace XmlParsersAndUi.Forms {
         DataTable SearchSafeResults;
         int Total_Number_Diffs = 0;
         bool LOCAL_TA_USAGE;
+        string environmentSize;
+        List<int> rowIndexSaved = new List<int>();
+        int manuallyDeletedCount = 0;
+        DataTable GOLDEN_ORIGINAL_RESTULS = new DataTable();
+        List<ComparisonCategoryTreeNode> allTreeNodes = new List<ComparisonCategoryTreeNode>();
+        bool checkedState = false;
         #endregion
 
         #region Methods
@@ -133,13 +139,11 @@ namespace XmlParsersAndUi.Forms {
 
         private bool IsValidToBeginDiff(string inputEnv, string inputHost, string refEnv, string refHost, string compareScriptLocation, string scriptHost) {
 
-
             FtpConnection connection;
+
             #region RefEnvValidation
 
             connection = new FtpConnection(refHost, "mxftp", "mxftp");
-
-
             try {
                 try {
                     connection.Open();
@@ -168,11 +172,9 @@ namespace XmlParsersAndUi.Forms {
 
             #endregion
 
-
             #region inputEnvValidations
+
             connection = new FtpConnection(inputHost, "mxftp", "mxftp");
-
-
             try {
                 try {
                     connection.Open();
@@ -186,7 +188,6 @@ namespace XmlParsersAndUi.Forms {
                     FrontendUtils.ShowInformation("The input environment path is incorrect!",true);
                     return false;
                 }
-
                 if (!connection.FileExists(inputEnv + "/mxg2000_settings.sh")) {
                     FrontendUtils.ShowInformation("The input environment path is incorrect!", true);
                     return false;
@@ -199,18 +200,15 @@ namespace XmlParsersAndUi.Forms {
                 connection.Close();
                 connection.Dispose();
             }
+
             #endregion
 
             #region ComparisonHostValidation
 
             connection = new FtpConnection(scriptHost, "mxftp", "mxftp");
-
-
             try {
                 try {
                     connection.Open();
-                    // bgDoServerWork.ReportProgress(5, "Validating Results...");
-
                 } catch (Exception ex) {
                     FrontendUtils.ShowError(ex.Message, ex);
                     return false;
@@ -228,7 +226,6 @@ namespace XmlParsersAndUi.Forms {
                 connection.Dispose();
             }
 
-
             #endregion
 
             return true;
@@ -244,7 +241,6 @@ namespace XmlParsersAndUi.Forms {
                     WorkerWasCancelled = true;
                     return;
                 }
-
                 //CopyComparisonScript(refHost, refEnv);
                 SshStream ssh = new SshStream(scriptHost, "autoengine", "");
                 //Set the end of response matcher character
@@ -271,37 +267,28 @@ namespace XmlParsersAndUi.Forms {
                     WorkerWasCancelled = true;
                     return;
                 }
-                //ssh.Write("cp comparison.sh " + "/net/" + refHost + refEnv + " /net/" + inputHost + inputEnv + " -A >" + comparisonFileName);
-
                 try {
                     ssh.Write("mkdir " + comparisonFolderName);
                     response = ssh.ReadResponse();
-
                     ssh.Write("cp comparison88.sh " + comparisonFolderName);
                     response = ssh.ReadResponse();
-
                     ssh.Write("cd " + comparisonFolderName);
                     //Reading from the SSH channel
                     response = ssh.ReadResponse();
-
                     ssh.Write("comparison88.sh " + "/net/" + refHost + refEnv + " /net/" + inputHost + inputEnv + " -A >" + comparisonFileName);
                     bgDoServerWork.ReportProgress(5, "Starting Comparison...");
                     response = ssh.ReadResponse();
                     ssh.Write("d");
                     response = ssh.ReadResponse();
-
                 } catch (Exception ex) {
                     FrontendUtils.LogError(ex.Message, ex);
                 }
-
                 bgDoServerWork.ReportProgress(5, "Comparison Completed");
                 if (bgDoServerWork.CancellationPending) {
                     WorkerWasCancelled = true;
                     return;
                 }
-
                 FtpConnection connection = new FtpConnection(scriptHost, "mxftp", "mxftp");
-
                 string localFileName = Path.GetTempFileName();
                 try {
                     try {
@@ -325,16 +312,13 @@ namespace XmlParsersAndUi.Forms {
                 } catch (Exception ex) {
                     FrontendUtils.LogError(ex.Message, ex);
                 }
-
                 try {
                     ssh.Write("cd ..");
                     //Reading from the SSH channel
                     response = ssh.ReadResponse();
-
                     ssh.Write("rm -rf " + comparisonFolderName);
                     //Reading from the SSH channel
                     response = ssh.ReadResponse();
-
                     ssh.Flush();
                     ssh.Close();
                     ssh.Dispose();
@@ -342,7 +326,6 @@ namespace XmlParsersAndUi.Forms {
                         WorkerWasCancelled = true;
                         return;
                     }
-
                 } catch (Exception ex) {
                     FrontendUtils.LogError(ex.Message, ex);
                 }
@@ -363,10 +346,8 @@ namespace XmlParsersAndUi.Forms {
                     results.Columns.Add("FileModifyDate");
                     results.Columns.Add("FileType");
                     results.Columns.Add("FileName");
-
                     List<string> monthAbbreviations = new List<string>() { "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
                     };
-
                     for (int j = 2; j < splitFile.Length; j++) {
                         string[] splitByLines = splitFile[j].Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
                         for (int k = 3; k < splitByLines.Length; k++) {
@@ -376,7 +357,6 @@ namespace XmlParsersAndUi.Forms {
                             if (j == 2) {
                                 string fileName = splitByLines[k].Replace("/net/" + refHost + refEnv, "").Replace("/net/" + inputHost + inputEnv, "");
                                 string[] splitFileName = fileName.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
                                 if (diffRegex.Matches(fileName).Count == 0) {
                                     DateTime date;
                                     try {
@@ -389,20 +369,14 @@ namespace XmlParsersAndUi.Forms {
                                         FrontendUtils.LogError("Could not get Date", ex);
                                         date = DateTime.Now;
                                     }
-
-
                                     long fileSize = (Convert.ToInt64(splitFileName[4]) / 1024) == 0 ? 1 : (Convert.ToInt64(splitFileName[4]) / 1024);
-
                                     results.Rows.Add(new object[] { counter, "Added", fileSize, date.ToString(), GetFileTypeFromExtension(splitFileName[8]), splitFileName[8] });
-
                                 }
                             } else {
                                 string fileName = splitByLines[k].Replace("/net/" + refHost + refEnv, "").Replace("/net/" + inputHost + inputEnv, "");
                                 string[] splitFileName = fileName.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
                                 if (diffRegex.Matches(fileName).Count == 0) {
                                     DateTime date;
-
                                     try {
                                         if (splitFileName[7].Contains(":")) {
                                             date = new DateTime(DateTime.Now.Year, monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[0]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[1]), 0);
@@ -414,14 +388,12 @@ namespace XmlParsersAndUi.Forms {
                                         date = DateTime.Now;
                                     }
                                     long fileSize = (Convert.ToInt64(splitFileName[4]) / 1024) == 0 ? 1 : (Convert.ToInt64(splitFileName[4]) / 1024);
-
                                     results.Rows.Add(new object[] { counter, "Modified", fileSize, date.ToString(), GetFileTypeFromExtension(splitFileName[8]), splitFileName[8] });
                                 }
                             }
                             counter++;
                         }
                     }
-
                     SAVED_SEARCH_RESULTS = results.Copy();
                     GOLDEN_ORIGINAL_RESTULS = results.Copy();
                     resultsTable = SAVED_SEARCH_RESULTS;
@@ -434,13 +406,9 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
-
         private void ParseComparisonResults(string localFileName,string inputEnv, string inputHost, string refEnv, string refHost, out DataTable resultsTable) {
-
             string readFile = FrontendUtils.ReadFile(localFileName);
-            //      Regex regex = new Regex("-.*-");
             string[] array = new string[1];
-            //  array[0]= regex.Match(readFile).Value;
             array[0] = "\n\n";
             string[] splitFile = readFile.Split(array, StringSplitOptions.RemoveEmptyEntries);
             int counter = 1;
@@ -479,20 +447,14 @@ namespace XmlParsersAndUi.Forms {
                                 FrontendUtils.LogError("Could not get Date", ex);
                                 date = DateTime.Now;
                             }
-
-
                             long fileSize = (Convert.ToInt64(splitFileName[4]) / 1024) == 0 ? 1 : (Convert.ToInt64(splitFileName[4]) / 1024);
-
                             results.Rows.Add(new object[] { counter, "Added", fileSize, date.ToString(), GetFileTypeFromExtension(splitFileName[8]), splitFileName[8] });
-
                         }
                     } else {
                         string fileName = splitByLines[k].Replace("/net/" + refHost + refEnv, "").Replace("/net/" + inputHost + inputEnv, "");
                         string[] splitFileName = fileName.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
-
                         if (diffRegex.Matches(fileName).Count == 0) {
                             DateTime date;
-
                             try {
                                 if (splitFileName[7].Contains(":")) {
                                     date = new DateTime(DateTime.Now.Year, monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[0]), Convert.ToInt32(splitFileName[7].Split(new char[] { ':' })[1]), 0);
@@ -504,18 +466,15 @@ namespace XmlParsersAndUi.Forms {
                                 date = DateTime.Now;
                             }
                             long fileSize = (Convert.ToInt64(splitFileName[4]) / 1024) == 0 ? 1 : (Convert.ToInt64(splitFileName[4]) / 1024);
-
                             results.Rows.Add(new object[] { counter, "Modified", fileSize, date.ToString(), GetFileTypeFromExtension(splitFileName[8]), splitFileName[8] });
                         }
                     }
                     counter++;
                 }
             }
-
             SAVED_SEARCH_RESULTS = results.Copy();
             GOLDEN_ORIGINAL_RESTULS = results.Copy();
             resultsTable = SAVED_SEARCH_RESULTS;
-
         }
 
         private string CopyComparisonScript(string refHost, string refEnv) {
@@ -577,8 +536,6 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
-
-
         private DataTable CopyDataGridToDataTable(DataGridView dgvResults) {
             DataTable gridValues = new DataTable("Original Diff Result");
             gridValues.Columns.Add("#");
@@ -593,14 +550,11 @@ namespace XmlParsersAndUi.Forms {
                     object[] values = new object[] { row.Cells[0].Value, row.Cells[1].Value, row.Cells[2].Value, row.Cells[3].Value, row.Cells[4].Value, row.Cells[5].Value };
                     gridValues.Rows.Add(values);
                 }
-
             }
             return gridValues;
         }
 
         private void ApplySelectedFiltersToSearchResults(List<EnvComparisonFilter> selectedFilters) {
-            // DataTable workingTable = CopyDataGridToDataTable(dgvResults);
-
             DataTable workingTable = SAVED_SEARCH_RESULTS.Copy();
             DataTable resultTable = SAVED_SEARCH_RESULTS.Copy();
             resultTable.Rows.Clear();
@@ -635,23 +589,8 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
-        //private void ApplyCustomSearchFilter(string customFilter) {
-        //    DataTable workingTable = CopyDataGridToDataTable(dgvResults);
-        //    Regex regex = new Regex(customFilter, RegexOptions.Compiled);
-        //    int availableRows = workingTable.Rows.Count;
-        //    for (int i = 0; i < availableRows; i++) {
-        //        if (regex.IsMatch(workingTable.Rows[i].ItemArray[2].ToString())) {
-        //            workingTable.Rows[i].Delete();
-        //        }
-        //    }
-        //    FillDataGridFromDataTable(workingTable);
-        //    lblTotalFiles.Text = "Remaining files: " + workingTable.Rows.Count + "/" + Total_Number_Diffs;
-        //}
-
         private void FillDataGridFromDataTable(DataTable DataTable) {
             dgvResults.Rows.Clear();
-
-
             dgvResults.Columns.Clear();
             dgvResults.Columns.Add("#", "#");
             dgvResults.Columns.Add("Operation", "Operation");
@@ -715,7 +654,6 @@ namespace XmlParsersAndUi.Forms {
                 FillDataGridFromDataTable(GOLDEN_ORIGINAL_RESTULS);
                 lblTotalFiles.Text = "Remaining files: " + GOLDEN_ORIGINAL_RESTULS.Rows.Count + "/" + Total_Number_Diffs + "\nSize: " + GetTotalFilesSize(GOLDEN_ORIGINAL_RESTULS) + " KB";
 
-                // dgvResults.Columns[0].Width = 40;
                 dgvResults.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.NotSet;
                 dgvResults.Columns[0].FillWeight = 30;
                 dgvResults.Columns[0].Width = 40;
@@ -781,12 +719,10 @@ namespace XmlParsersAndUi.Forms {
 
                 #endregion
 
-                //ResetConfigTextBoxes(gbConfiguration.Controls);
                 gbFilters.Visible = false;
                 gbResultsGrid.Visible = false;
                 SAVED_SEARCH_RESULTS = new DataTable();
                 pcProgress.Visible = false;
-                //txtCustomFilter.Clear();
                 gbCustomFilters.Visible = false;
                 lblProgess.Text = "";
                 lblTotalFiles.Text = "Remaining files:\nSize:";
@@ -799,7 +735,6 @@ namespace XmlParsersAndUi.Forms {
             DataSet set = new DataSet();
             ItemsPresentInGrid.TableName = "Filtered Results";
             set.Tables.Add(ItemsPresentInGrid.Copy());
-
             if (GOLDEN_ORIGINAL_RESTULS.Rows.Count > maxNumberOfRows) {
                 DataTable splitTable = GetDataTable("Original Results-0", new List<string> { "#", "Operation", "File Size", "Modify Date", "File Type", "File Path" });
                 int counter = 1;
@@ -830,12 +765,10 @@ namespace XmlParsersAndUi.Forms {
             return dataTable;
         }
 
-
         private DataTable CopyDataGridToDataTableForExport(DataGridView dgvResults) {
             DataTable gridValues = new DataTable("Original Diff Result");
             gridValues.Columns.Add("FolderGroup");
             gridValues.Columns.Add("SubFolderGroup");
-
             gridValues.Columns.Add("#");
             gridValues.Columns.Add("Operation");
             gridValues.Columns.Add("File Size");
@@ -848,7 +781,6 @@ namespace XmlParsersAndUi.Forms {
                     object[] values = new object[] { null,null,row.Cells[0].Value, row.Cells[1].Value, row.Cells[2].Value, row.Cells[3].Value, row.Cells[4].Value, row.Cells[5].Value };
                     gridValues.Rows.Add(values);
                 }
-
             }
             return gridValues;
         }
@@ -859,8 +791,6 @@ namespace XmlParsersAndUi.Forms {
                 DataTable ItemsPresentInGrid = CopyDataGridToDataTableForExport(dgvResults);
                 DialogResult dialog = FrontendUtils.ShowConformation("Do you want to apply the folder grouping feature?");
                 if (dialog == DialogResult.Yes) {
-                    //ItemsPresentInGrid.Columns.Add("FolderGroup");
-                    //ItemsPresentInGrid.Columns.Add("SubFolderGroup");
                     for (int i = 0; i < ItemsPresentInGrid.Rows.Count; i++) {
                         for (int j = 0; j < allTreeNodes.Count; j++) {
                             if (allTreeNodes[j].Level == 0) {
@@ -881,7 +811,6 @@ namespace XmlParsersAndUi.Forms {
                         }
                     }
                 }
-
                 int maxNumberOfRows = 64000;
                 if (dgvResults.Rows.Count < maxNumberOfRows) {
                     SaveFileDialog dial = new SaveFileDialog();
@@ -891,74 +820,10 @@ namespace XmlParsersAndUi.Forms {
                     if (dial.ShowDialog() == DialogResult.OK) {
                         ExportDatagridWorkerObject exportDatagridWorkerObject = new ExportDatagridWorkerObject(dial.FileName, ItemsPresentInGrid, GOLDEN_ORIGINAL_RESTULS, maxNumberOfRows);
                         btnExportGrid.Enabled = false;
-                        //pcExport
-                        //pcProgress.Visible = true;
-                        //pcProgress.Rotate = true;
                         gbResultsGrid.Enabled = false;
                         bgwExportToExcel.RunWorkerAsync(exportDatagridWorkerObject);
                     }
                 }
-                #region old Export Code
-                //if (dgvResults.Rows.Count < maxNumberOfRows) {
-                //    SaveFileDialog dial = new SaveFileDialog();
-                //    dial.AddExtension = true;
-                //    dial.DefaultExt = ".xls";
-                //    dial.Filter = "Excel Files (*.xls)|*.xls";
-                //    if (dial.ShowDialog() == DialogResult.OK) {
-                //        DataSet set = new DataSet();
-                //        set.Tables.Add("Filtered Results");
-                //        set.Tables[0].Columns.Add("#");
-                //        set.Tables[0].Columns.Add("Operation");
-                //        set.Tables[0].Columns.Add("File Type");
-                //        set.Tables[0].Columns.Add("File Path");
-                //        foreach (DataGridViewRow row in dgvResults.Rows) {
-                //            //# Opration filePath
-                //            if (row.Visible) {
-                //                object[] values = new object[] { row.Cells[0].Value, row.Cells[1].Value, row.Cells[2].Value, row.Cells[3].Value };
-                //                set.Tables[0].Rows.Add(values);
-                //            }
-                //        }
-                //        if (GOLDEN_ORIGINAL_RESTULS.Rows.Count < maxNumberOfRows) {
-                //            set.Tables.Add(GOLDEN_ORIGINAL_RESTULS.Copy());
-                //        } else {
-                //            DataTable splitTable = new DataTable("Original Results-0");
-
-                //            splitTable.Columns.Add("#");
-                //            splitTable.Columns.Add("Operation");
-                //            splitTable.Columns.Add("File Type");
-                //            splitTable.Columns.Add("File Path");
-
-                //            DataTable temp = GOLDEN_ORIGINAL_RESTULS.Copy();
-                //            //temp.Columns.Add("#");
-                //            //temp.Columns.Add("Operation");
-                //            //temp.Columns.Add("File Type");
-                //            //temp.Columns.Add("File Path");
-
-
-
-                //            //int startIndex = 0;
-                //            int counter = 1;
-                //            int restableCounter = 1;
-                //            for (int i = 0; i < GOLDEN_ORIGINAL_RESTULS.Rows.Count; i++) {
-                //                if (restableCounter == maxNumberOfRows || (restableCounter < maxNumberOfRows && (i == GOLDEN_ORIGINAL_RESTULS.Rows.Count - 1))) {
-                //                    set.Tables.Add(splitTable);
-                //                    splitTable = new DataTable("Original Results-" + counter);
-                //                    splitTable.Columns.Add("#");
-                //                    splitTable.Columns.Add("Operation");
-                //                    splitTable.Columns.Add("File Type");
-                //                    splitTable.Columns.Add("File Path");
-                //                    restableCounter = 0;
-                //                    counter++;
-                //                }
-                //                splitTable.Rows.Add(GOLDEN_ORIGINAL_RESTULS.Rows[i].ItemArray);
-                //                restableCounter++;
-                //            }
-                //        }
-
-                //        FastExportingMethod.ExportToExcel(set, dial.FileName);
-                //    }
-                //}
-                #endregion
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
@@ -977,8 +842,6 @@ namespace XmlParsersAndUi.Forms {
                    Replace("\\*", ".*").
                    Replace("\\?", ".") + "$";
         }
-
-        DataTable GOLDEN_ORIGINAL_RESTULS = new DataTable();
 
         private void btnApplyCustomFilter_Click(object sender, EventArgs e) {
             try {
@@ -1147,7 +1010,6 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
-
         #endregion
 
         #endregion
@@ -1172,8 +1034,6 @@ namespace XmlParsersAndUi.Forms {
                                             row["filterScript"].ToString(),
                                             row["exclusionList"].ToString());
 
-
-
                 switch (Convert.ToInt32(row["filterType"])) {
 
                 case (int)EnvComparisonFilter.ComparisonFilterType.Regular:
@@ -1194,7 +1054,6 @@ namespace XmlParsersAndUi.Forms {
                 default:
                     break;
                 }
-
                 lbFilters.Items.Add(filter);
             }
         }
@@ -1274,7 +1133,6 @@ namespace XmlParsersAndUi.Forms {
             } else {
                 generatedScript = "rm "+filterPattern;
             }
-
             return generatedScript;
         }
 
@@ -1337,11 +1195,6 @@ namespace XmlParsersAndUi.Forms {
 
         private void tcComparisonTabs_SelectedIndexChanged(object sender, EventArgs e) {
             try {
-
-                //tcComparisonTabs.SelectedIndex = 0 ==> cleanup
-                //tcComparisonTabs.SelectedIndex = 1 ==> comparison
-                //tcComparisonTabs.SelectedIndex = 2 ==> configuration
-
                 if (tcComparisonTabs.SelectedTab.Equals(tpCleanup)) {
                     PopulateCleanupFilters();
                 } else {
@@ -1368,31 +1221,23 @@ namespace XmlParsersAndUi.Forms {
                                             string.Equals(row["userid"].ToString(),1),
                                             row["filterScript"].ToString(),
                                             row["exclusionList"].ToString());
-
-
                 if (Convert.ToInt32(row["filterType"]) == (int)EnvComparisonFilter.ComparisonFilterType.Deletion) {
                     clbAvailableCleanupFilters.Items.Add(filter,true);
                 }
             }
-
         }
 
         private void btnSaveFilter_Click(object sender, EventArgs e) {
             try {
-
-
                 if (lvAvailableFilters.SelectedItems.Count > 0) {
                     EnvComparisonFilter envComparisonFilter = (lvAvailableFilters.SelectedItems[0].Tag as EnvComparisonFilter);
-
                     if (envComparisonFilter !=null) {
                         int filterId = envComparisonFilter.filterId;
                         string name = txtFilterName.Text.Trim();
                         string description = txtFilterDescription.Text.Trim();
                         string pattern = txtFilterPattern.Text.Trim();
                         if (IsValidToSaveFilter(filterId, name, description, pattern)) {
-
                             EnvComparisonFilter filter = new EnvComparisonFilter(filterId, name, description, pattern, (int)cboFilterType.SelectedItem, FrontendUtils.LoggedInUserId);
-
                             if (cboFilterType.SelectedIndex == (int)EnvComparisonFilter.ComparisonFilterType.Deletion) {
                                 filter.IsFolderDeletion = cboRemoveFileOrFolder.SelectedIndex == 1;
                                 filter.FilterScript = txtGeneratedScript.Text;
@@ -1454,8 +1299,6 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
-        bool checkedState = false;
-
         private void btnSelectAll_Click(object sender, EventArgs e) {
             try {
                 for (int i = 0; i < clbAvailableFilters.Items.Count; i++) {
@@ -1466,10 +1309,6 @@ namespace XmlParsersAndUi.Forms {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
         }
-
-        List<int> rowIndexSaved = new List<int>();
-
-        int manuallyDeletedCount = 0;
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
@@ -1506,51 +1345,37 @@ namespace XmlParsersAndUi.Forms {
         private void btnValidateVersion_Click(object sender, EventArgs e) {
             try {
                 btnValidateVersion.Enabled = false;
-                //pcProgress.Visible = true;
-                //pcProgress.Rotate = true;
-                //lblProgess.Text = "Validating...";
                 Regex versionAndBuildIDRegex = new Regex("MX.*?(\\d+.\\d+.\\S+).*?(\\d+-\\d+-\\d+-\\d+)");
                 string refReadFile = GetVersionFile(txtRefEnv.Text, txtRefHost.Text);
                 string inpVersionFile = GetVersionFile(txtInputEnv.Text, txtInpHost.Text);
-
                 if (string.IsNullOrEmpty(refReadFile) || string.IsNullOrEmpty(inpVersionFile)) {
                     FrontendUtils.ShowInformation("Could not validate versions!",true);
                     btnStart.Enabled = true;
                     btnValidateVersion.Enabled = true;
                     return;
                 }
-
                 string refBuildId = string.Empty;
                 string inputBuildId = string.Empty;
-
                 if (versionAndBuildIDRegex.Match(refReadFile).Groups.Count > 1) {
                     lblReferenceVersionBid.Text = "Version: " + versionAndBuildIDRegex.Match(refReadFile).Groups[1].Value + " @ " + versionAndBuildIDRegex.Match(refReadFile).Groups[2].Value;
                     lblReferenceVersionBid.Visible = true;
                     refBuildId = versionAndBuildIDRegex.Match(refReadFile).Groups[2].Value.Split('-')[0];
                 }
-
                 if (versionAndBuildIDRegex.Match(inpVersionFile).Groups.Count > 1) {
                     lblInputVersionBid.Text = "Version: " + versionAndBuildIDRegex.Match(inpVersionFile).Groups[1].Value + " @ " + versionAndBuildIDRegex.Match(inpVersionFile).Groups[2].Value;
                     lblInputVersionBid.Visible = true;
                     inputBuildId = versionAndBuildIDRegex.Match(inpVersionFile).Groups[2].Value.Split('-')[0];
                 }
-
                 //label coloring
                 if (!string.Equals(refBuildId, inputBuildId)) {
                     lblInputVersionBid.ForeColor = Color.LimeGreen;
                     lblReferenceVersionBid.ForeColor = Color.LightCoral;
                     FrontendUtils.ShowInformation("The reference environment build id is not identical to the build id of the customized environment",true);
-
                 } else {
                     //equal builds
                     lblInputVersionBid.ForeColor = Color.LightGreen;
                     lblReferenceVersionBid.ForeColor = Color.LightGreen;
                 }
-
-                //btnValidateVersion.Enabled = true;
-                //pcProgress.Visible = false;
-                //pcProgress.Rotate = false;
-                //lblProgess.Text = string.Empty;
                 btnStart.Enabled = true;
                 btnValidateVersion.Enabled = true;
             } catch (Exception ex) {
@@ -1558,12 +1383,9 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
-        
-        string environmentSize;
-        
         private string GetVersionFile(string appDirectory, string host) {
-        	//generates size.log containing env size
-        	GenerateSizeFile();
+            //generates size.log containing env size
+            GenerateSizeFile();
             string readFile = string.Empty;
             FtpConnection connection = new FtpConnection(host, "mxftp", "mxftp");
             string localFileName = Path.GetTempFileName();
@@ -1583,8 +1405,6 @@ namespace XmlParsersAndUi.Forms {
                     connection.SetCurrentDirectory(appDirectory );
                     //Path.GetTempFileName
                     connection.GetFile("size.log", localSizeFileName, false);
-                    
-                    
                 } finally {
                     connection.Close();
                     connection.Dispose();
@@ -1652,13 +1472,10 @@ namespace XmlParsersAndUi.Forms {
                     if (cat.categoryId == 0) {
                         //add button was pressed
                         ComparisonCategoryTreeNode comparisonCategoryTreeNode = new ComparisonCategoryTreeNode(cat.categoryName);
-
-
                         comparisonCategoryTreeNode.comparisonCategory = new ComparisonCategory(cat.categoryName, cat.categoryDescription, cat.categoryPath);
                         tvResultsCategories.Nodes.Add(comparisonCategoryTreeNode);
                     } else {
                         // save button was pressed
-
                     }
                 }
             } catch (Exception ex) {
@@ -1669,7 +1486,6 @@ namespace XmlParsersAndUi.Forms {
         private void editNodeToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
                 ComparisonCategoryTreeNode comparisonCategoryTreeNode = tvResultsCategories.SelectedNode as ComparisonCategoryTreeNode;
-
                 EnvComparisonCategoryForm form = new EnvComparisonCategoryForm(comparisonCategoryTreeNode.comparisonCategory);
                 DialogResult dial = form.ShowDialog();
                 if (dial == DialogResult.Yes) {
@@ -1677,7 +1493,6 @@ namespace XmlParsersAndUi.Forms {
                     comparisonCategoryTreeNode.comparisonCategory = cat;
                     comparisonCategoryTreeNode.Text = cat.categoryName;
                 }
-
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
@@ -1686,7 +1501,6 @@ namespace XmlParsersAndUi.Forms {
         private void tvResultsCategories_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) {
             try {
                 ComparisonCategoryTreeNode comparisonCategoryTreeNode = tvResultsCategories.SelectedNode as ComparisonCategoryTreeNode;
-
                 EnvComparisonCategoryForm form = new EnvComparisonCategoryForm(comparisonCategoryTreeNode.comparisonCategory);
                 DialogResult dial = form.ShowDialog();
                 if (dial == DialogResult.Yes) {
@@ -1694,18 +1508,14 @@ namespace XmlParsersAndUi.Forms {
                     comparisonCategoryTreeNode.comparisonCategory = cat;
                     comparisonCategoryTreeNode.Text = cat.categoryName;
                 }
-
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
         }
 
-        List<ComparisonCategoryTreeNode> allTreeNodes = new List<ComparisonCategoryTreeNode>();
-
         private void SaveUpdatedTreeView() {
             allTreeNodes = new List<ComparisonCategoryTreeNode>();
             LoopOverAllTreeNodes();
-
             Env_Comparison_Categories.UpdateEnvComparisonCategoriesTransaction(allTreeNodes);
         }
 
@@ -1813,7 +1623,6 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
-
         void CboFilterTypeSelectedIndexChanged(object sender, EventArgs e) {
             //setup for deletion
             if(cboFilterType.SelectedIndex == (int)EnvComparisonFilter.ComparisonFilterType.Deletion) {
@@ -1891,11 +1700,15 @@ namespace XmlParsersAndUi.Forms {
 
         void BtnStartCleanupClick(object sender, EventArgs e) {
             try {
-                List<EnvComparisonFilter> selectedFilters = new List<EnvComparisonFilter>();
-                for (int i = 0; i < clbAvailableCleanupFilters.CheckedItems.Count; i++) {
-                    selectedFilters.Add(clbAvailableCleanupFilters.CheckedItems[i] as EnvComparisonFilter);
+                DialogResult result = FrontendUtils.ShowConformation("Are you sure you want to start cleanup?");
+                if (result == DialogResult.Yes) {
+                    List<EnvComparisonFilter> selectedFilters = new List<EnvComparisonFilter>();
+                    for (int i = 0; i < clbAvailableCleanupFilters.CheckedItems.Count; i++) {
+                        selectedFilters.Add(clbAvailableCleanupFilters.CheckedItems[i] as EnvComparisonFilter);
+                    }
+                    RunScriptsOnServer(selectedFilters);
+                    FrontendUtils.ShowInformation("Environment cleanup completed!",false);
                 }
-                RunScriptsOnServer(selectedFilters);
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message,ex);
             }
@@ -1935,16 +1748,15 @@ namespace XmlParsersAndUi.Forms {
                     Regex ReleaseVersionRegex = new Regex("Release: (.*)");
                     if (ReleaseVersionRegex.Match(inpVersionFile).Groups.Count > 1) {
                         envInformation = envInformation + "\r\n"+ReleaseVersionRegex.Match(inpVersionFile).Value;
-                    }	
+                    }
                     if (!string.IsNullOrEmpty(environmentSize)) {
-						envInformation = envInformation +"\r\nEnvironment Size: "+ environmentSize;
-					}
+                        envInformation = envInformation +"\r\nEnvironment Size: "+ environmentSize;
+                    }
                 }
             }
-             GenerateSizeFile();
+            GenerateSizeFile();
             return envInformation;
         }
-
 
         private string GenerateSizeFile() {
             SshStream ssh = new SshStream(txtHostForCleanup.Text, "autoengine", "");
@@ -1968,7 +1780,7 @@ namespace XmlParsersAndUi.Forms {
                 ssh.Write("du -sh > size.log");
                 response = ssh.ReadResponse();
                 Console.WriteLine(response);
-				return "Env Size: "+response;
+                return "Env Size: "+response;
             } catch (Exception ex) {
                 FrontendUtils.LogError(ex.Message, ex);
             }
@@ -1982,5 +1794,6 @@ namespace XmlParsersAndUi.Forms {
                 FrontendUtils.ShowError(ex.Message,ex);
             }
         }
+        
     }
 }
