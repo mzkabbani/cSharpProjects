@@ -984,7 +984,6 @@
         	this.txtExclusionList.Size = new System.Drawing.Size(496, 23);
         	this.txtExclusionList.TabIndex = 17;
         	this.txtExclusionList.Visible = false;
-        	this.txtExclusionList.TextChanged += new System.EventHandler(this.TxtExclusionListTextChanged);
         	// 
         	// txtGeneratedScript
         	// 

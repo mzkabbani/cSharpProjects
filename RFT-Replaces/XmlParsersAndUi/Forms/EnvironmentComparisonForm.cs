@@ -1399,19 +1399,21 @@ namespace XmlParsersAndUi.Forms {
                         FrontendUtils.ShowError(ex.Message, ex);
                     }
                     connection.Login();
-                    connection.SetCurrentDirectory(appDirectory + "/logs");
-                    //Path.GetTempFileName
-                    connection.GetFile("mxversion.log", localFileName, false);
                     connection.SetCurrentDirectory(appDirectory );
                     //Path.GetTempFileName
                     connection.GetFile("size.log", localSizeFileName, false);
+                    string sizeFileRead = FrontendUtils.ReadFile(localSizeFileName);
+               		environmentSize = sizeFileRead.Replace("\t.\n","");
+                    connection.SetCurrentDirectory(appDirectory + "/logs");
+                    //Path.GetTempFileName
+                    connection.GetFile("mxversion.log", localFileName, false);
+                    
                 } finally {
                     connection.Close();
                     connection.Dispose();
                 }
                 readFile = FrontendUtils.ReadFile(localFileName);
-                string sizeFileRead = FrontendUtils.ReadFile(localSizeFileName);
-                environmentSize = sizeFileRead.Replace("\t.\n","");
+               
             } catch (Exception ex) {
                 //   FrontendUtils.ShowInformation("Could not validate environment version \n["+appDirectory+"]");
                 FrontendUtils.LogError(ex.Message, ex);
@@ -1669,7 +1671,8 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private void RunScriptsOnServer(List<EnvComparisonFilter> selectedFilters) {
-            string scriptToRun = "find . -name \"#pattern#\" | egrep -v \"#exclusionList#\" | cut -d\":\" -f1 | xargs rm ";
+            string scriptToRunWithExclusion = "find . -name \"#pattern#\" | egrep -v \"#exclusionList#\" | cut -d\":\" -f1 | xargs rm ";
+            string scriptToRunWithoutExclusion = "find . -name \"#pattern#\" | cut -d\":\" -f1 | xargs rm ";
             //CopyComparisonScript(refHost, refEnv);
             SshStream ssh = new SshStream(txtHostForCleanup.Text, "autoengine", "");
             //Set the end of response matcher character
@@ -1688,16 +1691,54 @@ namespace XmlParsersAndUi.Forms {
                 response = ssh.ReadResponse();
                 //file * | grep directory | egrep -v "exclusion|list" | cut -d":" -f1 | xargs rm-Rf
                 foreach (EnvComparisonFilter cleanupFilter in selectedFilters) {
-                    string script =   scriptToRun.Replace("#pattern#",cleanupFilter.FilterPattern).Replace("#exclusionList#", cleanupFilter.ExclusionList.Replace(",","|")) + (cleanupFilter.IsFolderDeletion ? "" : "-Rf");
+                    	string script = string.Empty;
+                	if (string.IsNullOrEmpty(cleanupFilter.ExclusionList)) {
+                		script =   scriptToRunWithoutExclusion.Replace("#pattern#",cleanupFilter.FilterPattern) + (cleanupFilter.IsFolderDeletion ? "" : "-Rf");
+                		
+                	}else{
+                		script =   scriptToRunWithExclusion.Replace("#pattern#",cleanupFilter.FilterPattern).Replace("#exclusionList#", cleanupFilter.ExclusionList.Replace(",","|")) + (cleanupFilter.IsFolderDeletion ? "" : "-Rf");
+                	}
                     ssh.Write(script);
                     response = ssh.ReadResponse();
                     Console.WriteLine(response);
                 }
+                ssh.Write("du -sh > sizeafter.log");
+                GetSizeAfterCleanup("sizeafter.log");                
             } catch (Exception ex) {
                 FrontendUtils.LogError(ex.Message, ex);
             }
         }
 
+        void GetSizeAfterCleanup(string fileName){
+        	string hostName = txtHostForCleanup.Text.Trim();
+        	string appDirectory = txtInputEnvForCleanup.Text.Trim();
+         FtpConnection connection = new FtpConnection(hostName, "mxftp", "mxftp");
+            
+            string localSizeFileName = Path.GetTempFileName();
+            try {
+                try {
+                    try {
+                        connection.Open();
+                        //bgDoServerWork.ReportProgress(5, "Validating Results...");
+                    } catch (Exception ex) {
+                        FrontendUtils.ShowError(ex.Message, ex);
+                    }
+                    connection.Login();
+                    connection.SetCurrentDirectory(appDirectory );
+                    //Path.GetTempFileName
+                    connection.GetFile(fileName, localSizeFileName, false);
+                } finally {
+                    connection.Close();
+                    connection.Dispose();
+                }               
+                string sizeFileRead = FrontendUtils.ReadFile(localSizeFileName);
+                lblEnvironmentInfo.Text =  lblEnvironmentInfo.Text +"\r\nSize After Cleanup:"+ sizeFileRead.Replace("\t.\n","");
+            } catch (Exception ex) {
+                //   FrontendUtils.ShowInformation("Could not validate environment version \n["+appDirectory+"]");
+                FrontendUtils.LogError(ex.Message, ex);
+            }
+        }
+        
         void BtnStartCleanupClick(object sender, EventArgs e) {
             try {
                 DialogResult result = FrontendUtils.ShowConformation("Are you sure you want to start cleanup?");
@@ -1749,12 +1790,13 @@ namespace XmlParsersAndUi.Forms {
                     if (ReleaseVersionRegex.Match(inpVersionFile).Groups.Count > 1) {
                         envInformation = envInformation + "\r\n"+ReleaseVersionRegex.Match(inpVersionFile).Value;
                     }
-                    if (!string.IsNullOrEmpty(environmentSize)) {
-                        envInformation = envInformation +"\r\nEnvironment Size: "+ environmentSize;
-                    }
+                   
                 }
             }
-            GenerateSizeFile();
+             if (!string.IsNullOrEmpty(environmentSize)) {
+                        envInformation = envInformation +"\r\nEnvironment Size: "+ environmentSize;
+                    }
+          //  GenerateSizeFile();
             return envInformation;
         }
 

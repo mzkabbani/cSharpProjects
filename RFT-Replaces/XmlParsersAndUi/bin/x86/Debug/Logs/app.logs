@@ -611,3 +611,63 @@ FtpLib.FtpException: 200 Type set to I.
    at FtpLib.FtpConnection.Error()
    at FtpLib.FtpConnection.GetFile(String remoteFile, String localFile, Boolean failIfExists)
    at XmlParsersAndUi.Forms.EnvironmentComparisonForm.GetVersionFile(String appDirectory, String host) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 1576
+
+
+
+
+10/9/2012 9:45:58 AM
+
+
+550 /rockslide2/apps/qa27683_TPK0001528_7250645/logs//logs: No such file or directory.
+
+
+
+FtpLib.FtpException: 550 /rockslide2/apps/qa27683_TPK0001528_7250645/logs//logs: No such file or directory.
+
+   at FtpLib.FtpConnection.Error()
+   at FtpLib.FtpConnection.SetCurrentDirectory(String directory)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.GetVersionFile(String appDirectory, String host) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 1402
+
+
+
+
+10/9/2012 9:46:25 AM
+
+
+200 Type set to I.
+227 Entering Passive Mode (172,21,26,242,159,222)
+550 mxversion.log: not a plain file.
+550 mxversion.log: No such file or directory.
+
+
+
+FtpLib.FtpException: 200 Type set to I.
+227 Entering Passive Mode (172,21,26,242,159,222)
+550 mxversion.log: not a plain file.
+550 mxversion.log: No such file or directory.
+
+   at FtpLib.FtpConnection.Error()
+   at FtpLib.FtpConnection.GetFile(String remoteFile, String localFile, Boolean failIfExists)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.GetVersionFile(String appDirectory, String host) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 1404
+
+
+
+
+10/9/2012 9:50:28 AM
+
+
+200 Type set to I.
+227 Entering Passive Mode (172,21,26,242,93,235)
+550 mxversion.log: not a plain file.
+550 mxversion.log: No such file or directory.
+
+
+
+FtpLib.FtpException: 200 Type set to I.
+227 Entering Passive Mode (172,21,26,242,93,235)
+550 mxversion.log: not a plain file.
+550 mxversion.log: No such file or directory.
+
+   at FtpLib.FtpConnection.Error()
+   at FtpLib.FtpConnection.GetFile(String remoteFile, String localFile, Boolean failIfExists)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.GetVersionFile(String appDirectory, String host) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 1409
