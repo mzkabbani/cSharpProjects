@@ -75,19 +75,19 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>X7w+vSMH6S+4iWWrPapxqn5d6F8=</dsig:DigestValue>
+        <dsig:DigestValue>UwjJ+lwPDrotaBPF/7nol35B9xk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Automation.Common.dll" size="127488">
-      <assemblyIdentity name="Automation.Common" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Automation.Common.dll" size="128000">
+      <assemblyIdentity name="Automation.Common" version="1.0.0.0" publicKeyToken="7B68225CEDFD7486" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>OsuxiDuFWk76k3mykfNm72woiXw=</dsig:DigestValue>
+        <dsig:DigestValue>Z9Yhwf7WE0mwvOrIJaQhtPCqRaA=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -159,7 +159,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>0+sFtfkF36M/2+C1PDRJpmmKhH4=</dsig:DigestValue>
+        <dsig:DigestValue>lgKqI7fisz+xFUbT5zvfgPB7/ZY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
