@@ -75,7 +75,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>UwjJ+lwPDrotaBPF/7nol35B9xk=</dsig:DigestValue>
+        <dsig:DigestValue>A56LIcKVxdyD81lszbBNy+ymlgQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -87,7 +87,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Z9Yhwf7WE0mwvOrIJaQhtPCqRaA=</dsig:DigestValue>
+        <dsig:DigestValue>MrSUyUTbUkTZG+/ADCWAj3hKFVk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -99,31 +99,31 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Z9POK2Wghb1El2immzEH6RaV1I4=</dsig:DigestValue>
+        <dsig:DigestValue>ApvbIaJ28v+wYgyRWs4ZL5IX81I=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Automation.Diff.dll" size="24576">
-      <assemblyIdentity name="Automation.Diff" version="1.0.4652.27005" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Automation.Diff" version="1.0.4665.18785" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>dInYptdKas1jsYsVIqufVEcCU1w=</dsig:DigestValue>
+        <dsig:DigestValue>px3U+rW5JA/dSd0XRdtjIdDBPe4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Automation.ProgressCircle.dll" size="24576">
-      <assemblyIdentity name="Automation.ProgressCircle" version="1.1.4652.27005" publicKeyToken="3911FA6FB758CF71" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Automation.ProgressCircle" version="1.1.4665.18785" publicKeyToken="3911FA6FB758CF71" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>iuindfvYKmBw1eViP7+i7QLpeuU=</dsig:DigestValue>
+        <dsig:DigestValue>Ty9oCs28hGMw9zt1g41Z12kHBfY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -159,7 +159,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>lgKqI7fisz+xFUbT5zvfgPB7/ZY=</dsig:DigestValue>
+        <dsig:DigestValue>rOXBZqsaKaWeaptXdsQ3ZV1Gm+M=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -219,7 +219,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>pZLvOsOYOD3FXAzap+xF9H4xnYg=</dsig:DigestValue>
+        <dsig:DigestValue>xNN5tR8r3yoSMECVFhvpDHJRnhk=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
