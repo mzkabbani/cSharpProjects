@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="3.5" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
@@ -13,15 +13,25 @@
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ApplicationIcon>main.ico</ApplicationIcon>
-    <TargetFrameworkSubset>Full</TargetFrameworkSubset>
     <IsWebBootstrapper>false</IsWebBootstrapper>
-    <SignManifests>true</SignManifests>
+    <SignManifests>false</SignManifests>
     <SignAssembly>false</SignAssembly>
     <AssemblyOriginatorKeyFile>
     </AssemblyOriginatorKeyFile>
     <ManifestCertificateThumbprint>352DB3E4333080B8073E4EECF539175493FA2A1F</ManifestCertificateThumbprint>
     <ManifestKeyFile>XmlParsersAndUi_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
+    <SourceAnalysisOverrideSettingsFile>C:\Documents and Settings\mkabbani\Application Data\ICSharpCode/SharpDevelop4\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
+    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
+    <NoStdLib>False</NoStdLib>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <RunCodeAnalysis>False</RunCodeAnalysis>
+    <RunSourceAnalysis>False</RunSourceAnalysis>
+    <FileUpgradeFlags>
+    </FileUpgradeFlags>
+    <UpgradeBackupLocation>
+    </UpgradeBackupLocation>
+    <OldToolsVersion>3.5</OldToolsVersion>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -37,12 +47,6 @@
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
-    <SourceAnalysisOverrideSettingsFile>C:\Documents and Settings\mkabbani\Application Data\ICSharpCode/SharpDevelop4\Settings.SourceAnalysis</SourceAnalysisOverrideSettingsFile>
-    <AllowUnsafeBlocks>False</AllowUnsafeBlocks>
-    <NoStdLib>False</NoStdLib>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <RunCodeAnalysis>False</RunCodeAnalysis>
-    <RunSourceAnalysis>False</RunSourceAnalysis>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,6 +56,7 @@
     <ErrorReport>prompt</ErrorReport>
     <Optimize>false</Optimize>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -60,6 +65,7 @@
     <ErrorReport>prompt</ErrorReport>
     <Optimize>true</Optimize>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
     <DebugSymbols>true</DebugSymbols>
@@ -69,6 +75,7 @@
     <ErrorReport>prompt</ErrorReport>
     <Optimize>False</Optimize>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\x86\Release\</OutputPath>
@@ -76,6 +83,7 @@
     <DebugType>pdbonly</DebugType>
     <ErrorReport>prompt</ErrorReport>
     <Optimize>true</Optimize>
+    <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
@@ -98,8 +106,6 @@
       <HintPath>D:\DOwnloads\interopDlls\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Sybase.AdoNet2.AseClient" />
-    <Reference Include="Sybase.AdoNet4.AseClient" />
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -111,9 +117,6 @@
       <Private>False</Private>
     </Reference>
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.SqlServerCe, Version=3.5.1.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <Private>False</Private>
-    </Reference>
     <Reference Include="System.Design" />
     <Reference Include="System.Web.Extensions">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -137,8 +140,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\CustomListView.cs" />
-    <Compile Include="Controls\DragDropListView.cs" />
+    <Compile Include="Controls\CustomListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Controls\DragDropListView.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Controls\DragItemData.cs" />
     <Compile Include="Forms\BulkCustomsForm.cs">
       <SubType>Form</SubType>
@@ -153,15 +160,21 @@
       <DependentUpon>BulkMacroSplitterForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\checkboxItems.cs" />
-    <Compile Include="Forms\EnvironmentCleanupForm.cs" />
+    <Compile Include="Forms\EnvironmentCleanupForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\EnvironmentCleanupForm.Designer.cs">
       <DependentUpon>EnvironmentCleanupForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\EnvironmentComparisonForm.cs" />
+    <Compile Include="Forms\EnvironmentComparisonForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\EnvironmentComparisonForm.Designer.cs">
       <DependentUpon>EnvironmentComparisonForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Pac TPKS\PackReferenceForm.cs" />
+    <Compile Include="Forms\Pac TPKS\PackReferenceForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\Pac TPKS\PackReferenceForm.Designer.cs">
       <DependentUpon>PackReferenceForm.cs</DependentUpon>
     </Compile>
@@ -204,11 +217,15 @@
     </Compile>
     <Compile Include="Classes\ListViewItem.cs" />
     <Compile Include="Classes\MacroEvent.cs" />
-    <Compile Include="Forms\TpkBuilder\BuildGeneratorForm.cs" />
+    <Compile Include="Forms\TpkBuilder\BuildGeneratorForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\TpkBuilder\BuildGeneratorForm.Designer.cs">
       <DependentUpon>BuildGeneratorForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\TpkBuilder\TaskAdditionForm.cs" />
+    <Compile Include="Forms\TpkBuilder\TaskAdditionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="Forms\TpkBuilder\TaskAdditionForm.Designer.cs">
       <DependentUpon>TaskAdditionForm.cs</DependentUpon>
     </Compile>
@@ -270,6 +287,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SecondLevelCleanupForm.resx">
       <DependentUpon>SecondLevelCleanupForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ShowSearchDetailsForm.resx">
       <DependentUpon>ShowSearchDetailsForm.cs</DependentUpon>
@@ -660,10 +678,6 @@
       <Project>{279C7A4A-F932-4D73-8A4E-E3D7E2E50357}</Project>
       <Name>ProgressCircle</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\SearchableControls\SearchableControls.csproj">
-      <Project>{45A3F930-1A71-4B5D-905A-2CD1DD700EF6}</Project>
-      <Name>SearchableControls</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\SharpSSHLibrary\SharpSSH\SharpSSHLib.csproj">
       <Project>{C95B2656-9801-44E6-937E-8AFA20FB0F05}</Project>
       <Name>SharpSSHLib</Name>
@@ -684,7 +698,7 @@
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
       <Visible>False</Visible>
-      <ProductName>.NET Framework Client Profile</ProductName>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.2.0">
@@ -709,12 +723,12 @@
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.SQL.Server.Compact.3.5">
       <Visible>False</Visible>
-      <ProductName>SQL Server Compact 3.5</ProductName>
+      <ProductName>SQL Server Compact 3.5 SP2</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Sql.Server.Express.10.0">
       <Visible>False</Visible>
-      <ProductName>SQL Server 2008 Express Edition</ProductName>
+      <ProductName>SQL Server 2008 Express</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
@@ -738,10 +752,7 @@
       <Isolated>False</Isolated>
     </COMReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Forms\Pac TPKS" />
-    <Folder Include="Forms\TpkBuilder" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

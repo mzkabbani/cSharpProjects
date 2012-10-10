@@ -4,21 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using Automation.Common;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using Automation.Common.Utils;
 
 namespace Automation.Backend {
     public static class Advanced_Replacements {
 
-        public static ReplacementEvent GetReplacementEventByCaptureEventId(int captureEventId, SqlCeConnection conn) {
+        public static ReplacementEvent GetReplacementEventByCaptureEventId(int captureEventId, SqlConnection conn) {
             List<ReplacementEvent> replacements = GetAvailableReplacementsByCaptureId(captureEventId, conn);
             return replacements.Count > 0 ? replacements[0] : null;
         }
 
         public static int GetTotalAdvanceReplacementUsageCount(int captureEventId) {
             int total = 0;
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
-            SqlCeCommand command = new SqlCeCommand(Advanced_Replacements_SQL.commandSelectSumOfAllReplacementUsage, conn);
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
+            SqlCommand command = new SqlCommand(Advanced_Replacements_SQL.commandSelectSumOfAllReplacementUsage, conn);
             try {
                 conn.Open();
                 command.Parameters.AddWithValue("@capturePointId",captureEventId);
@@ -32,10 +32,10 @@ namespace Automation.Backend {
         public static int InsertNewReplacement(ReplacementEvent replacementEvent) {
             int replacementId = 0;
             int numberAffectedRows = 0;
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             try {
                 conn.Open();
-                SqlCeCommand command = new SqlCeCommand(Advanced_Replacements_SQL.commandInsertReplacement, conn);
+                SqlCommand command = new SqlCommand(Advanced_Replacements_SQL.commandInsertReplacement, conn);
                 command.Parameters.Add("@name", replacementEvent.name);
                 command.Parameters.Add("@description", replacementEvent.description);
                 command.Parameters.Add("@value", replacementEvent.Value);
@@ -44,7 +44,7 @@ namespace Automation.Backend {
                 command.Parameters.Add("@userId", replacementEvent.userId);
                 command.Parameters.Add("@usageCount", replacementEvent.usageCount);
                 numberAffectedRows = Convert.ToInt32(command.ExecuteNonQuery());
-                SqlCeCommand commandMaxId = new SqlCeCommand(Advanced_Replacements_SQL.commandMaxReplacementId, conn);
+                SqlCommand commandMaxId = new SqlCommand(Advanced_Replacements_SQL.commandMaxReplacementId, conn);
                 replacementId = Convert.ToInt32(commandMaxId.ExecuteScalar());
             } finally {
                 conn.Close();
@@ -53,7 +53,7 @@ namespace Automation.Backend {
         }
 
 
-        public static List<ReplacementEvent> GetAvailableReplacementsByCaptureId(int captureEventId, SqlCeConnection conn) {
+        public static List<ReplacementEvent> GetAvailableReplacementsByCaptureId(int captureEventId, SqlConnection conn) {
             //commandGetCapturePointReplacements
             List<ReplacementEvent> replacementEvents = new List<ReplacementEvent>();
             if (conn.State == ConnectionState.Open) {
@@ -92,22 +92,22 @@ namespace Automation.Backend {
         }
 
 
-        private static DataSet GetAvailableReplacementsAsDataset(int captureEventId, SqlCeConnection conn) {
-            SqlCeCommand getAllReplacementsByCaptureIDCommand = new SqlCeCommand(Advanced_Replacements_SQL.commandGetCapturePointReplacements, conn);
+        private static DataSet GetAvailableReplacementsAsDataset(int captureEventId, SqlConnection conn) {
+            SqlCommand getAllReplacementsByCaptureIDCommand = new SqlCommand(Advanced_Replacements_SQL.commandGetCapturePointReplacements, conn);
             getAllReplacementsByCaptureIDCommand.Parameters.Add("@capturePointId", captureEventId);
             DataSet dataSet = new DataSet();
-            SqlCeDataAdapter da = new SqlCeDataAdapter(getAllReplacementsByCaptureIDCommand);
-            SqlCeCommandBuilder cb = new SqlCeCommandBuilder(da);
+            SqlDataAdapter da = new SqlDataAdapter(getAllReplacementsByCaptureIDCommand);
+            SqlCommandBuilder cb = new SqlCommandBuilder(da);
             da.Fill(dataSet);
             return dataSet;
         }
 
         public static void IncrementReplacementsListUsageById( List<ComplexCaptureMatchObject> capturesAndReplacements) {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             try {
                 conn.Open();
                 for (int i = 0; i < capturesAndReplacements.Count; i++) {
-                    SqlCeCommand incrementUsageCount = new SqlCeCommand(Advanced_Replacements_SQL.commandUpdateReplacementUsageCountById,conn);
+                    SqlCommand incrementUsageCount = new SqlCommand(Advanced_Replacements_SQL.commandUpdateReplacementUsageCountById,conn);
                     incrementUsageCount.Parameters.Add("@usageCount", capturesAndReplacements[i].usedReplacementEvent.usageCount + 1);
                     incrementUsageCount.Parameters.Add("@id",   capturesAndReplacements[i].usedReplacementEvent.id);
                     object resutlt = incrementUsageCount.ExecuteNonQuery();
@@ -120,10 +120,10 @@ namespace Automation.Backend {
         }
 
         public static void SaveReplacementEvent(ReplacementEvent replacementEvent) {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             try {
                 conn.Open();
-                SqlCeCommand command = new SqlCeCommand(Advanced_Replacements_SQL.commandUpdateReplacementById, conn);
+                SqlCommand command = new SqlCommand(Advanced_Replacements_SQL.commandUpdateReplacementById, conn);
                 command.Parameters.Add("@name", replacementEvent.name);
                 command.Parameters.Add("@description", replacementEvent.description);
                 command.Parameters.Add("@value", replacementEvent.Value);

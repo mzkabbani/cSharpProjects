@@ -13,7 +13,7 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using Automation.Common.Utils;
-using Sybase.Data.AseClient;
+
 
 namespace XmlParsersAndUi.Forms.Pac_TPKS {
     /// <summary>
@@ -41,13 +41,13 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS {
 
         }
 
-        DataTable GetTestDataTableFromDB(string testID, AseConnection conn) {
-            DataTable table = new DataTable(testID);
-            using (AseDataAdapter adapter = new AseDataAdapter("select * from QA_PAC_TIMING where TE_REF like '"+testID+"'" ,conn)) {
-                adapter.Fill(table);
-            }
-			return table;
-        }
+        //DataTable GetTestDataTableFromDB(string testID, AseConnection conn) {
+        //    DataTable table = new DataTable(testID);
+        //    using (AseDataAdapter adapter = new AseDataAdapter("select * from QA_PAC_TIMING where TE_REF like '"+testID+"'" ,conn)) {
+        //        adapter.Fill(table);
+        //    }
+        //    return table;
+        //}
 
     	
     	object[] GetAverageCPUFromRowsAndClosestTE(string executionCtx, DataSet workingSet){
@@ -92,57 +92,57 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS {
     	
         void BtnGetResultsClick(object sender, EventArgs e) {
 			
-            string connectionString = "Data Source='daisy';Port='4100';UID='INSTAL';PWD='INSTALL';Database='GLOBALQA_UDT';";
-            try {
-                List<string> suppliedTEs = GetSuppliedTEs(txtInputTes.Text.Trim());
+            //string connectionString = "Data Source='daisy';Port='4100';UID='INSTAL';PWD='INSTALL';Database='GLOBALQA_UDT';";
+            //try {
+            //    List<string> suppliedTEs = GetSuppliedTEs(txtInputTes.Text.Trim());
 
-                DataSet set = new DataSet("TE Collection");
-                AseConnection conn = new AseConnection(connectionString);
+            //    DataSet set = new DataSet("TE Collection");
+            //    AseConnection conn = new AseConnection(connectionString);
                 
-                try {
-                    conn.Open();
+            //    try {
+            //        conn.Open();
 
-                    for (int i = 0; i < suppliedTEs.Count; i++) {
-                        set.Tables.Add(GetTestDataTableFromDB(suppliedTEs[i],conn));
-                    }
-                    // work with set now
-                    DataTable resultTable = set.Tables[0].Clone();
-                    resultTable.Rows.Clear();
+            //        for (int i = 0; i < suppliedTEs.Count; i++) {
+            //            set.Tables.Add(GetTestDataTableFromDB(suppliedTEs[i],conn));
+            //        }
+            //        // work with set now
+            //        DataTable resultTable = set.Tables[0].Clone();
+            //        resultTable.Rows.Clear();
                     
-                    DataTable firstTable = set.Tables[0];
-					if ((firstTable.Rows != null)) {
-					 //executionCtx,closestCPUTENumber,closestCPUValue,averageCPU
-                    	dgvResults.Columns.Add("executionCtx","Execution Context");
+            //        DataTable firstTable = set.Tables[0];
+            //        if ((firstTable.Rows != null)) {
+            //         //executionCtx,closestCPUTENumber,closestCPUValue,averageCPU
+            //            dgvResults.Columns.Add("executionCtx","Execution Context");
                     	
-                    	DataGridViewComboBoxColumn closestTEColumn = new DataGridViewComboBoxColumn();
-                    	closestTEColumn.Name = "ClosestTe";
-                    	closestTEColumn.HeaderText = "Closest TE";
-                    	closestTEColumn.DataSource = suppliedTEs.ToArray();
-                    	dgvResults.Columns.Add(closestTEColumn);
+            //            DataGridViewComboBoxColumn closestTEColumn = new DataGridViewComboBoxColumn();
+            //            closestTEColumn.Name = "ClosestTe";
+            //            closestTEColumn.HeaderText = "Closest TE";
+            //            closestTEColumn.DataSource = suppliedTEs.ToArray();
+            //            dgvResults.Columns.Add(closestTEColumn);
                     	
-                   // 	dgvResults.Columns.Add("closestCPUTENumber","Closest TE");
-                    	dgvResults.Columns.Add("closestCPUValue","Closest CPU Value");
-                    	dgvResults.Columns.Add("averageCPU","Average CPU");
+            //       // 	dgvResults.Columns.Add("closestCPUTENumber","Closest TE");
+            //            dgvResults.Columns.Add("closestCPUValue","Closest CPU Value");
+            //            dgvResults.Columns.Add("averageCPU","Average CPU");
                     	
                     
-                    foreach (DataRow row in firstTable.Rows) {
-                    		//resultTable.Rows.Add(GetAverageCPUFromRowsAndClosestTE(row["EXECUTION_TYPE"].ToString(),set));
-                    		dgvResults.Rows.Add(GetAverageCPUFromRowsAndClosestTE(row["EXECUTION_TYPE"].ToString(),set));
+            //        foreach (DataRow row in firstTable.Rows) {
+            //                //resultTable.Rows.Add(GetAverageCPUFromRowsAndClosestTE(row["EXECUTION_TYPE"].ToString(),set));
+            //                dgvResults.Rows.Add(GetAverageCPUFromRowsAndClosestTE(row["EXECUTION_TYPE"].ToString(),set));
                     		
-                    }	
+            //        }	
                     	
-                    }
+            //        }
                    
 
-                } catch (Exception ex) {
-                    FrontendUtils.ShowError(ex.Message,ex);
-                } finally {
-                    conn.Close();
-                }
-                btnGetResults.Enabled = false;
-            } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message,ex);
-            }
+            //    } catch (Exception ex) {
+            //        FrontendUtils.ShowError(ex.Message,ex);
+            //    } finally {
+            //        conn.Close();
+            //    }
+            //    btnGetResults.Enabled = false;
+            //} catch (Exception ex) {
+            //    FrontendUtils.ShowError(ex.Message,ex);
+            //}
         }    	
 		
 		void BtnResetClick(object sender, EventArgs e)

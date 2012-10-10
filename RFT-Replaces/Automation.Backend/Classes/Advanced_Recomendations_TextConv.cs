@@ -2,20 +2,21 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Data.SqlServerCe;
+using System.Data;
 using Automation.Common.Utils;
 using Automation.Common;
 using System.Data;
+using System.Data.SqlClient;
 
 namespace Automation.Backend{
     public static class Advanced_Recomendations_TextConv {
 
         private static int InsertRecommendationForTextConversion(AdvancedRecomendation captureEvent) {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             int value = 0;
             try {
                 conn.Open();
-                SqlCeCommand command = new SqlCeCommand(Advanced_Recomendations_TextConv_SQL.commandInsertRecommendationTextConv, conn);
+                SqlCommand command = new SqlCommand(Advanced_Recomendations_TextConv_SQL.commandInsertRecommendationTextConv, conn);
                 command.Parameters.Add("@name", captureEvent.CaptureEventName);
                 command.Parameters.Add("@description", captureEvent.CaptureEventDescription);
                 command.Parameters.Add("@eventText", captureEvent.CaptureEventEventText);
@@ -24,7 +25,7 @@ namespace Automation.Backend{
                 command.Parameters.Add("@usageCount", captureEvent.captureEventUsageCount);
                 command.Parameters.Add("@userId", FrontendUtils.LoggedInUserId);
                 value = Convert.ToInt32(command.ExecuteNonQuery());
-                SqlCeCommand commandMaxId = new SqlCeCommand(Advanced_Recomendations_TextConv_SQL.commandMaxRecommendationIdTextConv, conn);
+                SqlCommand commandMaxId = new SqlCommand(Advanced_Recomendations_TextConv_SQL.commandMaxRecommendationIdTextConv, conn);
                 value = Convert.ToInt32(commandMaxId.ExecuteScalar());
             } finally {
                 conn.Close();
@@ -42,7 +43,7 @@ namespace Automation.Backend{
             return returnCode;
         }
 
-        private static AdvancedRecomendation GetCaptureEventItemForTextConverion(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) {
+        private static AdvancedRecomendation GetCaptureEventItemForTextConverion(DataRow advancedRecRow, DataTable capturePointsTable, SqlConnection conn) {
             List<CustomTreeNode> customCapturePointList = BackEndUtils.GetCustomCapturePointListFromTable(capturePointsTable);
             AdvancedRecomendation capture = new AdvancedRecomendation(Convert.ToInt32(advancedRecRow["id"]), advancedRecRow["name"].ToString(), advancedRecRow["description"].ToString(), advancedRecRow["event_text"].ToString(), Convert.ToInt32(advancedRecRow["categoryId"]), Convert.ToInt32(advancedRecRow["usageCount"]), customCapturePointList, FrontendUtils.LoggedInUserId);
             capture.Replacement = Advanced_Replacements_TextConv.GetReplacementEventByCaptureEventIdForTextConverion(capture.CaptureEventId, conn);
@@ -52,12 +53,12 @@ namespace Automation.Backend{
         public static List<AdvancedRecomendation> GetAllAdvancedRecsAsListTextConv() {
             List<AdvancedRecomendation> allCaptureEvens = new List<AdvancedRecomendation>();
             DataTable advancedRexTable = new DataTable();
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
-            SqlCeCommand getAllRecsCommand = new SqlCeCommand(Advanced_Recomendations_TextConv_SQL.commandGetAllrecommendationsTextConv, conn);
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
+            SqlCommand getAllRecsCommand = new SqlCommand(Advanced_Recomendations_TextConv_SQL.commandGetAllrecommendationsTextConv, conn);
             DataTable dataTable = new DataTable();
             try {
                 conn.Open();
-                using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(Advanced_Recomendations_TextConv_SQL.commandGetAllrecommendationsTextConv, conn)) {
+                using (SqlDataAdapter adapter = new SqlDataAdapter(Advanced_Recomendations_TextConv_SQL.commandGetAllrecommendationsTextConv, conn)) {
                     adapter.Fill(dataTable);
                 }
                 for (int i = 0; i < dataTable.Rows.Count; i++) {
@@ -71,10 +72,10 @@ namespace Automation.Backend{
         }
 
         public static void DisableAdvanceRecById(int advanceRecId) {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             try {
                 conn.Open();
-                SqlCeCommand command = new SqlCeCommand(Advanced_Recomendations_TextConv_SQL.commandDisableAdvancedRecTextConv, conn);
+                SqlCommand command = new SqlCommand(Advanced_Recomendations_TextConv_SQL.commandDisableAdvancedRecTextConv, conn);
                 command.Parameters.Add("@id", advanceRecId);
                 command.Parameters.Add("@isEnabled", "0");
                 command.ExecuteNonQuery();
@@ -86,8 +87,8 @@ namespace Automation.Backend{
      
 
         public static void SaveCaptureEventByIdForTextConversion(int captureEventId, AdvancedRecomendation captureEvent, ReplacementEvent replacementEvent) {
-            SqlCeTransaction transaction;
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlTransaction transaction;
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             try {
                 conn.Open();
                 transaction = conn.BeginTransaction();
@@ -107,9 +108,9 @@ namespace Automation.Backend{
             }
         }
 
-        private static void UpdateRecommendationByIdForTextConversion(int captureEventId, AdvancedRecomendation captureEvent, SqlCeConnection conn, SqlCeTransaction transaction) {
+        private static void UpdateRecommendationByIdForTextConversion(int captureEventId, AdvancedRecomendation captureEvent, SqlConnection conn, SqlTransaction transaction) {
             int value = 0;
-            SqlCeCommand command = new SqlCeCommand(Advanced_Recomendations_TextConv_SQL.commandUpdateRecommendationByIdTextConv, conn);
+            SqlCommand command = new SqlCommand(Advanced_Recomendations_TextConv_SQL.commandUpdateRecommendationByIdTextConv, conn);
             command.Transaction = transaction;
             command.Parameters.Add("@name", captureEvent.CaptureEventName);
             command.Parameters.Add("@description", captureEvent.CaptureEventDescription);

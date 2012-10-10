@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 
@@ -13,10 +13,10 @@ namespace Automation.Backend {
 
         public static int InserNewFilter(EnvComparisonFilter envComparisonFilter) {
             int returnedId = -1;
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             try {
                 conn.Open();
-                SqlCeCommand command = new SqlCeCommand(Env_Comparison_Filters_SQL.commandInsertNewComparisonFilter, conn);
+                SqlCommand command = new SqlCommand(Env_Comparison_Filters_SQL.commandInsertNewComparisonFilter, conn);
                 command.Parameters.Add("@name", envComparisonFilter.Name);
                 command.Parameters.Add("@description", envComparisonFilter.Description);
                 command.Parameters.Add("@filter", envComparisonFilter.FilterPattern);
@@ -39,12 +39,12 @@ namespace Automation.Backend {
         }
 
         public static DataSet GetAllAvailableFiltersAsDataset() {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
-            SqlCeCommand Command = new SqlCeCommand(Env_Comparison_Filters_SQL.commandSelectAllComparisonFilters, conn);
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
+            SqlCommand Command = new SqlCommand(Env_Comparison_Filters_SQL.commandSelectAllComparisonFilters, conn);
             DataSet dataSet = new DataSet();
             try {
-                SqlCeDataAdapter da = new SqlCeDataAdapter(Command);
-                SqlCeCommandBuilder cb = new SqlCeCommandBuilder(da);
+                SqlDataAdapter da = new SqlDataAdapter(Command);
+                SqlCommandBuilder cb = new SqlCommandBuilder(da);
                 da.Fill(dataSet);
             } finally {
                 conn.Close();
@@ -53,10 +53,10 @@ namespace Automation.Backend {
         }
 
         public static void UpdatedFilterById(EnvComparisonFilter filter) {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             try {
                 conn.Open();
-                SqlCeCommand command = new SqlCeCommand(Env_Comparison_Filters_SQL.commandUpdateComparisonFilterById, conn);
+                SqlCommand command = new SqlCommand(Env_Comparison_Filters_SQL.commandUpdateComparisonFilterById, conn);
                 command.Parameters.Add("@name", filter.Name);
                 command.Parameters.Add("@description", filter.Description);
                 command.Parameters.Add("@filter", filter.FilterPattern);               

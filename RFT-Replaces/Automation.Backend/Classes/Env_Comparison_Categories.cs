@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Data;
 using Automation.Common;
 using Automation.Common.Utils;
@@ -11,8 +11,8 @@ namespace Automation.Backend{
 
    public class Env_Comparison_Categories {
 
-       public static int InserNewCategory(ComparisonCategory comparisonCategory, SqlCeTransaction transaction, SqlCeConnection conn) {
-           SqlCeCommand command = new SqlCeCommand(Env_Comparison_Categories_SQL.commandInsertNewEnvComparisonCategory, conn);
+       public static int InserNewCategory(ComparisonCategory comparisonCategory, SqlTransaction transaction, SqlConnection conn) {
+           SqlCommand command = new SqlCommand(Env_Comparison_Categories_SQL.commandInsertNewEnvComparisonCategory, conn);
            command.Transaction = transaction;
            command.Parameters.Add("@id", comparisonCategory.categoryId);
            command.Parameters.Add("@name", comparisonCategory.categoryName);
@@ -30,10 +30,10 @@ namespace Automation.Backend{
 
        public static int DeleteEnvComparisonCategoryById(int categoryId) {
            int returnedId = -1;
-           SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+           SqlConnection conn = BackEndUtils.GetSqlConnection();
            try {
                conn.Open();
-               SqlCeCommand command = new SqlCeCommand(Env_Comparison_Categories_SQL.commandDeleteEnvCategoryById, conn);
+               SqlCommand command = new SqlCommand(Env_Comparison_Categories_SQL.commandDeleteEnvCategoryById, conn);
                command.Parameters.Add("@id", categoryId);
                int numberAffectedRows = Convert.ToInt32(command.ExecuteNonQuery());
            } finally {
@@ -43,10 +43,10 @@ namespace Automation.Backend{
        }
 
        public static void UpdatedCategoryById(ComparisonCategory comparisonCategory) {
-           SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+           SqlConnection conn = BackEndUtils.GetSqlConnection();
            try {
                conn.Open();
-               SqlCeCommand command = new SqlCeCommand(Env_Comparison_Categories_SQL.commandUpdateEnvComparisonCategoryById, conn);
+               SqlCommand command = new SqlCommand(Env_Comparison_Categories_SQL.commandUpdateEnvComparisonCategoryById, conn);
                command.Parameters.Add("@name", comparisonCategory.categoryName);
                command.Parameters.Add("@description", comparisonCategory.categoryDescription);
                command.Parameters.Add("@path", comparisonCategory.categoryPath);
@@ -59,12 +59,12 @@ namespace Automation.Backend{
        }
 
        public static DataSet GetAllAvailableEnvCompCategsAsDataset() {
-           SqlCeConnection conn = BackEndUtils.GetSqlConnection();
-           SqlCeCommand Command = new SqlCeCommand(Env_Comparison_Categories_SQL.commandSelectAllEnvComparisonCategory, conn);
+           SqlConnection conn = BackEndUtils.GetSqlConnection();
+           SqlCommand Command = new SqlCommand(Env_Comparison_Categories_SQL.commandSelectAllEnvComparisonCategory, conn);
            DataSet dataSet = new DataSet();
            try {
-               SqlCeDataAdapter da = new SqlCeDataAdapter(Command);
-               SqlCeCommandBuilder cb = new SqlCeCommandBuilder(da);
+               SqlDataAdapter da = new SqlDataAdapter(Command);
+               SqlCommandBuilder cb = new SqlCommandBuilder(da);
                da.Fill(dataSet);
            } finally {
                conn.Close();
@@ -73,8 +73,8 @@ namespace Automation.Backend{
        }
 
        public static void UpdateEnvComparisonCategoriesTransaction(List<ComparisonCategoryTreeNode> treeNodes) {
-           SqlCeTransaction transaction;
-           SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+           SqlTransaction transaction;
+           SqlConnection conn = BackEndUtils.GetSqlConnection();
            try {
                conn.Open();
                transaction = conn.BeginTransaction();
@@ -91,7 +91,7 @@ namespace Automation.Backend{
            }
        }
 
-       private static void InsertUpdatedCategories(List<ComparisonCategoryTreeNode> treeNodes, SqlCeTransaction transaction, SqlCeConnection conn) {
+       private static void InsertUpdatedCategories(List<ComparisonCategoryTreeNode> treeNodes, SqlTransaction transaction, SqlConnection conn) {
            for (int i = 0; i < treeNodes.Count; i++) {
                int parentId = treeNodes[i].Parent == null ? -1 : treeNodes.IndexOf(treeNodes[i].Parent as ComparisonCategoryTreeNode);
                if (parentId != -1) {
@@ -109,8 +109,8 @@ namespace Automation.Backend{
            }
        }
 
-       private static void DeleteEnvResultsCategories(SqlCeTransaction transaction, SqlCeConnection conn) {
-           SqlCeCommand command = new SqlCeCommand(Env_Comparison_Categories_SQL.commandDeleteAllEnvCategories, conn);
+       private static void DeleteEnvResultsCategories(SqlTransaction transaction, SqlConnection conn) {
+           SqlCommand command = new SqlCommand(Env_Comparison_Categories_SQL.commandDeleteAllEnvCategories, conn);
            command.Transaction = transaction;
            command.Connection = conn;
            command.ExecuteNonQuery();

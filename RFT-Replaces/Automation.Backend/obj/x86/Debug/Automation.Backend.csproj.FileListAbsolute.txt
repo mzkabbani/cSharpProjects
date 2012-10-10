@@ -10,3 +10,16 @@ C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\Automation.Backend\bin\x86\Debug\Automation.Common.pdb
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\Automation.Backend\obj\x86\Debug\Automation.Backend.dll
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\Automation.Backend\obj\x86\Debug\Automation.Backend.pdb
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Backend\bin\x86\Debug\Automation.Backend.dll
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Backend\bin\x86\Debug\Automation.Backend.pdb
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Backend\bin\x86\Debug\Automation.Common.dll
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Backend\bin\x86\Debug\Microsoft.Office.Interop.Excel.dll
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Backend\bin\x86\Debug\Office.dll
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Backend\bin\x86\Debug\Microsoft.Vbe.Interop.dll
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Backend\bin\x86\Debug\Automation.Common.pdb
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Backend\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Backend\obj\x86\Debug\Automation.Backend.Properties.Resources.resources
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Backend\obj\x86\Debug\ResGen.read.1.tlog
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Backend\obj\x86\Debug\ResGen.write.1.tlog
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Backend\obj\x86\Debug\Automation.Backend.dll
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Backend\obj\x86\Debug\Automation.Backend.pdb

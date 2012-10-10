@@ -14,3 +14,17 @@ C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\Automation.Common\bin\x86\Debug\Office.dll
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\Automation.Common\obj\x86\Debug\Automation.Common.dll
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\Automation.Common\obj\x86\Debug\Automation.Common.pdb
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Common\bin\x86\Debug\Automation.Common.dll
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Common\bin\x86\Debug\Automation.Common.pdb
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Common\obj\x86\Debug\ResolveAssemblyReference.cache
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Common\obj\x86\Debug\Automation.Common.EditorTextDirUI.resources
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Common\obj\x86\Debug\Automation.Common.MWCheckBox.resources
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Common\obj\x86\Debug\Automation.Common.MWLabel.resources
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Common\obj\x86\Debug\Automation.Common.MWScrollLabel.resources
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Common\obj\x86\Debug\Automation.Common.MWTreeView.resources
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Common\obj\x86\Debug\Automation.Common.Forms.ExceptionForm.resources
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Common\obj\x86\Debug\Automation.Common.Properties.Resources.resources
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Common\obj\x86\Debug\ResGen.read.1.tlog
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Common\obj\x86\Debug\ResGen.write.1.tlog
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Common\obj\x86\Debug\Automation.Common.dll
+C:\Users\Zako\Documents\GitHub\cSharpProjects\RFT-Replaces\Automation.Common\obj\x86\Debug\Automation.Common.pdb

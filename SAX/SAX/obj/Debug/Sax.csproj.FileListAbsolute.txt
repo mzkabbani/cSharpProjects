@@ -1,7 +1,0 @@
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SAX\SAX\bin\Debug\Sax.dll
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SAX\SAX\bin\Debug\Sax.pdb
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SAX\SAX\obj\Debug\ResolveAssemblyReference.cache
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SAX\SAX\obj\Debug\Org.System.Xml.Sax.Sax.resources
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SAX\SAX\obj\Debug\Sax.csproj.GenerateResource.Cache
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SAX\SAX\obj\Debug\Sax.dll
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SAX\SAX\obj\Debug\Sax.pdb

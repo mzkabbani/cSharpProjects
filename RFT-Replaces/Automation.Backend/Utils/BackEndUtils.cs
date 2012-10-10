@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Data;
 using System.Data.SqlClient;
 using System.Xml;
@@ -20,8 +20,8 @@ namespace Automation.Backend {
 
      
 
-        public static SqlCeConnection GetSqlConnection() {
-            SqlCeConnection sqlConnection1 = new SqlCeConnection();
+        public static SqlConnection GetSqlConnection() {
+            SqlConnection sqlConnection1 = new SqlConnection();
             //sqlConnection1.ConnectionString = @"Data Source=C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Database.sdf";
 
             #region May use this for parallel databases running at same time
@@ -41,19 +41,19 @@ namespace Automation.Backend {
             return sqlConnection1;
         }
 
-        public static int GetMaxId(string TableName, SqlCeConnection conn) {
+        public static int GetMaxId(string TableName, SqlConnection conn) {
             int maxId = -1;
-            SqlCeCommand command = new SqlCeCommand("Select MAX(id) From " + TableName, conn);
+            SqlCommand command = new SqlCommand("Select MAX(id) From " + TableName, conn);
             maxId = Convert.ToInt32(command.ExecuteScalar());
             return maxId;
         }
 
         public static int ExecuteRandomQuery(string query) {
-            SqlCeConnection conn = GetSqlConnection();
+            SqlConnection conn = GetSqlConnection();
             int value = 0;
             try {
                 conn.Open();
-                SqlCeCommand command = new SqlCeCommand(query, conn);
+                SqlCommand command = new SqlCommand(query, conn);
                 value = command.ExecuteNonQuery();
             } finally {
                 conn.Close();
@@ -90,11 +90,11 @@ namespace Automation.Backend {
         }
 
         public static object GetAllTableRowsAsDataTable(string tableName) {
-            SqlCeConnection conn = GetSqlConnection();
+            SqlConnection conn = GetSqlConnection();
             DataTable dataTable = new DataTable();
             try {
                 conn.Open();
-                using (SqlCeDataAdapter adapter = new SqlCeDataAdapter("SELECT * FROM " + tableName, conn)) {
+                using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM " + tableName, conn)) {
                     // 3
                     // Use DataAdapter to fill DataTable
                     adapter.Fill(dataTable);
@@ -134,12 +134,12 @@ namespace Automation.Backend {
 
         public static DataSet GetAllTableNamesAsDataSet() {
             //select table_name from information_schema.tables where TABLE_TYPE <> 'VIEW'
-            SqlCeConnection conn = GetSqlConnection();
-            SqlCeCommand Command = new SqlCeCommand("select table_name from information_schema.tables where TABLE_TYPE <> 'VIEW'", conn);
+            SqlConnection conn = GetSqlConnection();
+            SqlCommand Command = new SqlCommand("select table_name from information_schema.tables where TABLE_TYPE <> 'VIEW'", conn);
             DataSet dataSet = new DataSet();
             try {
-                SqlCeDataAdapter da = new SqlCeDataAdapter(Command);
-                SqlCeCommandBuilder cb = new SqlCeCommandBuilder(da);
+                SqlDataAdapter da = new SqlDataAdapter(Command);
+                SqlCommandBuilder cb = new SqlCommandBuilder(da);
                 da.Fill(dataSet);
             } finally {
                 conn.Close();

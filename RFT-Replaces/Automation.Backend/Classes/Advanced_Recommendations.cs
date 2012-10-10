@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Data;
 using Automation.Common;
 using Automation.Common.Utils;
@@ -11,11 +11,11 @@ namespace Automation.Backend{
     public class Advanced_Recommendations {
 
         public static DataSet GetAllAdvancedRecsAsDataSet() {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             DataSet dataSet = new DataSet();
             try {
-                SqlCeDataAdapter da = new SqlCeDataAdapter(Advanced_Recommendations_SQL.commandGetAllrecommendations, conn);
-                SqlCeCommandBuilder cb = new SqlCeCommandBuilder(da);
+                SqlDataAdapter da = new SqlDataAdapter(Advanced_Recommendations_SQL.commandGetAllrecommendations, conn);
+                SqlCommandBuilder cb = new SqlCommandBuilder(da);
                 da.Fill(dataSet);
             } finally {
                 conn.Close();
@@ -25,11 +25,11 @@ namespace Automation.Backend{
 
 
         public static DataTable GetAllAdvancedRecs() {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             DataTable dataTable = new DataTable();
             try {
                 conn.Open();
-                using (SqlCeDataAdapter adapter = new SqlCeDataAdapter("SELECT * FROM Advanced_Recommendations", conn)) {
+                using (SqlDataAdapter adapter = new SqlDataAdapter("SELECT * FROM Advanced_Recommendations", conn)) {
                     // 3
                     // Use DataAdapter to fill DataTable
                     adapter.Fill(dataTable);
@@ -44,10 +44,10 @@ namespace Automation.Backend{
         }
 
   public static void DisableAdvanceRecById(int advanceRecId) {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             try {
                 conn.Open();
-                SqlCeCommand command = new SqlCeCommand(Advanced_Recommendations_SQL.commandDisableAdvancedRec, conn);
+                SqlCommand command = new SqlCommand(Advanced_Recommendations_SQL.commandDisableAdvancedRec, conn);
                 command.Parameters.Add("@id", advanceRecId);
                 command.Parameters.Add("@isEnabled", "0");
                 command.ExecuteNonQuery();
@@ -58,8 +58,8 @@ namespace Automation.Backend{
 		
 		
         public static void SaveAdvancedRecomendationById(int captureEventId, AdvancedRecomendation advancedRecomendation) {
-            SqlCeTransaction transaction;
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlTransaction transaction;
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             try {
                 conn.Open();
                 transaction = conn.BeginTransaction();
@@ -77,9 +77,9 @@ namespace Automation.Backend{
             }
         }
 
-        private static void UpdateRecommendationById(int captureEventId, AdvancedRecomendation advancedRecomendation, SqlCeConnection conn, SqlCeTransaction transaction) {
+        private static void UpdateRecommendationById(int captureEventId, AdvancedRecomendation advancedRecomendation, SqlConnection conn, SqlTransaction transaction) {
             int value = 0;
-            SqlCeCommand command = new SqlCeCommand(Advanced_Recommendations_SQL.commandUpdateRecommendationById, conn);
+            SqlCommand command = new SqlCommand(Advanced_Recommendations_SQL.commandUpdateRecommendationById, conn);
             command.Transaction = transaction;
             command.Parameters.Add("@name", advancedRecomendation.CaptureEventName);
             command.Parameters.Add("@description", advancedRecomendation.CaptureEventDescription);
@@ -99,11 +99,11 @@ namespace Automation.Backend{
         }
 
         private static int InsertRecommendation(AdvancedRecomendation advancedRecomendation) {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             int value = 0;
             try {
                 conn.Open();
-                SqlCeCommand command = new SqlCeCommand(Advanced_Recommendations_SQL.commandInsertRecommendation, conn);
+                SqlCommand command = new SqlCommand(Advanced_Recommendations_SQL.commandInsertRecommendation, conn);
                 command.Parameters.Add("@name", advancedRecomendation.CaptureEventName);
                 command.Parameters.Add("@description", advancedRecomendation.CaptureEventDescription);
                 command.Parameters.Add("@eventText", advancedRecomendation.CaptureEventEventText);
@@ -112,7 +112,7 @@ namespace Automation.Backend{
                 command.Parameters.Add("@usageCount", advancedRecomendation.captureEventUsageCount);
                 command.Parameters.Add("@userId", FrontendUtils.LoggedInUserId);
                 value = Convert.ToInt32(command.ExecuteNonQuery());
-                SqlCeCommand commandMaxId = new SqlCeCommand(Advanced_Recommendations_SQL.commandMaxRecommendationId, conn);
+                SqlCommand commandMaxId = new SqlCommand(Advanced_Recommendations_SQL.commandMaxRecommendationId, conn);
                 value = Convert.ToInt32(commandMaxId.ExecuteScalar());
             }catch (Exception ex){
             	FrontendUtils.LogError(ex.Message,ex);
@@ -125,8 +125,8 @@ namespace Automation.Backend{
 
         private static int GetARCount() {
             int arCount = -1;
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
-            SqlCeCommand command = new SqlCeCommand(Advanced_Recommendations_SQL.commandCountRecommendations, conn);
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
+            SqlCommand command = new SqlCommand(Advanced_Recommendations_SQL.commandCountRecommendations, conn);
             try {
                 conn.Open();
                 arCount = Convert.ToInt32(command.ExecuteScalar());
@@ -139,8 +139,8 @@ namespace Automation.Backend{
 
         public static int GetTotalAdvanceRecUsageCount() {
             int total = 0;
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
-            SqlCeCommand command = new SqlCeCommand(Advanced_Recommendations_SQL.commandSelectSumOfAllAdvancedRecUsage, conn);
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
+            SqlCommand command = new SqlCommand(Advanced_Recommendations_SQL.commandSelectSumOfAllAdvancedRecUsage, conn);
             try {
                 conn.Open();
                 total = Convert.ToInt32(command.ExecuteScalar());
@@ -154,20 +154,20 @@ namespace Automation.Backend{
      
 
         public static AdvancedRecomendation SelectAdvancedRecByIdAndIncrementUsage(object RecId, int currentUsageCount) {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             AdvancedRecomendation advancedRecomendation;
             DataTable dataTable = new DataTable();
             try {
                 conn.Open();
                 DataTable capturePointsTable = Rec_CapturePoints.GetRespectiveCapturePoints(RecId, conn);
-                SqlCeCommand command = new SqlCeCommand(Advanced_Recommendations_SQL.commandSelectAdvancedRecById);
+                SqlCommand command = new SqlCommand(Advanced_Recommendations_SQL.commandSelectAdvancedRecById);
                 command.Parameters.Add("@id", RecId);
                 command.Connection = conn;
-                using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(command)) {
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command)) {
                     adapter.Fill(dataTable);
                 }
                 advancedRecomendation = GetAdvancedRecommendationItem(dataTable.Rows[0], capturePointsTable, conn);
-                SqlCeCommand incrementUsageCount = new SqlCeCommand(Advanced_Recommendations_SQL.commandUpdateRecommendationUsageCountById);
+                SqlCommand incrementUsageCount = new SqlCommand(Advanced_Recommendations_SQL.commandUpdateRecommendationUsageCountById);
                 incrementUsageCount.Parameters.Add("@usageCount", currentUsageCount + 1);
                 incrementUsageCount.Parameters.Add("@id", (int)RecId);
                 incrementUsageCount.Connection = conn;
@@ -179,16 +179,16 @@ namespace Automation.Backend{
         }
 
         public static AdvancedRecomendation SelectAdvancedRecById(object RecId) {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             AdvancedRecomendation advancedRecomendation;
             DataTable dataTable = new DataTable();
             try {
                 conn.Open();
                 DataTable capturePointsTable = Rec_CapturePoints.GetRespectiveCapturePoints(RecId, conn);
-                SqlCeCommand command = new SqlCeCommand(Advanced_Recommendations_SQL.commandSelectAdvancedRecById);
+                SqlCommand command = new SqlCommand(Advanced_Recommendations_SQL.commandSelectAdvancedRecById);
                 command.Parameters.Add("@id", RecId);
                 command.Connection = conn;
-                using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(command)) {
+                using (SqlDataAdapter adapter = new SqlDataAdapter(command)) {
                     adapter.Fill(dataTable);
                 }
                 advancedRecomendation = GetAdvancedRecommendationItem(dataTable.Rows[0], capturePointsTable, conn);
@@ -198,7 +198,7 @@ namespace Automation.Backend{
             return advancedRecomendation;
         }
 
-        private static AdvancedRecomendation GetAdvancedRecommendationItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) {
+        private static AdvancedRecomendation GetAdvancedRecommendationItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlConnection conn) {
             List<CustomTreeNode> customCapturePointList = BackEndUtils.GetCustomCapturePointListFromTable(capturePointsTable);
             AdvancedRecomendation capture = new AdvancedRecomendation(Convert.ToInt32(advancedRecRow["id"]), advancedRecRow["name"].ToString(), advancedRecRow["description"].ToString(), advancedRecRow["event_text"].ToString(), Convert.ToInt32(advancedRecRow["categoryId"]), Convert.ToInt32(advancedRecRow["usageCount"]), customCapturePointList, FrontendUtils.LoggedInUserId);
             capture.Replacement = Advanced_Replacements.GetReplacementEventByCaptureEventId(capture.CaptureEventId, conn);
@@ -209,12 +209,12 @@ namespace Automation.Backend{
         public static List<AdvancedRecomendation> GetAllAdvancedRecsAsList() {
             List<AdvancedRecomendation> allCaptureEvens = new List<AdvancedRecomendation>();
             DataTable advancedRexTable = new DataTable();
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
-            SqlCeCommand getAllRecsCommand = new SqlCeCommand(Advanced_Recommendations_SQL.commandGetAllrecommendations, conn);
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
+            SqlCommand getAllRecsCommand = new SqlCommand(Advanced_Recommendations_SQL.commandGetAllrecommendations, conn);
             DataTable dataTable = new DataTable();
             try {
                 conn.Open();
-                using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(Advanced_Recommendations_SQL.commandGetAllrecommendations, conn)) {
+                using (SqlDataAdapter adapter = new SqlDataAdapter(Advanced_Recommendations_SQL.commandGetAllrecommendations, conn)) {
                     adapter.Fill(dataTable);
                 }
                 for (int i = 0; i < dataTable.Rows.Count; i++) {

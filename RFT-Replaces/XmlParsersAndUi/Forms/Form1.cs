@@ -23,7 +23,6 @@ using System.Xml.Linq;
 using System.Xml.Schema;
 using System.Xml.XPath;
 using System.Xml.Xsl;
-using Sybase.Data.AseClient;
 using Automation.Common;
 using Automation.Common.Utils;
 
@@ -707,22 +706,22 @@ namespace XmlParsersAndUi {
         void BtnTestConnClick(object sender, EventArgs e) {
             string connectionString = txtConnx.Text;
          //   OleDbConnection conn = new OleDbConnection(connectionString);
-            AseConnection conn = new AseConnection(connectionString);
+            //AseConnection conn = new AseConnection(connectionString);
             
-            try {
-                conn.Open();
+            //try {
+            //    conn.Open();
                 
-                AseCommand command = new AseCommand("select max(ID) from QA_PAC_TIMING where TEST_PACKAGE='PAR.TPK.0000949'",conn);
-                command.CommandTimeout = 99999;
-                object scale = command.ExecuteScalar();
-                AseDataReader  data=  command.ExecuteReader();
-            	string result =    data.GetString(0);
+            //    AseCommand command = new AseCommand("select max(ID) from QA_PAC_TIMING where TEST_PACKAGE='PAR.TPK.0000949'",conn);
+            //    command.CommandTimeout = 99999;
+            //    object scale = command.ExecuteScalar();
+            //    AseDataReader  data=  command.ExecuteReader();
+            //    string result =    data.GetString(0);
             
-            } catch (Exception ex) {
-                MessageBox.Show(ex.Message+"\r\n\r\n"+ex.StackTrace);
-            } finally {
-                conn.Close();
-            }
+            //} catch (Exception ex) {
+            //    MessageBox.Show(ex.Message+"\r\n\r\n"+ex.StackTrace);
+            //} finally {
+            //    conn.Close();
+            //}
         }
     }
 }

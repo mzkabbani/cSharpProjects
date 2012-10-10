@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using Automation.Common;
 using System.Data;
 
@@ -10,20 +10,20 @@ namespace Automation.Backend{
     public class Advanced_Replacements_TextConv {
 
 
-        public static DataSet GetAvailableReplacementsAsDatasetForTextConversion(int captureEventId, SqlCeConnection conn) {
-            SqlCeCommand getAllReplacementsByCaptureIDCommand = new SqlCeCommand(Advanced_Replacements_TextConv_SQL.commandGetCapturePointReplacementsTextConv, conn);
+        public static DataSet GetAvailableReplacementsAsDatasetForTextConversion(int captureEventId, SqlConnection conn) {
+            SqlCommand getAllReplacementsByCaptureIDCommand = new SqlCommand(Advanced_Replacements_TextConv_SQL.commandGetCapturePointReplacementsTextConv, conn);
             getAllReplacementsByCaptureIDCommand.Parameters.Add("@capturePointId", captureEventId);
             DataSet dataSet = new DataSet();
-            SqlCeDataAdapter da = new SqlCeDataAdapter(getAllReplacementsByCaptureIDCommand);
-            SqlCeCommandBuilder cb = new SqlCeCommandBuilder(da);
+            SqlDataAdapter da = new SqlDataAdapter(getAllReplacementsByCaptureIDCommand);
+            SqlCommandBuilder cb = new SqlCommandBuilder(da);
             da.Fill(dataSet);
             return dataSet;
         }
 
 
-        public static void SaveReplacementEventForTextConversion(ReplacementEvent replacementEvent, SqlCeConnection conn, SqlCeTransaction transaction) {
+        public static void SaveReplacementEventForTextConversion(ReplacementEvent replacementEvent, SqlConnection conn, SqlTransaction transaction) {
 
-            SqlCeCommand command = new SqlCeCommand(Advanced_Replacements_TextConv_SQL.commandUpdateReplacementByIdTextConv, conn);
+            SqlCommand command = new SqlCommand(Advanced_Replacements_TextConv_SQL.commandUpdateReplacementByIdTextConv, conn);
             command.Transaction = transaction;
             command.Parameters.Add("@name", replacementEvent.name);
             command.Parameters.Add("@description", replacementEvent.description);
@@ -39,12 +39,12 @@ namespace Automation.Backend{
 
       
 
-        public static ReplacementEvent GetReplacementEventByCaptureEventIdForTextConverion(int captureEventId, SqlCeConnection conn) {
+        public static ReplacementEvent GetReplacementEventByCaptureEventIdForTextConverion(int captureEventId, SqlConnection conn) {
             List<ReplacementEvent> replacements = GetAvailableReplacementsByCaptureIdForTextConversion(captureEventId, conn);
             return replacements[0];
         }
 
-        public static List<ReplacementEvent> GetAvailableReplacementsByCaptureIdForTextConversion(int captureEventId, SqlCeConnection conn) {
+        public static List<ReplacementEvent> GetAvailableReplacementsByCaptureIdForTextConversion(int captureEventId, SqlConnection conn) {
             //commandGetCapturePointReplacements
             List<ReplacementEvent> replacementEvents = new List<ReplacementEvent>();
             DataSet availableReplacementsAsDataset = GetAvailableReplacementsAsDatasetForTextConversion(captureEventId, conn);
@@ -65,10 +65,10 @@ namespace Automation.Backend{
         public static int InsertNewReplacementForTextConversion(ReplacementEvent replacementEvent) {
             int replacementId = 0;
             int numberAffectedRows = 0;
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             try {
                 conn.Open();
-                SqlCeCommand command = new SqlCeCommand(Advanced_Replacements_TextConv_SQL.commandInsertReplacementTextConv, conn);
+                SqlCommand command = new SqlCommand(Advanced_Replacements_TextConv_SQL.commandInsertReplacementTextConv, conn);
                 command.Parameters.Add("@name", replacementEvent.name);
                 command.Parameters.Add("@description", replacementEvent.description);
                 command.Parameters.Add("@value", replacementEvent.Value);
@@ -77,7 +77,7 @@ namespace Automation.Backend{
                 command.Parameters.Add("@userId", replacementEvent.userId);
                 command.Parameters.Add("@usageCount", replacementEvent.usageCount);
                 numberAffectedRows = Convert.ToInt32(command.ExecuteNonQuery());
-                SqlCeCommand commandMaxId = new SqlCeCommand(Advanced_Replacements_TextConv_SQL.commandMaxReplacementIdTextConv, conn);
+                SqlCommand commandMaxId = new SqlCommand(Advanced_Replacements_TextConv_SQL.commandMaxReplacementIdTextConv, conn);
                 replacementId = Convert.ToInt32(commandMaxId.ExecuteScalar());
             } finally {
                 conn.Close();

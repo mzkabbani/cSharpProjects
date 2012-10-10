@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 
 namespace Automation.Backend{
     public class Advanced_Recommendation_Categories {
@@ -11,13 +11,13 @@ namespace Automation.Backend{
 
         public static DataTable GetAllCaptureCategoriesAsDataTable(bool isForTextConv) {
             DataTable dataTable = new DataTable();
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             
-            SqlCeCommand command = 
-            	new SqlCeCommand( (isForTextConv ? Advanced_Recommendation_Categories_TextConv_SQL.commandGetAllCaptureCategoriesTextConv : Advanced_Recommendation_Categories_SQL.commandGetAllCaptureCategories) , conn);
+            SqlCommand command = 
+            	new SqlCommand( (isForTextConv ? Advanced_Recommendation_Categories_TextConv_SQL.commandGetAllCaptureCategoriesTextConv : Advanced_Recommendation_Categories_SQL.commandGetAllCaptureCategories) , conn);
             
             
-            using (SqlCeDataAdapter adapter2 = new SqlCeDataAdapter(command)) {
+            using (SqlDataAdapter adapter2 = new SqlDataAdapter(command)) {
                 adapter2.Fill(dataTable);
             }
             return dataTable;
@@ -26,11 +26,11 @@ namespace Automation.Backend{
 		
 		 
         public static DataSet GetAllAdvancedRecCategoriesAsDataset() {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             DataSet dataSet = new DataSet();
             try {
-                SqlCeDataAdapter da = new SqlCeDataAdapter(Advanced_Recommendation_Categories_SQL.commandGetAllCaptureCategories, conn);
-                SqlCeCommandBuilder cb = new SqlCeCommandBuilder(da);
+                SqlDataAdapter da = new SqlDataAdapter(Advanced_Recommendation_Categories_SQL.commandGetAllCaptureCategories, conn);
+                SqlCommandBuilder cb = new SqlCommandBuilder(da);
                 da.Fill(dataSet);
             } finally {
                 conn.Close();

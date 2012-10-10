@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -273,10 +273,10 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private static void TestConnections() {
-            SqlCeConnection sqlConnection1 = new SqlCeConnection();
+            SqlConnection sqlConnection1 = new SqlConnection();
             sqlConnection1.ConnectionString = "Data Source = D:\\Recommendations.sdf";
 
-            //SqlCeCommand cmd = new SqlCeCommand();
+            //SqlCommand cmd = new SqlCommand();
             //cmd.CommandType = System.Data.CommandType.Text;
             //cmd.CommandText = "INSERT [Employee Table] (SSN, FirstName) VALUES ('555-23-4322', 'Tim')";
             //cmd.Connection = sqlConnection1;

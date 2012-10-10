@@ -1,3 +1,0 @@
-<Steps label="Automatically Generated">
- <Step id="1" sessionKey="8553" label="Simulation with Bond and CDS on Bond" events="step1_events.xml" gui="step1_gui.xml" customs="step1_customs.xml"></Step>
- <Step id="2" sessionKey="8553" label="Exit" events="step2_events.xml"></Step></Steps>

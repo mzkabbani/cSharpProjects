@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 using System.Data;
 using Automation.Common.Utils;
 using Automation.Common;
@@ -14,8 +14,8 @@ namespace Automation.Backend {
             int loginCount = GetLoginCountByUserId(userId);
             //onlineStatus =@onlineStatus, loginCount =@loginCount, lastLogin =@lastLogin"+
             //"WHERE id=@id"
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
-            SqlCeCommand command = new SqlCeCommand(UserStatus_SQL.commandUpdateUserStatusWithId, conn);
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
+            SqlCommand command = new SqlCommand(UserStatus_SQL.commandUpdateUserStatusWithId, conn);
             command.Parameters.Add("@onlineStatus", isLoginEvent ? "Online" : "Offline");
             command.Parameters.Add("@loginCount", isLoginEvent ? (loginCount + 1) : loginCount);
             command.Parameters.Add("@lastLogin", DateTime.Now);
@@ -30,14 +30,14 @@ namespace Automation.Backend {
         }
 
         public static bool IsUserKicked(string userName) {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             try {
-                SqlCeCommand command = new SqlCeCommand(UserStatus_SQL.commandGetKickedUserByUserName, conn);
+                SqlCommand command = new SqlCommand(UserStatus_SQL.commandGetKickedUserByUserName, conn);
                 command.Parameters.Add("@username", userName);
                 conn.Open();
                 int result = Convert.ToInt32(command.ExecuteScalar());
                 if (result == 1) {
-                    command = new SqlCeCommand(UserStatus_SQL.commandResetKickStatusByUserName, conn);
+                    command = new SqlCommand(UserStatus_SQL.commandResetKickStatusByUserName, conn);
                     command.Parameters.Add("@username", userName);
                     command.ExecuteNonQuery();
                     return true;
@@ -54,11 +54,11 @@ namespace Automation.Backend {
 
 
         public static DataTable GetAllUsersTable() {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             DataTable dataTable = new DataTable();
             try {
                 conn.Open();
-                using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(UserStatus_SQL.commandGetAllUsersTable, conn)) {
+                using (SqlDataAdapter adapter = new SqlDataAdapter(UserStatus_SQL.commandGetAllUsersTable, conn)) {
                     // 3
                     // Use DataAdapter to fill DataTable
                     adapter.Fill(dataTable);
@@ -74,10 +74,10 @@ namespace Automation.Backend {
 
         public static int InsertNewUser(string username) {
             int insertedUserId = -1;
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             try {
                 conn.Open();
-                SqlCeCommand command = new SqlCeCommand(UserStatus_SQL.commandInsertNewUser, conn);
+                SqlCommand command = new SqlCommand(UserStatus_SQL.commandInsertNewUser, conn);
                 // @username, @onlineStatus, @loginCount, @lastLogin, @firstLogin
                 command.Parameters.Add("@username", username);
                 command.Parameters.Add("@onlineStatus", "Offline");
@@ -96,10 +96,10 @@ namespace Automation.Backend {
 
         public static int GetLoginCountByUserId(int userId) {
             int selectedLoginCount = -1;
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             try {
                 conn.Open();
-                SqlCeCommand command = new SqlCeCommand(UserStatus_SQL.commandGetLoginCountByUserId, conn);
+                SqlCommand command = new SqlCommand(UserStatus_SQL.commandGetLoginCountByUserId, conn);
                 command.Parameters.Add("@id", userId);
                 selectedLoginCount = Convert.ToInt32(command.ExecuteScalar());
             } finally {
@@ -110,10 +110,10 @@ namespace Automation.Backend {
 
         public static int GetUserIdByUsername(string username) {
             int selectedUserId = -1;
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             try {
                 conn.Open();
-                SqlCeCommand command = new SqlCeCommand(UserStatus_SQL.commandGetUserIdByUserName, conn);
+                SqlCommand command = new SqlCommand(UserStatus_SQL.commandGetUserIdByUserName, conn);
                 command.Parameters.Add("@username", username);
                 selectedUserId = Convert.ToInt32(command.ExecuteScalar());
             } finally {
@@ -124,11 +124,11 @@ namespace Automation.Backend {
 
 
         public static DataSet GetAllUsersTableAsDataSet() {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             DataSet dataSet = new DataSet();
             try {
-                SqlCeDataAdapter da = new SqlCeDataAdapter(UserStatus_SQL.commandGetAllUsersTable, conn);
-                SqlCeCommandBuilder cb = new SqlCeCommandBuilder(da);
+                SqlDataAdapter da = new SqlDataAdapter(UserStatus_SQL.commandGetAllUsersTable, conn);
+                SqlCommandBuilder cb = new SqlCommandBuilder(da);
                 da.Fill(dataSet);
             } finally {
                 conn.Close();

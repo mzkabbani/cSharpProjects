@@ -1,6 +1,0 @@
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SAX\SAX\bin\Release\Sax.dll
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SAX\SAX\obj\Release\ResolveAssemblyReference.cache
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SAX\SAX\obj\Release\Org.System.Xml.Sax.Sax.resources
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SAX\SAX\obj\Release\Sax.csproj.GenerateResource.Cache
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SAX\SAX\obj\Release\Sax.dll
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SAX\SAX\bin\Release\Sax.xml

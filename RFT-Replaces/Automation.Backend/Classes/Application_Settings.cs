@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using Automation.Common;
 using System.Data;
-using System.Data.SqlServerCe;
+using System.Data.SqlClient;
 
 namespace Automation.Backend{
     public class Application_Settings {
@@ -24,12 +24,12 @@ namespace Automation.Backend{
         public static List<ApplicationConfigObject> GetAllApplicationConfigAsList() {
             List<ApplicationConfigObject> applicationConfigObjectList = new List<ApplicationConfigObject>();
             DataTable advancedRexTable = new DataTable();
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
-            SqlCeCommand getAllRecsCommand = new SqlCeCommand(Application_Settings_SQL.commandGetAllAppConfig, conn);
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
+            SqlCommand getAllRecsCommand = new SqlCommand(Application_Settings_SQL.commandGetAllAppConfig, conn);
             DataTable dataTable = new DataTable();
             try {
                 conn.Open();
-                using (SqlCeDataAdapter adapter = new SqlCeDataAdapter(Application_Settings_SQL.commandGetAllAppConfig, conn)) {
+                using (SqlDataAdapter adapter = new SqlDataAdapter(Application_Settings_SQL.commandGetAllAppConfig, conn)) {
                     adapter.Fill(dataTable);
                 }
                 for (int i = 0; i < dataTable.Rows.Count; i++) {
@@ -45,11 +45,11 @@ namespace Automation.Backend{
         }
 
         public static DataSet GetAppPrefsDataset() {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             DataSet dataSet = new DataSet();
             try {
-                SqlCeDataAdapter da = new SqlCeDataAdapter(Application_Settings_SQL.commandGetAllAppConfig, conn);
-                SqlCeCommandBuilder cb = new SqlCeCommandBuilder(da);
+                SqlDataAdapter da = new SqlDataAdapter(Application_Settings_SQL.commandGetAllAppConfig, conn);
+                SqlCommandBuilder cb = new SqlCommandBuilder(da);
                 da.Fill(dataSet);
             } finally {
                 conn.Close();
@@ -58,10 +58,10 @@ namespace Automation.Backend{
         }
 
         public static void UpdatePrefs(DataSet dataSet) {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
             try {
-                SqlCeDataAdapter da = new SqlCeDataAdapter(Application_Settings_SQL.commandGetAllAppConfig, conn);
-                SqlCeCommandBuilder cb = new SqlCeCommandBuilder(da);
+                SqlDataAdapter da = new SqlDataAdapter(Application_Settings_SQL.commandGetAllAppConfig, conn);
+                SqlCommandBuilder cb = new SqlCommandBuilder(da);
                 da.Update(dataSet);
             } finally {
                 conn.Close();
@@ -70,8 +70,8 @@ namespace Automation.Backend{
 
         public static List<string> GetPriviligedUsersAsList() {
             List<string> priviligedUsersList = new List<string>();
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
-            SqlCeCommand command = new SqlCeCommand(Application_Settings_SQL.commandSelectFromAppConfigByKey, conn);
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
+            SqlCommand command = new SqlCommand(Application_Settings_SQL.commandSelectFromAppConfigByKey, conn);
             try {
                 conn.Open();
                 command.Parameters.Add("@id", ApplicationConfigKeys.PrivelegedUsers);
@@ -83,8 +83,8 @@ namespace Automation.Backend{
         }
 
         public static object GetAppConfigValueByKey(ApplicationConfigKeys applicationConfigKeys) {
-            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
-            SqlCeCommand command = new SqlCeCommand(Application_Settings_SQL.commandSelectFromAppConfigByKey, conn);
+            SqlConnection conn = BackEndUtils.GetSqlConnection();
+            SqlCommand command = new SqlCommand(Application_Settings_SQL.commandSelectFromAppConfigByKey, conn);
             try {
                 conn.Open();
                 command.Parameters.Add("@id", applicationConfigKeys);
