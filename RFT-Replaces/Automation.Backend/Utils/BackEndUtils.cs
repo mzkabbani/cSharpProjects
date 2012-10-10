@@ -37,7 +37,7 @@ namespace Automation.Backend {
             //} 
             #endregion
 
-            sqlConnection1.ConnectionString = "Data Source=" + ConnectionParamter;
+            sqlConnection1.ConnectionString = ConnectionParamter;
             return sqlConnection1;
         }
 

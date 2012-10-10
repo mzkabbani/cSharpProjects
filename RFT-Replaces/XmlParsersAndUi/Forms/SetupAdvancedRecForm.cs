@@ -431,8 +431,9 @@ namespace XmlParsersAndUi {
                     }
                 }
                 LoadAvailableARtoList();
-                SetAllCombos();
                 BindCombos();
+                SetAllCombos();
+               
                 lbAdvancedCE.Select();
 
             } catch (Exception ex) {
@@ -468,8 +469,9 @@ namespace XmlParsersAndUi {
 
                 }
                 LoadAvailableARtoList();
-                SetAllCombos();
                 BindCombos();
+                SetAllCombos();
+               
                 lbAdvancedCE.SelectedIndex = 0;
 
                 enabledParentChecking = true;
@@ -978,9 +980,9 @@ namespace XmlParsersAndUi {
         private void button1_Click(object sender, EventArgs e) {
 
             LoadAvailableARtoList();
-
-            SetAllCombos();
             BindCombos();
+            SetAllCombos();
+            
         }
 
         private void btnRefreshReplacements_Click(object sender, EventArgs e) {
@@ -1087,8 +1089,9 @@ namespace XmlParsersAndUi {
                 txtReplacementName.Text = string.Empty;
                 txtReplacementDesc.Text = string.Empty;
                 txtReplacementRep.Text = string.Empty;
-                SetAllCombos();
                 BindCombos();
+                SetAllCombos();
+              
                 lbAvailableReplacements.ClearSelected();
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -1105,8 +1108,9 @@ namespace XmlParsersAndUi {
                 captureEvent.captureEventUsageCount = CurrentlySelectedCaptureEvent.captureEventUsageCount;
                 Advanced_Recommendations.SaveAdvancedRecomendationById(CurrentlySelectedCaptureEvent.CaptureEventId, captureEvent);
                 LoadAvailableARtoList();
-                SetAllCombos();
+                
                 BindCombos();
+                SetAllCombos();
                 ResetForm();
                 FrontendUtils.ShowInformation("Recommendation ["+captureEvent.CaptureEventName+"] saved.",false);
             } catch (Exception ex) {

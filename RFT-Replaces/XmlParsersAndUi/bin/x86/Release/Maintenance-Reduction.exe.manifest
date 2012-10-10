@@ -85,7 +85,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>XI2ealEuIDEYa3sJf/zMAm9Rl9Y=</dsig:DigestValue>
+        <dsig:DigestValue>EqKIc8yiwor5wbDYg7fdWp4e6lQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -150,14 +150,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Maintenance-Reduction.exe" size="3019776">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Maintenance-Reduction.exe" size="3019264">
       <assemblyIdentity name="Maintenance-Reduction" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>69x6OCPIbqA7djMQd8lxmN0v6UI=</dsig:DigestValue>
+        <dsig:DigestValue>bo9vE/wngXqv+YGAO8gWyFUlwSE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -219,6 +219,15 @@
       </dsig:Transforms>
       <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
       <dsig:DigestValue>KAxFrXS59NTjkUormhsQeIpkX2A=</dsig:DigestValue>
+    </hash>
+  </file>
+  <file name="Maintenance-Reduction.exe.config" size="396">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+      <dsig:DigestValue>vDJ60ckJhXlrtHJwuWEMOeBJxro=</dsig:DigestValue>
     </hash>
   </file>
   <file name="ProfilingSessions\Session20120926_170438.sdps" size="37684224">

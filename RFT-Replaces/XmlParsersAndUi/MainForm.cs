@@ -18,6 +18,7 @@ using XmlParsersAndUi.Classes;
 using XmlParsersAndUi.Forms;
 using XmlParsersAndUi.Forms.Pac_TPKS;
 using XmlParsersAndUi.Forms.TpkBuilder;
+using System.Configuration;
 
 namespace XmlParsersAndUi {
     public partial class MainForm : Form {
@@ -53,25 +54,10 @@ namespace XmlParsersAndUi {
 
         #region Methods
 
-        private void SetBackEndConnectionParameter(XmlNodeList configFileNodes) {
-            for (int i = 0; i < configFileNodes.Count; i++) {
-                if (configFileNodes[i].NodeType == XmlNodeType.Element && configFileNodes[i].Attributes["key"] != null) {
-                    if (string.Equals(configFileNodes[i].Attributes["key"].Value, "ConnectionParameter")) {
+        private void SetBackEndConnectionParameter(string connectionString) {
 
-                        Automation.Backend.BackEndUtils.ConnectionParamter = configFileNodes[i].Attributes["value"].Value;
+            Automation.Backend.BackEndUtils.ConnectionParamter = connectionString;
 
-                        // tsConnectedTo.Text = "Connected to " + Directory.GetParent(BackEndUtils.ConnectionParamter);
-                    }
-                    if (string.Equals(configFileNodes[i].Attributes["key"].Value, "ConnectionParameter2")) {
-                        BackEndUtils.ConnectionParamterPrimary = configFileNodes[i].Attributes["value"].Value;
-
-                        // tsConnectedTo.Text = "Connected to " + Directory.GetParent(BackEndUtils.ConnectionParamter);
-                    }
-                }
-            }
-            if (string.IsNullOrEmpty(Automation.Backend.BackEndUtils.ConnectionParamter)) {
-                Automation.Backend.BackEndUtils.ConnectionParamter = @"X:\beast\Test_Automation\Database.sdf";
-            }
         }
 
         private void UpdateUIForPriviligedUsers(List<string> priviligedUsersList, string loggedInUser) {
@@ -282,7 +268,9 @@ namespace XmlParsersAndUi {
                 FrontendUtils.CreateLogsDirectory();
                 this.Text = this.Text +" v." +APPLICATION_VERSION + " - Welcome " + loggedInUser + "!";
                 XmlNodeList configFileNodes = LoadConfigFileNodes();
-                SetBackEndConnectionParameter(configFileNodes);
+                var connectionString = ConfigurationManager.ConnectionStrings["SQLConnection"].ConnectionString;
+
+                SetBackEndConnectionParameter(connectionString);
                 string applicationVersion = (string)Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.ApplicationVersion);
                 GlobalApplicationSettings.ApplicationVersion = APPLICATION_VERSION;
                 GlobalApplicationSettings.ApplicationVersionInDB=applicationVersion;
