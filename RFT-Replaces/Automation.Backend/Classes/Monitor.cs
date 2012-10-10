@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlServerCe;
 using System.Linq;
 using System.Text;
-using Automation.Common.Classes.Monitoring;
-using System.Data.SqlServerCe;
+
 using Automation.Backend.Sql_Commands;
+using Automation.Common.Classes.Monitoring;
+using Automation.Common.Utils;
 
 namespace Automation.Backend.Classes {
     public static class Monitor {
@@ -23,6 +25,8 @@ namespace Automation.Backend.Classes {
                     command.Parameters.Add("@sessionID", sessionID);
                     value = Convert.ToInt32(command.ExecuteNonQuery());
                 }
+            }catch ( Exception ex){
+            	FrontendUtils.LogError(ex.Message,ex);
             } finally {
                 conn.Close();
             }

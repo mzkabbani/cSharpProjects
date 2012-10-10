@@ -9,16 +9,22 @@ namespace Automation.Backend{
     public class Advanced_Recommendation_Categories {
 
 
-        public static DataTable GetAllCaptureCategoriesAsDataTable() {
+        public static DataTable GetAllCaptureCategoriesAsDataTable(bool isForTextConv) {
             DataTable dataTable = new DataTable();
             SqlCeConnection conn = BackEndUtils.GetSqlConnection();
-            SqlCeCommand command = new SqlCeCommand(Advanced_Recommendation_Categories_SQL.commandGetAllCaptureCategories, conn);
+            
+            SqlCeCommand command = 
+            	new SqlCeCommand( (isForTextConv ? Advanced_Recommendation_Categories_TextConv_SQL.commandGetAllCaptureCategoriesTextConv : Advanced_Recommendation_Categories_SQL.commandGetAllCaptureCategories) , conn);
+            
+            
             using (SqlCeDataAdapter adapter2 = new SqlCeDataAdapter(command)) {
                 adapter2.Fill(dataTable);
             }
             return dataTable;
         }
 
+		
+		 
         public static DataSet GetAllAdvancedRecCategoriesAsDataset() {
             SqlCeConnection conn = BackEndUtils.GetSqlConnection();
             DataSet dataSet = new DataSet();

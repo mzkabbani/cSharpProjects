@@ -76,3 +76,6 @@ C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\x86\Debug\Maintenance-Reduction.exe
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\x86\Debug\Maintenance-Reduction.pdb
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\x86\Debug\XmlParsersAndUi.Forms.EnvironmentCleanupForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\x86\Debug\XmlParsersAndUi.Forms.TpkBuilder.BuildGeneratorForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\x86\Debug\XmlParsersAndUi.Forms.TpkBuilder.TaskAdditionForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\x86\Debug\XmlParsersAndUi.Forms.Pac_TPKS.PackReferenceForm.resources

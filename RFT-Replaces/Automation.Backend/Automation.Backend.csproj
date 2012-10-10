@@ -103,6 +103,7 @@
     <Compile Include="Sql Commands\Advanced_Recomendations_TextConv_SQL.cs" />
     <Compile Include="Sql Commands\Advanced_Recommendations_SQL.cs" />
     <Compile Include="Sql Commands\Advanced_Recommendation_Categories_SQL.cs" />
+    <Compile Include="Sql Commands\Advanced_Recommendation_Categories_TextConv_SQL.cs" />
     <Compile Include="Sql Commands\Advanced_Replacements_SQL.cs" />
     <Compile Include="Sql Commands\Advanced_Replacements_TextConv_SQL.cs" />
     <Compile Include="Sql Commands\Application_Settings_SQL.cs" />

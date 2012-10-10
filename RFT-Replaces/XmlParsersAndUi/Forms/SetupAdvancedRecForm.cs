@@ -483,7 +483,7 @@ namespace XmlParsersAndUi {
             string valueMember = "id";
             DataTable replacementDatable = Replacement_Events_Categories.GetAllReplacementCategoriesAsDataTable();
             FrontendUtils.BindCombo(cboReplacementType, replacementDatable, displayMember, valueMember);
-            DataTable captureDatatable = Advanced_Recommendation_Categories.GetAllCaptureCategoriesAsDataTable();
+            DataTable captureDatatable = Advanced_Recommendation_Categories.GetAllCaptureCategoriesAsDataTable(false);
             FrontendUtils.BindCombo(cboCaptureType, captureDatatable, displayMember, valueMember);
         }
 

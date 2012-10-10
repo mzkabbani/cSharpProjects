@@ -98,6 +98,8 @@
       <HintPath>D:\DOwnloads\interopDlls\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="Sybase.AdoNet2.AseClient" />
+    <Reference Include="Sybase.AdoNet4.AseClient" />
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -135,6 +137,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\CustomListView.cs" />
+    <Compile Include="Controls\DragDropListView.cs" />
+    <Compile Include="Controls\DragItemData.cs" />
     <Compile Include="Forms\BulkCustomsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -155,6 +160,10 @@
     <Compile Include="Forms\EnvironmentComparisonForm.cs" />
     <Compile Include="Forms\EnvironmentComparisonForm.Designer.cs">
       <DependentUpon>EnvironmentComparisonForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Pac TPKS\PackReferenceForm.cs" />
+    <Compile Include="Forms\Pac TPKS\PackReferenceForm.Designer.cs">
+      <DependentUpon>PackReferenceForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\SimpleCleanupForm.cs">
       <SubType>Form</SubType>
@@ -195,6 +204,14 @@
     </Compile>
     <Compile Include="Classes\ListViewItem.cs" />
     <Compile Include="Classes\MacroEvent.cs" />
+    <Compile Include="Forms\TpkBuilder\BuildGeneratorForm.cs" />
+    <Compile Include="Forms\TpkBuilder\BuildGeneratorForm.Designer.cs">
+      <DependentUpon>BuildGeneratorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TpkBuilder\TaskAdditionForm.cs" />
+    <Compile Include="Forms\TpkBuilder\TaskAdditionForm.Designer.cs">
+      <DependentUpon>TaskAdditionForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -238,6 +255,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FTPDownloaderForm.resx">
       <DependentUpon>FTPDownloaderForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\Pac TPKS\PackReferenceForm.resx">
+      <DependentUpon>PackReferenceForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\PackageGenerator.resx">
       <DependentUpon>PackageGenerator.cs</DependentUpon>
@@ -292,6 +312,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\testReplacements.resx">
       <DependentUpon>testReplacements.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TpkBuilder\BuildGeneratorForm.resx">
+      <DependentUpon>BuildGeneratorForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TpkBuilder\TaskAdditionForm.resx">
+      <DependentUpon>TaskAdditionForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\UsersStatus.resx">
       <DependentUpon>UsersStatus.cs</DependentUpon>
@@ -711,6 +737,10 @@
       <WrapperTool>primary</WrapperTool>
       <Isolated>False</Isolated>
     </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Forms\Pac TPKS" />
+    <Folder Include="Forms\TpkBuilder" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

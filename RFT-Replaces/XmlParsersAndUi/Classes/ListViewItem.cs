@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 
 namespace XmlParsersAndUi {
-    public class ListViewItem {
+    public class customListViewItem {
 
         public string DisplayName;
         public string Content;

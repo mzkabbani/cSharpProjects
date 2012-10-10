@@ -2,23 +2,25 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlServerCe;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
-using System.Xml.Linq;
-using System.Xml;
-using System.Data.SqlServerCe;
 using System.Text.RegularExpressions;
-using XmlParsersAndUi.Classes;
-using Automation.Common.Utils;
-using Automation.Common;
+using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
+
 using Automation.Backend;
+using Automation.Common;
 using Automation.Common.Classes.Monitoring;
+using Automation.Common.Utils;
+using XmlParsersAndUi.Classes;
+using XmlParsersAndUi.Controls;
 
 namespace XmlParsersAndUi.Forms {
     public partial class MacroConverterConfForm : Form {
-        
+
         public MacroConverterConfForm() {
             InitializeComponent();
         }
@@ -31,9 +33,10 @@ namespace XmlParsersAndUi.Forms {
             } catch (Exception) {
 
             }
+            BindCombos();
             LoadAvailableARtoList();
             SetAllCombos();
-            BindCombos();
+
             if (lbAdvancedCE.Items.Count > 0) {
                 lbAdvancedCE.SelectedIndex = 0;
             }
@@ -49,7 +52,7 @@ namespace XmlParsersAndUi.Forms {
         private void ParseEvent(string eventMacro) {
             xmlDocument = XDocument.Parse(eventMacro);
             populateTreeviewSingleEvent(xmlDocument.ToString());
-            //IEnumerable<XElement> childred = 
+            //IEnumerable<XElement> childred =
             //       object patterns = xmlDocument.XPathEvaluate(@"MXClientScript\Events");
             IEnumerable<XElement> children = xmlDocument.Elements();
         }
@@ -57,20 +60,20 @@ namespace XmlParsersAndUi.Forms {
         private void ParseEventFromDatabase(AdvancedRecomendation captureEvent) {
             xmlDocument = XDocument.Parse(captureEvent.CaptureEventEventText);
             populateTreeviewSingleEventFromDatabase(xmlDocument.ToString(), captureEvent);
-            //IEnumerable<XElement> childred = 
+            //IEnumerable<XElement> childred =
             //       object patterns = xmlDocument.XPathEvaluate(@"MXClientScript\Events");
             IEnumerable<XElement> children = xmlDocument.Elements();
         }
 
         private void populateTreeviewSingleEventFromDatabase(string document, AdvancedRecomendation captureEvent) {
             try {
-                //Just a good practice -- change the cursor to a 
+                //Just a good practice -- change the cursor to a
                 //wait cursor while the nodes populate
                 XmlDocument xDoc = new XmlDocument();
                 xDoc.LoadXml(document);
                 this.Cursor = Cursors.WaitCursor;
-                //First, we'll load the Xml document                   
-                //Now, clear out the treeview, 
+                //First, we'll load the Xml document
+                //Now, clear out the treeview,
                 //and add the first (root) node
                 tvOutput.Nodes.Clear();//captureEvent.CaptureEventCapturePointsList[i]
                 CustomTreeNode customRootNode = new CustomTreeNode(xDoc.DocumentElement.Name, xDoc.DocumentElement.Attributes);
@@ -79,17 +82,16 @@ namespace XmlParsersAndUi.Forms {
                 tvOutput.Nodes.Add(customRootNode);
                 TreeNode tNode = new TreeNode();
                 tNode = (TreeNode)tvOutput.Nodes[0];
-                //We make a call to addTreeNode, 
+                //We make a call to addTreeNode,
                 //where we'll add all of our nodes
                 addTreeNodeForSingleEventFromDatabase(xDoc.DocumentElement, tNode, captureEvent, 1, 0, 0, 0);
                 //Expand the treeview to show all nodes
                 tvOutput.ExpandAll();
             } catch (XmlException xExc)
                 //Exception is thrown is there is an error in the Xml
-             {
+            {
                 FrontendUtils.ShowError(xExc.Message, xExc);
-            } catch (Exception ex) //General exception
-             {
+            } catch (Exception ex) { //General exception
                 FrontendUtils.ShowError(ex.Message, ex);
             } finally {
                 this.Cursor = Cursors.Default; //Change the cursor back
@@ -101,12 +103,11 @@ namespace XmlParsersAndUi.Forms {
             XmlNode xNode;
             TreeNode tNode;
             XmlNodeList xNodeList;
-            if (xmlNode.HasChildNodes) //The current node has children
-                {
+            if (xmlNode.HasChildNodes) { //The current node has children
                 xNodeList = xmlNode.ChildNodes;
                 for (int x = 0, j = 0; x <= xNodeList.Count - 1; x++, j++)
-                //Loop through the child nodes
-                 {
+                    //Loop through the child nodes
+                {
                     xNode = xmlNode.ChildNodes[x];
                     if (xNode.NodeType != XmlNodeType.Text) {
                         CustomTreeNode customTreeNode = new CustomTreeNode(xNode.Name, xNode.Attributes);
@@ -123,7 +124,7 @@ namespace XmlParsersAndUi.Forms {
                             for (int i = 0; i < xNode.ChildNodes.Count; i++) {
                                 XmlNode childNode = xNode.ChildNodes[i];
                                 if (childNode.NodeType != XmlNodeType.Text) {
-                                    
+
                                     customTreeNode = new CustomTreeNode(childNode.Name, childNode.Attributes);
                                     currentIndex = i;
                                     customTreeNode = GetRespectiveCapturePoint(customTreeNode, captureEvent, childNode, indextElementTypeOnly, level + 1, j, level);
@@ -152,9 +153,9 @@ namespace XmlParsersAndUi.Forms {
         private CustomTreeNode GetRespectiveCapturePoint(CustomTreeNode customTreeNode, AdvancedRecomendation captureEvent, XmlNode xNode, int index, int level, int parentIndex, int parentLevel) {
             for (int i = 1; i < captureEvent.CaptureEventCapturePointsList.Count; i++) {
                 if (captureEvent.CaptureEventCapturePointsList[i].nodeIndex == index &&
-                    captureEvent.CaptureEventCapturePointsList[i].nodeLevel == level &&
-                    captureEvent.CaptureEventCapturePointsList[i].parentIndex == parentIndex &&
-                    captureEvent.CaptureEventCapturePointsList[i].parentLevel == parentLevel) {
+                        captureEvent.CaptureEventCapturePointsList[i].nodeLevel == level &&
+                        captureEvent.CaptureEventCapturePointsList[i].parentIndex == parentIndex &&
+                        captureEvent.CaptureEventCapturePointsList[i].parentLevel == parentLevel) {
                     if (string.Equals(captureEvent.CaptureEventCapturePointsList[i].Text, xNode.Name)) {
                         if ((captureNodesSelectedNames.Count < captureEvent.CaptureEventCapturePointsList.Count - 1) || (!captureNodesSelectedNames.Contains(xNode.Name))) {
                             customTreeNode.customizedAttributeCollection = captureEvent.CaptureEventCapturePointsList[i].customizedAttributeCollection;
@@ -191,29 +192,28 @@ namespace XmlParsersAndUi.Forms {
 
         private void populateTreeviewSingleEvent(string document) {
             try {
-                //Just a good practice -- change the cursor to a 
+                //Just a good practice -- change the cursor to a
                 //wait cursor while the nodes populate
                 XmlDocument xDoc = new XmlDocument();
                 xDoc.LoadXml(document);
                 this.Cursor = Cursors.WaitCursor;
-                //First, we'll load the Xml document                   
-                //Now, clear out the treeview, 
+                //First, we'll load the Xml document
+                //Now, clear out the treeview,
                 //and add the first (root) node
                 tvOutput.Nodes.Clear();
                 tvOutput.Nodes.Add(new CustomTreeNode(xDoc.DocumentElement.Name, xDoc.DocumentElement.Attributes));
                 TreeNode tNode = new TreeNode();
                 tNode = (TreeNode)tvOutput.Nodes[0];
-                //We make a call to addTreeNode, 
+                //We make a call to addTreeNode,
                 //where we'll add all of our nodes
                 addTreeNodeForSingleEvent(xDoc.DocumentElement, tNode);
                 //Expand the treeview to show all nodes
                 tvOutput.ExpandAll();
             } catch (XmlException xExc)
                 //Exception is thrown is there is an error in the Xml
-             {
+            {
                 FrontendUtils.ShowError(xExc.Message, xExc);
-            } catch (Exception ex) //General exception
-             {
+            } catch (Exception ex) { //General exception
                 FrontendUtils.ShowError(ex.Message, ex);
             } finally {
                 this.Cursor = Cursors.Default; //Change the cursor back
@@ -225,12 +225,11 @@ namespace XmlParsersAndUi.Forms {
             XmlNode xNode;
             TreeNode tNode;
             XmlNodeList xNodeList;
-            if (xmlNode.HasChildNodes) //The current node has children
-                {
+            if (xmlNode.HasChildNodes) { //The current node has children
                 xNodeList = xmlNode.ChildNodes;
                 for (int x = 0, j = 0; x <= xNodeList.Count - 1; x++, j++)
-                //Loop through the child nodes
-                 {
+                    //Loop through the child nodes
+                {
                     xNode = xmlNode.ChildNodes[x];
                     if (xNode.NodeType != XmlNodeType.Text) {
                         CustomTreeNode customTreeNode = new CustomTreeNode(xNode.Name, xNode.Attributes);
@@ -381,7 +380,7 @@ namespace XmlParsersAndUi.Forms {
                 for (int i = 0; i < nodeCollection.Count; i++) {
                     if (nodeCollection[i].Checked) {
                         (nodeCollection[i] as CustomTreeNode).isNodeUsed = true;
-                        captureEventNodes.Add(nodeCollection[i] as CustomTreeNode); //(1)                        
+                        captureEventNodes.Add(nodeCollection[i] as CustomTreeNode); //(1)
                     } else {
                         (nodeCollection[i] as CustomTreeNode).isNodeUsed = false;
                     }
@@ -413,7 +412,7 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private void btnAddCaptureEvent_Click(object sender, EventArgs e) {
-            try {                
+            try {
                 if (eventParsed) {
                     string ruleName = txtAOName.Text.Trim();
                     string ruleDescription = txtAODescription.Text.Trim();
@@ -429,9 +428,10 @@ namespace XmlParsersAndUi.Forms {
                         Advanced_Recomendations_TextConv.InsertCaptureEventForTextConversion(captureEvent, replacementEvent);
                         FrontendUtils.ShowInformation("Capture event inserted successfully!",false);
                     }
-                    LoadAvailableARtoList();
                     SetAllCombos();
                     BindCombos();
+                    LoadAvailableARtoList();
+
                     lbAdvancedCE.Select();
                 } else {
                     FrontendUtils.ShowInformation("Please [Parse] the input event before proceeding",true);
@@ -469,9 +469,10 @@ namespace XmlParsersAndUi.Forms {
 
         private void SetupAdvancedRecForm_Load(object sender, EventArgs e) {
             try {
-                LoadAvailableARtoList();
                 SetAllCombos();
                 BindCombos();
+                LoadAvailableARtoList();
+
                 lbAdvancedCE.SelectedIndex = 0;
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -481,7 +482,14 @@ namespace XmlParsersAndUi.Forms {
         private void BindCombos() {
             string displayMember = "categoryName";
             string valueMember = "id";
-            DataTable captureDatatable = Advanced_Recommendation_Categories.GetAllCaptureCategoriesAsDataTable();
+            DataTable captureDatatable = Advanced_Recommendation_Categories.GetAllCaptureCategoriesAsDataTable(true);
+            lvAvailableEvents.Groups.Clear();
+
+            foreach (DataRow row in captureDatatable.Rows) {
+                lvAvailableEvents.Groups.Add(row["id"].ToString(),row["categoryName"].ToString());
+                clvAvailableEvents.Groups.Add(row["id"].ToString(),row["categoryName"].ToString());
+            }
+
             FrontendUtils.BindCombo(cboCaptureType, captureDatatable, displayMember, valueMember);
         }
 
@@ -514,8 +522,21 @@ namespace XmlParsersAndUi.Forms {
         private void LoadAvailableARtoList() {
             lbAdvancedCE.Items.Clear();
             List<AdvancedRecomendation> allCaptureEvents = Advanced_Recomendations_TextConv.GetAllAdvancedRecsAsListTextConv();
+
             for (int i = 0; i < allCaptureEvents.Count; i++) {
                 lbAdvancedCE.Items.Add(allCaptureEvents[i]);
+            }
+
+            for (int i = 0; i < allCaptureEvents.Count; i++) {
+                System.Windows.Forms.ListViewItem listviewItem = lvAvailableEvents.Items.Add(allCaptureEvents[i].CaptureEventName,allCaptureEvents[i].CaptureEventName);
+                listviewItem.Group = lvAvailableEvents.Groups[allCaptureEvents[i].captureEventCategory.ToString()];
+                lvAvailableEvents.Groups[allCaptureEvents[i].captureEventCategory.ToString()].Items.Add(listviewItem);
+                lvAvailableEvents.ShowGroups = true;
+
+                System.Windows.Forms.ListViewItem listviewItem2 = clvAvailableEvents.Items.Add(allCaptureEvents[i].CaptureEventName,allCaptureEvents[i].CaptureEventName);
+                listviewItem2.Group = clvAvailableEvents.Groups[allCaptureEvents[i].captureEventCategory.ToString()];
+                clvAvailableEvents.Groups[allCaptureEvents[i].captureEventCategory.ToString()].Items.Add(listviewItem2);
+                clvAvailableEvents.ShowGroups = true;
             }
         }
 
@@ -605,7 +626,7 @@ namespace XmlParsersAndUi.Forms {
 
         AdvancedRecomendation CurrentlySelectedCaptureEvent;
 
-      private void lbAdvancedCE_SelectedIndexChanged_1(object sender, EventArgs e) {
+        private void lbAdvancedCE_SelectedIndexChanged_1(object sender, EventArgs e) {
             try {
                 eventParsed = true;
                 btnDeleteAdvanceRec.Enabled = true;
@@ -620,13 +641,13 @@ namespace XmlParsersAndUi.Forms {
                     tvOutput.Nodes.Clear();
                     dgvAttributes.Rows.Clear();
                     AdvancedRecomendation workingEvent = new AdvancedRecomendation(captureEvent.CaptureEventId,
-                                                                 captureEvent.CaptureEventName,
-                                                                 captureEvent.CaptureEventDescription,
-                                                                 captureEvent.CaptureEventEventText,
-                                                                 captureEvent.captureEventCategory,
-                                                                 captureEvent.captureEventUsageCount,
-                                                                 captureEvent.CaptureEventCapturePointsList,
-                                                                 captureEvent.captureEventuserId);
+                            captureEvent.CaptureEventName,
+                            captureEvent.CaptureEventDescription,
+                            captureEvent.CaptureEventEventText,
+                            captureEvent.captureEventCategory,
+                            captureEvent.captureEventUsageCount,
+                            captureEvent.CaptureEventCapturePointsList,
+                            captureEvent.captureEventuserId);
                     workingEvent.Replacement = captureEvent.Replacement;
                     CurrentlySelectedCaptureEvent = workingEvent;
                     for (int i = 0; i < captureEvent.CaptureEventCapturePointsList.Count; i++) {
@@ -707,8 +728,8 @@ namespace XmlParsersAndUi.Forms {
             var test21 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
                          where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
                          select new {
-                             elements = c1.DescendantNodesAndSelf()
-                         };
+                elements = c1.DescendantNodesAndSelf()
+            };
             List<bool> foundlist = new List<bool>();
             for (int i = 0; i < test21.Count(); i++) {
                 bool found = true;
@@ -749,58 +770,58 @@ namespace XmlParsersAndUi.Forms {
 
         private void ParseUsingSimpleList(AdvancedRecomendation captureEvent, XDocument xdoc, List<string> foundEvents) {
             switch (captureEvent.CaptureEventCapturePointsList.Count) {
-                case 1:
-                    var q1 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
-                             where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
-                             select new {
-                                 elements = c1.DescendantNodesAndSelf()
-                             };
-                    for (int i = 0; i < q1.Count(); i++) {
-                        foundEvents.Add(q1.ElementAt(i).elements.ElementAt(0).ToString());
-                    }
-                    break;
-                case 2:
-                    var q2 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
-                             where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
-                             from c2 in c1.Elements(captureEvent.CaptureEventCapturePointsList[1].Text)
-                             where AllAttributesAvailable(c2, captureEvent.CaptureEventCapturePointsList[1].customizedAttributeCollection)
-                             select new {
-                                 elements = c1.DescendantNodesAndSelf()
-                             };
-                    for (int i = 0; i < q2.Count(); i++) {
-                        foundEvents.Add(q2.ElementAt(i).elements.ElementAt(0).ToString());
-                    }
-                    break;
-                case 3:
-                    var q3 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
-                             where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
-                             from c2 in c1.Elements(captureEvent.CaptureEventCapturePointsList[1].Text)
-                             where AllAttributesAvailable(c2, captureEvent.CaptureEventCapturePointsList[1].customizedAttributeCollection)
-                             from c3 in c2.Elements(captureEvent.CaptureEventCapturePointsList[2].Text)
-                             where AllAttributesAvailable(c3, captureEvent.CaptureEventCapturePointsList[2].customizedAttributeCollection)
-                             select new {
-                                 elements = c1.DescendantNodesAndSelf()
-                             };
-                    for (int i = 0; i < q3.Count(); i++) {
-                        foundEvents.Add(q3.ElementAt(i).elements.ElementAt(0).ToString());
-                    }
-                    break;
-                case 4:
-                    var q4 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
-                             where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
-                             from c2 in c1.Elements(captureEvent.CaptureEventCapturePointsList[1].Text)
-                             where AllAttributesAvailable(c2, captureEvent.CaptureEventCapturePointsList[1].customizedAttributeCollection)
-                             from c3 in c2.Elements(captureEvent.CaptureEventCapturePointsList[2].Text)
-                             where AllAttributesAvailable(c3, captureEvent.CaptureEventCapturePointsList[2].customizedAttributeCollection)
-                             from c4 in c3.Elements(captureEvent.CaptureEventCapturePointsList[3].Text)
-                             where AllAttributesAvailable(c4, captureEvent.CaptureEventCapturePointsList[3].customizedAttributeCollection)
-                             select new {
-                                 elements = c1.DescendantNodesAndSelf()
-                             };
-                    for (int i = 0; i < q4.Count(); i++) {
-                        foundEvents.Add(q4.ElementAt(i).elements.ElementAt(0).ToString());
-                    }
-                    break;
+            case 1:
+                var q1 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
+                         where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
+                         select new {
+                    elements = c1.DescendantNodesAndSelf()
+                };
+                for (int i = 0; i < q1.Count(); i++) {
+                    foundEvents.Add(q1.ElementAt(i).elements.ElementAt(0).ToString());
+                }
+                break;
+            case 2:
+                var q2 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
+                         where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
+                         from c2 in c1.Elements(captureEvent.CaptureEventCapturePointsList[1].Text)
+                         where AllAttributesAvailable(c2, captureEvent.CaptureEventCapturePointsList[1].customizedAttributeCollection)
+                         select new {
+                    elements = c1.DescendantNodesAndSelf()
+                };
+                for (int i = 0; i < q2.Count(); i++) {
+                    foundEvents.Add(q2.ElementAt(i).elements.ElementAt(0).ToString());
+                }
+                break;
+            case 3:
+                var q3 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
+                         where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
+                         from c2 in c1.Elements(captureEvent.CaptureEventCapturePointsList[1].Text)
+                         where AllAttributesAvailable(c2, captureEvent.CaptureEventCapturePointsList[1].customizedAttributeCollection)
+                         from c3 in c2.Elements(captureEvent.CaptureEventCapturePointsList[2].Text)
+                         where AllAttributesAvailable(c3, captureEvent.CaptureEventCapturePointsList[2].customizedAttributeCollection)
+                         select new {
+                    elements = c1.DescendantNodesAndSelf()
+                };
+                for (int i = 0; i < q3.Count(); i++) {
+                    foundEvents.Add(q3.ElementAt(i).elements.ElementAt(0).ToString());
+                }
+                break;
+            case 4:
+                var q4 = from c1 in xdoc.Descendants(captureEvent.CaptureEventCapturePointsList[0].Text)
+                         where AllAttributesAvailable(c1, captureEvent.CaptureEventCapturePointsList[0].customizedAttributeCollection)
+                         from c2 in c1.Elements(captureEvent.CaptureEventCapturePointsList[1].Text)
+                         where AllAttributesAvailable(c2, captureEvent.CaptureEventCapturePointsList[1].customizedAttributeCollection)
+                         from c3 in c2.Elements(captureEvent.CaptureEventCapturePointsList[2].Text)
+                         where AllAttributesAvailable(c3, captureEvent.CaptureEventCapturePointsList[2].customizedAttributeCollection)
+                         from c4 in c3.Elements(captureEvent.CaptureEventCapturePointsList[3].Text)
+                         where AllAttributesAvailable(c4, captureEvent.CaptureEventCapturePointsList[3].customizedAttributeCollection)
+                         select new {
+                    elements = c1.DescendantNodesAndSelf()
+                };
+                for (int i = 0; i < q4.Count(); i++) {
+                    foundEvents.Add(q4.ElementAt(i).elements.ElementAt(0).ToString());
+                }
+                break;
             }
         }
 
@@ -877,9 +898,10 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            LoadAvailableARtoList();
             SetAllCombos();
             BindCombos();
+            LoadAvailableARtoList();
+
         }
 
         private void FillInReplacementVariables(string replacementValue) {
@@ -913,9 +935,10 @@ namespace XmlParsersAndUi.Forms {
                 selectedReplacementEvent.id = CurrentlySelectedCaptureEvent.Replacement.id;
 
                 Advanced_Recomendations_TextConv.SaveCaptureEventByIdForTextConversion(CurrentlySelectedCaptureEvent.CaptureEventId, captureEvent, selectedReplacementEvent);
-                LoadAvailableARtoList();
+
                 SetAllCombos();
                 BindCombos();
+                LoadAvailableARtoList();
                 ResetForm();
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
@@ -970,7 +993,7 @@ namespace XmlParsersAndUi.Forms {
                     ParseEvent(txtAOEventIn.Text);
                     if (!txtAOEventIn.ReadOnly) {
                         btnAddCaptureEvent.Enabled = true;
-                    }                    
+                    }
                     eventParsed = true;
                 } else {
                     FrontendUtils.ShowInformation("Event must be a valid xml!",true);
@@ -987,9 +1010,10 @@ namespace XmlParsersAndUi.Forms {
                 DialogResult dial = FrontendUtils.ShowConformation("Are you sure you want to delete [" + CurrentlySelectedCaptureEvent.CaptureEventName + "] ?");
                 if (dial == DialogResult.Yes) {
                     Advanced_Recomendations_TextConv.DisableAdvanceRecById(CurrentlySelectedCaptureEvent.CaptureEventId);
-                    LoadAvailableARtoList();
                     SetAllCombos();
                     BindCombos();
+                    LoadAvailableARtoList();
+
                     lbAdvancedCE.Select();
                 }
 
@@ -998,10 +1022,145 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
+// void LvAvailableEventsDragDrop(object sender, System.Windows.Forms.DragEventArgs e)
+//        {
+//          lvAvailableEvents.DragDrop();
+//        }
+//
+//
+// void LvAvailableEventsDragEnter(object sender, System.Windows.Forms.DragEventArgs e)
+//        {
+//  lvAvailableEvents.DragEnter();
+//        }
+//
+//
+//        void LvAvailableEventsDragLeave(object sender, EventArgs e)
+//        {
+//          lvAvailableEvents.DragLeave();
+//        }
+//
+//        void LvAvailableEventsDragOver(object sender, DragEventArgs e)
+//        {
+//          lvAvailableEvents.DragOver();
+//        }
 
+        void LvAvailableEventsDragDrop(object sender, DragEventArgs e) {
+            OnDragDrop(e);
+        }
 
+        void LvAvailableEventsDragEnter(object sender, DragEventArgs e) {
+            OnDragEnter(e);
+        }
 
+        void LvAvailableEventsDragLeave(object sender, EventArgs e) {
+            OnDragLeave(e);
+        }
 
+        void LvAvailableEventsDragOver(object sender, DragEventArgs e) {
+            OnDragOver(e);
+        }
 
+        void LvAvailableEventsLeave(object sender, EventArgs e) {
+            OnLostFocus(e);
+        }
+        
+        
+         private System.Windows.Forms.ListViewItem _itemDnD = null;
+        
+        void ClvAvailableEventsMouseDown(object sender, MouseEventArgs e)
+        {
+        	 _itemDnD = clvAvailableEvents.GetItemAt(e.X, e.Y);
+        }
+        
+        void ClvAvailableEventsMouseMove(object sender, MouseEventArgs e)
+        {
+        	if (_itemDnD == null)
+                return;
+
+            // Show the user that a drag operation is happening
+            Cursor = Cursors.Hand;
+
+            // calculate the bottom of the last item in the LV so that you don't have to stop your drag at the last item
+            int lastItemBottom = Math.Min(e.Y, clvAvailableEvents.Items[clvAvailableEvents.Items.Count-1].GetBounds(ItemBoundsPortion.Entire).Bottom-1);
+
+            // use 0 instead of e.X so that you don't have to keep inside the columns while dragging
+            System.Windows.Forms.ListViewItem itemOver = clvAvailableEvents.GetItemAt(0, lastItemBottom);
+
+            if (itemOver == null)
+                return;
+
+            Rectangle rc = itemOver.GetBounds(ItemBoundsPortion.Entire);
+            if (e.Y < rc.Top + (rc.Height / 2))
+            {
+                clvAvailableEvents.LineBefore = itemOver.Index;
+                clvAvailableEvents.LineAfter = -1;
+            }
+            else
+            {
+                clvAvailableEvents.LineBefore = -1;
+                clvAvailableEvents.LineAfter = itemOver.Index;
+            }
+
+            // invalidate the LV so that the insertion line is shown
+            clvAvailableEvents.Invalidate();
+        }
+        
+        void ClvAvailableEventsMouseUp(object sender, MouseEventArgs e)
+        {
+        	if (_itemDnD == null)
+                return;
+
+            try
+            {
+                // calculate the bottom of the last item in the LV so that you don't have to stop your drag at the last item
+                int lastItemBottom = Math.Min(e.Y, clvAvailableEvents.Items[clvAvailableEvents.Items.Count - 1].GetBounds(ItemBoundsPortion.Entire).Bottom - 1);
+
+                // use 0 instead of e.X so that you don't have to keep inside the columns while dragging
+                ListViewItem itemOver = clvAvailableEvents.GetItemAt(0, lastItemBottom);
+
+                if (itemOver == null)
+                    return;
+
+                Rectangle rc = itemOver.GetBounds(ItemBoundsPortion.Entire);
+
+                // find out if we insert before or after the item the mouse is over
+                bool insertBefore;
+                if (e.Y < rc.Top + (rc.Height / 2))
+                {
+                    insertBefore = true;
+                }
+                else
+                {
+                    insertBefore = false;
+                }
+
+                if (_itemDnD != itemOver) // if we dropped the item on itself, nothing is to be done
+                {
+                    if (insertBefore)
+                    {
+                        clvAvailableEvents.Items.Remove(_itemDnD);
+                        clvAvailableEvents.Items.Insert(itemOver.Index, _itemDnD);
+                    }
+                    else
+                    {
+                        clvAvailableEvents.Items.Remove(_itemDnD);
+                        clvAvailableEvents.Items.Insert(itemOver.Index + 1, _itemDnD);
+                    }
+                }
+
+                // clear the insertion line
+                clvAvailableEvents.LineAfter =
+                clvAvailableEvents.LineBefore = -1;
+
+                clvAvailableEvents.Invalidate();
+
+            }
+            finally
+            {
+                // finish drag&drop operation
+                _itemDnD = null;
+                Cursor = Cursors.Default;
+            }
+        }
     }
 }

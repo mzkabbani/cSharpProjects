@@ -27,6 +27,8 @@
         	this.tabControl1 = new System.Windows.Forms.TabControl();
         	this.tabPage1 = new System.Windows.Forms.TabPage();
         	this.groupBox2 = new System.Windows.Forms.GroupBox();
+        	this.clvAvailableEvents = new XmlParsersAndUi.CustomListView();
+        	this.lvAvailableEvents = new XmlParsersAndUi.DragAndDropListView();
         	this.lbAdvancedCE = new System.Windows.Forms.ListBox();
         	this.btnReloadCapturePoints = new System.Windows.Forms.Button();
         	this.gbRuleDefinition = new System.Windows.Forms.GroupBox();
@@ -91,23 +93,65 @@
         	this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
         	        	        	| System.Windows.Forms.AnchorStyles.Left)));
         	this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+        	this.groupBox2.Controls.Add(this.clvAvailableEvents);
+        	this.groupBox2.Controls.Add(this.lvAvailableEvents);
         	this.groupBox2.Controls.Add(this.lbAdvancedCE);
         	this.groupBox2.Controls.Add(this.btnReloadCapturePoints);
         	this.groupBox2.Location = new System.Drawing.Point(6, 6);
         	this.groupBox2.Name = "groupBox2";
-        	this.groupBox2.Size = new System.Drawing.Size(227, 716);
+        	this.groupBox2.Size = new System.Drawing.Size(257, 716);
         	this.groupBox2.TabIndex = 16;
         	this.groupBox2.TabStop = false;
         	this.groupBox2.Text = "Available Events";
+        	// 
+        	// clvAvailableEvents
+        	// 
+        	this.clvAvailableEvents.AllowDrop = true;
+        	this.clvAvailableEvents.AutoArrange = false;
+        	this.clvAvailableEvents.FullRowSelect = true;
+        	this.clvAvailableEvents.HideSelection = false;
+        	this.clvAvailableEvents.LineAfter = -1;
+        	this.clvAvailableEvents.LineBefore = -1;
+        	this.clvAvailableEvents.Location = new System.Drawing.Point(7, 266);
+        	this.clvAvailableEvents.MultiSelect = false;
+        	this.clvAvailableEvents.Name = "clvAvailableEvents";
+        	this.clvAvailableEvents.Size = new System.Drawing.Size(214, 276);
+        	this.clvAvailableEvents.TabIndex = 24;
+        	this.clvAvailableEvents.UseCompatibleStateImageBehavior = false;
+        	this.clvAvailableEvents.View = System.Windows.Forms.View.SmallIcon;
+        	this.clvAvailableEvents.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ClvAvailableEventsMouseDown);
+        	this.clvAvailableEvents.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ClvAvailableEventsMouseMove);
+        	this.clvAvailableEvents.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ClvAvailableEventsMouseUp);
+        	// 
+        	// lvAvailableEvents
+        	// 
+        	this.lvAvailableEvents.AllowDrop = true;
+        	this.lvAvailableEvents.AllowReorder = true;
+        	this.lvAvailableEvents.AutoArrange = false;
+        	this.lvAvailableEvents.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+        	this.lvAvailableEvents.FullRowSelect = true;
+        	this.lvAvailableEvents.GridLines = true;
+        	this.lvAvailableEvents.LineColor = System.Drawing.Color.Red;
+        	this.lvAvailableEvents.Location = new System.Drawing.Point(6, 19);
+        	this.lvAvailableEvents.Name = "lvAvailableEvents";
+        	this.lvAvailableEvents.Size = new System.Drawing.Size(215, 228);
+        	this.lvAvailableEvents.TabIndex = 23;
+        	this.lvAvailableEvents.UseCompatibleStateImageBehavior = false;
+        	this.lvAvailableEvents.View = System.Windows.Forms.View.SmallIcon;
+        	this.lvAvailableEvents.DragDrop += new System.Windows.Forms.DragEventHandler(this.LvAvailableEventsDragDrop);
+        	this.lvAvailableEvents.DragEnter += new System.Windows.Forms.DragEventHandler(this.LvAvailableEventsDragEnter);
+        	this.lvAvailableEvents.DragOver += new System.Windows.Forms.DragEventHandler(this.LvAvailableEventsDragOver);
+        	this.lvAvailableEvents.DragLeave += new System.EventHandler(this.LvAvailableEventsDragLeave);
+        	this.lvAvailableEvents.Leave += new System.EventHandler(this.LvAvailableEventsLeave);
         	// 
         	// lbAdvancedCE
         	// 
         	this.lbAdvancedCE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
         	        	        	| System.Windows.Forms.AnchorStyles.Left)));
         	this.lbAdvancedCE.FormattingEnabled = true;
-        	this.lbAdvancedCE.Location = new System.Drawing.Point(7, 15);
+        	this.lbAdvancedCE.Location = new System.Drawing.Point(7, 548);
         	this.lbAdvancedCE.Name = "lbAdvancedCE";
-        	this.lbAdvancedCE.Size = new System.Drawing.Size(214, 654);
+        	this.lbAdvancedCE.Size = new System.Drawing.Size(214, 121);
         	this.lbAdvancedCE.Sorted = true;
         	this.lbAdvancedCE.TabIndex = 22;
         	this.lbAdvancedCE.SelectedIndexChanged += new System.EventHandler(this.lbAdvancedCE_SelectedIndexChanged_1);
@@ -115,7 +159,7 @@
         	// btnReloadCapturePoints
         	// 
         	this.btnReloadCapturePoints.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-        	this.btnReloadCapturePoints.Location = new System.Drawing.Point(35, 681);
+        	this.btnReloadCapturePoints.Location = new System.Drawing.Point(50, 681);
         	this.btnReloadCapturePoints.Name = "btnReloadCapturePoints";
         	this.btnReloadCapturePoints.Size = new System.Drawing.Size(156, 23);
         	this.btnReloadCapturePoints.TabIndex = 0;
@@ -138,9 +182,9 @@
         	this.gbRuleDefinition.Controls.Add(this.btnResetCaptureEvents);
         	this.gbRuleDefinition.Controls.Add(this.txtAOName);
         	this.gbRuleDefinition.Controls.Add(this.label8);
-        	this.gbRuleDefinition.Location = new System.Drawing.Point(239, 6);
+        	this.gbRuleDefinition.Location = new System.Drawing.Point(269, 6);
         	this.gbRuleDefinition.Name = "gbRuleDefinition";
-        	this.gbRuleDefinition.Size = new System.Drawing.Size(700, 716);
+        	this.gbRuleDefinition.Size = new System.Drawing.Size(670, 716);
         	this.gbRuleDefinition.TabIndex = 2;
         	this.gbRuleDefinition.TabStop = false;
         	this.gbRuleDefinition.Text = "Rule Definition";
@@ -149,7 +193,7 @@
         	// 
         	this.btnDeleteAdvanceRec.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
         	this.btnDeleteAdvanceRec.Enabled = false;
-        	this.btnDeleteAdvanceRec.Location = new System.Drawing.Point(499, 687);
+        	this.btnDeleteAdvanceRec.Location = new System.Drawing.Point(484, 687);
         	this.btnDeleteAdvanceRec.Name = "btnDeleteAdvanceRec";
         	this.btnDeleteAdvanceRec.Size = new System.Drawing.Size(140, 23);
         	this.btnDeleteAdvanceRec.TabIndex = 19;
@@ -161,7 +205,7 @@
         	// 
         	this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
         	this.label14.AutoSize = true;
-        	this.label14.Location = new System.Drawing.Point(494, 25);
+        	this.label14.Location = new System.Drawing.Point(464, 25);
         	this.label14.Name = "label14";
         	this.label14.Size = new System.Drawing.Size(34, 13);
         	this.label14.TabIndex = 18;
@@ -177,7 +221,7 @@
         	this.gbSpecificConfNodes.Controls.Add(this.label5);
         	this.gbSpecificConfNodes.Location = new System.Drawing.Point(7, 376);
         	this.gbSpecificConfNodes.Name = "gbSpecificConfNodes";
-        	this.gbSpecificConfNodes.Size = new System.Drawing.Size(687, 305);
+        	this.gbSpecificConfNodes.Size = new System.Drawing.Size(657, 305);
         	this.gbSpecificConfNodes.TabIndex = 8;
         	this.gbSpecificConfNodes.TabStop = false;
         	this.gbSpecificConfNodes.Text = "Nodes & Attributes";
@@ -190,7 +234,7 @@
         	this.grpBoxAttr.Controls.Add(this.dgvAttributes);
         	this.grpBoxAttr.Location = new System.Drawing.Point(245, 20);
         	this.grpBoxAttr.Name = "grpBoxAttr";
-        	this.grpBoxAttr.Size = new System.Drawing.Size(429, 279);
+        	this.grpBoxAttr.Size = new System.Drawing.Size(399, 279);
         	this.grpBoxAttr.TabIndex = 21;
         	this.grpBoxAttr.TabStop = false;
         	this.grpBoxAttr.Text = "Attributes";
@@ -209,7 +253,7 @@
         	this.dgvAttributes.Location = new System.Drawing.Point(3, 16);
         	this.dgvAttributes.Name = "dgvAttributes";
         	this.dgvAttributes.RowHeadersVisible = false;
-        	this.dgvAttributes.Size = new System.Drawing.Size(423, 260);
+        	this.dgvAttributes.Size = new System.Drawing.Size(393, 260);
         	this.dgvAttributes.TabIndex = 0;
         	// 
         	// useAttribute
@@ -261,7 +305,7 @@
         	        	        	"one",
         	        	        	"two",
         	        	        	"three"});
-        	this.cboCaptureType.Location = new System.Drawing.Point(534, 22);
+        	this.cboCaptureType.Location = new System.Drawing.Point(504, 22);
         	this.cboCaptureType.Name = "cboCaptureType";
         	this.cboCaptureType.Size = new System.Drawing.Size(154, 21);
         	this.cboCaptureType.TabIndex = 17;
@@ -279,7 +323,7 @@
         	this.gbSpecificConfDef.Controls.Add(this.label7);
         	this.gbSpecificConfDef.Location = new System.Drawing.Point(6, 58);
         	this.gbSpecificConfDef.Name = "gbSpecificConfDef";
-        	this.gbSpecificConfDef.Size = new System.Drawing.Size(688, 312);
+        	this.gbSpecificConfDef.Size = new System.Drawing.Size(658, 312);
         	this.gbSpecificConfDef.TabIndex = 2;
         	this.gbSpecificConfDef.TabStop = false;
         	this.gbSpecificConfDef.Text = "Definition";
@@ -292,7 +336,7 @@
         	this.txtTextValue.Location = new System.Drawing.Point(5, 137);
         	this.txtTextValue.Multiline = true;
         	this.txtTextValue.Name = "txtTextValue";
-        	this.txtTextValue.Size = new System.Drawing.Size(676, 52);
+        	this.txtTextValue.Size = new System.Drawing.Size(646, 52);
         	this.txtTextValue.TabIndex = 17;
         	// 
         	// label1
@@ -307,7 +351,7 @@
         	// btnParse
         	// 
         	this.btnParse.Anchor = System.Windows.Forms.AnchorStyles.Top;
-        	this.btnParse.Location = new System.Drawing.Point(276, 283);
+        	this.btnParse.Location = new System.Drawing.Point(261, 283);
         	this.btnParse.Name = "btnParse";
         	this.btnParse.Size = new System.Drawing.Size(140, 23);
         	this.btnParse.TabIndex = 16;
@@ -323,7 +367,7 @@
         	this.txtAODescription.Location = new System.Drawing.Point(7, 208);
         	this.txtAODescription.Multiline = true;
         	this.txtAODescription.Name = "txtAODescription";
-        	this.txtAODescription.Size = new System.Drawing.Size(676, 52);
+        	this.txtAODescription.Size = new System.Drawing.Size(646, 52);
         	this.txtAODescription.TabIndex = 1;
         	// 
         	// txtAOEventIn
@@ -334,7 +378,7 @@
         	this.txtAOEventIn.Location = new System.Drawing.Point(6, 32);
         	this.txtAOEventIn.Multiline = true;
         	this.txtAOEventIn.Name = "txtAOEventIn";
-        	this.txtAOEventIn.Size = new System.Drawing.Size(676, 83);
+        	this.txtAOEventIn.Size = new System.Drawing.Size(646, 83);
         	this.txtAOEventIn.TabIndex = 3;
         	// 
         	// label6
@@ -359,7 +403,7 @@
         	// 
         	this.btnAddCaptureEvent.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
         	this.btnAddCaptureEvent.Enabled = false;
-        	this.btnAddCaptureEvent.Location = new System.Drawing.Point(61, 687);
+        	this.btnAddCaptureEvent.Location = new System.Drawing.Point(46, 687);
         	this.btnAddCaptureEvent.Name = "btnAddCaptureEvent";
         	this.btnAddCaptureEvent.Size = new System.Drawing.Size(140, 23);
         	this.btnAddCaptureEvent.TabIndex = 5;
@@ -371,7 +415,7 @@
         	// 
         	this.btnSaveCaptureEvent.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
         	this.btnSaveCaptureEvent.Enabled = false;
-        	this.btnSaveCaptureEvent.Location = new System.Drawing.Point(207, 687);
+        	this.btnSaveCaptureEvent.Location = new System.Drawing.Point(192, 687);
         	this.btnSaveCaptureEvent.Name = "btnSaveCaptureEvent";
         	this.btnSaveCaptureEvent.Size = new System.Drawing.Size(140, 23);
         	this.btnSaveCaptureEvent.TabIndex = 6;
@@ -382,7 +426,7 @@
         	// btnResetCaptureEvents
         	// 
         	this.btnResetCaptureEvents.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-        	this.btnResetCaptureEvents.Location = new System.Drawing.Point(353, 687);
+        	this.btnResetCaptureEvents.Location = new System.Drawing.Point(338, 687);
         	this.btnResetCaptureEvents.Name = "btnResetCaptureEvents";
         	this.btnResetCaptureEvents.Size = new System.Drawing.Size(140, 23);
         	this.btnResetCaptureEvents.TabIndex = 7;
@@ -397,7 +441,7 @@
         	this.txtAOName.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.txtAOName.Location = new System.Drawing.Point(49, 22);
         	this.txtAOName.Name = "txtAOName";
-        	this.txtAOName.Size = new System.Drawing.Size(347, 20);
+        	this.txtAOName.Size = new System.Drawing.Size(317, 20);
         	this.txtAOName.TabIndex = 0;
         	// 
         	// label8
@@ -433,9 +477,12 @@
         	this.gbSpecificConfDef.PerformLayout();
         	this.ResumeLayout(false);
         }
+        private XmlParsersAndUi.CustomListView clvAvailableEvents;
+        private XmlParsersAndUi.DragAndDropListView lvAvailableEvents;
+      
 
         #endregion
-
+	
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.GroupBox groupBox2;
@@ -466,5 +513,9 @@
         private System.Windows.Forms.TextBox txtTextValue;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnDeleteAdvanceRec;
+       
+       
+        
+        
     }
 }

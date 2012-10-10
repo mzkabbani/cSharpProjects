@@ -54,6 +54,11 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Sybase.AdoNet2.AseClient" version="2.157.401.0" publicKeyToken="95D94FAC46C88E1E" language="neutral" processorArchitecture="msil" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
       <assemblyIdentity name="System.Core" version="3.5.0.0" publicKeyToken="b77a5c561934e089" language="neutral" processorArchitecture="msil" />
     </dependentAssembly>
   </dependency>
@@ -68,14 +73,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Automation.Backend.dll" size="59904">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Automation.Backend.dll" size="60416">
       <assemblyIdentity name="Automation.Backend" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>A56LIcKVxdyD81lszbBNy+ymlgQ=</dsig:DigestValue>
+        <dsig:DigestValue>ViFq/Tn4EUCoMg6KYwjHQQFqpLE=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -87,7 +92,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>MrSUyUTbUkTZG+/ADCWAj3hKFVk=</dsig:DigestValue>
+        <dsig:DigestValue>hWEnPvc39paBmf1Y/XcX9txbTFY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -99,31 +104,31 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>ApvbIaJ28v+wYgyRWs4ZL5IX81I=</dsig:DigestValue>
+        <dsig:DigestValue>hJ05n7niGEcGroFPnUsvJc2OCdQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Automation.Diff.dll" size="24576">
-      <assemblyIdentity name="Automation.Diff" version="1.0.4665.18785" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Automation.Diff" version="1.0.4666.26566" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>px3U+rW5JA/dSd0XRdtjIdDBPe4=</dsig:DigestValue>
+        <dsig:DigestValue>kIgY9K3XSGzVMt7iRZ0fcMIsvLs=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Automation.ProgressCircle.dll" size="24576">
-      <assemblyIdentity name="Automation.ProgressCircle" version="1.1.4665.18785" publicKeyToken="3911FA6FB758CF71" language="neutral" processorArchitecture="msil" />
+      <assemblyIdentity name="Automation.ProgressCircle" version="1.1.4666.26566" publicKeyToken="3911FA6FB758CF71" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>Ty9oCs28hGMw9zt1g41Z12kHBfY=</dsig:DigestValue>
+        <dsig:DigestValue>e9DDG6ABwwfqNvFtMwU5aGKs2lY=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -152,14 +157,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Maintenance-Reduction.exe" size="3039744">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Maintenance-Reduction.exe" size="3061248">
       <assemblyIdentity name="Maintenance-Reduction" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>rOXBZqsaKaWeaptXdsQ3ZV1Gm+M=</dsig:DigestValue>
+        <dsig:DigestValue>BNse8Cl/wRm8d9N+lpLc4DU0jqQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -219,7 +224,7 @@
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>xNN5tR8r3yoSMECVFhvpDHJRnhk=</dsig:DigestValue>
+        <dsig:DigestValue>LqA4VpuacebeyDPH4GFD65E7Q5g=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

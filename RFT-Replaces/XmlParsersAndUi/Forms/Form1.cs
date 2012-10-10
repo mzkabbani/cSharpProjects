@@ -1,30 +1,31 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-
 using System;
-using System.Diagnostics;
 using System.Collections;
 using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Collections.Specialized;
-using System.Text;
+using System.ComponentModel;
+using System.Data;
+using System.Data.OleDb;
+using System.Diagnostics;
+using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Linq;
+using System.Reflection;
+using System.Text;
+using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Windows.Forms;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.Schema;
 using System.Xml.XPath;
 using System.Xml.Xsl;
-using System.IO;
-using System.Threading;
-using System.Reflection;
-using System.Text.RegularExpressions;
-using Automation.Common.Utils;
+using Sybase.Data.AseClient;
 using Automation.Common;
+using Automation.Common.Utils;
 
 
 namespace XmlParsersAndUi {
@@ -57,7 +58,7 @@ namespace XmlParsersAndUi {
 
                 this.AllowDrop = true;
                 //   this.lvItems.AllowDragDrop = true;
-                ListViewItem item = new ListViewItem();
+                customListViewItem item = new customListViewItem();
                 item.DisplayName = "Testing Item";
                 item.Content = "This is the Testing Item Content here";
                 lvItems.Items.Add(item.ToString());
@@ -651,33 +652,21 @@ namespace XmlParsersAndUi {
                     //             elements = c1.DescendantNodesAndSelf()
                     //         };
                 }
-
-
             } catch (Exception ex) {
-
             }
         }
-
-
-
 
         void Button6Click(object sender, EventArgs e) {
             string path = string.Empty;
             try {
-
                 string[] folders = Directory.GetDirectories("D:\\sites-Stream","*sites",SearchOption.AllDirectories);
                 string fileRead = FrontendUtils.ReadFile("D:\\sites-Stream\\goodsites.txt");
-
                 for (int i = 0; i < folders.Length; i++) {
                     path = path+"\r\n"+folders[i];
-
                     //if (folders[i].Contains("sites")) {
                     //FrontendUtils.WriteFile(folders[i]+"\\sites.mxres",fileRead);
-
                     //  }
-
                 }
-
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message,ex);
             }
@@ -685,9 +674,7 @@ namespace XmlParsersAndUi {
 
         void BtnUtilsParserClick(object sender, EventArgs e) {
             string[] fileList = Directory.GetFiles(txtInputFile.Text, "utils.xml", SearchOption.AllDirectories);
-
             string operatedFiles = "";
-
             Regex regex = new Regex("wait.after.start=\"\\d+\"");
             for (int i = 0; i < fileList.Length; i++) {
                 StreamReader reader = new StreamReader(fileList[i]);
@@ -695,16 +682,12 @@ namespace XmlParsersAndUi {
                 string readText = string.Empty;
                 try {
                     readText = reader.ReadToEnd();
-
                 } finally {
                     if (reader != null) {
                         reader.Close();
                         reader.Dispose();
-
                     }
-
                     readText = regex.Replace(readText, "wait.after.start=\"10\"");
-
                     StreamWriter writer = new StreamWriter(fileList[i]);
                     try {
                         writer.Write(readText);
@@ -716,7 +699,6 @@ namespace XmlParsersAndUi {
                         }
                     }
                 }
-
             }
             operatedFiles = operatedFiles +"";
             MessageBox.Show("Done");
@@ -724,11 +706,18 @@ namespace XmlParsersAndUi {
 
         void BtnTestConnClick(object sender, EventArgs e) {
             string connectionString = txtConnx.Text;
-            System.Data.SqlClient.SqlConnection conn = new System.Data.SqlClient.SqlConnection(connectionString);
-
+         //   OleDbConnection conn = new OleDbConnection(connectionString);
+            AseConnection conn = new AseConnection(connectionString);
+            
             try {
                 conn.Open();
-
+                
+                AseCommand command = new AseCommand("select max(ID) from QA_PAC_TIMING where TEST_PACKAGE='PAR.TPK.0000949'",conn);
+                command.CommandTimeout = 99999;
+                object scale = command.ExecuteScalar();
+                AseDataReader  data=  command.ExecuteReader();
+            	string result =    data.GetString(0);
+            
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message+"\r\n\r\n"+ex.StackTrace);
             } finally {

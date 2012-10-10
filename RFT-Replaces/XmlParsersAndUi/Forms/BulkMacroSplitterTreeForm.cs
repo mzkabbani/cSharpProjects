@@ -669,6 +669,7 @@ namespace XmlParsersAndUi {
 
 		private void BulkMacroSplitterTreeForm_FormClosing(object sender, FormClosingEventArgs e) {
 			try {
+				bool disposing = this.ParentForm.Disposing	;	
 				if (FrontendUtils.ShowConformation("Do you want to proceed to level one cleanup?") == DialogResult.Yes) {
 					CleanupForm form = new CleanupForm(txtOutputDir.Text);
 					form.MdiParent = this.MdiParent;

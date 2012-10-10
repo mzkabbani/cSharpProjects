@@ -16,6 +16,8 @@ using Automation.Common.Utils;
 using Utilities.WinForms;
 using XmlParsersAndUi.Classes;
 using XmlParsersAndUi.Forms;
+using XmlParsersAndUi.Forms.Pac_TPKS;
+using XmlParsersAndUi.Forms.TpkBuilder;
 
 namespace XmlParsersAndUi {
     public partial class MainForm : Form {
@@ -413,10 +415,10 @@ namespace XmlParsersAndUi {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
         }
-
+	public bool MAIN_FORM_CLOSING = false;
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
             try {
-
+			MAIN_FORM_CLOSING = true;
                 MonitorObject.logoutTime = DateTime.Now;
 
                 Monitor.InsertNewMonitorObject();
@@ -739,5 +741,24 @@ namespace XmlParsersAndUi {
             }
         }
 
+        
+        void BuildGeneratorToolStripMenuItemClick(object sender, EventArgs e)
+        {
+        	BuildGeneratorForm form = new BuildGeneratorForm();
+        	form.MdiParent = this;
+        	form.Show();        	
+        }
+        
+        void PacRefsToolStripMenuItemClick(object sender, EventArgs e)
+        {
+        	try {
+        		PackReferenceForm form = new PackReferenceForm();
+        		form.MdiParent = this;
+        		form.Show();
+        		
+        	} catch (Exception ex) {
+        		FrontendUtils.ShowError(ex.Message,ex);
+        	}
+        }
     }
 }
