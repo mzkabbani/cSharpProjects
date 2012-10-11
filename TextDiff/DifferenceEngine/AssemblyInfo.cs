@@ -6,12 +6,12 @@ using System.Runtime.CompilerServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 //
-[assembly: AssemblyTitle("Automation.Diff")]
-[assembly: AssemblyDescription("Automation Difference Engine")]
+[assembly: AssemblyTitle("ad-eng")]
+[assembly: AssemblyDescription("ad-eng")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("mkabbani")]
-[assembly: AssemblyProduct("")]
-[assembly: AssemblyCopyright("")]
+[assembly: AssemblyProduct("ad-eng")]
+[assembly: AssemblyCopyright("Copyright © mkabbani 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]		
 

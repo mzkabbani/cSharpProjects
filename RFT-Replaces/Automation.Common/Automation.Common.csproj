@@ -8,8 +8,8 @@
     <ProjectGuid>{F2CA3F3F-B7AE-4378-B4B6-B0BA9903C67D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Automation.Common</RootNamespace>
-    <AssemblyName>Automation.Common</AssemblyName>
+    <RootNamespace>c-win-x86</RootNamespace>
+    <AssemblyName>c-win-x86</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publish\</PublishUrl>

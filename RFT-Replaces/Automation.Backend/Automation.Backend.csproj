@@ -8,12 +8,10 @@
     <ProjectGuid>{6350A836-106C-4C78-A6B2-A7C14D560D90}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Automation.Backend</RootNamespace>
-    <AssemblyName>Automation.Backend</AssemblyName>
+    <RootNamespace>win32-b</RootNamespace>
+    <AssemblyName>win32-b</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <StartupObject>
-    </StartupObject>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>

@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Automation.Backend")]
+[assembly: AssemblyTitle("win32-b")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Murex System")]
-[assembly: AssemblyProduct("Automation.Backend")]
-[assembly: AssemblyCopyright("Copyright © Murex System 2012")]
+[assembly: AssemblyCompany("mkabbani")]
+[assembly: AssemblyProduct("win32-b")]
+[assembly: AssemblyCopyright("Copyright © mkabbani 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
