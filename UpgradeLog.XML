@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="GlobalHookDemo">
+</Property><Property Name="Solution File" Value="C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\GlobalHookDemo.sln">
+</Property><Property Name="Date" Value="Wednesday, October 10, 2012">
+</Property><Property Name="Time" Value="18:46 PM">
+</Property></Properties><Event ErrorLevel="0" Project="" Source="GlobalHookDemo.sln" Description="File successfully backed up as C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\Backup\GlobalHookDemo.sln">
+</Event><Event ErrorLevel="0" Project="GlobalHookDemo" Source="GlobalHookDemo.csproj" Description="Project file successfully backed up as C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\Backup\GlobalHookDemo.csproj">
+</Event><Event ErrorLevel="0" Project="GlobalHookDemo" Source="AssemblyInfo.cs" Description="File successfully backed up as C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\Backup\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="GlobalHookDemo" Source="Form21.cs" Description="File successfully backed up as C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\Backup\Form21.cs">
+</Event><Event ErrorLevel="0" Project="GlobalHookDemo" Source="Form21.Designer.cs" Description="File successfully backed up as C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\Backup\Form21.Designer.cs">
+</Event><Event ErrorLevel="0" Project="GlobalHookDemo" Source="MainForm.cs" Description="File successfully backed up as C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\Backup\MainForm.cs">
+</Event><Event ErrorLevel="0" Project="GlobalHookDemo" Source="UserActivityHook.cs" Description="File successfully backed up as C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\Backup\UserActivityHook.cs">
+</Event><Event ErrorLevel="0" Project="GlobalHookDemo" Source="Form21.resx" Description="File successfully backed up as C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\Backup\Form21.resx">
+</Event><Event ErrorLevel="0" Project="GlobalHookDemo" Source="MainForm.resx" Description="File successfully backed up as C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\Backup\MainForm.resx">
+</Event><Event ErrorLevel="0" Project="GlobalHookDemo" Source="GlobalHookDemo.csproj" Description="The project file does not require conversion.">
+</Event><Event ErrorLevel="3" Project="GlobalHookDemo" Source="GlobalHookDemo.csproj" Description="No Conversion Required">
+</Event><Event ErrorLevel="0" Project="" Source="GlobalHookDemo.sln" Description="Solution converted successfully">
+</Event><Event ErrorLevel="3" Project="" Source="GlobalHookDemo.sln" Description="Converted">
+</Event></UpgradeLog>
