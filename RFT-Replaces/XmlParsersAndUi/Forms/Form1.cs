@@ -521,6 +521,17 @@ namespace XmlParsersAndUi {
 
         private void button3_Click(object sender, EventArgs e) {
             try {
+        		
+        		string[] files =  Directory.GetFiles(txtInputFile.Text,"*.cs",SearchOption.AllDirectories);
+        		string replacement ="/*This file is part of XML-Parser-Engine.\r\n\r\nXML-Parser-Engine is free software: you can redistribute it and/or modify\r\nit under the terms of the GNU General Public License as published by\r\nthe Free Software Foundation, either version 3 of the License, or\r\n(at your option) any later version.\r\n\r\nXML-Parser-Engine is distributed in the hope that it will be useful,\r\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\r\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\r\nGNU General Public License for more details.\r\n\r\nYou should have received a copy of the GNU General Public License\r\nalong with XML-Parser-Engine.  If not, see <http://www.gnu.org/licenses/>.*/\r\n";
+        		
+        		for (int i = 0; i < files.Length; i++) {        			
+        			string read = FrontendUtils.ReadFile(files[i]);
+        		    read = replacement + read;
+        			FrontendUtils.WriteFile(files[i],read);        			
+        		}
+        		
+        		
                 string filePath = txtInputFile.Text;
                 string readFile = FrontendUtils.ReadFile(filePath);
 

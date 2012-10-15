@@ -18,9 +18,22 @@ namespace Automation.Backend{
             AdvancedRecoCategories = 300,
             ReplacementCategories = 350,
             ApplicationVersion = 400,
+            ApplicationVersionEnabled = 401,
             EnvComparisonOnlyForEnv = 500
         }
 
+		public static string GetConfigValueByKey( List<ApplicationConfigObject> allConfigs, int configID){
+			string gottenConfig = "";
+			bool found = false;
+			for (int i = 0; i < allConfigs.Count && !found; i++) {
+				if (allConfigs[i].id == configID) {
+					gottenConfig = allConfigs[i].value;
+					found = true;
+				}
+			}			
+			return gottenConfig;		
+		}
+		
         public static List<ApplicationConfigObject> GetAllApplicationConfigAsList() {
             List<ApplicationConfigObject> applicationConfigObjectList = new List<ApplicationConfigObject>();
             DataTable advancedRexTable = new DataTable();

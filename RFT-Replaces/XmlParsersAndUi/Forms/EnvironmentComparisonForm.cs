@@ -1020,7 +1020,7 @@ namespace XmlParsersAndUi.Forms {
         #region Methods
 
         private void ReloadAllFiltersFromDatabase() {
-            lbFilters.Items.Clear();
+          
             lvAvailableFilters.Items.Clear();
             DataSet dataSet = Env_Comparison_Filters.GetAllAvailableFiltersAsDataset();
             foreach (DataRow row in dataSet.Tables[0].Rows) {
@@ -1055,7 +1055,7 @@ namespace XmlParsersAndUi.Forms {
                 default:
                     break;
                 }
-                lbFilters.Items.Add(filter);
+               
             }
         }
 
@@ -1063,7 +1063,7 @@ namespace XmlParsersAndUi.Forms {
             txtFilterName.Clear();
             txtFilterDescription.Clear();
             txtFilterPattern.Clear();
-            lbFilters.ClearSelected();
+         
             btnAddFilter.Enabled = true;
             btnSaveFilter.Enabled = false;
             txtExclusionList.Clear();
@@ -1085,11 +1085,7 @@ namespace XmlParsersAndUi.Forms {
                 return false;
             }
             bool found = false;
-            for (int i = 0; i < lbFilters.Items.Count && !found; i++) {
-                if (string.Equals(lbFilters.Items.ToString(), name)) {
-                    found = true;
-                }
-            }
+           
             if (found) {
                 FrontendUtils.ShowInformation("Filter name must be unique!", true);
                 return false;
@@ -1255,17 +1251,7 @@ namespace XmlParsersAndUi.Forms {
             }
         }
 
-        private void lbFilters_SelectedIndexChanged(object sender, EventArgs e) {
-            try {
-                EnvComparisonFilter selectedFilter = lbFilters.SelectedItem as EnvComparisonFilter;
-                if (selectedFilter != null) {
-                    FillUiFromSelectedFilter(selectedFilter);
-                }
-            } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
-            }
-        }
-
+       
         #endregion
 
         private void EnvironmentComparisonForm_Load(object sender, EventArgs e) {

@@ -93,9 +93,9 @@
         	this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
         	        	        	| System.Windows.Forms.AnchorStyles.Left)));
         	this.groupBox2.BackColor = System.Drawing.Color.Transparent;
+        	this.groupBox2.Controls.Add(this.lbAdvancedCE);
         	this.groupBox2.Controls.Add(this.clvAvailableEvents);
         	this.groupBox2.Controls.Add(this.lvAvailableEvents);
-        	this.groupBox2.Controls.Add(this.lbAdvancedCE);
         	this.groupBox2.Controls.Add(this.btnReloadCapturePoints);
         	this.groupBox2.Location = new System.Drawing.Point(6, 6);
         	this.groupBox2.Name = "groupBox2";
@@ -119,6 +119,7 @@
         	this.clvAvailableEvents.TabIndex = 24;
         	this.clvAvailableEvents.UseCompatibleStateImageBehavior = false;
         	this.clvAvailableEvents.View = System.Windows.Forms.View.SmallIcon;
+        	this.clvAvailableEvents.Visible = false;
         	this.clvAvailableEvents.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ClvAvailableEventsMouseDown);
         	this.clvAvailableEvents.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ClvAvailableEventsMouseMove);
         	this.clvAvailableEvents.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ClvAvailableEventsMouseUp);
@@ -138,6 +139,7 @@
         	this.lvAvailableEvents.TabIndex = 23;
         	this.lvAvailableEvents.UseCompatibleStateImageBehavior = false;
         	this.lvAvailableEvents.View = System.Windows.Forms.View.SmallIcon;
+        	this.lvAvailableEvents.Visible = false;
         	this.lvAvailableEvents.DragDrop += new System.Windows.Forms.DragEventHandler(this.LvAvailableEventsDragDrop);
         	this.lvAvailableEvents.DragEnter += new System.Windows.Forms.DragEventHandler(this.LvAvailableEventsDragEnter);
         	this.lvAvailableEvents.DragOver += new System.Windows.Forms.DragEventHandler(this.LvAvailableEventsDragOver);
@@ -149,9 +151,9 @@
         	this.lbAdvancedCE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
         	        	        	| System.Windows.Forms.AnchorStyles.Left)));
         	this.lbAdvancedCE.FormattingEnabled = true;
-        	this.lbAdvancedCE.Location = new System.Drawing.Point(7, 548);
+        	this.lbAdvancedCE.Location = new System.Drawing.Point(7, 15);
         	this.lbAdvancedCE.Name = "lbAdvancedCE";
-        	this.lbAdvancedCE.Size = new System.Drawing.Size(214, 121);
+        	this.lbAdvancedCE.Size = new System.Drawing.Size(244, 654);
         	this.lbAdvancedCE.Sorted = true;
         	this.lbAdvancedCE.TabIndex = 22;
         	this.lbAdvancedCE.SelectedIndexChanged += new System.EventHandler(this.lbAdvancedCE_SelectedIndexChanged_1);

@@ -98,8 +98,12 @@
       <HintPath>D:\DOwnloads\interopDlls\Microsoft.Office.Interop.Excel.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Sybase.AdoNet2.AseClient" />
-    <Reference Include="Sybase.AdoNet4.AseClient" />
+    <Reference Include="Sybase.AdoNet2.AseClient">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Sybase.AdoNet4.AseClient">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System">
       <Private>False</Private>
     </Reference>
@@ -165,6 +169,7 @@
     <Compile Include="Forms\Pac TPKS\PackReferenceForm.Designer.cs">
       <DependentUpon>PackReferenceForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\Pac TPKS\PAC_TimingObject.cs" />
     <Compile Include="Forms\SimpleCleanupForm.cs">
       <SubType>Form</SubType>
     </Compile>

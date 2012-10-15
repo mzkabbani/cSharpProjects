@@ -1,15 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Data.SqlServerCe;
 using System.Data;
 using System.Data.SqlClient;
-using System.Xml;
+using System.Data.SqlServerCe;
+using System.IO;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
-using Automation.Common.Utils;
-using Automation.Common;
+using System.Xml;
 
+using Automation.Common;
+using Automation.Common.Utils;
 
 namespace Automation.Backend {
     public class BackEndUtils {
@@ -18,7 +19,33 @@ namespace Automation.Backend {
 
         public static string ConnectionParamterPrimary = string.Empty;
 
-     
+
+        
+        
+        
+        public static void CheckIfDatabaseNeedsCompation() {
+
+            string src     = ConnectionParamter;
+            string dest    = ConnectionParamter+".tmp";
+            // Initialize SqlCeEngine object.        
+                    
+            SqlCeEngine engine = new SqlCeEngine("Data Source = " + src);
+            try {
+                engine.Compact("Data Source = " + dest);
+                engine.Dispose();
+                File.Delete(src);
+                File.Move(dest, src);
+            } catch(SqlCeException e) {
+                //Use your own error handling routine.
+                //ShowErrors(e);
+                FrontendUtils.LogError(e.Message,e);                
+            } finally {
+                //Dispose of the SqlCeEngine object.
+                engine.Dispose();
+            }
+
+        }
+
 
         public static SqlCeConnection GetSqlConnection() {
             SqlCeConnection sqlConnection1 = new SqlCeConnection();
@@ -33,11 +60,11 @@ namespace Automation.Backend {
             //        sqlConnection1.Close();
             //    }
             //} catch (Exception ex) {
-            //    sqlConnection1.ConnectionString = "Data Source=" + ConnectionParamter;                
-            //} 
+            //    sqlConnection1.ConnectionString = "Data Source=" + ConnectionParamter;
+            //}
             #endregion
 
-            sqlConnection1.ConnectionString = "Data Source=" + ConnectionParamter;
+            sqlConnection1.ConnectionString = "Data Source=" + ConnectionParamter+";Max Database Size=4000";
             return sqlConnection1;
         }
 

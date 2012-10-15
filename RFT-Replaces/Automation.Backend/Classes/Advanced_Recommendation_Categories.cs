@@ -22,8 +22,6 @@ namespace Automation.Backend{
             }
             return dataTable;
         }
-
-		
 		 
         public static DataSet GetAllAdvancedRecCategoriesAsDataset() {
             SqlCeConnection conn = BackEndUtils.GetSqlConnection();
@@ -37,8 +35,6 @@ namespace Automation.Backend{
             }
             return dataSet;
         }
-
-       
-
+		
     }
 }

@@ -3,22 +3,24 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using XmlParsersAndUi.Classes;
-using Automation.Common.Utils;
+
 using Automation.Backend;
 using Automation.Common.Classes.Monitoring;
+using Automation.Common.Utils;
+using XmlParsersAndUi.Classes;
 
 namespace XmlParsersAndUi.Forms {
     public partial class ApplicationPreferencesForm : Form {
-        
+
         #region Constructor
-        
+
         public ApplicationPreferencesForm() {
             InitializeComponent();
-        } 
+        }
 
         #endregion
 
@@ -37,12 +39,27 @@ namespace XmlParsersAndUi.Forms {
                 }
                 tvPreferenceSections.ExpandAll();
                 txtConnectedDatabase.Text = BackEndUtils.ConnectionParamter;
+                lblDBSIze.Text = GetDBSize();
+
+
                 dataSet = Application_Settings.GetAppPrefsDataset();
                 dgvDatabasePrefs.DataSource = dataSet.Tables[0];
                 LoadSavedFolderNames();
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
+        }
+
+        string GetDBSize() {
+
+            string[] sizes = { "B", "KB", "MB", "GB" };
+            double len = new FileInfo(BackEndUtils.ConnectionParamter).Length;
+            int order = 0;
+            while (len >= 1024 && order + 1 < sizes.Length) {
+                order++;
+                len = len/1024;
+            }
+            return len + sizes[order];
         }
 
         #endregion
@@ -134,11 +151,11 @@ namespace XmlParsersAndUi.Forms {
 
         private bool IsValidToAddNode(TreeNodeCollection treeNodeCollection, string newNodeName) {
             foreach (TreeNode treeNode in treeNodeCollection) {
-               if(string.Equals(treeNode.Text,newNodeName)){
-                   FrontendUtils.ShowInformation("Node name must be unique!",true);
-                   return false;
-               } 
-            }            
+                if(string.Equals(treeNode.Text,newNodeName)) {
+                    FrontendUtils.ShowInformation("Node name must be unique!",true);
+                    return false;
+                }
+            }
             return true;
         }
 
@@ -162,13 +179,13 @@ namespace XmlParsersAndUi.Forms {
                     if (IsValidToAddNode(tvFolderNames.SelectedNode.Nodes, newNodeName)) {
                         TreeNode addedNode = tvFolderNames.SelectedNode.Nodes.Add(newNodeName);
                         addedNode.Tag = GenerateRandomHEX();
-                        
+
                     }
                 }
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
-        }           
+        }
 
         private void saveNameToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
@@ -200,15 +217,15 @@ namespace XmlParsersAndUi.Forms {
 
         private void UpdateUIFromSelectedNode(string selectedNodeText) {
             switch (selectedNodeText) {
-                case "Application Settings":
-                    SetVisibilityAndDock(gbDatabasePrefs);
-                    break;
-                case "Folder Naming":
-                    SetVisibilityAndDock(gbFolderNaming);
-                    break;
-                default:
-                    SetVisibilityAndDock(gbConnectedDatabase);
-                    break;
+            case "Application Settings":
+                SetVisibilityAndDock(gbDatabasePrefs);
+                break;
+            case "Folder Naming":
+                SetVisibilityAndDock(gbFolderNaming);
+                break;
+            default:
+                SetVisibilityAndDock(gbConnectedDatabase);
+                break;
             }
         }
 
@@ -220,7 +237,7 @@ namespace XmlParsersAndUi.Forms {
             }
             gbGenericBox.Dock = DockStyle.Top;
             gbGenericBox.Visible = true;
-        } 
+        }
 
         #endregion
 
@@ -232,7 +249,7 @@ namespace XmlParsersAndUi.Forms {
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
-        } 
+        }
 
         #endregion
 
@@ -242,7 +259,7 @@ namespace XmlParsersAndUi.Forms {
                 DialogResult dialog =  form.ShowDialog();
 
                 if (dialog == DialogResult.OK) {
-                    string[] newNames = form.Controls["txtBulkFolderNames"].Text.Split(new string[]{"\r\n"},StringSplitOptions.RemoveEmptyEntries);
+                    string[] newNames = form.Controls["txtBulkFolderNames"].Text.Split(new string[] {"\r\n"},StringSplitOptions.RemoveEmptyEntries);
 
 
                     for (int i = 0; i < newNames.Length; i++) {
@@ -250,7 +267,7 @@ namespace XmlParsersAndUi.Forms {
                         if (IsValidToAddNode(tvFolderNames.SelectedNode.Nodes, newNodeName)) {
                             TreeNode addedNode = tvFolderNames.SelectedNode.Nodes.Add(newNodeName);
                             addedNode.Tag = GenerateRandomHEX();
-                        } 
+                        }
                     }
                 }
 
@@ -261,5 +278,10 @@ namespace XmlParsersAndUi.Forms {
 
 
         #endregion
+        
+        void BtnCompressDBClick(object sender, EventArgs e)
+        {
+        	BackEndUtils.CheckIfDatabaseNeedsCompation();
+        }
     }
 }

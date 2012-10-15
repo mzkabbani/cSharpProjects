@@ -867,15 +867,6 @@
             <seealso href="http://www.saxproject.org/apidoc/org/xml/sax/InputSource.html#setByteStream(java.io.InputStream)">
             InputSource.get/setByteStream on www.saxproject.org</seealso>
         </member>
-        <member name="T:Org.System.Xml.Sax.RsId">
-            <summary>Identifies localized string constants.</summary> 
-        </member>
-        <member name="T:Org.System.Xml.Sax.Resources">
-            <summary>Enables access to localized resources.</summary> 
-        </member>
-        <member name="M:Org.System.Xml.Sax.Resources.GetString(Org.System.Xml.Sax.RsId)">
-            <summary>Returns localized string constants.</summary>
-        </member>
         <member name="T:Org.System.Xml.Sax.Helpers.ParseErrorImpl">
             <summary>Default implementation for <see cref="T:Org.System.Xml.Sax.ParseError"/>.</summary>
             <remarks>For some parsers a different implementation may be preferable.</remarks>
@@ -1095,6 +1086,15 @@
             implementing <see cref="T:Org.System.Xml.Sax.IXmlReader"/>. The types of the objects in the
             <c>args</c> array must match a constructor signature of the class.</remarks>
             <returns><see cref="T:Org.System.Xml.Sax.IXmlReader"/> instance.</returns>
+        </member>
+        <member name="T:Org.System.Xml.Sax.RsId">
+            <summary>Identifies localized string constants.</summary> 
+        </member>
+        <member name="T:Org.System.Xml.Sax.Resources">
+            <summary>Enables access to localized resources.</summary> 
+        </member>
+        <member name="M:Org.System.Xml.Sax.Resources.GetString(Org.System.Xml.Sax.RsId)">
+            <summary>Returns localized string constants.</summary>
         </member>
     </members>
 </doc>

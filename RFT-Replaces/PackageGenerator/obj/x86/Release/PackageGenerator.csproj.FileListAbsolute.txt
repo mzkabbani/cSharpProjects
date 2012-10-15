@@ -15,12 +15,12 @@ C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\obj\x86\Release\PackageGenerator.csproj.GenerateResource.Cache
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\obj\x86\Release\PackageGenerator.exe
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\obj\x86\Release\PackageGenerator.pdb
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\bin\x86\Release\Automation.Common.pdb
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\bin\x86\Release\Microsoft.Office.Interop.Excel.dll
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\bin\x86\Release\Office.dll
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\bin\x86\Release\Microsoft.Vbe.Interop.dll
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\obj\x86\Release\PackageGenerator.Forms.SelectPackageNameAndStorageForm.resources
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\bin\x86\Release\Automation.Common.dll
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\obj\x86\Release\PackageGenerator.Forms.ExcelComparisonForm.resources
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\bin\x86\Release\Automation.ProgressCircle.dll
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\obj\x86\Release\PackageGenerator.Forms.PackageBeingGeneratredForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\bin\x86\Release\c-win-x86.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\PackageGenerator\bin\x86\Release\c-win-x86.pdb

@@ -32,12 +32,13 @@ namespace XmlParsersAndUi {
 
         #region Variables
 
-        public string APPLICATION_VERSION = "1.1.2";
+        public string APPLICATION_VERSION = "1.1.3";
         private int childFormNumber = 0;
         string loggedInUser = string.Empty;
         int idleCounter = 0;
         public static bool appProcessing = false;
         bool TIMER_ENABLED = true;
+        bool VERSION_CONTROL_ENABLED = true;
         int CONFIGURED_IDLE_TIME = 15;
 
         #endregion
@@ -248,8 +249,10 @@ namespace XmlParsersAndUi {
         private void App_Idle(ApplicationIdleTimer.ApplicationIdleEventArgs e) {
             tsLabelStatus.Text = string.Format("Idle: {0}s", e.IdleDuration.TotalSeconds.ToString("0"));
             tsLabelStatus.BackColor = Color.LightCyan;
+
+            // BackEndUtils.CheckIfDatabaseNeedsCompation();
             if (e.IdleDuration.Minutes > CONFIGURED_IDLE_TIME && !appProcessing) {
-                //FrontendUtils.SendUsageNotification(loggedInUser + " was forced to exit by timer!");
+                FrontendUtils.SendUsageNotification(loggedInUser + " was forced to exit by timer!");
                 Application.Exit();
             }
         }
@@ -259,11 +262,11 @@ namespace XmlParsersAndUi {
         }
 
         private void StartCheckIfKickTimer() {
-            System.Windows.Forms.Timer checkKickTimer = new System.Windows.Forms.Timer();
-            checkKickTimer.Tick += new EventHandler(this.checkKickTimer_Tick);
-            // Start the timer
-            checkKickTimer.Start();
-            checkKickTimer.Interval = 60000;
+//            System.Windows.Forms.Timer checkKickTimer = new System.Windows.Forms.Timer();
+//            checkKickTimer.Tick += new EventHandler(this.checkKickTimer_Tick);
+//            // Start the timer
+//            checkKickTimer.Start();
+//            checkKickTimer.Interval = 60000;
         }
 
         private void checkKickTimer_Tick(object sender, EventArgs e) {
@@ -277,21 +280,27 @@ namespace XmlParsersAndUi {
 
         private void MainForm_Load(object sender, EventArgs e) {
             try {
+
                 MainAppVariables.AppVersion = APPLICATION_VERSION;
                 loggedInUser = FrontendUtils.GetCurrentUser();
                 FrontendUtils.CreateLogsDirectory();
                 this.Text = this.Text +" v." +APPLICATION_VERSION + " - Welcome " + loggedInUser + "!";
                 XmlNodeList configFileNodes = LoadConfigFileNodes();
                 SetBackEndConnectionParameter(configFileNodes);
-                string applicationVersion = (string)Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.ApplicationVersion);
+
+                List<ApplicationConfigObject> allConfigs =  Application_Settings.GetAllApplicationConfigAsList();
+                bool isApplicationVersionCheckEnabled = Convert.ToBoolean(Application_Settings.GetConfigValueByKey(allConfigs,(int)Application_Settings.ApplicationConfigKeys.ApplicationVersionEnabled));
+                string applicationVersion = Application_Settings.GetConfigValueByKey(allConfigs,(int)Application_Settings.ApplicationConfigKeys.ApplicationVersion) ;
+                bool TIMER_ENABLED = Convert.ToBoolean(Application_Settings.GetConfigValueByKey(allConfigs,(int)Application_Settings.ApplicationConfigKeys.EnableTimerKey));
+                CONFIGURED_IDLE_TIME = Convert.ToInt32(Application_Settings.GetConfigValueByKey(allConfigs,(int)Application_Settings.ApplicationConfigKeys.TimerDurationKey));
+                List<string> priviligedUsersList = FrontendUtils.GetListFromArray(Application_Settings.GetConfigValueByKey(allConfigs,(int)Application_Settings.ApplicationConfigKeys.PrivelegedUsers).Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)) ;
+
                 GlobalApplicationSettings.ApplicationVersion = APPLICATION_VERSION;
                 GlobalApplicationSettings.ApplicationVersionInDB=applicationVersion;
-                if (string.Equals(applicationVersion, APPLICATION_VERSION)) {
-                    StartCheckIfKickTimer();
-                    // || string.Equals(loggedInUser, "mkabbani")) {
-                    bool TIMER_ENABLED = Convert.ToBoolean(Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.EnableTimerKey));
+
+                if (!isApplicationVersionCheckEnabled ||(string.Equals(applicationVersion, APPLICATION_VERSION) && isApplicationVersionCheckEnabled) ) {
+                    // StartCheckIfKickTimer();
                     if (TIMER_ENABLED) {
-                        CONFIGURED_IDLE_TIME = Convert.ToInt32(Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.TimerDurationKey));
                         CheckIdleTime();
                     }
                     int userId = UserStatus.GetUserIdByUsername(loggedInUser);
@@ -300,14 +309,12 @@ namespace XmlParsersAndUi {
                     }
                     FrontendUtils.LoggedInUserId = userId;
                     UserStatus.UpdateUserStatusById(userId, true);
-                    List<string> priviligedUsersList = Application_Settings.GetPriviligedUsersAsList();
+
                     UpdateUIForPriviligedUsers(priviligedUsersList, loggedInUser);
                     MonitorObject.username = loggedInUser;
                     MonitorObject.loginTime = DateTime.Now;
                     MonitorObject.formAndAccessTime = new List<FormAndAccessTime>();
                     MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
-
-
 
                 } else {
                     this.menuStrip.Enabled = false;
@@ -324,6 +331,7 @@ namespace XmlParsersAndUi {
                         Application.Exit();
                     }
                 }
+
             } catch (Exception ex) {
                 FrontendUtils.ShowError(ex.Message, ex);
                 try {
@@ -415,10 +423,10 @@ namespace XmlParsersAndUi {
                 FrontendUtils.ShowError(ex.Message, ex);
             }
         }
-	public bool MAIN_FORM_CLOSING = false;
+        public bool MAIN_FORM_CLOSING = false;
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e) {
             try {
-			MAIN_FORM_CLOSING = true;
+                MAIN_FORM_CLOSING = true;
                 MonitorObject.logoutTime = DateTime.Now;
 
                 Monitor.InsertNewMonitorObject();
@@ -741,24 +749,32 @@ namespace XmlParsersAndUi {
             }
         }
 
-        
-        void BuildGeneratorToolStripMenuItemClick(object sender, EventArgs e)
-        {
-        	BuildGeneratorForm form = new BuildGeneratorForm();
-        	form.MdiParent = this;
-        	form.Show();        	
+
+        void BuildGeneratorToolStripMenuItemClick(object sender, EventArgs e) {
+            BuildGeneratorForm form = new BuildGeneratorForm();
+            form.MdiParent = this;
+            form.Show();
         }
-        
-        void PacRefsToolStripMenuItemClick(object sender, EventArgs e)
-        {
-        	try {
-        		PackReferenceForm form = new PackReferenceForm();
-        		form.MdiParent = this;
-        		form.Show();
-        		
-        	} catch (Exception ex) {
-        		FrontendUtils.ShowError(ex.Message,ex);
-        	}
+
+        void PacRefsToolStripMenuItemClick(object sender, EventArgs e) {
+            try {
+                PackReferenceForm form = new PackReferenceForm();
+                form.MdiParent = this;
+                form.Show();
+
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message,ex);
+            }
+        }
+
+        void PacRefsToolStripMenuItem1Click(object sender, EventArgs e) {
+            try {
+                PackReferenceForm form = new PackReferenceForm();
+                form.MdiParent = this;
+                form.Show();
+            } catch (Exception ex) {
+                FrontendUtils.ShowError(ex.Message,ex);
+            }
         }
     }
 }

@@ -21,7 +21,7 @@ namespace Automation.Backend{
 
         public static string commandUpdateComparisonFilterById = "UPDATE    Env_Comparison_Filters " +
                                                              "SET name = @name, description = @description, filter = @filter, filterType = @filterType,"+
-        													 " filterScript = @filterScript , exclusionList = @exclusionList, isFolderDeletion = @isFolderDeletion , dateModified = @dateModified , modifiedByUserId = @modifiedByUserId " +
+        													 " filterScript = @filterScript , exclusionList = @exclusionList, isFolderDeletion = @isFolderDeletion ,  = @dateModified , modifiedByUserId = @modifiedByUserId " +
                                                              "Where id =@id";
 
         public static string commandSelectMaxComparisonFilter = "SELECT MAX(id) " +

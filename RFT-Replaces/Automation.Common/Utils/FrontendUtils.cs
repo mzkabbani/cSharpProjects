@@ -45,7 +45,15 @@ namespace Automation.Common.Utils {
 
 
 		
-
+		public static List<string> GetListFromArray(string[] objectArray){
+			List<string> objects = new List<string>();
+				foreach (string obj in objectArray) {
+				objects.Add(obj);
+				}
+			
+			return objects;
+		}
+		
 		public static string GetRandomHexNumber(int digits) {
 			Random random = new Random();
 			byte[] buffer = new byte[digits / 2];

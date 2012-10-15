@@ -97,7 +97,6 @@
         	this.editNodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.addRootNodeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.deleteToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-        	this.lbFilters = new System.Windows.Forms.ListBox();
         	this.groupBox3 = new System.Windows.Forms.GroupBox();
         	this.lvAvailableFilters = new System.Windows.Forms.ListView();
         	this.groupBox4 = new System.Windows.Forms.GroupBox();
@@ -808,7 +807,6 @@
         	        	        	| System.Windows.Forms.AnchorStyles.Right)));
         	this.groupBox8.Controls.Add(this.btnSaveCategories);
         	this.groupBox8.Controls.Add(this.tvResultsCategories);
-        	this.groupBox8.Controls.Add(this.lbFilters);
         	this.groupBox8.Location = new System.Drawing.Point(8, 366);
         	this.groupBox8.Name = "groupBox8";
         	this.groupBox8.Size = new System.Drawing.Size(815, 219);
@@ -873,17 +871,6 @@
         	this.deleteToolStripMenuItem1.Size = new System.Drawing.Size(158, 22);
         	this.deleteToolStripMenuItem1.Text = "Delete";
         	this.deleteToolStripMenuItem1.Click += new System.EventHandler(this.deleteToolStripMenuItem1_Click);
-        	// 
-        	// lbFilters
-        	// 
-        	this.lbFilters.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-        	        	        	| System.Windows.Forms.AnchorStyles.Left)));
-        	this.lbFilters.FormattingEnabled = true;
-        	this.lbFilters.Location = new System.Drawing.Point(239, 19);
-        	this.lbFilters.Name = "lbFilters";
-        	this.lbFilters.Size = new System.Drawing.Size(70, 121);
-        	this.lbFilters.TabIndex = 0;
-        	this.lbFilters.SelectedIndexChanged += new System.EventHandler(this.lbFilters_SelectedIndexChanged);
         	// 
         	// groupBox3
         	// 
@@ -954,7 +941,7 @@
         	// 
         	// btnGetScript
         	// 
-        	this.btnGetScript.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+        	this.btnGetScript.Anchor = System.Windows.Forms.AnchorStyles.Right;
         	this.btnGetScript.Location = new System.Drawing.Point(499, 159);
         	this.btnGetScript.Name = "btnGetScript";
         	this.btnGetScript.Size = new System.Drawing.Size(75, 23);
@@ -1017,7 +1004,7 @@
         	// 
         	// cboRemoveFileOrFolder
         	// 
-        	this.cboRemoveFileOrFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+        	this.cboRemoveFileOrFolder.Anchor = System.Windows.Forms.AnchorStyles.Right;
         	this.cboRemoveFileOrFolder.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
         	this.cboRemoveFileOrFolder.FormattingEnabled = true;
         	this.cboRemoveFileOrFolder.Items.AddRange(new object[] {
@@ -1237,7 +1224,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.GroupBox groupBox9;
-        private System.Windows.Forms.ListBox lbFilters;
         private System.Windows.Forms.Button btnReload;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtFilterName;

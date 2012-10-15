@@ -1,3 +1,5 @@
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\bin\Release\Automation.Controls.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\bin\Release\Automation.Controls.pdb
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\bin\Release\SearchableControls.xml
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\obj\Release\ResolveAssemblyReference.cache
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\obj\Release\SearchableControls.FindForm.resources
@@ -8,7 +10,5 @@ C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\Sear
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\obj\Release\SearchableControls.InfoForm.resources
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\obj\Release\SearchableControls.SearchableTreeView.resources
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\obj\Release\SearchableControls.csproj.GenerateResource.Cache
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\bin\Release\Automation.Controls.dll
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\bin\Release\Automation.Controls.pdb
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\obj\Release\Automation.Controls.dll
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SearchableControls\obj\Release\Automation.Controls.pdb

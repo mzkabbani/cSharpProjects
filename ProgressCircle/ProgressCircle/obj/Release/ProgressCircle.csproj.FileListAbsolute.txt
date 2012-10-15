@@ -1,3 +1,3 @@
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\ProgressCircle\ProgressCircle\obj\Release\ResolveAssemblyReference.cache
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\ProgressCircle\ProgressCircle\bin\Release\Automation.ProgressCircle.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\ProgressCircle\ProgressCircle\obj\Release\ResolveAssemblyReference.cache
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\ProgressCircle\ProgressCircle\obj\Release\Automation.ProgressCircle.dll

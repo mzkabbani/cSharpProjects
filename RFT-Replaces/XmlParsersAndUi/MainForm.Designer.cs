@@ -68,6 +68,7 @@
         	this.mulToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.findXpathToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.buildGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        	this.pacRefsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.toolStrip = new System.Windows.Forms.ToolStrip();
         	this.newToolStripButton = new System.Windows.Forms.ToolStripButton();
         	this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
@@ -83,7 +84,7 @@
         	this.tsConnectedTo = new System.Windows.Forms.ToolStripStatusLabel();
         	this.toolTip = new System.Windows.Forms.ToolTip(this.components);
         	this.pictureBox1 = new System.Windows.Forms.PictureBox();
-        	this.pacRefsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        	this.pacRefsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
         	this.menuStrip.SuspendLayout();
         	this.toolStrip.SuspendLayout();
         	this.statusStrip.SuspendLayout();
@@ -162,7 +163,8 @@
         	        	        	this.rFTUpdaterToolStripMenuItem,
         	        	        	this.envComparisonToolStripMenuItem1,
         	        	        	this.fTPToolStripMenuItem,
-        	        	        	this.packagingToolStripMenuItem});
+        	        	        	this.packagingToolStripMenuItem,
+        	        	        	this.pacRefsToolStripMenuItem1});
         	this.helpersToolStripMenuItem.Name = "helpersToolStripMenuItem";
         	this.helpersToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
         	this.helpersToolStripMenuItem.Text = "Helpers";
@@ -441,6 +443,13 @@
         	this.buildGeneratorToolStripMenuItem.Text = "Build Generator";
         	this.buildGeneratorToolStripMenuItem.Click += new System.EventHandler(this.BuildGeneratorToolStripMenuItemClick);
         	// 
+        	// pacRefsToolStripMenuItem
+        	// 
+        	this.pacRefsToolStripMenuItem.Name = "pacRefsToolStripMenuItem";
+        	this.pacRefsToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
+        	this.pacRefsToolStripMenuItem.Text = "pac refs";
+        	this.pacRefsToolStripMenuItem.Click += new System.EventHandler(this.PacRefsToolStripMenuItemClick);
+        	// 
         	// toolStrip
         	// 
         	this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -568,12 +577,12 @@
         	this.pictureBox1.TabStop = false;
         	this.pictureBox1.Visible = false;
         	// 
-        	// pacRefsToolStripMenuItem
+        	// pacRefsToolStripMenuItem1
         	// 
-        	this.pacRefsToolStripMenuItem.Name = "pacRefsToolStripMenuItem";
-        	this.pacRefsToolStripMenuItem.Size = new System.Drawing.Size(194, 22);
-        	this.pacRefsToolStripMenuItem.Text = "pac refs";
-        	this.pacRefsToolStripMenuItem.Click += new System.EventHandler(this.PacRefsToolStripMenuItemClick);
+        	this.pacRefsToolStripMenuItem1.Name = "pacRefsToolStripMenuItem1";
+        	this.pacRefsToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
+        	this.pacRefsToolStripMenuItem1.Text = "Pac refs";
+        	this.pacRefsToolStripMenuItem1.Click += new System.EventHandler(this.PacRefsToolStripMenuItem1Click);
         	// 
         	// MainForm
         	// 
@@ -605,6 +614,7 @@
         	this.ResumeLayout(false);
         	this.PerformLayout();
         }
+        private System.Windows.Forms.ToolStripMenuItem pacRefsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem pacRefsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem buildGeneratorToolStripMenuItem;
         #endregion

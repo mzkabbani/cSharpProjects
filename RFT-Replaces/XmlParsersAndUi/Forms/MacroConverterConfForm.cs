@@ -428,9 +428,10 @@ namespace XmlParsersAndUi.Forms {
                         Advanced_Recomendations_TextConv.InsertCaptureEventForTextConversion(captureEvent, replacementEvent);
                         FrontendUtils.ShowInformation("Capture event inserted successfully!",false);
                     }
-                    SetAllCombos();
                     BindCombos();
                     LoadAvailableARtoList();
+                    SetAllCombos();
+
 
                     lbAdvancedCE.Select();
                 } else {
@@ -469,9 +470,11 @@ namespace XmlParsersAndUi.Forms {
 
         private void SetupAdvancedRecForm_Load(object sender, EventArgs e) {
             try {
-                SetAllCombos();
                 BindCombos();
                 LoadAvailableARtoList();
+                SetAllCombos();
+
+
 
                 lbAdvancedCE.SelectedIndex = 0;
             } catch (Exception ex) {
@@ -527,17 +530,17 @@ namespace XmlParsersAndUi.Forms {
                 lbAdvancedCE.Items.Add(allCaptureEvents[i]);
             }
 
-            for (int i = 0; i < allCaptureEvents.Count; i++) {
-                System.Windows.Forms.ListViewItem listviewItem = lvAvailableEvents.Items.Add(allCaptureEvents[i].CaptureEventName,allCaptureEvents[i].CaptureEventName);
-                listviewItem.Group = lvAvailableEvents.Groups[allCaptureEvents[i].captureEventCategory.ToString()];
-                lvAvailableEvents.Groups[allCaptureEvents[i].captureEventCategory.ToString()].Items.Add(listviewItem);
-                lvAvailableEvents.ShowGroups = true;
-
-                System.Windows.Forms.ListViewItem listviewItem2 = clvAvailableEvents.Items.Add(allCaptureEvents[i].CaptureEventName,allCaptureEvents[i].CaptureEventName);
-                listviewItem2.Group = clvAvailableEvents.Groups[allCaptureEvents[i].captureEventCategory.ToString()];
-                clvAvailableEvents.Groups[allCaptureEvents[i].captureEventCategory.ToString()].Items.Add(listviewItem2);
-                clvAvailableEvents.ShowGroups = true;
-            }
+//            for (int i = 0; i < allCaptureEvents.Count; i++) {
+//                System.Windows.Forms.ListViewItem listviewItem = lvAvailableEvents.Items.Add(allCaptureEvents[i].CaptureEventName,allCaptureEvents[i].CaptureEventName);
+//                listviewItem.Group = lvAvailableEvents.Groups[allCaptureEvents[i].captureEventCategory.ToString()];
+//                lvAvailableEvents.Groups[allCaptureEvents[i].captureEventCategory.ToString()].Items.Add(listviewItem);
+//                lvAvailableEvents.ShowGroups = true;
+//
+//                System.Windows.Forms.ListViewItem listviewItem2 = clvAvailableEvents.Items.Add(allCaptureEvents[i].CaptureEventName,allCaptureEvents[i].CaptureEventName);
+//                listviewItem2.Group = clvAvailableEvents.Groups[allCaptureEvents[i].captureEventCategory.ToString()];
+//                clvAvailableEvents.Groups[allCaptureEvents[i].captureEventCategory.ToString()].Items.Add(listviewItem2);
+//                clvAvailableEvents.ShowGroups = true;
+//            }
         }
 
         private void InterpretCaptureEvent(AdvancedRecomendation captureEvent) {
@@ -898,9 +901,10 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private void button1_Click(object sender, EventArgs e) {
-            SetAllCombos();
             BindCombos();
             LoadAvailableARtoList();
+            SetAllCombos();
+
 
         }
 
@@ -1010,9 +1014,10 @@ namespace XmlParsersAndUi.Forms {
                 DialogResult dial = FrontendUtils.ShowConformation("Are you sure you want to delete [" + CurrentlySelectedCaptureEvent.CaptureEventName + "] ?");
                 if (dial == DialogResult.Yes) {
                     Advanced_Recomendations_TextConv.DisableAdvanceRecById(CurrentlySelectedCaptureEvent.CaptureEventId);
-                    SetAllCombos();
-                    BindCombos();
+                     BindCombos();
                     LoadAvailableARtoList();
+                    SetAllCombos();
+                   
 
                     lbAdvancedCE.Select();
                 }
@@ -1063,18 +1068,16 @@ namespace XmlParsersAndUi.Forms {
         void LvAvailableEventsLeave(object sender, EventArgs e) {
             OnLostFocus(e);
         }
-        
-        
-         private System.Windows.Forms.ListViewItem _itemDnD = null;
-        
-        void ClvAvailableEventsMouseDown(object sender, MouseEventArgs e)
-        {
-        	 _itemDnD = clvAvailableEvents.GetItemAt(e.X, e.Y);
+
+
+        private System.Windows.Forms.ListViewItem _itemDnD = null;
+
+        void ClvAvailableEventsMouseDown(object sender, MouseEventArgs e) {
+            _itemDnD = clvAvailableEvents.GetItemAt(e.X, e.Y);
         }
-        
-        void ClvAvailableEventsMouseMove(object sender, MouseEventArgs e)
-        {
-        	if (_itemDnD == null)
+
+        void ClvAvailableEventsMouseMove(object sender, MouseEventArgs e) {
+            if (_itemDnD == null)
                 return;
 
             // Show the user that a drag operation is happening
@@ -1090,13 +1093,10 @@ namespace XmlParsersAndUi.Forms {
                 return;
 
             Rectangle rc = itemOver.GetBounds(ItemBoundsPortion.Entire);
-            if (e.Y < rc.Top + (rc.Height / 2))
-            {
+            if (e.Y < rc.Top + (rc.Height / 2)) {
                 clvAvailableEvents.LineBefore = itemOver.Index;
                 clvAvailableEvents.LineAfter = -1;
-            }
-            else
-            {
+            } else {
                 clvAvailableEvents.LineBefore = -1;
                 clvAvailableEvents.LineAfter = itemOver.Index;
             }
@@ -1104,14 +1104,12 @@ namespace XmlParsersAndUi.Forms {
             // invalidate the LV so that the insertion line is shown
             clvAvailableEvents.Invalidate();
         }
-        
-        void ClvAvailableEventsMouseUp(object sender, MouseEventArgs e)
-        {
-        	if (_itemDnD == null)
+
+        void ClvAvailableEventsMouseUp(object sender, MouseEventArgs e) {
+            if (_itemDnD == null)
                 return;
 
-            try
-            {
+            try {
                 // calculate the bottom of the last item in the LV so that you don't have to stop your drag at the last item
                 int lastItemBottom = Math.Min(e.Y, clvAvailableEvents.Items[clvAvailableEvents.Items.Count - 1].GetBounds(ItemBoundsPortion.Entire).Bottom - 1);
 
@@ -1125,24 +1123,17 @@ namespace XmlParsersAndUi.Forms {
 
                 // find out if we insert before or after the item the mouse is over
                 bool insertBefore;
-                if (e.Y < rc.Top + (rc.Height / 2))
-                {
+                if (e.Y < rc.Top + (rc.Height / 2)) {
                     insertBefore = true;
-                }
-                else
-                {
+                } else {
                     insertBefore = false;
                 }
 
-                if (_itemDnD != itemOver) // if we dropped the item on itself, nothing is to be done
-                {
-                    if (insertBefore)
-                    {
+                if (_itemDnD != itemOver) { // if we dropped the item on itself, nothing is to be done
+                    if (insertBefore) {
                         clvAvailableEvents.Items.Remove(_itemDnD);
                         clvAvailableEvents.Items.Insert(itemOver.Index, _itemDnD);
-                    }
-                    else
-                    {
+                    } else {
                         clvAvailableEvents.Items.Remove(_itemDnD);
                         clvAvailableEvents.Items.Insert(itemOver.Index + 1, _itemDnD);
                     }
@@ -1150,13 +1141,11 @@ namespace XmlParsersAndUi.Forms {
 
                 // clear the insertion line
                 clvAvailableEvents.LineAfter =
-                clvAvailableEvents.LineBefore = -1;
+                    clvAvailableEvents.LineBefore = -1;
 
                 clvAvailableEvents.Invalidate();
 
-            }
-            finally
-            {
+            } finally {
                 // finish drag&drop operation
                 _itemDnD = null;
                 Cursor = Cursors.Default;
