@@ -1,0 +1,37 @@
+
+
+
+
+
+10/15/2012 11:34:16 AM
+
+
+There is a file sharing violation. A different process might be using the file. [ X:\beast\Test_Automation\Database.sdf ]
+
+
+There is a file sharing violation. A different process might be using the file. [ X:\beast\Test_Automation\Database.sdf ]
+
+
+
+
+10/16/2012 6:01:51 PM
+
+
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 172.21.193.14:22
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   at Tamir.SharpSsh.java.net.Socket..ctor(String host, Int32 port)
+   at Tamir.SharpSsh.jsch.Util.createSocket(String host, Int32 port, Int32 timeout)
+
+
+Tamir.SharpSsh.jsch.JSchException: System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 172.21.193.14:22
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   at Tamir.SharpSsh.java.net.Socket..ctor(String host, Int32 port)
+   at Tamir.SharpSsh.jsch.Util.createSocket(String host, Int32 port, Int32 timeout)
+   at Tamir.SharpSsh.jsch.Session.connect(Int32 connectTimeout)
+   at Tamir.SharpSsh.jsch.Session.connect()
+   at Tamir.SharpSsh.SshStream..ctor(String host, String username, String password)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.GenerateSizeFile()
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.GetVersionFile(String appDirectory, String host)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.btnValidateVersion_Click(Object sender, EventArgs e)

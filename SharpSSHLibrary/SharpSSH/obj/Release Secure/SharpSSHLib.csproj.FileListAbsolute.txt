@@ -1,0 +1,6 @@
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\bin\Release\Automation.SshEng.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\obj\Release Secure\ResolveAssemblyReference.cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\obj\Release Secure\Tamir.SharpSsh.jsch.examples.InputForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\obj\Release Secure\GenerateResource-ResGen.read.1.tlog
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\obj\Release Secure\GenerateResource-ResGen.write.1.tlog
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\obj\Release Secure\Automation.SshEng.dll

@@ -1,0 +1,48 @@
+
+
+
+
+
+10/12/2012 11:14:55 AM
+
+
+The application is out date. Please update to the latest version!
+
+
+System.ComponentModel.InvalidAsynchronousStateException: The application is out date. Please update to the latest version!
+
+
+
+
+10/12/2012 11:14:55 AM
+
+
+An overflow occurred while converting to datetime.
+
+
+An overflow occurred while converting to datetime.
+
+
+
+
+10/16/2012 6:05:53 PM
+
+
+System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 172.21.193.14:22
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   at Tamir.SharpSsh.java.net.Socket..ctor(String host, Int32 port)
+   at Tamir.SharpSsh.jsch.Util.createSocket(String host, Int32 port, Int32 timeout)
+
+
+Tamir.SharpSsh.jsch.JSchException: System.Net.Sockets.SocketException: No connection could be made because the target machine actively refused it 172.21.193.14:22
+   at System.Net.Sockets.Socket.DoConnect(EndPoint endPointSnapshot, SocketAddress socketAddress)
+   at System.Net.Sockets.Socket.Connect(EndPoint remoteEP)
+   at Tamir.SharpSsh.java.net.Socket..ctor(String host, Int32 port)
+   at Tamir.SharpSsh.jsch.Util.createSocket(String host, Int32 port, Int32 timeout)
+   at Tamir.SharpSsh.jsch.Session.connect(Int32 connectTimeout)
+   at Tamir.SharpSsh.jsch.Session.connect()
+   at Tamir.SharpSsh.SshStream..ctor(String host, String username, String password) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\SshStream.cs:line 54
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.GenerateSizeFile() in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 1786
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.GetVersionFile(String appDirectory, String host) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 1375
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.btnValidateVersion_Click(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 1336

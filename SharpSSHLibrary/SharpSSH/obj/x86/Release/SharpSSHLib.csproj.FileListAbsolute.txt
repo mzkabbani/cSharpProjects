@@ -1,0 +1,7 @@
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\bin\x86\Release\win-ssh-x86.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\bin\x86\Release\DiffieHellman.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\bin\x86\Release\Org.Mentalis.Security.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\obj\x86\Release\ResolveAssemblyReference.cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\obj\x86\Release\Tamir.SharpSsh.jsch.examples.InputForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\obj\x86\Release\SharpSSHLib.csproj.GenerateResource.Cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\obj\x86\Release\win-ssh-x86.dll

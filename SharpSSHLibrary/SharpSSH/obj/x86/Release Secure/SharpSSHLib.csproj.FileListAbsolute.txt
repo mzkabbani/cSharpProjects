@@ -1,0 +1,9 @@
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\bin\x86\Release\Automation.SshEng.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\bin\x86\Release\Automation.SshEng.tlb
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\bin\x86\Release\DiffieHellman.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\bin\x86\Release\Org.Mentalis.Security.dll
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\obj\x86\Release Secure\ResolveAssemblyReference.cache
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\obj\x86\Release Secure\Tamir.SharpSsh.jsch.examples.InputForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\obj\x86\Release Secure\GenerateResource-ResGen.read.1.tlog
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\obj\x86\Release Secure\GenerateResource-ResGen.write.1.tlog
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SharpSSHLibrary\SharpSSH\obj\x86\Release Secure\Automation.SshEng.dll
