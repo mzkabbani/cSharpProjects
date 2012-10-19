@@ -13,7 +13,7 @@ using XmlParsersAndUi.Classes;
 using System.Threading;
 using XmlParsersAndUi.Controls;
 using System.Text.RegularExpressions;
-using DifferenceEngine;
+
 using System.Collections;
 using Automation.Common.Utils;
 using Automation.Common;
@@ -623,13 +623,13 @@ namespace XmlParsersAndUi.Forms {
 
         private bool IsValidToStartSearching(string inputDir, List<AdvancedRecomendation> currentlyUsedCaptures) {
             if (string.IsNullOrEmpty(inputDir)) {
-                FrontendUtils.ShowInformation("Input directory cannot be empty!", true);
+                CommonUtils.ShowInformation("Input directory cannot be empty!", true);
                 return false;
             } else if (!Directory.Exists(inputDir)) {
-                FrontendUtils.ShowInformation("Input directory does not exist!", true);
+                CommonUtils.ShowInformation("Input directory does not exist!", true);
                 return false;
             } else if (currentlyUsedCaptures.Count < 1) {
-                FrontendUtils.ShowInformation("No search patterns are selected!", true);
+                CommonUtils.ShowInformation("No search patterns are selected!", true);
                 return false;
             }
             return true;
@@ -647,7 +647,7 @@ namespace XmlParsersAndUi.Forms {
 
                 for (int j = 0; j < bgWorkerObject.targetedFiles.Count; j++) {
                     string readText = string.Empty;
-                    readText = FrontendUtils.ReadFile(bgWorkerObject.targetedFiles[j].fileName);
+                    readText = CommonUtils.ReadFile(bgWorkerObject.targetedFiles[j].fileName);
                     ParseTargetedFile(complexCaptureMatchObject.captureEvent, readText, complexCaptureMatchObject, bgWorkerObject.targetedFiles[j].fileName);
                     bgWorkerObject.targetedFiles[j].parsed = true;
                     bgwSearchForMatches.ReportProgress((int)Math.Round(((double)(((i) + (Jcounter))) / ((currentlyUsedCaptures.Count) * (bgWorkerObject.targetedFiles.Count + 1))) * 100, 0), bgWorkerObject);
@@ -676,7 +676,7 @@ namespace XmlParsersAndUi.Forms {
                 //CaptureEvent capture = BackEndUtils.SelectAdvancedRecById((sender as ListView).SelectedItems[0].Tag);
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -689,7 +689,7 @@ namespace XmlParsersAndUi.Forms {
                     SetupUiFromCapturePoint(currentlySelectedEvent);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -703,7 +703,7 @@ namespace XmlParsersAndUi.Forms {
                     checkAndDoubleClickOnListViewMutex = false;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -715,7 +715,7 @@ namespace XmlParsersAndUi.Forms {
                     checkAndDoubleClickOnListViewMutex = false;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -763,7 +763,7 @@ namespace XmlParsersAndUi.Forms {
                 FillDatagridWithResults(backGroundWorkerObject);
                 btnResetForm.Visible = true;
 
-                DialogResult dialogResult = FrontendUtils.ShowConformation("Search completed, with " + lblFoundNodesCound.Text + " total hits!\n Proceed to replacement?");
+                DialogResult dialogResult = CommonUtils.ShowConformation("Search completed, with " + lblFoundNodesCound.Text + " total hits!\n Proceed to replacement?");
                 if (dialogResult == DialogResult.Yes) {
                     //REPLACEMENT_TOTAL_USAGE_COUNT = Advanced_Replacements.GetTotalAdvanceReplacementUsageCount();
                     SetupUiForReplacements();
@@ -786,7 +786,7 @@ namespace XmlParsersAndUi.Forms {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -798,7 +798,7 @@ namespace XmlParsersAndUi.Forms {
              //   REPLACEMENT_TOTAL_USAGE_COUNT = Advanced_Replacements.GetTotalAdvanceReplacementUsageCount();
                 SetupUiForReplacements();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -842,7 +842,7 @@ namespace XmlParsersAndUi.Forms {
                 srcPopularityAdded.Invalidate();
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -887,7 +887,7 @@ namespace XmlParsersAndUi.Forms {
 	                pnlAvailableReplacements.Focus();
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -923,7 +923,7 @@ namespace XmlParsersAndUi.Forms {
                 //    }
                 //}
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -962,7 +962,7 @@ namespace XmlParsersAndUi.Forms {
 
                 btnStartReplacementOp.Visible = false;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -986,11 +986,11 @@ namespace XmlParsersAndUi.Forms {
                     if (capturesAndReplacements[i].usedReplacementEvent != null ) {
                         if (capturesAndReplacements[i].captureEvent.captureEventCategory != (int)AdvancedRecomendationCategory.Verbal) {
                             for (int j = 0; j < capturesAndReplacements[i].fileNamesHit.Count; j++) {
-                                string readText = FrontendUtils.ReadFile(capturesAndReplacements[i].fileNamesHit[j].fileName);
+                                string readText = CommonUtils.ReadFile(capturesAndReplacements[i].fileNamesHit[j].fileName);
                                 readText = XDocument.Parse(readText).ToString();
 
                                 readText = regexForNewLines.Replace(readText, "\n   ");
-                                oldReadFile = FrontendUtils.FormatXml(readText);
+                                oldReadFile = CommonUtils.FormatXml(readText);
                                 for (int k = 0; k < capturesAndReplacements[i].fileNamesHit[j].matchedNodes.Count; k++) {
                                     string parametrizedReplacement = GetReplacementValueFromEvent(capturesAndReplacements[i].usedReplacementEvent, capturesAndReplacements[i].fileNamesHit[j].matchedNodes[k]);
                                     parametrizedReplacement = regexForNewLines.Replace(parametrizedReplacement, "\n   ");
@@ -1001,13 +1001,13 @@ namespace XmlParsersAndUi.Forms {
 
                                 }
 
-                                readText = FrontendUtils.FormatXml(readText);
+                                readText = CommonUtils.FormatXml(readText);
                                 if (!string.Equals(oldReadFile, readText)) {
                                     changedFiles.Add(capturesAndReplacements[i].fileNamesHit[j].fileName);
                                     string fileSystemPathSource = capturesAndReplacements[i].fileNamesHit[j].fileName.Replace(inputDirectory, outputDirectory);
-                                    FrontendUtils.WriteFile(fileSystemPathSource, oldReadFile);
+                                    CommonUtils.WriteFile(fileSystemPathSource, oldReadFile);
                                 }
-                                FrontendUtils.WriteFile(capturesAndReplacements[i].fileNamesHit[j].fileName, readText);
+                                CommonUtils.WriteFile(capturesAndReplacements[i].fileNamesHit[j].fileName, readText);
                             }
                         }
                     }
@@ -1018,7 +1018,7 @@ namespace XmlParsersAndUi.Forms {
                 gbAffectedFiles.Visible = true;
                 fillTree(changedFiles);
                 tvAffectedFiles.ExpandAll();
-                FrontendUtils.ShowInformation("Replacement done!", false);
+                CommonUtils.ShowInformation("Replacement done!", false);
                 
 				
 			                
@@ -1027,7 +1027,7 @@ namespace XmlParsersAndUi.Forms {
                 
                
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1041,7 +1041,7 @@ namespace XmlParsersAndUi.Forms {
                     TextDiff(fileSystemPathSource, fileSystemPathReached);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1062,7 +1062,7 @@ namespace XmlParsersAndUi.Forms {
                 pcProgress.Rotate = false;
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1083,7 +1083,7 @@ namespace XmlParsersAndUi.Forms {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1095,7 +1095,7 @@ namespace XmlParsersAndUi.Forms {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1105,7 +1105,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 ClearAllAdvancedRules();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1118,7 +1118,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 SelectAllAvailableAdvancedRules();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1140,7 +1140,7 @@ namespace XmlParsersAndUi.Forms {
                     txtInputDir.Text = dialog.SelectedPath;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
     }

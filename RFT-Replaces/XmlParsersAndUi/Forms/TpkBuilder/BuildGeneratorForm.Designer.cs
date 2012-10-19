@@ -36,182 +36,106 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 		/// </summary>
 		private void InitializeComponent()
 		{
-			System.Windows.Forms.ListViewItem listViewItem7 = new System.Windows.Forms.ListViewItem("automation.comparisonguixml");
-			System.Windows.Forms.ListViewItem listViewItem8 = new System.Windows.Forms.ListViewItem("automation.sqloperations");
-			System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Task 1");
-			System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Task 2");
-			System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("Task 3");
-			System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("Task 4");
-			System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Sequence 1", new System.Windows.Forms.TreeNode[] {
-									treeNode24,
-									treeNode25});
-			System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Task 5");
-			System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("Test-Main", new System.Windows.Forms.TreeNode[] {
-									treeNode22,
-									treeNode23,
-									treeNode26,
-									treeNode27});
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuildGeneratorForm));
+			this.gbAvailableTasks = new System.Windows.Forms.GroupBox();
 			this.lvAvailableTasks = new System.Windows.Forms.ListView();
-			this.groupBox3 = new System.Windows.Forms.GroupBox();
-			this.wbTaskDetails = new System.Windows.Forms.WebBrowser();
-			this.groupBox4 = new System.Windows.Forms.GroupBox();
-			this.tabControl1 = new System.Windows.Forms.TabControl();
-			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.textBox1 = new System.Windows.Forms.TextBox();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
-			this.treeView1 = new System.Windows.Forms.TreeView();
+			this.gbDetails = new System.Windows.Forms.GroupBox();
+			this.srcTaskRating = new RatingControls.StarRatingControl();
 			this.btnAddTask = new System.Windows.Forms.Button();
-			this.groupBox1.SuspendLayout();
-			this.groupBox3.SuspendLayout();
-			this.groupBox4.SuspendLayout();
-			this.tabControl1.SuspendLayout();
-			this.tabPage1.SuspendLayout();
-			this.tabPage2.SuspendLayout();
+			this.wbTaskDetails = new System.Windows.Forms.WebBrowser();
+			this.gpTasks = new System.Windows.Forms.GroupBox();
+			this.scAvailTaskDetailsSplitter = new System.Windows.Forms.SplitContainer();
+			this.tcResults = new System.Windows.Forms.TabControl();
+			this.tpBuildTasks = new System.Windows.Forms.TabPage();
+			this.dgvBuildTasks = new System.Windows.Forms.DataGridView();
+			this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.task = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.tpBuildSequence = new System.Windows.Forms.TabPage();
+			this.tvBuildSequence = new System.Windows.Forms.TreeView();
+			this.tpBuildText = new System.Windows.Forms.TabPage();
+			this.txtEditorBText = new ICSharpCode.TextEditor.TextEditorControl();
+			this.scInputResultHSplit = new System.Windows.Forms.SplitContainer();
+			this.gbAvailableTasks.SuspendLayout();
+			this.gbDetails.SuspendLayout();
+			this.gpTasks.SuspendLayout();
+			this.scAvailTaskDetailsSplitter.Panel1.SuspendLayout();
+			this.scAvailTaskDetailsSplitter.Panel2.SuspendLayout();
+			this.scAvailTaskDetailsSplitter.SuspendLayout();
+			this.tcResults.SuspendLayout();
+			this.tpBuildTasks.SuspendLayout();
+			((System.ComponentModel.ISupportInitialize)(this.dgvBuildTasks)).BeginInit();
+			this.tpBuildSequence.SuspendLayout();
+			this.tpBuildText.SuspendLayout();
+			this.scInputResultHSplit.Panel1.SuspendLayout();
+			this.scInputResultHSplit.Panel2.SuspendLayout();
+			this.scInputResultHSplit.SuspendLayout();
 			this.SuspendLayout();
 			// 
-			// groupBox1
+			// gbAvailableTasks
 			// 
-			this.groupBox1.Controls.Add(this.lvAvailableTasks);
-			this.groupBox1.Location = new System.Drawing.Point(6, 19);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(178, 358);
-			this.groupBox1.TabIndex = 0;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Available Tasks";
+			this.gbAvailableTasks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+									| System.Windows.Forms.AnchorStyles.Left) 
+									| System.Windows.Forms.AnchorStyles.Right)));
+			this.gbAvailableTasks.Controls.Add(this.lvAvailableTasks);
+			this.gbAvailableTasks.Location = new System.Drawing.Point(3, 0);
+			this.gbAvailableTasks.Name = "gbAvailableTasks";
+			this.gbAvailableTasks.Size = new System.Drawing.Size(181, 318);
+			this.gbAvailableTasks.TabIndex = 0;
+			this.gbAvailableTasks.TabStop = false;
+			this.gbAvailableTasks.Text = "Available Tasks";
 			// 
 			// lvAvailableTasks
 			// 
-			this.lvAvailableTasks.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-									| System.Windows.Forms.AnchorStyles.Left)));
-			listViewItem7.Tag = "http://globalqa/qa/infrastructure/doc/runtime/v2.3/AutoAntTasks/AutoAntComparison" +
-			"GuiXml.html";
-			listViewItem8.Tag = "http://globalqa/qa/infrastructure/doc/runtime/v2.3/AutoAntTasks/AutoAntSqlOperati" +
-			"ons.html";
-			this.lvAvailableTasks.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-									listViewItem7,
-									listViewItem8});
+			this.lvAvailableTasks.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.lvAvailableTasks.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.lvAvailableTasks.Location = new System.Drawing.Point(3, 16);
 			this.lvAvailableTasks.Name = "lvAvailableTasks";
-			this.lvAvailableTasks.Size = new System.Drawing.Size(172, 336);
+			this.lvAvailableTasks.Size = new System.Drawing.Size(175, 299);
 			this.lvAvailableTasks.TabIndex = 0;
 			this.lvAvailableTasks.UseCompatibleStateImageBehavior = false;
 			this.lvAvailableTasks.View = System.Windows.Forms.View.List;
 			this.lvAvailableTasks.SelectedIndexChanged += new System.EventHandler(this.LvAvailableTasksSelectedIndexChanged);
 			// 
-			// groupBox3
+			// gbDetails
 			// 
-			this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-									| System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox3.Controls.Add(this.btnAddTask);
-			this.groupBox3.Controls.Add(this.wbTaskDetails);
-			this.groupBox3.Location = new System.Drawing.Point(190, 19);
-			this.groupBox3.Name = "groupBox3";
-			this.groupBox3.Size = new System.Drawing.Size(508, 358);
-			this.groupBox3.TabIndex = 2;
-			this.groupBox3.TabStop = false;
-			this.groupBox3.Text = "Details";
-			// 
-			// wbTaskDetails
-			// 
-			this.wbTaskDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+			this.gbDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
 									| System.Windows.Forms.AnchorStyles.Left) 
 									| System.Windows.Forms.AnchorStyles.Right)));
-			this.wbTaskDetails.Location = new System.Drawing.Point(3, 16);
-			this.wbTaskDetails.MinimumSize = new System.Drawing.Size(20, 20);
-			this.wbTaskDetails.Name = "wbTaskDetails";
-			this.wbTaskDetails.Size = new System.Drawing.Size(499, 307);
-			this.wbTaskDetails.TabIndex = 1;
+			this.gbDetails.Controls.Add(this.srcTaskRating);
+			this.gbDetails.Controls.Add(this.btnAddTask);
+			this.gbDetails.Controls.Add(this.wbTaskDetails);
+			this.gbDetails.Location = new System.Drawing.Point(0, 0);
+			this.gbDetails.Name = "gbDetails";
+			this.gbDetails.Size = new System.Drawing.Size(500, 318);
+			this.gbDetails.TabIndex = 2;
+			this.gbDetails.TabStop = false;
+			this.gbDetails.Text = "Details";
 			// 
-			// groupBox4
+			// srcTaskRating
 			// 
-			this.groupBox4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-									| System.Windows.Forms.AnchorStyles.Right)));
-			this.groupBox4.Controls.Add(this.groupBox1);
-			this.groupBox4.Controls.Add(this.groupBox3);
-			this.groupBox4.Location = new System.Drawing.Point(12, 12);
-			this.groupBox4.Name = "groupBox4";
-			this.groupBox4.Size = new System.Drawing.Size(704, 383);
-			this.groupBox4.TabIndex = 5;
-			this.groupBox4.TabStop = false;
-			this.groupBox4.Text = "Tasks";
-			// 
-			// tabControl1
-			// 
-			this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-									| System.Windows.Forms.AnchorStyles.Left) 
-									| System.Windows.Forms.AnchorStyles.Right)));
-			this.tabControl1.Controls.Add(this.tabPage1);
-			this.tabControl1.Controls.Add(this.tabPage2);
-			this.tabControl1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.tabControl1.Location = new System.Drawing.Point(12, 401);
-			this.tabControl1.Name = "tabControl1";
-			this.tabControl1.SelectedIndex = 0;
-			this.tabControl1.Size = new System.Drawing.Size(704, 216);
-			this.tabControl1.TabIndex = 6;
-			// 
-			// tabPage1
-			// 
-			this.tabPage1.Controls.Add(this.textBox1);
-			this.tabPage1.Location = new System.Drawing.Point(4, 22);
-			this.tabPage1.Name = "tabPage1";
-			this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage1.Size = new System.Drawing.Size(696, 190);
-			this.tabPage1.TabIndex = 0;
-			this.tabPage1.Text = "Build Text";
-			this.tabPage1.UseVisualStyleBackColor = true;
-			// 
-			// textBox1
-			// 
-			this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-									| System.Windows.Forms.AnchorStyles.Left) 
-									| System.Windows.Forms.AnchorStyles.Right)));
-			this.textBox1.Location = new System.Drawing.Point(6, 6);
-			this.textBox1.Multiline = true;
-			this.textBox1.Name = "textBox1";
-			this.textBox1.Size = new System.Drawing.Size(682, 176);
-			this.textBox1.TabIndex = 0;
-			this.textBox1.Text = "<project default=\"run\">\r\n<target name=\"run\">\r\n</target>\r\n</project>";
-			// 
-			// tabPage2
-			// 
-			this.tabPage2.Controls.Add(this.treeView1);
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(710, 165);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "Build Sequence";
-			this.tabPage2.UseVisualStyleBackColor = true;
-			// 
-			// treeView1
-			// 
-			this.treeView1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.treeView1.Location = new System.Drawing.Point(3, 3);
-			this.treeView1.Name = "treeView1";
-			treeNode22.Name = "Node1";
-			treeNode22.Text = "Task 1";
-			treeNode23.Name = "Node2";
-			treeNode23.Text = "Task 2";
-			treeNode24.Name = "Node6";
-			treeNode24.Text = "Task 3";
-			treeNode25.Name = "Node7";
-			treeNode25.Text = "Task 4";
-			treeNode26.Name = "Node3";
-			treeNode26.Text = "Sequence 1";
-			treeNode27.Name = "Node4";
-			treeNode27.Text = "Task 5";
-			treeNode28.Name = "Node0";
-			treeNode28.Text = "Test-Main";
-			this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-									treeNode28});
-			this.treeView1.Size = new System.Drawing.Size(704, 159);
-			this.treeView1.TabIndex = 0;
+			this.srcTaskRating.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.srcTaskRating.BottomMargin = 2;
+			this.srcTaskRating.Enabled = false;
+			this.srcTaskRating.HoverColor = System.Drawing.Color.Gold;
+			this.srcTaskRating.LeftMargin = 2;
+			this.srcTaskRating.Location = new System.Drawing.Point(374, 19);
+			this.srcTaskRating.Name = "srcTaskRating";
+			this.srcTaskRating.OutlineColor = System.Drawing.Color.Black;
+			this.srcTaskRating.OutlineThickness = 1;
+			this.srcTaskRating.RightMargin = 2;
+			this.srcTaskRating.SelectedColor = System.Drawing.Color.RoyalBlue;
+			this.srcTaskRating.Size = new System.Drawing.Size(120, 18);
+			this.srcTaskRating.StarCount = 5;
+			this.srcTaskRating.StarSpacing = 8;
+			this.srcTaskRating.TabIndex = 6;
+			this.srcTaskRating.TabStop = false;
+			this.srcTaskRating.TopMargin = 2;
 			// 
 			// btnAddTask
 			// 
-			this.btnAddTask.Anchor = System.Windows.Forms.AnchorStyles.Top;
-			this.btnAddTask.Location = new System.Drawing.Point(217, 329);
+			this.btnAddTask.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+			this.btnAddTask.Location = new System.Drawing.Point(213, 289);
 			this.btnAddTask.Name = "btnAddTask";
 			this.btnAddTask.Size = new System.Drawing.Size(75, 23);
 			this.btnAddTask.TabIndex = 5;
@@ -219,35 +143,209 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 			this.btnAddTask.UseVisualStyleBackColor = true;
 			this.btnAddTask.Click += new System.EventHandler(this.BtnAddTaskClick);
 			// 
+			// wbTaskDetails
+			// 
+			this.wbTaskDetails.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+									| System.Windows.Forms.AnchorStyles.Left) 
+									| System.Windows.Forms.AnchorStyles.Right)));
+			this.wbTaskDetails.Location = new System.Drawing.Point(6, 43);
+			this.wbTaskDetails.MinimumSize = new System.Drawing.Size(20, 20);
+			this.wbTaskDetails.Name = "wbTaskDetails";
+			this.wbTaskDetails.Size = new System.Drawing.Size(488, 240);
+			this.wbTaskDetails.TabIndex = 1;
+			// 
+			// gpTasks
+			// 
+			this.gpTasks.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+									| System.Windows.Forms.AnchorStyles.Left) 
+									| System.Windows.Forms.AnchorStyles.Right)));
+			this.gpTasks.Controls.Add(this.scAvailTaskDetailsSplitter);
+			this.gpTasks.Location = new System.Drawing.Point(12, 12);
+			this.gpTasks.Name = "gpTasks";
+			this.gpTasks.Size = new System.Drawing.Size(702, 340);
+			this.gpTasks.TabIndex = 5;
+			this.gpTasks.TabStop = false;
+			this.gpTasks.Text = "Tasks";
+			// 
+			// scAvailTaskDetailsSplitter
+			// 
+			this.scAvailTaskDetailsSplitter.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.scAvailTaskDetailsSplitter.Location = new System.Drawing.Point(3, 16);
+			this.scAvailTaskDetailsSplitter.Name = "scAvailTaskDetailsSplitter";
+			// 
+			// scAvailTaskDetailsSplitter.Panel1
+			// 
+			this.scAvailTaskDetailsSplitter.Panel1.Controls.Add(this.gbAvailableTasks);
+			// 
+			// scAvailTaskDetailsSplitter.Panel2
+			// 
+			this.scAvailTaskDetailsSplitter.Panel2.Controls.Add(this.gbDetails);
+			this.scAvailTaskDetailsSplitter.Size = new System.Drawing.Size(696, 321);
+			this.scAvailTaskDetailsSplitter.SplitterDistance = 192;
+			this.scAvailTaskDetailsSplitter.TabIndex = 3;
+			// 
+			// tcResults
+			// 
+			this.tcResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+									| System.Windows.Forms.AnchorStyles.Left) 
+									| System.Windows.Forms.AnchorStyles.Right)));
+			this.tcResults.Controls.Add(this.tpBuildTasks);
+			this.tcResults.Controls.Add(this.tpBuildSequence);
+			this.tcResults.Controls.Add(this.tpBuildText);
+			this.tcResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.tcResults.Location = new System.Drawing.Point(12, 3);
+			this.tcResults.Name = "tcResults";
+			this.tcResults.SelectedIndex = 0;
+			this.tcResults.Size = new System.Drawing.Size(702, 255);
+			this.tcResults.TabIndex = 6;
+			// 
+			// tpBuildTasks
+			// 
+			this.tpBuildTasks.Controls.Add(this.dgvBuildTasks);
+			this.tpBuildTasks.Location = new System.Drawing.Point(4, 22);
+			this.tpBuildTasks.Name = "tpBuildTasks";
+			this.tpBuildTasks.Size = new System.Drawing.Size(694, 229);
+			this.tpBuildTasks.TabIndex = 2;
+			this.tpBuildTasks.Text = "Build Tasks";
+			this.tpBuildTasks.UseVisualStyleBackColor = true;
+			// 
+			// dgvBuildTasks
+			// 
+			this.dgvBuildTasks.AllowUserToAddRows = false;
+			this.dgvBuildTasks.AllowUserToDeleteRows = false;
+			this.dgvBuildTasks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.dgvBuildTasks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvBuildTasks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+									this.index,
+									this.task,
+									this.id});
+			this.dgvBuildTasks.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dgvBuildTasks.Location = new System.Drawing.Point(0, 0);
+			this.dgvBuildTasks.MultiSelect = false;
+			this.dgvBuildTasks.Name = "dgvBuildTasks";
+			this.dgvBuildTasks.RowHeadersVisible = false;
+			this.dgvBuildTasks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+			this.dgvBuildTasks.Size = new System.Drawing.Size(694, 229);
+			this.dgvBuildTasks.TabIndex = 0;
+			// 
+			// index
+			// 
+			this.index.FillWeight = 20.30457F;
+			this.index.HeaderText = "Index";
+			this.index.Name = "index";
+			// 
+			// task
+			// 
+			this.task.FillWeight = 179.6954F;
+			this.task.HeaderText = "Task";
+			this.task.Name = "task";
+			// 
+			// id
+			// 
+			this.id.HeaderText = "id";
+			this.id.Name = "id";
+			this.id.Visible = false;
+			// 
+			// tpBuildSequence
+			// 
+			this.tpBuildSequence.Controls.Add(this.tvBuildSequence);
+			this.tpBuildSequence.Location = new System.Drawing.Point(4, 22);
+			this.tpBuildSequence.Name = "tpBuildSequence";
+			this.tpBuildSequence.Padding = new System.Windows.Forms.Padding(3);
+			this.tpBuildSequence.Size = new System.Drawing.Size(694, 230);
+			this.tpBuildSequence.TabIndex = 1;
+			this.tpBuildSequence.Text = "Build Sequence";
+			this.tpBuildSequence.UseVisualStyleBackColor = true;
+			// 
+			// tvBuildSequence
+			// 
+			this.tvBuildSequence.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tvBuildSequence.Location = new System.Drawing.Point(3, 3);
+			this.tvBuildSequence.Name = "tvBuildSequence";
+			this.tvBuildSequence.Size = new System.Drawing.Size(688, 224);
+			this.tvBuildSequence.TabIndex = 0;
+			// 
+			// tpBuildText
+			// 
+			this.tpBuildText.Controls.Add(this.txtEditorBText);
+			this.tpBuildText.Location = new System.Drawing.Point(4, 22);
+			this.tpBuildText.Name = "tpBuildText";
+			this.tpBuildText.Size = new System.Drawing.Size(694, 230);
+			this.tpBuildText.TabIndex = 3;
+			this.tpBuildText.Text = "Build Text";
+			// 
+			// txtEditorBText
+			// 
+			this.txtEditorBText.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.txtEditorBText.IsReadOnly = false;
+			this.txtEditorBText.Location = new System.Drawing.Point(0, 0);
+			this.txtEditorBText.Name = "txtEditorBText";
+			this.txtEditorBText.Size = new System.Drawing.Size(694, 230);
+			this.txtEditorBText.TabIndex = 0;
+			// 
+			// scInputResultHSplit
+			// 
+			this.scInputResultHSplit.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.scInputResultHSplit.Location = new System.Drawing.Point(0, 0);
+			this.scInputResultHSplit.Name = "scInputResultHSplit";
+			this.scInputResultHSplit.Orientation = System.Windows.Forms.Orientation.Horizontal;
+			// 
+			// scInputResultHSplit.Panel1
+			// 
+			this.scInputResultHSplit.Panel1.Controls.Add(this.gpTasks);
+			// 
+			// scInputResultHSplit.Panel2
+			// 
+			this.scInputResultHSplit.Panel2.Controls.Add(this.tcResults);
+			this.scInputResultHSplit.Size = new System.Drawing.Size(726, 629);
+			this.scInputResultHSplit.SplitterDistance = 355;
+			this.scInputResultHSplit.TabIndex = 7;
+			// 
 			// BuildGeneratorForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(726, 629);
-			this.Controls.Add(this.tabControl1);
-			this.Controls.Add(this.groupBox4);
+			this.Controls.Add(this.scInputResultHSplit);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "BuildGeneratorForm";
-			this.Text = "BuildGeneratorForm";
+			this.Text = "Build Generator";
 			this.Load += new System.EventHandler(this.BuildGeneratorFormLoad);
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox3.ResumeLayout(false);
-			this.groupBox4.ResumeLayout(false);
-			this.tabControl1.ResumeLayout(false);
-			this.tabPage1.ResumeLayout(false);
-			this.tabPage1.PerformLayout();
-			this.tabPage2.ResumeLayout(false);
+			this.gbAvailableTasks.ResumeLayout(false);
+			this.gbDetails.ResumeLayout(false);
+			this.gpTasks.ResumeLayout(false);
+			this.scAvailTaskDetailsSplitter.Panel1.ResumeLayout(false);
+			this.scAvailTaskDetailsSplitter.Panel2.ResumeLayout(false);
+			this.scAvailTaskDetailsSplitter.ResumeLayout(false);
+			this.tcResults.ResumeLayout(false);
+			this.tpBuildTasks.ResumeLayout(false);
+			((System.ComponentModel.ISupportInitialize)(this.dgvBuildTasks)).EndInit();
+			this.tpBuildSequence.ResumeLayout(false);
+			this.tpBuildText.ResumeLayout(false);
+			this.scInputResultHSplit.Panel1.ResumeLayout(false);
+			this.scInputResultHSplit.Panel2.ResumeLayout(false);
+			this.scInputResultHSplit.ResumeLayout(false);
 			this.ResumeLayout(false);
 		}
-		private System.Windows.Forms.TreeView treeView1;
-		private System.Windows.Forms.TextBox textBox1;
-		private System.Windows.Forms.TabPage tabPage2;
-		private System.Windows.Forms.TabPage tabPage1;
-		private System.Windows.Forms.TabControl tabControl1;
-		private System.Windows.Forms.GroupBox groupBox4;
+		private ICSharpCode.TextEditor.TextEditorControl txtEditorBText;
+		private System.Windows.Forms.SplitContainer scInputResultHSplit;
+		private System.Windows.Forms.SplitContainer scAvailTaskDetailsSplitter;
+		private RatingControls.StarRatingControl srcTaskRating;
+		private System.Windows.Forms.DataGridViewTextBoxColumn id;
+		
+		private System.Windows.Forms.DataGridViewTextBoxColumn task;
+		private System.Windows.Forms.DataGridViewTextBoxColumn index;
+		private System.Windows.Forms.DataGridView dgvBuildTasks;
+		private System.Windows.Forms.TabPage tpBuildTasks;
+		private System.Windows.Forms.TreeView tvBuildSequence;
+		private System.Windows.Forms.TabPage tpBuildSequence;
+		private System.Windows.Forms.TabPage tpBuildText;
+		private System.Windows.Forms.TabControl tcResults;
+		private System.Windows.Forms.GroupBox gpTasks;
 		private System.Windows.Forms.Button btnAddTask;
 		private System.Windows.Forms.WebBrowser wbTaskDetails;
 		private System.Windows.Forms.ListView lvAvailableTasks;
-		private System.Windows.Forms.GroupBox groupBox3;
-		private System.Windows.Forms.GroupBox groupBox1;
+		private System.Windows.Forms.GroupBox gbDetails;
+		private System.Windows.Forms.GroupBox gbAvailableTasks;
 	}
 }

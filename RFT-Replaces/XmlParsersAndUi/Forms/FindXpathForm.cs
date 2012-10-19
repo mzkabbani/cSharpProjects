@@ -31,7 +31,7 @@ namespace XmlParsersAndUi {
                 //    }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 

@@ -83,7 +83,7 @@ namespace Automation.Backend{
                    InsertUpdatedCategories(treeNodes, transaction, conn);
                    transaction.Commit();
                } catch (Exception ex) {
-                   FrontendUtils.LogError(ex.Message, ex);
+                   CommonUtils.LogError(ex.Message, ex);
                    transaction.Rollback();
                }
            } finally {

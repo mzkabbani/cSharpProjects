@@ -43,7 +43,7 @@ namespace XmlParsersAndUi.Forms {
                 }
                 tvFolderNames.ExpandAll();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -51,7 +51,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 SaveUpdatedTreeView();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -84,7 +84,7 @@ namespace XmlParsersAndUi.Forms {
                 btnAddChild.Enabled = true;
                 btnSaveName.Enabled = true;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -92,7 +92,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 tvFolderNames.SelectedNode.Text = txtSelectedFolderName.Text;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -103,7 +103,7 @@ namespace XmlParsersAndUi.Forms {
                 btnSaveName.Enabled = false;
                 tvFolderNames.SelectedNode = new TreeNode();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -111,7 +111,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 tvFolderNames.SelectedNode.Nodes.Add(txtSelectedFolderName.Text);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -124,7 +124,7 @@ namespace XmlParsersAndUi.Forms {
                     tvFolderNames.SelectedNode.Nodes.Add(form.Controls["txtNewName"].Text);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -137,7 +137,7 @@ namespace XmlParsersAndUi.Forms {
                     tvFolderNames.SelectedNode.Text = form.Controls["txtNewName"].Text;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 

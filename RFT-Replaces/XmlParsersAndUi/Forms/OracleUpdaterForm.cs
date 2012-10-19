@@ -37,7 +37,7 @@ namespace XmlParsersAndUi.Forms {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -49,7 +49,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 cboModes.SelectedIndex = 0;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -75,7 +75,7 @@ namespace XmlParsersAndUi.Forms {
                     cboModes.SelectedIndex = 0;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -141,7 +141,7 @@ namespace XmlParsersAndUi.Forms {
                 }
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 

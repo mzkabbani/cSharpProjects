@@ -28,7 +28,7 @@ namespace XmlParsersAndUi.Forms {
                     lbAvailableProperties.Items.Add(installerProps[i]);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
         public InstallerProp selectedInstallerProp;
@@ -38,7 +38,7 @@ namespace XmlParsersAndUi.Forms {
                 selectedInstallerProp = installerProp;
                 this.DialogResult = DialogResult.OK;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
     }

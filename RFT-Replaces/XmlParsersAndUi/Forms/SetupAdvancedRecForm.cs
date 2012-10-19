@@ -77,10 +77,10 @@ namespace XmlParsersAndUi {
             } catch (XmlException xExc)
                 //Exception is thrown is there is an error in the Xml
             {
-                FrontendUtils.ShowError(xExc.Message, xExc);
+                CommonUtils.ShowError(xExc.Message, xExc);
             } catch (Exception ex) { //General exception
 
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             } finally {
                 this.Cursor = Cursors.Default; //Change the cursor back
             }
@@ -197,9 +197,9 @@ namespace XmlParsersAndUi {
             } catch (XmlException xExc)
                 //Exception is thrown is there is an error in the Xml
             {
-                FrontendUtils.ShowError(xExc.Message, xExc);
+                CommonUtils.ShowError(xExc.Message, xExc);
             } catch (Exception ex) { //General exception
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             } finally {
                 this.Cursor = Cursors.Default; //Change the cursor back
             }
@@ -381,7 +381,7 @@ namespace XmlParsersAndUi {
             try {
                 PopulateDgvWithAttributes();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -392,7 +392,7 @@ namespace XmlParsersAndUi {
                 }
                 SaveUpdatedAttributes();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -406,10 +406,10 @@ namespace XmlParsersAndUi {
                     eventParsed = true;
 
                 } else {
-                    FrontendUtils.ShowInformation("Event must be a valid xml!",true);
+                    CommonUtils.ShowInformation("Event must be a valid xml!",true);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -427,7 +427,7 @@ namespace XmlParsersAndUi {
                         captureEvent.captureEventCategory = Convert.ToInt32(cboCaptureType.SelectedValue);
                         captureEvent.captureEventUsageCount = 0;
                         Advanced_Recommendations.InsertCaptureEvent(captureEvent);
-                        FrontendUtils.ShowInformation("Capture event inserted successfully!",false);
+                        CommonUtils.ShowInformation("Capture event inserted successfully!",false);
                     }
                 }
                 LoadAvailableARtoList();
@@ -436,23 +436,23 @@ namespace XmlParsersAndUi {
                 lbAdvancedCE.Select();
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private bool IsValidToAddRule(string ruleName, string ruleDescription, string ruleEventIn) {
             if (string.IsNullOrEmpty(ruleName)) {
-                FrontendUtils.ShowInformation("Rule name cannot be empty!",true);
+                CommonUtils.ShowInformation("Rule name cannot be empty!",true);
                 return false;
             } else if (string.IsNullOrEmpty(ruleDescription)) {
-                FrontendUtils.ShowInformation("Description cannot be empty!",true);
+                CommonUtils.ShowInformation("Description cannot be empty!",true);
                 return false;
             } else if (string.IsNullOrEmpty(ruleEventIn)) {
-                FrontendUtils.ShowInformation("Event in cannot be empty!",true);
+                CommonUtils.ShowInformation("Event in cannot be empty!",true);
                 return false;
             }
             if (!IsValidXml(ruleEventIn)) {
-                FrontendUtils.ShowInformation("Event must be a valid xml!",true);
+                CommonUtils.ShowInformation("Event must be a valid xml!",true);
                 return false;
             }
             return true;
@@ -474,7 +474,7 @@ namespace XmlParsersAndUi {
 
                 enabledParentChecking = true;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -482,9 +482,9 @@ namespace XmlParsersAndUi {
             string displayMember = "categoryName";
             string valueMember = "id";
             DataTable replacementDatable = Replacement_Events_Categories.GetAllReplacementCategoriesAsDataTable();
-            FrontendUtils.BindCombo(cboReplacementType, replacementDatable, displayMember, valueMember);
+            CommonUtils.BindCombo(cboReplacementType, replacementDatable, displayMember, valueMember);
             DataTable captureDatatable = Advanced_Recommendation_Categories.GetAllCaptureCategoriesAsDataTable(false);
-            FrontendUtils.BindCombo(cboCaptureType, captureDatatable, displayMember, valueMember);
+            CommonUtils.BindCombo(cboCaptureType, captureDatatable, displayMember, valueMember);
         }
 
         private void SetAllCombos() {
@@ -660,7 +660,7 @@ namespace XmlParsersAndUi {
                 }
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -669,7 +669,7 @@ namespace XmlParsersAndUi {
                 ResetForm();
                 eventParsed = false;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
             //OpenFileDialog dialog = new OpenFileDialog();
             //string FileToParse = string.Empty;
@@ -886,7 +886,7 @@ namespace XmlParsersAndUi {
                 }
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -911,38 +911,38 @@ namespace XmlParsersAndUi {
         private void btnAddReplacementEvent_Click(object sender, EventArgs e) {
             try {
                 if (IsValidToAddReplacement(txtReplacementName.Text.Trim(), txtReplacementDesc.Text.Trim(), txtReplacementRep.Text.Trim())) {
-                    ReplacementEvent replacementEvent = new ReplacementEvent(txtReplacementName.Text.Trim(), txtReplacementDesc.Text.Trim(), txtReplacementRep.Text.Trim(), Convert.ToInt32(cboReplacementType.SelectedValue), ((AdvancedRecomendation)cboCapturePoint.SelectedItem).CaptureEventId, FrontendUtils.LoggedInUserId);
+                    ReplacementEvent replacementEvent = new ReplacementEvent(txtReplacementName.Text.Trim(), txtReplacementDesc.Text.Trim(), txtReplacementRep.Text.Trim(), Convert.ToInt32(cboReplacementType.SelectedValue), ((AdvancedRecomendation)cboCapturePoint.SelectedItem).CaptureEventId, CommonUtils.LoggedInUserId);
 
                     Advanced_Replacements.InsertNewReplacement(replacementEvent);
                     AdvancedRecomendation selectedAdvancedRec = ((AdvancedRecomendation)cboCapturePoint.SelectedItem);
 
                     FillReplacementsListBox(selectedAdvancedRec);
-                    UpdateUi(FrontendUtils.UiPrepareFor.Add);
+                    UpdateUi(CommonUtils.UiPrepareFor.Add);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private bool IsValidToAddReplacement(string replacementName, string replacementDescription, string replacementValue) {
             if (string.IsNullOrEmpty(replacementName)) {
-                FrontendUtils.ShowInformation("Replacement name cannot be empty!", true);
+                CommonUtils.ShowInformation("Replacement name cannot be empty!", true);
                 return false;
             }
             if (string.IsNullOrEmpty(replacementDescription)) {
-                FrontendUtils.ShowInformation("Replacement description cannot be empty!", true);
+                CommonUtils.ShowInformation("Replacement description cannot be empty!", true);
                 return false;
             }
             if (string.IsNullOrEmpty(replacementValue)) {
-                FrontendUtils.ShowInformation("Replacement value cannot be empty!", true);
+                CommonUtils.ShowInformation("Replacement value cannot be empty!", true);
                 return false;
             }
             if (lbAvailableReplacements.Items.Contains(replacementName)) {
-                FrontendUtils.ShowInformation("Replacement name is in use!", true);
+                CommonUtils.ShowInformation("Replacement name is in use!", true);
                 return false;
             }
         	if (!IsValidXml(replacementValue) && ConfigureToValidateXml && !string.Equals(replacementValue,"{EmptyString}")) {
-                FrontendUtils.ShowInformation("Replacement value must be a valid xml!", true);
+                CommonUtils.ShowInformation("Replacement value must be a valid xml!", true);
                 return false;
             }
             return true;
@@ -971,7 +971,7 @@ namespace XmlParsersAndUi {
             try {
                 List<string> replacementParameters = GetReplacementParametersFromValue(txtReplacementRep.Text.Trim());
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -990,7 +990,7 @@ namespace XmlParsersAndUi {
                 FillReplacementsListBox(selectedAdvancedRec);
                 FillReplacementsListBox(selectedAdvancedRec);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -999,24 +999,24 @@ namespace XmlParsersAndUi {
                 ReplacementEvent replacementEvent = ((sender as ListBox).SelectedItem as ReplacementEvent);
                 if (replacementEvent != null) {
                     PopulateUiWithReplacementValues(replacementEvent);
-                    UpdateUi(FrontendUtils.UiPrepareFor.Save);
+                    UpdateUi(CommonUtils.UiPrepareFor.Save);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
-        private void UpdateUi(FrontendUtils.UiPrepareFor uiPrepareFor) {
+        private void UpdateUi(CommonUtils.UiPrepareFor uiPrepareFor) {
             switch (uiPrepareFor) {
-            case FrontendUtils.UiPrepareFor.Add:
+            case CommonUtils.UiPrepareFor.Add:
                 btnSaveReplacement.Enabled = false;
                 btnAddReplacementEvent.Enabled = true;
                 break;
-            case FrontendUtils.UiPrepareFor.Reset:
+            case CommonUtils.UiPrepareFor.Reset:
                 btnSaveReplacement.Enabled = false;
                 btnAddReplacementEvent.Enabled = true;
                 break;
-            case FrontendUtils.UiPrepareFor.Save:
+            case CommonUtils.UiPrepareFor.Save:
                 btnSaveReplacement.Enabled = true;
                 btnAddReplacementEvent.Enabled = false;
                 break;
@@ -1052,10 +1052,10 @@ namespace XmlParsersAndUi {
 
                 FillReplacementsListBox(selectedAdvancedRec);
 
-                FrontendUtils.ShowInformation("Replacement ["+selectedReplacementEvent.name+"] has been updated.",false);
+                CommonUtils.ShowInformation("Replacement ["+selectedReplacementEvent.name+"] has been updated.",false);
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1063,7 +1063,7 @@ namespace XmlParsersAndUi {
             try {
                 FillInReplacementVariables(txtReplacementRep.Text);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1074,16 +1074,16 @@ namespace XmlParsersAndUi {
                 foreach (string pattern in foundPatterns) {
                     output = output + pattern + "\n";
                 }
-                FrontendUtils.ShowInformation("Found the following variables:\n" + output,false);
+                CommonUtils.ShowInformation("Found the following variables:\n" + output,false);
             } else {
-                FrontendUtils.ShowInformation("No variables found!",false);
+                CommonUtils.ShowInformation("No variables found!",false);
             }
         }
 
         private void btnResetReplacement_Click(object sender, EventArgs e) {
             //UpdateUi(FrontendUtils.UiPrepareFor.Save);
             try {
-                UpdateUi(FrontendUtils.UiPrepareFor.Reset);
+                UpdateUi(CommonUtils.UiPrepareFor.Reset);
                 txtReplacementName.Text = string.Empty;
                 txtReplacementDesc.Text = string.Empty;
                 txtReplacementRep.Text = string.Empty;
@@ -1091,7 +1091,7 @@ namespace XmlParsersAndUi {
                 BindCombos();
                 lbAvailableReplacements.ClearSelected();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1108,9 +1108,9 @@ namespace XmlParsersAndUi {
                 SetAllCombos();
                 BindCombos();
                 ResetForm();
-                FrontendUtils.ShowInformation("Recommendation ["+captureEvent.CaptureEventName+"] saved.",false);
+                CommonUtils.ShowInformation("Recommendation ["+captureEvent.CaptureEventName+"] saved.",false);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1129,7 +1129,7 @@ namespace XmlParsersAndUi {
                 //        break;
                 //}
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1161,7 +1161,7 @@ namespace XmlParsersAndUi {
                     cboCapturePoint.SelectedItem = lbAdvancedCE.SelectedItem;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 

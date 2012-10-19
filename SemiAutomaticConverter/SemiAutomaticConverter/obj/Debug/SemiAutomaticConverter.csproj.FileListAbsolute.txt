@@ -7,17 +7,3 @@ C:\Documents and Settings\mkabbani\Local Settings\Application Data\Temporary Pro
 C:\Documents and Settings\mkabbani\Local Settings\Application Data\Temporary Projects\SemiAutomaticConverter\obj\Debug\SemiAutomaticConverter.exe
 C:\Documents and Settings\mkabbani\Local Settings\Application Data\Temporary Projects\SemiAutomaticConverter\obj\Debug\SemiAutomaticConverter.pdb
 C:\Documents and Settings\mkabbani\Local Settings\Application Data\Temporary Projects\SemiAutomaticConverter\obj\Debug\SemiAutomaticConverter.RulesDirectoryForm.resources
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\SemiAutomaticConverter\bin\Debug\SemiAutomaticConverter.exe
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\SemiAutomaticConverter\bin\Debug\SemiAutomaticConverter.pdb
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\SemiAutomaticConverter\obj\Debug\ResolveAssemblyReference.cache
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\SemiAutomaticConverter\obj\Debug\SemiAutomaticConverter.AutomaticConverter.resources
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\SemiAutomaticConverter\obj\Debug\SemiAutomaticConverter.Properties.Resources.resources
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\SemiAutomaticConverter\obj\Debug\SemiAutomaticConverter.RulesDirectoryForm.resources
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\SemiAutomaticConverter\obj\Debug\SemiAutomaticConverter.csproj.GenerateResource.Cache
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\SemiAutomaticConverter\obj\Debug\SemiAutomaticConverter.exe
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\SemiAutomaticConverter\obj\Debug\SemiAutomaticConverter.pdb
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\SemiAutomaticConverter\obj\Debug\SemiAutomaticConverter.SearchAndReplace.resources
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\SemiAutomaticConverter\bin\Debug\SemiAutomaticConverter.exe.manifest
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\SemiAutomaticConverter\bin\Debug\SemiAutomaticConverter.application
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\SemiAutomaticConverter\obj\Debug\SemiAutomaticConverter.exe.manifest
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\SemiAutomaticConverter\SemiAutomaticConverter\obj\Debug\SemiAutomaticConverter.application

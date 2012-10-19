@@ -45,13 +45,13 @@ namespace XmlParsersAndUi {
 
         private bool IsValidToProceed() {
             if (string.IsNullOrEmpty(txtFolderName.Text)) {
-                FrontendUtils.ShowInformation("Please input a folder name!", true);
+                CommonUtils.ShowInformation("Please input a folder name!", true);
                 //    this.DialogResult = DialogResult.No;
                 return false;
             }
 
             if (string.IsNullOrEmpty(txtOperation.Text)) {
-                FrontendUtils.ShowInformation("Please select an operation!", true);
+                CommonUtils.ShowInformation("Please select an operation!", true);
                 //  this.DialogResult = DialogResult.No;
                 return false;
             }
@@ -84,7 +84,7 @@ namespace XmlParsersAndUi {
                    txtOperation.Text =  form.selectedOperation.OperationName;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -96,7 +96,7 @@ namespace XmlParsersAndUi {
                     txtFolderName.Text = txtTestTitle.Text.Replace(" ","_");                
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 

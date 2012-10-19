@@ -93,7 +93,7 @@ namespace XmlParsersAndUi {
                 priveligedUsers = new List<string>();
                 return xmldoc.DocumentElement.ChildNodes[0].ChildNodes;
             } catch (Exception ex) {
-                FrontendUtils.ShowError("Configuration file not found, default configuration will be loaded", ex);
+                CommonUtils.ShowError("Configuration file not found, default configuration will be loaded", ex);
             }
             return null;
         }
@@ -189,7 +189,7 @@ namespace XmlParsersAndUi {
                 //   simpleOperationParser.MdiParent = this;
                 //   simpleOperationParser.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -199,7 +199,7 @@ namespace XmlParsersAndUi {
                 form1.MdiParent = this;
                 form1.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -209,12 +209,12 @@ namespace XmlParsersAndUi {
 
         private void setupRecommendationsToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                FrontendUtils.SendUsageNotification("Recommendation Config started by " + loggedInUser);
+                CommonUtils.SendUsageNotification("Recommendation Config started by " + loggedInUser);
                 SetupSimpleRecForm setupRecForm = new SetupSimpleRecForm();
                 setupRecForm.MdiParent = this;
                 setupRecForm.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -224,7 +224,7 @@ namespace XmlParsersAndUi {
                 configBuilder.MdiParent = this;
                 configBuilder.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -234,7 +234,7 @@ namespace XmlParsersAndUi {
                 cleanupForm.MdiParent = this;
                 cleanupForm.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -252,7 +252,7 @@ namespace XmlParsersAndUi {
 
             // BackEndUtils.CheckIfDatabaseNeedsCompation();
             if (e.IdleDuration.Minutes > CONFIGURED_IDLE_TIME && !appProcessing) {
-                FrontendUtils.SendUsageNotification(loggedInUser + " was forced to exit by timer!");
+                CommonUtils.SendUsageNotification(loggedInUser + " was forced to exit by timer!");
                 Application.Exit();
             }
         }
@@ -280,10 +280,9 @@ namespace XmlParsersAndUi {
 
         private void MainForm_Load(object sender, EventArgs e) {
             try {
-
                 MainAppVariables.AppVersion = APPLICATION_VERSION;
-                loggedInUser = FrontendUtils.GetCurrentUser();
-                FrontendUtils.CreateLogsDirectory();
+                loggedInUser = CommonUtils.GetCurrentUser();
+                CommonUtils.CreateLogsDirectory();
                 this.Text = this.Text +" v." +APPLICATION_VERSION + " - Welcome " + loggedInUser + "!";
                 XmlNodeList configFileNodes = LoadConfigFileNodes();
                 SetBackEndConnectionParameter(configFileNodes);
@@ -293,7 +292,7 @@ namespace XmlParsersAndUi {
                 string applicationVersion = Application_Settings.GetConfigValueByKey(allConfigs,(int)Application_Settings.ApplicationConfigKeys.ApplicationVersion) ;
                 bool TIMER_ENABLED = Convert.ToBoolean(Application_Settings.GetConfigValueByKey(allConfigs,(int)Application_Settings.ApplicationConfigKeys.EnableTimerKey));
                 CONFIGURED_IDLE_TIME = Convert.ToInt32(Application_Settings.GetConfigValueByKey(allConfigs,(int)Application_Settings.ApplicationConfigKeys.TimerDurationKey));
-                List<string> priviligedUsersList = FrontendUtils.GetListFromArray(Application_Settings.GetConfigValueByKey(allConfigs,(int)Application_Settings.ApplicationConfigKeys.PrivelegedUsers).Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)) ;
+                List<string> priviligedUsersList = CommonUtils.GetListFromArray(Application_Settings.GetConfigValueByKey(allConfigs,(int)Application_Settings.ApplicationConfigKeys.PrivelegedUsers).Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries)) ;
 
                 GlobalApplicationSettings.ApplicationVersion = APPLICATION_VERSION;
                 GlobalApplicationSettings.ApplicationVersionInDB=applicationVersion;
@@ -307,7 +306,7 @@ namespace XmlParsersAndUi {
                     if (userId < 1) {
                         userId = UserStatus.InsertNewUser(loggedInUser);
                     }
-                    FrontendUtils.LoggedInUserId = userId;
+                    CommonUtils.LoggedInUserId = userId;
                     UserStatus.UpdateUserStatusById(userId, true);
 
                     UpdateUIForPriviligedUsers(priviligedUsersList, loggedInUser);
@@ -315,33 +314,30 @@ namespace XmlParsersAndUi {
                     MonitorObject.loginTime = DateTime.Now;
                     MonitorObject.formAndAccessTime = new List<FormAndAccessTime>();
                     MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
-
                 } else {
                     this.menuStrip.Enabled = false;
                     Exception ex = new InvalidAsynchronousStateException("The application is out date. Please update to the latest version!");
                     //http://globalqa/svn/PAR/PFR/0000081/trunk/pfr/QAA-Activities/MaintenanceReduction/Maintenance-Reduction.zip
-                    DialogResult dial = FrontendUtils.ShowConformation("A new version is now available on SVN!\nProceed with update?");
+                    DialogResult dial = CommonUtils.ShowConformation("A new version is now available on SVN!\nProceed with update?");
                     if (dial == DialogResult.Yes) {
                         Process.Start("http://globalqa/svn/PAR/PFR/0000081/trunk/pfr/QAA-Activities/MaintenanceReduction/Maintenance-Reduction.zip");
                         Application.ExitThread();
                         Application.Exit();
                     } else {
-                        FrontendUtils.ShowError(ex.Message, ex);
+                        CommonUtils.ShowError(ex.Message, ex);
                         Application.ExitThread();
                         Application.Exit();
                     }
                 }
-
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
                 try {
-                    Bitmap bitmap = FrontendUtils.GetScreenShot();
+                    Bitmap bitmap = CommonUtils.GetScreenShot();
                     string bitmapFileName = Path.GetTempPath() + DateTime.Now.Date.Day + "-" + DateTime.Now.Date.Month + "-" + DateTime.Now.Date.Year + "-" + DateTime.Now.Hour + "-" + DateTime.Now.Minute + "-" + DateTime.Now.Second + "-" + DateTime.Now.Millisecond + ".jpeg";
                     bitmap.Save(bitmapFileName);
-                    FrontendUtils.SendEmailWithAttachement(ex.Message, ex, bitmapFileName);
+                    CommonUtils.SendEmailWithAttachement(ex.Message, ex, bitmapFileName);
                 } catch (Exception ex1) {
-
-                    throw;
+                	CommonUtils.LogError(ex.Message,ex1);
                 }
                 Application.ExitThread();
                 Application.Exit();
@@ -350,24 +346,24 @@ namespace XmlParsersAndUi {
 
         private void macroSplitToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                FrontendUtils.SendUsageNotification("Macro split started by " + loggedInUser);
+                CommonUtils.SendUsageNotification("Macro split started by " + loggedInUser);
 
                 BulkMacroSplitterTreeForm form = new BulkMacroSplitterTreeForm();
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void firstLevelCleanupToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                FrontendUtils.SendUsageNotification("First Level Cleanup started by " + loggedInUser);
+                CommonUtils.SendUsageNotification("First Level Cleanup started by " + loggedInUser);
                 CleanupForm form = new CleanupForm();
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -377,23 +373,23 @@ namespace XmlParsersAndUi {
 
         private void bulkCustomsToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                FrontendUtils.SendUsageNotification("Bulk Customs started by " + loggedInUser);
+                CommonUtils.SendUsageNotification("Bulk Customs started by " + loggedInUser);
                 BulkCustomsForm form = new BulkCustomsForm();
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void advancedRecToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                FrontendUtils.SendUsageNotification("Setup Advanced Recs started by " + loggedInUser);
+                CommonUtils.SendUsageNotification("Setup Advanced Recs started by " + loggedInUser);
                 SetupAdvancedRecForm form = new SetupAdvancedRecForm();
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -403,7 +399,7 @@ namespace XmlParsersAndUi {
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -415,12 +411,12 @@ namespace XmlParsersAndUi {
 
         private void rFTUpdaterToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                FrontendUtils.SendUsageNotification("RFT updater started by " + loggedInUser);
+                CommonUtils.SendUsageNotification("RFT updater started by " + loggedInUser);
                 RftReplacementForm form = new RftReplacementForm();
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
         public bool MAIN_FORM_CLOSING = false;
@@ -432,10 +428,10 @@ namespace XmlParsersAndUi {
                 Monitor.InsertNewMonitorObject();
                 int userId = UserStatus.GetUserIdByUsername(loggedInUser);
                 UserStatus.UpdateUserStatusById(userId, false);
-                FrontendUtils.SendUsageNotification(loggedInUser + " has exited the application!");
+                CommonUtils.SendUsageNotification(loggedInUser + " has exited the application!");
                 Environment.Exit(2);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -444,8 +440,8 @@ namespace XmlParsersAndUi {
                 StreamReader reader = new StreamReader("D:\test.xml");
                 reader.ReadToEnd();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
-                FrontendUtils.ShowError("wow", null);
+                CommonUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError("wow", null);
                 ExceptionForm form = new ExceptionForm("Sample exception!!", ex);
                 form.Show();
             }
@@ -457,7 +453,7 @@ namespace XmlParsersAndUi {
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -467,7 +463,7 @@ namespace XmlParsersAndUi {
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -477,7 +473,7 @@ namespace XmlParsersAndUi {
                 form2.MdiParent = this;
                 form2.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -487,7 +483,7 @@ namespace XmlParsersAndUi {
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -497,7 +493,7 @@ namespace XmlParsersAndUi {
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -511,7 +507,7 @@ namespace XmlParsersAndUi {
 
                 //form.SelectedString;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -521,18 +517,18 @@ namespace XmlParsersAndUi {
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void secondLevelCleanupToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                FrontendUtils.SendUsageNotification("Second Level Cleanup started by " + loggedInUser);
+                CommonUtils.SendUsageNotification("Second Level Cleanup started by " + loggedInUser);
                 SecondLevelCleanupForm form = new SecondLevelCleanupForm();
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -542,7 +538,7 @@ namespace XmlParsersAndUi {
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -553,7 +549,7 @@ namespace XmlParsersAndUi {
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -563,7 +559,7 @@ namespace XmlParsersAndUi {
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -573,13 +569,13 @@ namespace XmlParsersAndUi {
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void envComparisonToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                FrontendUtils.SendUsageNotification("Environment Comparison started by " + loggedInUser);
+                CommonUtils.SendUsageNotification("Environment Comparison started by " + loggedInUser);
                 EnvironmentComparisonForm form = new EnvironmentComparisonForm();
 
                 bool found = false;
@@ -593,35 +589,35 @@ namespace XmlParsersAndUi {
                     form.Show();
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void advancedRecommendationsToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                FrontendUtils.SendUsageNotification("Setup Advanced Rec started " + loggedInUser);
+                CommonUtils.SendUsageNotification("Setup Advanced Rec started " + loggedInUser);
                 SetupAdvancedRecForm form = new SetupAdvancedRecForm();
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void simpleRecommendationsToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                FrontendUtils.SendUsageNotification("Recommendation Config started by " + loggedInUser);
+                CommonUtils.SendUsageNotification("Recommendation Config started by " + loggedInUser);
                 SetupSimpleRecForm setupRecForm = new SetupSimpleRecForm();
                 setupRecForm.MdiParent = this;
                 setupRecForm.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void envComparisonToolStripMenuItem1_Click(object sender, EventArgs e) {
             try {
-                FrontendUtils.SendUsageNotification("Environment comparison started by " + loggedInUser);
+                CommonUtils.SendUsageNotification("Environment comparison started by " + loggedInUser);
                 EnvironmentComparisonForm form = new EnvironmentComparisonForm();
                 bool found = false;
                 foreach (Form childForm in this.MdiChildren) {
@@ -634,40 +630,40 @@ namespace XmlParsersAndUi {
                     form.Show();
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void fTPToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                FrontendUtils.SendUsageNotification("FTP downloader started by " + loggedInUser);
+                CommonUtils.SendUsageNotification("FTP downloader started by " + loggedInUser);
                 FTPDownloaderForm form = new FTPDownloaderForm();
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void functionParserToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                FrontendUtils.SendUsageNotification("Package Gen started by " + loggedInUser);
+                CommonUtils.SendUsageNotification("Package Gen started by " + loggedInUser);
                 PackageGenerator form = new PackageGenerator();
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void packagingToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                FrontendUtils.SendUsageNotification("Package Gen started by " + loggedInUser);
+                CommonUtils.SendUsageNotification("Package Gen started by " + loggedInUser);
                 PackageGenerator form = new PackageGenerator();
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -680,45 +676,45 @@ namespace XmlParsersAndUi {
 
         private void macroConverterToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                FrontendUtils.SendUsageNotification("Macro Converter configuration started by " + loggedInUser);
+                CommonUtils.SendUsageNotification("Macro Converter configuration started by " + loggedInUser);
                 MacroConverterConfForm form = new MacroConverterConfForm();
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void macroToTextToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                FrontendUtils.SendUsageNotification("SDD generator started by " + loggedInUser);
+                CommonUtils.SendUsageNotification("SDD generator started by " + loggedInUser);
                 SDDGeneratorForm form = new SDDGeneratorForm();
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void sDDEventsToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                FrontendUtils.SendUsageNotification("Macro Converter configuration started by " + loggedInUser);
+                CommonUtils.SendUsageNotification("Macro Converter configuration started by " + loggedInUser);
                 MacroConverterConfForm form = new MacroConverterConfForm();
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void sDDGeneratorToolStripMenuItem_Click(object sender, EventArgs e) {
             try {
-                FrontendUtils.SendUsageNotification("SDD generator started by " + loggedInUser);
+                CommonUtils.SendUsageNotification("SDD generator started by " + loggedInUser);
                 SDDGeneratorForm form = new SDDGeneratorForm();
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -734,7 +730,7 @@ namespace XmlParsersAndUi {
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -745,10 +741,9 @@ namespace XmlParsersAndUi {
                 form.Show();
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
-
 
         void BuildGeneratorToolStripMenuItemClick(object sender, EventArgs e) {
             BuildGeneratorForm form = new BuildGeneratorForm();
@@ -763,7 +758,7 @@ namespace XmlParsersAndUi {
                 form.Show();
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message,ex);
+                CommonUtils.ShowError(ex.Message,ex);
             }
         }
 
@@ -773,7 +768,7 @@ namespace XmlParsersAndUi {
                 form.MdiParent = this;
                 form.Show();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message,ex);
+                CommonUtils.ShowError(ex.Message,ex);
             }
         }
     }

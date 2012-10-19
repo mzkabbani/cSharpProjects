@@ -55,7 +55,7 @@ namespace PackageGenerator {
                 if (Directory.Exists(workingDir)) {
                     Directory.Delete(workingDir, true);
                 }
-                FrontendUtils.CopyDirectory(pathToThisExec + @"\MIGRATION", workingDir + @"\MIGRATION");
+                CommonUtils.CopyDirectory(pathToThisExec + @"\MIGRATION", workingDir + @"\MIGRATION");
             }
 
             string pathToAppDir = workingDir + @"\MIGRATION\FIRSTPACKAGE\trunk\";
@@ -76,7 +76,7 @@ namespace PackageGenerator {
                 string pathToConfigFile = workingDir + @"\MIGRATION\FIRSTPACKAGE\trunk\.ci\ci.xml";
                 string pathTomainConfigFile = workingDir + @"\MIGRATION\FIRSTPACKAGE\trunk\.ci\ci-main.xml";
                 string configFileText = File.ReadAllText(pathTomainConfigFile).Replace("Migration-Package", form.Controls["txtPackageName"].Text);
-                FrontendUtils.WriteFile(pathToConfigFile, configFileText);
+                CommonUtils.WriteFile(pathToConfigFile, configFileText);
 
                 if (dial.ShowDialog() == DialogResult.OK) {
                     string pathToTarget = dial.SelectedPath;
@@ -108,12 +108,12 @@ namespace PackageGenerator {
         }
 
         private void StartGeneratingPackageInBackground(object argument) {
-            FrontendUtils.ExecuteCommandSync(argument as string);
+            CommonUtils.ExecuteCommandSync(argument as string);
         }
 
 
         private void LoadAvailableFunctionsToList(string utilsFilePath) {
-            string readFile = FrontendUtils.ReadFile(utilsFilePath);
+            string readFile = CommonUtils.ReadFile(utilsFilePath);
 
             Regex regex = new Regex("(public).*?(\\S+).?\\((.*)\\)\\{");
             MatchCollection matches = regex.Matches(readFile);
@@ -326,7 +326,7 @@ namespace PackageGenerator {
                         pathToAppDir + @"\" + dgvFilesToImport.Rows[i].Cells["relativePath"].Value.ToString() + @"\" + Path.GetFileName(dgvFilesToImport.Rows[i].Cells["fileLink"].Value.ToString()),
                         svnExportArgs);
                 } catch (Exception ex) {
-                    FrontendUtils.LogError(ex.Message, ex);
+                    CommonUtils.LogError(ex.Message, ex);
                 }
 
             }
@@ -346,7 +346,7 @@ namespace PackageGenerator {
             //Copy Installer File
             File.Copy(pathToMainInstallerFile, pathToInstallerFile, true);
             //Read fresh Installer File
-            string installerFile = FrontendUtils.ReadFile(pathToInstallerFile);
+            string installerFile = CommonUtils.ReadFile(pathToInstallerFile);
 
             Regex reg = new Regex(@"//Start-Properties(.*)End-Properties", RegexOptions.Singleline);
 
@@ -354,7 +354,7 @@ namespace PackageGenerator {
 
             installerFile = reg.Replace(installerFile, "//Start-Properties\n\n" + replacementAllProperties + "\n\n//End-Properties");
             //write new Installer File
-            FrontendUtils.WriteFile(pathToInstallerFile, installerFile);
+            CommonUtils.WriteFile(pathToInstallerFile, installerFile);
 
             #endregion
 
@@ -365,7 +365,7 @@ namespace PackageGenerator {
             File.Copy(pathToOriginalOperationFile, pathToOperationFile, true);
 
             //Read fresh operations file
-            string operationFile = FrontendUtils.ReadFile(pathToOperationFile);
+            string operationFile = CommonUtils.ReadFile(pathToOperationFile);
 
             //get formatted properties from UI
             //add properties to operations file
@@ -384,7 +384,7 @@ namespace PackageGenerator {
             //operationFile = operationFile.Replace("}}", GeneratedOperationsFile + "\r\n\r\n}}");
 
             //write new operations file
-            FrontendUtils.WriteFile(pathToOperationFile, operationFile);
+            CommonUtils.WriteFile(pathToOperationFile, operationFile);
 
             #endregion
 
@@ -428,7 +428,7 @@ namespace PackageGenerator {
 
         private void PopulateAllAvailableProperties(string pathToInstallerFile) {
             lbAvailableProps.Items.Clear();
-            string installerFile = FrontendUtils.ReadFile(pathToInstallerFile);
+            string installerFile = CommonUtils.ReadFile(pathToInstallerFile);
             Regex reg = new Regex(@"\bStart-Properties(.*)End-Properties\b", RegexOptions.Singleline);
             string match = reg.Match(installerFile).Groups[1].Value;
             Regex propertyValues = new Regex(@"\bproperty\(name:'(\S+)'.*?description = '(.*?)'.*?type = (\S+).*?(defaultValue = (\S+))\b", RegexOptions.Singleline);
@@ -483,7 +483,7 @@ namespace PackageGenerator {
 
         private void ParseCiFunctions(string pathToOperationsFile) {
             Regex operationsRegex = new Regex("//Start-Operations(.*)//End-Operations", RegexOptions.Singleline);
-            string readOperationsFile = FrontendUtils.ReadFile(pathToOperationsFile);
+            string readOperationsFile = CommonUtils.ReadFile(pathToOperationsFile);
             string allOperations = operationsRegex.Match(readOperationsFile).Groups[1].Value;
             Regex anOperation = new Regex("/\\*(.*?)\\*/.*?frontEndUtilities.(.*?);", RegexOptions.Singleline);
             MatchCollection mCollection = anOperation.Matches(allOperations);
@@ -554,7 +554,7 @@ namespace PackageGenerator {
 
         private void ImportFilesListFile(string exportFilePath) {
             if (dgvFilesToImport.Rows.Count > 0) {
-                DialogResult dial = FrontendUtils.ShowConformation("Do you want to append the files to the existing list?");
+                DialogResult dial = CommonUtils.ShowConformation("Do you want to append the files to the existing list?");
                 if (dial == DialogResult.Yes) {
                     ReadFileAndInsertIntoList(exportFilePath, true);
                 } else {
@@ -566,7 +566,7 @@ namespace PackageGenerator {
         }
 
         private void ReadFileAndInsertIntoList(string inputFilePath, bool appendEnabled) {
-            string fileRead = FrontendUtils.ReadFile(inputFilePath);
+            string fileRead = CommonUtils.ReadFile(inputFilePath);
             string[] fileLines = fileRead.Split(new string[] { "\r\n" }, StringSplitOptions.RemoveEmptyEntries);
             bool inputcorrupt = false;
             for (int i = 0; i < fileLines.Length; i++) {
@@ -582,14 +582,14 @@ namespace PackageGenerator {
                 }
             }
             if (inputcorrupt) {
-                FrontendUtils.ShowInformation("Not all files were added, input file has errors", true);
+                CommonUtils.ShowInformation("Not all files were added, input file has errors", true);
             }
         }
 
         private bool IsValidToAddFileImport(string fileLink, string fileRelPath, bool bulkImport) {
             if (string.IsNullOrEmpty(fileLink)) {
                 if (!bulkImport) {
-                    FrontendUtils.ShowInformation("[File Link] cannot be empty!", true);
+                    CommonUtils.ShowInformation("[File Link] cannot be empty!", true);
                 }
                 return false;
             }
@@ -599,7 +599,7 @@ namespace PackageGenerator {
                 if (string.Equals(dgvFilesToImport.Rows[i].Cells["relativePath"].Value, fileRelPath) &&
                     string.Equals(dgvFilesToImport.Rows[i].Cells["fileLink"].Value, fileLink)) {
                     if (!bulkImport) {
-                        FrontendUtils.ShowInformation("File already exists!", true);
+                        CommonUtils.ShowInformation("File already exists!", true);
                     }
                     dgvFilesToImport.FirstDisplayedScrollingRowIndex = i;
                     dgvFilesToImport.Rows[i].Selected = true;
@@ -624,7 +624,7 @@ namespace PackageGenerator {
                 fileToExport = fileToExport + dgvFilesToImport.Rows[i].Cells["fileLink"].Value.ToString() +
                                     ";" + dgvFilesToImport.Rows[i].Cells["relativePath"].Value.ToString() + "\r\n";
             }
-            FrontendUtils.WriteFile(outputFilePath, fileToExport);
+            CommonUtils.WriteFile(outputFilePath, fileToExport);
         }
 
         private void ExportOperationsLogFile(string outputFilePath, bool showCompletedPopup) {
@@ -711,7 +711,7 @@ namespace PackageGenerator {
                 Directory.Delete(pathToExportDirectory, true);
                 Directory.CreateDirectory(pathToExportDirectory);
             }
-            FrontendUtils.CopyDirectory(pathToDotCiFolder, pathToExportDirectory);
+            CommonUtils.CopyDirectory(pathToDotCiFolder, pathToExportDirectory);
 
             File.Delete(pathToExportDirectory + @"\.ci\package\murex\Migration\main.groovy");
             File.Delete(pathToExportDirectory + @"\.ci\package\murex\Migration\installMain.groovy");
@@ -731,7 +731,7 @@ namespace PackageGenerator {
                     Directory.Delete(workingDir, true);
                 }
 
-                FrontendUtils.CopyDirectory(pathToThisExec + @"\MIGRATION", workingDir + @"\MIGRATION");
+                CommonUtils.CopyDirectory(pathToThisExec + @"\MIGRATION", workingDir + @"\MIGRATION");
 
             }
             string pathToAppDir = workingDir + @"\MIGRATION\FIRSTPACKAGE\trunk\";
@@ -747,7 +747,7 @@ namespace PackageGenerator {
             string pathTomainConfigFile = workingDir + @"\MIGRATION\FIRSTPACKAGE\trunk\.ci\ci-main.xml";
 
             string configFileText = File.ReadAllText(pathTomainConfigFile).Replace("Migration-Package", stamp + "-" + packageName);
-            FrontendUtils.WriteFile(pathToConfigFile, configFileText);
+            CommonUtils.WriteFile(pathToConfigFile, configFileText);
 
 
 
@@ -884,7 +884,7 @@ namespace PackageGenerator {
                     }
                     ResultDataTable.EndLoadData();
                 } else {
-                    FrontendUtils.ShowInformation("Excell sheet named [" + ds.Tables[0].TableName + "] is incomparable!", true);
+                    CommonUtils.ShowInformation("Excell sheet named [" + ds.Tables[0].TableName + "] is incomparable!", true);
                 }
             }
             return ResultDataTable;
@@ -1018,7 +1018,7 @@ namespace PackageGenerator {
                     //FastExportingMethod.ExportToExcel(set, dialog.FileName);
                     //FrontendUtils.ShowInformation("Results generation completed!", false);
                 } else {
-                    FrontendUtils.ShowInformation("Please select a file name!", true);
+                    CommonUtils.ShowInformation("Please select a file name!", true);
                 }
             }
         }
@@ -1071,12 +1071,12 @@ namespace PackageGenerator {
 
         private bool IsValidToStartPackageJarGeneration() {
             if (dgvOutputOperations.Rows.Count == 0) {
-                FrontendUtils.ShowInformation("No [Operations] available to generate a package!", true);
+                CommonUtils.ShowInformation("No [Operations] available to generate a package!", true);
                 return false;
             } else {
                 for (int i = 0; i < dgvOutputOperations.Rows.Count; i++) {
                     if (dgvOutputOperations.Rows[i].DefaultCellStyle.BackColor == Color.LightCoral) {
-                        FrontendUtils.ShowInformation("One of more of the [Operations] are invalid!", true);
+                        CommonUtils.ShowInformation("One of more of the [Operations] are invalid!", true);
                         return false;
                     }
                 }
@@ -1109,17 +1109,17 @@ namespace PackageGenerator {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void Mainform_Load(object sender, EventArgs e) {
             try {
-                FrontendUtils.SetColumnsHeadersToBold(dgvOutputOperations);
-                FrontendUtils.SetColumnsHeadersToBold(dgvFilesToImport);
+                CommonUtils.SetColumnsHeadersToBold(dgvOutputOperations);
+                CommonUtils.SetColumnsHeadersToBold(dgvFilesToImport);
                 AddHeaderCheckBox();
                 try {
-                    FrontendUtils.SendEmail("mkabbani@murex.com", "mkabbani@murex.com", "Generator Started", "Generator has been started");
+                    CommonUtils.SendEmail("mkabbani@murex.com", "mkabbani@murex.com", "Generator Started", "Generator has been started");
                 } catch (Exception) {
                 }
                 cboPropertyType.SelectedIndex = 0;
@@ -1130,7 +1130,7 @@ namespace PackageGenerator {
                 string pathToUtilsFile = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\MIGRATION\FIRSTPACKAGE\trunk\.ci\package\murex\Migration\FrontendUtilities.groovy";
                 LoadAvailableFunctionsToList(pathToUtilsFile);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1143,7 +1143,7 @@ namespace PackageGenerator {
                 btnSave.Enabled = false;
                 btnAdd.Enabled = true;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1182,7 +1182,7 @@ namespace PackageGenerator {
             try {
                 lbAvailableProps.Items.Remove(lbAvailableProps.SelectedItem);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1194,10 +1194,10 @@ namespace PackageGenerator {
                     installerProp.localType = cboPropertyType.SelectedIndex == 0 ? InstallerProp.PropType.StringProperty : InstallerProp.PropType.BooleanProperty;
                     installerProp.localDefaultValue = txtPropertyValue.Visible ? txtPropertyValue.Text : cboPropertyValue.SelectedItem.ToString().ToLower();
                 } else {
-                    FrontendUtils.ShowInformation("Please make sure all fields are filled", true);
+                    CommonUtils.ShowInformation("Please make sure all fields are filled", true);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1268,7 +1268,7 @@ namespace PackageGenerator {
                     ImportFilesListFile(exportFilePath);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1332,14 +1332,14 @@ namespace PackageGenerator {
                 dgvOutputOperations.ClearSelection();
                 dgvOutputOperations.FirstDisplayedScrollingRowIndex = rowIndex;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void btnClear_Click(object sender, EventArgs e) {
             try {
                 if (dgvOutputOperations.Rows.Count > 0) {
-                    DialogResult dial = FrontendUtils.ShowConformation("Are you sure you want to clear all [Operations]?");
+                    DialogResult dial = CommonUtils.ShowConformation("Are you sure you want to clear all [Operations]?");
                     if (dial == DialogResult.Yes) {
                         dgvOutputOperations.Rows.Clear();
                         counter = 1;
@@ -1347,7 +1347,7 @@ namespace PackageGenerator {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1360,7 +1360,7 @@ namespace PackageGenerator {
                     FolderBrowserDialog dialog = new FolderBrowserDialog();
                     dialog.ShowNewFolderButton = true;
                     if (dialog.ShowDialog() == DialogResult.OK) {
-                        FrontendUtils.CopyDirectory(pathToDotCiFolder, dialog.SelectedPath);
+                        CommonUtils.CopyDirectory(pathToDotCiFolder, dialog.SelectedPath);
                         File.Delete(dialog.SelectedPath + @"\.ci\package\murex\Migration\main.groovy");
                         File.Delete(dialog.SelectedPath + @"\.ci\package\murex\Migration\installMain.groovy");
                         File.Delete(dialog.SelectedPath + @"\.ci\ci-main.xml");
@@ -1374,11 +1374,11 @@ namespace PackageGenerator {
                                 ExportFileList(outputFileName);
                             }
                         }
-                        FrontendUtils.ShowInformation("Export Completed!", false);
+                        CommonUtils.ShowInformation("Export Completed!", false);
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1395,7 +1395,7 @@ namespace PackageGenerator {
                     cboPropertyValue.SelectedIndex = 0;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1412,7 +1412,7 @@ namespace PackageGenerator {
 
                 //}
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1427,7 +1427,7 @@ namespace PackageGenerator {
                     ResetFileImportPart();
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1437,21 +1437,21 @@ namespace PackageGenerator {
                 dgvFilesToImport.Rows[rowIndex].Cells["relativePath"].Value = txtRelativePathToImport.Text;//relative
                 dgvFilesToImport.Rows[rowIndex].Cells["fileLink"].Value = txtImportFileLink.Text;//link
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void btnDelteFileToImport_Click(object sender, EventArgs e) {
             try {
                 if (dgvFilesToImport.SelectedRows.Count > 0) {
-                    DialogResult dial = FrontendUtils.ShowConformation("Are you sure you want to delete the file import operation?");
+                    DialogResult dial = CommonUtils.ShowConformation("Are you sure you want to delete the file import operation?");
 
                     if (dial == DialogResult.Yes) {
                         dgvFilesToImport.Rows.RemoveAt(dgvFilesToImport.SelectedRows[0].Index);
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1459,7 +1459,7 @@ namespace PackageGenerator {
             try {
                 ResetFileImportPart();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1469,7 +1469,7 @@ namespace PackageGenerator {
                     StartPublishingProcess();
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1484,7 +1484,7 @@ namespace PackageGenerator {
                     txtRelativePathToImport.Text = fileRelPath;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1498,14 +1498,14 @@ namespace PackageGenerator {
                             string outputFilePath = fileSave.FileName;
                             ExportFileList(outputFilePath);
                         } else {
-                            FrontendUtils.ShowInformation("Filename cannot be empty!", true);
+                            CommonUtils.ShowInformation("Filename cannot be empty!", true);
                         }
                     }
                 } else {
-                    FrontendUtils.ShowInformation("There are no items in the import list!", true);
+                    CommonUtils.ShowInformation("There are no items in the import list!", true);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1520,14 +1520,14 @@ namespace PackageGenerator {
                             string outputFilePath = fileSave.FileName;
                             ExportOperationsLogFile(outputFilePath,true);
                         } else {
-                            FrontendUtils.ShowInformation("Filename cannot be empty!", true);
+                            CommonUtils.ShowInformation("Filename cannot be empty!", true);
                         }
                     }
                 } else {
-                    FrontendUtils.ShowInformation("There are no items operations list!", true);
+                    CommonUtils.ShowInformation("There are no items operations list!", true);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1547,7 +1547,7 @@ namespace PackageGenerator {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
         
@@ -1581,20 +1581,20 @@ namespace PackageGenerator {
                     control.Text = "AppDir + \"/\"";
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void btnReloadCi_Click(object sender, EventArgs e) {
             try {
                 if (!string.IsNullOrEmpty(pathOfImportedCi)) {
-                    DialogResult dial = FrontendUtils.ShowConformation("Are you sure you want to reload from the saved Ci?");
+                    DialogResult dial = CommonUtils.ShowConformation("Are you sure you want to reload from the saved Ci?");
                     if (dial == DialogResult.Yes) {
                         StartImportOfCi(pathOfImportedCi, false);
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1612,7 +1612,7 @@ namespace PackageGenerator {
                     btnSave.Enabled = true;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1641,7 +1641,7 @@ namespace PackageGenerator {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1663,7 +1663,7 @@ namespace PackageGenerator {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1688,7 +1688,7 @@ namespace PackageGenerator {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1696,7 +1696,7 @@ namespace PackageGenerator {
             try {
                 ResetPorpertyDefinitionPart();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1714,14 +1714,14 @@ namespace PackageGenerator {
                         lbAvailableProps.Items.Add(selectedInstallerPropertyObject);
                         ResetPorpertyDefinitionPart();
                     } else {
-                        FrontendUtils.ShowInformation("The property name is already in use, please choose a unique name!", true);
+                        CommonUtils.ShowInformation("The property name is already in use, please choose a unique name!", true);
                     }
 
                 } else {
-                    FrontendUtils.ShowInformation("Please make sure all fields are filled", true);
+                    CommonUtils.ShowInformation("Please make sure all fields are filled", true);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1733,7 +1733,7 @@ namespace PackageGenerator {
                 //txtOutput.Text = txtOutput.Text.Remove(txtOutput.Text.LastIndexOf("\r\n\r\n"));
                 counter--;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1744,7 +1744,7 @@ namespace PackageGenerator {
                     StartPackageJarGeneration();
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1758,7 +1758,7 @@ namespace PackageGenerator {
                     StartComparison(fileOne, fileTwo);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1878,7 +1878,7 @@ namespace PackageGenerator {
                 packageGenForm.Visible = false;
                 packageGenForm.Close();
                 System.Threading.Thread.Sleep(10);
-                FrontendUtils.ShowInformation("Package generation completed!", false);
+                CommonUtils.ShowInformation("Package generation completed!", false);
             }
         }
 
@@ -1892,7 +1892,7 @@ namespace PackageGenerator {
             if (!e.Cancelled && e.Error == null) {
                 ExportExcelObject exportExcelObject = e.Result as ExportExcelObject;
                 if (exportExcelObject.showCompletedPopup) {
-                    FrontendUtils.ShowInformation("Excel export is completed for [" + exportExcelObject.outputFilePath + "]", false);
+                    CommonUtils.ShowInformation("Excel export is completed for [" + exportExcelObject.outputFilePath + "]", false);
                 }
             }
         } 

@@ -23,9 +23,9 @@ using System.Xml.Linq;
 using System.Xml.Schema;
 using System.Xml.XPath;
 using System.Xml.Xsl;
-using Sybase.Data.AseClient;
 using Automation.Common;
 using Automation.Common.Utils;
+using Sybase.Data.AseClient;
 
 
 namespace XmlParsersAndUi {
@@ -128,7 +128,7 @@ namespace XmlParsersAndUi {
                 }
                 gbChildren.Controls.Add(cmbNew);
             } else {
-                FrontendUtils.ShowError(selectedElementsFirstRun.ElementAt(0).s1.Attribute("name").Value + " has no children elements", null);
+                CommonUtils.ShowError(selectedElementsFirstRun.ElementAt(0).s1.Attribute("name").Value + " has no children elements", null);
 
             }
         }
@@ -161,9 +161,9 @@ namespace XmlParsersAndUi {
                 } catch (XmlException xExc)
                     //Exception is thrown is there is an error in the Xml
                 {
-                    FrontendUtils.ShowError(xExc.Message, xExc);
+                    CommonUtils.ShowError(xExc.Message, xExc);
                 } catch (Exception ex) { //General exception
-                    FrontendUtils.ShowError(ex.Message, ex);
+                    CommonUtils.ShowError(ex.Message, ex);
                 } finally {
                     this.Cursor = Cursors.Default; //Change the cursor back
                 }
@@ -224,7 +224,7 @@ namespace XmlParsersAndUi {
                 }
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -233,7 +233,7 @@ namespace XmlParsersAndUi {
                 ParseEvent(txtEventIn.Text);
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -275,9 +275,9 @@ namespace XmlParsersAndUi {
             } catch (XmlException xExc)
                 //Exception is thrown is there is an error in the Xml
             {
-                FrontendUtils.ShowError(xExc.Message, xExc);
+                CommonUtils.ShowError(xExc.Message, xExc);
             } catch (Exception ex) { //General exception
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             } finally {
                 this.Cursor = Cursors.Default; //Change the cursor back
             }
@@ -311,7 +311,7 @@ namespace XmlParsersAndUi {
             try {
                 //  SpawnNewCmb(cmbMain.SelectedItem.ToString());
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -521,19 +521,19 @@ namespace XmlParsersAndUi {
 
         private void button3_Click(object sender, EventArgs e) {
             try {
-        		
-        		string[] files =  Directory.GetFiles(txtInputFile.Text,"*.cs",SearchOption.AllDirectories);
-        		string replacement ="/*This file is part of XML-Parser-Engine.\r\n\r\nXML-Parser-Engine is free software: you can redistribute it and/or modify\r\nit under the terms of the GNU General Public License as published by\r\nthe Free Software Foundation, either version 3 of the License, or\r\n(at your option) any later version.\r\n\r\nXML-Parser-Engine is distributed in the hope that it will be useful,\r\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\r\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\r\nGNU General Public License for more details.\r\n\r\nYou should have received a copy of the GNU General Public License\r\nalong with XML-Parser-Engine.  If not, see <http://www.gnu.org/licenses/>.*/\r\n";
-        		
-        		for (int i = 0; i < files.Length; i++) {        			
-        			string read = FrontendUtils.ReadFile(files[i]);
-        		    read = replacement + read;
-        			FrontendUtils.WriteFile(files[i],read);        			
-        		}
-        		
-        		
+
+                string[] files =  Directory.GetFiles(txtInputFile.Text,"*.cs",SearchOption.AllDirectories);
+                string replacement ="/*This file is part of XML-Parser-Engine.\r\n\r\nXML-Parser-Engine is free software: you can redistribute it and/or modify\r\nit under the terms of the GNU General Public License as published by\r\nthe Free Software Foundation, either version 3 of the License, or\r\n(at your option) any later version.\r\n\r\nXML-Parser-Engine is distributed in the hope that it will be useful,\r\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\r\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\r\nGNU General Public License for more details.\r\n\r\nYou should have received a copy of the GNU General Public License\r\nalong with XML-Parser-Engine.  If not, see <http://www.gnu.org/licenses/>.*/\r\n";
+
+                for (int i = 0; i < files.Length; i++) {
+                    string read = CommonUtils.ReadFile(files[i]);
+                    read = replacement + read;
+                    CommonUtils.WriteFile(files[i],read);
+                }
+
+
                 string filePath = txtInputFile.Text;
-                string readFile = FrontendUtils.ReadFile(filePath);
+                string readFile = CommonUtils.ReadFile(filePath);
 
                 Regex reg = new Regex("http.*.xml");
 
@@ -545,7 +545,7 @@ namespace XmlParsersAndUi {
                     exportScript = exportScript + "svn export " + match.Value+"\r\n";
                 }
 
-                FrontendUtils.WriteFile("D:\\outputExportScript.cmd", exportScript);
+                CommonUtils.WriteFile("D:\\outputExportScript.cmd", exportScript);
 
             } catch (Exception ex) {
 
@@ -554,50 +554,87 @@ namespace XmlParsersAndUi {
 
         private void btnUpdateConfig_Click(object sender, EventArgs e) {
             try {
-                string configTPKS = FrontendUtils.ReadFile(txtConfi.Text);
+             //   string configTPKS = CommonUtils.ReadFile(txtConfi.Text);
 
-                string[] split = configTPKS.Split(new string[] { "\r\n" },StringSplitOptions.RemoveEmptyEntries);
+              //  string[] split = configTPKS.Split(new string[] { "\r\n" },StringSplitOptions.RemoveEmptyEntries);
 
                 Dictionary<string, List<string>> tpkNickname = new Dictionary<string, List<string>>();
 
-                for (int i = 0; i < split.Length; i++) {
-                    if (tpkNickname.Count > 0) {
-                        if (tpkNickname.Keys.Contains(split[i].Split(new char[] { '\t' })[0])) {
-                            tpkNickname[split[i].Split(new char[] { '\t' })[0]].Add(split[i].Split(new char[] { '\t' })[1]);
-                        }
-                        else {
-                            List<string> values = new List<string>() {
-                                split[i].Split(new char[] { '\t' })[1]
-                            };
-                            tpkNickname.Add(split[i].Split(new char[] { '\t' })[0], values);
-
-                        }
-                    } else {
-
-                        List<string> values = new List<string>() {
-                            split[i].Split(new char[] { '\t' })[1]
-                        };
-                        tpkNickname.Add(split[i].Split(new char[] { '\t' })[0], values);
-
-                    }
-                }
+//                for (int i = 0; i < split.Length; i++) {
+//                    if (tpkNickname.Count > 0) {
+//                        if (tpkNickname.Keys.Contains(split[i].Split(new char[] { '\t' })[0])) {
+//                            tpkNickname[split[i].Split(new char[] { '\t' })[0]].Add(split[i].Split(new char[] { '\t' })[1]);
+//                        }
+//                        else {
+//                            List<string> values = new List<string>() {
+//                                split[i].Split(new char[] { '\t' })[1]
+//                            };
+//                            tpkNickname.Add(split[i].Split(new char[] { '\t' })[0], values);
+//
+//                        }
+//                    } else {
+//
+//                        List<string> values = new List<string>() {
+//                            split[i].Split(new char[] { '\t' })[1]
+//                        };
+//                        tpkNickname.Add(split[i].Split(new char[] { '\t' })[0], values);
+//
+//                    }
+//                }
 
 
                 string[] configFiles =  Directory.GetFiles(txtInputFile.Text, "config.xml",SearchOption.AllDirectories);
+                tpkNickname.Add("0000847",new List<string>() {"DEFAULT_2","DEFAULT"
+                });
+                tpkNickname.Add("0001729",new List<string>() {"DEFAULT"
+                });
+                tpkNickname.Add("0000982",new List<string>() {"DEFAULT_SRULE_GUI"
+                });
+                tpkNickname.Add("0000337",new List<string>() {"COMPAREXML","EXPORT","EXPORTHIGHLEVEL","EXPORTORACLE","IMPORTHIGHLEVEL","IMPORTORACLE","IMPORT"
+                });
+                tpkNickname.Add("0000593",new List<string>() {"TEST_beta_V31_PF","TEST_beta_V31_PAC"
+                });
+                tpkNickname.Add("0000682",new List<string>() {"TEST_154_V31"
+                });
+                tpkNickname.Add("0000775",new List<string>() {"210_CONVERSION"
+                });
 
+                tpkNickname.Add("0000806",new List<string>() {"DEFAULT_BIG_TO_SMALL"
+                });
+
+                tpkNickname.Add("0000832",new List<string>() {"DEFAULT"
+                });
+                tpkNickname.Add("0001526",new List<string>() {"DEFAULT_3_2"
+                });
+
+                tpkNickname.Add("0001000",new List<string>() {"DEFAULT","DEFAULT_2","DEFAULT_3","DEFAULT_5","EXPORTFS","RESILIENT","SPACE"
+                });
+                tpkNickname.Add("0001284",new List<string>() {"DEFAULT"
+                });
+
+                tpkNickname.Add("0001354",new List<string>() {"FIN-PAR_STATICS_MXML"
+                });
+                tpkNickname.Add("0001361",new List<string>() {"MIGRATION"
+                });
+                tpkNickname.Add("0001560",new List<string>() {"DEFAULT"
+                });
+
+string doneFiles="";
                 for (int i = 0; i < configFiles.Length; i++) {
                     string tpkNumber = "";
                     XDocument xdoc = new XDocument();
                     try {
                         tpkNumber = Directory.GetParent(configFiles[i]).Name;
 
-                        xdoc = XDocument.Parse(FrontendUtils.ReadFile(configFiles[i]));
+                        xdoc = XDocument.Parse(CommonUtils.ReadFile(configFiles[i]));
                     } catch (Exception ex) {
-                        FrontendUtils.ShowError(ex.Message, ex);
+                        CommonUtils.ShowError(ex.Message, ex);
                     }
 
 
                     if (tpkNickname.Keys.Contains(tpkNumber)) {
+
+
                         for (int j = 0; j < tpkNickname[tpkNumber].Count; j++) {
                             var item = from c1 in xdoc.Descendants("AvailableTests").Descendants("AvailableTest")
                                        where string.Equals(c1.Descendants("NickName").ElementAt(0).Value, tpkNickname[tpkNumber][j])
@@ -612,23 +649,41 @@ namespace XmlParsersAndUi {
 
                             try {
                                 if (item.ElementAt(0).elements.ElementAt(0).Nodes().Count() > 0) {
-
-                                    if (item.ElementAt(0).elements.ElementAt(0).Element("Customize") != null) {
-                                        item.ElementAt(0).elements.ElementAt(0).Element("Customize").Add(
-                                            new XElement("MxGen"));
-                                        item.ElementAt(0).elements.ElementAt(0).Element("Customize").Element("MxGen").Add(
-                                            new XElement("FullRightsUser", "USER_FULLRIGHTS"));
-                                    } else {
-                                        item.ElementAt(0).elements.ElementAt(0).Add(new XElement("Customize"));
-                                        item.ElementAt(0).elements.ElementAt(0).Element("Customize").Add(
-                                            new XElement("MxGen"));
-                                        item.ElementAt(0).elements.ElementAt(0).Element("Customize").Element("MxGen").Add(
-                                            new XElement("FullRightsUser", "USER_FULLRIGHTS"));
-                                    }
+                            	string testparams= 	item.ElementAt(0).elements.ElementAt(0).Element("Customize").Element("TestParameters").Value;
+                            	
+                            	if (testparams.Contains("do.log.check=false")) {
+                            		doneFiles = doneFiles +"contains logcheckfalse "+tpkNumber+" nickname "+tpkNickname[tpkNumber][j];
+                            	}
+                            	
+                            	
+                            	
+                            	testparams = Regex.Replace(testparams,"-Dexpected.log.check=\\d+","");
+                            	if (Regex.IsMatch(testparams,"-Dexpected.log.check=\\d+")) {
+                            			doneFiles = doneFiles +"contains logcheckNumber "+tpkNumber+" nickname "+tpkNickname[tpkNumber][j];
+                            
+                            	}
+                            //	testparams = testparams.Replace("-D do.log.check=false","");
+                            testparams = testparams.Replace("-D ","");
+                            testparams = testparams.Replace(" -D-D= ","");
+                            
+                            	item.ElementAt(0).elements.ElementAt(0).Element("Customize").Element("TestParameters").SetValue(testparams);
+                            	
+                            	//                                    if (item.ElementAt(0).elements.ElementAt(0).Element("Customize") != null) {
+//                                        item.ElementAt(0).elements.ElementAt(0).Element("Customize").Add(
+//                                            new XElement("MxGen"));
+//                                        item.ElementAt(0).elements.ElementAt(0).Element("Customize").Element("MxGen").Add(
+//                                            new XElement("FullRightsUser", "USER_FULLRIGHTS"));
+//                                    } else {
+//                                        item.ElementAt(0).elements.ElementAt(0).Add(new XElement("Customize"));
+//                                        item.ElementAt(0).elements.ElementAt(0).Element("Customize").Add(
+//                                            new XElement("MxGen"));
+//                                        item.ElementAt(0).elements.ElementAt(0).Element("Customize").Element("MxGen").Add(
+//                                            new XElement("FullRightsUser", "USER_FULLRIGHTS"));
+//                                    }
 
                                 }
                             } catch (Exception ex) {
-                                FrontendUtils.ShowError(ex.Message, ex);
+                                CommonUtils.ShowError(tpkNumber+" nickname "+tpkNickname[tpkNumber][j]+ ex.Message, ex);
                             }
 
                         }
@@ -640,7 +695,7 @@ namespace XmlParsersAndUi {
 
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -650,7 +705,7 @@ namespace XmlParsersAndUi {
                 string[] configFiles = Directory.GetFiles(txtInputFile.Text, "config.xml");
 
                 for (int i = 0; i < configFiles.Length; i++) {
-                    XDocument xdoc = XDocument.Parse(FrontendUtils.ReadFile(configFiles[i]));
+                    XDocument xdoc = XDocument.Parse(CommonUtils.ReadFile(configFiles[i]));
 
                     xdoc.Descendants("AvailableTests").Descendants("AvailableTest");
                     var item = from c1 in xdoc.Descendants("AvailableTests").Descendants("AvailableTest")
@@ -671,7 +726,7 @@ namespace XmlParsersAndUi {
             string path = string.Empty;
             try {
                 string[] folders = Directory.GetDirectories("D:\\sites-Stream","*sites",SearchOption.AllDirectories);
-                string fileRead = FrontendUtils.ReadFile("D:\\sites-Stream\\goodsites.txt");
+                string fileRead = CommonUtils.ReadFile("D:\\sites-Stream\\goodsites.txt");
                 for (int i = 0; i < folders.Length; i++) {
                     path = path+"\r\n"+folders[i];
                     //if (folders[i].Contains("sites")) {
@@ -679,7 +734,7 @@ namespace XmlParsersAndUi {
                     //  }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message,ex);
+                CommonUtils.ShowError(ex.Message,ex);
             }
         }
 
@@ -717,18 +772,18 @@ namespace XmlParsersAndUi {
 
         void BtnTestConnClick(object sender, EventArgs e) {
             string connectionString = txtConnx.Text;
-         //   OleDbConnection conn = new OleDbConnection(connectionString);
+            //   OleDbConnection conn = new OleDbConnection(connectionString);
             AseConnection conn = new AseConnection(connectionString);
-            
+
             try {
                 conn.Open();
-                
+
                 AseCommand command = new AseCommand("select max(ID) from QA_PAC_TIMING where TEST_PACKAGE='PAR.TPK.0000949'",conn);
                 command.CommandTimeout = 99999;
                 object scale = command.ExecuteScalar();
                 AseDataReader  data=  command.ExecuteReader();
-            	string result =    data.GetString(0);
-            
+                string result =    data.GetString(0);
+
             } catch (Exception ex) {
                 MessageBox.Show(ex.Message+"\r\n\r\n"+ex.StackTrace);
             } finally {

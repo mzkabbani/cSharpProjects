@@ -22,7 +22,7 @@ namespace Automation.Backend{
                 // @categoryId, @usageCount
                 command.Parameters.Add("@categoryId", captureEvent.captureEventCategory);
                 command.Parameters.Add("@usageCount", captureEvent.captureEventUsageCount);
-                command.Parameters.Add("@userId", FrontendUtils.LoggedInUserId);
+                command.Parameters.Add("@userId", CommonUtils.LoggedInUserId);
                 value = Convert.ToInt32(command.ExecuteNonQuery());
                 SqlCeCommand commandMaxId = new SqlCeCommand(Advanced_Recomendations_TextConv_SQL.commandMaxRecommendationIdTextConv, conn);
                 value = Convert.ToInt32(commandMaxId.ExecuteScalar());
@@ -44,7 +44,7 @@ namespace Automation.Backend{
 
         private static AdvancedRecomendation GetCaptureEventItemForTextConverion(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) {
             List<CustomTreeNode> customCapturePointList = BackEndUtils.GetCustomCapturePointListFromTable(capturePointsTable);
-            AdvancedRecomendation capture = new AdvancedRecomendation(Convert.ToInt32(advancedRecRow["id"]), advancedRecRow["name"].ToString(), advancedRecRow["description"].ToString(), advancedRecRow["event_text"].ToString(), Convert.ToInt32(advancedRecRow["categoryId"]), Convert.ToInt32(advancedRecRow["usageCount"]), customCapturePointList, FrontendUtils.LoggedInUserId);
+            AdvancedRecomendation capture = new AdvancedRecomendation(Convert.ToInt32(advancedRecRow["id"]), advancedRecRow["name"].ToString(), advancedRecRow["description"].ToString(), advancedRecRow["event_text"].ToString(), Convert.ToInt32(advancedRecRow["categoryId"]), Convert.ToInt32(advancedRecRow["usageCount"]), customCapturePointList, CommonUtils.LoggedInUserId);
             capture.Replacement = Advanced_Replacements_TextConv.GetReplacementEventByCaptureEventIdForTextConverion(capture.CaptureEventId, conn);
             return capture;
         }
@@ -99,7 +99,7 @@ namespace Automation.Backend{
                     Advanced_Replacements_TextConv.SaveReplacementEventForTextConversion(replacementEvent, conn, transaction);
                     transaction.Commit();
                 } catch (Exception ex) {
-                    FrontendUtils.LogError(ex.Message, ex);
+                    CommonUtils.LogError(ex.Message, ex);
                     transaction.Rollback();
                 }
             } finally {
@@ -117,7 +117,7 @@ namespace Automation.Backend{
             command.Parameters.Add("@id", captureEventId);
             command.Parameters.Add("@categoryId", captureEvent.captureEventCategory);
             command.Parameters.Add("@usageCount", captureEvent.captureEventUsageCount);
-            command.Parameters.Add("@userId", FrontendUtils.LoggedInUserId);
+            command.Parameters.Add("@userId", CommonUtils.LoggedInUserId);
             value = Convert.ToInt32(command.ExecuteNonQuery());
         }
 

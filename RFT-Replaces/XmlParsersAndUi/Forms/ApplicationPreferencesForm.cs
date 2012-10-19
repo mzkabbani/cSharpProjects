@@ -28,6 +28,11 @@ namespace XmlParsersAndUi.Forms {
 
         #region Events
 
+        void BtnCompressDBClick(object sender, EventArgs e) {
+            BackEndUtils.CompactDatabase();
+            lblDBSIze.Text = GetDBSize();
+        }
+
         private void ApplicationPreferencesForm_Load(object sender, EventArgs e) {
             try {
                 try {
@@ -46,20 +51,8 @@ namespace XmlParsersAndUi.Forms {
                 dgvDatabasePrefs.DataSource = dataSet.Tables[0];
                 LoadSavedFolderNames();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
-        }
-
-        string GetDBSize() {
-
-            string[] sizes = { "B", "KB", "MB", "GB" };
-            double len = new FileInfo(BackEndUtils.ConnectionParamter).Length;
-            int order = 0;
-            while (len >= 1024 && order + 1 < sizes.Length) {
-                order++;
-                len = len/1024;
-            }
-            return len + sizes[order];
         }
 
         #endregion
@@ -76,7 +69,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 Application_Settings.UpdatePrefs(dataSet);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -94,6 +87,17 @@ namespace XmlParsersAndUi.Forms {
 
         #region Methods
 
+        string GetDBSize() {
+            string[] sizes = { "B", "KB", "MB", "GB" };
+            double len = new FileInfo(BackEndUtils.ConnectionParamter).Length;
+            int order = 0;
+            while (len >= 1024 && order + 1 < sizes.Length) {
+                order++;
+                len = len/1024;
+            }
+            return len + sizes[order];
+        }
+
         private TreeNode CreateNode(string text, bool expanded) {
             TreeNode node = new TreeNode(text);
             node.Expand();
@@ -110,10 +114,8 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private void LoadSavedFolderNames() {
-
             DataSet dataSet = Folder_Names.GetAllFolderNamesAsDataset();
             dataSet.Relations.Add("NodeRelation", dataSet.Tables[0].Columns["id"], dataSet.Tables[0].Columns["parentId"]);
-
             foreach (DataRow dataRow in dataSet.Tables[0].Rows) {
                 if (dataRow.IsNull("parentId")) {
                     TreeNode node = CreateNode(dataRow["folderName"].ToString(), true);
@@ -152,7 +154,7 @@ namespace XmlParsersAndUi.Forms {
         private bool IsValidToAddNode(TreeNodeCollection treeNodeCollection, string newNodeName) {
             foreach (TreeNode treeNode in treeNodeCollection) {
                 if(string.Equals(treeNode.Text,newNodeName)) {
-                    FrontendUtils.ShowInformation("Node name must be unique!",true);
+                    CommonUtils.ShowInformation("Node name must be unique!",true);
                     return false;
                 }
             }
@@ -161,7 +163,7 @@ namespace XmlParsersAndUi.Forms {
 
         private string GenerateRandomHEX() {
             string generatedHEX = string.Empty;
-            generatedHEX = FrontendUtils.GetRandomHexNumber(4);
+            generatedHEX = CommonUtils.GetRandomHexNumber(4);
             return generatedHEX;
         }
 
@@ -183,7 +185,7 @@ namespace XmlParsersAndUi.Forms {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -195,7 +197,7 @@ namespace XmlParsersAndUi.Forms {
                     tvFolderNames.SelectedNode.Text = form.Controls["txtNewName"].Text;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -203,7 +205,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 SaveUpdatedTreeView();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -247,7 +249,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 UpdateUIFromSelectedNode(tvPreferenceSections.SelectedNode.Text);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -272,16 +274,12 @@ namespace XmlParsersAndUi.Forms {
                 }
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
 
         #endregion
-        
-        void BtnCompressDBClick(object sender, EventArgs e)
-        {
-        	BackEndUtils.CheckIfDatabaseNeedsCompation();
-        }
+
     }
 }

@@ -44,7 +44,7 @@ namespace XmlParsersAndUi.Forms {
                     pnlReplacements.Controls.Add(customizedReplacement);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -52,7 +52,7 @@ namespace XmlParsersAndUi.Forms {
             try {
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 

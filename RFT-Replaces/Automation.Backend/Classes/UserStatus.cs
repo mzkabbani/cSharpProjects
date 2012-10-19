@@ -45,7 +45,7 @@ namespace Automation.Backend {
 
 
             } catch (Exception ex) {
-                FrontendUtils.LogError(ex.Message,ex);
+                CommonUtils.LogError(ex.Message,ex);
             } finally {
                 conn.Close();
             }

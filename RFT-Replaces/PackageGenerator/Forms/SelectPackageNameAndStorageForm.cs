@@ -26,11 +26,11 @@ namespace PackageGenerator.Forms {
         private void btnProceed_Click(object sender, EventArgs e) {
             try {
                 if (string.IsNullOrEmpty(txtOutputPath.Text.Trim()) || string.IsNullOrEmpty(txtPackageName.Text.Trim())) {
-                    FrontendUtils.ShowInformation("[Output Path] and [Package Name] are mandatory fields!", true);
+                    CommonUtils.ShowInformation("[Output Path] and [Package Name] are mandatory fields!", true);
                     this.DialogResult = DialogResult.Cancel;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -43,7 +43,7 @@ namespace PackageGenerator.Forms {
                  string pathToThisExec = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
                  txtOutputPath.Text = pathToThisExec+"\\Released";
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 

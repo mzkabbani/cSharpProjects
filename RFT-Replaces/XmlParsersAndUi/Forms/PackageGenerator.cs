@@ -43,12 +43,12 @@ namespace XmlParsersAndUi.Forms {
                 string pathToUtilsFile = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location) + @"\MIGRATION\FIRSTPACKAGE\trunk\.ci\package\murex\Migration\FrontendUtilities.groovy";
                 LoadAvailableFunctionsToList(pathToUtilsFile);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void LoadAvailableFunctionsToList(string utilsFilePath) {
-            string readFile = FrontendUtils.ReadFile(utilsFilePath);
+            string readFile = CommonUtils.ReadFile(utilsFilePath);
 
             Regex regex = new Regex("(public).*?(\\S+).?\\((.*)\\)\\{");
             MatchCollection matches = regex.Matches(readFile);
@@ -122,7 +122,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 UpdateUiFromSelectedItem(lbAvailableFunctions.SelectedItem as CustomizationFunction);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -188,7 +188,7 @@ namespace XmlParsersAndUi.Forms {
                 dgvOutputOperations.Rows[rowIndex].Cells["Operations"].Value = operationValue;
                 counter++;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -201,7 +201,7 @@ namespace XmlParsersAndUi.Forms {
                 //txtOutput.Text = txtOutput.Text.Remove(txtOutput.Text.LastIndexOf("\r\n\r\n"));
                 counter--;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -269,13 +269,13 @@ namespace XmlParsersAndUi.Forms {
                                               "-packageid:" + packageId;
 
 
-                    FrontendUtils.WriteFile(pathToThisExec + @"\compile.cmd", commandToExecute);
-                    FrontendUtils.ExecuteCommandSync(pathToThisExec + @"\compile.cmd");
+                    CommonUtils.WriteFile(pathToThisExec + @"\compile.cmd", commandToExecute);
+                    CommonUtils.ExecuteCommandSync(pathToThisExec + @"\compile.cmd");
                 }
                 #endregion
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -293,7 +293,7 @@ namespace XmlParsersAndUi.Forms {
             //Copy Installer File
             File.Copy(pathToMainInstallerFile, pathToInstallerFile, true);
             //Read fresh Installer File
-            string installerFile = FrontendUtils.ReadFile(pathToInstallerFile);
+            string installerFile = CommonUtils.ReadFile(pathToInstallerFile);
 
             Regex reg = new Regex(@"//Start-Properties(.*)End-Properties", RegexOptions.Singleline);
 
@@ -301,7 +301,7 @@ namespace XmlParsersAndUi.Forms {
 
             installerFile = reg.Replace(installerFile, "//Start-Properties\n\n" + replacementAllProperties + "\n\n//End-Properties");
             //write new Installer File
-            FrontendUtils.WriteFile(pathToInstallerFile, installerFile);
+            CommonUtils.WriteFile(pathToInstallerFile, installerFile);
 
             #endregion
 
@@ -312,7 +312,7 @@ namespace XmlParsersAndUi.Forms {
             File.Copy(pathToOriginalOperationFile, pathToOperationFile, true);
 
             //Read fresh operations file
-            string operationFile = FrontendUtils.ReadFile(pathToOperationFile);
+            string operationFile = CommonUtils.ReadFile(pathToOperationFile);
 
             //get formatted properties from UI
             //add properties to operations file
@@ -331,7 +331,7 @@ namespace XmlParsersAndUi.Forms {
             //operationFile = operationFile.Replace("}}", GeneratedOperationsFile + "\r\n\r\n}}");
 
             //write new operations file
-            FrontendUtils.WriteFile(pathToOperationFile, operationFile);
+            CommonUtils.WriteFile(pathToOperationFile, operationFile);
 
             #endregion
 
@@ -390,7 +390,7 @@ namespace XmlParsersAndUi.Forms {
                 dgvOutputOperations.Rows.Clear();
                 counter = 1;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -404,12 +404,12 @@ namespace XmlParsersAndUi.Forms {
                 FolderBrowserDialog dialog = new FolderBrowserDialog();
                 dialog.ShowNewFolderButton = true;
                 if (dialog.ShowDialog() == DialogResult.OK) {
-                    FrontendUtils.CopyDirectory(pathToDotCiFolder, dialog.SelectedPath);
+                    CommonUtils.CopyDirectory(pathToDotCiFolder, dialog.SelectedPath);
                     File.Delete(dialog.SelectedPath + @"\.ci\package\murex\Migration\main.groovy");
                     File.Delete(dialog.SelectedPath + @"\.ci\package\murex\Migration\installMain.groovy");
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -426,7 +426,7 @@ namespace XmlParsersAndUi.Forms {
                     cboPropertyValue.SelectedIndex = 0;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -443,7 +443,7 @@ namespace XmlParsersAndUi.Forms {
 
                 //}
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -456,7 +456,7 @@ namespace XmlParsersAndUi.Forms {
 
             //  string pathToInstallerFile = pathToThisExec + @"\MIGRATION\FIRSTPACKAGE\trunk\.ci\package\murex\Migration\installMain.groovy";
 
-            string installerFile = FrontendUtils.ReadFile(pathToInstallerFile);
+            string installerFile = CommonUtils.ReadFile(pathToInstallerFile);
 
             Regex reg = new Regex(@"\bStart-Properties(.*)End-Properties\b", RegexOptions.Singleline);
 
@@ -530,7 +530,7 @@ namespace XmlParsersAndUi.Forms {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -550,7 +550,7 @@ namespace XmlParsersAndUi.Forms {
 
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -568,14 +568,14 @@ namespace XmlParsersAndUi.Forms {
 
                         lbAvailableProps.Items.Add(selectedInstallerPropertyObject);
                     } else {
-                        FrontendUtils.ShowInformation("The property name is already in use, please choose a unique name!",true);
+                        CommonUtils.ShowInformation("The property name is already in use, please choose a unique name!",true);
                     }
 
                 } else {
-                    FrontendUtils.ShowInformation("Please make sure all fields are filled",true);
+                    CommonUtils.ShowInformation("Please make sure all fields are filled",true);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -594,7 +594,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 lbAvailableProps.Items.Remove(lbAvailableProps.SelectedItem);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -608,10 +608,10 @@ namespace XmlParsersAndUi.Forms {
                     installerProp.localDefaultValue = txtPropertyValue.Visible ? txtPropertyValue.Text : cboPropertyValue.SelectedItem.ToString().ToLower();
 
                 } else {
-                    FrontendUtils.ShowInformation("Please make sure all fields are filled",true);
+                    CommonUtils.ShowInformation("Please make sure all fields are filled",true);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -701,7 +701,7 @@ namespace XmlParsersAndUi.Forms {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -713,7 +713,7 @@ namespace XmlParsersAndUi.Forms {
                     StartImportOfCi(dial.SelectedPath);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -727,7 +727,7 @@ namespace XmlParsersAndUi.Forms {
 
         private void ParseCiFunctions(string pathToOperationsFile) {
             Regex operationsRegex = new Regex("//Start-Operations(.*)//End-Operations", RegexOptions.Singleline);
-            string readOperationsFile = FrontendUtils.ReadFile(pathToOperationsFile);
+            string readOperationsFile = CommonUtils.ReadFile(pathToOperationsFile);
 
             string allOperations = operationsRegex.Match(readOperationsFile).Groups[1].Value;
 
@@ -754,7 +754,7 @@ namespace XmlParsersAndUi.Forms {
                 control.Text = "AppDir + \"/\"";
             }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 

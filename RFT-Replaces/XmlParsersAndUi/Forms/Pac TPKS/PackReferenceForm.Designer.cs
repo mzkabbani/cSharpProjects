@@ -48,14 +48,14 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS
 			this.btnReset = new System.Windows.Forms.Button();
 			this.tcResults = new System.Windows.Forms.TabControl();
 			this.tabPage1 = new System.Windows.Forms.TabPage();
-			this.tabPage2 = new System.Windows.Forms.TabPage();
+			this.tpIntermediate = new System.Windows.Forms.TabPage();
 			this.dgvIntermediate = new System.Windows.Forms.DataGridView();
 			this.btnInsertToPac = new System.Windows.Forms.Button();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
 			this.tcResults.SuspendLayout();
 			this.tabPage1.SuspendLayout();
-			this.tabPage2.SuspendLayout();
+			this.tpIntermediate.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvIntermediate)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -119,20 +119,20 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS
 			// btnInsertToDB
 			// 
 			this.btnInsertToDB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.btnInsertToDB.Location = new System.Drawing.Point(257, 367);
+			this.btnInsertToDB.Location = new System.Drawing.Point(233, 367);
 			this.btnInsertToDB.Name = "btnInsertToDB";
-			this.btnInsertToDB.Size = new System.Drawing.Size(121, 23);
+			this.btnInsertToDB.Size = new System.Drawing.Size(169, 23);
 			this.btnInsertToDB.TabIndex = 1;
-			this.btnInsertToDB.Text = "Proceed";
+			this.btnInsertToDB.Text = "Intermediate Results";
 			this.btnInsertToDB.UseVisualStyleBackColor = true;
 			this.btnInsertToDB.Click += new System.EventHandler(this.BtnInsertToDBClick);
 			// 
 			// btnReset
 			// 
 			this.btnReset.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.btnReset.Location = new System.Drawing.Point(130, 367);
+			this.btnReset.Location = new System.Drawing.Point(58, 367);
 			this.btnReset.Name = "btnReset";
-			this.btnReset.Size = new System.Drawing.Size(121, 23);
+			this.btnReset.Size = new System.Drawing.Size(169, 23);
 			this.btnReset.TabIndex = 3;
 			this.btnReset.Text = "Reset";
 			this.btnReset.UseVisualStyleBackColor = true;
@@ -144,7 +144,7 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS
 									| System.Windows.Forms.AnchorStyles.Left) 
 									| System.Windows.Forms.AnchorStyles.Right)));
 			this.tcResults.Controls.Add(this.tabPage1);
-			this.tcResults.Controls.Add(this.tabPage2);
+			this.tcResults.Controls.Add(this.tpIntermediate);
 			this.tcResults.Location = new System.Drawing.Point(12, 94);
 			this.tcResults.Name = "tcResults";
 			this.tcResults.SelectedIndex = 0;
@@ -162,16 +162,16 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS
 			this.tabPage1.Text = "Average Results";
 			this.tabPage1.UseVisualStyleBackColor = true;
 			// 
-			// tabPage2
+			// tpIntermediate
 			// 
-			this.tabPage2.Controls.Add(this.dgvIntermediate);
-			this.tabPage2.Location = new System.Drawing.Point(4, 22);
-			this.tabPage2.Name = "tabPage2";
-			this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-			this.tabPage2.Size = new System.Drawing.Size(603, 241);
-			this.tabPage2.TabIndex = 1;
-			this.tabPage2.Text = "Intermediate";
-			this.tabPage2.UseVisualStyleBackColor = true;
+			this.tpIntermediate.Controls.Add(this.dgvIntermediate);
+			this.tpIntermediate.Location = new System.Drawing.Point(4, 22);
+			this.tpIntermediate.Name = "tpIntermediate";
+			this.tpIntermediate.Padding = new System.Windows.Forms.Padding(3);
+			this.tpIntermediate.Size = new System.Drawing.Size(603, 241);
+			this.tpIntermediate.TabIndex = 1;
+			this.tpIntermediate.Text = "Intermediate";
+			this.tpIntermediate.UseVisualStyleBackColor = true;
 			// 
 			// dgvIntermediate
 			// 
@@ -189,11 +189,12 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS
 			// btnInsertToPac
 			// 
 			this.btnInsertToPac.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.btnInsertToPac.Location = new System.Drawing.Point(384, 367);
+			this.btnInsertToPac.Enabled = false;
+			this.btnInsertToPac.Location = new System.Drawing.Point(408, 367);
 			this.btnInsertToPac.Name = "btnInsertToPac";
-			this.btnInsertToPac.Size = new System.Drawing.Size(121, 23);
+			this.btnInsertToPac.Size = new System.Drawing.Size(169, 23);
 			this.btnInsertToPac.TabIndex = 4;
-			this.btnInsertToPac.Text = "Insert to PAC";
+			this.btnInsertToPac.Text = "Insert into QA_PAC_TIMING";
 			this.btnInsertToPac.UseVisualStyleBackColor = true;
 			this.btnInsertToPac.Click += new System.EventHandler(this.BtnInsertToPacClick);
 			// 
@@ -209,19 +210,20 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS
 			this.Controls.Add(this.groupBox1);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
 			this.Name = "PackReferenceForm";
-			this.Text = "PackReferenceForm";
+			this.Text = "PAC References Manager";
+			this.Load += new System.EventHandler(this.PackReferenceFormLoad);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvResults)).EndInit();
 			this.tcResults.ResumeLayout(false);
 			this.tabPage1.ResumeLayout(false);
-			this.tabPage2.ResumeLayout(false);
+			this.tpIntermediate.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvIntermediate)).EndInit();
 			this.ResumeLayout(false);
 		}
 		private System.Windows.Forms.Button btnInsertToPac;
 		private System.Windows.Forms.DataGridView dgvIntermediate;
-		private System.Windows.Forms.TabPage tabPage2;
+		private System.Windows.Forms.TabPage tpIntermediate;
 		private System.Windows.Forms.TabPage tabPage1;
 		private System.Windows.Forms.TabControl tcResults;
 		private System.Windows.Forms.Button btnReset;

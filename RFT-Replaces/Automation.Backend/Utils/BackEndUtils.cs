@@ -18,19 +18,14 @@ namespace Automation.Backend {
         public static string ConnectionParamter = string.Empty;
 
         public static string ConnectionParamterPrimary = string.Empty;
-
-
         
-        
-        
-        public static void CheckIfDatabaseNeedsCompation() {
-
+        public static void CompactDatabase() {
             string src     = ConnectionParamter;
             string dest    = ConnectionParamter+".tmp";
-            // Initialize SqlCeEngine object.        
-                    
+            // Initialize SqlCeEngine object.                         
             SqlCeEngine engine = new SqlCeEngine("Data Source = " + src);
             try {
+           //engine.Repair("Data Source = " + src, RepairOption.DeleteCorruptedRows);
                 engine.Compact("Data Source = " + dest);
                 engine.Dispose();
                 File.Delete(src);
@@ -38,14 +33,12 @@ namespace Automation.Backend {
             } catch(SqlCeException e) {
                 //Use your own error handling routine.
                 //ShowErrors(e);
-                FrontendUtils.LogError(e.Message,e);                
+                CommonUtils.LogError(e.Message,e);                
             } finally {
                 //Dispose of the SqlCeEngine object.
                 engine.Dispose();
             }
-
         }
-
 
         public static SqlCeConnection GetSqlConnection() {
             SqlCeConnection sqlConnection1 = new SqlCeConnection();

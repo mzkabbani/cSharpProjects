@@ -4,14 +4,14 @@
   <description asmv2:publisher="Murex System" asmv2:product="Maintenance-Reduction" xmlns="urn:schemas-microsoft-com:asm.v1" />
   <deployment install="true" mapFileExtensions="true" />
   <dependency>
-    <dependentAssembly dependencyType="install" codebase="Maintenance-Reduction.exe.manifest" size="17240">
+    <dependentAssembly dependencyType="install" codebase="Maintenance-Reduction.exe.manifest" size="17784">
       <assemblyIdentity name="Maintenance-Reduction.exe" version="1.0.0.1" publicKeyToken="0000000000000000" language="neutral" processorArchitecture="x86" type="win32" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>11g1uiUOB+fc7rQmuhaB/Klvb6M=</dsig:DigestValue>
+        <dsig:DigestValue>n8lx+9WeM+07A3HFBT3kjFC+z4o=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

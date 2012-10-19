@@ -59,11 +59,11 @@ namespace XmlParsersAndUi {
                         writer.Close();
                     }
                 } catch (Exception ex) {
-                    FrontendUtils.ShowError("The eventsfile is not a valid xml document and will be skipped.\r\n [" + Directory.GetParent(goodFiles[i]) + @"\eventsfiles.xml] " + ex.Message, ex);
+                    CommonUtils.ShowError("The eventsfile is not a valid xml document and will be skipped.\r\n [" + Directory.GetParent(goodFiles[i]) + @"\eventsfiles.xml] " + ex.Message, ex);
                 }
             }
             string finalResult = string.Join("\r\n", untouchedEventsFiles.ToArray());
-            FrontendUtils.LogError(finalResult, null);
+            CommonUtils.LogError(finalResult, null);
         }
 
         private static void AddPatternToCustoms(List<string> goodFiles, string customToAdd) {
@@ -95,10 +95,10 @@ namespace XmlParsersAndUi {
                         }
                     } else { 
                         // log error 
-                        FrontendUtils.LogError("File does not exist " + goodFiles[i], new FileNotFoundException());
+                        CommonUtils.LogError("File does not exist " + goodFiles[i], new FileNotFoundException());
                     }
                 } catch (Exception ex) {
-                    FrontendUtils.ShowError(ex.Message, ex);
+                    CommonUtils.ShowError(ex.Message, ex);
                 }
             }
         }
@@ -127,19 +127,19 @@ namespace XmlParsersAndUi {
 
         private bool IsValidToStart(string inputDir, string focusCode, string custom) {
             if (string.IsNullOrEmpty(inputDir)) {
-                FrontendUtils.ShowError("Please supply an input directory", null);
+                CommonUtils.ShowError("Please supply an input directory", null);
                 return false;
             }
             if (!Directory.Exists(inputDir)) {
-                FrontendUtils.ShowError("The input directory does not exist", null);
+                CommonUtils.ShowError("The input directory does not exist", null);
                 return false;
             }
             if (string.IsNullOrEmpty(focusCode)) {
-                FrontendUtils.ShowError("Please supply a focus code", null);
+                CommonUtils.ShowError("Please supply a focus code", null);
                 return false;
             }
             if (string.IsNullOrEmpty(custom)) {
-                FrontendUtils.ShowError("Please supply a custom path", null);
+                CommonUtils.ShowError("Please supply a custom path", null);
                 return false;
             }
             return true;
@@ -161,10 +161,10 @@ namespace XmlParsersAndUi {
                     //handle events files now
                     UpdateEventsFilesStepsToFastMode(goodFiles);
                     MainForm.appProcessing = false;
-                    FrontendUtils.ShowInformation("Bulk customs completed, parsed [" + goodFiles.Count + "] applicable custom files.",false);
+                    CommonUtils.ShowInformation("Bulk customs completed, parsed [" + goodFiles.Count + "] applicable custom files.",false);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -175,7 +175,7 @@ namespace XmlParsersAndUi {
                     txtInputDir.Text = dialog.SelectedPath;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -185,14 +185,14 @@ namespace XmlParsersAndUi {
                 txtFocusCode.Text = string.Empty;
                 txtCustom.Text = string.Empty;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void chkConvertFast_CheckedChanged(object sender, EventArgs e) {
             try {
                 if (chkConvertFast.Checked) {
-                    if ((FrontendUtils.ShowConformation("Enabling this option may induce new " +
+                    if ((CommonUtils.ShowConformation("Enabling this option may induce new " +
                                 "differences due to the comparison mode change." +
                                 "\nAre you sure you want to proceed?")) == DialogResult.Yes) {
                         chkConvertFast.Checked = true;
@@ -202,7 +202,7 @@ namespace XmlParsersAndUi {
                 }
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 

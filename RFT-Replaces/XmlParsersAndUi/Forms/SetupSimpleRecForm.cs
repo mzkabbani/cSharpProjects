@@ -37,7 +37,7 @@ namespace XmlParsersAndUi {
             string[] simpleOptionFiles = Directory.GetFiles(inputDir, "*.simpleO");
 
             for (int i = 0; i < simpleOptionFiles.Length; i++) {
-                SimpleRecommendationObject simpleRecom = ConvertToObject(FrontendUtils.ReadFile(simpleOptionFiles[i]));
+                SimpleRecommendationObject simpleRecom = ConvertToObject(CommonUtils.ReadFile(simpleOptionFiles[i]));
                 simpleRecom.fileName = Path.GetFileName(simpleOptionFiles[i]);
                 Simple_Recommendation.InsertNewSimpleRecommendation(simpleRecom);
                 lbOptions.Items.Add(simpleRecom);
@@ -93,16 +93,16 @@ namespace XmlParsersAndUi {
 
         private bool IsValidToSaveObject(string optionName, string optionDescription, string optionPattern, string optionReplacement) {
             if (string.IsNullOrEmpty(optionName)) {
-                FrontendUtils.ShowError("Name cannot be empty", null);
+                CommonUtils.ShowError("Name cannot be empty", null);
                 return false;
             } else if (string.IsNullOrEmpty(optionDescription)) {
-                FrontendUtils.ShowError("Description cannot be empty", null);
+                CommonUtils.ShowError("Description cannot be empty", null);
                 return false;
             } else if (string.IsNullOrEmpty(optionPattern)) {
-                FrontendUtils.ShowError("Pattern cannot be empty", null);
+                CommonUtils.ShowError("Pattern cannot be empty", null);
                 return false;
             } else if (string.IsNullOrEmpty(optionReplacement)) {
-                FrontendUtils.ShowError("Replacement cannot be empty", null);
+                CommonUtils.ShowError("Replacement cannot be empty", null);
                 return false;
             }
             return true;
@@ -136,7 +136,7 @@ namespace XmlParsersAndUi {
 
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -144,7 +144,7 @@ namespace XmlParsersAndUi {
             try {
                 LoadSimpleOptions();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -158,7 +158,7 @@ namespace XmlParsersAndUi {
                 btnAdd.Enabled = true;
                 btnSave.Enabled = false;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -169,7 +169,7 @@ namespace XmlParsersAndUi {
                     newRecObj.fileName = "sample";
                     Simple_Recommendation.UpdateSimpleRecByName(newRecObj, txtOptionName.Text);
                     LoadSimpleOptions();
-                    FrontendUtils.ShowInformation("The Simple Recommendation is now updated!",false);
+                    CommonUtils.ShowInformation("The Simple Recommendation is now updated!",false);
                     lbOptions.SelectedIndex = 0;
                     #region old code
                     //newRecObj.fileName = (lbOptions.SelectedItem as SimpleRecommendationObject).fileName;
@@ -180,7 +180,7 @@ namespace XmlParsersAndUi {
                     #endregion
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -191,7 +191,7 @@ namespace XmlParsersAndUi {
                 }
                 FillUiFromobject(lbOptions.SelectedItem as SimpleRecommendationObject);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -221,7 +221,7 @@ namespace XmlParsersAndUi {
                     //LoadOptionsIntoList(inputDir);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
     

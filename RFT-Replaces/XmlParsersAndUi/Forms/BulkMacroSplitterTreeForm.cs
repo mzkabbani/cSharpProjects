@@ -327,7 +327,7 @@ namespace XmlParsersAndUi {
 				Process.Start(txtOutputDir.Text);
 			} else {
 
-				FrontendUtils.ShowError("The output directory does not exist yet", null);
+				CommonUtils.ShowError("The output directory does not exist yet", null);
 			}
 		}
 
@@ -391,7 +391,7 @@ namespace XmlParsersAndUi {
 					txtDirectory.Text = dialog.FileName;
 				}
 			} catch (Exception ex) {
-				FrontendUtils.ShowError(ex.Message, ex);
+				CommonUtils.ShowError(ex.Message, ex);
 			}
 		}
 
@@ -402,7 +402,7 @@ namespace XmlParsersAndUi {
 					txtOutputDir.Text = dialog.SelectedPath;
 				}
 			} catch (Exception ex) {
-				FrontendUtils.ShowError(ex.Message, ex);
+				CommonUtils.ShowError(ex.Message, ex);
 			}
 		}
 
@@ -416,7 +416,7 @@ namespace XmlParsersAndUi {
 					txtOutputDir.Text = outputDir;
 				}
 			} catch (Exception ex) {
-				FrontendUtils.ShowError(ex.Message, ex);
+				CommonUtils.ShowError(ex.Message, ex);
 			}
 		}
 
@@ -436,7 +436,7 @@ namespace XmlParsersAndUi {
 				//FrontendUtils.ShowInformation("Splitting done!");
 				btnSplitFile.Enabled = false;
 			} catch (Exception ex) {
-				FrontendUtils.ShowError(ex.Message, ex);
+				CommonUtils.ShowError(ex.Message, ex);
 			}
 		}
 
@@ -569,7 +569,7 @@ namespace XmlParsersAndUi {
 				form.ShowDialog();
 
 			} catch (Exception ex) {
-				FrontendUtils.ShowError(ex.Message, ex);
+				CommonUtils.ShowError(ex.Message, ex);
 			}
 		}
 
@@ -594,7 +594,7 @@ namespace XmlParsersAndUi {
 					}
 				}
 			} catch (Exception ex) {
-				FrontendUtils.ShowError(ex.Message, ex);
+				CommonUtils.ShowError(ex.Message, ex);
 			}
 		}
 
@@ -604,9 +604,9 @@ namespace XmlParsersAndUi {
 		private void UpdateEventsFileWithNewName(BulkMacroTreeNode bulkMacroTreeNode) {
 			string eventsFilePath = Directory.GetParent(bulkMacroTreeNode.filepath) + @"\eventsfiles.xml";
 			string renameStepRegex = "(<Step.*?label=\")(.*?)(\" events=\"" + bulkMacroTreeNode.stepName + "\".*?></Step>)";
-			string eventsFile = FrontendUtils.ReadFile(eventsFilePath);
+			string eventsFile = CommonUtils.ReadFile(eventsFilePath);
 			eventsFile = Regex.Replace(eventsFile, renameStepRegex, "$1" + bulkMacroTreeNode.stepTitle + "$3");
-			FrontendUtils.WriteFile(eventsFilePath, eventsFile);
+			CommonUtils.WriteFile(eventsFilePath, eventsFile);
 		}
 
 		private void cmsResultsTreeView_Opening(object sender, CancelEventArgs e) {
@@ -663,20 +663,20 @@ namespace XmlParsersAndUi {
 					}
 				}
 			} catch (Exception ex) {
-				FrontendUtils.ShowError(ex.Message, ex);
+				CommonUtils.ShowError(ex.Message, ex);
 			}
 		}
 
 		private void BulkMacroSplitterTreeForm_FormClosing(object sender, FormClosingEventArgs e) {
 			try {
 				bool disposing = this.ParentForm.Disposing	;	
-				if (FrontendUtils.ShowConformation("Do you want to proceed to level one cleanup?") == DialogResult.Yes) {
+				if (CommonUtils.ShowConformation("Do you want to proceed to level one cleanup?") == DialogResult.Yes) {
 					CleanupForm form = new CleanupForm(txtOutputDir.Text);
 					form.MdiParent = this.MdiParent;
 					form.Show();
 				}
 			} catch (Exception ex) {
-				FrontendUtils.ShowError(ex.Message, ex);
+				CommonUtils.ShowError(ex.Message, ex);
 			}
 		}
 
@@ -697,14 +697,14 @@ namespace XmlParsersAndUi {
 					}
 				}
 			} catch (Exception ex) {
-				FrontendUtils.ShowError(ex.Message, ex);
+				CommonUtils.ShowError(ex.Message, ex);
 			}
 		}
 
 		private void UpdateEventsFileWithCompareException(BulkMacroTreeNode bulkMacroTreeNode) {
 			string eventsFilePath = Directory.GetParent(bulkMacroTreeNode.filepath) + @"\eventsfiles.xml";
 			string renameStepRegex = "(<Step.*?(id=\"\\d+\"))(.*?label=\".*?\" events=\"" + bulkMacroTreeNode.stepName + "\".*?></Step>)";
-			string eventsFile = FrontendUtils.ReadFile(eventsFilePath);
+			string eventsFile = CommonUtils.ReadFile(eventsFilePath);
 			eventsFile = Regex.Replace(eventsFile, renameStepRegex, "$1" +
 			                           " compareExceptions=\"true\" exception=\"" +
 			                           bulkMacroTreeNode.stepName.Replace("events", "exception") +
@@ -714,16 +714,16 @@ namespace XmlParsersAndUi {
 			                           "$3");
 
 			//write step1_exception.xml
-			FrontendUtils.WriteFile(Directory.GetParent(bulkMacroTreeNode.filepath) +
+			CommonUtils.WriteFile(Directory.GetParent(bulkMacroTreeNode.filepath) +
 			                        @"\" + bulkMacroTreeNode.stepName.Replace("events", "exception"), "");
 			//write step1_exception_customs.xml
-			FrontendUtils.WriteFile(Directory.GetParent(bulkMacroTreeNode.filepath) +
+			CommonUtils.WriteFile(Directory.GetParent(bulkMacroTreeNode.filepath) +
 			                        @"\" + bulkMacroTreeNode.stepName.Replace("events.xml", "exception") + "_customs.xml", "");
 
 
 
 
-			FrontendUtils.WriteFile(eventsFilePath, eventsFile);
+			CommonUtils.WriteFile(eventsFilePath, eventsFile);
 		}
 
 		private void compareDialogToolStripMenuItem_Click(object sender, EventArgs e) {
@@ -742,14 +742,14 @@ namespace XmlParsersAndUi {
 					}
 				}
 			} catch (Exception ex) {
-				FrontendUtils.ShowError(ex.Message, ex);
+				CommonUtils.ShowError(ex.Message, ex);
 			}
 		}
 
 		private void UpdateEventsFileWithCompareDialogs(BulkMacroTreeNode bulkMacroTreeNode) {
 			string eventsFilePath = Directory.GetParent(bulkMacroTreeNode.filepath) + @"\eventsfiles.xml";
 			string renameStepRegex = "(<Step.*?(id=\"\\d+\"))(.*?label=\".*?\" events=\"" + bulkMacroTreeNode.stepName + "\".*?></Step>)";
-			string eventsFile = FrontendUtils.ReadFile(eventsFilePath);
+			string eventsFile = CommonUtils.ReadFile(eventsFilePath);
 			eventsFile = Regex.Replace(eventsFile, renameStepRegex, "$1" +
 			                           " compareDialogs=\"true\" dialog=\"" +
 			                           bulkMacroTreeNode.stepName.Replace("events", "dialog") +
@@ -757,9 +757,9 @@ namespace XmlParsersAndUi {
 			                           "$3");
 
 			//write step1_dialog.xml
-			FrontendUtils.WriteFile(Directory.GetParent(bulkMacroTreeNode.filepath) +
+			CommonUtils.WriteFile(Directory.GetParent(bulkMacroTreeNode.filepath) +
 			                        @"\" + bulkMacroTreeNode.stepName.Replace("events", "dialog"), "");
-			FrontendUtils.WriteFile(eventsFilePath, eventsFile);
+			CommonUtils.WriteFile(eventsFilePath, eventsFile);
 		}
 	}
 }

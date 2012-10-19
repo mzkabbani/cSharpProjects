@@ -42,7 +42,7 @@ namespace Automation.Backend{
                 command.Connection = conn;
                 command.ExecuteNonQuery();
             } catch (Exception ex) {
-                FrontendUtils.LogError(ex.Message, ex);
+                CommonUtils.LogError(ex.Message, ex);
             }
         }
 
@@ -57,7 +57,7 @@ namespace Automation.Backend{
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.LogError(ex.Message,ex);
+                CommonUtils.LogError(ex.Message,ex);
             }
         }
 
@@ -72,7 +72,7 @@ namespace Automation.Backend{
                     InsertUpdatedFileNames(treeNodes, transaction, conn);
                     transaction.Commit();
                 } catch (Exception ex) {
-                    FrontendUtils.LogError(ex.Message, ex);
+                    CommonUtils.LogError(ex.Message, ex);
                     transaction.Rollback();
                 }
             } finally {

@@ -36,115 +36,142 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 		/// </summary>
 		private void InitializeComponent()
 		{
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaskAdditionForm));
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.label1 = new System.Windows.Forms.Label();
-			this.dataGridView1 = new System.Windows.Forms.DataGridView();
-			this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.button1 = new System.Windows.Forms.Button();
-			this.button2 = new System.Windows.Forms.Button();
-			this.button3 = new System.Windows.Forms.Button();
+			this.dgvTaskProperties = new System.Windows.Forms.DataGridView();
+			this.propertyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.propertyValue = new System.Windows.Forms.DataGridViewButtonColumn();
+			this.propObject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.lblTaskName = new System.Windows.Forms.Label();
+			this.btnCancelBuildTask = new System.Windows.Forms.Button();
+			this.btnProceedBuildTask = new System.Windows.Forms.Button();
+			this.propertyObject = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.groupBox1.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvTaskProperties)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// groupBox1
 			// 
-			this.groupBox1.Controls.Add(this.dataGridView1);
-			this.groupBox1.Location = new System.Drawing.Point(12, 56);
+			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+									| System.Windows.Forms.AnchorStyles.Left) 
+									| System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox1.Controls.Add(this.dgvTaskProperties);
+			this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+			this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.groupBox1.Location = new System.Drawing.Point(12, 47);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(421, 190);
+			this.groupBox1.Size = new System.Drawing.Size(327, 283);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Properties";
 			// 
-			// label1
+			// dgvTaskProperties
 			// 
-			this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.label1.Location = new System.Drawing.Point(12, 9);
-			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(421, 44);
-			this.label1.TabIndex = 1;
-			this.label1.Text = "Task Name";
-			this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+			this.dgvTaskProperties.AllowUserToAddRows = false;
+			this.dgvTaskProperties.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.dgvTaskProperties.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.dgvTaskProperties.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+									this.propertyName,
+									this.propertyValue,
+									this.propObject});
+			this.dgvTaskProperties.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.dgvTaskProperties.Location = new System.Drawing.Point(3, 16);
+			this.dgvTaskProperties.Name = "dgvTaskProperties";
+			this.dgvTaskProperties.RowHeadersVisible = false;
+			this.dgvTaskProperties.Size = new System.Drawing.Size(321, 264);
+			this.dgvTaskProperties.TabIndex = 0;
+			this.dgvTaskProperties.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvTaskPropertiesCellClick);
 			// 
-			// dataGridView1
+			// propertyName
 			// 
-			this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-			this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-									this.Column1,
-									this.Column2});
-			this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.dataGridView1.Location = new System.Drawing.Point(3, 16);
-			this.dataGridView1.Name = "dataGridView1";
-			this.dataGridView1.RowHeadersVisible = false;
-			this.dataGridView1.Size = new System.Drawing.Size(415, 171);
-			this.dataGridView1.TabIndex = 0;
+			this.propertyName.HeaderText = "Name";
+			this.propertyName.Name = "propertyName";
 			// 
-			// Column1
+			// propertyValue
 			// 
-			this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.Column1.HeaderText = "Name";
-			this.Column1.Name = "Column1";
+			this.propertyValue.HeaderText = "Value";
+			this.propertyValue.Name = "propertyValue";
+			this.propertyValue.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+			this.propertyValue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
 			// 
-			// Column2
+			// propObject
 			// 
-			this.Column2.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-			this.Column2.HeaderText = "Value";
-			this.Column2.Name = "Column2";
+			this.propObject.HeaderText = "propObject";
+			this.propObject.Name = "propObject";
+			this.propObject.Visible = false;
 			// 
-			// button1
+			// lblTaskName
 			// 
-			this.button1.Location = new System.Drawing.Point(185, 252);
-			this.button1.Name = "button1";
-			this.button1.Size = new System.Drawing.Size(75, 23);
-			this.button1.TabIndex = 2;
-			this.button1.Text = "Cancel";
-			this.button1.UseVisualStyleBackColor = true;
+			this.lblTaskName.BackColor = System.Drawing.SystemColors.ControlLight;
+			this.lblTaskName.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+			this.lblTaskName.Dock = System.Windows.Forms.DockStyle.Top;
+			this.lblTaskName.Font = new System.Drawing.Font("Comic Sans MS", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+			this.lblTaskName.Location = new System.Drawing.Point(0, 0);
+			this.lblTaskName.Name = "lblTaskName";
+			this.lblTaskName.Size = new System.Drawing.Size(351, 44);
+			this.lblTaskName.TabIndex = 1;
+			this.lblTaskName.Text = "Task Name";
+			this.lblTaskName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
 			// 
-			// button2
+			// btnCancelBuildTask
 			// 
-			this.button2.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.button2.Location = new System.Drawing.Point(266, 252);
-			this.button2.Name = "button2";
-			this.button2.Size = new System.Drawing.Size(75, 23);
-			this.button2.TabIndex = 3;
-			this.button2.Text = "Proceed";
-			this.button2.UseVisualStyleBackColor = true;
+			this.btnCancelBuildTask.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+			this.btnCancelBuildTask.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+			this.btnCancelBuildTask.Location = new System.Drawing.Point(97, 333);
+			this.btnCancelBuildTask.Name = "btnCancelBuildTask";
+			this.btnCancelBuildTask.Size = new System.Drawing.Size(75, 23);
+			this.btnCancelBuildTask.TabIndex = 2;
+			this.btnCancelBuildTask.Text = "Cancel";
+			this.btnCancelBuildTask.UseVisualStyleBackColor = true;
 			// 
-			// button3
+			// btnProceedBuildTask
 			// 
-			this.button3.Location = new System.Drawing.Point(104, 252);
-			this.button3.Name = "button3";
-			this.button3.Size = new System.Drawing.Size(75, 23);
-			this.button3.TabIndex = 4;
-			this.button3.Text = "Config File";
-			this.button3.UseVisualStyleBackColor = true;
+			this.btnProceedBuildTask.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+			this.btnProceedBuildTask.DialogResult = System.Windows.Forms.DialogResult.OK;
+			this.btnProceedBuildTask.Location = new System.Drawing.Point(178, 333);
+			this.btnProceedBuildTask.Name = "btnProceedBuildTask";
+			this.btnProceedBuildTask.Size = new System.Drawing.Size(75, 23);
+			this.btnProceedBuildTask.TabIndex = 3;
+			this.btnProceedBuildTask.Text = "Proceed";
+			this.btnProceedBuildTask.UseVisualStyleBackColor = true;
+			this.btnProceedBuildTask.Click += new System.EventHandler(this.BtnProceedBuildTaskClick);
+			// 
+			// propertyObject
+			// 
+			this.propertyObject.HeaderText = "propertyObject";
+			this.propertyObject.Name = "propertyObject";
+			this.propertyObject.Visible = false;
 			// 
 			// TaskAdditionForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.BackColor = System.Drawing.SystemColors.ControlLight;
-			this.ClientSize = new System.Drawing.Size(445, 284);
-			this.Controls.Add(this.button3);
-			this.Controls.Add(this.button2);
-			this.Controls.Add(this.button1);
-			this.Controls.Add(this.label1);
+			this.BackColor = System.Drawing.SystemColors.Control;
+			this.ClientSize = new System.Drawing.Size(351, 368);
+			this.Controls.Add(this.btnProceedBuildTask);
+			this.Controls.Add(this.btnCancelBuildTask);
+			this.Controls.Add(this.lblTaskName);
 			this.Controls.Add(this.groupBox1);
+			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.MaximumSize = new System.Drawing.Size(461, 599);
 			this.Name = "TaskAdditionForm";
-			this.Text = "TaskAdditionForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+			this.Text = "Task Properties";
+			this.Load += new System.EventHandler(this.TaskAdditionFormLoad);
 			this.groupBox1.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.dgvTaskProperties)).EndInit();
 			this.ResumeLayout(false);
 		}
-		private System.Windows.Forms.Button button3;
-		private System.Windows.Forms.Button button2;
-		private System.Windows.Forms.Button button1;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-		private System.Windows.Forms.DataGridView dataGridView1;
-		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn propObject;
+		private System.Windows.Forms.DataGridViewButtonColumn propertyValue;
+		private System.Windows.Forms.DataGridViewTextBoxColumn propertyName;
+		private System.Windows.Forms.DataGridViewTextBoxColumn propValue;
+		private System.Windows.Forms.DataGridViewTextBoxColumn propName;
+		private System.Windows.Forms.DataGridViewTextBoxColumn propertyObject;
+		private System.Windows.Forms.Button btnProceedBuildTask;
+		private System.Windows.Forms.Button btnCancelBuildTask;
+		private System.Windows.Forms.DataGridView dgvTaskProperties;
+		private System.Windows.Forms.Label lblTaskName;
 		private System.Windows.Forms.GroupBox groupBox1;
 	}
 }

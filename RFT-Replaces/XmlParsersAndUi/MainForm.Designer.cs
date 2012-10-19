@@ -38,6 +38,7 @@
         	this.envComparisonToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
         	this.fTPToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.packagingToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+        	this.pacRefsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
         	this.sDDGeneratorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.configurationsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.preferencesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -84,7 +85,6 @@
         	this.tsConnectedTo = new System.Windows.Forms.ToolStripStatusLabel();
         	this.toolTip = new System.Windows.Forms.ToolTip(this.components);
         	this.pictureBox1 = new System.Windows.Forms.PictureBox();
-        	this.pacRefsToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
         	this.menuStrip.SuspendLayout();
         	this.toolStrip.SuspendLayout();
         	this.statusStrip.SuspendLayout();
@@ -203,6 +203,13 @@
         	this.packagingToolStripMenuItem.Size = new System.Drawing.Size(162, 22);
         	this.packagingToolStripMenuItem.Text = "Packaging";
         	this.packagingToolStripMenuItem.Click += new System.EventHandler(this.packagingToolStripMenuItem_Click);
+        	// 
+        	// pacRefsToolStripMenuItem1
+        	// 
+        	this.pacRefsToolStripMenuItem1.Name = "pacRefsToolStripMenuItem1";
+        	this.pacRefsToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
+        	this.pacRefsToolStripMenuItem1.Text = "Pac refs";
+        	this.pacRefsToolStripMenuItem1.Click += new System.EventHandler(this.PacRefsToolStripMenuItem1Click);
         	// 
         	// sDDGeneratorToolStripMenuItem
         	// 
@@ -568,21 +575,14 @@
         	// 
         	this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
         	this.pictureBox1.BackColor = System.Drawing.SystemColors.AppWorkspace;
-        	this.pictureBox1.Image = global::XmlParsersAndUi.Properties.Resources.Sad_robot_SH;
-        	this.pictureBox1.Location = new System.Drawing.Point(796, 255);
+        	//this.pictureBox1.Image = global::XmlParsersAndUi.Properties.Resources.Sad_robot_SH;
+        	this.pictureBox1.Location = new System.Drawing.Point(766, 268);
         	this.pictureBox1.Name = "pictureBox1";
         	this.pictureBox1.Size = new System.Drawing.Size(256, 256);
         	this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
         	this.pictureBox1.TabIndex = 4;
         	this.pictureBox1.TabStop = false;
         	this.pictureBox1.Visible = false;
-        	// 
-        	// pacRefsToolStripMenuItem1
-        	// 
-        	this.pacRefsToolStripMenuItem1.Name = "pacRefsToolStripMenuItem1";
-        	this.pacRefsToolStripMenuItem1.Size = new System.Drawing.Size(162, 22);
-        	this.pacRefsToolStripMenuItem1.Text = "Pac refs";
-        	this.pacRefsToolStripMenuItem1.Click += new System.EventHandler(this.PacRefsToolStripMenuItem1Click);
         	// 
         	// MainForm
         	// 

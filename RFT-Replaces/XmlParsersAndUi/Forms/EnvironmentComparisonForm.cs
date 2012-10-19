@@ -38,6 +38,7 @@ namespace XmlParsersAndUi.Forms {
 
         #region Variables
 
+        bool formLoading = true;
         bool WorkerWasCancelled = false;
         string compareScriptLocation = "/dell014srv1/automation/automation-Jobs/Comparison/";
         DataTable SAVED_SEARCH_RESULTS;
@@ -150,20 +151,20 @@ namespace XmlParsersAndUi.Forms {
                     connection.Open();
                     // bgDoServerWork.ReportProgress(5, "Validating Results...");
                 } catch (Exception ex) {
-                    FrontendUtils.ShowError(ex.Message, ex);
+                    CommonUtils.ShowError(ex.Message, ex);
                     return false;
                 }
                 connection.Login();
                 if (!connection.DirectoryExists(refEnv)) {
-                    FrontendUtils.ShowInformation("The reference environment path is incorrect!",true);
+                    CommonUtils.ShowInformation("The reference environment path is incorrect!",true);
                     return false;
                 }
                 if (!connection.FileExists(refEnv + "/mxg2000_settings.sh")) {
-                    FrontendUtils.ShowInformation("The reference environment path is incorrect!", true);
+                    CommonUtils.ShowInformation("The reference environment path is incorrect!", true);
                     return false;
                 }
                 if (connection.FileExists(refEnv + "/clean.log")) {
-                    FrontendUtils.ShowInformation("The reference environment is cleaned!", true);
+                    CommonUtils.ShowInformation("The reference environment is cleaned!", true);
                     return false;
                 }
             } finally {
@@ -181,20 +182,20 @@ namespace XmlParsersAndUi.Forms {
                     connection.Open();
                     // bgDoServerWork.ReportProgress(5, "Validating Results...");
                 } catch (Exception ex) {
-                    FrontendUtils.ShowError(ex.Message, ex);
+                    CommonUtils.ShowError(ex.Message, ex);
                     return false;
                 }
                 connection.Login();
                 if (!connection.DirectoryExists(inputEnv)) {
-                    FrontendUtils.ShowInformation("The input environment path is incorrect!",true);
+                    CommonUtils.ShowInformation("The input environment path is incorrect!",true);
                     return false;
                 }
                 if (!connection.FileExists(inputEnv + "/mxg2000_settings.sh")) {
-                    FrontendUtils.ShowInformation("The input environment path is incorrect!", true);
+                    CommonUtils.ShowInformation("The input environment path is incorrect!", true);
                     return false;
                 }
                 if (connection.FileExists(inputEnv + "/clean.log")) {
-                    FrontendUtils.ShowInformation("The input environment is cleaned!", true);
+                    CommonUtils.ShowInformation("The input environment is cleaned!", true);
                     return false;
                 }
             } finally {
@@ -211,12 +212,12 @@ namespace XmlParsersAndUi.Forms {
                 try {
                     connection.Open();
                 } catch (Exception ex) {
-                    FrontendUtils.ShowError(ex.Message, ex);
+                    CommonUtils.ShowError(ex.Message, ex);
                     return false;
                 }
                 connection.Login();
                 if (!connection.DirectoryExists(compareScriptLocation)) {
-                    FrontendUtils.ShowInformation("Could not connect to master host!", true);
+                    CommonUtils.ShowInformation("Could not connect to master host!", true);
                     return false;
                 }
                 if (!connection.FileExists(compareScriptLocation + "/comparison.sh")) {
@@ -259,7 +260,7 @@ namespace XmlParsersAndUi.Forms {
                     //Reading from the SSH channel
                     response = ssh.ReadResponse();
                 } catch (Exception ex) {
-                    FrontendUtils.LogError(ex.Message, ex);
+                    CommonUtils.LogError(ex.Message, ex);
                 }
                 string comparisonFolderName = DateTime.Now.Ticks.ToString();
                 string comparisonFileName = comparisonFolderName + "comparison.log";
@@ -282,7 +283,7 @@ namespace XmlParsersAndUi.Forms {
                     ssh.Write("d");
                     response = ssh.ReadResponse();
                 } catch (Exception ex) {
-                    FrontendUtils.LogError(ex.Message, ex);
+                    CommonUtils.LogError(ex.Message, ex);
                 }
                 bgDoServerWork.ReportProgress(5, "Comparison Completed");
                 if (bgDoServerWork.CancellationPending) {
@@ -297,7 +298,7 @@ namespace XmlParsersAndUi.Forms {
                             connection.Open();
                             bgDoServerWork.ReportProgress(5, "Validating Results...");
                         } catch (Exception ex) {
-                            FrontendUtils.ShowError(ex.Message, ex);
+                            CommonUtils.ShowError(ex.Message, ex);
                         }
                         connection.Login();
                         connection.SetCurrentDirectory(compareScriptLocation + comparisonFolderName);
@@ -311,7 +312,7 @@ namespace XmlParsersAndUi.Forms {
                         connection.Dispose();
                     }
                 } catch (Exception ex) {
-                    FrontendUtils.LogError(ex.Message, ex);
+                    CommonUtils.LogError(ex.Message, ex);
                 }
                 try {
                     ssh.Write("cd ..");
@@ -328,10 +329,10 @@ namespace XmlParsersAndUi.Forms {
                         return;
                     }
                 } catch (Exception ex) {
-                    FrontendUtils.LogError(ex.Message, ex);
+                    CommonUtils.LogError(ex.Message, ex);
                 }
                 try {
-                    string readFile = FrontendUtils.ReadFile(localFileName);
+                    string readFile = CommonUtils.ReadFile(localFileName);
                     //      Regex regex = new Regex("-.*-");
                     string[] array = new string[1];
                     //  array[0]= regex.Match(readFile).Value;
@@ -367,7 +368,7 @@ namespace XmlParsersAndUi.Forms {
                                             date = new DateTime(Convert.ToInt32(splitFileName[7]), monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]));
                                         }
                                     } catch (Exception ex) {
-                                        FrontendUtils.LogError("Could not get Date", ex);
+                                        CommonUtils.LogError("Could not get Date", ex);
                                         date = DateTime.Now;
                                     }
                                     long fileSize = (Convert.ToInt64(splitFileName[4]) / 1024) == 0 ? 1 : (Convert.ToInt64(splitFileName[4]) / 1024);
@@ -385,7 +386,7 @@ namespace XmlParsersAndUi.Forms {
                                             date = new DateTime(Convert.ToInt32(splitFileName[7]), monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]));
                                         }
                                     } catch (Exception ex) {
-                                        FrontendUtils.LogError("Could not get Date", ex);
+                                        CommonUtils.LogError("Could not get Date", ex);
                                         date = DateTime.Now;
                                     }
                                     long fileSize = (Convert.ToInt64(splitFileName[4]) / 1024) == 0 ? 1 : (Convert.ToInt64(splitFileName[4]) / 1024);
@@ -399,7 +400,7 @@ namespace XmlParsersAndUi.Forms {
                     GOLDEN_ORIGINAL_RESTULS = results.Copy();
                     resultsTable = SAVED_SEARCH_RESULTS;
                 } catch (Exception ex) {
-                    FrontendUtils.LogError(ex.Message, ex);
+                    CommonUtils.LogError(ex.Message, ex);
                 }
             } else {
                 bgDoServerWork.CancelAsync();
@@ -408,7 +409,7 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private void ParseComparisonResults(string localFileName,string inputEnv, string inputHost, string refEnv, string refHost, out DataTable resultsTable) {
-            string readFile = FrontendUtils.ReadFile(localFileName);
+            string readFile = CommonUtils.ReadFile(localFileName);
             string[] array = new string[1];
             array[0] = "\n\n";
             string[] splitFile = readFile.Split(array, StringSplitOptions.RemoveEmptyEntries);
@@ -445,7 +446,7 @@ namespace XmlParsersAndUi.Forms {
                                     date = new DateTime(Convert.ToInt32(splitFileName[7]), monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]));
                                 }
                             } catch (Exception ex) {
-                                FrontendUtils.LogError("Could not get Date", ex);
+                                CommonUtils.LogError("Could not get Date", ex);
                                 date = DateTime.Now;
                             }
                             long fileSize = (Convert.ToInt64(splitFileName[4]) / 1024) == 0 ? 1 : (Convert.ToInt64(splitFileName[4]) / 1024);
@@ -463,7 +464,7 @@ namespace XmlParsersAndUi.Forms {
                                     date = new DateTime(Convert.ToInt32(splitFileName[7]), monthAbbreviations.IndexOf(splitFileName[5]), Convert.ToInt32(splitFileName[6]));
                                 }
                             } catch (Exception ex) {
-                                FrontendUtils.LogError("Could not get Date", ex);
+                                CommonUtils.LogError("Could not get Date", ex);
                                 date = DateTime.Now;
                             }
                             long fileSize = (Convert.ToInt64(splitFileName[4]) / 1024) == 0 ? 1 : (Convert.ToInt64(splitFileName[4]) / 1024);
@@ -482,13 +483,13 @@ namespace XmlParsersAndUi.Forms {
             string remoteScriptName = string.Empty;
             FtpConnection connection = new FtpConnection(refHost, "mxftp", "mxftp");
             string localFileName = Path.GetTempFileName();
-            FrontendUtils.WriteFile(localFileName, ComparisonScript);
+            CommonUtils.WriteFile(localFileName, ComparisonScript);
             try {
                 try {
                     connection.Open();
                     //bgDoServerWork.ReportProgress(5, "Validating Results...");
                 } catch (Exception ex) {
-                    FrontendUtils.ShowError(ex.Message, ex);
+                    CommonUtils.ShowError(ex.Message, ex);
                 }
                 connection.Login();
                 connection.SetCurrentDirectory(refEnv);
@@ -507,16 +508,16 @@ namespace XmlParsersAndUi.Forms {
 
         private bool IsValidToStartComparison(string inputEnv, string inputHost, string refEnv, string refHost) {
             if (string.IsNullOrEmpty(inputEnv)) {
-                FrontendUtils.ShowInformation("Input Environment cannot be empty!", true);
+                CommonUtils.ShowInformation("Input Environment cannot be empty!", true);
                 return false;
             } else if (string.IsNullOrEmpty(inputHost)) {
-                FrontendUtils.ShowInformation("Input Host cannot be empty!", true);
+                CommonUtils.ShowInformation("Input Host cannot be empty!", true);
                 return false;
             } else if (string.IsNullOrEmpty(refEnv)) {
-                FrontendUtils.ShowInformation("Reference Environment cannot be empty!", true);
+                CommonUtils.ShowInformation("Reference Environment cannot be empty!", true);
                 return false;
             } else if (string.IsNullOrEmpty(refHost)) {
-                FrontendUtils.ShowInformation("Reference Host cannot be empty!", true);
+                CommonUtils.ShowInformation("Reference Host cannot be empty!", true);
                 return false;
             }
             return true;
@@ -679,7 +680,7 @@ namespace XmlParsersAndUi.Forms {
                 dgvResults.Columns[5].FillWeight = 260;
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -694,7 +695,7 @@ namespace XmlParsersAndUi.Forms {
                     lblTotalFiles.Text = "Remaining files: " + GOLDEN_ORIGINAL_RESTULS.Rows.Count + "/" + GOLDEN_ORIGINAL_RESTULS.Rows.Count + "\nSize: " + GetTotalFilesSize(GOLDEN_ORIGINAL_RESTULS) + " KB";
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -727,8 +728,10 @@ namespace XmlParsersAndUi.Forms {
                 gbCustomFilters.Visible = false;
                 lblProgess.Text = "";
                 lblTotalFiles.Text = "Remaining files:\nSize:";
+                btnValidateVersion.Enabled = true;
+                
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -790,7 +793,7 @@ namespace XmlParsersAndUi.Forms {
             SaveUpdatedTreeView();
             try {
                 DataTable ItemsPresentInGrid = CopyDataGridToDataTableForExport(dgvResults);
-                DialogResult dialog = FrontendUtils.ShowConformation("Do you want to apply the folder grouping feature?");
+                DialogResult dialog = CommonUtils.ShowConformation("Do you want to apply the folder grouping feature?");
                 if (dialog == DialogResult.Yes) {
                     for (int i = 0; i < ItemsPresentInGrid.Rows.Count; i++) {
                         for (int j = 0; j < allTreeNodes.Count; j++) {
@@ -826,7 +829,7 @@ namespace XmlParsersAndUi.Forms {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -854,7 +857,7 @@ namespace XmlParsersAndUi.Forms {
                 //ApplyCustomSearchFilter(txtCustomFilter.Text.Trim());
                 cboCustomFilter.Items.Add(cboCustomFilter.Text);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -868,7 +871,7 @@ namespace XmlParsersAndUi.Forms {
                     bgDoServerWork.RunWorkerAsync(envComparatorWorker);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -883,7 +886,7 @@ namespace XmlParsersAndUi.Forms {
                 remoteLocation = Regex.Match(remoteLocationSplit[0], @"[a-zA-Z]+[0-9]+[a-zA-Z]+|[a-zA-Z]+", RegexOptions.Compiled).Value;
                 txtRefHost.Text = remoteLocation;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -898,7 +901,7 @@ namespace XmlParsersAndUi.Forms {
                 remoteLocation = Regex.Match(remoteLocationSplit[0], @"[a-zA-Z]+[0-9]+[a-zA-Z]+|[a-zA-Z]+", RegexOptions.Compiled).Value;
                 txtInpHost.Text = remoteLocation;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -914,7 +917,7 @@ namespace XmlParsersAndUi.Forms {
                     e.Cancel = true;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -938,7 +941,7 @@ namespace XmlParsersAndUi.Forms {
 
                     if (preFilters.Count > 0) {
                         string collectedPrefilters = GetFormattedPrefiltersForDisplay(preFilters);
-                        DialogResult dialog = FrontendUtils.ShowConformation("Comparsion completed!\nAuto cleanup the following types?\n\n" + collectedPrefilters);
+                        DialogResult dialog = CommonUtils.ShowConformation("Comparsion completed!\nAuto cleanup the following types?\n\n" + collectedPrefilters);
                         if (dialog == DialogResult.Yes) {
                             ApplySelectedFiltersToSearchResults(preFilters);
                         } else {
@@ -954,7 +957,7 @@ namespace XmlParsersAndUi.Forms {
                     lblProgess.Text = "";
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -999,7 +1002,7 @@ namespace XmlParsersAndUi.Forms {
                 lblProgess.Visible = true;
                 lblProgess.Text = e.UserState.ToString();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1007,7 +1010,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 LoadAllAvailableFiltersToCheckListBox();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1020,7 +1023,7 @@ namespace XmlParsersAndUi.Forms {
         #region Methods
 
         private void ReloadAllFiltersFromDatabase() {
-          
+
             lvAvailableFilters.Items.Clear();
             DataSet dataSet = Env_Comparison_Filters.GetAllAvailableFiltersAsDataset();
             foreach (DataRow row in dataSet.Tables[0].Rows) {
@@ -1055,7 +1058,7 @@ namespace XmlParsersAndUi.Forms {
                 default:
                     break;
                 }
-               
+
             }
         }
 
@@ -1063,7 +1066,7 @@ namespace XmlParsersAndUi.Forms {
             txtFilterName.Clear();
             txtFilterDescription.Clear();
             txtFilterPattern.Clear();
-         
+
             btnAddFilter.Enabled = true;
             btnSaveFilter.Enabled = false;
             txtExclusionList.Clear();
@@ -1075,19 +1078,19 @@ namespace XmlParsersAndUi.Forms {
 
         private bool IsValidToAddFilter(string name, string description, string pattern) {
             if (string.IsNullOrEmpty(name)) {
-                FrontendUtils.ShowInformation("Name field cannot be empty!", true);
+                CommonUtils.ShowInformation("Name field cannot be empty!", true);
                 return false;
             } else if (string.IsNullOrEmpty(description)) {
-                FrontendUtils.ShowInformation("Description field cannot be empty!", true);
+                CommonUtils.ShowInformation("Description field cannot be empty!", true);
                 return false;
             } else if (string.IsNullOrEmpty(pattern)) {
-                FrontendUtils.ShowInformation("Pattern field cannot be empty!", true);
+                CommonUtils.ShowInformation("Pattern field cannot be empty!", true);
                 return false;
             }
             bool found = false;
-           
+
             if (found) {
-                FrontendUtils.ShowInformation("Filter name must be unique!", true);
+                CommonUtils.ShowInformation("Filter name must be unique!", true);
                 return false;
             }
             return true;
@@ -1097,13 +1100,13 @@ namespace XmlParsersAndUi.Forms {
             if (filterId < 1) {
                 return false;
             } else if (string.IsNullOrEmpty(name)) {
-                FrontendUtils.ShowInformation("Name field cannot be empty!", true);
+                CommonUtils.ShowInformation("Name field cannot be empty!", true);
                 return false;
             } else if (string.IsNullOrEmpty(description)) {
-                FrontendUtils.ShowInformation("Description field cannot be empty!", true);
+                CommonUtils.ShowInformation("Description field cannot be empty!", true);
                 return false;
             } else if (string.IsNullOrEmpty(pattern)) {
-                FrontendUtils.ShowInformation("Pattern field cannot be empty!", true);
+                CommonUtils.ShowInformation("Pattern field cannot be empty!", true);
                 return false;
             }
             return true;
@@ -1141,7 +1144,7 @@ namespace XmlParsersAndUi.Forms {
             bgDoServerWork.CancelAsync();
             bgDoServerWork.Dispose();
             pcProgress.Dispose();
-            pcProgress = new Utezduyar.Windows.Forms.ProgressCircle();
+            pcProgress = new XmlParsersAndUi.Controls.ProgressCircle();
         }
 
         private void btnAddFilter_Click(object sender, EventArgs e) {
@@ -1154,22 +1157,22 @@ namespace XmlParsersAndUi.Forms {
                         //deletionMode
                         //cboRemoveFileOrFolder.SelectedIndex=0 ==> file
                         //cboRemoveFileOrFolder.SelectedIndex=1 ==> folder
-                        EnvComparisonFilter filter = new EnvComparisonFilter(-1, name, description, pattern, cboFilterType.SelectedIndex, FrontendUtils.LoggedInUserId, cboRemoveFileOrFolder.SelectedIndex==1, txtGeneratedScript.Text,txtExclusionList.Text);
+                        EnvComparisonFilter filter = new EnvComparisonFilter(-1, name, description, pattern, cboFilterType.SelectedIndex, CommonUtils.LoggedInUserId, cboRemoveFileOrFolder.SelectedIndex==1, txtGeneratedScript.Text,txtExclusionList.Text);
                         int filterId = Env_Comparison_Filters.InserNewFilter(filter);
-                        FrontendUtils.ShowInformation("Deletion Filter ["+txtFilterName.Text+"] has beed added.",false);
+                        CommonUtils.ShowInformation("Deletion Filter ["+txtFilterName.Text+"] has beed added.",false);
                         ResetForm();
                         ReloadAllFiltersFromDatabase();
                     } else {
                         //all other modes
-                        EnvComparisonFilter filter = new EnvComparisonFilter(-1, name, description, pattern, cboFilterType.SelectedIndex, FrontendUtils.LoggedInUserId);
+                        EnvComparisonFilter filter = new EnvComparisonFilter(-1, name, description, pattern, cboFilterType.SelectedIndex, CommonUtils.LoggedInUserId);
                         int filterId = Env_Comparison_Filters.InserNewFilter(filter);
-                        FrontendUtils.ShowInformation("Filter ["+txtFilterName.Text+"] has beed added.",false);
+                        CommonUtils.ShowInformation("Filter ["+txtFilterName.Text+"] has been added.",false);
                         ResetForm();
                         ReloadAllFiltersFromDatabase();
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1177,7 +1180,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 ResetForm();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1186,21 +1189,19 @@ namespace XmlParsersAndUi.Forms {
                 ResetForm();
                 ReloadAllFiltersFromDatabase();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
+
         private void tcComparisonTabs_SelectedIndexChanged(object sender, EventArgs e) {
-            try {
-                if (tcComparisonTabs.SelectedTab.Equals(tpCleanup)) {
-                    PopulateCleanupFilters();
-                } else {
-                    ResetForm();
-                    cboFilterType.DataSource = Enum.GetValues(typeof(EnvComparisonFilter.ComparisonFilterType));
-                    ReloadAllFiltersFromDatabase();
-                }
+            try {                
+        		if (string.Equals(tcComparisonTabs.SelectedTab.Name,"tpConfiguration") && formLoading) {
+        			ReloadAllFiltersFromDatabase();
+        			formLoading = false;
+        		}        		
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1234,7 +1235,7 @@ namespace XmlParsersAndUi.Forms {
                         string description = txtFilterDescription.Text.Trim();
                         string pattern = txtFilterPattern.Text.Trim();
                         if (IsValidToSaveFilter(filterId, name, description, pattern)) {
-                            EnvComparisonFilter filter = new EnvComparisonFilter(filterId, name, description, pattern, (int)cboFilterType.SelectedItem, FrontendUtils.LoggedInUserId);
+                            EnvComparisonFilter filter = new EnvComparisonFilter(filterId, name, description, pattern, (int)cboFilterType.SelectedItem, CommonUtils.LoggedInUserId);
                             if (cboFilterType.SelectedIndex == (int)EnvComparisonFilter.ComparisonFilterType.Deletion) {
                                 filter.IsFolderDeletion = cboRemoveFileOrFolder.SelectedIndex == 1;
                                 filter.FilterScript = txtGeneratedScript.Text;
@@ -1242,16 +1243,16 @@ namespace XmlParsersAndUi.Forms {
                             }
                             Env_Comparison_Filters.UpdatedFilterById(filter);
                             ReloadAllFiltersFromDatabase();
-                            FrontendUtils.ShowInformation("Filter ["+filter.Name+"] is saved.",false);
+                            CommonUtils.ShowInformation("Filter ["+filter.Name+"] is saved.",false);
                         }
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
-       
+
         #endregion
 
         private void EnvironmentComparisonForm_Load(object sender, EventArgs e) {
@@ -1261,6 +1262,10 @@ namespace XmlParsersAndUi.Forms {
             LOCAL_TA_USAGE = string.Equals(Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.EnvComparisonOnlyForEnv).ToString(), "True") ? true : false;
             LoadSavedFolderNames();
             PopulateCleanupFilters();
+            ResetForm();
+            cboFilterType.DataSource = Enum.GetValues(typeof(EnvComparisonFilter.ComparisonFilterType));
+          //  ReloadAllFiltersFromDatabase();
+            
         }
 
         #endregion
@@ -1282,7 +1287,7 @@ namespace XmlParsersAndUi.Forms {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1293,7 +1298,7 @@ namespace XmlParsersAndUi.Forms {
                 }
                 checkedState = !checkedState;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1310,7 +1315,7 @@ namespace XmlParsersAndUi.Forms {
                     lblTotalFiles.Text = "Remaining files: " + (dgvResults.Rows.Count - manuallyDeletedCount) + "/" + Total_Number_Diffs + "\nSize: " + GetTotalFilesSize(CopyDataGridToDataTable(dgvResults)) + " KB";
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1325,7 +1330,7 @@ namespace XmlParsersAndUi.Forms {
                 }
                 rowIndexSaved = new List<int>();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1333,10 +1338,10 @@ namespace XmlParsersAndUi.Forms {
             try {
                 btnValidateVersion.Enabled = false;
                 Regex versionAndBuildIDRegex = new Regex("MX.*?(\\d+.\\d+.\\S+).*?(\\d+-\\d+-\\d+-\\d+)");
-                string refReadFile = GetVersionFile(txtRefEnv.Text, txtRefHost.Text);
-                string inpVersionFile = GetVersionFile(txtInputEnv.Text, txtInpHost.Text);
+                string refReadFile = GetVersionFile(txtRefEnv.Text, txtRefHost.Text, false);
+                string inpVersionFile = GetVersionFile(txtInputEnv.Text, txtInpHost.Text,false);
                 if (string.IsNullOrEmpty(refReadFile) || string.IsNullOrEmpty(inpVersionFile)) {
-                    FrontendUtils.ShowInformation("Could not validate versions!",true);
+                    CommonUtils.ShowInformation("Could not validate versions!",true);
                     btnStart.Enabled = true;
                     btnValidateVersion.Enabled = true;
                     return;
@@ -1357,7 +1362,7 @@ namespace XmlParsersAndUi.Forms {
                 if (!string.Equals(refBuildId, inputBuildId)) {
                     lblInputVersionBid.ForeColor = Color.LimeGreen;
                     lblReferenceVersionBid.ForeColor = Color.LightCoral;
-                    FrontendUtils.ShowInformation("The reference environment build id is not identical to the build id of the customized environment",true);
+                    CommonUtils.ShowInformation("The reference environment build id is not identical to the build id of the customized environment",true);
                 } else {
                     //equal builds
                     lblInputVersionBid.ForeColor = Color.LightGreen;
@@ -1366,15 +1371,19 @@ namespace XmlParsersAndUi.Forms {
                 btnStart.Enabled = true;
                 btnValidateVersion.Enabled = true;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
-        private string GetVersionFile(string appDirectory, string host) {
+        private string GetVersionFile(string appDirectory, string host, bool forCleanup) {
             //generates size.log containing env size
-            GenerateSizeFile();
+            
+            	if (forCleanup) {
+            		GenerateSizeFile();
+	            
+            	}
             string readFile = string.Empty;
-            FtpConnection connection = new FtpConnection(host, "mxftp", "mxftp");
+            FtpConnection connection = new FtpConnection(host,21 ,"mxftp", "mxftp");
             string localFileName = Path.GetTempFileName();
             string localSizeFileName = Path.GetTempFileName();
             try {
@@ -1383,14 +1392,16 @@ namespace XmlParsersAndUi.Forms {
                         connection.Open();
                         //bgDoServerWork.ReportProgress(5, "Validating Results...");
                     } catch (Exception ex) {
-                        FrontendUtils.ShowError(ex.Message, ex);
+                        CommonUtils.ShowError(ex.Message, ex);
                     }
                     connection.Login();
                     connection.SetCurrentDirectory(appDirectory );
                     //Path.GetTempFileName
-                    connection.GetFile("size.log", localSizeFileName, false);
-                    string sizeFileRead = FrontendUtils.ReadFile(localSizeFileName);
-                    environmentSize = sizeFileRead.Replace("\t.\n","");
+                    if (forCleanup) {
+                    	connection.GetFile("size.log", localSizeFileName, false);
+	                    string sizeFileRead = CommonUtils.ReadFile(localSizeFileName);
+  						environmentSize = sizeFileRead.Replace("\t.\n","");                 
+                    }                  
                     connection.SetCurrentDirectory(appDirectory + "/logs");
                     //Path.GetTempFileName
                     connection.GetFile("mxversion.log", localFileName, false);
@@ -1399,11 +1410,11 @@ namespace XmlParsersAndUi.Forms {
                     connection.Close();
                     connection.Dispose();
                 }
-                readFile = FrontendUtils.ReadFile(localFileName);
+                readFile = CommonUtils.ReadFile(localFileName);
 
             } catch (Exception ex) {
                 //   FrontendUtils.ShowInformation("Could not validate environment version \n["+appDirectory+"]");
-                FrontendUtils.LogError(ex.Message, ex);
+                CommonUtils.LogError(ex.Message, ex);
             }
             return readFile;
         }
@@ -1421,9 +1432,9 @@ namespace XmlParsersAndUi.Forms {
                 //pcProgress.Visible = false;
                 //pcProgress.Rotate = false;
                 gbResultsGrid.Enabled = true;
-                FrontendUtils.ShowInformation("Export completed!",false);
+                CommonUtils.ShowInformation("Export completed!",false);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1447,7 +1458,7 @@ namespace XmlParsersAndUi.Forms {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1468,7 +1479,7 @@ namespace XmlParsersAndUi.Forms {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1483,7 +1494,7 @@ namespace XmlParsersAndUi.Forms {
                     comparisonCategoryTreeNode.Text = cat.categoryName;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1498,7 +1509,7 @@ namespace XmlParsersAndUi.Forms {
                     comparisonCategoryTreeNode.Text = cat.categoryName;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1528,7 +1539,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 SaveUpdatedTreeView();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1575,7 +1586,7 @@ namespace XmlParsersAndUi.Forms {
                 tvResultsCategories.Nodes.Remove(comparisonCategoryTreeNode);
                 Env_Comparison_Categories.DeleteEnvComparisonCategoryById(comparisonCategoryTreeNode.comparisonCategory.categoryId);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1598,7 +1609,7 @@ namespace XmlParsersAndUi.Forms {
                 List<EnvComparisonFilter> preFilters = GetPrefilterList(clbAvailableFilters);
                 if (preFilters.Count > 0) {
                     string collectedPrefilters = GetFormattedPrefiltersForDisplay(preFilters);
-                    DialogResult dialog = FrontendUtils.ShowConformation("Comparsion completed!\nAuto cleanup the following types?\n\n" + collectedPrefilters);
+                    DialogResult dialog = CommonUtils.ShowConformation("Comparsion completed!\nAuto cleanup the following types?\n\n" + collectedPrefilters);
                     if (dialog == DialogResult.Yes) {
                         ApplySelectedFiltersToSearchResults(preFilters);
                     } else {
@@ -1608,7 +1619,7 @@ namespace XmlParsersAndUi.Forms {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1644,7 +1655,7 @@ namespace XmlParsersAndUi.Forms {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message,ex);
+                CommonUtils.ShowError(ex.Message,ex);
             }
         }
 
@@ -1653,7 +1664,7 @@ namespace XmlParsersAndUi.Forms {
                 txtGeneratedScript.Clear();
                 txtGeneratedScript.Text =  GetGeneratedScript(txtFilterPattern.Text,cboRemoveFileOrFolder.SelectedIndex==1);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message,ex);
+                CommonUtils.ShowError(ex.Message,ex);
             }
         }
 
@@ -1692,7 +1703,7 @@ namespace XmlParsersAndUi.Forms {
                 ssh.Write("du -sh > sizeafter.log");
                 GetSizeAfterCleanup("sizeafter.log");
             } catch (Exception ex) {
-                FrontendUtils.LogError(ex.Message, ex);
+                CommonUtils.LogError(ex.Message, ex);
             }
         }
 
@@ -1707,35 +1718,35 @@ namespace XmlParsersAndUi.Forms {
                         connection.Open();
                         //bgDoServerWork.ReportProgress(5, "Validating Results...");
                     } catch (Exception ex) {
-                        FrontendUtils.ShowError(ex.Message, ex);
+                        CommonUtils.ShowError(ex.Message, ex);
                     }
                     connection.Login();
-                    connection.SetCurrentDirectory(appDirectory );                    
+                    connection.SetCurrentDirectory(appDirectory );
                     connection.GetFile(fileName, localSizeFileName, false);
                 } finally {
                     connection.Close();
                     connection.Dispose();
                 }
-                string sizeFileRead = FrontendUtils.ReadFile(localSizeFileName);
+                string sizeFileRead = CommonUtils.ReadFile(localSizeFileName);
                 lblEnvironmentInfo.Text =  lblEnvironmentInfo.Text +"\r\nSize After Cleanup:"+ sizeFileRead.Replace("\t.\n","");
             } catch (Exception ex) {
-                FrontendUtils.LogError(ex.Message, ex);
+                CommonUtils.LogError(ex.Message, ex);
             }
         }
 
         void BtnStartCleanupClick(object sender, EventArgs e) {
             try {
-                DialogResult result = FrontendUtils.ShowConformation("Are you sure you want to start cleanup?");
+                DialogResult result = CommonUtils.ShowConformation("Are you sure you want to start cleanup?");
                 if (result == DialogResult.Yes) {
                     List<EnvComparisonFilter> selectedFilters = new List<EnvComparisonFilter>();
                     for (int i = 0; i < clbAvailableCleanupFilters.CheckedItems.Count; i++) {
                         selectedFilters.Add(clbAvailableCleanupFilters.CheckedItems[i] as EnvComparisonFilter);
                     }
                     RunScriptsOnServer(selectedFilters);
-                    FrontendUtils.ShowInformation("Environment cleanup completed!",false);
+                    CommonUtils.ShowInformation("Environment cleanup completed!",false);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message,ex);
+                CommonUtils.ShowError(ex.Message,ex);
             }
         }
 
@@ -1750,7 +1761,7 @@ namespace XmlParsersAndUi.Forms {
                 remoteLocation = Regex.Match(remoteLocationSplit[0], @"[a-zA-Z]+[0-9]+[a-zA-Z]+|[a-zA-Z]+", RegexOptions.Compiled).Value;
                 txtHostForCleanup.Text = remoteLocation;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -1762,7 +1773,7 @@ namespace XmlParsersAndUi.Forms {
             //get env build id
             //get env size
             Regex versionAndBuildIDRegex = new Regex("MX.*?(\\d+.\\d+.\\S+).*?(\\d+-\\d+-\\d+-\\d+)");
-            string inpVersionFile = GetVersionFile(txtInputEnvForCleanup.Text, txtHostForCleanup.Text);
+            string inpVersionFile = GetVersionFile(txtInputEnvForCleanup.Text, txtHostForCleanup.Text,true);
             if (!string.IsNullOrEmpty(inpVersionFile) ) {
                 string refBuildId = string.Empty;
                 string inputBuildId = string.Empty;
@@ -1783,7 +1794,9 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private string GenerateSizeFile() {
+        	
             SshStream ssh = new SshStream(txtHostForCleanup.Text, "autoengine", "");
+            
             //Set the end of response matcher character
             string response = string.Empty;
             try {
@@ -1806,7 +1819,7 @@ namespace XmlParsersAndUi.Forms {
                 Console.WriteLine(response);
                 return "Env Size: "+response;
             } catch (Exception ex) {
-                FrontendUtils.LogError(ex.Message, ex);
+                CommonUtils.LogError(ex.Message, ex);
             }
             return string.Empty;
         }
@@ -1815,9 +1828,18 @@ namespace XmlParsersAndUi.Forms {
             try {
                 lblEnvironmentInfo.Text = GetEnvironmentInformation();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message,ex);
+                CommonUtils.ShowError(ex.Message,ex);
             }
         }
-    
-	}
+        
+        void BtnReloadDeletionRulesClick(object sender, EventArgs e)
+        {
+        	try {
+        	//	 ReloadAllFiltersFromDatabase();
+        		PopulateCleanupFilters();
+        	} catch (Exception ex) {
+        		CommonUtils.ShowError(ex.Message,ex);
+        	}
+        }
+    }
 }

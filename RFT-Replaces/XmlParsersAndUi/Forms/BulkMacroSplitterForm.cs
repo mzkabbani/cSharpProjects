@@ -299,7 +299,7 @@ namespace XmlParsersAndUi {
                 Process.Start(txtOutputDir.Text);
             } else {
 
-                FrontendUtils.ShowError("The output directory does not exist yet", null);
+                CommonUtils.ShowError("The output directory does not exist yet", null);
             }
         }
 
@@ -307,7 +307,7 @@ namespace XmlParsersAndUi {
             try {
                 chkFsEvents.Enabled = false;
                 if (chkLstAllStepEvents.Items.Count == 0) {
-                    FrontendUtils.ShowError("There is no steps to group!", null);
+                    CommonUtils.ShowError("There is no steps to group!", null);
                     return;
                 }
                 List<checkboxItems> selectedItems = new List<checkboxItems>();
@@ -333,7 +333,7 @@ namespace XmlParsersAndUi {
                     
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -344,7 +344,7 @@ namespace XmlParsersAndUi {
                 }
                 check = !check;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -360,7 +360,7 @@ namespace XmlParsersAndUi {
                     txtDirectory.Text = dialog.FileName;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -371,7 +371,7 @@ namespace XmlParsersAndUi {
                     txtOutputDir.Text = dialog.SelectedPath;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -385,7 +385,7 @@ namespace XmlParsersAndUi {
                     txtOutputDir.Text = outputDir;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -401,13 +401,13 @@ namespace XmlParsersAndUi {
                 StartSplittingFile();
                 //FrontendUtils.ShowInformation("Splitting done!");                
                 btnSplitFile.Enabled = false;
-                if (FrontendUtils.ShowConformation("Splitting done.\nDo you want to proceed to level one cleanup?") == DialogResult.Yes) {
+                if (CommonUtils.ShowConformation("Splitting done.\nDo you want to proceed to level one cleanup?") == DialogResult.Yes) {
                     CleanupForm form = new CleanupForm(txtOutputDir.Text);
                     form.MdiParent = this.MdiParent;
                     form.Show();
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -426,7 +426,7 @@ namespace XmlParsersAndUi {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
     }

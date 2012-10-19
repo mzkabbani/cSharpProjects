@@ -69,7 +69,7 @@ namespace Automation.Backend{
                     Rec_CapturePoints.InsertCapturePointsAsTransaction(captureEventId, advancedRecomendation.CaptureEventCapturePointsList, conn, transaction);
                     transaction.Commit();
                 } catch (Exception ex) {
-                    FrontendUtils.LogError(ex.Message, ex);
+                    CommonUtils.LogError(ex.Message, ex);
                     transaction.Rollback();
                 }
             } finally {
@@ -87,7 +87,7 @@ namespace Automation.Backend{
             command.Parameters.Add("@id", captureEventId);
             command.Parameters.Add("@categoryId", advancedRecomendation.captureEventCategory);
             command.Parameters.Add("@usageCount", advancedRecomendation.captureEventUsageCount);
-            command.Parameters.Add("@userId", FrontendUtils.LoggedInUserId);
+            command.Parameters.Add("@userId", CommonUtils.LoggedInUserId);
             value = Convert.ToInt32(command.ExecuteNonQuery());
         }
 
@@ -110,12 +110,12 @@ namespace Automation.Backend{
                 // @categoryId, @usageCount
                 command.Parameters.Add("@categoryId", advancedRecomendation.captureEventCategory);
                 command.Parameters.Add("@usageCount", advancedRecomendation.captureEventUsageCount);
-                command.Parameters.Add("@userId", FrontendUtils.LoggedInUserId);
+                command.Parameters.Add("@userId", CommonUtils.LoggedInUserId);
                 value = Convert.ToInt32(command.ExecuteNonQuery());
                 SqlCeCommand commandMaxId = new SqlCeCommand(Advanced_Recommendations_SQL.commandMaxRecommendationId, conn);
                 value = Convert.ToInt32(commandMaxId.ExecuteScalar());
             }catch (Exception ex){
-            	FrontendUtils.LogError(ex.Message,ex);
+            	CommonUtils.LogError(ex.Message,ex);
             }
             finally {
                 conn.Close();
@@ -200,7 +200,7 @@ namespace Automation.Backend{
 
         private static AdvancedRecomendation GetAdvancedRecommendationItem(DataRow advancedRecRow, DataTable capturePointsTable, SqlCeConnection conn) {
             List<CustomTreeNode> customCapturePointList = BackEndUtils.GetCustomCapturePointListFromTable(capturePointsTable);
-            AdvancedRecomendation capture = new AdvancedRecomendation(Convert.ToInt32(advancedRecRow["id"]), advancedRecRow["name"].ToString(), advancedRecRow["description"].ToString(), advancedRecRow["event_text"].ToString(), Convert.ToInt32(advancedRecRow["categoryId"]), Convert.ToInt32(advancedRecRow["usageCount"]), customCapturePointList, FrontendUtils.LoggedInUserId);
+            AdvancedRecomendation capture = new AdvancedRecomendation(Convert.ToInt32(advancedRecRow["id"]), advancedRecRow["name"].ToString(), advancedRecRow["description"].ToString(), advancedRecRow["event_text"].ToString(), Convert.ToInt32(advancedRecRow["categoryId"]), Convert.ToInt32(advancedRecRow["usageCount"]), customCapturePointList, CommonUtils.LoggedInUserId);
             capture.Replacement = Advanced_Replacements.GetReplacementEventByCaptureEventId(capture.CaptureEventId, conn);
             return capture;
         }

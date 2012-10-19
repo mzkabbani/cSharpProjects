@@ -70,7 +70,7 @@ namespace XmlParsersAndUi.Forms {
                 }
                 pnlAvailableReplacements.Focus();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 

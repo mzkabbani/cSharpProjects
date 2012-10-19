@@ -108,7 +108,7 @@ namespace XmlParsersAndUi {
                 try {
                     connection.Open();
                 } catch (Exception ex) {
-                    FrontendUtils.ShowError(ex.Message, ex);
+                    CommonUtils.ShowError(ex.Message, ex);
                 }
 
                 connection.Login();
@@ -157,15 +157,15 @@ namespace XmlParsersAndUi {
         private bool IsValidToReplace(string source, string destination) {
 
             if (string.Equals(source, destination)) {
-                FrontendUtils.ShowError("Source and destination are the same!", null);
+                CommonUtils.ShowError("Source and destination are the same!", null);
                 return false;
             }
             if (!Directory.Exists(source)) {
-                FrontendUtils.ShowError("Source directory does not exist", null);
+                CommonUtils.ShowError("Source directory does not exist", null);
                 return false;
             }
             if (!Directory.Exists(destination)) {
-                FrontendUtils.ShowError("Destination directory does not exist", null);
+                CommonUtils.ShowError("Destination directory does not exist", null);
                 return false;
             }
 
@@ -181,11 +181,11 @@ namespace XmlParsersAndUi {
             try {
                 if (IsValidToReplace(txtRemoteDest.Text, txtDest.Text)) {
                     ReplaceFiles(txtRemoteDest.Text, txtDest.Text);
-                    FrontendUtils.ShowInformation("DONE!",false);
+                    CommonUtils.ShowInformation("DONE!",false);
                 }
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -195,7 +195,7 @@ namespace XmlParsersAndUi {
                 txtRemoteDest.Text = "";
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -220,9 +220,9 @@ namespace XmlParsersAndUi {
                 }
                 GetFilesByFtp(txtServer.Text, txtRemoteDest.Text);
                 canOpen = true;
-                FrontendUtils.ShowInformation("Screen update completed!",false);
+                CommonUtils.ShowInformation("Screen update completed!",false);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
 
 
@@ -234,7 +234,7 @@ namespace XmlParsersAndUi {
                     Process.Start(downloadDir);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -258,7 +258,7 @@ namespace XmlParsersAndUi {
                 remoteLocation = Regex.Match(remoteLocationSplit[0], @"[a-zA-Z]+[0-9]+[a-zA-Z]+|[a-zA-Z]+", RegexOptions.Compiled).Value;
                 txtServer.Text = remoteLocation;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 

@@ -1058,3 +1058,297 @@ Parameter name: SelectedIndex
    at System.Windows.Forms.Form.SetVisibleCore(Boolean value)
    at System.Windows.Forms.Control.Show()
    at XmlParsersAndUi.MainForm.sDDEventsToolStripMenuItem_Click(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\MainForm.cs:line 700
+
+
+
+
+10/17/2012 10:21:30 AM
+
+
+String was not recognized as a valid Boolean.
+
+
+System.FormatException: String was not recognized as a valid Boolean.
+   at System.Boolean.Parse(String value)
+   at System.Convert.ToBoolean(String value)
+   at XmlParsersAndUi.MainForm.MainForm_Load(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\MainForm.cs:line 292
+
+
+
+
+10/17/2012 10:21:30 AM
+
+
+An overflow occurred while converting to datetime.
+
+
+An overflow occurred while converting to datetime.
+
+
+
+
+10/17/2012 10:21:30 AM
+
+
+Parameterized query 'UPDATE    UserStatus SET  onlineStatus =@onlineStatus, loginCount =@loginCount, lastLogin =@lastLogin, appVersion=@appVersion WHERE id=@id ' expects a parameter value which was not supplied.
+Parameter name: @appVersion
+
+
+System.ArgumentNullException: Parameterized query 'UPDATE    UserStatus SET  onlineStatus =@onlineStatus, loginCount =@loginCount, lastLogin =@lastLogin, appVersion=@appVersion WHERE id=@id ' expects a parameter value which was not supplied.
+Parameter name: @appVersion
+   at System.Data.SqlServerCe.SqlCeCommand.FillParameterDataBindings()
+   at System.Data.SqlServerCe.SqlCeCommand.ExecuteCommand(CommandBehavior behavior, String method, ResultSetOptions options)
+   at System.Data.SqlServerCe.SqlCeCommand.ExecuteNonQuery()
+   at Automation.Backend.UserStatus.UpdateUserStatusById(Int32 userId, Boolean isLoginEvent) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\Automation.Backend\Classes\UserStatus.cs:line 26
+   at XmlParsersAndUi.MainForm.MainForm_FormClosing(Object sender, FormClosingEventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\MainForm.cs:line 434
+
+
+
+
+10/17/2012 10:22:41 AM
+
+
+Object reference not set to an instance of an object.
+
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at XmlParsersAndUi.Forms.TpkBuilder.BuildGeneratorForm.BuildGeneratorFormLoad(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\TpkBuilder\BuildGeneratorForm.cs:line 67
+
+
+
+
+10/17/2012 10:25:48 AM
+
+
+Column named Value cannot be found.
+Parameter name: columnName
+
+
+System.ArgumentException: Column named Value cannot be found.
+Parameter name: columnName
+   at System.Windows.Forms.DataGridViewCellCollection.get_Item(String columnName)
+   at XmlParsersAndUi.Forms.TpkBuilder.TaskAdditionForm.ValidateGrid() in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\TpkBuilder\TaskAdditionForm.cs:line 86
+   at XmlParsersAndUi.Forms.TpkBuilder.TaskAdditionForm.BtnProceedBuildTaskClick(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\TpkBuilder\TaskAdditionForm.cs:line 97
+
+
+
+
+10/17/2012 5:53:40 PM
+
+
+Specified argument was out of the range of valid values.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Form1.btnUpdateConfig_Click(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\Form1.cs:line 651
+
+
+
+
+10/17/2012 5:53:42 PM
+
+
+Specified argument was out of the range of valid values.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Form1.btnUpdateConfig_Click(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\Form1.cs:line 651
+
+
+
+
+10/17/2012 5:58:27 PM
+
+
+Number: 0001361 Nickname: MIGRATIONSpecified argument was out of the range of valid values.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Form1.btnUpdateConfig_Click(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\Form1.cs:line 651
+
+
+
+
+10/17/2012 5:58:47 PM
+
+
+Number: 0001354 Nickname: FIN-PAR_STATICS_MXMLSpecified argument was out of the range of valid values.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Form1.btnUpdateConfig_Click(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\Form1.cs:line 651
+
+
+
+
+10/17/2012 6:10:20 PM
+
+
+0001361 nickname MIGRATIONSpecified argument was out of the range of valid values.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Form1.btnUpdateConfig_Click(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\Form1.cs:line 651
+
+
+
+
+10/17/2012 6:11:03 PM
+
+
+0001354 nickname FIN-PAR_STATICS_MXMLSpecified argument was out of the range of valid values.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Form1.btnUpdateConfig_Click(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\Form1.cs:line 651
+
+
+
+
+10/17/2012 6:13:01 PM
+
+
+0001361 nickname MIGRATIONSpecified argument was out of the range of valid values.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Form1.btnUpdateConfig_Click(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\Form1.cs:line 651
+
+
+
+
+10/17/2012 6:13:02 PM
+
+
+0001354 nickname FIN-PAR_STATICS_MXMLSpecified argument was out of the range of valid values.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Form1.btnUpdateConfig_Click(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\Form1.cs:line 651
+
+
+
+
+10/18/2012 11:33:18 AM
+
+
+0001361 nickname MIGRATIONSpecified argument was out of the range of valid values.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Form1.btnUpdateConfig_Click(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\Form1.cs:line 651
+
+
+
+
+10/18/2012 11:33:19 AM
+
+
+0001354 nickname FIN-PAR_STATICS_MXMLSpecified argument was out of the range of valid values.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: Specified argument was out of the range of valid values.
+Parameter name: index
+   at System.Linq.Enumerable.ElementAt[TSource](IEnumerable`1 source, Int32 index)
+   at XmlParsersAndUi.Form1.btnUpdateConfig_Click(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\Form1.cs:line 651
+
+
+
+
+10/18/2012 4:46:01 PM
+
+
+200 Type set to I.
+227 Entering Passive Mode (172,21,44,27,250,149)
+550 mxversion.log: not a plain file.
+550 mxversion.log: No such file or directory.
+
+
+
+FtpLib.FtpException: 200 Type set to I.
+227 Entering Passive Mode (172,21,44,27,250,149)
+550 mxversion.log: not a plain file.
+550 mxversion.log: No such file or directory.
+
+   at FtpLib.FtpConnection.Error()
+   at FtpLib.FtpConnection.GetFile(String remoteFile, String localFile, Boolean failIfExists)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.GetVersionFile(String appDirectory, String host, Boolean forCleanup) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 1407
+
+
+
+
+10/18/2012 4:47:13 PM
+
+
+200 Type set to I.
+227 Entering Passive Mode (172,21,44,27,14,155)
+550 mxversion.log: not a plain file.
+550 mxversion.log: No such file or directory.
+
+
+
+FtpLib.FtpException: 200 Type set to I.
+227 Entering Passive Mode (172,21,44,27,14,155)
+550 mxversion.log: not a plain file.
+550 mxversion.log: No such file or directory.
+
+   at FtpLib.FtpConnection.Error()
+   at FtpLib.FtpConnection.GetFile(String remoteFile, String localFile, Boolean failIfExists)
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.GetVersionFile(String appDirectory, String host, Boolean forCleanup) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 1407
+
+
+
+
+10/19/2012 1:18:06 PM
+
+
+timeout: socket is not established
+
+
+Tamir.SharpSsh.jsch.JSchException: timeout: socket is not established
+   at Tamir.SharpSsh.jsch.Session.connect(Int32 connectTimeout)
+   at Tamir.SharpSsh.jsch.Session.connect()
+   at XmlParsersAndUi.SshStream..ctor(String host, String username, String password) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\SshStream.cs:line 55
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.StartComparison(String inputEnv, String inputHost, String refEnv, String refHost, String compareScriptLocation, DataTable& resultsTable) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 247
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.bgDoServerWork_DoWork(Object sender, DoWorkEventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 913
+
+
+
+
+10/19/2012 1:18:07 PM
+
+
+Object reference not set to an instance of an object.
+
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.FillDataGridFromDataTable(DataTable DataTable) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 634
+   at XmlParsersAndUi.Forms.EnvironmentComparisonForm.bgDoServerWork_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\EnvironmentComparisonForm.cs:line 928

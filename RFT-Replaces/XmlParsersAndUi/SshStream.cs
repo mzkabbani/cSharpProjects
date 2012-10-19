@@ -18,7 +18,7 @@ using System.Threading;
  * Copyright (C) 2005 Tamir Gal, tamirgal@myrealbox.com.
  */
 
-namespace Tamir.SharpSsh
+namespace XmlParsersAndUi
 {
 	/// <summary>
 	/// A Stream based SSH class
@@ -45,6 +45,7 @@ namespace Tamir.SharpSsh
 			this.m_host = host;
 			JSch jsch=new JSch();
 			m_session=jsch.getSession(username, host, 22);
+			m_session.setTimeout(9999);
 			m_session.setPassword( password );
 		
 			Hashtable config=new Hashtable();

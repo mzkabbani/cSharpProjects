@@ -27,7 +27,7 @@ namespace XmlParsersAndUi.Forms {
                     txtInputFileList.Text = dialog.FileName;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -38,7 +38,7 @@ namespace XmlParsersAndUi.Forms {
                     txtOutputFolder.Text = dialog.SelectedPath;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -48,7 +48,7 @@ namespace XmlParsersAndUi.Forms {
                 List<string> fileList = ParseInputFileList(txtInputFileList.Text.Trim());
                 DownloadFileList(fileList, txtHost.Text, txtRemoteLocation.Text, txtOutputFolder.Text);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
             btnStartDownload.Enabled = true;
         }
@@ -62,7 +62,7 @@ namespace XmlParsersAndUi.Forms {
                     try {
                         connection.Open();
                     } catch (Exception ex) {
-                        FrontendUtils.ShowError(ex.Message, ex);
+                        CommonUtils.ShowError(ex.Message, ex);
                     }
                     connection.Login();
                     connection.SetCurrentDirectory(remoteLocation);
@@ -86,7 +86,7 @@ namespace XmlParsersAndUi.Forms {
                     connection.Dispose();
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError("Stopped @"+currentProcessedFile+"!\n"+ex.Message, ex);
+                CommonUtils.ShowError("Stopped @"+currentProcessedFile+"!\n"+ex.Message, ex);
             }
         }
 
@@ -113,7 +113,7 @@ namespace XmlParsersAndUi.Forms {
                 ResetFormText(groupBox2.Controls);
             } catch (Exception ex) {
 
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -136,7 +136,7 @@ namespace XmlParsersAndUi.Forms {
                 remoteLocation = Regex.Match(remoteLocationSplit[0], @"[a-zA-Z]+[0-9]+[a-zA-Z]+|[a-zA-Z]+", RegexOptions.Compiled).Value;
                 txtHost.Text = remoteLocation;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 

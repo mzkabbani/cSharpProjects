@@ -8,7 +8,7 @@
     <ProjectGuid>{AD250399-6753-41B2-8B73-573F466EDBE6}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>XmlParsersAndUi</RootNamespace>
+    <RootNamespace>Manifest</RootNamespace>
     <AssemblyName>Maintenance-Reduction</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -17,8 +17,6 @@
     <IsWebBootstrapper>false</IsWebBootstrapper>
     <SignManifests>true</SignManifests>
     <SignAssembly>false</SignAssembly>
-    <AssemblyOriginatorKeyFile>
-    </AssemblyOriginatorKeyFile>
     <ManifestCertificateThumbprint>352DB3E4333080B8073E4EECF539175493FA2A1F</ManifestCertificateThumbprint>
     <ManifestKeyFile>XmlParsersAndUi_TemporaryKey.pfx</ManifestKeyFile>
     <GenerateManifests>true</GenerateManifests>
@@ -43,14 +41,18 @@
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <RunCodeAnalysis>False</RunCodeAnalysis>
     <RunSourceAnalysis>False</RunSourceAnalysis>
+    <RunPostBuildEvent>OnBuildSuccess</RunPostBuildEvent>
+    <DelaySign>False</DelaySign>
+    <AssemblyOriginatorKeyFile>parseKey.snk</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyMode>File</AssemblyOriginatorKeyMode>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <Optimize>false</Optimize>
+    <DebugSymbols>true</DebugSymbols>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -62,20 +64,22 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
-    <DebugSymbols>true</DebugSymbols>
     <OutputPath>bin\x86\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>Full</DebugType>
     <ErrorReport>prompt</ErrorReport>
     <Optimize>False</Optimize>
+    <DebugSymbols>true</DebugSymbols>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\x86\Release\</OutputPath>
     <DefineConstants>TRACE</DefineConstants>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>Full</DebugType>
     <ErrorReport>prompt</ErrorReport>
     <Optimize>true</Optimize>
+    <DebugSymbols>true</DebugSymbols>
+    <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
     <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
@@ -99,9 +103,7 @@
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Sybase.AdoNet2.AseClient">
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Sybase.AdoNet4.AseClient">
+      <HintPath>D:\sybase\DataAccess\ADONET\dll\Sybase.AdoNet2.AseClient.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System">
@@ -141,9 +143,27 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\DifferenceEngine\BinaryFile.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\DifferenceEngine\CharData.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\DifferenceEngine\Engine.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\DifferenceEngine\Structures.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Classes\DifferenceEngine\TextFile.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Controls\CustomListView.cs" />
     <Compile Include="Controls\DragDropListView.cs" />
     <Compile Include="Controls\DragItemData.cs" />
+    <Compile Include="Controls\ProgressCircle.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Forms\BulkCustomsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -212,6 +232,10 @@
     <Compile Include="Forms\TpkBuilder\BuildGeneratorForm.cs" />
     <Compile Include="Forms\TpkBuilder\BuildGeneratorForm.Designer.cs">
       <DependentUpon>BuildGeneratorForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TpkBuilder\ConfigFileTemplateForm.cs" />
+    <Compile Include="Forms\TpkBuilder\ConfigFileTemplateForm.Designer.cs">
+      <DependentUpon>ConfigFileTemplateForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TpkBuilder\TaskAdditionForm.cs" />
     <Compile Include="Forms\TpkBuilder\TaskAdditionForm.Designer.cs">
@@ -321,6 +345,9 @@
     <EmbeddedResource Include="Forms\TpkBuilder\BuildGeneratorForm.resx">
       <DependentUpon>BuildGeneratorForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TpkBuilder\ConfigFileTemplateForm.resx">
+      <DependentUpon>ConfigFileTemplateForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\TpkBuilder\TaskAdditionForm.resx">
       <DependentUpon>TaskAdditionForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -358,6 +385,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <None Include="Controls\CircleToolboxBitmap.bmp" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -661,21 +689,9 @@
     <Content Include="Resources\Sad robot SH.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\ProgressCircle\ProgressCircle\ProgressCircle.csproj">
-      <Project>{279C7A4A-F932-4D73-8A4E-E3D7E2E50357}</Project>
-      <Name>ProgressCircle</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\SearchableControls\SearchableControls.csproj">
-      <Project>{45A3F930-1A71-4B5D-905A-2CD1DD700EF6}</Project>
-      <Name>SearchableControls</Name>
-    </ProjectReference>
     <ProjectReference Include="..\..\SharpSSHLibrary\SharpSSH\SharpSSHLib.csproj">
       <Project>{C95B2656-9801-44E6-937E-8AFA20FB0F05}</Project>
       <Name>SharpSSHLib</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\TextDiff\DifferenceEngine\DifferenceEngine.csproj">
-      <Project>{8AE4897A-EA74-49B1-BA55-D892C27AF9C9}</Project>
-      <Name>DifferenceEngine</Name>
     </ProjectReference>
     <ProjectReference Include="..\Automation.Backend\Automation.Backend.csproj">
       <Project>{6350A836-106C-4C78-A6B2-A7C14D560D90}</Project>
@@ -684,6 +700,10 @@
     <ProjectReference Include="..\Automation.Common\Automation.Common.csproj">
       <Project>{F2CA3F3F-B7AE-4378-B4B6-B0BA9903C67D}</Project>
       <Name>Automation.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="D:\documents\Open-Source\ICSharpCode.TextEditor\ICSharpCode.TextEditor\Project\ICSharpCode.TextEditor.csproj">
+      <Project>{2D18BE89-D210-49EB-A9DD-2246FBB3DF6D}</Project>
+      <Name>ICSharpCode.TextEditor</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
@@ -744,10 +764,35 @@
     </COMReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Classes\DifferenceEngine" />
     <Folder Include="Forms\Pac TPKS" />
     <Folder Include="Forms\TpkBuilder" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release Secure|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <Optimize>true</Optimize>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release Secure|x86' ">
+    <OutputPath>bin\x86\ReleaseSecure\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <DebugType>PdbOnly</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <Optimize>true</Optimize>
+    <DebugSymbols>false</DebugSymbols>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release Secure' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <CheckForOverflowUnderflow>False</CheckForOverflowUnderflow>
+    <StartAction>Project</StartAction>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

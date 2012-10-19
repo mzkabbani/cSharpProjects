@@ -44,10 +44,11 @@
         	this.lblEnvironmentInfo = new System.Windows.Forms.Label();
         	this.label7 = new System.Windows.Forms.Label();
         	this.groupBox1 = new System.Windows.Forms.GroupBox();
+        	this.btnReloadDeletionRules = new System.Windows.Forms.Button();
         	this.clbAvailableCleanupFilters = new System.Windows.Forms.CheckedListBox();
         	this.tpComparison = new System.Windows.Forms.TabPage();
         	this.groupBox2 = new System.Windows.Forms.GroupBox();
-        	this.pcProgress = new Utezduyar.Windows.Forms.ProgressCircle();
+        	this.pcProgress = new XmlParsersAndUi.Controls.ProgressCircle();
         	this.label11 = new System.Windows.Forms.Label();
         	this.lblProgess = new System.Windows.Forms.Label();
         	this.gbCustomFilters = new System.Windows.Forms.GroupBox();
@@ -267,6 +268,7 @@
         	// 
         	// groupBox1
         	// 
+        	this.groupBox1.Controls.Add(this.btnReloadDeletionRules);
         	this.groupBox1.Controls.Add(this.clbAvailableCleanupFilters);
         	this.groupBox1.Location = new System.Drawing.Point(8, 3);
         	this.groupBox1.Name = "groupBox1";
@@ -275,12 +277,22 @@
         	this.groupBox1.TabStop = false;
         	this.groupBox1.Text = "Cleanup Filters";
         	// 
+        	// btnReloadDeletionRules
+        	// 
+        	this.btnReloadDeletionRules.Location = new System.Drawing.Point(90, 553);
+        	this.btnReloadDeletionRules.Name = "btnReloadDeletionRules";
+        	this.btnReloadDeletionRules.Size = new System.Drawing.Size(75, 23);
+        	this.btnReloadDeletionRules.TabIndex = 10;
+        	this.btnReloadDeletionRules.Text = "Reload";
+        	this.btnReloadDeletionRules.UseVisualStyleBackColor = true;
+        	this.btnReloadDeletionRules.Click += new System.EventHandler(this.BtnReloadDeletionRulesClick);
+        	// 
         	// clbAvailableCleanupFilters
         	// 
         	this.clbAvailableCleanupFilters.FormattingEnabled = true;
         	this.clbAvailableCleanupFilters.Location = new System.Drawing.Point(6, 19);
         	this.clbAvailableCleanupFilters.Name = "clbAvailableCleanupFilters";
-        	this.clbAvailableCleanupFilters.Size = new System.Drawing.Size(242, 559);
+        	this.clbAvailableCleanupFilters.Size = new System.Drawing.Size(242, 529);
         	this.clbAvailableCleanupFilters.TabIndex = 0;
         	// 
         	// tpComparison
@@ -1204,6 +1216,7 @@
         	this.dgvContextMenu.ResumeLayout(false);
         	this.ResumeLayout(false);
         }
+        private System.Windows.Forms.Button btnReloadDeletionRules;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox txtHostForCleanup;
         private System.Windows.Forms.Button btnStartCleanup;
@@ -1261,7 +1274,7 @@
         private System.ComponentModel.BackgroundWorker bgDoServerWork;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox gbResultsGrid;
-        private Utezduyar.Windows.Forms.ProgressCircle pcProgress;
+       private XmlParsersAndUi.Controls.ProgressCircle pcProgress;
         private System.Windows.Forms.Button btnExportGrid;
         private System.Windows.Forms.Button btnResetGrid;
         private System.Windows.Forms.DataGridView dgvResults;

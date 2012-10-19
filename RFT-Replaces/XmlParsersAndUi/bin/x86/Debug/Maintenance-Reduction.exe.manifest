@@ -54,11 +54,6 @@
   </dependency>
   <dependency>
     <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
-      <assemblyIdentity name="Sybase.AdoNet2.AseClient" version="2.157.401.0" publicKeyToken="95D94FAC46C88E1E" language="neutral" processorArchitecture="msil" />
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
       <assemblyIdentity name="System.Core" version="3.5.0.0" publicKeyToken="b77a5c561934e089" language="neutral" processorArchitecture="msil" />
     </dependentAssembly>
   </dependency>
@@ -73,50 +68,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Automation.Controls.dll" size="57344">
-      <assemblyIdentity name="Automation.Controls" version="1.2.0.0" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="c-win-x86.dll" size="130048">
+      <assemblyIdentity name="c-win-x86" version="1.0.0.0" publicKeyToken="2E0B8D4C607DCB57" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>LH8xzQqFyDV8gCO9sMAD6zqdK80=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Automation.Diff.dll" size="24576">
-      <assemblyIdentity name="Automation.Diff" version="1.0.4668.15187" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>U1SN23KThV66hoN+hLFKocTA9JY=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Automation.ProgressCircle.dll" size="24576">
-      <assemblyIdentity name="Automation.ProgressCircle" version="1.1.4668.15187" publicKeyToken="3911FA6FB758CF71" language="neutral" processorArchitecture="msil" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>A74KLH0TPUI3lDIZhGSP6Jg4mGk=</dsig:DigestValue>
-      </hash>
-    </dependentAssembly>
-  </dependency>
-  <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="c-win-x86.dll" size="128000">
-      <assemblyIdentity name="c-win-x86" version="1.0.0.0" publicKeyToken="7B68225CEDFD7486" language="neutral" processorArchitecture="x86" />
-      <hash>
-        <dsig:Transforms>
-          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
-        </dsig:Transforms>
-        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>z2uMxQhfTLWQ0ODBKEsxd6fL1rg=</dsig:DigestValue>
+        <dsig:DigestValue>2T9BW45tUPk1Pl9GEHZY7fI05RQ=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -145,14 +104,26 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Maintenance-Reduction.exe" size="3064832">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ICSharpCode.TextEditor.dll" size="385024">
+      <assemblyIdentity name="ICSharpCode.TextEditor" version="3.0.0.3437" publicKeyToken="4D61825E8DD49F1A" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>riu9WOyu/ZppvmcDUDscxlOqK8A=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Maintenance-Reduction.exe" size="3411968">
       <assemblyIdentity name="Maintenance-Reduction" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>1VEM+cpQ0dQVweqoL1YsnDRUI/g=</dsig:DigestValue>
+        <dsig:DigestValue>VweM5ZkVos+HJ6Xhm+M1EysU5z0=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -205,26 +176,62 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Tamir.SharpSSH.dll" size="249856">
-      <assemblyIdentity name="Tamir.SharpSSH" version="1.1.1.13" language="neutral" processorArchitecture="msil" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Sybase.AdoNet2.AseClient.dll" size="7217152">
+      <assemblyIdentity name="Sybase.AdoNet2.AseClient" version="2.157.401.0" publicKeyToken="95D94FAC46C88E1E" language="neutral" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>tZIlT4bl1+v2MjgT93XU1pIgqO8=</dsig:DigestValue>
+        <dsig:DigestValue>2X8oA2R5ZJqx1ckz0tFciITFU48=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="win32-b.dll" size="60416">
-      <assemblyIdentity name="win32-b" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ja\Sybase.AdoNet2.AseClient.resources.dll" size="270336">
+      <assemblyIdentity name="Sybase.AdoNet2.AseClient.resources" version="2.157.401.0" publicKeyToken="95D94FAC46C88E1E" language="ja" processorArchitecture="msil" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>fK8qoU6CxdEqoV0TWRVUGMDfj8Q=</dsig:DigestValue>
+        <dsig:DigestValue>3bxus+xrKAq695pqd8juanPpyUQ=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="zh-CHS\Sybase.AdoNet2.AseClient.resources.dll" size="241664">
+      <assemblyIdentity name="Sybase.AdoNet2.AseClient.resources" version="2.157.401.0" publicKeyToken="95D94FAC46C88E1E" language="zh-CHS" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>qiNkfBd0QXE5TFm4tQ4yQWzpBMI=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="win32-b.dll" size="61440">
+      <assemblyIdentity name="win32-b" version="1.0.0.0" publicKeyToken="D2034F9B7EF4E31C" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>0PvTSCpw1w9UeeCEt11z+0p/nsw=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="win-ssh-x86.dll" size="249856">
+      <assemblyIdentity name="win-ssh-x86" version="1.1.1.13" language="neutral" processorArchitecture="x86" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
+        <dsig:DigestValue>EOin1+clfnOwnYSaYYhpii+94yg=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

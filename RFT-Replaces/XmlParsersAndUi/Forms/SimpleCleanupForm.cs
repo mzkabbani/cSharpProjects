@@ -9,7 +9,7 @@ using System.Windows.Forms;
 using System.IO;
 using System.Text.RegularExpressions;
 using XmlParsersAndUi.Properties;
-using DifferenceEngine;
+
 using System.Collections;
 using System.Diagnostics;
 using Automation.Common.Utils;
@@ -199,7 +199,7 @@ namespace XmlParsersAndUi {
             clbSelectedoptions.Items.Clear();
             string[] simpleOptionFiles = Directory.GetFiles(inputDir, "*.simpleO");
             for (int i = 0; i < simpleOptionFiles.Length; i++) {
-                SimpleRecommendationObject simpleRecom = ConvertToObject(FrontendUtils.ReadFile(simpleOptionFiles[i]));
+                SimpleRecommendationObject simpleRecom = ConvertToObject(CommonUtils.ReadFile(simpleOptionFiles[i]));
                 clbSelectedoptions.Items.Add(simpleRecom);
             }
         }
@@ -222,13 +222,13 @@ namespace XmlParsersAndUi {
 
         private bool IsValidToParse(string inputDir, CheckedListBox clbSelectedoptions) {
             if (string.IsNullOrEmpty(inputDir)) {
-                FrontendUtils.ShowError("Input Directory is not filled", null);
+                CommonUtils.ShowError("Input Directory is not filled", null);
                 return false;
             } else if (!Directory.Exists(inputDir)) {
-                FrontendUtils.ShowError("Input Directory does not exist", null);
+                CommonUtils.ShowError("Input Directory does not exist", null);
                 return false;
             } else if (clbSelectedoptions.SelectedItems == null) {
-                FrontendUtils.ShowError("Please select some Recommendations", null);
+                CommonUtils.ShowError("Please select some Recommendations", null);
                 return false;
             }
             return true;
@@ -241,7 +241,7 @@ namespace XmlParsersAndUi {
             string readFile = string.Empty;
             List<string> FilesToReplace = new List<string>();
             for (int i = 0; i < applicableFiles.Length; i++) {
-                readFile = FrontendUtils.ReadFile(applicableFiles[i]);
+                readFile = CommonUtils.ReadFile(applicableFiles[i]);
                 if (RunSelectedOptionsOnTextIsMatch(readFile, selectedObjectCollection)) {
                     FilesToReplace.Add(applicableFiles[i]);
                 }
@@ -274,7 +274,7 @@ namespace XmlParsersAndUi {
             string readText = string.Empty;
             string readTextReplaced = string.Empty;
             for (int i = 0; i < FilesToReplace.Count; i++) {
-                readText = FrontendUtils.ReadFile(FilesToReplace[i]);
+                readText = CommonUtils.ReadFile(FilesToReplace[i]);
                 for (int j = 0; j < selectedObjectCollection.Count; j++) {
                     SimpleRecommendationObject simpleRec = selectedObjectCollection[j] as SimpleRecommendationObject;
                     if (simpleRec.isRegex) {
@@ -286,7 +286,7 @@ namespace XmlParsersAndUi {
                         readText = readText.Replace(simpleRec.pattern, simpleRec.replacement);
                     }
                 }
-                FrontendUtils.WriteFile(FilesToReplace[i], readText);
+                CommonUtils.WriteFile(FilesToReplace[i], readText);
             }
         }
 
@@ -328,11 +328,11 @@ namespace XmlParsersAndUi {
                     BackupInputDirectory(txtInputDir.Text, backupDirectory + Path.GetFileName(txtInputDir.Text));
                     ParseEventFiles(txtInputDir.Text, clbSelectedoptions.CheckedItems);
                     tvFilesAffected.ExpandAll();
-                    FrontendUtils.ShowInformation("The cleanup is done!",false);
+                    CommonUtils.ShowInformation("The cleanup is done!",false);
                     btnStart.Enabled = false;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -347,7 +347,7 @@ namespace XmlParsersAndUi {
                 txtInputDir.Text = inputDir;
                 LoadSimpleOptions();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -365,7 +365,7 @@ namespace XmlParsersAndUi {
                 lblOptionDetails.Text = lblOptionDetails.Text + "Replacement: " + newRecObj.replacement;
                 lblOptionDetails.Visible = true;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -374,7 +374,7 @@ namespace XmlParsersAndUi {
                 CLEANUPFORM_EVENTS_SEARCH_PATTERN = Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.CleanUpEventsSearchPattern) as string;
                 LoadSimpleOptions();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -386,10 +386,10 @@ namespace XmlParsersAndUi {
                     string fileSystemPathSource = backupDirectory + tvFilesAffected.SelectedNode.FullPath;
                     TextDiff(fileSystemPathSource, fileSystemPathReached);
                 } else {
-                    FrontendUtils.ShowError("Please select a file to display the difference", null);
+                    CommonUtils.ShowError("Please select a file to display the difference", null);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -398,10 +398,10 @@ namespace XmlParsersAndUi {
                 if (Directory.Exists(backupDirectory)) {
                     Process.Start(backupDirectory);
                 } else {
-                    FrontendUtils.ShowError("The backup directory does not exist yet", null);
+                    CommonUtils.ShowError("The backup directory does not exist yet", null);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -413,7 +413,7 @@ namespace XmlParsersAndUi {
                 txtInputDir.Text = string.Empty;
                 btnStart.Enabled = true;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -424,7 +424,7 @@ namespace XmlParsersAndUi {
                     txtInputDir.Text = dialog.SelectedPath;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
  

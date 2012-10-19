@@ -34,7 +34,7 @@ namespace XmlParsersAndUi.Forms {
                     txtCategoryPath.Text = workingCompCategory.categoryPath;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
 
         }
@@ -44,7 +44,7 @@ namespace XmlParsersAndUi.Forms {
                 workingCompCategory = FillCategoryFromUiForSave();
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -62,7 +62,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 workingCompCategory = FillCategoryFromUiForAdd();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 

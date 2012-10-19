@@ -35,13 +35,13 @@ namespace XmlParsersAndUi.Forms {
                     bwSearchReplace.RunWorkerAsync(workerObject);
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private bool IsValidToStartOperations(string inputFile) {
             if (!File.Exists(inputFile)) {
-                FrontendUtils.ShowError("Input file doesnt exist", new Exception());
+                CommonUtils.ShowError("Input file doesnt exist", new Exception());
                 return false;
             }
             return true;
@@ -74,7 +74,7 @@ namespace XmlParsersAndUi.Forms {
                 }
                 btnStartOperation.Enabled = true;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -87,7 +87,7 @@ namespace XmlParsersAndUi.Forms {
                     txtInputFile.Text = dialog.FileName;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -95,7 +95,7 @@ namespace XmlParsersAndUi.Forms {
 
         private List<string> SearchAndGenerate(string fileName, List<AdvancedRecomendation> selectedCaptureEvents) {
             List<string> textGenerated = new List<string>();
-            string fileRead = FrontendUtils.ReadFile(fileName);
+            string fileRead = CommonUtils.ReadFile(fileName);
             fileRead = fileRead.Replace("<!DOCTYPE MXClientScript>", "");
             if (fileRead.Contains("LoginInfo")) {
                 Regex regUsername = new Regex("<UserName>(.*?)</UserName>");
@@ -436,7 +436,7 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private void bwExportExcel_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
-            FrontendUtils.ShowInformation("Export Completed", false);
+            CommonUtils.ShowInformation("Export Completed", false);
             btnExport.Enabled = true;
         }
 
@@ -449,7 +449,7 @@ namespace XmlParsersAndUi.Forms {
                 dgvOutputResults.Rows.Clear();
                 btnStartOperation.Enabled = true;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 

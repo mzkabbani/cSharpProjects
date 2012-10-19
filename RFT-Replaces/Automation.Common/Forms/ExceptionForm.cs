@@ -50,10 +50,10 @@ namespace Automation.Common.Forms {
         }
 
         private void btnSendToAdmin_Click(object sender, EventArgs e) {
-            Bitmap bitmap = FrontendUtils.GetScreenShot();
+            Bitmap bitmap = CommonUtils.GetScreenShot();
             string bitmapFileName = Path.GetTempPath() + DateTime.Now.Date.Day + "-" + DateTime.Now.Date.Month + "-" + DateTime.Now.Date.Year + "-" + DateTime.Now.Hour + "-" + DateTime.Now.Minute + "-" + DateTime.Now.Second + "-" + DateTime.Now.Millisecond + ".jpeg";
             bitmap.Save(bitmapFileName);
-            FrontendUtils.SendEmailWithAttachement(FrontendUtils.GetCurrentUser()+" - "+sentErrorText, sentException, bitmapFileName);
+            CommonUtils.SendEmailWithAttachement(CommonUtils.GetCurrentUser()+" - "+sentErrorText, sentException, bitmapFileName);
             this.Close();
         }
 

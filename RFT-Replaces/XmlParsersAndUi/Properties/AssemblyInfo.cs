@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("XmlParsersAndUi")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Murex System")]
+[assembly: AssemblyCompany("MSE")]
 [assembly: AssemblyProduct("XmlParsersAndUi")]
-[assembly: AssemblyCopyright("Copyright © Murex System 2011")]
+[assembly: AssemblyCopyright("Copyright © MSE 2012")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

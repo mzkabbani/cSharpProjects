@@ -25,15 +25,15 @@ namespace XmlParsersAndUi {
                 cboTableNames.DisplayMember = "TABLE_NAME";
                 dgvRecomendations.DataSource = Advanced_Recommendations.GetAllAdvancedRecs();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void btnExecute_Click(object sender, EventArgs e) {
             try {
-               FrontendUtils.ShowError( BackEndUtils.ExecuteRandomQuery(txtQuery.Text).ToString(),null);
+               CommonUtils.ShowError( BackEndUtils.ExecuteRandomQuery(txtQuery.Text).ToString(),null);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -42,7 +42,7 @@ namespace XmlParsersAndUi {
                 dgvRecomendations.DataSource = null;
                 dgvRecomendations.DataSource = BackEndUtils.GetAllTableRowsAsDataTable(cboTableNames.SelectedItem.ToString());
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -51,15 +51,15 @@ namespace XmlParsersAndUi {
                 dgvRecomendations.DataSource = null;
                 dgvRecomendations.DataSource = BackEndUtils.GetAllTableRowsAsDataTable((string)(cboTableNames.SelectedValue as DataRowView)[0]);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void btnExecute_Click_1(object sender, EventArgs e) {
             try {
-                FrontendUtils.ShowError(BackEndUtils.ExecuteRandomQuery(txtQuery.Text).ToString(),null);
+                CommonUtils.ShowError(BackEndUtils.ExecuteRandomQuery(txtQuery.Text).ToString(),null);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
     }

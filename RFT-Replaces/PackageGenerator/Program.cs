@@ -22,7 +22,7 @@ namespace PackageGenerator {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             try {
-                FrontendUtils.CreateLogsDirectory();
+                CommonUtils.CreateLogsDirectory();
                 CheckEnvironmentVariables();
                // Application.Run(new Mainform());
                 Application.Run(new Mainform());
@@ -44,7 +44,7 @@ namespace PackageGenerator {
                 System.Environment.SetEnvironmentVariable("PATH", pathVariable + @";U:\Devtools\java\jdk1.6.0_24\bin;U:\Tools\bin", EnvironmentVariableTarget.User);
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError("Failed to setup environment variables.", ex);
+                CommonUtils.ShowError("Failed to setup environment variables.", ex);
             }
 
         }

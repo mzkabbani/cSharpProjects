@@ -46,7 +46,7 @@ namespace XmlParsersAndUi.Forms {
                 }
                 tvOperationNames.ExpandAll();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -66,7 +66,7 @@ namespace XmlParsersAndUi.Forms {
 				}
         		
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message,ex);
+                CommonUtils.ShowError(ex.Message,ex);
             }
         }
         
@@ -84,7 +84,7 @@ namespace XmlParsersAndUi.Forms {
 				}
         		
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message,ex);
+                CommonUtils.ShowError(ex.Message,ex);
             }
         }
     }

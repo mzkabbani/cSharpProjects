@@ -1,7 +1,0 @@
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\ArrowButton\bin\Debug\ArrowButton.dll
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\ArrowButton\bin\Debug\ArrowButton.pdb
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\ArrowButton\obj\Debug\ResolveAssemblyReference.cache
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\ArrowButton\obj\Debug\ArrowButton.ArrowButton.resources
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\ArrowButton\obj\Debug\ArrowButton.csproj.GenerateResource.Cache
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\ArrowButton\obj\Debug\ArrowButton.dll
-C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\ArrowButton\obj\Debug\ArrowButton.pdb

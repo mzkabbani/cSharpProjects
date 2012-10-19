@@ -62,7 +62,7 @@ namespace Automation.Backend {
                 command.Parameters.Add("@filter", filter.FilterPattern);               
                 command.Parameters.Add("@filterType", filter.FilterType);
                 command.Parameters.Add("@id", filter.filterId);
-                command.Parameters.Add("@modifiedByUserId",FrontendUtils.LoggedInUserId);                 
+                command.Parameters.Add("@modifiedByUserId",CommonUtils.LoggedInUserId);                 
                 command.Parameters.Add("@dateModified",DateTime.Now);
                    if(filter.FilterType == 2) {
                     command.Parameters.Add("@isFolderDeletion", filter.IsFolderDeletion);

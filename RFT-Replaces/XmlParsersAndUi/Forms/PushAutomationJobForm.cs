@@ -41,7 +41,7 @@ namespace XmlParsersAndUi.Forms {
 
                 LoadJobParametersIntoTree(readFileSplit);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -80,7 +80,7 @@ namespace XmlParsersAndUi.Forms {
                     gbValues.Visible = false;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -97,7 +97,7 @@ namespace XmlParsersAndUi.Forms {
                     }
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -127,10 +127,10 @@ namespace XmlParsersAndUi.Forms {
                 result = result + ssh.ReadResponse();
 
                 Regex reg = new Regex("PAR\\.DJOB\\.\\d+");
-                FrontendUtils.ShowInformation(reg.Match(result).Value + " Pushed!",false);
+                CommonUtils.ShowInformation(reg.Match(result).Value + " Pushed!",false);
 
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -174,7 +174,7 @@ namespace XmlParsersAndUi.Forms {
                 try {
                     connection.Open();
                 } catch (Exception ex) {
-                    FrontendUtils.ShowError(ex.Message, ex);
+                    CommonUtils.ShowError(ex.Message, ex);
                 }
 
                 connection.Login();

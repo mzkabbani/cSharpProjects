@@ -26,7 +26,7 @@ namespace Automation.Backend.Classes {
                     value = Convert.ToInt32(command.ExecuteNonQuery());
                 }
             }catch ( Exception ex){
-            	FrontendUtils.LogError(ex.Message,ex);
+            	CommonUtils.LogError(ex.Message,ex);
             } finally {
                 conn.Close();
             }

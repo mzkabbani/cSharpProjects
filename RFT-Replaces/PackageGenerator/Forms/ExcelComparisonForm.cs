@@ -19,16 +19,16 @@ namespace PackageGenerator.Forms {
 
         private bool IsValidToProceedWithComparison(string fileOne, string fileTwo) {
             if (string.IsNullOrEmpty(fileOne)) {
-                FrontendUtils.ShowInformation("Please input reference customizations excel sheet", true);
+                CommonUtils.ShowInformation("Please input reference customizations excel sheet", true);
                 return false;
             } else if (string.IsNullOrEmpty(fileTwo)) {
-                FrontendUtils.ShowInformation("Please input current customizations excel sheet", true);
+                CommonUtils.ShowInformation("Please input current customizations excel sheet", true);
                 return false;
             } else if (!File.Exists(fileOne)) {
-                FrontendUtils.ShowInformation("Reference customizations excel sheet does not exist", true);
+                CommonUtils.ShowInformation("Reference customizations excel sheet does not exist", true);
                 return false;
             } else if (!File.Exists(fileTwo)) {
-                FrontendUtils.ShowInformation("Current customizations excel sheet does not exist", true);
+                CommonUtils.ShowInformation("Current customizations excel sheet does not exist", true);
                 return false;
             }
             return true;
@@ -45,23 +45,23 @@ namespace PackageGenerator.Forms {
                     this.DialogResult = DialogResult.No;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void btnBrowseFileOne_Click(object sender, EventArgs e) {
             try {
-                txtFileOneInput.Text = FrontendUtils.GetFileOpenDialog();
+                txtFileOneInput.Text = CommonUtils.GetFileOpenDialog();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
         private void btnBrowseFileTwo_Click(object sender, EventArgs e) {
             try {
-                txtFileTwoInput.Text = FrontendUtils.GetFileOpenDialog();
+                txtFileTwoInput.Text = CommonUtils.GetFileOpenDialog();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 

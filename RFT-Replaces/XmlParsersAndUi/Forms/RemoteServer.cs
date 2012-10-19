@@ -36,7 +36,7 @@ namespace XmlParsersAndUi.Forms {
                 //Reading from the SSH channel
                 response = ssh.ReadResponse();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -64,7 +64,7 @@ namespace XmlParsersAndUi.Forms {
                 //Writing to the SSH channel
                 //tmReturn.Start();
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -72,7 +72,7 @@ namespace XmlParsersAndUi.Forms {
             try {
                 txtResponse.Text = txtResponse.Text + ExecuteCommandReturnResult("launchAllServices.sh");
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -93,7 +93,7 @@ namespace XmlParsersAndUi.Forms {
                     lblConnected.BackColor = Color.LightGreen;
                 }
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 
@@ -176,7 +176,7 @@ namespace XmlParsersAndUi.Forms {
 
                 //ssh.RemoveTerminalEmulationCharacters = true;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
 
 

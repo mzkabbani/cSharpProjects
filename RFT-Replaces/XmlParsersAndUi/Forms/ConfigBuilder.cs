@@ -179,7 +179,7 @@ namespace XmlParsersAndUi {
                 FindChildren(readText, "Customize", out CustomizeChildren);
                 AddtoListBox(CustomizeChildren, lbCustomize);
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
         
@@ -218,7 +218,7 @@ namespace XmlParsersAndUi {
                 DisplayElementParams(element);
                 parentElementName = element.elementName;
             } catch (Exception ex) {
-                FrontendUtils.ShowError(ex.Message, ex);
+                CommonUtils.ShowError(ex.Message, ex);
             }
         }
 

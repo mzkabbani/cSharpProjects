@@ -153,7 +153,7 @@ namespace XmlParsersAndUi.Forms {
                 List<checkboxItems> items = new List<checkboxItems>();
                 StartSplittingFile(xmlFile[0], "1313", out items);
 
-                string configRead = FrontendUtils.ReadFile(textFile[0]);
+                string configRead = CommonUtils.ReadFile(textFile[0]);
                 string[] parts = configRead.Split(new string[] { "\n"},StringSplitOptions.RemoveEmptyEntries);
                 string buildText = string.Empty;
                 string testCaseFolderName = Path.GetFileNameWithoutExtension(directories[i]);
@@ -178,7 +178,7 @@ namespace XmlParsersAndUi.Forms {
                 //List<checkboxItems> selectedItems = new List<checkboxItems>();
                 //GenerateSplitFile(selectedItems, "sessionKey", "outFolderName", 1);
             }
-            FrontendUtils.WriteFile(txtOutputDir.Text + @"\buildFile.txt", completeBuild);
+            CommonUtils.WriteFile(txtOutputDir.Text + @"\buildFile.txt", completeBuild);
      
         }
 

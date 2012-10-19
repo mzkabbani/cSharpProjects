@@ -43,7 +43,7 @@
         	this.label3 = new System.Windows.Forms.Label();
         	this.btnStart = new System.Windows.Forms.Button();
         	this.pbPercentComplete = new System.Windows.Forms.ProgressBar();
-        	this.pcProgress = new Utezduyar.Windows.Forms.ProgressCircle();
+        	this.pcProgress = new XmlParsersAndUi.Controls.ProgressCircle();
         	this.gbSelectedCapture = new System.Windows.Forms.GroupBox();
         	this.srcPopularityAdded = new RatingControls.StarRatingControl();
         	this.txtRuleDescription = new System.Windows.Forms.TextBox();
@@ -583,7 +583,7 @@
         private System.Windows.Forms.GroupBox gbOperation;
         private System.Windows.Forms.ImageList ilIcons;
         private System.ComponentModel.BackgroundWorker bgwSearchForMatches;
-        private Utezduyar.Windows.Forms.ProgressCircle pcProgress;
+        private XmlParsersAndUi.Controls.ProgressCircle pcProgress;
         private System.Windows.Forms.Label lblFoundNodesCound;
         private System.Windows.Forms.ProgressBar pbPercentComplete;
         private System.Windows.Forms.Button btnProceedToReplacement;
