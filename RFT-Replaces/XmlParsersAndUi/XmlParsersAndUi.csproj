@@ -229,6 +229,10 @@
     </Compile>
     <Compile Include="Classes\ListViewItem.cs" />
     <Compile Include="Classes\MacroEvent.cs" />
+    <Compile Include="Forms\TpkBuilder\AddCommonPropertyForm.cs" />
+    <Compile Include="Forms\TpkBuilder\AddCommonPropertyForm.Designer.cs">
+      <DependentUpon>AddCommonPropertyForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TpkBuilder\BuildGeneratorForm.cs" />
     <Compile Include="Forms\TpkBuilder\BuildGeneratorForm.Designer.cs">
       <DependentUpon>BuildGeneratorForm.cs</DependentUpon>
@@ -236,6 +240,10 @@
     <Compile Include="Forms\TpkBuilder\ConfigFileTemplateForm.cs" />
     <Compile Include="Forms\TpkBuilder\ConfigFileTemplateForm.Designer.cs">
       <DependentUpon>ConfigFileTemplateForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\TpkBuilder\DefineMacrodefForm.cs" />
+    <Compile Include="Forms\TpkBuilder\DefineMacrodefForm.Designer.cs">
+      <DependentUpon>DefineMacrodefForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\TpkBuilder\TaskAdditionForm.cs" />
     <Compile Include="Forms\TpkBuilder\TaskAdditionForm.Designer.cs">
@@ -342,11 +350,17 @@
     <EmbeddedResource Include="Forms\testReplacements.resx">
       <DependentUpon>testReplacements.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TpkBuilder\AddCommonPropertyForm.resx">
+      <DependentUpon>AddCommonPropertyForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\TpkBuilder\BuildGeneratorForm.resx">
       <DependentUpon>BuildGeneratorForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TpkBuilder\ConfigFileTemplateForm.resx">
       <DependentUpon>ConfigFileTemplateForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TpkBuilder\DefineMacrodefForm.resx">
+      <DependentUpon>DefineMacrodefForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TpkBuilder\TaskAdditionForm.resx">
       <DependentUpon>TaskAdditionForm.cs</DependentUpon>

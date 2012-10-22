@@ -11,9 +11,9 @@ using System;
 namespace Automation.Backend{
     public static class Advanced_Recommendation_Categories_TextConv_SQL {
 
-        public static string commandGetAllCaptureCategoriesTextConv = "SELECT     id, categoryName " +
-                                                    "FROM       Advanced_Recommendation_Categories "+
-        											"Where addField1='SDDGen'";
+        public static string commandGetAllCaptureCategoriesTextConv = "SELECT     id, enumerationName " +
+                                                    "FROM      ApplicationEnums "+
+        											"Where type='SDDGen'";
 
     }
 }

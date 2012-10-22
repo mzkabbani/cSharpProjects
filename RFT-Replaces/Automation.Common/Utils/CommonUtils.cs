@@ -34,12 +34,16 @@ namespace Automation.Common.Utils {
 			Verbal = 2,
 			Xpath = 3
 		}
-
+		
+		
+		
 		public static void CopyDirectory(string sourceDirectory, string targetDirectory) {
 			DirectoryInfo diSource = new DirectoryInfo(sourceDirectory);
 			DirectoryInfo diTarget = new DirectoryInfo(targetDirectory);
 			CopyAll(diSource, diTarget);
 		}
+		
+		
 		
 		public static List<string> GetListFromArray(string[] objectArray){
 			List<string> objects = new List<string>();

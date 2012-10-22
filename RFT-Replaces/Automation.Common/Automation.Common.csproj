@@ -126,6 +126,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes\AppEnums.cs" />
     <Compile Include="Classes\ApplicationConfigObject.cs" />
     <Compile Include="Classes\CaptureEvent.cs" />
     <Compile Include="Classes\ GlobalApplicationSettings.cs" />
@@ -247,6 +248,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Automation.Common.cd" />
     <Content Include="Controls\info.txt" />
     <Content Include="Controls\MWControls_Changelog.txt" />
   </ItemGroup>

@@ -1116,7 +1116,7 @@ namespace XmlParsersAndUi {
 
         private void cboCaptureType_SelectedIndexChanged(object sender, EventArgs e) {
             try {
-                //TODO: check what to do here
+                //FIXME: check what to do here
                 //switch ((int)cboCaptureType.SelectedValue) {
                 //    case (int)FrontendUtils.AdvancedRecCategory.SpecificConf:
                 //        SetupUiForSpecificRecommendation();

@@ -36,6 +36,7 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TaskAdditionForm));
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.dgvTaskProperties = new System.Windows.Forms.DataGridView();
@@ -46,8 +47,13 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 			this.btnCancelBuildTask = new System.Windows.Forms.Button();
 			this.btnProceedBuildTask = new System.Windows.Forms.Button();
 			this.propertyObject = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.cmsAddCommonProp = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.addCommonPropertyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.txtComment = new System.Windows.Forms.TextBox();
+			this.label1 = new System.Windows.Forms.Label();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvTaskProperties)).BeginInit();
+			this.cmsAddCommonProp.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// groupBox1
@@ -58,9 +64,9 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 			this.groupBox1.Controls.Add(this.dgvTaskProperties);
 			this.groupBox1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
 			this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-			this.groupBox1.Location = new System.Drawing.Point(12, 47);
+			this.groupBox1.Location = new System.Drawing.Point(12, 112);
 			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(327, 283);
+			this.groupBox1.Size = new System.Drawing.Size(327, 255);
 			this.groupBox1.TabIndex = 0;
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Properties";
@@ -78,7 +84,7 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 			this.dgvTaskProperties.Location = new System.Drawing.Point(3, 16);
 			this.dgvTaskProperties.Name = "dgvTaskProperties";
 			this.dgvTaskProperties.RowHeadersVisible = false;
-			this.dgvTaskProperties.Size = new System.Drawing.Size(321, 264);
+			this.dgvTaskProperties.Size = new System.Drawing.Size(321, 236);
 			this.dgvTaskProperties.TabIndex = 0;
 			this.dgvTaskProperties.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgvTaskPropertiesCellClick);
 			// 
@@ -117,7 +123,7 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 			// 
 			this.btnCancelBuildTask.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
 			this.btnCancelBuildTask.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-			this.btnCancelBuildTask.Location = new System.Drawing.Point(97, 333);
+			this.btnCancelBuildTask.Location = new System.Drawing.Point(97, 370);
 			this.btnCancelBuildTask.Name = "btnCancelBuildTask";
 			this.btnCancelBuildTask.Size = new System.Drawing.Size(75, 23);
 			this.btnCancelBuildTask.TabIndex = 2;
@@ -128,7 +134,7 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 			// 
 			this.btnProceedBuildTask.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
 			this.btnProceedBuildTask.DialogResult = System.Windows.Forms.DialogResult.OK;
-			this.btnProceedBuildTask.Location = new System.Drawing.Point(178, 333);
+			this.btnProceedBuildTask.Location = new System.Drawing.Point(178, 370);
 			this.btnProceedBuildTask.Name = "btnProceedBuildTask";
 			this.btnProceedBuildTask.Size = new System.Drawing.Size(75, 23);
 			this.btnProceedBuildTask.TabIndex = 3;
@@ -142,12 +148,44 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 			this.propertyObject.Name = "propertyObject";
 			this.propertyObject.Visible = false;
 			// 
+			// cmsAddCommonProp
+			// 
+			this.cmsAddCommonProp.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+									this.addCommonPropertyToolStripMenuItem});
+			this.cmsAddCommonProp.Name = "cmsAddCommonProp";
+			this.cmsAddCommonProp.Size = new System.Drawing.Size(194, 48);
+			// 
+			// addCommonPropertyToolStripMenuItem
+			// 
+			this.addCommonPropertyToolStripMenuItem.Name = "addCommonPropertyToolStripMenuItem";
+			this.addCommonPropertyToolStripMenuItem.Size = new System.Drawing.Size(193, 22);
+			this.addCommonPropertyToolStripMenuItem.Text = "Add Common Property";
+			this.addCommonPropertyToolStripMenuItem.Click += new System.EventHandler(this.AddCommonPropertyToolStripMenuItemClick);
+			// 
+			// txtComment
+			// 
+			this.txtComment.Location = new System.Drawing.Point(12, 58);
+			this.txtComment.Multiline = true;
+			this.txtComment.Name = "txtComment";
+			this.txtComment.Size = new System.Drawing.Size(327, 48);
+			this.txtComment.TabIndex = 4;
+			// 
+			// label1
+			// 
+			this.label1.Location = new System.Drawing.Point(12, 44);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(100, 11);
+			this.label1.TabIndex = 5;
+			this.label1.Text = "Comment:";
+			// 
 			// TaskAdditionForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.BackColor = System.Drawing.SystemColors.Control;
-			this.ClientSize = new System.Drawing.Size(351, 368);
+			this.ClientSize = new System.Drawing.Size(351, 405);
+			this.Controls.Add(this.label1);
+			this.Controls.Add(this.txtComment);
 			this.Controls.Add(this.btnProceedBuildTask);
 			this.Controls.Add(this.btnCancelBuildTask);
 			this.Controls.Add(this.lblTaskName);
@@ -160,8 +198,14 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 			this.Load += new System.EventHandler(this.TaskAdditionFormLoad);
 			this.groupBox1.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvTaskProperties)).EndInit();
+			this.cmsAddCommonProp.ResumeLayout(false);
 			this.ResumeLayout(false);
+			this.PerformLayout();
 		}
+		private System.Windows.Forms.Label label1;
+		private System.Windows.Forms.TextBox txtComment;
+		private System.Windows.Forms.ToolStripMenuItem addCommonPropertyToolStripMenuItem;
+		private System.Windows.Forms.ContextMenuStrip cmsAddCommonProp;
 		private System.Windows.Forms.DataGridViewTextBoxColumn propObject;
 		private System.Windows.Forms.DataGridViewButtonColumn propertyValue;
 		private System.Windows.Forms.DataGridViewTextBoxColumn propertyName;

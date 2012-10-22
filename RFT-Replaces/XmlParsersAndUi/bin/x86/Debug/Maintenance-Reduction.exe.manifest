@@ -68,14 +68,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="c-win-x86.dll" size="130048">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="c-win-x86.dll" size="130560">
       <assemblyIdentity name="c-win-x86" version="1.0.0.0" publicKeyToken="2E0B8D4C607DCB57" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>2T9BW45tUPk1Pl9GEHZY7fI05RQ=</dsig:DigestValue>
+        <dsig:DigestValue>U4NrkHv67Tq0v9IFYHj80lUtf10=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -116,14 +116,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Maintenance-Reduction.exe" size="3411968">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Maintenance-Reduction.exe" size="3521024">
       <assemblyIdentity name="Maintenance-Reduction" version="1.0.0.0" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>VweM5ZkVos+HJ6Xhm+M1EysU5z0=</dsig:DigestValue>
+        <dsig:DigestValue>QYwRGxdfBBd6LFYxJgecCmwaWZw=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>
@@ -212,14 +212,14 @@
     </dependentAssembly>
   </dependency>
   <dependency>
-    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="win32-b.dll" size="61440">
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="win32-b.dll" size="60928">
       <assemblyIdentity name="win32-b" version="1.0.0.0" publicKeyToken="D2034F9B7EF4E31C" language="neutral" processorArchitecture="x86" />
       <hash>
         <dsig:Transforms>
           <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
         </dsig:Transforms>
         <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1" />
-        <dsig:DigestValue>0PvTSCpw1w9UeeCEt11z+0p/nsw=</dsig:DigestValue>
+        <dsig:DigestValue>0PWrHr2CYmHc+fxB7pZybKFI8Q4=</dsig:DigestValue>
       </hash>
     </dependentAssembly>
   </dependency>

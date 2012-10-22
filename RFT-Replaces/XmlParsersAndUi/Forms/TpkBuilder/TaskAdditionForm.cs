@@ -13,8 +13,10 @@ using System.Drawing;
 using System.Windows.Forms;
 
 using Automation.Common;
+using Automation.Common.Classes;
 using Automation.Common.Classes.TPKBuilder;
 using Automation.Common.Utils;
+using Manifest.Forms.TpkBuilder;
 
 namespace XmlParsersAndUi.Forms.TpkBuilder {
     /// <summary>
@@ -26,6 +28,7 @@ namespace XmlParsersAndUi.Forms.TpkBuilder {
         TpkBuildTask currentlySelectedTask;
         List<FilledBuildTaskProperty> suppliedProperties = new List<FilledBuildTaskProperty>();
         public string createdFinalBuildTask = string.Empty;
+        public string suppliedComment = string.Empty;
         #endregion
 
         public TaskAdditionForm( TpkBuildTask tpkBuildTask) {
@@ -57,10 +60,14 @@ namespace XmlParsersAndUi.Forms.TpkBuilder {
             foreach (BuildTaskProperty property in taskProperties) {
                 //add name, value, propertyObject
                 //property with no config files
-                //TODO: change this when we add prop types
-                if (string.IsNullOrEmpty(property.ConfigFileTemplate)) {
+                //FIXME: change this when we add prop types
+                if ((int)property.PropertyTypeId == (int)AppEnums.PropertyType.ConfigFile ||property.PropertyTypeId == (int)AppEnums.PropertyType.ConfigFileNested ) {
+                    //property with config file
+                    property.SuppliedConfigFile = string.Empty;
+                    int rowIndex = dgvTaskProperties.Rows.Add(property.Name, "Config",property);
+                } else {
                     int rowIndex = -1;
-                    if (string.IsNullOrEmpty(property.DefaultValue) ) {
+                    if (string.IsNullOrEmpty(property.DefaultValue)) {
                         rowIndex = dgvTaskProperties.Rows.Add(property.Name, "",property);
                         dgvTaskProperties.Rows[rowIndex].Cells["propertyValue"] = new DataGridViewTextBoxCell();
                         dgvTaskProperties.Rows[rowIndex].Cells["propertyValue"].Value = "";
@@ -69,11 +76,6 @@ namespace XmlParsersAndUi.Forms.TpkBuilder {
                         dgvTaskProperties.Rows[rowIndex].Cells["propertyValue"] = new DataGridViewTextBoxCell();
                         dgvTaskProperties.Rows[rowIndex].Cells["propertyValue"].Value = property.DefaultValue;
                     }
-                } else {
-                    //property with config file                    
-                    property.SuppliedConfigFile = string.Empty;
-                    int rowIndex = dgvTaskProperties.Rows.Add(property.Name, "Config",property);
-                    //((DataGridViewButtonCell)dgvTaskProperties.Rows[rowIndex].Cells["propertyValue"]).va
                 }
             }
         }
@@ -92,34 +94,36 @@ namespace XmlParsersAndUi.Forms.TpkBuilder {
             //check if default value, check if mandatory, check propertyTypeID
             foreach (DataGridViewRow row in dgvTaskProperties.Rows) {
                 BuildTaskProperty property = row.Cells["propObject"].Value as BuildTaskProperty;
+
                 if (property != null) {
                     string propertySuppliedValue= row.Cells["propertyValue"].Value.ToString();
-                    //TODO: Add validation for different types of properties
-                    //TODO: change this when we add prop types
+                    //FIXME: Add validation for different types of properties
+                    //FIXME: change this when we add prop types
                     if (property.IsMandatory) {
-                    	if (!string.IsNullOrEmpty(property.ConfigFileTemplate)) {
-	                        if (string.IsNullOrEmpty(property.SuppliedConfigFile) ) {
-	                            row.DefaultCellStyle.BackColor = Color.Salmon;
-	                            validProperties = false;
-	                        }
-	                    } else if (string.IsNullOrEmpty(propertySuppliedValue)) {
-	                        row.DefaultCellStyle.BackColor = Color.Salmon;
-	                        validProperties = false;
-	                    }
+                        if (!string.IsNullOrEmpty(property.ConfigFileTemplate)) {
+                            if (string.IsNullOrEmpty(property.SuppliedConfigFile) ) {
+                                row.DefaultCellStyle.BackColor = Color.Salmon;
+                                validProperties = false;
+                            }
+                        } else if (string.IsNullOrEmpty(propertySuppliedValue)) {
+                            row.DefaultCellStyle.BackColor = Color.Salmon;
+                            validProperties = false;
+                        }
                     }
-                    
-                    //TODO: change this when we add prop types
+
+                    //FIXME: change this when we add prop types
+                    //AppEnums.PropertyType
                     if (!string.IsNullOrEmpty(property.ConfigFileTemplate) && !string.IsNullOrEmpty(property.SuppliedConfigFile)) {
                         suppliedProperties.Add(new FilledBuildTaskProperty(property.Name,true,property.SuppliedConfigFilePath,property.SuppliedConfigFile,property.PropertyTypeId));
-                    } else if( !string.IsNullOrEmpty(propertySuppliedValue)){
+                    } else if( !string.IsNullOrEmpty(propertySuppliedValue)) {
                         suppliedProperties.Add(new FilledBuildTaskProperty(property.Name,propertySuppliedValue,property.PropertyTypeId));
                     }
                 }
             }
-            
+
             if (!validProperties) {
                 CommonUtils.ShowInformation("Some mandatory properties, highlighted in red, where not supplied",true);
-            }            
+            }
             return validProperties;
         }
 
@@ -128,6 +132,7 @@ namespace XmlParsersAndUi.Forms.TpkBuilder {
                 if (ValidateGrid()) {
                     createdFinalBuildTask = string.Empty;
                     createdFinalBuildTask =  CreateBuildTask();
+                    suppliedComment = txtComment.Text.Trim();
                     this.DialogResult = DialogResult.OK;
                 } else {
                     this.DialogResult = DialogResult.None;
@@ -139,21 +144,22 @@ namespace XmlParsersAndUi.Forms.TpkBuilder {
 
         string CreateBuildTask() {
             string createdBuildTask = "<"+currentlySelectedTask.Name+" ";
+            //FIXME: check for different types of properties, ex: nested type
             foreach (FilledBuildTaskProperty property in suppliedProperties) {
                 createdBuildTask =  string.Concat(createdBuildTask,property.PropertyName,"=\"",property.PropertyValue+property.PropertyConfigFilePath+"\" ");
                 if (property.HasConfigFile) {
-            		//TODO: write config file
-            		WriteSuppliedConfigFile(property.PropertyConfigFilePath,property.PropertyConfigFileValue);
-            	}
+                    //FIXME: write config file
+                    WriteSuppliedConfigFile(property.PropertyConfigFilePath,property.PropertyConfigFileValue);
+                }
             }
             createdBuildTask = createdBuildTask +"></"+currentlySelectedTask.Name+">";
             return createdBuildTask;
         }
 
-        void WriteSuppliedConfigFile(string filePath, string fileValue){
-        
+        void WriteSuppliedConfigFile(string filePath, string fileValue) {
+
         }
-        
+
         void DgvTaskPropertiesCellClick(object sender, DataGridViewCellEventArgs e) {
             try {
                 if (e.RowIndex >=0 && string.Equals(dgvTaskProperties.Columns[e.ColumnIndex].Name,"propertyValue")) {
@@ -161,14 +167,30 @@ namespace XmlParsersAndUi.Forms.TpkBuilder {
                     BuildTaskProperty property = dgvTaskProperties.Rows[e.RowIndex].Cells["propObject"].Value as BuildTaskProperty;
                     if (property !=null) {
                         if (!string.IsNullOrEmpty(property.ConfigFileTemplate)) {
-                    		ConfigFileTemplateForm form = new ConfigFileTemplateForm( (string.IsNullOrEmpty(property.SuppliedConfigFile) ? property.ConfigFileTemplate : property.SuppliedConfigFile));
+                            ConfigFileTemplateForm form = new ConfigFileTemplateForm( (string.IsNullOrEmpty(property.SuppliedConfigFile) ? property.ConfigFileTemplate : property.SuppliedConfigFile));
                             DialogResult dialogResult = form.ShowDialog();
                             if (dialogResult == DialogResult.OK) {
-                            	property.SuppliedConfigFile = form.Controls["txtConfigTemplate"].Text.Trim();
+                                property.SuppliedConfigFile = form.Controls["txtConfigTemplate"].Text.Trim();
                                 property.SuppliedConfigFilePath = form.Controls["txtConfigFilePath"].Text.Trim();
                             }
                         }
                     }
+                }
+            } catch (Exception ex) {
+                CommonUtils.ShowError(ex.Message,ex);
+            }
+        }
+
+        void AddCommonPropertyToolStripMenuItemClick(object sender, EventArgs e) {
+            try {
+                //FIXME:getcommon property list from db
+
+
+                List<BuildTaskProperty> commonProps = new List<BuildTaskProperty>();
+                AddCommonPropertyForm form = new AddCommonPropertyForm(commonProps);
+                DialogResult dial = form.ShowDialog();
+                if (dial == DialogResult.OK) {
+                    FillDatagridFromPropertyList(form.selectedCommonProperties);
                 }
             } catch (Exception ex) {
                 CommonUtils.ShowError(ex.Message,ex);

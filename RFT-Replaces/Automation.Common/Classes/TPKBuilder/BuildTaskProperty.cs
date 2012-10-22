@@ -20,7 +20,12 @@ namespace Automation.Common
 		public string Name, DefaultValue, ConfigFileTemplate, SuppliedConfigFile, SuppliedConfigFilePath;
 		public bool IsMandatory;
 		
-							
+		public override string ToString()
+		{
+			return this.Name;
+		}
+		
+		
 		public BuildTaskProperty(int id, string name,string defaultValue,int propertyTypeId,bool isMandatory,string configFileTemplate,int buildTaskId, int addedByUserId,DateTime dateAdded, int modifiedByUserId,DateTime dateModified)
 		{
 			Id = id;
