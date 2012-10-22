@@ -1,0 +1,331 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<ClassDiagram Zoom="0.75" MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="Automation.Common.MWLabel" Collapsed="True">
+    <Position X="13.4" Y="50.9" Width="3.2" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+      <Compartment Name="Events" Collapsed="False" />
+      <Compartment Name="Nested Types" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.ComparisonCategoryTreeNode" Collapsed="True">
+    <Position X="9.9" Y="57.7" Width="3.7" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.FileAndNumberOfMatches" Collapsed="True">
+    <Position X="15.1" Y="57.8" Width="2" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.MWTreeNodeWrapper" Collapsed="True">
+    <Position X="15" Y="54.2" Width="2.9" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.GlobalApplicationSettings" Collapsed="True">
+    <Position X="19.3" Y="54.1" Width="2.2" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.CustomizedAttribute" Collapsed="True">
+    <Position X="12.9" Y="55" Width="2.6" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.ApplicationConfigObject" Collapsed="True">
+    <Position X="15.8" Y="55.1" Width="3" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.ReplacementEvent" Collapsed="True">
+    <Position X="12.9" Y="56.1" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.Classes.Monitoring.MonitorObject" Collapsed="True">
+    <Position X="15.9" Y="56.1" Width="3" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="True" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.Classes.TPKBuilder.FilledBuildTaskProperty" Collapsed="True">
+    <Position X="11" Y="56.9" Width="3" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.MWTreeView" Collapsed="True">
+    <Position X="14.4" Y="56.9" Width="3.3" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+      <Compartment Name="Events" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Enum Name="Automation.Common.CheckBoxPaintOrder" Collapsed="True">
+    <Position X="5.2" Y="58.4" Width="2.7" />
+    <Compartments />
+  </Enum>
+  <Class Name="Automation.Common.Classes.Monitoring.FormAndAccessTime" Collapsed="True">
+    <Position X="8.4" Y="58.4" Width="2.7" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.Utils.FileData" Collapsed="True">
+    <Position X="0.9" Y="8.5" Width="2.1" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.Utils.WIN32_FIND_DATA" Collapsed="True">
+    <Position X="3.9" Y="8.6" Width="2.6" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.Utils.FastDirectoryEnumerator" Collapsed="True">
+    <Position X="0.5" Y="17.1" Width="3.1" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Nested Types" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.FastExportingMethod" Collapsed="True">
+    <Position X="0.6" Y="16" Width="2.2" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.Program" Collapsed="True">
+    <Position X="3.4" Y="16.1" Width="2.3" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.EditorTextDirUI" Collapsed="True">
+    <Position X="3.9" Y="16.9" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+      <Compartment Name="Events" Collapsed="False" />
+      <Compartment Name="Nested Types" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.Utils.CommonUtils" Collapsed="True">
+    <Position X="0.5" Y="32.9" Width="2.9" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+      <Compartment Name="Nested Types" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Delegate Name="Automation.Common.TextDirEventHandler" Collapsed="False">
+    <Position X="1.4" Y="36.5" Width="1.63151" />
+    <Compartments />
+  </Delegate>
+  <Class Name="Automation.Common.SimpleRecommendationObject" Collapsed="True">
+    <Position X="3.4" Y="36.6" Width="3.7" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.TextDirEventArgs" Collapsed="True">
+    <Position X="0.5" Y="44.1" Width="2.4" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Delegate Name="Automation.Common.StringFormatEnumEventHandler" Collapsed="True">
+    <Position X="0.5" Y="43.2" Width="2.2" />
+    <Compartments />
+  </Delegate>
+  <Class Name="Automation.Common.StringFormatEnumEventArgs" Collapsed="True">
+    <Position X="0.5" Y="42.3" Width="3.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Delegate Name="Automation.Common.MWCancelEventHandler" Collapsed="True">
+    <Position X="0.5" Y="44.9" Width="1.8" />
+    <Compartments />
+  </Delegate>
+  <Class Name="Automation.Common.MWCancelEventArgs" Collapsed="True">
+    <Position X="0.5" Y="47.9" Width="2.7" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Enum Name="Automation.Common.CapturePointListType" Collapsed="True">
+    <Position X="0.5" Y="49.6" Width="2.9" />
+    <Compartments />
+  </Enum>
+  <Class Name="Automation.Common.MWCheckBox" Collapsed="True">
+    <Position X="0.5" Y="50.5" Width="3.2" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+      <Compartment Name="Events" Collapsed="False" />
+      <Compartment Name="Nested Types" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Enum Name="Automation.Common.TreeViewMultiSelect" Collapsed="True">
+    <Position X="0.5" Y="51.4" Width="3.2" />
+    <Compartments />
+  </Enum>
+  <Class Name="Automation.Common.MWCommon" Collapsed="True">
+    <Position X="0.5" Y="52.1" Width="2.9" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Enum Name="Automation.Common.StringFormatEnum" Collapsed="True">
+    <Position X="0.5" Y="52.9" Width="2.8" />
+    <Compartments />
+  </Enum>
+  <Enum Name="Automation.Common.AdvancedRecomendationCategory" Collapsed="True">
+    <Position X="0.5" Y="55.6" Width="3.6" />
+    <Compartments />
+  </Enum>
+  <Class Name="Automation.Common.AdvancedRecomendation" Collapsed="True">
+    <Position X="0.5" Y="57.1" Width="3.4" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.ComplexCaptureMatchObject" Collapsed="True">
+    <Position X="0.5" Y="53.8" Width="2.9" />
+    <Compartments>
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.ComparisonCategory" Collapsed="True">
+    <Position X="0.6" Y="54.5" Width="2.7" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.EnvComparisonFilter" Collapsed="True">
+    <Position X="4.4" Y="49.9" Width="2.7" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+      <Compartment Name="Nested Types" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Enum Name="Automation.Common.TextDir" Collapsed="True">
+    <Position X="4.5" Y="50.8" Width="1.8" />
+    <Compartments />
+  </Enum>
+  <Class Name="Automation.Common.CustomTreeNode" Collapsed="True">
+    <Position X="4.2" Y="51.6" Width="3.4" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.MWScrollLabel" Collapsed="True">
+    <Position X="3.9" Y="53.2" Width="3.2" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+      <Compartment Name="Events" Collapsed="False" />
+      <Compartment Name="Nested Types" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.FormInfo" Collapsed="True">
+    <Position X="4.1" Y="53.8" Width="2.1" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+      <Compartment Name="Nested Types" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.Form1" Collapsed="True">
+    <Position X="0.5" Y="6.7" Width="1.8" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.Properties.Resources" Collapsed="True">
+    <Position X="0.5" Y="7.4" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.Properties.Settings" Collapsed="True">
+    <Position X="2.5" Y="6.7" Width="1.8" />
+    <Compartments>
+      <Compartment Name="Properties" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.Forms.ExceptionForm" Collapsed="True">
+    <Position X="3.2" Y="7.4" Width="2.1" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.EditorTextDir" Collapsed="True">
+    <Position X="4.5" Y="6.7" Width="2.5" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.TpkBuildTask" Collapsed="False">
+    <Position X="0.5" Y="0.5" Width="2.6" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+  <Class Name="Automation.Common.BuildTaskProperty" Collapsed="False">
+    <Position X="3.3" Y="0.5" Width="2.4" />
+    <Compartments>
+      <Compartment Name="Methods" Collapsed="False" />
+      <Compartment Name="Fields" Collapsed="False" />
+    </Compartments>
+  </Class>
+</ClassDiagram>
