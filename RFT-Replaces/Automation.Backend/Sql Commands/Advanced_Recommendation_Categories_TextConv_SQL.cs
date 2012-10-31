@@ -11,9 +11,10 @@ using System;
 namespace Automation.Backend{
     public static class Advanced_Recommendation_Categories_TextConv_SQL {
 
-        public static string commandGetAllCaptureCategoriesTextConv = "SELECT     id, enumerationName " +
+        public static string commandGetAllCaptureCategoriesTextConv = "SELECT     id, enumerationName, [index] " +
                                                     "FROM      ApplicationEnums "+
-        											"Where type='SDDGen'";
+        											"Where type='SDDGen' "+
+        											"order by [index] asc";
 
     }
 }

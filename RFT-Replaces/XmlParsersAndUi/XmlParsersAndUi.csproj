@@ -164,6 +164,10 @@
     <Compile Include="Controls\ProgressCircle.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Forms\ApplicationCategoriesForm.cs" />
+    <Compile Include="Forms\ApplicationCategoriesForm.Designer.cs">
+      <DependentUpon>ApplicationCategoriesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\BulkCustomsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -233,6 +237,10 @@
     <Compile Include="Forms\TpkBuilder\AddCommonPropertyForm.Designer.cs">
       <DependentUpon>AddCommonPropertyForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\TpkBuilder\AddTargetForm.cs" />
+    <Compile Include="Forms\TpkBuilder\AddTargetForm.Designer.cs">
+      <DependentUpon>AddTargetForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\TpkBuilder\BuildGeneratorForm.cs" />
     <Compile Include="Forms\TpkBuilder\BuildGeneratorForm.Designer.cs">
       <DependentUpon>BuildGeneratorForm.cs</DependentUpon>
@@ -268,6 +276,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AdvancedReplacementsForm.resx">
       <DependentUpon>AdvancedReplacementsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\ApplicationCategoriesForm.resx">
+      <DependentUpon>ApplicationCategoriesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ApplicationPreferencesForm.resx">
       <DependentUpon>ApplicationPreferencesForm.cs</DependentUpon>
@@ -352,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TpkBuilder\AddCommonPropertyForm.resx">
       <DependentUpon>AddCommonPropertyForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\TpkBuilder\AddTargetForm.resx">
+      <DependentUpon>AddTargetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TpkBuilder\BuildGeneratorForm.resx">
       <DependentUpon>BuildGeneratorForm.cs</DependentUpon>

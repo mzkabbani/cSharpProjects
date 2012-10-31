@@ -129,6 +129,7 @@
     <Compile Include="Classes\Advanced_Recommendation_Categories.cs" />
     <Compile Include="Classes\Advanced_Replacements.cs" />
     <Compile Include="Classes\Advanced_Replacements_TextConv.cs" />
+    <Compile Include="Classes\ApplicationEnumsBackend.cs" />
     <Compile Include="Classes\Application_Settings.cs" />
     <Compile Include="Classes\Env_Comparison_Categories.cs" />
     <Compile Include="Classes\Env_Comparison_Filters.cs" />
@@ -147,6 +148,7 @@
     <Compile Include="Sql Commands\Advanced_Recommendation_Categories_TextConv_SQL.cs" />
     <Compile Include="Sql Commands\Advanced_Replacements_SQL.cs" />
     <Compile Include="Sql Commands\Advanced_Replacements_TextConv_SQL.cs" />
+    <Compile Include="Sql Commands\ApplicationEnums_SQL.cs" />
     <Compile Include="Sql Commands\Application_Settings_SQL.cs" />
     <Compile Include="Sql Commands\Env_Comparison_Categories_SQL.cs" />
     <Compile Include="Sql Commands\Env_Comparison_Filters_SQL.cs" />

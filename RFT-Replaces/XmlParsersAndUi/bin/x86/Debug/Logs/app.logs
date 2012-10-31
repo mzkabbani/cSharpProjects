@@ -1373,3 +1373,216 @@ System.NullReferenceException: Object reference not set to an instance of an obj
 1
 
 
+
+
+
+
+
+10/24/2012 5:10:31 PM
+
+
+Object reference not set to an instance of an object.
+
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at XmlParsersAndUi.Forms.TpkBuilder.TaskAdditionForm.ValidateGrid() in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\TpkBuilder\TaskAdditionForm.cs:line 120
+   at XmlParsersAndUi.Forms.TpkBuilder.TaskAdditionForm.BtnProceedBuildTaskClick(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\TpkBuilder\TaskAdditionForm.cs:line 159
+
+
+
+
+10/30/2012 3:07:53 PM
+
+
+The specified table does not exist. [ ApplicationEnums ]
+
+
+The specified table does not exist. [ ApplicationEnums ]
+
+
+
+
+10/30/2012 3:09:53 PM
+
+
+The path is not valid. Check the directory for the database. [ Path = X:\databaseUpdate\Database.sdf ]
+
+
+The path is not valid. Check the directory for the database. [ Path = X:\databaseUpdate\Database.sdf ]
+
+
+
+
+10/30/2012 3:09:54 PM
+
+
+The path is not valid. Check the directory for the database. [ Path = X:\databaseUpdate\Database.sdf ]
+
+
+The path is not valid. Check the directory for the database. [ Path = X:\databaseUpdate\Database.sdf ]
+
+
+
+
+10/30/2012 3:09:54 PM
+
+
+The path is not valid. Check the directory for the database. [ Path = X:\databaseUpdate\Database.sdf ]
+
+
+The path is not valid. Check the directory for the database. [ Path = X:\databaseUpdate\Database.sdf ]
+
+
+
+
+10/30/2012 3:10:27 PM
+
+
+Column 'categoryName' does not belong to table .
+
+
+System.ArgumentException: Column 'categoryName' does not belong to table .
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.BindCombos() in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 492
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.MacroConverter_Load(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 36
+   at System.Windows.Forms.Form.OnLoad(EventArgs e)
+   at System.Windows.Forms.Form.OnCreateControl()
+   at System.Windows.Forms.Control.CreateControl(Boolean fIgnoreVisible)
+   at System.Windows.Forms.Control.CreateControl()
+   at System.Windows.Forms.Control.WmShowWindow(Message& m)
+   at System.Windows.Forms.Control.WndProc(Message& m)
+   at System.Windows.Forms.ScrollableControl.WndProc(Message& m)
+   at System.Windows.Forms.ContainerControl.WndProc(Message& m)
+   at System.Windows.Forms.Form.WmShowWindow(Message& m)
+   at System.Windows.Forms.Form.WndProc(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.OnMessage(Message& m)
+   at System.Windows.Forms.Control.ControlNativeWindow.WndProc(Message& m)
+   at System.Windows.Forms.NativeWindow.DebuggableCallback(IntPtr hWnd, Int32 msg, IntPtr wparam, IntPtr lparam)
+   at System.Windows.Forms.UnsafeNativeMethods.IntCreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.UnsafeNativeMethods.CreateWindowEx(Int32 dwExStyle, String lpszClassName, String lpszWindowName, Int32 style, Int32 x, Int32 y, Int32 width, Int32 height, HandleRef hWndParent, HandleRef hMenu, HandleRef hInst, Object pvParam)
+   at System.Windows.Forms.NativeWindow.CreateHandle(CreateParams cp)
+   at System.Windows.Forms.Control.CreateHandle()
+   at System.Windows.Forms.Form.CreateHandle()
+   at System.Windows.Forms.Control.get_Handle()
+   at System.Windows.Forms.Form.SetVisibleCore(Boolean value)
+   at System.Windows.Forms.Control.Show()
+   at XmlParsersAndUi.MainForm.sDDEventsToolStripMenuItem_Click(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\MainForm.cs:line 704
+
+
+
+
+10/30/2012 3:56:29 PM
+
+
+An exception occurred during the operation, making the result invalid.  Check InnerException for exception details.
+
+
+System.Reflection.TargetInvocationException: An exception occurred during the operation, making the result invalid.  Check InnerException for exception details. ---> System.InvalidOperationException: Failed to compare two elements in the array. ---> System.ArgumentException: At least one object must implement IComparable.
+   at System.Collections.Comparer.Compare(Object a, Object b)
+   at System.Collections.Generic.ObjectComparer`1.Compare(T x, T y)
+   at System.Collections.Generic.ArraySortHelper`1.SwapIfGreaterWithItems(T[] keys, IComparer`1 comparer, Int32 a, Int32 b)
+   at System.Collections.Generic.ArraySortHelper`1.QuickSort(T[] keys, Int32 left, Int32 right, IComparer`1 comparer)
+   at System.Collections.Generic.ArraySortHelper`1.Sort(T[] keys, Int32 index, Int32 length, IComparer`1 comparer)
+   --- End of inner exception stack trace ---
+   at System.Collections.Generic.ArraySortHelper`1.Sort(T[] keys, Int32 index, Int32 length, IComparer`1 comparer)
+   at System.Array.Sort[T](T[] array, Int32 index, Int32 length, IComparer`1 comparer)
+   at System.Collections.Generic.List`1.Sort(Int32 index, Int32 count, IComparer`1 comparer)
+   at System.Collections.Generic.List`1.Sort()
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.OrganizeCaptureEvents(BackGroundWorkerObject workerObjec) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 62
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_DoWork(Object sender, DoWorkEventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 55
+   at System.ComponentModel.BackgroundWorker.OnDoWork(DoWorkEventArgs e)
+   at System.ComponentModel.BackgroundWorker.WorkerThreadStart(Object argument)
+   --- End of inner exception stack trace ---
+   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()
+   at System.ComponentModel.RunWorkerCompletedEventArgs.get_Result()
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 67
+
+
+
+
+10/30/2012 3:58:04 PM
+
+
+An exception occurred during the operation, making the result invalid.  Check InnerException for exception details.
+
+
+System.Reflection.TargetInvocationException: An exception occurred during the operation, making the result invalid.  Check InnerException for exception details. ---> System.InvalidOperationException: Failed to compare two elements in the array. ---> System.ArgumentException: At least one object must implement IComparable.
+   at System.Collections.Comparer.Compare(Object a, Object b)
+   at System.Collections.Generic.ObjectComparer`1.Compare(T x, T y)
+   at System.Collections.Generic.ArraySortHelper`1.SwapIfGreaterWithItems(T[] keys, IComparer`1 comparer, Int32 a, Int32 b)
+   at System.Collections.Generic.ArraySortHelper`1.QuickSort(T[] keys, Int32 left, Int32 right, IComparer`1 comparer)
+   at System.Collections.Generic.ArraySortHelper`1.Sort(T[] keys, Int32 index, Int32 length, IComparer`1 comparer)
+   --- End of inner exception stack trace ---
+   at System.Collections.Generic.ArraySortHelper`1.Sort(T[] keys, Int32 index, Int32 length, IComparer`1 comparer)
+   at System.Array.Sort[T](T[] array, Int32 index, Int32 length, IComparer`1 comparer)
+   at System.Collections.Generic.List`1.Sort(Int32 index, Int32 count, IComparer`1 comparer)
+   at System.Collections.Generic.List`1.Sort()
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.OrganizeCaptureEvents(BackGroundWorkerObject workerObjec) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 62
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_DoWork(Object sender, DoWorkEventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 55
+   at System.ComponentModel.BackgroundWorker.OnDoWork(DoWorkEventArgs e)
+   at System.ComponentModel.BackgroundWorker.WorkerThreadStart(Object argument)
+   --- End of inner exception stack trace ---
+   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()
+   at System.ComponentModel.RunWorkerCompletedEventArgs.get_Result()
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 67
+
+
+
+
+10/30/2012 4:13:02 PM
+
+
+InvalidArgument=Value of '0' is not valid for 'index'.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: InvalidArgument=Value of '0' is not valid for 'index'.
+Parameter name: index
+   at System.Windows.Forms.ListView.SelectedListViewItemCollection.get_Item(Int32 index)
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.LvAvailableEventsSelectedIndexChanged(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 642
+
+
+
+
+10/30/2012 4:13:09 PM
+
+
+InvalidArgument=Value of '0' is not valid for 'index'.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: InvalidArgument=Value of '0' is not valid for 'index'.
+Parameter name: index
+   at System.Windows.Forms.ListView.SelectedListViewItemCollection.get_Item(Int32 index)
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.LvAvailableEventsSelectedIndexChanged(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 642
+
+
+
+
+10/30/2012 4:13:11 PM
+
+
+InvalidArgument=Value of '0' is not valid for 'index'.
+Parameter name: index
+
+
+System.ArgumentOutOfRangeException: InvalidArgument=Value of '0' is not valid for 'index'.
+Parameter name: index
+   at System.Windows.Forms.ListView.SelectedListViewItemCollection.get_Item(Int32 index)
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.LvAvailableEventsSelectedIndexChanged(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 642
+
+
+
+
+10/31/2012 11:53:13 AM
+
+
+Column 'categoryName' does not belong to table Table.
+
+
+System.ArgumentException: Column 'categoryName' does not belong to table Table.
+   at System.Data.DataRow.GetDataColumn(String columnName)
+   at System.Data.DataRow.get_Item(String columnName)
+   at XmlParsersAndUi.Forms.SecondLevelCleanupForm.LoadAvailableAdvancedRecommendations() in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SecondLevelCleanupForm.cs:line 60
+   at XmlParsersAndUi.Forms.SecondLevelCleanupForm.SecondLevelCleanupForm_Load(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SecondLevelCleanupForm.cs:line 1059

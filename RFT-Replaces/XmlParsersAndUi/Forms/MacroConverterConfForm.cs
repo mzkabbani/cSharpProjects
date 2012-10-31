@@ -418,6 +418,7 @@ namespace XmlParsersAndUi.Forms {
                     string ruleDescription = txtAODescription.Text.Trim();
                     string ruleEventIn = txtAOEventIn.Text.Trim();
                     string replacementText = txtTextValue.Text.Trim();
+                    
                     if (IsValidToAddRule(ruleName, ruleDescription, ruleEventIn, replacementText, tvOutput.Nodes[0])) {
                         Recur(tvOutput.Nodes);
                         SaveUpdatedAttributes();
@@ -483,14 +484,14 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private void BindCombos() {
-            string displayMember = "categoryName";
+            string displayMember = "enumerationName";
             string valueMember = "id";
             DataTable captureDatatable = Advanced_Recommendation_Categories.GetAllCaptureCategoriesAsDataTable(true);
             lvAvailableEvents.Groups.Clear();
 
             foreach (DataRow row in captureDatatable.Rows) {
-                lvAvailableEvents.Groups.Add(row["id"].ToString(),row["categoryName"].ToString());
-                clvAvailableEvents.Groups.Add(row["id"].ToString(),row["categoryName"].ToString());
+                lvAvailableEvents.Groups.Add(row["id"].ToString(),row["enumerationName"].ToString());
+                //clvAvailableEvents.Groups.Add(row["id"].ToString(),row["enumerationName"].ToString());
             }
 
             CommonUtils.BindCombo(cboCaptureType, captureDatatable, displayMember, valueMember);
@@ -528,6 +529,9 @@ namespace XmlParsersAndUi.Forms {
 
             for (int i = 0; i < allCaptureEvents.Count; i++) {
                 lbAdvancedCE.Items.Add(allCaptureEvents[i]);
+                System.Windows.Forms.ListViewItem listviewItem = lvAvailableEvents.Items.Add(allCaptureEvents[i].CaptureEventName,allCaptureEvents[i].CaptureEventName);
+                listviewItem.Tag = allCaptureEvents[i];
+                listviewItem.Group = lvAvailableEvents.Groups[allCaptureEvents[i].captureEventCategory.ToString()];
             }
 
 //            for (int i = 0; i < allCaptureEvents.Count; i++) {
@@ -629,6 +633,57 @@ namespace XmlParsersAndUi.Forms {
 
         AdvancedRecomendation CurrentlySelectedCaptureEvent;
 
+        void LvAvailableEventsSelectedIndexChanged(object sender, EventArgs e) {
+            try {
+                eventParsed = true;
+                btnDeleteAdvanceRec.Enabled = true;
+                captureNodesSelectedNames = new List<string>();
+                AdvancedRecomendation captureEvent = new AdvancedRecomendation();
+
+                if (lvAvailableEvents.SelectedItems.Count > 0) {
+                    captureEvent = lvAvailableEvents.SelectedItems[0].Tag as AdvancedRecomendation;
+
+
+
+                    if (captureEvent != null) {
+                        btnAddCaptureEvent.Enabled = false;
+                        btnSaveCaptureEvent.Enabled = true;
+                        txtAOEventIn.ReadOnly = true;
+                        tvOutput.Nodes.Clear();
+                        dgvAttributes.Rows.Clear();
+
+                        cboCaptureType.SelectedValue = captureEvent.captureEventCategory;
+
+                        AdvancedRecomendation workingEvent = new AdvancedRecomendation(captureEvent.CaptureEventId,
+                                captureEvent.CaptureEventName,
+                                captureEvent.CaptureEventDescription,
+                                captureEvent.CaptureEventEventText,
+                                captureEvent.captureEventCategory,
+                                captureEvent.captureEventUsageCount,
+                                captureEvent.CaptureEventCapturePointsList,
+                                captureEvent.captureEventuserId);
+                        workingEvent.Replacement = captureEvent.Replacement;
+                        CurrentlySelectedCaptureEvent = workingEvent;
+                        for (int i = 0; i < captureEvent.CaptureEventCapturePointsList.Count; i++) {
+                            captureEvent.CaptureEventCapturePointsList[i].nodeVisited = false;
+                        }
+                        cboCaptureType.SelectedValue = captureEvent.captureEventCategory;
+                        txtAOName.Text = workingEvent.CaptureEventName;
+                        txtAODescription.Text = workingEvent.CaptureEventDescription;
+                        txtAOEventIn.Text = workingEvent.CaptureEventEventText;
+                        txtTextValue.Text = workingEvent.Replacement.Value;
+                        InterpretCaptureEvent(workingEvent);
+
+                        RecurResetTag(tvOutput.Nodes);
+                    }
+                }
+
+            } catch (Exception ex) {
+                CommonUtils.ShowError(ex.Message, ex);
+            }
+        }
+
+
         private void lbAdvancedCE_SelectedIndexChanged_1(object sender, EventArgs e) {
             try {
                 eventParsed = true;
@@ -643,6 +698,9 @@ namespace XmlParsersAndUi.Forms {
                     txtAOEventIn.ReadOnly = true;
                     tvOutput.Nodes.Clear();
                     dgvAttributes.Rows.Clear();
+
+                    cboCaptureType.SelectedValue = captureEvent.captureEventCategory;
+
                     AdvancedRecomendation workingEvent = new AdvancedRecomendation(captureEvent.CaptureEventId,
                             captureEvent.CaptureEventName,
                             captureEvent.CaptureEventDescription,
@@ -1014,10 +1072,10 @@ namespace XmlParsersAndUi.Forms {
                 DialogResult dial = CommonUtils.ShowConformation("Are you sure you want to delete [" + CurrentlySelectedCaptureEvent.CaptureEventName + "] ?");
                 if (dial == DialogResult.Yes) {
                     Advanced_Recomendations_TextConv.DisableAdvanceRecById(CurrentlySelectedCaptureEvent.CaptureEventId);
-                     BindCombos();
+                    BindCombos();
                     LoadAvailableARtoList();
                     SetAllCombos();
-                   
+
 
                     lbAdvancedCE.Select();
                 }
@@ -1072,84 +1130,8 @@ namespace XmlParsersAndUi.Forms {
 
         private System.Windows.Forms.ListViewItem _itemDnD = null;
 
-        void ClvAvailableEventsMouseDown(object sender, MouseEventArgs e) {
-            _itemDnD = clvAvailableEvents.GetItemAt(e.X, e.Y);
-        }
 
-        void ClvAvailableEventsMouseMove(object sender, MouseEventArgs e) {
-            if (_itemDnD == null)
-                return;
 
-            // Show the user that a drag operation is happening
-            Cursor = Cursors.Hand;
 
-            // calculate the bottom of the last item in the LV so that you don't have to stop your drag at the last item
-            int lastItemBottom = Math.Min(e.Y, clvAvailableEvents.Items[clvAvailableEvents.Items.Count-1].GetBounds(ItemBoundsPortion.Entire).Bottom-1);
-
-            // use 0 instead of e.X so that you don't have to keep inside the columns while dragging
-            System.Windows.Forms.ListViewItem itemOver = clvAvailableEvents.GetItemAt(0, lastItemBottom);
-
-            if (itemOver == null)
-                return;
-
-            Rectangle rc = itemOver.GetBounds(ItemBoundsPortion.Entire);
-            if (e.Y < rc.Top + (rc.Height / 2)) {
-                clvAvailableEvents.LineBefore = itemOver.Index;
-                clvAvailableEvents.LineAfter = -1;
-            } else {
-                clvAvailableEvents.LineBefore = -1;
-                clvAvailableEvents.LineAfter = itemOver.Index;
-            }
-
-            // invalidate the LV so that the insertion line is shown
-            clvAvailableEvents.Invalidate();
-        }
-
-        void ClvAvailableEventsMouseUp(object sender, MouseEventArgs e) {
-            if (_itemDnD == null)
-                return;
-
-            try {
-                // calculate the bottom of the last item in the LV so that you don't have to stop your drag at the last item
-                int lastItemBottom = Math.Min(e.Y, clvAvailableEvents.Items[clvAvailableEvents.Items.Count - 1].GetBounds(ItemBoundsPortion.Entire).Bottom - 1);
-
-                // use 0 instead of e.X so that you don't have to keep inside the columns while dragging
-                ListViewItem itemOver = clvAvailableEvents.GetItemAt(0, lastItemBottom);
-
-                if (itemOver == null)
-                    return;
-
-                Rectangle rc = itemOver.GetBounds(ItemBoundsPortion.Entire);
-
-                // find out if we insert before or after the item the mouse is over
-                bool insertBefore;
-                if (e.Y < rc.Top + (rc.Height / 2)) {
-                    insertBefore = true;
-                } else {
-                    insertBefore = false;
-                }
-
-                if (_itemDnD != itemOver) { // if we dropped the item on itself, nothing is to be done
-                    if (insertBefore) {
-                        clvAvailableEvents.Items.Remove(_itemDnD);
-                        clvAvailableEvents.Items.Insert(itemOver.Index, _itemDnD);
-                    } else {
-                        clvAvailableEvents.Items.Remove(_itemDnD);
-                        clvAvailableEvents.Items.Insert(itemOver.Index + 1, _itemDnD);
-                    }
-                }
-
-                // clear the insertion line
-                clvAvailableEvents.LineAfter =
-                    clvAvailableEvents.LineBefore = -1;
-
-                clvAvailableEvents.Invalidate();
-
-            } finally {
-                // finish drag&drop operation
-                _itemDnD = null;
-                Cursor = Cursors.Default;
-            }
-        }
     }
 }

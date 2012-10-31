@@ -80,3 +80,4 @@ C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\x86\Debug\Manifest.Properties.Resources.resources
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\x86\Debug\Manifest.Forms.TpkBuilder.AddCommonPropertyForm.resources
 C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\x86\Debug\Manifest.Forms.TpkBuilder.DefineMacrodefForm.resources
+C:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\obj\x86\Debug\Manifest.Forms.TpkBuilder.AddTargetForm.resources

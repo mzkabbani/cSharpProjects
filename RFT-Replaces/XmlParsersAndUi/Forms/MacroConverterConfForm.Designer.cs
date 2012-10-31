@@ -27,10 +27,9 @@
         	this.tabControl1 = new System.Windows.Forms.TabControl();
         	this.tabPage1 = new System.Windows.Forms.TabPage();
         	this.groupBox2 = new System.Windows.Forms.GroupBox();
-        	this.clvAvailableEvents = new XmlParsersAndUi.CustomListView();
         	this.lvAvailableEvents = new XmlParsersAndUi.DragAndDropListView();
-        	this.lbAdvancedCE = new System.Windows.Forms.ListBox();
         	this.btnReloadCapturePoints = new System.Windows.Forms.Button();
+        	this.lbAdvancedCE = new System.Windows.Forms.ListBox();
         	this.gbRuleDefinition = new System.Windows.Forms.GroupBox();
         	this.btnDeleteAdvanceRec = new System.Windows.Forms.Button();
         	this.label14 = new System.Windows.Forms.Label();
@@ -93,10 +92,9 @@
         	this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
         	        	        	| System.Windows.Forms.AnchorStyles.Left)));
         	this.groupBox2.BackColor = System.Drawing.Color.Transparent;
-        	this.groupBox2.Controls.Add(this.lbAdvancedCE);
-        	this.groupBox2.Controls.Add(this.clvAvailableEvents);
         	this.groupBox2.Controls.Add(this.lvAvailableEvents);
         	this.groupBox2.Controls.Add(this.btnReloadCapturePoints);
+        	this.groupBox2.Controls.Add(this.lbAdvancedCE);
         	this.groupBox2.Location = new System.Drawing.Point(6, 6);
         	this.groupBox2.Name = "groupBox2";
         	this.groupBox2.Size = new System.Drawing.Size(257, 716);
@@ -104,30 +102,13 @@
         	this.groupBox2.TabStop = false;
         	this.groupBox2.Text = "Available Events";
         	// 
-        	// clvAvailableEvents
-        	// 
-        	this.clvAvailableEvents.AllowDrop = true;
-        	this.clvAvailableEvents.AutoArrange = false;
-        	this.clvAvailableEvents.FullRowSelect = true;
-        	this.clvAvailableEvents.HideSelection = false;
-        	this.clvAvailableEvents.LineAfter = -1;
-        	this.clvAvailableEvents.LineBefore = -1;
-        	this.clvAvailableEvents.Location = new System.Drawing.Point(7, 266);
-        	this.clvAvailableEvents.MultiSelect = false;
-        	this.clvAvailableEvents.Name = "clvAvailableEvents";
-        	this.clvAvailableEvents.Size = new System.Drawing.Size(214, 276);
-        	this.clvAvailableEvents.TabIndex = 24;
-        	this.clvAvailableEvents.UseCompatibleStateImageBehavior = false;
-        	this.clvAvailableEvents.View = System.Windows.Forms.View.SmallIcon;
-        	this.clvAvailableEvents.Visible = false;
-        	this.clvAvailableEvents.MouseDown += new System.Windows.Forms.MouseEventHandler(this.ClvAvailableEventsMouseDown);
-        	this.clvAvailableEvents.MouseMove += new System.Windows.Forms.MouseEventHandler(this.ClvAvailableEventsMouseMove);
-        	this.clvAvailableEvents.MouseUp += new System.Windows.Forms.MouseEventHandler(this.ClvAvailableEventsMouseUp);
-        	// 
         	// lvAvailableEvents
         	// 
         	this.lvAvailableEvents.AllowDrop = true;
         	this.lvAvailableEvents.AllowReorder = true;
+        	this.lvAvailableEvents.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+        	        	        	| System.Windows.Forms.AnchorStyles.Left) 
+        	        	        	| System.Windows.Forms.AnchorStyles.Right)));
         	this.lvAvailableEvents.AutoArrange = false;
         	this.lvAvailableEvents.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.lvAvailableEvents.FullRowSelect = true;
@@ -135,28 +116,18 @@
         	this.lvAvailableEvents.LineColor = System.Drawing.Color.Red;
         	this.lvAvailableEvents.Location = new System.Drawing.Point(6, 19);
         	this.lvAvailableEvents.Name = "lvAvailableEvents";
-        	this.lvAvailableEvents.Size = new System.Drawing.Size(215, 228);
+        	this.lvAvailableEvents.Size = new System.Drawing.Size(245, 656);
+        	this.lvAvailableEvents.Sorting = System.Windows.Forms.SortOrder.Ascending;
         	this.lvAvailableEvents.TabIndex = 23;
+        	this.lvAvailableEvents.TileSize = new System.Drawing.Size(188, 15);
         	this.lvAvailableEvents.UseCompatibleStateImageBehavior = false;
-        	this.lvAvailableEvents.View = System.Windows.Forms.View.SmallIcon;
-        	this.lvAvailableEvents.Visible = false;
+        	this.lvAvailableEvents.View = System.Windows.Forms.View.Tile;
+        	this.lvAvailableEvents.SelectedIndexChanged += new System.EventHandler(this.LvAvailableEventsSelectedIndexChanged);
         	this.lvAvailableEvents.DragDrop += new System.Windows.Forms.DragEventHandler(this.LvAvailableEventsDragDrop);
         	this.lvAvailableEvents.DragEnter += new System.Windows.Forms.DragEventHandler(this.LvAvailableEventsDragEnter);
         	this.lvAvailableEvents.DragOver += new System.Windows.Forms.DragEventHandler(this.LvAvailableEventsDragOver);
         	this.lvAvailableEvents.DragLeave += new System.EventHandler(this.LvAvailableEventsDragLeave);
         	this.lvAvailableEvents.Leave += new System.EventHandler(this.LvAvailableEventsLeave);
-        	// 
-        	// lbAdvancedCE
-        	// 
-        	this.lbAdvancedCE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-        	        	        	| System.Windows.Forms.AnchorStyles.Left)));
-        	this.lbAdvancedCE.FormattingEnabled = true;
-        	this.lbAdvancedCE.Location = new System.Drawing.Point(7, 15);
-        	this.lbAdvancedCE.Name = "lbAdvancedCE";
-        	this.lbAdvancedCE.Size = new System.Drawing.Size(244, 654);
-        	this.lbAdvancedCE.Sorted = true;
-        	this.lbAdvancedCE.TabIndex = 22;
-        	this.lbAdvancedCE.SelectedIndexChanged += new System.EventHandler(this.lbAdvancedCE_SelectedIndexChanged_1);
         	// 
         	// btnReloadCapturePoints
         	// 
@@ -168,6 +139,19 @@
         	this.btnReloadCapturePoints.Text = "Reload Options";
         	this.btnReloadCapturePoints.UseVisualStyleBackColor = true;
         	this.btnReloadCapturePoints.Click += new System.EventHandler(this.button1_Click);
+        	// 
+        	// lbAdvancedCE
+        	// 
+        	this.lbAdvancedCE.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+        	        	        	| System.Windows.Forms.AnchorStyles.Left)));
+        	this.lbAdvancedCE.FormattingEnabled = true;
+        	this.lbAdvancedCE.Location = new System.Drawing.Point(7, 444);
+        	this.lbAdvancedCE.Name = "lbAdvancedCE";
+        	this.lbAdvancedCE.Size = new System.Drawing.Size(244, 225);
+        	this.lbAdvancedCE.Sorted = true;
+        	this.lbAdvancedCE.TabIndex = 22;
+        	this.lbAdvancedCE.Visible = false;
+        	this.lbAdvancedCE.SelectedIndexChanged += new System.EventHandler(this.lbAdvancedCE_SelectedIndexChanged_1);
         	// 
         	// gbRuleDefinition
         	// 
@@ -207,11 +191,11 @@
         	// 
         	this.label14.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
         	this.label14.AutoSize = true;
-        	this.label14.Location = new System.Drawing.Point(464, 25);
+        	this.label14.Location = new System.Drawing.Point(457, 25);
         	this.label14.Name = "label14";
-        	this.label14.Size = new System.Drawing.Size(34, 13);
+        	this.label14.Size = new System.Drawing.Size(41, 13);
         	this.label14.TabIndex = 18;
-        	this.label14.Text = "Type:";
+        	this.label14.Text = "Priority:";
         	// 
         	// gbSpecificConfNodes
         	// 
@@ -302,6 +286,7 @@
         	// 
         	this.cboCaptureType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
         	this.cboCaptureType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+        	this.cboCaptureType.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.cboCaptureType.FormattingEnabled = true;
         	this.cboCaptureType.Items.AddRange(new object[] {
         	        	        	"one",
@@ -479,7 +464,6 @@
         	this.gbSpecificConfDef.PerformLayout();
         	this.ResumeLayout(false);
         }
-        private XmlParsersAndUi.CustomListView clvAvailableEvents;
         private XmlParsersAndUi.DragAndDropListView lvAvailableEvents;
       
 

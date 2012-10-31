@@ -8,7 +8,7 @@ namespace Automation.Backend{
 
         public static string commandGetAllCaptureCategories = "SELECT     id, enumerationName " +
                                                     "FROM      ApplicationEnums "+
-        											"Where type='Regular'";
-
+        											"Where type='Regular' "+
+        											"order by [index] asc";
     }
 }

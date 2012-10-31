@@ -57,10 +57,9 @@ namespace XmlParsersAndUi.Forms {
             lvAdvancedRules.Clear();
             DataSet dataSet = Advanced_Recommendation_Categories.GetAllAdvancedRecCategoriesAsDataset();
             foreach (DataRow dataRow in dataSet.Tables[0].Rows) {
-                lvAdvancedRules.Groups.Add(dataRow["id"].ToString(), dataRow["categoryName"].ToString());
+                lvAdvancedRules.Groups.Add(dataRow["id"].ToString(), dataRow["enumerationName"].ToString());
             }
             AllCategories = dataSet;
-
             DataSet newDataSet = Advanced_Recommendations.GetAllAdvancedRecsAsDataSet();
             currentlyLoadedEvents = new Dictionary<int, AdvancedRecomendation>();
             foreach (DataRow dataRow in newDataSet.Tables[0].Rows) {

@@ -138,6 +138,7 @@
     <Compile Include="Classes\Monitoring\MonitorObject.cs" />
     <Compile Include="Classes\ReplacementEvent.cs" />
     <Compile Include="Classes\SimpleRecommendationObject.cs" />
+    <Compile Include="Classes\TPKBuilder\BuildTargetObject.cs" />
     <Compile Include="Classes\TPKBuilder\BuildTaskProperty.cs" />
     <Compile Include="Classes\TPKBuilder\FilledBuildTaskProperty.cs" />
     <Compile Include="Classes\TPKBuilder\TpkBuildTask.cs" />
@@ -254,6 +255,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classes\TPKBuilder" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Automation.Backend\Automation.Backend.csproj">
+      <Project>{6350A836-106C-4C78-A6B2-A7C14D560D90}</Project>
+      <Name>Automation.Backend</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -51,10 +51,17 @@ namespace XmlParsersAndUi.Forms {
 
         private void bwSearchReplace_DoWork(object sender, DoWorkEventArgs e) {
             BackGroundWorkerObject workerObjec = e.Argument as BackGroundWorkerObject;
+            
+            OrganizeCaptureEvents(workerObjec);
+            
             List<string> returnedTextFromMacro = SearchAndGenerate(workerObjec.targetedFiles[0].fileName, workerObjec.selectedCaptureEvents);
             e.Result = returnedTextFromMacro;
         }
 
+        private void OrganizeCaptureEvents(BackGroundWorkerObject workerObjec){ 
+        	workerObjec.selectedCaptureEvents.Sort(AdvancedRecomendation.OrderingByCategory);              	
+        }
+        
         private void bwSearchReplace_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e) {
             try {
                 List<string> replacedEvents = e.Result as List<string>;

@@ -36,7 +36,6 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
 			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(BuildGeneratorForm));
 			this.gbAvailableTasks = new System.Windows.Forms.GroupBox();
 			this.lvAvailableTasks = new System.Windows.Forms.ListView();
@@ -47,18 +46,20 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 			this.gpTasks = new System.Windows.Forms.GroupBox();
 			this.scAvailTaskDetailsSplitter = new System.Windows.Forms.SplitContainer();
 			this.tcResults = new System.Windows.Forms.TabControl();
+			this.tpBuildSequence = new System.Windows.Forms.TabPage();
+			this.tvBuildSequence = new System.Windows.Forms.TreeView();
 			this.tpBuildTasks = new System.Windows.Forms.TabPage();
 			this.dgvBuildTasks = new System.Windows.Forms.DataGridView();
 			this.index = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.task = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.tpBuildSequence = new System.Windows.Forms.TabPage();
-			this.tvBuildSequence = new System.Windows.Forms.TreeView();
 			this.tpBuildText = new System.Windows.Forms.TabPage();
 			this.txtEditorBText = new ICSharpCode.TextEditor.TextEditorControl();
 			this.scInputResultHSplit = new System.Windows.Forms.SplitContainer();
-			this.cmsBuildGen = new System.Windows.Forms.ContextMenuStrip(this.components);
-			this.defineMacrodefToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.msBuildGen = new System.Windows.Forms.MenuStrip();
+			this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.targetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.macrodefToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.gbAvailableTasks.SuspendLayout();
 			this.gbDetails.SuspendLayout();
 			this.gpTasks.SuspendLayout();
@@ -66,14 +67,14 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 			this.scAvailTaskDetailsSplitter.Panel2.SuspendLayout();
 			this.scAvailTaskDetailsSplitter.SuspendLayout();
 			this.tcResults.SuspendLayout();
+			this.tpBuildSequence.SuspendLayout();
 			this.tpBuildTasks.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvBuildTasks)).BeginInit();
-			this.tpBuildSequence.SuspendLayout();
 			this.tpBuildText.SuspendLayout();
 			this.scInputResultHSplit.Panel1.SuspendLayout();
 			this.scInputResultHSplit.Panel2.SuspendLayout();
 			this.scInputResultHSplit.SuspendLayout();
-			this.cmsBuildGen.SuspendLayout();
+			this.msBuildGen.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// gbAvailableTasks
@@ -193,8 +194,8 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 			this.tcResults.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
 									| System.Windows.Forms.AnchorStyles.Left) 
 									| System.Windows.Forms.AnchorStyles.Right)));
-			this.tcResults.Controls.Add(this.tpBuildTasks);
 			this.tcResults.Controls.Add(this.tpBuildSequence);
+			this.tcResults.Controls.Add(this.tpBuildTasks);
 			this.tcResults.Controls.Add(this.tpBuildText);
 			this.tcResults.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
 			this.tcResults.Location = new System.Drawing.Point(12, 3);
@@ -202,6 +203,25 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 			this.tcResults.SelectedIndex = 0;
 			this.tcResults.Size = new System.Drawing.Size(702, 255);
 			this.tcResults.TabIndex = 6;
+			// 
+			// tpBuildSequence
+			// 
+			this.tpBuildSequence.Controls.Add(this.tvBuildSequence);
+			this.tpBuildSequence.Location = new System.Drawing.Point(4, 22);
+			this.tpBuildSequence.Name = "tpBuildSequence";
+			this.tpBuildSequence.Padding = new System.Windows.Forms.Padding(3);
+			this.tpBuildSequence.Size = new System.Drawing.Size(694, 229);
+			this.tpBuildSequence.TabIndex = 1;
+			this.tpBuildSequence.Text = "Build Sequence";
+			this.tpBuildSequence.UseVisualStyleBackColor = true;
+			// 
+			// tvBuildSequence
+			// 
+			this.tvBuildSequence.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.tvBuildSequence.Location = new System.Drawing.Point(3, 3);
+			this.tvBuildSequence.Name = "tvBuildSequence";
+			this.tvBuildSequence.Size = new System.Drawing.Size(688, 223);
+			this.tvBuildSequence.TabIndex = 0;
 			// 
 			// tpBuildTasks
 			// 
@@ -250,25 +270,6 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 			this.id.Name = "id";
 			this.id.Visible = false;
 			// 
-			// tpBuildSequence
-			// 
-			this.tpBuildSequence.Controls.Add(this.tvBuildSequence);
-			this.tpBuildSequence.Location = new System.Drawing.Point(4, 22);
-			this.tpBuildSequence.Name = "tpBuildSequence";
-			this.tpBuildSequence.Padding = new System.Windows.Forms.Padding(3);
-			this.tpBuildSequence.Size = new System.Drawing.Size(694, 229);
-			this.tpBuildSequence.TabIndex = 1;
-			this.tpBuildSequence.Text = "Build Sequence";
-			this.tpBuildSequence.UseVisualStyleBackColor = true;
-			// 
-			// tvBuildSequence
-			// 
-			this.tvBuildSequence.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.tvBuildSequence.Location = new System.Drawing.Point(3, 3);
-			this.tvBuildSequence.Name = "tvBuildSequence";
-			this.tvBuildSequence.Size = new System.Drawing.Size(688, 223);
-			this.tvBuildSequence.TabIndex = 0;
-			// 
 			// tpBuildText
 			// 
 			this.tpBuildText.Controls.Add(this.txtEditorBText);
@@ -297,6 +298,7 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 			// scInputResultHSplit.Panel1
 			// 
 			this.scInputResultHSplit.Panel1.Controls.Add(this.gpTasks);
+			this.scInputResultHSplit.Panel1.Controls.Add(this.msBuildGen);
 			// 
 			// scInputResultHSplit.Panel2
 			// 
@@ -305,28 +307,47 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 			this.scInputResultHSplit.SplitterDistance = 355;
 			this.scInputResultHSplit.TabIndex = 7;
 			// 
-			// cmsBuildGen
+			// msBuildGen
 			// 
-			this.cmsBuildGen.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-									this.defineMacrodefToolStripMenuItem});
-			this.cmsBuildGen.Name = "cmsBuildGen";
-			this.cmsBuildGen.Size = new System.Drawing.Size(165, 26);
+			this.msBuildGen.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+									this.addToolStripMenuItem});
+			this.msBuildGen.Location = new System.Drawing.Point(0, 0);
+			this.msBuildGen.Name = "msBuildGen";
+			this.msBuildGen.Size = new System.Drawing.Size(726, 24);
+			this.msBuildGen.TabIndex = 6;
+			this.msBuildGen.Text = "menuStrip1";
 			// 
-			// defineMacrodefToolStripMenuItem
+			// addToolStripMenuItem
 			// 
-			this.defineMacrodefToolStripMenuItem.Name = "defineMacrodefToolStripMenuItem";
-			this.defineMacrodefToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
-			this.defineMacrodefToolStripMenuItem.Text = "Define Macrodef";
-			this.defineMacrodefToolStripMenuItem.Click += new System.EventHandler(this.DefineMacrodefToolStripMenuItemClick);
+			this.addToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+									this.targetToolStripMenuItem,
+									this.macrodefToolStripMenuItem});
+			this.addToolStripMenuItem.Name = "addToolStripMenuItem";
+			this.addToolStripMenuItem.Size = new System.Drawing.Size(48, 20);
+			this.addToolStripMenuItem.Text = "Insert";
+			// 
+			// targetToolStripMenuItem
+			// 
+			this.targetToolStripMenuItem.Name = "targetToolStripMenuItem";
+			this.targetToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.targetToolStripMenuItem.Text = "Target";
+			this.targetToolStripMenuItem.Click += new System.EventHandler(this.TargetToolStripMenuItemClick);
+			// 
+			// macrodefToolStripMenuItem
+			// 
+			this.macrodefToolStripMenuItem.Name = "macrodefToolStripMenuItem";
+			this.macrodefToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+			this.macrodefToolStripMenuItem.Text = "Macrodef";
+			this.macrodefToolStripMenuItem.Click += new System.EventHandler(this.MacrodefToolStripMenuItemClick);
 			// 
 			// BuildGeneratorForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(726, 629);
-			this.ContextMenuStrip = this.cmsBuildGen;
 			this.Controls.Add(this.scInputResultHSplit);
 			this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+			this.MainMenuStrip = this.msBuildGen;
 			this.Name = "BuildGeneratorForm";
 			this.Text = "Build Generator";
 			this.Load += new System.EventHandler(this.BuildGeneratorFormLoad);
@@ -337,18 +358,22 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 			this.scAvailTaskDetailsSplitter.Panel2.ResumeLayout(false);
 			this.scAvailTaskDetailsSplitter.ResumeLayout(false);
 			this.tcResults.ResumeLayout(false);
+			this.tpBuildSequence.ResumeLayout(false);
 			this.tpBuildTasks.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvBuildTasks)).EndInit();
-			this.tpBuildSequence.ResumeLayout(false);
 			this.tpBuildText.ResumeLayout(false);
 			this.scInputResultHSplit.Panel1.ResumeLayout(false);
+			this.scInputResultHSplit.Panel1.PerformLayout();
 			this.scInputResultHSplit.Panel2.ResumeLayout(false);
 			this.scInputResultHSplit.ResumeLayout(false);
-			this.cmsBuildGen.ResumeLayout(false);
+			this.msBuildGen.ResumeLayout(false);
+			this.msBuildGen.PerformLayout();
 			this.ResumeLayout(false);
 		}
-		private System.Windows.Forms.ToolStripMenuItem defineMacrodefToolStripMenuItem;
-		private System.Windows.Forms.ContextMenuStrip cmsBuildGen;
+		private System.Windows.Forms.ToolStripMenuItem macrodefToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem targetToolStripMenuItem;
+		private System.Windows.Forms.ToolStripMenuItem addToolStripMenuItem;
+		private System.Windows.Forms.MenuStrip msBuildGen;
 		private ICSharpCode.TextEditor.TextEditorControl txtEditorBText;
 		private System.Windows.Forms.SplitContainer scInputResultHSplit;
 		private System.Windows.Forms.SplitContainer scAvailTaskDetailsSplitter;

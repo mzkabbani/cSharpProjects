@@ -17,7 +17,7 @@ namespace Automation.Common
 	{
 		public int Id, BuildTaskId, AddedByUserId, ModifiedByUserId, PropertyTypeId;
 		public DateTime DateAdded, DateModified;
-		public string Name, DefaultValue, ConfigFileTemplate, SuppliedConfigFile, SuppliedConfigFilePath;
+		public string Name, DefaultValue, ConfigFileTemplate,SuppliedValue, SuppliedConfigFile, SuppliedConfigFilePath;
 		public bool IsMandatory;
 		
 		public override string ToString()

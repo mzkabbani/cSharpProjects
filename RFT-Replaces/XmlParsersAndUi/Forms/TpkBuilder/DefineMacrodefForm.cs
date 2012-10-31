@@ -21,17 +21,17 @@ namespace Manifest.Forms.TpkBuilder {
     /// </summary>
     public partial class DefineMacrodefForm : Form {
 
-        public TpkBuildTask GeneratedBuildTask = null;
+        public BuildTask GeneratedBuildTask = null;
 
         public DefineMacrodefForm() {
             InitializeComponent();
         }
 
-        TpkBuildTask ConvertMacrodefToBuildTask(string macrodefName,List<BuildTaskProperty> macrodefAttributes, bool isParallelExec) {
+        BuildTask ConvertMacrodefToBuildTask(string macrodefName,List<BuildTaskProperty> macrodefAttributes, bool isParallelExec) {
             //FIXME: Handle details link?
-            TpkBuildTask task = new TpkBuildTask(macrodefName,"??",(int)AppEnums.BuildTaskCat.Macrodef,8,DateTime.Now);
+            BuildTask task = new BuildTask(macrodefName,"??",(int)AppEnum.BuildTaskCat.Macrodef,8,DateTime.Now);
             if (cbParallel.Checked) {
-            	task.CategoryId = (int)AppEnums.BuildTaskCat.MacrodefParallel;            	
+            	task.CategoryId = (int)AppEnum.BuildTaskCat.MacrodefParallel;            	
             }            
             task.TaskProperties = macrodefAttributes;
             return task;
@@ -71,7 +71,7 @@ namespace Manifest.Forms.TpkBuilder {
                 string attrName = txtMacrodefAttribName.Text.Trim();
                 string attrDefValue = txtMacrodefAttrDefValue.Text.Trim();
                 if (IsValidToAddAttribute(attrName)) {                    
-                    BuildTaskProperty prop = new BuildTaskProperty(attrName,attrDefValue,(int)AppEnums.PropertyType.Default,cbIsMandatory.Checked,CommonUtils.LoggedInUserId,DateTime.Now);
+                    BuildTaskProperty prop = new BuildTaskProperty(attrName,attrDefValue,(int)AppEnum.PropertyType.Default,cbIsMandatory.Checked,CommonUtils.LoggedInUserId,DateTime.Now);
                     lbMacrodefAttributes.Items.Add(prop);
                 }
             } catch (Exception ex) {

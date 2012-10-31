@@ -404,7 +404,6 @@ namespace XmlParsersAndUi {
                         btnAddCaptureEvent.Enabled = true;
                     }
                     eventParsed = true;
-
                 } else {
                     CommonUtils.ShowInformation("Event must be a valid xml!",true);
                 }
@@ -434,7 +433,6 @@ namespace XmlParsersAndUi {
                 SetAllCombos();
                 BindCombos();
                 lbAdvancedCE.Select();
-
             } catch (Exception ex) {
                 CommonUtils.ShowError(ex.Message, ex);
             }
@@ -465,13 +463,11 @@ namespace XmlParsersAndUi {
                         MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
                     }
                 } catch (Exception) {
-
                 }
                 LoadAvailableARtoList();
                 SetAllCombos();
                 BindCombos();
                 lbAdvancedCE.SelectedIndex = 0;
-
                 enabledParentChecking = true;
             } catch (Exception ex) {
                 CommonUtils.ShowError(ex.Message, ex);
@@ -479,7 +475,7 @@ namespace XmlParsersAndUi {
         }
 
         private void BindCombos() {
-            string displayMember = "categoryName";
+            string displayMember = "enumerationName";
             string valueMember = "id";
             DataTable replacementDatable = Replacement_Events_Categories.GetAllReplacementCategoriesAsDataTable();
             CommonUtils.BindCombo(cboReplacementType, replacementDatable, displayMember, valueMember);

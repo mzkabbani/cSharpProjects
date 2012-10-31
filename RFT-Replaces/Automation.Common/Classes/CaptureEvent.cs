@@ -16,6 +16,8 @@ namespace Automation.Common {
         XpathBased = 3,
     }
 	
+	
+	
     public class AdvancedRecomendation {
         public string CaptureEventName, CaptureEventDescription, CaptureEventEventText;
         public ReplacementEvent Replacement;
@@ -24,6 +26,7 @@ namespace Automation.Common {
         public int captureEventCategory;
         public int captureEventuserId;
         public int captureEventUsageCount, CaptureEventId;
+        
         public AdvancedRecomendation(string Name, string Description, string EventText,List<CustomTreeNode> CapturePointsList) {
             CaptureEventName = Name;
             CaptureEventDescription = Description;
@@ -31,6 +34,19 @@ namespace Automation.Common {
             CaptureEventCapturePointsList = CapturePointsList;   
         }
 
+        #region orderingByCategory 
+        
+        public static Comparison<AdvancedRecomendation> OrderingByCategory =
+        	delegate(AdvancedRecomendation advancedRecomendationOne, AdvancedRecomendation advancedRecomendationTwo) {
+            return Convert.ToInt32(advancedRecomendationOne.captureEventCategory).CompareTo(Convert.ToInt32(advancedRecomendationTwo.captureEventCategory));
+        };
+
+        public int CompareTo(AdvancedRecomendation advancedRecomendation) {
+            return CaptureEventName.CompareTo(advancedRecomendation.CaptureEventName);
+        }
+        
+        #endregion
+        
         public AdvancedRecomendation(int id, string Name, string Description, string EventText, List<CustomTreeNode> CapturePointsList) {
             CaptureEventId = id;
             CaptureEventName = Name;
