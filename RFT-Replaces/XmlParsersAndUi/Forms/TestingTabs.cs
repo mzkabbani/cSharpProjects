@@ -14,9 +14,6 @@ namespace XmlParsersAndUi.Forms {
             InitializeComponent();
         }
 
-        
-
-
         private void TestingTabs_Load(object sender, EventArgs e) {
 
         }

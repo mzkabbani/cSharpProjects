@@ -3,17 +3,18 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-
+using System.IO;
 using System.Text;
 using System.Windows.Forms;
-using System.IO;
-using Automation.Common.Utils;
-using Automation.Common;
+
 using Automation.Backend;
+using Automation.Common;
 using Automation.Common.Classes.Monitoring;
+using Automation.Common.Forms;
+using Automation.Common.Utils;
 
 namespace XmlParsersAndUi {
-    public partial class SetupSimpleRecForm : Form {
+    public partial class SetupSimpleRecForm : BaseForm {
         
         #region Constructor
         
@@ -124,17 +125,11 @@ namespace XmlParsersAndUi {
 
         private void SetupRecForm_Load(object sender, EventArgs e) {
             try {
+        		base.LoadForm(this);
                 LoadSimpleOptions();
                 btnAdd.Enabled = true;
                 btnSave.Enabled = false;
 
-                try {
-                    if (!string.IsNullOrEmpty(MonitorObject.username)) {
-                        MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
-                    }
-                } catch (Exception) {
-
-                }
             } catch (Exception ex) {
                 CommonUtils.ShowError(ex.Message, ex);
             }

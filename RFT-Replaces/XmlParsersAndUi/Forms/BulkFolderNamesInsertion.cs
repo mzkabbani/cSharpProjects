@@ -9,6 +9,18 @@ using System.Windows.Forms;
 
 namespace XmlParsersAndUi.Forms {
     public partial class BulkFolderNamesInsertion : Form {
+		
+		 #region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
         public BulkFolderNamesInsertion() {
             InitializeComponent();
         }

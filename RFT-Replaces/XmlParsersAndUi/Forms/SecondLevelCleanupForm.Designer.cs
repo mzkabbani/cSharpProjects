@@ -1,4 +1,5 @@
-﻿namespace XmlParsersAndUi.Forms {
+﻿using Automation.Common.Controls;
+namespace XmlParsersAndUi.Forms {
     partial class SecondLevelCleanupForm {
         /// <summary>
         /// Required designer variable.
@@ -39,7 +40,7 @@
         	this.groupBox2 = new System.Windows.Forms.GroupBox();
         	this.gbOperation = new System.Windows.Forms.GroupBox();
         	this.btnBrowse = new System.Windows.Forms.Button();
-        	this.txtInputDir = new System.Windows.Forms.TextBox();
+        	this.txtInputDir = new AutomationFileBrowserTextBox();
         	this.label3 = new System.Windows.Forms.Label();
         	this.btnStart = new System.Windows.Forms.Button();
         	this.pbPercentComplete = new System.Windows.Forms.ProgressBar();
@@ -604,7 +605,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn numHits;
         private System.Windows.Forms.Button btnBackToSearch;
         private System.Windows.Forms.Button btnStartReplacementOp;
-        private System.Windows.Forms.TextBox txtInputDir;
+        private AutomationFileBrowserTextBox txtInputDir;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox gbAffectedFiles;
         private System.Windows.Forms.TreeView tvAffectedFiles;

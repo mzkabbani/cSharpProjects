@@ -7,7 +7,8 @@ using System.Windows.Forms;
 namespace XmlParsersAndUi {
     public class BulkMacroTreeNode : TreeNode, IComparable<BulkMacroTreeNode> {
         public string stepName;
-        public string filepath;
+        public string filepathEvents, filepathCustoms, filepathGui, filepathGuiGim;
+        
         public string stepTitle;
         public string stepEvents;
         public int startStepId;

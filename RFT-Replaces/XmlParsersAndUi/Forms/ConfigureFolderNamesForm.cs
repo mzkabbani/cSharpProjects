@@ -11,6 +11,19 @@ using Automation.Backend;
 
 namespace XmlParsersAndUi.Forms {
     public partial class ConfigureFolderNamesForm : Form {
+		
+		 #region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
+        
         public ConfigureFolderNamesForm() {
             InitializeComponent();
         }

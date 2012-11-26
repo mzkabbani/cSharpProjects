@@ -12,7 +12,7 @@ namespace Automation.Common.Classes {
     /// <summary>
     /// Description of AppEnums.
     /// </summary>
-    public static class AppEnum {
+    public static class ApplicationEnumerations {
 
         public enum BuildTaskCat {
             Default = 8,
@@ -28,39 +28,6 @@ namespace Automation.Common.Classes {
             Common=14,
             CommonNested=15
         }
-
-
-        public string EnumerationName, Description, Type ;
-        public int AddedByUserId, ModifiedByUserId, Index;
-        public DateTime DateAdded, DateModified;
-
-
-        public static DataTable SelectAllEnumsAsDataTable() {
-            return ApplicationEnumsBackend.GetAllAppEnums();
-        }
-        
-        public  AppEnum(string enumerationName, string description,int addedByUserId, DateTime dateAdded, int modifiedByUserId, DateTime dateModified, string type, int index) {
-            EnumerationName= enumerationName;
-            Description = description;
-            Type = type ;
-            AddedByUserId = addedByUserId ;
-            ModifiedByUserId = modifiedByUserId;
-            Index = index ;
-            DateAdded = dateAdded;
-            DateModified = dateModified;
-        }
-
-        public  AppEnum(string enumerationName, string description,int addedByUserId, DateTime dateAdded, string type, int index) {
-            EnumerationName= enumerationName;
-            Description = description;
-            Type = type ;
-            AddedByUserId = addedByUserId ;
-            ModifiedByUserId = modifiedByUserId;
-            Index = index ;
-            DateAdded = dateAdded;
-            DateModified = dateModified;
-        }
-
 
     }
 }

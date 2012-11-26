@@ -19,6 +19,19 @@ namespace Manifest.Forms.TpkBuilder {
     /// Description of AddCommonPropertyForm.
     /// </summary>
     public partial class AddCommonPropertyForm : Form {
+    	
+    	 #region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
+    	
         public List<BuildTaskProperty> selectedCommonProperties = null;
 
         public AddCommonPropertyForm(List<BuildTaskProperty> commonProperties) {

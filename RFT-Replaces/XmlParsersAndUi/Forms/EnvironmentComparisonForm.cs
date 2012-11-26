@@ -3,22 +3,24 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
-using Tamir.SharpSsh;
-using FtpLib;
 using System.Text.RegularExpressions;
-using XmlParsersAndUi.Classes;
-using System.IO;
-using Tamir.SharpSsh.jsch;
-using Automation.Common.Utils;
-using Automation.Common;
+using System.Windows.Forms;
+
 using Automation.Backend;
+using Automation.Common;
 using Automation.Common.Classes.Monitoring;
+using Automation.Common.Forms;
+using Automation.Common.Utils;
+using FtpLib;
+using Tamir.SharpSsh;
+using Tamir.SharpSsh.jsch;
+using XmlParsersAndUi.Classes;
 
 namespace XmlParsersAndUi.Forms {
-    public partial class EnvironmentComparisonForm : Form {
+    public partial class EnvironmentComparisonForm : BaseForm {
 
         #region Contructor
 
@@ -793,7 +795,7 @@ namespace XmlParsersAndUi.Forms {
             SaveUpdatedTreeView();
             try {
                 DataTable ItemsPresentInGrid = CopyDataGridToDataTableForExport(dgvResults);
-                DialogResult dialog = CommonUtils.ShowConformation("Do you want to apply the folder grouping feature?");
+                DialogResult dialog = CommonUtils.ShowConfirmation("Do you want to apply the folder grouping feature?");
                 if (dialog == DialogResult.Yes) {
                     for (int i = 0; i < ItemsPresentInGrid.Rows.Count; i++) {
                         for (int j = 0; j < allTreeNodes.Count; j++) {
@@ -941,7 +943,7 @@ namespace XmlParsersAndUi.Forms {
 
                     if (preFilters.Count > 0) {
                         string collectedPrefilters = GetFormattedPrefiltersForDisplay(preFilters);
-                        DialogResult dialog = CommonUtils.ShowConformation("Comparsion completed!\nAuto cleanup the following types?\n\n" + collectedPrefilters);
+                        DialogResult dialog = CommonUtils.ShowConfirmation("Comparsion completed!\nAuto cleanup the following types?\n\n" + collectedPrefilters);
                         if (dialog == DialogResult.Yes) {
                             ApplySelectedFiltersToSearchResults(preFilters);
                         } else {
@@ -1256,9 +1258,8 @@ namespace XmlParsersAndUi.Forms {
         #endregion
 
         private void EnvironmentComparisonForm_Load(object sender, EventArgs e) {
-            if (!string.IsNullOrEmpty(MonitorObject.username)) {
-                MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
-            }
+        	base.LoadForm(this);
+        	
             LOCAL_TA_USAGE = string.Equals(Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.EnvComparisonOnlyForEnv).ToString(), "True") ? true : false;
             LoadSavedFolderNames();
             PopulateCleanupFilters();
@@ -1609,7 +1610,7 @@ namespace XmlParsersAndUi.Forms {
                 List<EnvComparisonFilter> preFilters = GetPrefilterList(clbAvailableFilters);
                 if (preFilters.Count > 0) {
                     string collectedPrefilters = GetFormattedPrefiltersForDisplay(preFilters);
-                    DialogResult dialog = CommonUtils.ShowConformation("Comparsion completed!\nAuto cleanup the following types?\n\n" + collectedPrefilters);
+                    DialogResult dialog = CommonUtils.ShowConfirmation("Comparsion completed!\nAuto cleanup the following types?\n\n" + collectedPrefilters);
                     if (dialog == DialogResult.Yes) {
                         ApplySelectedFiltersToSearchResults(preFilters);
                     } else {
@@ -1736,7 +1737,7 @@ namespace XmlParsersAndUi.Forms {
 
         void BtnStartCleanupClick(object sender, EventArgs e) {
             try {
-                DialogResult result = CommonUtils.ShowConformation("Are you sure you want to start cleanup?");
+                DialogResult result = CommonUtils.ShowConfirmation("Are you sure you want to start cleanup?");
                 if (result == DialogResult.Yes) {
                     List<EnvComparisonFilter> selectedFilters = new List<EnvComparisonFilter>();
                     for (int i = 0; i < clbAvailableCleanupFilters.CheckedItems.Count; i++) {

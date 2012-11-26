@@ -11,9 +11,13 @@ namespace Automation.Backend{
 
 
         public static string commandUpdateRecommendationByIdTextConv = "UPDATE    Advanced_Recomendations_TextConv " +
-                                                               "SET       name =@name, description =@description , event_text = @event_text , categoryId =@categoryId , userId =@userId , usageCount =@usageCount  " +
+                                                               "SET       name =@name, description =@description , event_text = @event_text , categoryId =@categoryId , userId =@userId , usageCount =@usageCount , updatedByUserId=@updatedByUserId ,dateUpdated=@dateUpdated " +
                                                                "Where id = @id";
 
+          public static string commandUpdateRecommendationCategoryByIdTextConv = "UPDATE  Advanced_Recomendations_TextConv " +
+                                                               "SET      categoryId =@categoryId  ,updatedByUserId=@updatedByUserId ,dateUpdated=@dateUpdated " +
+                                                               "Where id = @id";
+        
         public static string commandCountRecommendationsTextConv = "SELECT COUNT(*) AS Expr1" +
                                                             "FROM   (SELECT DISTINCT Advanced_Recomendations_TextConv.id" +
                                                             "FROM  Advanced_Recomendations_TextConv " +
@@ -26,8 +30,8 @@ namespace Automation.Backend{
 
 
         public static string commandInsertRecommendationTextConv = "INSERT INTO " +
-                                                            "Advanced_Recomendations_TextConv    (name, description, event_text, categoryId, usageCount, userId,isEnabled) " +
-                                                            "VALUES (@name,@description,@eventText, @categoryId, @usageCount, @userId,1)";
+                                                            "Advanced_Recomendations_TextConv    (name, description, event_text, categoryId, usageCount, userId,isEnabled, addedByUserId, dateAdded) " +
+                                                            "VALUES (@name,@description,@eventText, @categoryId, @usageCount, @userId,1,@addedByUserId , @dateAdded)";
 
         public static string commandSelectAdvancedRecByIdTextConv = "Select * " +
                                                             "From Advanced_Recomendations_TextConv " +

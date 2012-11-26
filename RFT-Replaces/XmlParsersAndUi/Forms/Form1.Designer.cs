@@ -1,4 +1,5 @@
-﻿namespace XmlParsersAndUi {
+﻿using Automation.Common.Controls;
+namespace XmlParsersAndUi {
     partial class Form1 {
         /// <summary>
         /// Required designer variable.
@@ -26,7 +27,7 @@
         	System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("item1");
         	this.txtOutput = new System.Windows.Forms.TextBox();
         	this.lvItems = new System.Windows.Forms.ListView();
-        	this.txtInputFile = new System.Windows.Forms.TextBox();
+        	this.txtInputFile = new AutomationFileBrowserTextBox();
         	this.btnParse = new System.Windows.Forms.Button();
         	this.tvOutput = new System.Windows.Forms.TreeView();
         	this.btnPopulateTV = new System.Windows.Forms.Button();
@@ -35,6 +36,8 @@
         	this.txtEventIn = new System.Windows.Forms.TextBox();
         	this.btnParseEvent = new System.Windows.Forms.Button();
         	this.gbChildren = new System.Windows.Forms.GroupBox();
+        	this.btnTestConn = new System.Windows.Forms.Button();
+        	this.txtConnx = new System.Windows.Forms.TextBox();
         	this.cmbMain = new System.Windows.Forms.ComboBox();
         	this.button1 = new System.Windows.Forms.Button();
         	this.button2 = new System.Windows.Forms.Button();
@@ -45,8 +48,7 @@
         	this.txtConfi = new System.Windows.Forms.TextBox();
         	this.button6 = new System.Windows.Forms.Button();
         	this.btnUtilsParser = new System.Windows.Forms.Button();
-        	this.txtConnx = new System.Windows.Forms.TextBox();
-        	this.btnTestConn = new System.Windows.Forms.Button();
+        	this.button7 = new System.Windows.Forms.Button();
         	this.grpBoxAttr.SuspendLayout();
         	this.gbChildren.SuspendLayout();
         	this.SuspendLayout();
@@ -169,6 +171,24 @@
         	this.gbChildren.TabStop = false;
         	this.gbChildren.Text = "Children";
         	// 
+        	// btnTestConn
+        	// 
+        	this.btnTestConn.Location = new System.Drawing.Point(51, 137);
+        	this.btnTestConn.Name = "btnTestConn";
+        	this.btnTestConn.Size = new System.Drawing.Size(141, 54);
+        	this.btnTestConn.TabIndex = 19;
+        	this.btnTestConn.Text = "Test Conn";
+        	this.btnTestConn.UseVisualStyleBackColor = true;
+        	this.btnTestConn.Click += new System.EventHandler(this.BtnTestConnClick);
+        	// 
+        	// txtConnx
+        	// 
+        	this.txtConnx.Location = new System.Drawing.Point(6, 19);
+        	this.txtConnx.Multiline = true;
+        	this.txtConnx.Name = "txtConnx";
+        	this.txtConnx.Size = new System.Drawing.Size(449, 112);
+        	this.txtConnx.TabIndex = 8;
+        	// 
         	// cmbMain
         	// 
         	this.cmbMain.FormattingEnabled = true;
@@ -268,29 +288,22 @@
         	this.btnUtilsParser.UseVisualStyleBackColor = true;
         	this.btnUtilsParser.Click += new System.EventHandler(this.BtnUtilsParserClick);
         	// 
-        	// txtConnx
+        	// button7
         	// 
-        	this.txtConnx.Location = new System.Drawing.Point(6, 19);
-        	this.txtConnx.Multiline = true;
-        	this.txtConnx.Name = "txtConnx";
-        	this.txtConnx.Size = new System.Drawing.Size(449, 112);
-        	this.txtConnx.TabIndex = 8;
-        	// 
-        	// btnTestConn
-        	// 
-        	this.btnTestConn.Location = new System.Drawing.Point(51, 137);
-        	this.btnTestConn.Name = "btnTestConn";
-        	this.btnTestConn.Size = new System.Drawing.Size(141, 54);
-        	this.btnTestConn.TabIndex = 19;
-        	this.btnTestConn.Text = "Test Conn";
-        	this.btnTestConn.UseVisualStyleBackColor = true;
-        	this.btnTestConn.Click += new System.EventHandler(this.BtnTestConnClick);
+        	this.button7.Location = new System.Drawing.Point(30, 350);
+        	this.button7.Name = "button7";
+        	this.button7.Size = new System.Drawing.Size(141, 54);
+        	this.button7.TabIndex = 19;
+        	this.button7.Text = "AddopNames";
+        	this.button7.UseVisualStyleBackColor = true;
+        	this.button7.Click += new System.EventHandler(this.Button7Click);
         	// 
         	// Form1
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
         	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         	this.ClientSize = new System.Drawing.Size(805, 673);
+        	this.Controls.Add(this.button7);
         	this.Controls.Add(this.btnUtilsParser);
         	this.Controls.Add(this.button6);
         	this.Controls.Add(this.txtConfi);
@@ -319,6 +332,7 @@
         	this.ResumeLayout(false);
         	this.PerformLayout();
         }
+        private System.Windows.Forms.Button button7;
         private System.Windows.Forms.Button btnTestConn;
         private System.Windows.Forms.TextBox txtConnx;
         private System.Windows.Forms.Button btnUtilsParser;
@@ -328,7 +342,7 @@
 
         private System.Windows.Forms.TextBox txtOutput;
         private System.Windows.Forms.ListView lvItems;
-        private System.Windows.Forms.TextBox txtInputFile;
+        private AutomationFileBrowserTextBox txtInputFile;
         private System.Windows.Forms.Button btnParse;
         private System.Windows.Forms.TreeView tvOutput;
         private System.Windows.Forms.Button btnPopulateTV;

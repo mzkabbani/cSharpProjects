@@ -13,6 +13,18 @@ using Automation.Common.Utils;
 namespace XmlParsersAndUi.Forms {
     public partial class AddPropertyForm : Form {
 
+		
+		 #region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
         List<InstallerProp> installerProps = new List<InstallerProp>();
 
         public AddPropertyForm(ListBox.ObjectCollection availablePropsList) {

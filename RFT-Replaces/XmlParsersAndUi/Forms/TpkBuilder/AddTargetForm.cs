@@ -25,6 +25,16 @@ namespace Manifest.Forms.TpkBuilder {
         public string buildTargetName = string.Empty;
         #endregion
 
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
+        
         public AddTargetForm() {
             //
             // The InitializeComponent() call is required for Windows Forms designer support.

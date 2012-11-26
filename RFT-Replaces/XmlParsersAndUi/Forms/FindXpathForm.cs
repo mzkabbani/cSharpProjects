@@ -11,6 +11,19 @@ using Automation.Common.Utils;
 
 namespace XmlParsersAndUi {
     public partial class FindXpathForm : Form {
+		
+		 #region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
+		
         public FindXpathForm() {
             InitializeComponent();
         }

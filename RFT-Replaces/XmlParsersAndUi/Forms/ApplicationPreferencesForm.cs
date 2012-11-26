@@ -40,13 +40,10 @@ namespace XmlParsersAndUi.Forms {
                         MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
                     }
                 } catch (Exception) {
-
                 }
                 tvPreferenceSections.ExpandAll();
                 txtConnectedDatabase.Text = BackEndUtils.ConnectionParamter;
                 lblDBSIze.Text = GetDBSize();
-
-
                 dataSet = Application_Settings.GetAppPrefsDataset();
                 dgvDatabasePrefs.DataSource = dataSet.Tables[0];
                 LoadSavedFolderNames();

@@ -401,7 +401,7 @@ namespace XmlParsersAndUi {
                 StartSplittingFile();
                 //FrontendUtils.ShowInformation("Splitting done!");                
                 btnSplitFile.Enabled = false;
-                if (CommonUtils.ShowConformation("Splitting done.\nDo you want to proceed to level one cleanup?") == DialogResult.Yes) {
+                if (CommonUtils.ShowConfirmation("Splitting done.\nDo you want to proceed to level one cleanup?") == DialogResult.Yes) {
                     CleanupForm form = new CleanupForm(txtOutputDir.Text);
                     form.MdiParent = this.MdiParent;
                     form.Show();

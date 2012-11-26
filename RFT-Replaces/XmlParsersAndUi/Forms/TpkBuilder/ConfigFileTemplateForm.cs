@@ -23,6 +23,15 @@ namespace XmlParsersAndUi.Forms.TpkBuilder
 		#region Variables
 			string ConfigFileTemplate = string.Empty;
 		#endregion
+
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
 		
 		public ConfigFileTemplateForm()
 		{

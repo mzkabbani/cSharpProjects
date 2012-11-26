@@ -22,14 +22,14 @@ namespace Automation.Common {
         public List<BuildTaskProperty> TaskProperties = new List<BuildTaskProperty>();
         public BuildTargetObject OwnedByTarget;
         public BuildTask OwnedByMacrodef;
-
+        public List<BuildTask> TasksInsideMacrodef = new List<BuildTask>();
+        
         public override string ToString() {
-            if (this.CategoryId == (int)AppEnum.BuildTaskCat.Default) {
+            if (this.CategoryId == (int)ApplicationEnumerations.BuildTaskCat.Default) {
                 return string.Format(this.Name);
             } else {
                 return string.Format("Macrodef - {0}",this.Name);
             }
-
         }
 
         public BuildTask(){}
@@ -71,35 +71,44 @@ namespace Automation.Common {
                     macrodefTextRep = string.Concat(macrodefTextRep,"<var name=\""+prop.Name+"\" default=\""+prop.DefaultValue+"\" />\r\n\t");
                 }
             }
-            if (this.CategoryId == (int)AppEnum.BuildTaskCat.Macrodef) {
-                macrodefTextRep = string.Concat(macrodefTextRep,"\t<sequential>\r\n\t\t</sequential>\r\n");
-            } else if (this.CategoryId == (int)AppEnum.BuildTaskCat.MacrodefParallel) {
-                macrodefTextRep = string.Concat(macrodefTextRep,"\t<parallel>\r\n\t\t</parallel>\r\n");
+            //FIXME: add available TasksInsideMacrodef;
+            if (this.CategoryId == (int)ApplicationEnumerations.BuildTaskCat.Macrodef) {
+            	macrodefTextRep = string.Concat(macrodefTextRep,"\t<sequential>\r\n"+GetTextRepresentationOfBuildTaskList(this.TasksInsideMacrodef)+"\t\t</sequential>\r\n");
+            } else if (this.CategoryId == (int)ApplicationEnumerations.BuildTaskCat.MacrodefParallel) {
+                macrodefTextRep = string.Concat(macrodefTextRep,"\t<parallel>\r\n"+GetTextRepresentationOfBuildTaskList(this.TasksInsideMacrodef)+"\t\t</parallel>\r\n");
             }
             macrodefTextRep = string.Concat(macrodefTextRep,"\t</macrodef>");
             return macrodefTextRep;
         }
 
+        private string GetTextRepresentationOfBuildTaskList(List<BuildTask> tasksInMacrodef){
+        string joinedTasks = string.Empty;
+        for (int i = 0; i < tasksInMacrodef.Count; i++) {
+        	joinedTasks = string.Concat(joinedTasks,tasksInMacrodef[i].GetTextRepresentation());
+        }
+        return joinedTasks;
+        }
+        
         public string GetTextRepresentation() {
             string taskTextRepresentation = "<"+this.Name+" >" ;
             string nestedProperties = string.Empty;
             string taskClose = "</"+this.Name+">";
             foreach (BuildTaskProperty property in this.TaskProperties) {
-                if (property.PropertyTypeId == (int)AppEnum.PropertyType.CommonNested ||
-                        property.PropertyTypeId == (int)AppEnum.PropertyType.ConfigFileNested ||
-                        property.PropertyTypeId == (int)AppEnum.PropertyType.DefaultNested) {
+                if (property.PropertyTypeId == (int)ApplicationEnumerations.PropertyType.CommonNested ||
+                        property.PropertyTypeId == (int)ApplicationEnumerations.PropertyType.ConfigFileNested ||
+                        property.PropertyTypeId == (int)ApplicationEnumerations.PropertyType.DefaultNested) {
                     //add nested property
                     if (!string.IsNullOrEmpty(nestedProperties)) {
                         nestedProperties = nestedProperties +"\n";
                     }
-                    if (property.PropertyTypeId == (int)AppEnum.PropertyType.ConfigFileNested && !string.IsNullOrEmpty(property.SuppliedConfigFile)) {
+                    if (property.PropertyTypeId == (int)ApplicationEnumerations.PropertyType.ConfigFileNested && !string.IsNullOrEmpty(property.SuppliedConfigFile)) {
                         nestedProperties = string.Concat(nestedProperties,"<property "+property.Name+"=\""+property.SuppliedConfigFilePath+"\" />");
                     } else if(!string.IsNullOrEmpty(property.SuppliedValue)) {
                         nestedProperties = string.Concat(nestedProperties,"<property "+property.Name+"=\""+property.SuppliedValue+"\" />");
                     }
                 } else {
                     //add normal property
-                    if (property.PropertyTypeId == (int)AppEnum.PropertyType.ConfigFile && !string.IsNullOrEmpty(property.SuppliedConfigFile)) {
+                    if (property.PropertyTypeId == (int)ApplicationEnumerations.PropertyType.ConfigFile && !string.IsNullOrEmpty(property.SuppliedConfigFile)) {
                         taskTextRepresentation= taskTextRepresentation.Replace(">", property.Name+"=\""+property.SuppliedConfigFilePath+"\" >");
                     } else if(!string.IsNullOrEmpty(property.SuppliedValue)) {
                         taskTextRepresentation= taskTextRepresentation.Replace(">", property.Name+"=\""+property.SuppliedValue+"\" >");

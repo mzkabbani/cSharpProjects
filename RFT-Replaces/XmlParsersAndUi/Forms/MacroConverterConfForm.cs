@@ -14,22 +14,29 @@ using System.Xml.Linq;
 using Automation.Backend;
 using Automation.Common;
 using Automation.Common.Classes.Monitoring;
+using Automation.Common.Forms;
 using Automation.Common.Utils;
 using XmlParsersAndUi.Classes;
 using XmlParsersAndUi.Controls;
 
 namespace XmlParsersAndUi.Forms {
-    public partial class MacroConverterConfForm : Form {
+    public partial class MacroConverterConfForm : BaseForm {
 
+		
+		 #region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+  
+		
         public MacroConverterConfForm() {
             InitializeComponent();
         }
 
         private void MacroConverter_Load(object sender, EventArgs e) {
             try {
-                if (!string.IsNullOrEmpty(MonitorObject.username)) {
-                    MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
-                }
+				base.LoadForm(this);
             } catch (Exception) {
 
             }
@@ -418,7 +425,7 @@ namespace XmlParsersAndUi.Forms {
                     string ruleDescription = txtAODescription.Text.Trim();
                     string ruleEventIn = txtAOEventIn.Text.Trim();
                     string replacementText = txtTextValue.Text.Trim();
-                    
+
                     if (IsValidToAddRule(ruleName, ruleDescription, ruleEventIn, replacementText, tvOutput.Nodes[0])) {
                         Recur(tvOutput.Nodes);
                         SaveUpdatedAttributes();
@@ -488,13 +495,43 @@ namespace XmlParsersAndUi.Forms {
             string valueMember = "id";
             DataTable captureDatatable = Advanced_Recommendation_Categories.GetAllCaptureCategoriesAsDataTable(true);
             lvAvailableEvents.Groups.Clear();
-
+            moveToGroupToolStripMenuItem.DropDownItems.Clear();
             foreach (DataRow row in captureDatatable.Rows) {
                 lvAvailableEvents.Groups.Add(row["id"].ToString(),row["enumerationName"].ToString());
                 //clvAvailableEvents.Groups.Add(row["id"].ToString(),row["enumerationName"].ToString());
+                ToolStripItem item = moveToGroupToolStripMenuItem.DropDownItems.Add(row["enumerationName"].ToString());
+				item.Tag = row["id"].ToString();
+                item.Click += btnMoveGroup;
             }
 
             CommonUtils.BindCombo(cboCaptureType, captureDatatable, displayMember, valueMember);
+        }
+
+        private void btnMoveGroup(object sender, EventArgs e) {
+            try {
+                if (lvAvailableEvents.SelectedItems.Count>0) {
+                    List<AdvancedRecomendation> arToUpdate = new List<AdvancedRecomendation>();
+                    foreach (ListViewItem item in lvAvailableEvents.SelectedItems) {
+                        AdvancedRecomendation advancedRecomendation  = item.Tag as AdvancedRecomendation;
+                        if (advancedRecomendation !=null) {
+                        	ToolStripItem senderToolstrip = (sender as ToolStripItem);
+                        	if (senderToolstrip  != null) {
+                        		advancedRecomendation.captureEventCategory = Convert.ToInt32(lvAvailableEvents.Groups[senderToolstrip.Tag.ToString()].Name);
+                            item.Group = lvAvailableEvents.Groups[senderToolstrip.Tag.ToString()];
+                            
+                         
+                            arToUpdate.Add(advancedRecomendation);	
+                        	}
+                        	
+                        }
+
+                    }
+                    Advanced_Recomendations_TextConv.SaveCaptureEventCategoryUpdate(arToUpdate);
+                }
+
+            } catch (Exception ex) {
+                CommonUtils.ShowError(ex.Message,ex);
+            }
         }
 
         private void SetAllCombos() {
@@ -988,16 +1025,8 @@ namespace XmlParsersAndUi.Forms {
                 captureEvent.captureEventCategory = Convert.ToInt32(cboCaptureType.SelectedValue);
                 captureEvent.captureEventUsageCount = CurrentlySelectedCaptureEvent.captureEventUsageCount;
                 ReplacementEvent selectedReplacementEvent = new ReplacementEvent("Replacement-" + txtAOName.Text, "Replacement-" + txtAODescription.Text, txtTextValue.Text, 1);
-                //selectedReplacementEvent.name = txtReplacementName.Text;
-                //selectedReplacementEvent.description = txtReplacementDesc.Text;
-                //selectedReplacementEvent.Value = txtReplacementRep.Text;
-                //selectedReplacementEvent.typeId = Convert.ToInt32(cboReplacementType.SelectedValue);
-
-
                 selectedReplacementEvent.id = CurrentlySelectedCaptureEvent.Replacement.id;
-
                 Advanced_Recomendations_TextConv.SaveCaptureEventByIdForTextConversion(CurrentlySelectedCaptureEvent.CaptureEventId, captureEvent, selectedReplacementEvent);
-
                 SetAllCombos();
                 BindCombos();
                 LoadAvailableARtoList();
@@ -1069,7 +1098,7 @@ namespace XmlParsersAndUi.Forms {
 
         private void btnDeleteAdvanceRec_Click(object sender, EventArgs e) {
             try {
-                DialogResult dial = CommonUtils.ShowConformation("Are you sure you want to delete [" + CurrentlySelectedCaptureEvent.CaptureEventName + "] ?");
+                DialogResult dial = CommonUtils.ShowConfirmation("Are you sure you want to delete [" + CurrentlySelectedCaptureEvent.CaptureEventName + "] ?");
                 if (dial == DialogResult.Yes) {
                     Advanced_Recomendations_TextConv.DisableAdvanceRecById(CurrentlySelectedCaptureEvent.CaptureEventId);
                     BindCombos();
@@ -1129,6 +1158,7 @@ namespace XmlParsersAndUi.Forms {
 
 
         private System.Windows.Forms.ListViewItem _itemDnD = null;
+
 
 
 

@@ -11,6 +11,20 @@ namespace XmlParsersAndUi {
     /// Summary description for Results.
     /// </summary>
     public class Results : System.Windows.Forms.Form {
+    	
+    	 #region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
+    	
+    	
         private ListViewEx lvSource;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;

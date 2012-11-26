@@ -3,22 +3,32 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
-using XmlParsersAndUi.Classes;
-using System.Xml.Linq;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 using System.Xml;
-using System.IO;
-using Automation.Common.Utils;
-using Automation.Common;
+using System.Xml.Linq;
+
 using Automation.Backend;
+using Automation.Common;
 using Automation.Common.Classes.Monitoring;
+using Automation.Common.Forms;
+using Automation.Common.Utils;
+using XmlParsersAndUi.Classes;
 
 namespace XmlParsersAndUi.Forms {
-    public partial class SDDGeneratorForm : Form {
-
+    public partial class SDDGeneratorForm : BaseForm {
+		
+		
+		 #region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+       
+      
         public SDDGeneratorForm() {
             InitializeComponent();
         }
@@ -462,9 +472,7 @@ namespace XmlParsersAndUi.Forms {
 
         private void SDDGeneratorForm_Load(object sender, EventArgs e) {
             try {
-                if (!string.IsNullOrEmpty(MonitorObject.username)) {
-                    MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
-                }
+        		base.LoadForm(this);
             } catch (Exception) {
 
             }

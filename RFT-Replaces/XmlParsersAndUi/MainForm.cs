@@ -306,6 +306,8 @@ namespace XmlParsersAndUi {
                     if (userId < 1) {
                         userId = UserStatus.InsertNewUser(loggedInUser);
                     }
+                    
+                    
                     CommonUtils.LoggedInUserId = userId;
                     UserStatus.UpdateUserStatusById(userId, true);
 
@@ -318,7 +320,7 @@ namespace XmlParsersAndUi {
                     this.menuStrip.Enabled = false;
                     Exception ex = new InvalidAsynchronousStateException("The application is out date. Please update to the latest version!");
                     //http://globalqa/svn/PAR/PFR/0000081/trunk/pfr/QAA-Activities/MaintenanceReduction/Maintenance-Reduction.zip
-                    DialogResult dial = CommonUtils.ShowConformation("A new version is now available on SVN!\nProceed with update?");
+                    DialogResult dial = CommonUtils.ShowConfirmation("A new version is now available on SVN!\nProceed with update?");
                     if (dial == DialogResult.Yes) {
                         Process.Start("http://globalqa/svn/PAR/PFR/0000081/trunk/pfr/QAA-Activities/MaintenanceReduction/Maintenance-Reduction.zip");
                         Application.ExitThread();

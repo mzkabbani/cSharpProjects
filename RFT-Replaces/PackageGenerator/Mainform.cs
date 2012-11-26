@@ -554,7 +554,7 @@ namespace PackageGenerator {
 
         private void ImportFilesListFile(string exportFilePath) {
             if (dgvFilesToImport.Rows.Count > 0) {
-                DialogResult dial = CommonUtils.ShowConformation("Do you want to append the files to the existing list?");
+                DialogResult dial = CommonUtils.ShowConfirmation("Do you want to append the files to the existing list?");
                 if (dial == DialogResult.Yes) {
                     ReadFileAndInsertIntoList(exportFilePath, true);
                 } else {
@@ -1339,7 +1339,7 @@ namespace PackageGenerator {
         private void btnClear_Click(object sender, EventArgs e) {
             try {
                 if (dgvOutputOperations.Rows.Count > 0) {
-                    DialogResult dial = CommonUtils.ShowConformation("Are you sure you want to clear all [Operations]?");
+                    DialogResult dial = CommonUtils.ShowConfirmation("Are you sure you want to clear all [Operations]?");
                     if (dial == DialogResult.Yes) {
                         dgvOutputOperations.Rows.Clear();
                         counter = 1;
@@ -1444,7 +1444,7 @@ namespace PackageGenerator {
         private void btnDelteFileToImport_Click(object sender, EventArgs e) {
             try {
                 if (dgvFilesToImport.SelectedRows.Count > 0) {
-                    DialogResult dial = CommonUtils.ShowConformation("Are you sure you want to delete the file import operation?");
+                    DialogResult dial = CommonUtils.ShowConfirmation("Are you sure you want to delete the file import operation?");
 
                     if (dial == DialogResult.Yes) {
                         dgvFilesToImport.Rows.RemoveAt(dgvFilesToImport.SelectedRows[0].Index);
@@ -1588,7 +1588,7 @@ namespace PackageGenerator {
         private void btnReloadCi_Click(object sender, EventArgs e) {
             try {
                 if (!string.IsNullOrEmpty(pathOfImportedCi)) {
-                    DialogResult dial = CommonUtils.ShowConformation("Are you sure you want to reload from the saved Ci?");
+                    DialogResult dial = CommonUtils.ShowConfirmation("Are you sure you want to reload from the saved Ci?");
                     if (dial == DialogResult.Yes) {
                         StartImportOfCi(pathOfImportedCi, false);
                     }

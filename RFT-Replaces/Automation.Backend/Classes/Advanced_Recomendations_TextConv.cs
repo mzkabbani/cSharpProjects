@@ -7,7 +7,7 @@ using Automation.Common.Utils;
 using Automation.Common;
 using System.Data;
 
-namespace Automation.Backend{
+namespace Automation.Backend {
     public static class Advanced_Recomendations_TextConv {
 
         private static int InsertRecommendationForTextConversion(AdvancedRecomendation captureEvent) {
@@ -23,6 +23,9 @@ namespace Automation.Backend{
                 command.Parameters.Add("@categoryId", captureEvent.captureEventCategory);
                 command.Parameters.Add("@usageCount", captureEvent.captureEventUsageCount);
                 command.Parameters.Add("@userId", CommonUtils.LoggedInUserId);
+                command.Parameters.Add("@addedByUserId",CommonUtils.LoggedInUserId);
+                command.Parameters.Add("@dateAdded",DateTime.Now);
+                
                 value = Convert.ToInt32(command.ExecuteNonQuery());
                 SqlCeCommand commandMaxId = new SqlCeCommand(Advanced_Recomendations_TextConv_SQL.commandMaxRecommendationIdTextConv, conn);
                 value = Convert.ToInt32(commandMaxId.ExecuteScalar());
@@ -32,7 +35,7 @@ namespace Automation.Backend{
             return value;
         }
 
-       
+
         public static int InsertCaptureEventForTextConversion(AdvancedRecomendation captureEvent, ReplacementEvent replacementEvent) {
             int returnCode = -1;
             int RecommendationId = InsertRecommendationForTextConversion(captureEvent);
@@ -83,7 +86,33 @@ namespace Automation.Backend{
             }
         }
 
-     
+        public static void SaveCaptureEventCategoryUpdate(List<AdvancedRecomendation> captureEvents) {
+            SqlCeTransaction transaction;
+            SqlCeConnection conn = BackEndUtils.GetSqlConnection();
+            int value = -1;
+            try {
+                conn.Open();
+                transaction = conn.BeginTransaction();
+                try {
+                    for (int i = 0; i < captureEvents.Count; i++) {
+                        SqlCeCommand command = new SqlCeCommand(Advanced_Recomendations_TextConv_SQL.commandUpdateRecommendationCategoryByIdTextConv, conn);
+                        command.Transaction = transaction;
+                        command.Parameters.Add("@categoryId", captureEvents[i].captureEventCategory);
+                        command.Parameters.Add("@updatedByUserId", CommonUtils.LoggedInUserId);
+                        command.Parameters.Add("@dateUpdated", DateTime.Now);
+                        command.Parameters.Add("@id", captureEvents[i].CaptureEventId);
+                        value = Convert.ToInt32(command.ExecuteNonQuery());
+                    }
+                    transaction.Commit();
+                } catch (Exception ex) {
+                    CommonUtils.LogError(ex.Message, ex);
+                    transaction.Rollback();
+                }
+            } finally {
+                conn.Close();
+            }
+
+        }
 
         public static void SaveCaptureEventByIdForTextConversion(int captureEventId, AdvancedRecomendation captureEvent, ReplacementEvent replacementEvent) {
             SqlCeTransaction transaction;
@@ -118,6 +147,8 @@ namespace Automation.Backend{
             command.Parameters.Add("@categoryId", captureEvent.captureEventCategory);
             command.Parameters.Add("@usageCount", captureEvent.captureEventUsageCount);
             command.Parameters.Add("@userId", CommonUtils.LoggedInUserId);
+            command.Parameters.Add("@updatedByUserId",CommonUtils.LoggedInUserId);
+            command.Parameters.Add("@dateUpdated",DateTime.Now);
             value = Convert.ToInt32(command.ExecuteNonQuery());
         }
 

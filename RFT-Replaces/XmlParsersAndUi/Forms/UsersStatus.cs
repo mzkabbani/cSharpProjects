@@ -6,10 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+
 using Automation.Backend;
+using Automation.Common.Forms;
 
 namespace XmlParsersAndUi.Forms {
-    public partial class UsersStatus : Form {
+    public partial class UsersStatus : BaseForm {
 
         #region Constructor
 
@@ -63,6 +65,7 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private void UsersStatus_Load(object sender, EventArgs e) {
+        	base.LoadForm(this);
             LoadForm();
             this.dgvUserStatus.CellFormatting +=
                new DataGridViewCellFormattingEventHandler(dataGridView1_CellFormatting);

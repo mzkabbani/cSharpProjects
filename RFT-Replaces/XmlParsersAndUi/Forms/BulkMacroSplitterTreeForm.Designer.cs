@@ -1,4 +1,6 @@
 ﻿using Automation.Common;
+using Automation.Common.Controls;
+
 namespace XmlParsersAndUi {
     partial class BulkMacroSplitterTreeForm {
         /// <summary>
@@ -48,6 +50,8 @@ namespace XmlParsersAndUi {
         	this.txtDirectory = new System.Windows.Forms.TextBox();
         	this.label3 = new System.Windows.Forms.Label();
         	this.txtShowBuildFile = new System.Windows.Forms.Button();
+        	this.btnCloseMacroSplitter = new System.Windows.Forms.Button();
+        	this.btnLoadFolder = new System.Windows.Forms.Button();
         	this.contextMenuStrip1.SuspendLayout();
         	this.groupBox1.SuspendLayout();
         	this.cmsResultsTreeView.SuspendLayout();
@@ -72,7 +76,7 @@ namespace XmlParsersAndUi {
         	// 
         	// btnShowOutput
         	// 
-        	this.btnShowOutput.Location = new System.Drawing.Point(139, 464);
+        	this.btnShowOutput.Location = new System.Drawing.Point(58, 464);
         	this.btnShowOutput.Name = "btnShowOutput";
         	this.btnShowOutput.Size = new System.Drawing.Size(157, 23);
         	this.btnShowOutput.TabIndex = 3;
@@ -82,7 +86,7 @@ namespace XmlParsersAndUi {
         	// 
         	// btnSplitFile
         	// 
-        	this.btnSplitFile.Location = new System.Drawing.Point(290, 97);
+        	this.btnSplitFile.Location = new System.Drawing.Point(209, 97);
         	this.btnSplitFile.Name = "btnSplitFile";
         	this.btnSplitFile.Size = new System.Drawing.Size(157, 23);
         	this.btnSplitFile.TabIndex = 6;
@@ -105,7 +109,6 @@ namespace XmlParsersAndUi {
         	this.renameStepToolStripMenuItem.Name = "renameStepToolStripMenuItem";
         	this.renameStepToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
         	this.renameStepToolStripMenuItem.Text = "Rename Step";
-        	this.renameStepToolStripMenuItem.Click += new System.EventHandler(this.renameStepToolStripMenuItem_Click);
         	// 
         	// groupBox1
         	// 
@@ -170,6 +173,7 @@ namespace XmlParsersAndUi {
         	// 
         	// groupBox2
         	// 
+        	this.groupBox2.Controls.Add(this.btnLoadFolder);
         	this.groupBox2.Controls.Add(this.btnOutputDir);
         	this.groupBox2.Controls.Add(this.txtOutputDir);
         	this.groupBox2.Controls.Add(this.label1);
@@ -225,7 +229,7 @@ namespace XmlParsersAndUi {
         	// 
         	// btnReset
         	// 
-        	this.btnReset.Location = new System.Drawing.Point(127, 97);
+        	this.btnReset.Location = new System.Drawing.Point(46, 97);
         	this.btnReset.Name = "btnReset";
         	this.btnReset.Size = new System.Drawing.Size(157, 23);
         	this.btnReset.TabIndex = 5;
@@ -235,11 +239,14 @@ namespace XmlParsersAndUi {
         	// 
         	// txtDirectory
         	// 
+        	this.txtDirectory.AllowDrop = true;
         	this.txtDirectory.Location = new System.Drawing.Point(120, 19);
         	this.txtDirectory.Name = "txtDirectory";
         	this.txtDirectory.Size = new System.Drawing.Size(418, 20);
         	this.txtDirectory.TabIndex = 0;
         	this.txtDirectory.TextChanged += new System.EventHandler(this.txtDirectory_TextChanged);
+        	this.txtDirectory.DragDrop += new System.Windows.Forms.DragEventHandler(this.TxtDirectoryDragDrop);
+        	this.txtDirectory.DragEnter += new System.Windows.Forms.DragEventHandler(this.TxtDirectoryDragEnter);
         	// 
         	// label3
         	// 
@@ -252,7 +259,7 @@ namespace XmlParsersAndUi {
         	// 
         	// txtShowBuildFile
         	// 
-        	this.txtShowBuildFile.Location = new System.Drawing.Point(302, 464);
+        	this.txtShowBuildFile.Location = new System.Drawing.Point(221, 464);
         	this.txtShowBuildFile.Name = "txtShowBuildFile";
         	this.txtShowBuildFile.Size = new System.Drawing.Size(157, 23);
         	this.txtShowBuildFile.TabIndex = 4;
@@ -260,11 +267,32 @@ namespace XmlParsersAndUi {
         	this.txtShowBuildFile.UseVisualStyleBackColor = true;
         	this.txtShowBuildFile.Click += new System.EventHandler(this.txtShowBuildFile_Click);
         	// 
+        	// btnCloseMacroSplitter
+        	// 
+        	this.btnCloseMacroSplitter.Location = new System.Drawing.Point(384, 464);
+        	this.btnCloseMacroSplitter.Name = "btnCloseMacroSplitter";
+        	this.btnCloseMacroSplitter.Size = new System.Drawing.Size(157, 23);
+        	this.btnCloseMacroSplitter.TabIndex = 5;
+        	this.btnCloseMacroSplitter.Text = "Close";
+        	this.btnCloseMacroSplitter.UseVisualStyleBackColor = true;
+        	this.btnCloseMacroSplitter.Click += new System.EventHandler(this.BtnCloseMacroSplitterClick);
+        	// 
+        	// btnLoadFolder
+        	// 
+        	this.btnLoadFolder.Location = new System.Drawing.Point(372, 97);
+        	this.btnLoadFolder.Name = "btnLoadFolder";
+        	this.btnLoadFolder.Size = new System.Drawing.Size(157, 23);
+        	this.btnLoadFolder.TabIndex = 28;
+        	this.btnLoadFolder.Text = "Load Folder";
+        	this.btnLoadFolder.UseVisualStyleBackColor = true;
+        	this.btnLoadFolder.Click += new System.EventHandler(this.BtnLoadFolderClick);
+        	// 
         	// BulkMacroSplitterTreeForm
         	// 
         	this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
         	this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
         	this.ClientSize = new System.Drawing.Size(598, 491);
+        	this.Controls.Add(this.btnCloseMacroSplitter);
         	this.Controls.Add(this.txtShowBuildFile);
         	this.Controls.Add(this.groupBox2);
         	this.Controls.Add(this.groupBox1);
@@ -283,6 +311,8 @@ namespace XmlParsersAndUi {
         	this.groupBox2.PerformLayout();
         	this.ResumeLayout(false);
         }
+        private System.Windows.Forms.Button btnLoadFolder;
+        private System.Windows.Forms.Button btnCloseMacroSplitter;
 
         #endregion
 

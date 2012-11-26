@@ -2,30 +2,38 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.Xml.Linq;
-using System.Xml;
 using System.Data.Sql;
 using System.Data.SqlClient;
 using System.Data.SqlServerCe;
+using System.Drawing;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
-using XmlParsersAndUi.Classes;
-using Automation.Common.Utils;
-using Automation.Common;
+using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
+
 using Automation.Backend;
+using Automation.Common;
 using Automation.Common.Classes.Monitoring;
+using Automation.Common.Forms;
+using Automation.Common.Utils;
+using XmlParsersAndUi.Classes;
 
 namespace XmlParsersAndUi {
-    public partial class SetupAdvancedRecForm : Form {
+    public partial class SetupAdvancedRecForm : BaseForm {
 
         public SetupAdvancedRecForm() {
             InitializeComponent();
         }
-
+ 		
+		#region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion        
+     
         XDocument xmlDocument;
         //this list will contain the capture event
         List<CustomTreeNode> captureEventNodes = new List<CustomTreeNode>();
@@ -458,12 +466,7 @@ namespace XmlParsersAndUi {
 
         private void SetupAdvancedRecForm_Load(object sender, EventArgs e) {
             try {
-                try {
-                    if (!string.IsNullOrEmpty(MonitorObject.username)) {
-                        MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
-                    }
-                } catch (Exception) {
-                }
+        		base.LoadForm(this);
                 LoadAvailableARtoList();
                 SetAllCombos();
                 BindCombos();

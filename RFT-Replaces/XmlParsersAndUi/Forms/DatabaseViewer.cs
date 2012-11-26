@@ -11,6 +11,19 @@ using Automation.Backend;
 
 namespace XmlParsersAndUi {
     public partial class DatabaseViewer : Form {
+		
+		 #region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
+		
         public DatabaseViewer() {
             InitializeComponent();
         }

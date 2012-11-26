@@ -17,7 +17,9 @@ using System.Threading;
 
 namespace Automation.Common.Utils {
 	public static class CommonUtils {
-
+		
+		static int LoggedInUserIdVar;
+		
 		public enum UiPrepareFor {
 			Save = 1,
 			Add = 2,
@@ -297,7 +299,7 @@ namespace Automation.Common.Utils {
 			return readText;
 		}
 
-		public static DialogResult ShowConformation(string confirmationText) {
+		public static DialogResult ShowConfirmation(string confirmationText) {
 			return MessageBox.Show(confirmationText, "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 		}
 

@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.IO;
-using XmlParsersAndUi.Forms;
+
+using Automation.Common.Forms;
 using Automation.Common.Utils;
 using XmlParsersAndUi.Classes;
+using XmlParsersAndUi.Forms;
 
 namespace XmlParsersAndUi {
-    public partial class SessionKeyAndTitleForm : Form {
+    public partial class SessionKeyAndTitleForm : BaseForm {
         
         #region Variables
 
@@ -66,6 +68,7 @@ namespace XmlParsersAndUi {
         }
 
         private void SessionKeyAndTitleForm_Load(object sender, EventArgs e) {
+        	base.LoadForm(this);
             Random random = new Random(DateTime.Now.Millisecond);
             txtSessionKey.Text = random.Next(8999).ToString();
         }

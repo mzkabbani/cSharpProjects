@@ -1,4 +1,5 @@
-﻿namespace XmlParsersAndUi.Forms {
+﻿using Automation.Common.Controls;
+namespace XmlParsersAndUi.Forms {
     partial class SDDGeneratorForm {
         /// <summary>
         /// Required designer variable.
@@ -31,7 +32,7 @@
             this.btnReset = new System.Windows.Forms.Button();
             this.btnStartOperation = new System.Windows.Forms.Button();
             this.btnBrowse = new System.Windows.Forms.Button();
-            this.txtInputFile = new System.Windows.Forms.TextBox();
+            this.txtInputFile = new Automation.Common.Controls.AutomationFileBrowserTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gbOutput = new System.Windows.Forms.GroupBox();
             this.tcOutputForms = new System.Windows.Forms.TabControl();
@@ -276,7 +277,7 @@
         private System.Windows.Forms.GroupBox gbInput;
         private System.Windows.Forms.GroupBox gbOutput;
         private System.Windows.Forms.Button btnBrowse;
-        private System.Windows.Forms.TextBox txtInputFile;
+        private AutomationFileBrowserTextBox txtInputFile;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TabControl tcOutputForms;
         private System.Windows.Forms.TabPage tabPage1;

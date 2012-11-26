@@ -142,6 +142,10 @@
     <Compile Include="Classes\TPKBuilder\BuildTaskProperty.cs" />
     <Compile Include="Classes\TPKBuilder\FilledBuildTaskProperty.cs" />
     <Compile Include="Classes\TPKBuilder\TpkBuildTask.cs" />
+    <Compile Include="Controls\AutomationFileBrowserTextBox.cs" />
+    <Compile Include="Controls\AutomationFileBrowserTextBox.Designer.cs">
+      <DependentUpon>AutomationFileBrowserTextBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="Controls\EditorTextDir.cs" />
     <Compile Include="Controls\EditorTextDirUI.cs">
       <SubType>UserControl</SubType>
@@ -168,6 +172,10 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\BaseForm.cs" />
+    <Compile Include="Forms\BaseForm.Designer.cs">
+      <DependentUpon>BaseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\ExceptionForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -190,6 +198,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Controls\MWTreeView.resx">
       <DependentUpon>MWTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\BaseForm.resx">
+      <DependentUpon>BaseForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\ExceptionForm.resx">
       <DependentUpon>ExceptionForm.cs</DependentUpon>
@@ -255,12 +266,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Classes\TPKBuilder" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Automation.Backend\Automation.Backend.csproj">
-      <Project>{6350A836-106C-4C78-A6B2-A7C14D560D90}</Project>
-      <Name>Automation.Backend</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

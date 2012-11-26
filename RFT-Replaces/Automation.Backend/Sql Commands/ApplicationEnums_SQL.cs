@@ -15,9 +15,7 @@ namespace Automation.Backend.Sql_Commands
 	/// </summary>
 	public static class ApplicationEnums_SQL
 	{
-		public ApplicationEnums_SQL()
-		{
-		}
+		
 		
 		public static string commandGetAllApplicationEnums = "Select * from ApplicationEnums";
 		

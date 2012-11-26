@@ -1,4 +1,5 @@
-﻿namespace XmlParsersAndUi {
+﻿using Automation.Common.Controls;
+namespace XmlParsersAndUi {
     partial class BulkMacroSplitterForm {
         /// <summary>
         /// Required designer variable.
@@ -42,7 +43,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
-            this.txtDirectory = new System.Windows.Forms.TextBox();
+            this.txtDirectory = new AutomationFileBrowserTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtShowBuildFile = new System.Windows.Forms.Button();
             this.contextMenuStrip1.SuspendLayout();
@@ -288,7 +289,7 @@
         private System.Windows.Forms.TextBox txtOutputDir;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnBrowse;
-        private System.Windows.Forms.TextBox txtDirectory;
+        private AutomationFileBrowserTextBox txtDirectory;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkFsEvents;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;

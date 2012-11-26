@@ -13,6 +13,19 @@ using Automation.Backend;
 
 namespace XmlParsersAndUi.Forms {
     public partial class ConvertToEnumForm : Form {
+		
+		 #region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
+        
         public ConvertToEnumForm() {
             InitializeComponent();
         }

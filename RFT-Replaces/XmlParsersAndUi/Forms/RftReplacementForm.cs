@@ -2,21 +2,23 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Windows.Forms;
-using System.IO;
-using FtpLib;
 using System.Diagnostics;
+using System.Drawing;
+using System.IO;
+using System.Linq;
 using System.Security.AccessControl;
-using System.Threading;
+using System.Text;
 using System.Text.RegularExpressions;
-using Automation.Common.Utils;
+using System.Threading;
+using System.Windows.Forms;
+
 using Automation.Common.Classes.Monitoring;
+using Automation.Common.Forms;
+using Automation.Common.Utils;
+using FtpLib;
 
 namespace XmlParsersAndUi {
-    public partial class RftReplacementForm : Form {
+    public partial class RftReplacementForm : BaseForm {
 
         #region Variables
         
@@ -239,12 +241,10 @@ namespace XmlParsersAndUi {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
-            if (!Directory.Exists(downloadDir)) {
+        	base.LoadForm(this);
+        	if (!Directory.Exists(downloadDir)) {
                 Directory.CreateDirectory(downloadDir);
-            }
-            if (!string.IsNullOrEmpty(MonitorObject.username)) {
-                MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
-            }
+            }            
         }
 
         private void txtRemoteDest_TextChanged(object sender, EventArgs e) {

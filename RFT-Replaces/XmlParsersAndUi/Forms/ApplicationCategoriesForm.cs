@@ -13,6 +13,7 @@ using System.Windows.Forms;
 
 using Automation.Common.Classes;
 using Automation.Common.Utils;
+using XmlParsersAndUi.Classes;
 
 namespace Manifest.Forms
 {
@@ -25,6 +26,16 @@ namespace Manifest.Forms
 		DataTable AllCategories = new DataTable();
 		#endregion
 		
+
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
 		
 		public ApplicationCategoriesForm()
 		{
@@ -39,7 +50,7 @@ namespace Manifest.Forms
 		}
 		
 		DataTable GetAllAvailableCategories(){
-			 return AppEnum.SelectAllEnumsAsDataTable();		
+			return Automation.Backend.Classes.ApplicationEnumsBackend.GetAllAppEnums();
 		}
 		
 		void ApplicationCategoriesFormLoad(object sender, EventArgs e)
@@ -57,7 +68,7 @@ namespace Manifest.Forms
 			AllCategories = AllCategories.DefaultView.ToTable();
 			DataRow[] result = AllCategories.Select("type='"+cboSelectedValue+"'");
 			foreach (DataRow row in result) {
-				AppEnum app = new AppEnum("","",1,DateTime.Now,"",0);
+				ApplicationEnumObject app = new ApplicationEnumObject("","",1,DateTime.Now,"",0);
 			}
 			
 		}

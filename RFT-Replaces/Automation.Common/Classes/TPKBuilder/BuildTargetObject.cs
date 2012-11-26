@@ -47,11 +47,15 @@ namespace Automation.Common.Classes.TPKBuilder {
         	usedMacrodefs = new List<BuildTask>();
             string textRepresentation = "\n\t<target name=\""+this.Name+"\" >\r\n";
             foreach (BuildTask buildTask in BuildTasks) {
-            	if (buildTask.CategoryId == (int)AppEnum.BuildTaskCat.Macrodef ||
-            	   buildTask.CategoryId == (int)AppEnum.BuildTaskCat.MacrodefParallel) {
+            	if (buildTask.CategoryId == (int)ApplicationEnumerations.BuildTaskCat.Macrodef ||
+            	   buildTask.CategoryId == (int)ApplicationEnumerations.BuildTaskCat.MacrodefParallel) {
             	   usedMacrodefs.Add(buildTask);
                 }
+            	if (string.IsNullOrEmpty(buildTask.SuppliedComment)) {
+            		textRepresentation = string.Concat(textRepresentation,"\n"+buildTask.GetTextRepresentation());            		
+            	}else{
             	textRepresentation = string.Concat(textRepresentation,"\n<!-- "+buildTask.SuppliedComment+" -->\n"+buildTask.GetTextRepresentation());
+            	}
             }
             textRepresentation = string.Concat(textRepresentation,"\r\n\t</target>");
             return textRepresentation;

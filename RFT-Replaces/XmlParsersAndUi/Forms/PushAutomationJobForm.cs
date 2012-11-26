@@ -17,6 +17,19 @@ namespace XmlParsersAndUi.Forms {
 
 
     public partial class PushAutomationJobForm : Form {
+		
+		 #region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
+		
         public PushAutomationJobForm() {
             InitializeComponent();
         }

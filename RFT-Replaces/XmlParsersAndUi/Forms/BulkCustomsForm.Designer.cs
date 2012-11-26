@@ -1,4 +1,5 @@
-﻿namespace XmlParsersAndUi {
+﻿using Automation.Common.Controls;
+namespace XmlParsersAndUi {
     partial class BulkCustomsForm {
         /// <summary>
         /// Required designer variable.
@@ -32,7 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnReset = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
-            this.txtInputDir = new System.Windows.Forms.TextBox();
+            this.txtInputDir = new Automation.Common.Controls.AutomationFileBrowserTextBox();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
@@ -169,7 +170,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.TextBox txtInputDir;
+        private AutomationFileBrowserTextBox txtInputDir;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtCustom;

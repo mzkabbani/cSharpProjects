@@ -21,9 +21,24 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS {
     /// Description of PackReferenceForm.
     /// </summary>
     public partial class PackReferenceForm : Form {
+    	
+    	
+    	#region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
+    	
 
         String commandText = "INSERT INTO QA_PAC_REFERENCES_INT  (ID,EXECUTION_TYPE,TE_REF,JOB_ID,TEST_PACKAGE,VERSION,BUILD_ID,PAC_STATUS,FUNC_STATUS,BZIP_FILE_PATH,REMOTE_HOST,PID,NPID,ELAPSED,MIN_ELAPSED,MAX_ELAPSED,AVERAGE_ELAPSED,ELAPSED_CUMUL,CPU,MAX_CPU,MIN_CPU,AVERAGE_CPU,CPU_CUMUL,RDB_COM,RDB_COM_CUMUL,RDB,RDB_CUMUL,LOGICAL_IO,PHYSICAL_IO,CREATE_N,USE_N,SELECT_N,TOTAL_TRC_TIME,MEMORY,HEAP_MEMORY,FILE_NAME,COMMENT,REFERENCE_TYPE,TPK_NICKNAME,TPK_SVN_BRANCH,ALTER_N,UPDATE_N,INSERT_N,DELETE_N,OPERATING_SYSTEM,S_PROC_N,IDNTTY,TOTAL_NBR_QUERIES,SUM_CPU,SUM_ELAPSED,LOGICAL_TE,SELECTED_TE,TE_GROUP) VALUES (@ID,@EXECUTION_TYPE,@TE_REF,@JOB_ID,@TEST_PACKAGE,@VERSION,@BUILD_ID,@PAC_STATUS,@FUNC_STATUS,@BZIP_FILE_PATH,@REMOTE_HOST,@PID,@NPID,@ELAPSED,@MIN_ELAPSED,@MAX_ELAPSED,@AVERAGE_ELAPSED,@ELAPSED_CUMUL,@CPU,@MAX_CPU,@MIN_CPU,@AVERAGE_CPU,@CPU_CUMUL,@RDB_COM,@RDB_COM_CUMUL,@RDB,@RDB_CUMUL,@LOGICAL_IO,@PHYSICAL_IO,@CREATE_N,@USE_N,@SELECT_N,@TOTAL_TRC_TIME,@MEMORY,@HEAP_MEMORY,@FILE_NAME,@COMMENT,@REFERENCE_TYPE,@TPK_NICKNAME,@TPK_SVN_BRANCH,@ALTER_N,@UPDATE_N,@INSERT_N,@DELETE_N,@OPERATING_SYSTEM,@S_PROC_N,@IDNTTY,@TOTAL_NBR_QUERIES,@SUM_CPU,@SUM_ELAPSED,@LOGICAL_TE,@SELECTED_TE,@TE_GROUP)";
 
+        public string connectionString = "Data Source='daisy';Port='4100';UID='INSTAL';PWD='INSTALL';Database='GLOBALQA_UDT';";
 
         public PackReferenceForm() {
             //
@@ -36,7 +51,7 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS {
             //
         }
 
-        List<string> GetSuppliedTEs (string inputText) {
+        private List<string> GetSuppliedTEs (string inputText) {
             List<string> teList = new List<string>();
             string[] inputSplit = inputText.Split(new char[] {','},StringSplitOptions.RemoveEmptyEntries);
             for (int i = 0; i < inputSplit.Length; i++) {
@@ -45,7 +60,7 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS {
             return teList;
         }
 
-        DataTable GetTestDataTableFromDB(string testID, Sybase.Data.AseClient.AseConnection conn) {
+        private DataTable GetTestDataTableFromDB(string testID, Sybase.Data.AseClient.AseConnection conn) {
             DataTable table = new DataTable(testID);
             using (Sybase.Data.AseClient.AseDataAdapter adapter = new Sybase.Data.AseClient.AseDataAdapter("select * from QA_PAC_TIMING where TE_REF like '"+testID+"'" ,conn)) {
                 adapter.Fill(table);
@@ -53,7 +68,7 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS {
             return table;
         }
 
-        object[] GetAverageCPUFromRowsAndClosestTE(string executionCtx, DataSet workingSet) {
+        private object[] GetAverageCPUFromRowsAndClosestTE(string executionCtx, DataSet workingSet) {
             object[] result = new object[5];
             DataTable tempSameExecutionCTX = workingSet.Tables[0].Clone();
             tempSameExecutionCTX.Rows.Clear();
@@ -81,9 +96,7 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS {
             return result;
         }
 
-        public string connectionString = "Data Source='daisy';Port='4100';UID='INSTAL';PWD='INSTALL';Database='GLOBALQA_UDT';";
-
-        void BtnGetResultsClick(object sender, EventArgs e) {
+        private void BtnGetResultsClick(object sender, EventArgs e) {
             try {
                 List<string> suppliedTEs = GetSuppliedTEs(txtInputTes.Text.Trim());
                 DataSet set = new DataSet("TE Collection");
@@ -125,7 +138,7 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS {
             }
         }
 
-        void BtnResetClick(object sender, EventArgs e) {
+        private void BtnResetClick(object sender, EventArgs e) {
             dgvResults.Rows.Clear();
             dgvResults.Columns.Clear();
             dgvIntermediate.DataSource = new DataTable();
@@ -133,6 +146,7 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS {
             btnGetResults.Enabled = true;
             btnInsertToDB.Enabled = true;
             btnInsertToPac.Enabled = false;
+            txtTELogical.Clear();
             tcResults.SelectTab(0);
         }
 
@@ -151,7 +165,7 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS {
             return gridValues;
         }
 
-        void FillLocalUDTTable(DataTable gridValues) {
+        private void FillLocalUDTTable(DataTable gridValues) {
             Sybase.Data.AseClient.AseConnection conn = new Sybase.Data.AseClient.AseConnection(connectionString);
             PAC_TimingObject timingObject = new PAC_TimingObject();
             string maxLogicalTeNumber =  "PAR.TE.";
@@ -161,7 +175,6 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS {
                 foreach (DataRow row in gridValues.Rows) {
                     string selectedTe = row["closestCPUTENumber"].ToString();
                     string executionContext = row["executionCtx"].ToString();
-
                     using (Sybase.Data.AseClient.AseDataAdapter adapter = new Sybase.Data.AseClient.AseDataAdapter("Select * from QA_PAC_TIMING where TE_REF='"+selectedTe+"' and EXECUTION_TYPE='"+executionContext+"'" ,conn)) {
                         int rowsNumber =   adapter.Fill(table);
                         if (rowsNumber >1) {
@@ -196,7 +209,7 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS {
             }
         }
 
-        void BtnInsertToDBClick(object sender, EventArgs e) {
+        private void BtnInsertToDBClick(object sender, EventArgs e) {
             try {
                 DataTable gridValues = CopyDataGridToDataTable(dgvResults);
                 FillLocalUDTTable(gridValues);
@@ -208,16 +221,15 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS {
             }
         }
 
-        void BtnInsertToPacClick(object sender, EventArgs e) {
+        private void BtnInsertToPacClick(object sender, EventArgs e) {
             Sybase.Data.AseClient.AseConnection conn = new Sybase.Data.AseClient.AseConnection(connectionString);
             Sybase.Data.AseClient.AseTransaction transaction= null;
             try {
                 conn.Open();
                 transaction = conn.BeginTransaction();
-                // conn.Transaction = transaction;
                 InsertPacReferences(ref conn, transaction);
                 transaction.Commit();
-                CommonUtils.ShowInformation("Insert into QA_PAC_TIMING is complete!",false);
+                CommonUtils.ShowInformation("Insert into QA_PAC_REFERENCES_INT is complete, logical TE is ["+txtTELogical.Text+"]",false);
             } catch (Exception ex) {
                 if (transaction != null) {
                     transaction.Rollback();
@@ -228,11 +240,12 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS {
             }
         }
 
-        void InsertPacReferences(ref Sybase.Data.AseClient.AseConnection conn, Sybase.Data.AseClient.AseTransaction transaction) {
+        private void InsertPacReferences(ref Sybase.Data.AseClient.AseConnection conn, Sybase.Data.AseClient.AseTransaction transaction) {
             foreach (DataGridViewRow gridRow in dgvIntermediate.Rows) {
                 string idInPacTiming = gridRow.Cells["ID"].Value.ToString();
                 string teLogical = gridRow.Cells["LOGICAL_TE"].Value.ToString();
                 string referenceType = gridRow.Cells["REFERENCE_TYPE"].Value.ToString().Replace("REACHED", "EXPECTED");
+                txtTELogical.Text = "TE Logical: "+teLogical;
                 Sybase.Data.AseClient.AseCommand commandUpdateValuesInPacTiming = new Sybase.Data.AseClient.AseCommand(" UPDATE QA_PAC_TIMING " + " SET TE_REF='" + teLogical + "' " + " REFERENCE_TYPE='" + referenceType + "' " + " WHERE ID=" + idInPacTiming, conn,transaction);
                 Sybase.Data.AseClient.AseCommand commandInsertToIntermediate = new Sybase.Data.AseClient.AseCommand(commandText, conn,transaction);
                 Sybase.Data.AseClient.AseCommand commandSelectMaxIdFromInter = new Sybase.Data.AseClient.AseCommand("Select max(ID) from QA_PAC_REFERENCES_INT", conn,transaction);
@@ -247,7 +260,7 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS {
                 int counter = 0;
                 commandInsertToIntermediate.Parameters.Add("@ID", maxIdIntermediate);
                 string valuesInsertedToLog = string.Empty;
-                
+
                 for (int i = 0; i < keyArray.Length; i++) {
                     counter = i;
                     timingObject.paramtersWithValues[keyArray[i]] = gridRow.Cells[keyArray[i]].Value;
@@ -258,15 +271,14 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS {
                     }
                     valuesInsertedToLog = valuesInsertedToLog +" "+keyArray[i]+"="+timingObject.paramtersWithValues[keyArray[i]].ToString();
                 }
-
                 commandInsertToIntermediate.ExecuteNonQuery();
-                commandUpdateValuesInPacTiming.ExecuteScalar();
+                //commandUpdateValuesInPacTiming.ExecuteScalar();
                 valuesInsertedToLog = "Inserted into QA_PAC_REFERENCES_INT values "+valuesInsertedToLog+"\n\n\nUpdated QA_PAC_TIMING on ID="+idInPacTiming;
                 CommonUtils.LogInformation(valuesInsertedToLog);
             }
         }
 
-        void PackReferenceFormLoad(object sender, EventArgs e) {
+        private void PackReferenceFormLoad(object sender, EventArgs e) {
             CommonUtils.CreateLogsDirectory();
         }
     }

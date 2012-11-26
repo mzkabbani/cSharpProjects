@@ -13,6 +13,19 @@ using Automation.Common.Utils;
 
 namespace XmlParsersAndUi.Forms {
     public partial class OracleUpdaterForm : Form {
+		
+		 #region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
+		
         public OracleUpdaterForm() {
             InitializeComponent();
         }

@@ -11,6 +11,19 @@ using Automation.Common.Utils;
 
 namespace XmlParsersAndUi.Forms {
     public partial class FindForm : Form {
+		
+		 #region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
+		
         public FindForm() {
             InitializeComponent();
         }

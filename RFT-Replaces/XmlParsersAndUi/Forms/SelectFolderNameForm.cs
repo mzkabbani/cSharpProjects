@@ -6,12 +6,27 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using Automation.Common.Utils;
+
 using Automation.Backend;
+using Automation.Common.Forms;
+using Automation.Common.Utils;
 using XmlParsersAndUi.Classes;
 
 namespace XmlParsersAndUi.Forms {
-    public partial class SelectFolderNameForm : Form {
+    public partial class SelectFolderNameForm : BaseForm {
+		
+		 #region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
+		
         public SelectFolderNameForm() {
             InitializeComponent();
         }
@@ -33,6 +48,7 @@ namespace XmlParsersAndUi.Forms {
 
         private void SelectFolderNameForm_Load(object sender, EventArgs e) {
             try {
+				base.LoadForm(this);
                 DataSet dataSet = Folder_Names.GetAllFolderNamesAsDataset();
                 dataSet.Relations.Add("NodeRelation", dataSet.Tables[0].Columns["id"], dataSet.Tables[0].Columns["parentId"]);
 

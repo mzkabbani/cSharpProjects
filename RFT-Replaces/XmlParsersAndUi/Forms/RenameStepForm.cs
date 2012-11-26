@@ -7,8 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
+using Automation.Common.Forms;
+
 namespace XmlParsersAndUi.Forms {
-    public partial class RenameStepForm : Form {
+    public partial class RenameStepForm : BaseForm {
+		
+		 #region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
+		
         string defaultStepTitle;
 
         public RenameStepForm(string oldStepTitle) {
@@ -17,6 +32,7 @@ namespace XmlParsersAndUi.Forms {
         }
 
         private void RenameStepForm_Load(object sender, EventArgs e) {
+        	base.LoadForm(this);
             txtNewStepTitle.Text = defaultStepTitle;
         }
 

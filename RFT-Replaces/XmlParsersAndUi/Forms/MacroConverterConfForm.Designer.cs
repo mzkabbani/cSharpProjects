@@ -23,11 +23,14 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+        	this.components = new System.ComponentModel.Container();
         	System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MacroConverterConfForm));
         	this.tabControl1 = new System.Windows.Forms.TabControl();
         	this.tabPage1 = new System.Windows.Forms.TabPage();
         	this.groupBox2 = new System.Windows.Forms.GroupBox();
         	this.lvAvailableEvents = new XmlParsersAndUi.DragAndDropListView();
+        	this.cmsAvailableRules = new System.Windows.Forms.ContextMenuStrip(this.components);
+        	this.moveToGroupToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
         	this.btnReloadCapturePoints = new System.Windows.Forms.Button();
         	this.lbAdvancedCE = new System.Windows.Forms.ListBox();
         	this.gbRuleDefinition = new System.Windows.Forms.GroupBox();
@@ -58,6 +61,7 @@
         	this.tabControl1.SuspendLayout();
         	this.tabPage1.SuspendLayout();
         	this.groupBox2.SuspendLayout();
+        	this.cmsAvailableRules.SuspendLayout();
         	this.gbRuleDefinition.SuspendLayout();
         	this.gbSpecificConfNodes.SuspendLayout();
         	this.grpBoxAttr.SuspendLayout();
@@ -110,6 +114,7 @@
         	        	        	| System.Windows.Forms.AnchorStyles.Left) 
         	        	        	| System.Windows.Forms.AnchorStyles.Right)));
         	this.lvAvailableEvents.AutoArrange = false;
+        	this.lvAvailableEvents.ContextMenuStrip = this.cmsAvailableRules;
         	this.lvAvailableEvents.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
         	this.lvAvailableEvents.FullRowSelect = true;
         	this.lvAvailableEvents.GridLines = true;
@@ -128,6 +133,19 @@
         	this.lvAvailableEvents.DragOver += new System.Windows.Forms.DragEventHandler(this.LvAvailableEventsDragOver);
         	this.lvAvailableEvents.DragLeave += new System.EventHandler(this.LvAvailableEventsDragLeave);
         	this.lvAvailableEvents.Leave += new System.EventHandler(this.LvAvailableEventsLeave);
+        	// 
+        	// cmsAvailableRules
+        	// 
+        	this.cmsAvailableRules.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+        	        	        	this.moveToGroupToolStripMenuItem});
+        	this.cmsAvailableRules.Name = "cmsAvailableRules";
+        	this.cmsAvailableRules.Size = new System.Drawing.Size(159, 48);
+        	// 
+        	// moveToGroupToolStripMenuItem
+        	// 
+        	this.moveToGroupToolStripMenuItem.Name = "moveToGroupToolStripMenuItem";
+        	this.moveToGroupToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+        	this.moveToGroupToolStripMenuItem.Text = "Move To Group";
         	// 
         	// btnReloadCapturePoints
         	// 
@@ -454,6 +472,7 @@
         	this.tabControl1.ResumeLayout(false);
         	this.tabPage1.ResumeLayout(false);
         	this.groupBox2.ResumeLayout(false);
+        	this.cmsAvailableRules.ResumeLayout(false);
         	this.gbRuleDefinition.ResumeLayout(false);
         	this.gbRuleDefinition.PerformLayout();
         	this.gbSpecificConfNodes.ResumeLayout(false);
@@ -464,6 +483,8 @@
         	this.gbSpecificConfDef.PerformLayout();
         	this.ResumeLayout(false);
         }
+        private System.Windows.Forms.ToolStripMenuItem moveToGroupToolStripMenuItem;
+        private System.Windows.Forms.ContextMenuStrip cmsAvailableRules;
         private XmlParsersAndUi.DragAndDropListView lvAvailableEvents;
       
 

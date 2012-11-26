@@ -13,7 +13,20 @@ using Automation.Common;
 namespace XmlParsersAndUi.Forms {
     public partial class EnvComparisonCategoryForm : Form {
         
-        public ComparisonCategory workingCompCategory ;
+        #region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
+        
+		
+		public ComparisonCategory workingCompCategory ;
         
         public EnvComparisonCategoryForm() {
             InitializeComponent();

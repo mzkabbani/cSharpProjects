@@ -1,27 +1,28 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
-using System.Xml.Linq;
-using System.Xml;
-using System.IO;
-using XmlParsersAndUi.Classes;
-using System.Threading;
-using XmlParsersAndUi.Controls;
 using System.Text.RegularExpressions;
+using System.Threading;
+using System.Windows.Forms;
+using System.Xml;
+using System.Xml.Linq;
 
-using System.Collections;
-using Automation.Common.Utils;
-using Automation.Common;
 using Automation.Backend;
+using Automation.Common;
 using Automation.Common.Classes.Monitoring;
+using Automation.Common.Forms;
+using Automation.Common.Utils;
+using XmlParsersAndUi.Classes;
+using XmlParsersAndUi.Controls;
 
 namespace XmlParsersAndUi.Forms {
-    public partial class SecondLevelCleanupForm : Form {
+    public partial class SecondLevelCleanupForm : BaseForm {
 
         #region Contructor
 
@@ -762,7 +763,7 @@ namespace XmlParsersAndUi.Forms {
                 FillDatagridWithResults(backGroundWorkerObject);
                 btnResetForm.Visible = true;
 
-                DialogResult dialogResult = CommonUtils.ShowConformation("Search completed, with " + lblFoundNodesCound.Text + " total hits!\n Proceed to replacement?");
+                DialogResult dialogResult = CommonUtils.ShowConfirmation("Search completed, with " + lblFoundNodesCound.Text + " total hits!\n Proceed to replacement?");
                 if (dialogResult == DialogResult.Yes) {
                     //REPLACEMENT_TOTAL_USAGE_COUNT = Advanced_Replacements.GetTotalAdvanceReplacementUsageCount();
                     SetupUiForReplacements();
@@ -1046,11 +1047,8 @@ namespace XmlParsersAndUi.Forms {
 
         private void SecondLevelCleanupForm_Load(object sender, EventArgs e) {
             try {
+        		base.LoadForm(this);
                 CLEANUPFORM_EVENTS_SEARCH_PATTERN = Application_Settings.GetAppConfigValueByKey(Application_Settings.ApplicationConfigKeys.CleanUpEventsSearchPattern) as string;
-                if (!string.IsNullOrEmpty(MonitorObject.username)) {
-                    MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
-                }
-
                 BACKUP_DIRECTORY = Path.GetTempPath() + @"\Backup-" + DateTime.Now.Ticks;
                 if (!Directory.Exists(BACKUP_DIRECTORY)) {
                     Directory.CreateDirectory(BACKUP_DIRECTORY);

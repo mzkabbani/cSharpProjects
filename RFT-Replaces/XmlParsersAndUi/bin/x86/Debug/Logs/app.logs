@@ -1586,3 +1586,149 @@ System.ArgumentException: Column 'categoryName' does not belong to table Table.
    at System.Data.DataRow.get_Item(String columnName)
    at XmlParsersAndUi.Forms.SecondLevelCleanupForm.LoadAvailableAdvancedRecommendations() in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SecondLevelCleanupForm.cs:line 60
    at XmlParsersAndUi.Forms.SecondLevelCleanupForm.SecondLevelCleanupForm_Load(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SecondLevelCleanupForm.cs:line 1059
+
+
+
+
+11/1/2012 4:39:50 PM
+
+
+Object reference not set to an instance of an object.
+
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at XmlParsersAndUi.Forms.MacroConverterConfForm.btnMoveGroup(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\MacroConverterConfForm.cs:line 514
+
+
+
+
+11/6/2012 10:44:00 AM
+
+
+Object reference not set to an instance of an object.
+
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at XmlParsersAndUi.SetupAdvancedRecForm.FillReplacementsListBox(AdvancedRecomendation selectedAdvancedRec) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 899
+   at XmlParsersAndUi.SetupAdvancedRecForm.cboCapturePoint_SelectedIndexChanged(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SetupAdvancedRecForm.cs:line 875
+
+
+
+
+11/8/2012 12:42:24 PM
+
+
+Object reference not set to an instance of an object.
+
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at XmlParsersAndUi.BulkMacroSplitterTreeForm.BtnCloseMacroSplitterClick(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\BulkMacroSplitterTreeForm.cs:line 693
+
+
+
+
+11/8/2012 5:47:46 PM
+
+
+Object reference not set to an instance of an object.
+
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at XmlParsersAndUi.BulkMacroSplitterTreeForm.JoinSplitMacro() in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\BulkMacroSplitterTreeForm.cs:line 669
+   at XmlParsersAndUi.BulkMacroSplitterTreeForm.BtnLoadFolderClick(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\BulkMacroSplitterTreeForm.cs:line 697
+
+
+
+
+11/8/2012 5:48:22 PM
+
+
+Object reference not set to an instance of an object.
+
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at XmlParsersAndUi.BulkMacroSplitterTreeForm.JoinSplitMacro() in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\BulkMacroSplitterTreeForm.cs:line 669
+   at XmlParsersAndUi.BulkMacroSplitterTreeForm.BtnLoadFolderClick(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\BulkMacroSplitterTreeForm.cs:line 697
+
+
+
+
+11/8/2012 5:59:48 PM
+
+
+Could not find file 'D:\EclipseWorkspaceOrig\TPK0000973\tpk\apps\fs\quality\public\automation\tests\par\macros\PAR_Functionality\PaR-_consolidated_method-F5B4\step1_events.xml'.
+
+
+System.IO.FileNotFoundException: Could not find file 'D:\EclipseWorkspaceOrig\TPK0000973\tpk\apps\fs\quality\public\automation\tests\par\macros\PAR_Functionality\PaR-_consolidated_method-F5B4\step1_events.xml'.
+File name: 'D:\EclipseWorkspaceOrig\TPK0000973\tpk\apps\fs\quality\public\automation\tests\par\macros\PAR_Functionality\PaR-_consolidated_method-F5B4\step1_events.xml'
+   at System.IO.__Error.WinIOError(Int32 errorCode, String maybeFullPath)
+   at System.IO.FileStream.Init(String path, FileMode mode, FileAccess access, Int32 rights, Boolean useRights, FileShare share, Int32 bufferSize, FileOptions options, SECURITY_ATTRIBUTES secAttrs, String msgPath, Boolean bFromProxy)
+   at System.IO.FileStream..ctor(String path, FileMode mode, FileAccess access, FileShare share, Int32 bufferSize, FileOptions options)
+   at System.IO.StreamReader..ctor(String path, Encoding encoding, Boolean detectEncodingFromByteOrderMarks, Int32 bufferSize)
+   at System.IO.StreamReader..ctor(String path)
+   at Automation.Common.Utils.CommonUtils.ReadFile(String filePath) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\Automation.Common\Utils\CommonUtils.cs:line 288
+   at XmlParsersAndUi.BulkMacroSplitterTreeForm.JoinSplitMacro() in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\BulkMacroSplitterTreeForm.cs:line 671
+   at XmlParsersAndUi.BulkMacroSplitterTreeForm.BtnLoadFolderClick(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\BulkMacroSplitterTreeForm.cs:line 697
+
+
+
+
+11/8/2012 6:01:38 PM
+
+
+The output directory does not exist yet
+
+
+
+
+
+
+
+11/9/2012 8:59:03 AM
+
+
+Object reference not set to an instance of an object.
+
+
+System.NullReferenceException: Object reference not set to an instance of an object.
+   at XmlParsersAndUi.Forms.TpkBuilder.TaskAdditionForm.ValidateGrid() in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\TpkBuilder\TaskAdditionForm.cs:line 120
+   at XmlParsersAndUi.Forms.TpkBuilder.TaskAdditionForm.BtnProceedBuildTaskClick(Object sender, EventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\TpkBuilder\TaskAdditionForm.cs:line 159
+
+
+
+
+11/9/2012 3:56:48 PM
+
+
+An exception occurred during the operation, making the result invalid.  Check InnerException for exception details.
+
+
+System.Reflection.TargetInvocationException: An exception occurred during the operation, making the result invalid.  Check InnerException for exception details. ---> System.Xml.XmlException: Unexpected XML declaration. The XML declaration must be the first node in the document, and no white space characters are allowed to appear before it. Line 1, position 5.
+   at System.Xml.XmlTextReaderImpl.Throw(Exception e)
+   at System.Xml.XmlTextReaderImpl.Throw(String res, String arg)
+   at System.Xml.XmlTextReaderImpl.ParsePI(BufferBuilder piInDtdStringBuilder)
+   at System.Xml.XmlTextReaderImpl.ParseDocumentContent()
+   at System.Xml.XmlTextReaderImpl.Read()
+   at System.Xml.Linq.XDocument.Load(XmlReader reader, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text, LoadOptions options)
+   at System.Xml.Linq.XDocument.Parse(String text)
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.ParseTargetedFile(AdvancedRecomendation captureEvent, String readText) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 145
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.SearchAndGenerate(String fileName, List`1 selectedCaptureEvents) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 121
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_DoWork(Object sender, DoWorkEventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 57
+   at System.ComponentModel.BackgroundWorker.OnDoWork(DoWorkEventArgs e)
+   at System.ComponentModel.BackgroundWorker.WorkerThreadStart(Object argument)
+   --- End of inner exception stack trace ---
+   at System.ComponentModel.AsyncCompletedEventArgs.RaiseExceptionIfNecessary()
+   at System.ComponentModel.RunWorkerCompletedEventArgs.get_Result()
+   at XmlParsersAndUi.Forms.SDDGeneratorForm.bwSearchReplace_RunWorkerCompleted(Object sender, RunWorkerCompletedEventArgs e) in c:\Documents and Settings\mkabbani\My Documents\Visual Studio 2008\Projects\RFT-Replaces\XmlParsersAndUi\Forms\SDDGeneratorForm.cs:line 67
+
+
+
+
+11/9/2012 5:26:53 PM
+
+
+There was an error parsing the query. [ Token line number = 1,Token line offset = 256,Token in error = id ]
+
+
+There was an error parsing the query. [ Token line number = 1,Token line offset = 256,Token in error = id ]

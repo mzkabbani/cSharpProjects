@@ -790,5 +790,40 @@ string doneFiles="";
                 conn.Close();
             }
         }
+        
+        void Button7Click(object sender, EventArgs e)
+        {
+        	  string[] fileList = Directory.GetFiles(txtInputFile.Text, "config.xml", SearchOption.AllDirectories);
+            string operatedFiles = "";
+            Regex regex = new Regex("<File>(.*)</File>");
+            string foundFiles = "";
+            string foundFiles2 = "";
+            for (int i = 0; i < fileList.Length; i++) {
+                StreamReader reader = new StreamReader(fileList[i]);               
+                string readText = string.Empty;
+                try {
+                    readText = reader.ReadToEnd();
+                } finally {
+                    if (reader != null) {
+                        reader.Close();
+                        reader.Dispose();
+                    }
+                	
+                	foreach (Match match in Regex.Matches(readText,"<File>(.*)</File>")){
+                		foundFiles = foundFiles+"\r\n" +match.Groups[1].Value.ToString();
+                	    foundFiles2 = foundFiles2 +"\r\n TPK:"+Directory.GetParent(Directory.GetParent(fileList[i]).FullName)+" - "+Directory.GetParent(fileList[i])+" fileName: " +match.Groups[1].Value.ToString();
+                	      	
+                	}
+                	
+                 
+                 
+                }
+            }
+            
+            
+            CommonUtils.WriteFile("D:/AddopNames/fileNames.txt",foundFiles);
+             CommonUtils.WriteFile("D:/AddopNames/fileNamesOrg.txt",foundFiles2);
+            MessageBox.Show("Done");
+        }
     }
 }

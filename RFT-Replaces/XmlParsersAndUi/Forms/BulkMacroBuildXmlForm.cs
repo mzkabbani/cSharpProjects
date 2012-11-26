@@ -9,7 +9,18 @@ using System.Windows.Forms;
 
 namespace XmlParsersAndUi.Forms {
     public partial class BulkMacroBuildXmlForm : Form {
-
+ 		
+		#region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
         string passedBuildText = string.Empty;
 
         public BulkMacroBuildXmlForm(string buildText) {

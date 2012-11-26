@@ -15,6 +15,7 @@ using System.Windows.Forms;
 using Automation.Common;
 using Automation.Common.Classes;
 using Automation.Common.Classes.TPKBuilder;
+using Automation.Common.Forms;
 using Automation.Common.Utils;
 using Manifest.Forms.TpkBuilder;
 
@@ -22,7 +23,7 @@ namespace XmlParsersAndUi.Forms.TpkBuilder {
     /// <summary>
     /// Description of BuildGeneratorForm.
     /// </summary>
-    public partial class BuildGeneratorForm : Form {
+    public partial class BuildGeneratorForm : BaseForm {
 
         #region Variables
 
@@ -31,9 +32,12 @@ namespace XmlParsersAndUi.Forms.TpkBuilder {
         string buildInitialText = "<project default=\"run\">\r\n\t<target name=\"run\">\r\n\t</target>\r\n</project>";
         List<BuildTargetObject> availableTargets = new List<BuildTargetObject>();
         List<BuildTask> macrodefsUsed = new List<BuildTask>();
+        List<BuildTask> AllMacrodefsUsed = new List<BuildTask>();
+
         #endregion
 
-
+        #region Constructor
+        
         public BuildGeneratorForm() {
             //
             // The InitializeComponent() call is required for Windows Forms designer support.
@@ -43,22 +47,25 @@ namespace XmlParsersAndUi.Forms.TpkBuilder {
             // TODO: Add constructor code after the InitializeComponent() call.
             //
         }
+        
+        #endregion
 
-        void GenerateOutputToUI(List<BuildTargetObject> targets) {
+        #region Methods
 
+        private void GenerateOutputToUI(List<BuildTargetObject> targets) {
             tvBuildSequence.Nodes.Clear();
             string joinedTargets = string.Empty;
-
             TreeNode projectNode = tvBuildSequence.Nodes.Add("projectMain","Project Name:Main Default:run");
-
-
             foreach (BuildTargetObject target in targets) {
                 #region Text
                 macrodefsUsed = new List<BuildTask>();
                 joinedTargets =  string.Concat(joinedTargets,target.GetTextRepresentation(out macrodefsUsed));
-
-                joinedTargets =joinedTargets + AddUsedMacrodefs(macrodefsUsed);
-
+                joinedTargets =joinedTargets + AddUsedMacrodefs(macrodefsUsed,AllMacrodefsUsed);
+                foreach (BuildTask macrodef in macrodefsUsed) {
+                    if (!AllMacrodefsUsed.Contains(macrodef)) {
+                        AllMacrodefsUsed.Add(macrodef);
+                    }
+                }
                 #endregion
 
                 #region TreeView
@@ -67,34 +74,41 @@ namespace XmlParsersAndUi.Forms.TpkBuilder {
 
                 #endregion
             }
-
             string xmlRepresentation = CommonUtils.FormatXml("<project name=\"Main\" default=\"run\">"+ joinedTargets+"\r\n</project>");
             txtEditorBText.Text = xmlRepresentation;
             tvBuildSequence.ExpandAll();
+
             #region datagrid
 
             #endregion
         }
 
-        string AddUsedMacrodefs( List<BuildTask> usedMacrodefs) {
+        private string AddUsedMacrodefs( List<BuildTask> usedMacrodefs,List<BuildTask> macrodefsWithTasks) {
             string textRepresentation = string.Empty;
             foreach (BuildTask usedMacrodef in usedMacrodefs) {
+                int index = macrodefsWithTasks.FindIndex(
+                delegate(BuildTask macrodef) {
+                    return macrodef.Name.Equals(usedMacrodef.Name,StringComparison.Ordinal);
+                }
+                            );
+                if (index != -1) {
+                    usedMacrodef.TasksInsideMacrodef = macrodefsWithTasks[index].TasksInsideMacrodef;
+                }
                 textRepresentation= "\r\n\t"+usedMacrodef.GetMacroDefTextRepresentation();
             }
             return textRepresentation;
         }
 
-        void BuildSubtreeForTarget(BuildTargetObject target) {
+        private void BuildSubtreeForTarget(BuildTargetObject target) {
             TreeNode targetNode =  tvBuildSequence.Nodes[0].Nodes.Add(target.Name);
             targetNode.Tag = target;
             foreach (BuildTask buildTask in target.BuildTasks) {
                 TreeNode taskNode = targetNode.Nodes.Add(buildTask.GetTextRepresentation());
                 taskNode.Tag = buildTask;
-
             }
         }
 
-        BuildTask GetCopyOfCurrentTask(BuildTask selectedtask) {
+        private BuildTask GetCopyOfCurrentTask(BuildTask selectedtask) {
             BuildTask task = new BuildTask(selectedtask.Id,selectedtask.Name,selectedtask.DetailsLink,selectedtask.CategoryId,selectedtask.AddedByUserId,selectedtask.DateAdded,selectedtask.ModifiedByUserId,selectedtask.DateModified);
             task.OwnedByTarget = selectedtask.OwnedByTarget;
             task.SuppliedComment = selectedtask.SuppliedComment;
@@ -108,29 +122,47 @@ namespace XmlParsersAndUi.Forms.TpkBuilder {
             return task;
         }
 
-        void BtnAddTaskClick(object sender, EventArgs e) {
+        private void SetPopularity(int popularity) {
+            srcTaskRating.m_hoverStar = 0;
+            srcTaskRating.m_selectedStar = 0;
+            srcTaskRating.Invalidate();
+            srcTaskRating.m_hoverStar = popularity;
+            srcTaskRating.m_selectedStar = popularity;
+            srcTaskRating.m_hovering = true;
+            srcTaskRating.Invalidate();
+        }
+
+        #endregion
+
+        #region Events
+
+        private void BtnAddTaskClick(object sender, EventArgs e) {
             buildInitialText = "<project default=\"run\">\r\n\t<target name=\"run\">\r\n\t</target>\r\n</project>";
             if(string.IsNullOrEmpty(txtEditorBText.Text)) {
                 txtEditorBText.Text = buildInitialText;
             }
-
-            TaskAdditionForm form = new TaskAdditionForm(currentlySelectedTask, availableTargets,macrodefsUsed);
+            BuildTask task = GetCopyOfCurrentTask(currentlySelectedTask);
+            TaskAdditionForm form = new TaskAdditionForm(task, availableTargets,AllMacrodefsUsed);
             DialogResult dial =  form.ShowDialog();
-
             if (dial == DialogResult.OK) {
-                BuildTask task = GetCopyOfCurrentTask(currentlySelectedTask);
-
                 //Add results to output controls
                 string completedTask = form.currentlySelectedTask.GeneratedText;
                 string taskComment = form.currentlySelectedTask.SuppliedComment;
-               
-				 availableTargets[availableTargets.IndexOf(form.currentlySelectedTask.OwnedByTarget)].AddBuildTask(task);                	
-                
-               // if (condition) {
-                //}else{
-                	//add build task list inside build task
-                //}
-               
+                BuildTargetObject ownedByTarget = form.currentlySelectedTask.OwnedByTarget;
+                BuildTask ownedByMacrodef = form.currentlySelectedTask.OwnedByMacrodef;
+                if (ownedByTarget==null) {
+                    //owned by macrodef
+                    // ownedByMacrodef.TasksInsideMacrodef.Add(form.currentlySelectedTask);
+                    int index = AllMacrodefsUsed.FindIndex(
+                    delegate(BuildTask macrodef) {
+                        return macrodef.Name.Equals(ownedByMacrodef.Name,StringComparison.Ordinal);
+                    }
+                                );
+                    AllMacrodefsUsed[index].TasksInsideMacrodef.Add(form.currentlySelectedTask);
+                } else {
+                    //owned by target
+                    availableTargets[availableTargets.IndexOf(form.currentlySelectedTask.OwnedByTarget)].AddBuildTask(task);
+                }
                 GenerateOutputToUI(availableTargets);
                 //FIXME: remove this add
                 buildTasks.Add(completedTask);
@@ -147,7 +179,7 @@ namespace XmlParsersAndUi.Forms.TpkBuilder {
             }
         }
 
-        void LvAvailableTasksSelectedIndexChanged(object sender, EventArgs e) {
+        private void LvAvailableTasksSelectedIndexChanged(object sender, EventArgs e) {
             if (lvAvailableTasks.SelectedItems.Count >0) {
                 BuildTask selectedBuildTask =  lvAvailableTasks.SelectedItems[0].Tag as BuildTask ;
                 if (selectedBuildTask != null) {
@@ -158,25 +190,15 @@ namespace XmlParsersAndUi.Forms.TpkBuilder {
             }
         }
 
-        void SetPopularity(int popularity) {
-            srcTaskRating.m_hoverStar = 0;
-            srcTaskRating.m_selectedStar = 0;
-            srcTaskRating.Invalidate();
-            srcTaskRating.m_hoverStar = popularity;
-            srcTaskRating.m_selectedStar = popularity;
-            srcTaskRating.m_hovering = true;
-            srcTaskRating.Invalidate();
-        }
-
-        void BuildGeneratorFormLoad(object sender, EventArgs e) {
+        private void BuildGeneratorFormLoad(object sender, EventArgs e) {
             try {
+                base.LoadForm(this);
                 txtEditorBText.SetHighlighting("XML");
                 //FillAvailableTasks();
                 //FIXME: add properties categories and build task categories here
                 BuildTask selectedBuildTask = new BuildTask(0,"automation.comparisonguixml"
                         ,"http://globalqa/qa/infrastructure/doc/runtime/v2.3/AutoAntTasks/AutoAntCompareTableGeneric.html"
-                        ,(int)AppEnum.BuildTaskCat.Default,1,DateTime.Now,4,DateTime.Now.AddDays(3));
-
+                        ,(int)ApplicationEnumerations.BuildTaskCat.Default,1,DateTime.Now,4,DateTime.Now.AddDays(3));
                 selectedBuildTask.TaskProperties.Add( new BuildTaskProperty("ReachedDocument","${datastore}.screen.reached.xml",1, false,8,DateTime.Now));
                 selectedBuildTask.TaskProperties.Add( new BuildTaskProperty("ReachedGimDocument","",1, true,8,DateTime.Now));
                 selectedBuildTask.TaskProperties.Add( new BuildTaskProperty("ExpectedDocument","",1, true,8,DateTime.Now));
@@ -188,7 +210,7 @@ namespace XmlParsersAndUi.Forms.TpkBuilder {
                 selectedBuildTask.TaskProperties.Add( new BuildTaskProperty("Fast","False",1, false,8,DateTime.Now));
                 selectedBuildTask.TaskProperties.Add( new BuildTaskProperty("doCompare","True",1, false,8,DateTime.Now));
                 selectedBuildTask.TaskProperties.Add( new BuildTaskProperty("doColor","True",1, false,8,DateTime.Now));
-                selectedBuildTask.TaskProperties.Add( new BuildTaskProperty(0,"name","",(int)AppEnum.PropertyType.ConfigFileNested,true,"configFileTemplate",1,8,DateTime.Now,8,DateTime.Now));
+                selectedBuildTask.TaskProperties.Add( new BuildTaskProperty(0,"name","",(int)ApplicationEnumerations.PropertyType.ConfigFileNested,true,"configFileTemplate",1,8,DateTime.Now,8,DateTime.Now));
                 ListViewItem item = lvAvailableTasks.Items.Add(selectedBuildTask.Name);
                 item.Tag = selectedBuildTask;
                 TreeNode projectNode =  tvBuildSequence.Nodes.Add("projectDefRun","project default=\"run\"");
@@ -201,7 +223,7 @@ namespace XmlParsersAndUi.Forms.TpkBuilder {
             }
         }
 
-        void MacrodefToolStripMenuItemClick(object sender, EventArgs e) {
+        private void MacrodefToolStripMenuItemClick(object sender, EventArgs e) {
             try {
                 //FIXME: pass available task list for name uniqueness
                 DefineMacrodefForm form = new DefineMacrodefForm();
@@ -218,16 +240,19 @@ namespace XmlParsersAndUi.Forms.TpkBuilder {
             }
         }
 
-        void TargetToolStripMenuItemClick(object sender, EventArgs e) {
+        private void TargetToolStripMenuItemClick(object sender, EventArgs e) {
             try {
                 AddTargetForm form = new AddTargetForm(availableTargets);
                 DialogResult dial = form.ShowDialog();
                 if (dial == DialogResult.OK) {
                     BuildTargetObject buildTarget = new BuildTargetObject(form.buildTargetName,new List<BuildTask>());
+                    availableTargets.Add(buildTarget);
                 }
             } catch (Exception ex) {
                 CommonUtils.ShowError(ex.Message,ex);
             }
         }
+
+        #endregion
     }
 }

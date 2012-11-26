@@ -11,16 +11,23 @@ using System.Text.RegularExpressions;
 using System.Xml;
 using Utilities.WinForms;
 using XmlParsersAndUi.Classes;
+using Automation.Common.Forms;
 using Automation.Common.Utils;
 using Automation.Common.Classes.Monitoring;
 
 namespace XmlParsersAndUi {
-    public partial class BulkCustomsForm : Form {
+    public partial class BulkCustomsForm : BaseForm {
 
         public BulkCustomsForm() {
             InitializeComponent();
         }
 
+		 #region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+ 
         #region Methods
 
         private void UpdateEventsFilesStepsToFastMode(List<string> goodFiles) {
@@ -192,7 +199,7 @@ namespace XmlParsersAndUi {
         private void chkConvertFast_CheckedChanged(object sender, EventArgs e) {
             try {
                 if (chkConvertFast.Checked) {
-                    if ((CommonUtils.ShowConformation("Enabling this option may induce new " +
+                    if ((CommonUtils.ShowConfirmation("Enabling this option may induce new " +
                                 "differences due to the comparison mode change." +
                                 "\nAre you sure you want to proceed?")) == DialogResult.Yes) {
                         chkConvertFast.Checked = true;
@@ -207,9 +214,7 @@ namespace XmlParsersAndUi {
         }
 
         private void BulkCustomsForm_Load(object sender, EventArgs e) {
-            if (!string.IsNullOrEmpty(MonitorObject.username)) {
-                MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
-            }
+        	base.LoadForm(this);
         }
 
         #endregion

@@ -51,6 +51,8 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS
 			this.tpIntermediate = new System.Windows.Forms.TabPage();
 			this.dgvIntermediate = new System.Windows.Forms.DataGridView();
 			this.btnInsertToPac = new System.Windows.Forms.Button();
+			this.txtTELogical = new System.Windows.Forms.TextBox();
+			this.automationFileBrowserTextBox1 = new Automation.Common.Controls.AutomationFileBrowserTextBox();
 			this.groupBox1.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.dgvResults)).BeginInit();
 			this.tcResults.SuspendLayout();
@@ -63,6 +65,7 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS
 			// 
 			this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
 									| System.Windows.Forms.AnchorStyles.Right)));
+			this.groupBox1.Controls.Add(this.automationFileBrowserTextBox1);
 			this.groupBox1.Controls.Add(this.label1);
 			this.groupBox1.Controls.Add(this.txtInputTes);
 			this.groupBox1.Controls.Add(this.btnGetResults);
@@ -119,7 +122,7 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS
 			// btnInsertToDB
 			// 
 			this.btnInsertToDB.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.btnInsertToDB.Location = new System.Drawing.Point(233, 367);
+			this.btnInsertToDB.Location = new System.Drawing.Point(218, 367);
 			this.btnInsertToDB.Name = "btnInsertToDB";
 			this.btnInsertToDB.Size = new System.Drawing.Size(169, 23);
 			this.btnInsertToDB.TabIndex = 1;
@@ -130,7 +133,7 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS
 			// btnReset
 			// 
 			this.btnReset.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-			this.btnReset.Location = new System.Drawing.Point(58, 367);
+			this.btnReset.Location = new System.Drawing.Point(43, 367);
 			this.btnReset.Name = "btnReset";
 			this.btnReset.Size = new System.Drawing.Size(169, 23);
 			this.btnReset.TabIndex = 3;
@@ -190,19 +193,36 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS
 			// 
 			this.btnInsertToPac.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
 			this.btnInsertToPac.Enabled = false;
-			this.btnInsertToPac.Location = new System.Drawing.Point(408, 367);
+			this.btnInsertToPac.Location = new System.Drawing.Point(393, 367);
 			this.btnInsertToPac.Name = "btnInsertToPac";
 			this.btnInsertToPac.Size = new System.Drawing.Size(169, 23);
 			this.btnInsertToPac.TabIndex = 4;
-			this.btnInsertToPac.Text = "Insert into QA_PAC_TIMING";
+			this.btnInsertToPac.Text = "Insert into Intermediate";
 			this.btnInsertToPac.UseVisualStyleBackColor = true;
 			this.btnInsertToPac.Click += new System.EventHandler(this.BtnInsertToPacClick);
+			// 
+			// txtTELogical
+			// 
+			this.txtTELogical.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+			this.txtTELogical.Location = new System.Drawing.Point(417, 91);
+			this.txtTELogical.Name = "txtTELogical";
+			this.txtTELogical.ReadOnly = true;
+			this.txtTELogical.Size = new System.Drawing.Size(201, 20);
+			this.txtTELogical.TabIndex = 3;
+			// 
+			// automationFileBrowserTextBox1
+			// 
+			this.automationFileBrowserTextBox1.Location = new System.Drawing.Point(422, 47);
+			this.automationFileBrowserTextBox1.Name = "automationFileBrowserTextBox1";
+			this.automationFileBrowserTextBox1.Size = new System.Drawing.Size(182, 20);
+			this.automationFileBrowserTextBox1.TabIndex = 3;
 			// 
 			// PackReferenceForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(635, 402);
+			this.Controls.Add(this.txtTELogical);
 			this.Controls.Add(this.btnInsertToPac);
 			this.Controls.Add(this.tcResults);
 			this.Controls.Add(this.btnReset);
@@ -220,7 +240,10 @@ namespace XmlParsersAndUi.Forms.Pac_TPKS
 			this.tpIntermediate.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.dgvIntermediate)).EndInit();
 			this.ResumeLayout(false);
+			this.PerformLayout();
 		}
+		private Automation.Common.Controls.AutomationFileBrowserTextBox automationFileBrowserTextBox1;
+		private System.Windows.Forms.TextBox txtTELogical;
 		private System.Windows.Forms.Button btnInsertToPac;
 		private System.Windows.Forms.DataGridView dgvIntermediate;
 		private System.Windows.Forms.TabPage tpIntermediate;

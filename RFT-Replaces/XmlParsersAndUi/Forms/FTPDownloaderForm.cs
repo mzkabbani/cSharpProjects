@@ -3,18 +3,33 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
-using System.Windows.Forms;
-using System.IO;
-using FtpLib;
 using System.Text.RegularExpressions;
-using Automation.Common.Utils;
+using System.Windows.Forms;
+
 using Automation.Common.Classes.Monitoring;
+using Automation.Common.Forms;
+using Automation.Common.Utils;
+using FtpLib;
 
 namespace XmlParsersAndUi.Forms {
 
-    public partial class FTPDownloaderForm : Form {
+    public partial class FTPDownloaderForm : BaseForm {
+		
+		 #region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
+		
 
         public FTPDownloaderForm() {
             InitializeComponent();
@@ -142,9 +157,7 @@ namespace XmlParsersAndUi.Forms {
 
         private void FTPDownloaderForm_Load(object sender, EventArgs e) {
             try {
-                if (!string.IsNullOrEmpty(MonitorObject.username)) {
-                    MonitorObject.formAndAccessTime.Add(new FormAndAccessTime(this.Name, DateTime.Now));
-                }
+				base.LoadForm(this);                
             } catch (Exception) {
                 
             }

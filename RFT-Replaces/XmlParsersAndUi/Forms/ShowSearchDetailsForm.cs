@@ -14,7 +14,19 @@ using Automation.Common;
 
 namespace XmlParsersAndUi.Forms {
     public partial class ShowSearchDetailsForm : Form {
-
+ 		
+		#region Variables
+        #endregion
+        
+        #region Constructor
+        #endregion
+        
+        #region Methods
+        #endregion
+        
+        #region Events
+        #endregion
+        
         public AdvancedRecomendation captureEvent;
         public ReplacementEvent selectedReplacementEvent;
 

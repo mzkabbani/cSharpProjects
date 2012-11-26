@@ -8,6 +8,8 @@
  */
 using System;
 using System.Data;
+using System.Data.SqlServerCe;
+
 using Automation.Backend.Sql_Commands;
 
 namespace Automation.Backend.Classes
@@ -17,9 +19,7 @@ namespace Automation.Backend.Classes
 	/// </summary>
 	public static class ApplicationEnumsBackend
 	{
-		public ApplicationEnumsBackend()
-		{
-		}
+	
 		
 		public static DataTable GetAllAppEnums(){
 		
